@@ -30,26 +30,35 @@ ignore 'fonts/svg/*'
 ignore 'templates/*'
 
 data.integrations.tap do |i|
-  i.static_site_generators[0..1].each do |ssg|
+  metadata = {
+    cta: {
+      title: "Interested?",
+      description: "DatoCMS makes it fun & easy to use static website generators with your non-techie clients and editors. Discover more of our features and try the service for free.",
+      button: "Learn more!",
+      url: "https://www.datocms.com"
+    }
+
+  }
+  i.static_site_generators.each do |ssg|
     proxy(
       "/cms/#{ssg.name.parameterize}/index.html",
       "templates/1_combo_landing.html",
       locals: { ssg: ssg },
-      data: { title: "CMS for #{ssg.name} - Admin interface for #{ssg.name} static site generators - DatoCMS" }
+      data: metadata.merge(title: "CMS for #{ssg.name} - Admin interface for #{ssg.name} static site generators - DatoCMS")
     )
-    i.continuous_deployment_platforms[0..1].each do |cdp|
+    i.continuous_deployment_platforms.each do |cdp|
       proxy(
         "/cms/#{ssg.name.parameterize}/#{cdp.name.parameterize}/index.html",
         "templates/2_combo_landing.html",
         locals: { cdp: cdp, ssg: ssg },
-        data: { title: "CMS for #{ssg.name} deployable on #{cdp.name} - DatoCMS" }
+        data: metadata.merge(title: "CMS for #{ssg.name} deployable on #{cdp.name} - DatoCMS")
       )
-      i.git_hosting_platforms[0..1].each do |ghp|
+      i.git_hosting_platforms.each do |ghp|
         proxy(
           "/cms/#{ssg.name.parameterize}/#{cdp.name.parameterize}/#{ghp.name.parameterize}/index.html",
           "templates/3_combo_landing.html",
           locals: { cdp: cdp, ssg: ssg, ghp: ghp },
-          data: { title: "CMS for #{ssg.name}, deploy with #{ghp.name} and #{cdp.name} - DatoCMS" }
+          data: metadata.merge(title: "CMS for #{ssg.name}, deploy with #{ghp.name} and #{cdp.name} - DatoCMS")
         )
       end
     end

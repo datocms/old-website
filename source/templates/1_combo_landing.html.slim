@@ -1,15 +1,14 @@
-.wrap.space--both-8
-  .grid--center: .grid__item.desk-10-12
-    .align--center
-      .space--bottom-2= image_tag ssg.image_url, alt: ssg.name
-      .space--bottom-3
-        h1.alpha Finally, a CMS for #{ssg.name}!
+.wrap.space--both-5
+  .landing
+    .landing__header
+      .landing__images
+        = image_tag ssg.image_url, alt: ssg.name
+      h1.landing__title Meet the CMS for #{ssg.name}!
 
-  .grid--center: .grid__item.desk-8-12
-    .formatted-content
+    .landing__content
       p
-        ' DatoCMS is a web-based administrative area for your #{ssg.name} static
-        ' websites. Build your <a href="#{ssg.website_url}">#{ssg.name}
+        ' DatoCMS is a <strong>web-based administrative area for your #{ssg.name} static
+        ' websites</strong>. Develop your <a href="#{ssg.website_url}">#{ssg.name}
         ' websites</a> in #{ssg.language}, just like you're used to, and deploy
         ' your static website wherever you like (Amazon S3, Netlify, you name it).
       p

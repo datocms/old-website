@@ -1,0 +1,29 @@
+.landing
+  text-align: center
+
+.landing__header
+  max-width: 700px
+  margin: 0 auto
+  +margin-bottom(4)
+
+.landing__images
+  +margin-bottom(1)
+
+  img
+    display: inline-block
+    margin-right: 10px
+    max-width: 80px
+    border-radius: 10px
+
+    &:last-child
+      margin-right: 0
+
+.landing__title
+  +heading-font-family
+  +font-size(beta)
+
+.landing__content
+  max-width: 600px
+  margin: 0 auto
+  text-align: justify
+  @extend .formatted-content

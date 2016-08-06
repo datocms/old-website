@@ -1,22 +1,17 @@
-.wrap.space--both-8
-  .grid--center: .grid__item.desk-10-12
-    .align--center
-      .space--bottom-2
-        .nav
-          .nav__item
-            = image_tag ssg.image_url, alt: "#{ssg.name} logo"
-          .nav__item
-            = image_tag cdp.image_url, alt: "#{cdp.name} logo"
-      .space--bottom-3
-        h1.alpha
-          ' Edit your #{ssg.name} websites on the web,
-          ' deploy on #{cdp.name}!
+.wrap.space--both-5
+  .landing
+    .landing__header
+      .landing__images
+        = image_tag ssg.image_url, alt: "#{ssg.name} logo"
+        = image_tag cdp.image_url, alt: "#{cdp.name} logo"
+      h1.landing__title
+        ' Edit your #{ssg.name} website content on the web,
+        ' deploy on #{cdp.name}!
 
-  .grid--center: .grid__item.desk-8-12
-    .formatted-content
+    .landing__content
       p
-        ' DatoCMS is a web-based administrative area for your #{ssg.name} static
-        ' websites. Build your site with <a href="#{ssg.website_url}">#{ssg.name} </a>
+        ' DatoCMS is a <strong>web-based CMS for your #{ssg.name} static
+        ' websites</strong>. Build your site with <a href="#{ssg.website_url}">#{ssg.name} </a>
         ' in #{ssg.language} and deploy the final static website using
         ' <a href="#{cdp.website_url}">#{cdp.name}</a> (#{cdp.description}).
       p

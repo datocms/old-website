@@ -1,0 +1,19 @@
+---
+title: DatoCMS Integrations
+---
+
+.space--top-5
+  .wrap
+    .space--bottom-5
+      .page-header
+        .page-header__title DatoCMS Integrations
+        .page-header__subtitle With DatoCMS you're free to choose your perfect stack: the possibilities are endless.
+
+    ul.integrations
+      - data.integrations.tap do |i|
+        - i.static_site_generators.each do |ssg|
+          li= link_to ssg.name, "/cms/#{ssg.name.parameterize}/"
+          - i.continuous_deployment_platforms.each do |cdp|
+            li= link_to "#{ssg.name} + #{cdp.name}", "/cms/#{ssg.name.parameterize}/#{cdp.name.parameterize}/"
+            - i.git_hosting_platforms.each do |ghp|
+              li= link_to "#{ssg.name} + #{cdp.name} + #{ghp.name}", "/cms/#{ssg.name.parameterize}/#{cdp.name.parameterize}/#{ghp.name.parameterize}/"
