@@ -1,0 +1,39 @@
+Welcome back! Once the basic operating principles of Middleman and Netlify are clear, we can proceed with the creation of a simple blog that uses DatoCMS as the source of its content.
+
+Since the last tutorial, I've changed the contents of the "source" folder in order to generate an HTML layout which fits our needs better.
+
+Besides the homepage, which now shows an extract of the latest articles, there is also a detail page for each of them. Each article is also linked to a specific category.
+
+If we take a look at the code, you will notice the content of the articles is written directly into the HTML: our goal is to make it dynamic using DatoCMS.
+
+Once we're signed up, we can create a new Site, and enter the admin area using a temporary domain and the credentials of our account.
+
+Once we're logged-in, we can change the general settings of the Site, such as as the list of the supported languages or the main color for the interface.
+
+Let's define which fields an Article is composed of. We'll start with the title, which is a "Short text" field. We can specify the field label, any validation on the field to be enforced, and possibly, if the field type allows it, the field presentation mode most appropriate to the end user.
+
+Done! We now repeat the same process with the other fields: Main content... and Image.
+
+At any time, we can reorder our fields with a simple drag & drop.
+
+We conclude the definition of an "Article" specifying a "Date/Time" field, which represents the time of publication of the article.
+
+As you can see, the system has already created an entry for us in the navigation menu that points to the list of articles. We can modify the label at will, and see it immediately reflected in the sidebar menu.
+
+With these simple steps, we can already create new Articles within our Site.
+
+Our job is not finished yet: in fact, we have not modeled the "Category" item type yet. Let's do so immediately: for now, the only field that needs to be defined is a short text that represents the name of the category itself.
+
+We need to be able to specify the category which an article belongs to. In DatoCMS you can link items to each other through a special type of field called "Link".
+
+The last step is to set up the title and the tagline of the website shown on the home page. To do this we add a new item type, called Homepage. There's only ever going to be one home page, so we select the "Single instance" option.
+
+Just as we did previously, we add two "short text" fields: "Site name" and "Tagline".
+
+We also add a new type of field, "SEO Settings", which will allow us to manage all the meta information needed to generate the title tag of the page, as well the HTML code needed to properly share the page on Facebook, Twitter and Google+.
+
+The same type of field is also very useful for the Article, so we'll also add it there.
+
+To simplify content editing for end users, it is often useful to rename and reorder the items in the navigation menu to make their purpose clearer.
+
+Great! Everything is finally ready! We can start creating content for our site right away! In the next tutorial, we'll see how we can insert our DatoCMS site content into our Middleman project.

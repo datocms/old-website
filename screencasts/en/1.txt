@@ -1,0 +1,37 @@
+Welcome to the first of our tutorials! 
+
+DatoCMS lets you build a Wordpress-like backend around your client real needs, fetch the generated content from your preferred static website generator, and deploy a new build of your website everytime something changes.
+
+The goal of this screencast is to create and then publish a completely static website using DatoCMS.
+
+To do this, we are going to use a static website generator called Middleman.
+
+The first step, once the is gem installed on our system, is to run the command "middleman init".
+
+After answering a few questions about the project we want to build, the command will create a new directory containing the bare minimum to start.
+
+Examining the structure of a Middleman project in more detail, we can see that within the "source" directory are some folders that will contain static assets of our site (Javascript, CSS and images).
+
+There is also a file called "layout.erb", which represents the HTML "frame" that will surround each page of our static site. Within this file, the keyword "yield" is precisely the point in which the main content of a specific page, such as "index.html.erb", will be inserted.
+
+In addition to the "init" command just used, Middleman provides two additional commands.
+
+The first, "middleman build", is responsible for producing the actual static website from the contents of the "source" folder. These static files are the ones that we need to upload to a CDN to see our website published online.
+
+The second, "middleman server", allows us to visualize the result of the compilation process of the pages in realtime, without having to constantly launch an explicit build: very convenient during the development of the site itself.
+
+It is already possible to proceed to the publication of this first version of the site using Netlify, a continuous deployment and hosting service.
+
+The first step is pushing our project to a Github or Bitbucket repository.
+
+From the Netlify dashboard, it is now possible to add a new site, linking it to the Git repository just created.
+
+Netlify is able to recognize the presence within the repository of the most popular static website generators, and will therefore take care configuring the minimum settings for us to proceed with publication.
+
+The log you see shows the progress of the build and publishing operations of the site. During this first deployment, Netlify will install all the Ruby dependencies required to run the command "middleman build", so it will take a few minutes to conclude the operation. Subsequent deployments will be completed in seconds.
+
+Alright: the publishing operation was successfully completed and we can immediately view our site on a temporary domain that Netlify has already prepared for us.
+
+From the Netlify admininstration panel, you can now proceed to associate a custom domain to your site, as well as viewing the history of deployments.
+
+Now that everything is correctly set up, we'll see how we can create a DatoCMS administrative backend to let your clients edit the content for this website.

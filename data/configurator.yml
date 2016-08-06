@@ -1,0 +1,40 @@
+start:
+  ssg: 'Middleman'
+  hosting: 'Github'
+  cd: 'Netlify'
+
+variants:
+  - name: 'Static website generator'
+    id: 'ssg'
+    options:
+      - name: Middleman
+        getting_started_url: https://middlemanapp.com/basics/start_new_site/
+        build_command: middleman build
+        integration_url: https://github.com/datocms/middleman-dato
+      - name: Jekyll
+        getting_started_url: https://jekyllrb.com/docs/quickstart/
+        build_command: jekyll build
+        integration_url: '#'
+      - name: Hugo
+        getting_started_url: https://gohugo.io/overview/introduction/
+        build_command: hugo
+        integration_url: '#'
+      - name: Metalsmith
+        getting_started_url: http://www.metalsmith.io/
+        build_command: node build.js
+        integration_url: '#'
+
+  - name: 'Git hosting platform'
+    id: 'hosting'
+    options:
+      - name: Github
+      - name: Bitbucket
+      - name: Gitlab
+
+  - name: 'Deployment solution'
+    id: 'cd'
+    options:
+      - name: Netlify
+        instructions_url: https://app.netlify.com/sites
+      - name: Gitlab
+        instructions_url: https://pages.gitlab.io/

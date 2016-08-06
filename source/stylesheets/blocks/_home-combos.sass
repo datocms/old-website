@@ -1,0 +1,89 @@
+.home-combos
+  +padding-top(10)
+  +padding-bottom(3)
+  text-align: center
+  border-bottom: 1px solid $border-color
+
+.home-combos__title
+  +heading-font-family
+  +font-size(alpha)
+  +margin-bottom(2)
+
+.home-combos__description
+  max-width: 600px
+  margin-left: auto
+  margin-right: auto
+  +margin-bottom(5)
+
+.home-combos__tools
+  +margin-top(1)
+  +padding-top(4)
+  +padding-bottom(4)
+  border-top: 1px solid $border-color
+  position: relative
+
+.home-combos__tools__list
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+  align-items: flex-start
+
+.home-combos__tools__title
+  +heading-font-family
+  text-transform: uppercase
+  position: absolute
+  left: 0
+  right: 0
+  text-align: center
+  +top(-1)
+  +margin-bottom(2)
+
+  span
+    position: relative
+    background-color: white
+    padding: 0 20px
+
+  span:before
+    position: absolute
+    left: 0
+    right: 0
+    height: 1px
+    background-color: $border-color
+
+.home-combos__tool
+  text-decoration: none
+  display: inline-block
+  text-align: center
+  margin: 0 25px
+  max-width: 100px
+  +margin-bottom(2)
+
+.home-combos__tool__image
+  display: block
+  height: 70px
+  margin: 0 auto
+  +margin-bottom(1)
+  transition: top 0.2s $material-ease
+  top: 0
+  position: relative
+  border-radius: 6px
+
+  .home-combos__tool:hover &
+    top: -5px
+
+.home-combos__tool__name
+  display: block
+  +heading-font-family
+  text-transform: uppercase
+  line-height: 1.6
+
+.home-combos__tool__language
+  display: block
+  +heading-font-family
+  +font-size(milli)
+  color: $light-body-color
+
++at-breakpoint(lap)
+  .home-combos__tool
+    max-width: 150px
+    margin-bottom: 0

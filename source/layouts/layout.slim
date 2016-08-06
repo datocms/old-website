@@ -1,0 +1,10 @@
+doctype html
+html
+  = render_partial "partials/head"
+  body
+    #sliding-content
+      = render_partial "partials/header", locals: { style: { class: "main-nav--white" }}
+      = yield
+      = render_partial "partials/footer"
+    = render_partial "partials/canvas_nav"
+    = render_partial "partials/javascripts"

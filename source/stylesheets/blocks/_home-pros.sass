@@ -1,0 +1,52 @@
+.home-pros
+  +padding-top(8)
+  +padding-bottom(6)
+
+.home-pros__title
+  text-align: center
+  +heading-font-family
+  +font-size(alpha)
+  +margin-bottom(5)
+
+.home-pros__description
+  max-width: 600px
+  margin-left: auto
+  margin-right: auto
+  text-align: center
+  +margin-bottom(3)
+
+.home-pros__cta
+  text-align: center
+
+.home-pros__items
+  +margin-bottom(3)
+
+.home-pros__item
+  text-align: center
+  box-sizing: border-box
+  position: relative
+  +margin-bottom(3)
+
+.home-pros__item__title
+  +heading-font-family
+  text-transform: uppercase
+
+.home-pros__item__image
+  display: block
+  height: 100px
+  margin: 0 auto
+  +margin-bottom(2)
+
++at-breakpoint(tab)
+  .home-pros__items
+    display: flex
+    align-items: stretch
+    flex-wrap: wrap
+    justify-content: space-between
+
+  .home-pros__item
+    width: 50%
+
++at-breakpoint(lap)
+  .home-pros__item
+    width: 33%

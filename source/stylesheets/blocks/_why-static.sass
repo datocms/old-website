@@ -1,0 +1,36 @@
+.why-static__item
+  text-align: center
+  box-sizing: border-box
+  +vertical-padding(6)
+  padding-bottom: 0
+
+.why-static__item__title
+  +heading-font-family
+  text-transform: uppercase
+  +font-size(delta)
+  +margin-bottom(2)
+
+.why-static__item__image img
+  display: block
+  height: 100px
+  margin: 0 auto
+  +margin-bottom(2)
+
++at-breakpoint(lap)
+  .why-static__item__image img
+    height: 180px
+    +margin-bottom(3)
+
+  .why-static__item
+    width: 50%
+    +padding(4)
+    padding-bottom: 0
+
+  .why-static__items
+    display: flex
+    flex-wrap: wrap
+
++at-breakpoint(desk)
+  .why-static__item
+    +padding(6)
+    padding-bottom: 0

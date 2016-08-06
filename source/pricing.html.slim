@@ -1,0 +1,86 @@
+---
+title: Pricing - DatoCMS
+---
+
+.space--top-5
+  .wrap
+    .space--bottom-5
+      .page-header
+        .page-header__title Totally free during beta!
+        .page-header__subtitle Once the beta is over, a simple & transparent pricing awaits you
+
+    .space--bottom-8
+      .pricing
+        - data.plans.each do |plan|
+          .pricing__plan class="pricing__plan--#{plan.name.downcase}"
+            .pricing__plan__inner
+              .pricing__plan__title= plan.name
+              .pricing__plan__price
+                .pricing__plan__price__currency $
+                .pricing__plan__price__amount= plan.price
+                .pricing__plan__price__infos per site/month
+              .pricing__plan__options
+                .pricing__plan__option <strong>#{plan.users}</strong> users
+                .pricing__plan__option <strong>#{plan.items}</strong> items
+                .pricing__plan__option <strong>#{plan.files}</strong> files
+
+      .space--top-5: .align--center
+        .home-jumbo__cta
+          a.button.button--huge.button--black href="http://dashboard.datocms.com/register" Try it now for free!
+          .home-jumbo__cta__notice Signup in 15 seconds, no credit card needed!
+
+.pricing-faqs: .wrap: .pricing-faqs__inner
+  .pricing-faqs__title Pricing questions
+
+  .pricing-faqs__item
+    .pricing-faqs__item__image= image_tag "faqs/plan.svg"
+    .pricing-faqs__item__content
+      .pricing-faqs__item__question Do I need to choose a plan?
+      .pricing-faqs__item__answer
+        p
+          ' Not really. Plans are automatically assigned on a monthly basis
+          ' based on the real usage of the resources. That is, at the end of
+          ' each month, we look at the number of users, items and files for
+          ' each Site present in your Account, and for each of them we pick
+          ' the miminum plan that covers the usage. The total monthly invoice
+          ' is the sum of the plans of your Sites for that month.
+
+  .pricing-faqs__item
+    .pricing-faqs__item__image= image_tag "faqs/card.svg"
+    .pricing-faqs__item__content
+      .pricing-faqs__item__question Is it a credit card required?
+      .pricing-faqs__item__answer
+        p
+          ' No, it's not. You can use the free plan as long as you want without
+          ' credit cards. Just be aware that if you reach the free plan limits
+          ' in a Site and your Account is not associated with a credit card,
+          ' your users won't be able to add new content to their website until
+          ' you do it.
+
+  .pricing-faqs__item
+    .pricing-faqs__item__image= image_tag "faqs/site.svg"
+    .pricing-faqs__item__content
+      .pricing-faqs__item__question What is a Site?
+      .pricing-faqs__item__answer
+        p
+          ' Every website you manage with DatoCMS needs a separate Site. Each
+          ' Site is completely isolated from the others, with different data
+          ' and users, and is accessible from a different domain. You can manage
+          ' your Sites from your Account dashboard.
+
+  .pricing-faqs__item
+    .pricing-faqs__item__image= image_tag "faqs/item.svg"
+    .pricing-faqs__item__content
+      .pricing-faqs__item__question What is an Item?
+      .pricing-faqs__item__answer
+        p
+          ' An item represents a single piece of information you store within a
+          ' Site. It can be anything: an blog post, a category, an image gallery,
+          ' a staff member in your About page. Within a Site, you can configure
+          ' the specific fields required for each kind of item.
+
+  .space--top-5: .align--center
+    .home-jumbo__cta
+      a.button.button--huge.button--black href="http://dashboard.datocms.com/register" Create your free Account now!
+      .home-jumbo__cta__notice Signup in 15 seconds, no credit card needed!
+

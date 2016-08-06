@@ -1,0 +1,62 @@
+continuous_deployment_platforms:
+  - name: Amazon AWS
+    image_url: https://logo.clearbit.com/aws.amazon.com
+    website_url: https://aws.amazon.com/
+    description: S3 + Cloudfront
+  - name: Netlify
+    image_url: https://logo.clearbit.com/www.netlify.com
+    website_url: https://www.netlify.com/
+    description: Continuous Deployment + CDN
+  - name: Gitlab CI
+    image_url: https://logo.clearbit.com/about.gitlab.com
+    website_url: https://about.gitlab.com
+    description: Continuous Deployment
+  - name: CircleCI
+    image_url: /images/tools/circleci.png
+    website_url: http://circleci.com
+    description: Continuous Deployment
+  - name: Surge
+    image_url: https://logo.clearbit.com/surge.sh
+    website_url: http://surge.sh
+    description: CDN
+git_hosting_platforms:
+  - name: Github
+    website_url: https://github.com
+    image_url: https://logo.clearbit.com/github.com
+  - name: Bitbucket
+    website_url: https://bitbucket.org
+    image_url: https://logo.clearbit.com/www.bitbucket.org
+  - name: Gitlab
+    website_url: https://about.gitlab.com
+    image_url: https://logo.clearbit.com/about.gitlab.com
+static_site_generators:
+  - name: Middleman
+    image_url: https://logo.clearbit.com/middlemanapp.com
+    website_url: http://middlemanapp.com
+    getting_started_url: https://middlemanapp.com/basics/start_new_site/
+    language: Ruby
+  - name: Jekyll
+    image_url: https://logo.clearbit.com/jekyllrb.com
+    website_url: https://jekyllrb.com/
+    getting_started_url: https://jekyllrb.com/docs/quickstart/
+    language: Ruby
+  - name: Hugo
+    image_url: https://logo.clearbit.com/gohugo.io
+    website_url: http://gohugo.io
+    getting_started_url: https://gohugo.io/overview/introduction/
+    language: Go
+  - name: Metalsmith
+    image_url: https://logo.clearbit.com/metalsmith.io
+    website_url: http://metalsmith.io
+    getting_started_url: http://www.metalsmith.io/
+    language: Javascript
+  - name: Hexo
+    image_url: https://logo.clearbit.com/hexo.io
+    website_url: http://hexo.io
+    getting_started_url: https://hexo.io/docs/setup.html
+    language: Javascript
+  - name: Pelican
+    image_url: https://logo.clearbit.com/blog.getpelican.com
+    website_url: http://blog.getpelican.com
+    getting_started_url: http://docs.getpelican.com/en/3.6.3/install.html
+    language: Python

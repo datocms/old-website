@@ -1,0 +1,31 @@
+L’obiettivo di questo screencast è realizzare, e successivamente pubblicare, un sito totalmente statico sfruttando DatoCMS.
+
+Per farlo, utilizzeremo un generatore di siti statici: Middleman.
+
+Il primo passaggio, una volta installata la gemma sul nostro sistema, è lanciare il comando "middleman init”. 
+
+Dopo aver risposto a qualche domanda relativa al progetto che vogliamo realizzare, quest’ultimo genererà una nuova directory contenente il minimo indispensabile per partire.
+
+Esaminando più nel dettaglio la struttura di un progetto Middleman, possiamo notare come all’interno della directory “source” siano presenti alcune cartelle che andranno a contenere gli asset statici del nostro sito (JS, CSS ed immagini).
+
+È presente inoltre un file layout.erb, che rappresenta la cornice HTML che circonderà ogni pagina del nostro sito statico. All’interno di questo file, la parola chiave “yield” rappresenta proprio il punto all’interno del quale il contenuto principale della singola pagina, come ad esempio index.html.erb, verrà inserito.
+
+Middleman, oltre al comando “init” appena sfruttato in fase di bootstrap del progetto, mette a disposizione altri due comandi. 
+
+Il primo, “middleman build”, si occupa di produrre l’effettivo sito statico a partire dai file contenuti all’interno della cartella “source”. Questi file statici sono proprio quelli che dovremo uploadare in CDN per vedere pubblicato il nostro sito.
+
+Il secondo, “middleman server”, molto comodo durante la fase di sviluppo del sito stesso, ci permette di visualizzare in tempo reale il risultato del processo di compilazione delle pagine, senza dover continuamente richiedere una build in maniera esplicita.
+
+È già possibile procedere alla pubblicazione di questa prima versione del sito utilizzando Netlify, un servizio di continuous deployment ed hosting CDN.
+
+Il primo passaggio è pushare su un repository Github o Bitbucket il nostro progetto.
+
+All’interno della dashboard di Netlify è ora possibile aggiungere un nuovo sito collegandolo al repository Git appena creato. 
+
+Netlify è in grado di riconoscere all’interno del repository la presenza dei più popolari generatori di siti statici, e si preoccuperà dunque di configurare per noi le impostazioni minime per procedere alla pubblicazione.
+
+Il log che segue mostra il progresso dell'operazione di build e pubblicazione del sito. Durante questo primo deploy, Netlify dovrà installare tutte le dipendenze Ruby necessarie per eseguire il comando “middleman build”. Impiegherà dunque qualche minuto per concludere l’operazione. Le successive operazioni di deploy saranno invece completate in pochi secondi.
+
+L’operazione di pubblicazione è stata completata con successo e possiamo immediatamente visualizzare il nostro sito all’interno di un dominio che Netlify ha già predisposto per noi.
+
+All’interno del pannello di amministrazione Netlify, è ora possibile procedere ad associare un dominio custom al nostro sito, così come visualizzare lo storico dei deploy effettuati.

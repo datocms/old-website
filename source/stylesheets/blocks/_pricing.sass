@@ -1,0 +1,89 @@
+.pricing__plan
+  text-align: center
+  position: relative
+  z-index: 1
+
+.pricing__plan__inner
+  background-color: white
+
+.pricing__plan__title
+  +font-size(gamma)
+  +heading-font-family
+  +vertical-padding(2)
+  text-transform: uppercase
+  background-color: $yellow-color
+
+.pricing__plan__price
+  font-weight: 800
+  line-height: 1
+  +font-size(alpha)
+  +vertical-padding(2)
+
+.pricing__plan__price__amount
+  display: inline-block
+
+.pricing__plan__price__currency
+  content: "$"
+  +font-size(gamma)
+  display: inline-block
+
+.pricing__plan__price__infos
+  margin-top: 5px
+  +font-size(regular)
+  display: block
+
+.pricing__plan__options
+  background-color: $light-bg-color
+  +vertical-padding(2)
+
+.pricing__plan--starter .pricing__plan__title
+  background-color: #ffbb9e
+  color: white
+
+.pricing__plan--basic .pricing__plan__title
+  background-color: #65E8C6
+  color: white
+
+.pricing__plan--plus .pricing__plan__title
+  background-color: #FFDC2F
+  color: white
+
+.pricing__plan--premium .pricing__plan__title
+  background-color: #ff4c4c
+  color: white
+
+.pricing__plan--max .pricing__plan__title
+  background-color: #672b72
+  color: white
+
++at-breakpoint(tab)
+  .pricing__plan
+    float: left
+    width: 50%
+
+  .pricing__plan__inner
+    margin-left: 1px
+    +vertical-margin(1)
+
++at-breakpoint(desk)
+  .pricing
+    +clearfix
+
+  .pricing__plan
+    float: left
+    width: 20%
+    box-sizing: border-box
+    position: relative
+    +margin-bottom(0)
+
+    .pricing__plan__inner
+      transform: scale(1)
+      transition: all .2s $material-ease
+
+    &:hover
+      z-index: 2
+
+      .pricing__plan__inner
+        transform: scale(1.2)
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2)
+

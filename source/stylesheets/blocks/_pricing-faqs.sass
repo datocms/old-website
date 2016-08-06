@@ -1,0 +1,37 @@
+.pricing-faqs
+  background-color: $light-bg-color
+  +vertical-padding(8)
+
+.pricing-faqs__inner
+  max-width: 680px
+  margin: 0 auto
+
+.pricing-faqs__title
+  +heading-font-family
+  +font-size(alpha)
+  +margin-bottom(8)
+  text-align: center
+
+.pricing-faqs__item
+  +margin-bottom(3)
+  +padding-bottom(3)
+  border-bottom: 1px solid $border-color
+
+.pricing-faqs__item__question
+  font-weight: bold
+  +font-size(gamma)
+  +margin-bottom(1)
+
+.pricing-faqs__item__image
+  width: 140px
+  height: 140px
+  margin: 0 auto
+  +margin-bottom(3)
+
++at-breakpoint(tab)
+  .pricing-faqs__item
+    display: flex
+
+  .pricing-faqs__item__content
+    margin-left: $grid-gutter * 2
+    flex: 1

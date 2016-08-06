@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'middleman', '>= 4.0.0'
+gem 'rouge'
+gem 'redcarpet'
+gem 'middleman-syntax'
+gem 'middleman-livereload'
+gem 'slim'
+gem 's3_website'
+gem 'builder'

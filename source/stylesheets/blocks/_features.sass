@@ -1,0 +1,25 @@
+.features
+
+.features__item
+  +vertical-padding(6)
+  +clearfix
+
+  &:nth-child(2n+1)
+    background-color: $light-bg-color
+
+.features__item__title
+  +heading-font-family
+  +font-size(beta)
+  +margin-bottom(2)
+
++at-breakpoint(desk)
+  .features__item
+    +vertical-padding(8)
+    +clearfix
+
+    &:nth-child(2n) .features__item__content
+      float: right
+
+  .features__item__content
+    width: 50%
+    float: left

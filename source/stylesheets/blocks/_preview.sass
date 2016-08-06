@@ -1,0 +1,29 @@
+.preview
+  display: block
+  position: relative
+  overflow: hidden
+  background-color: black
+  max-width: 800px
+  margin: 0 auto
+
+  img, iframe
+    display: block
+
+  img
+    width: 100%
+    display: block
+
+.preview--video
+  background-color: #ffdc2f
+  color: $base-body-color
+
+  .preview__inner:before
+    content: ""
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background: image-url("play.svg") center center no-repeat
+    background-size: 19%
+

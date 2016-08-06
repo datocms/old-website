@@ -1,0 +1,51 @@
+Una volta chiarito il funzionamento base di Middleman e Netlify, procediamo ora con la realizzazione di un semplice blog che sfrutti DatoCMS come fonte per i propri contenuti.
+
+Per avvantaggiarci col lavoro abbiamo già proceduto a modificare la cartella “source” del nostro progetto Middleman in maniera tale da produrre un nuovo layout HTML, più utile ai nostri scopi. 
+
+Oltre all’homepage, che ora mostra un’estratto degli ultimi post, è presente anche una pagina di dettaglio per il singolo articolo. Come possiamo notare, ogni post è collegato ad una specifica categoria di pubblicazione.
+
+Come possiamo vedere esaminando codice, si tratta ancora di viste totalmente statiche: il contenuto degli articoli è scritto direttamente all’interno dell’HTML.  
+
+Procediamo dunque registrandoci su DatoCMS, e creando un nuovo Spazio per questo sito.
+
+È possibile entrare all’interno del backend sfruttando il dominio interno messoci a disposizione, e sfruttando le credenziali del proprio account DatoCMS. 
+
+Una volta entrati, è possibile modificare impostazioni generali dello Spazio come l’elenco delle lingue supportate; è inoltre possibile procedere con la creazione delle tipologie di contenuto specifiche del nostro sito web.
+
+Il primo tipo di contenuto che ci interessa definire è, ovviamente, l’articolo. 
+
+Vogliamo che un articolo sia composto da una serie di campi, primo dei quali il titolo. Dopo avere scelto la tipologia di dato più idonea, in questo caso “stringa di testo”, possiamo specificare il nome del campo (Titolo, appunto), eventuali validazioni sul campo da rinforzare (nel nostro caso, la presenza obbligatoria), ed eventualmente, se il tipo di campo lo permette, impostare la modalità di presentazione del campo all’utente finale più appropriata.
+
+Ripetiamo il medesimo procedimento con i successivi campi: Contenuto principale… e Immagine.
+
+In qualsiasi momento possiamo riordinare i nostri campi mediante semplice drag&drop.
+
+Concludiamo la definizione del tipo di contenuto “Articolo” specificando un’ultimo campo di tipo “Data/ora”, che rappresenta il momento della pubblicazione dell'articolo sul sito.
+
+Come possiamo osservare, il sistema ha già creato per noi una voce nel menù di navigazione che punta all’elenco degli articoli. Possiamo modificare a piacimento la dicitura della voce, per vederla immediatamente riflessa nel menù laterale.
+
+Con questi semplici passaggi, è già possibile creare nuovi Articoli all’interno del nostro Spazio.
+
+Il nostro compito non è ancora finito: non abbiamo ancora infatti modellato il tipo di contenuto Categoria. Facciamolo immediatamente: l’unico campo che ci interessa per ora definire all’interno di una Categoria è una stringa che rappresenti il nome della categoria stessa.
+
+Come ben sappiamo, ogni Articolo deve poter specificare la Categoria alla quale appartiene. In DatoCMS è possibile collegare item tra di loro attraverso un particolare tipo di campo denominato “Link”, specificando la tipologia di contenuto che si desidera collegare.
+
+L’ultimo passaggio necessario e permettere la modifica del titolo e della tagline del sito web presenti in homepage. Per farlo aggiungiamo un nuovo tipo di contenuto, Homepage appunto, preoccupandoci di spuntare l'opzione “Singleton". In questo modo, un editor non potrà generare una collezione di item di questo tipo, ma sarà limitato a modificarne una singola istanza. 
+
+Similmente a quanto fatto in precedenza, aggiungiamo due campi di tipo "stringa": Nome del sito e Tagline.
+
+Aggiungiamo inoltre un nuovo tipo di campo, denominato SEO, che ci permetterà di gestire tutte impostazioni utili a fini della generazione dei classici meta tag title e description, così come dei meta tag specifici per la condivisione su Facebook e Twitter della pagina.
+
+Lo stesso tipo campo è molto utile anche per il singolo Articolo, dunque preoccupiamoci di aggiungerlo anche qui.
+
+Per semplificare il lavoro di modifica dei contenuti per l’utente finale, è spesso utile rinominare e riordinare le voci del menù di navigazione per rendere più chiaro la loro finalità.
+
+Tutto è finalmente pronto: possiamo iniziare ad inserire i contenuti del nostro sito, partendo dai metadati specifici della nostra Homepage…
+
+spostandoci poi sulle Categorie…
+
+e infine sugli Articoli. 
+
+Nel caso in cui vengano inseriti dati coerenti con le regole di validazione specificate, il salvataggio non andrà a buon fine, e l’utente verrà notificato con messaggi di errore pertinenti ed autoesplicativi.
+
+DatoCMS mette a disposizione una comoda funzionalità di export dello schema dei contenuti, che ci tornerà particolarmente comoda nella prossima fase, ovvero quella di interfacciamento tra il nostro progetto Middleman, e DatoCMS, appunto.

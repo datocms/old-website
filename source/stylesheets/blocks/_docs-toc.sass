@@ -1,0 +1,30 @@
+.docs-toc.docs-toc
+  +margin-bottom(5)
+
+  ul
+    padding-left: 0
+
+    li
+      list-style-type: none
+      margin-bottom: 0
+
+  > ul
+    > li
+      +margin-bottom(2)
+
+      > a
+        display: block
+        font-weight: bold
+        text-decoration: none
+        +margin-bottom(1)
+
+      > ul > li > a
+        text-decoration: none
+        color: $light-body-color
+        line-height: 2
+        +padding-left(1)
+        border-left: 2px solid $border-color
+        display: block
+
+        &:hover
+          color: $primary-color

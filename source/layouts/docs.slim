@@ -1,0 +1,15 @@
+doctype html
+html
+  = render_partial "partials/head"
+  body
+    #sliding-content
+      = render_partial "partials/header", locals: { style: { class: "main-nav--white" }}
+      .space--both-5: .wrap
+        .grid
+          .grid__item.desk-3-12
+            = yield_content(:sidebar) || render_partial("partials/navigation")
+          .grid__item.desk-9-12
+            .formatted-content= yield
+      = render_partial "partials/footer"
+    = render_partial "partials/canvas_nav"
+    = render_partial "partials/javascripts"

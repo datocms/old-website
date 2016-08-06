@@ -1,0 +1,13 @@
+@each $name in map-keys($heading-font-sizes)
+  $size: map-get($heading-font-sizes, $name)
+
+  .#{$name}
+    +rem-rule(font-size, $size)
+    line-height: 1.3
+
+@each $name in map-keys($smallprint-font-sizes)
+  $size: map-get($smallprint-font-sizes, $name)
+
+  .#{$name}
+    +rem-rule(font-size, $size)
+

@@ -1,0 +1,58 @@
+.formatted-content
+  line-height: 1.7
+
+  h1, h2, h3, h4, h5, h6, hgroup,
+  ul, ol, dd, p, figure, pre, table,
+  fieldset, hr, form, blockquote
+    +margin-bottom(2)
+
+    &:last-child
+      margin-bottom: 0
+
+  ul, ol, blockquote
+    padding-left: 30px
+
+  ul li
+    list-style-type: disc
+    +margin-bottom(1)
+
+  ol li
+    list-style-type: decimal
+    +margin-bottom(1)
+
+  h1, h2, h3, h4, h5, h6
+    +heading-font-family
+    +margin-top(2)
+    line-height: 1.3
+
+    &:first-child
+      margin-top: 0
+
+  @for $i from 1 through 6
+    h#{$i}
+      $index: $i
+
+      @if $i > length($heading-font-sizes)
+        $index: length($heading-font-sizes)
+
+      $size: nth(map-values($heading-font-sizes), $index)
+      +rem-rule(font-size, $size)
+
+  table
+    width: 100%
+    @extend .table
+
+  blockquote
+    font-style: italic
+    font-family: $georgia
+    position: relative
+    color: $light-body-color
+
+  code
+    padding: 0.2em
+    background-color: $light-bg-color
+
+  img
+    display: block
+    max-width: 90%
+    margin: 0 auto

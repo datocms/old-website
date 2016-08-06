@@ -1,0 +1,18 @@
+.side-overlay
+  z-index: 1
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background-color: black
+  visibility: hidden
+  opacity: 0
+  cursor: pointer
+  transition: visibility 0s ease, opacity .2s ease
+
+  .offside-js--is-open &
+    visibility: visible
+    opacity: .3
+    transition-delay: delay 0s
+

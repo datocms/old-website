@@ -1,0 +1,83 @@
+.button
+  +heading-font-family
+  padding: 1em
+  text-decoration: none
+  border: 0
+  display: inline-block
+  vertical-align: middle
+  white-space: nowrap
+  font-family: inherit
+  cursor: pointer
+  line-height: inherit
+  background-color: $light-bg-color
+  color: $base-body-color
+  -webkit-appearance: none
+  border-radius: 3px
+  box-sizing: border-box
+  transition: box-shadow 0.1s $material-ease, transform 0.1s $material-ease, text-shadow 0.1s $material-ease
+  box-shadow: 0 0 0 rgba(black, 0.2)
+  +heading-font-family
+  text-transform: uppercase
+  letter-spacing: .08em
+
+  .no-touch &:hover
+    box-shadow: 0 3px 5px rgba(black, 0.2)
+    text-shadow: 0 3px 3px rgba(black, 0.2)
+
+  .no-touch &:active
+    box-shadow: 0 1px 3px rgba(black, 0.2)
+    text-shadow: 0 1px 1px rgba(black, 0.2)
+
+  i:first-child
+    margin-right: 0.5em
+
+  i:last-child
+    margin-left: 0.5em
+
+  i:first-child:last-child
+    margin-left: 0
+    margin-right: 0
+
+.button--small
+  @extend .button
+  font-size: 0.9em
+
+.button--large
+  @extend .button
+  font-size: 1.1em
+
+.button--huge
+  @extend .button
+  font-size: 1.3em
+
+.button--expand
+  @extend .button
+  text-align: center
+  display: block
+  width: 100%
+
+.button--primary
+  background-color: $primary-color
+  color: white
+  transition: background-color .2s $material-ease
+
+  &:hover
+    background-color: darken($primary-color, 2%)
+
+  &[disabled]
+    background-color: transparent
+    border: 3px solid $primary-color
+    color: $primary-color
+
+.button--rev
+  background-color: white
+  color: $primary-color
+
+.button--black
+  background-color: $base-body-color
+  color: white
+
+.button--red
+  background-color: $red-color
+  color: white
+

@@ -1,0 +1,81 @@
+---
+title: DatoCMS - A CMS for static website generators
+---
+
+- content_for(:navigation_style) { { class: "main-nav--white" }.to_json }
+
+.home-jumbo
+  .wrap
+    .home-jumbo__wall: .home-jumbo__wall__inner
+      .home-jumbo__title The power of static websites, finally at your clients' disposal
+      .home-jumbo__description DatoCMS is a fully customizable administrative area for your static websites. Use your favourite website generator, let your clients publish new content independently, host the site anywhere you like.
+
+      .home-jumbo__cta
+        a.button.button--huge.button--primary href="http://dashboard.datocms.com/register" Try it now for free!
+        .home-jumbo__cta__notice Signup in 15 seconds, no credit card needed!
+
+.home-demo: .wrap: .home-demo__inner
+  .home-demo__title So easy to use your clients will love it
+  .home-demo__description DatoCMS administrative interface is incredibly simple to use, yet flexible enough to allow the management of pretty much any kind of website.
+
+  a.preview: .preview__inner
+    = image_tag "frontend-big.gif"
+
+.home-pros: .wrap
+  .home-pros__title Ready to say goodbye to a lot of problems?
+
+  .home-pros__items
+    .home-pros__item
+      = image_tag "features/unbreakable.svg", class: "home-pros__item__image"
+      .home-pros__item__title Unbreakable websites
+    .home-pros__item
+      = image_tag "features/security.svg", class: "home-pros__item__image"
+      .home-pros__item__title No security updates
+    .home-pros__item
+      = image_tag "features/infinite.svg", class: "home-pros__item__image"
+      .home-pros__item__title Infinitely scalable
+    .home-pros__item
+      = image_tag "features/code.svg", class: "home-pros__item__image"
+      .home-pros__item__title Simple to code
+    .home-pros__item
+      = image_tag "features/fast.svg", class: "home-pros__item__image"
+      .home-pros__item__title Instant loading times
+    .home-pros__item
+      = image_tag "features/zero.svg", class: "home-pros__item__image"
+      .home-pros__item__title Zero infrastructure
+
+  .home-pros__description Going back to static with DatoCMS can dramatically simplify your work as a web agency or freelance developer, to the point of being a competitive advantage over your competitors.
+  .home-pros__cta
+    a.button.button--large.button--primary href="/why-static/" Learn more about static websites
+
+.home-demo.home-demo--video: .wrap: .home-demo__inner
+  .home-demo__title Build your websites in minutes
+  .home-demo__description DatoCMS offers a great way to build sophisticated, tailor-made backends in no time and without writing a single line of code.
+
+  a.preview
+    .preview__inner
+      = image_tag "backend-big.gif"
+
+.home-combos
+  .wrap
+    .home-combos__title Keep on using your favourite tools
+    .home-combos__description DatoCMS offers ready-to-use plugins for the most popular static website generators, and supports all the major continuous deployment solutions.
+
+
+  .home-combos__tools
+    .home-combos__tools__title: span Static site generators
+    .wrap: .home-combos__tools__list
+      - data.integrations.static_site_generators.each do |tool|
+        = link_to tool.website_url, target: "_blank", class: "home-combos__tool" do
+          = image_tag tool.image_url, class: "home-combos__tool__image"
+          span.home-combos__tool__name= tool.name
+          span.home-combos__tool__language= tool.language
+
+  .home-combos__tools
+    .home-combos__tools__title: span Build, deploy and host
+    .wrap: .home-combos__tools__list
+      - data.integrations.continuous_deployment_platforms.each do |tool|
+        = link_to tool.website_url, target: "_blank", class: "home-combos__tool" do
+          = image_tag tool.image_url, class: "home-combos__tool__image"
+          span.home-combos__tool__name= tool.name
+          span.home-combos__tool__language= tool.description

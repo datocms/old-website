@@ -1,0 +1,40 @@
+.home-jumbo
+  text-align: center
+  position: relative
+
+.home-jumbo__wall
+  display: flex
+  align-items: center
+  justify-content: center
+  +vertical-padding(5)
+
+.home-jumbo__title
+  +heading-font-family
+  +font-size(alpha)
+  +margin-bottom(4)
+  max-width: 850px
+
+.home-jumbo__description
+  +font-size(delta)
+  max-width: 700px
+  margin: 0 auto
+
+.home-jumbo__cta
+  +margin-top(3)
+
+.home-jumbo__cta__notice
+  +margin-top(1)
+  font-style: italic
+  color: $light-body-color
+
++at-breakpoint(tab)
+  .home-jumbo__title
+    +font-size(jumbo)
+
++at-breakpoint(desk)
+  .home-jumbo__wall
+    padding-top: 0
+    padding-bottom: 0
+    height: 80vh
+    min-height: 550px
+    max-height: 750px

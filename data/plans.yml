@@ -1,0 +1,27 @@
+- name: Starter
+  price: 0
+  users: 2
+  items: 150
+  files: 100
+- name: Basic
+  price: 10
+  users: 5
+  items: 1000
+  files: 250
+- name:  Plus
+  price: 15
+  users: 10
+  items: 2500
+  files: 450
+- name: Premium
+  price: 30
+  users: 15
+  items: 7000
+  files: 1500
+- name: Max
+  price: 80
+  users: Unlimited
+  items: Unlimited
+  files: 4000
+
+

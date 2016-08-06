@@ -1,0 +1,84 @@
+.main-nav
+  background-color: $primary-color
+
+.main-nav__inner
+  display: flex
+  align-items: center
+  +vertical-padding(2)
+
+.main-nav__space
+  flex: 1
+
+.main-nav__logo
+  @extend .logo
+  @extend .logo--reverse
+  width: 110px
+  margin-right: 30px
+
+.main-nav__item
+  display: inline-block
+  margin-right: 20px
+  +heading-font-family
+  text-decoration: none
+  text-transform: uppercase
+  padding: 2px 0
+  color: white
+  border-bottom: 2px solid transparent
+
+  &:hover, &.is-active
+    border-bottom-color: white
+
+.main-nav__button
+  display: inline-block
+  background-color: $base-body-color
+  color: white
+  border-radius: 3px
+  padding: .7em 1em
+  text-decoration: none
+  text-transform: uppercase
+  letter-spacing: .07em
+  font-size: 0.9em
+  +heading-font-family
+
+  &:hover
+    background-color: darken($base-body-color, 2%)
+
+.main-nav__handle
+  +font-size(delta)
+  +vertical-padding(1)
+  +heading-font-family
+  text-decoration: none
+  color: white
+
+  &:before
+    @extend .icon--hamburger:before
+    display: inline-block
+    vertical-align: middle
+    height: 25px
+    line-height: 25px
+    margin-right: 15px
+
+.main-nav--white
+  background-color: white
+
+  .main-nav__button
+    background-color: $primary-color
+
+    &:hover
+      background-color: darken($primary-color, 2%)
+
+  .main-nav__handle
+    color: $base-body-color
+
+  .main-nav__item
+    color: $base-body-color
+
+    &:hover, &.is-active
+      border-bottom-color: $base-body-color
+
+  .main-nav__logo
+    background-image: image-url("logo.svg")
+
++at-breakpoint(tab)
+  .main-nav__logo
+    width: 140px

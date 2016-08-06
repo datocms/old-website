@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="icons" horiz-adv-x="512">
+    <font-face font-family="icons"
+      units-per-em="512" ascent="512"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="hamburger"
+      unicode="&#xF101;"
+      horiz-adv-x="512" d=" M42.666 181.334V138.668H469.332V181.334H42.666zM42.666 288V245.334H469.332V288H42.666zM42.666 394.666V352H469.332V394.666H42.666z" />
+  </font>
+</defs>
+</svg>

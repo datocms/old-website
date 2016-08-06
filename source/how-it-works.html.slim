@@ -1,0 +1,41 @@
+---
+title: Learn how it works - DatoCMS
+---
+
+.space--both-5
+  .wrap
+    .space--bottom-5
+      .page-header
+        .page-header__title Learn how it works
+        .page-header__subtitle Choose your preferred technology and learn how to deploy your first DatoCMS-powered website in 5 simple steps
+
+  .home-tutorial data-behaviour="configurator": .wrap: .home-tutorial__inner
+    .home-tutorial__options
+      - data.configurator.variants.each do |variant|
+        .home-tutorial__option
+          .home-tutorial__option__name= variant.name
+          .home-tutorial__option__values
+            .home-tutorial__option__values__inner
+              - variant.options.each do |option|
+                a.home-tutorial__option__value data-behaviour="change-stack" data-key=variant.id data-value=CGI.escapeHTML(option.to_json) class=("is-selected" if data.configurator.start[variant.id] == option.name) class="home-tutorial__option__value--#{variant.id}" href="#"
+                  = option.name
+
+    ol.home-tutorial__steps
+      li.home-tutorial__step
+        .home-tutorial__step__title Host your <span data-role="ssg"></span> website repo on <span data-role="hosting"></span>
+        .home-tutorial__step__description Just bootstrap a new <span data-role="ssg"></span> website <a href="#" data-role="ssg" data-key="getting_started_url" data-inject="href">by following the tutorial</a> and push it to a brand new <span data-role="hosting"></span> repository.
+      li.home-tutorial__step
+        .home-tutorial__step__title Configure <span data-role="cd"></span> for deploy
+        .home-tutorial__step__description Follow <a href="#" data-role="cd" data-key="instructions_url" data-inject="href"><span data-role="cd"></span>'s instructions</a> on how to build and deploy your <span data-role="ssg"></span> website. You basically have to link your <span data-role="hosting"></span> repo and specify the build command to execute on the continuous delivery system (<code><span data-role="ssg" data-key="build_command"></span></code>).
+      li.home-tutorial__step
+        .home-tutorial__step__title Create a DatoCMS Site for your website
+        .home-tutorial__step__description Sign up and <a href="http://dashboard.datocms.com/register">create your first Site on DatoCMS</a> (it's free!). Configure the appearance of the backend and the kind of content you want to edit using our simple to use web interface, and make sure you link your Site to <span data-role="cd"></span>.
+      li.home-tutorial__step
+        .home-tutorial__step__title Use our plugin to integrate DatoCMS with <span data-role="ssg"></span>
+        .home-tutorial__step__description <a href="#" data-role="ssg" data-key="integration_url" data-inject="href">Install and configure our <span data-role="ssg"></span> plugin</a> in your project, so that you can easily get the data you need from the Site, and render it into the website pages.
+      li.home-tutorial__step
+        .home-tutorial__step__title Hit "Publish" and you're done!
+        .home-tutorial__step__description There's no step five actually... you already made it! Just edit some data within your DatoCMS backend, hit "Publish" and watch your website update in a couple of seconds.
+
+    .home-tutorial__videos 
+      | Not enough? See our <a href="/docs/tutorials/middleman_netlify">video tutorials</a> and <a href="/docs/">documentation</a> for more detailed informations!

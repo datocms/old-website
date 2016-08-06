@@ -1,0 +1,38 @@
+Una volta impostato lo schema dei contenuti all’interno del nostro Spazio, è possibile procedere con l’inserimento dei primi contenuti del sito. 
+
+Nello spazio sono ora presenti 5 articoli e il copy relativo alla homepage. Abbiamo inoltre aggiunto, all’interno della sezione “Settings”, un’immagine come favicon e le impostazioni social e SEO globali del nostro sito.
+
+Per poter leggere ed utilizzare all’interno del nostro progetto Middleman i dati contenuti nello Spazio, possiamo sfruttare la gemma “middleman-dato”.
+
+Come qualsiasi estensione Middleman, è necessario prima aggiungerla come dipendenza all’interno del Gemfile... e successivamente attivarla nel file config.rb. 
+
+Per specificare lo Spazio dal quale vogliamo leggere i dati, è sufficiente inserire come parametri di configurazione il dominio dello Spazio ed il token API presente all’interno dell’area amministrativa dello Spazio stesso. Per permettere all’estensione di produrre, come vedremo più avanti, meta tags corretti, è necessario inoltre specificare il dominio finale del sito.
+
+Partiamo sostituendo il nome del blog e la tagline con quelli provenienti dal nostro backend. L’estensione “middleman-dato” mette a disposizione un helper, denominato appunto “dato”, attraverso il quale ottenere qualsiasi informazione proveniente dallo spazio. All’interno dell'area amministrativa possiamo visualizzare l’identificativo API attraverso il quale accedere al tipo di contenuto Homepage, e su di esso al singolo campo “Nome del sito”. Ripetiamo similmente l’operazione anche con il campo tagline.
+
+Il prossimo passaggio è dinamicizzare l’elenco degli articoli presenti in home. Middleman mette a disposizione un concetto molto potente, chiamato proxy, per generare dinamicamente pagine all’interno del nostro sito statico.
+
+Sebbene ancora non strettamente necessario, spostiamo le due viste HTML all’interno di una nuova cartella “templates”, e procediamo con generare la nuova homepage a partire dal template “index.html”, preoccupandoci di passare a quest'ultimo l’elenco degli articoli ordinato per data di pubblicazione decrescente.
+
+All’interno del template iteriamo sull’array di articoli e, come già fatto per il tipo di contenuto homepage, procediamo a sostituire i testi statici presenti nella pagina con i singoli campi di un articolo. 
+
+Come è possibile notare, i campi di tipo link sono “navigabili”, dunque è possibile ottenere il nome della categoria di un articolo molto facilmente.
+
+In homepage vogliamo mostrare un estratto non formattato del contenuto dell’articolo piuttosto che l’intero corpo, dunque aggiungiamo la gemma “sanitize” al nostro progetto, in modo da ripulire il codice HTML da qualsiasi tag presente, combinandola all’helper truncate_words.
+
+È ora il turno delle pagine di dettaglio dei singoli articoli. Vogliamo che l’indirizzo di ciascuna pagina sia prefissato con “/articles”, al quale segua un permalink dell’articolo.
+
+L’estensione Middleman, su tipologie di contenuto in cui è presente un campo stringa marcato come “Titolo”, predispone per noi il metodo “slug”, che genera proprio ciò di cui abbiamo bisogno. Utilizziamo il metodo slug anche per generare l’indirizzo della pagina di archivio della singola categoria.
+
+Le pagine di dettaglio degli articoli ancora non esistono. Sfruttiamo i proxy per generarle, ripetendo il medesimo pattern già affrontato per la homepage.
+
+Discorso a parte merita il campo immagine: è possibile ottenere l’URL dell’immagine originariamente uploadata attraverso il suo metodo “file”, ma così facendo si rischia di generare pagine estremamente pesanti. DatoCMS, grazie alla sua integrazione con Imgix, permette di effettuare al volo operazioni di ridimensionamento, cropping, watermarking, modifica del formato, e molto altro.
+
+È possibile richiedere a “middleman-dato” la generazione dei meta tags per le singole pagine attraverso un helper, “dato_meta_tags”. È sufficiente passare come argomento un qualsiasi item, e l’estensione cercherà di sfruttare un campo SEO, se presente, o gli eventuali campi stringa e immagine.
+
+È possibile anche generare i meta tag relativi alla favicon, sia per il mondo desktop che per dispositivi iOS, Android e Windows Phone, attraverso l’helper “dato_favicon_meta_tags”.
+
+Completiamo il nostro tutorial generando le pagine relative alle singole categorie, che sfrutteranno il medesimo template utilizzato per la homepage, ma con un insieme di articoli differente.
+
+Possiamo ritenerci soddisfatti... A questo punto è sufficiente effettuare un push del repository per vedere Netlify riflettere le nostre modifiche online.
+

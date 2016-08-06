@@ -1,0 +1,24 @@
+{
+  "name": "datocms-marketing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:webfonts": "bemo-webfonts -s source/fonts/svg -f source/fonts -S source/stylesheets/variables/_icon-glyphs.scss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.cantierecreativo.net:datocms/marketing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bemo-webfonts": "1.0.1",
+    "webpack": "1.13.1"
+  },
+  "dependencies": {
+    "fitvids": "2.0.0",
+    "jquery": "3.0.0",
+    "offside-js": "1.3.1"
+  }
+}

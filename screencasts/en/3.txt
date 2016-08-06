@@ -1,0 +1,27 @@
+Once the DatoCMS site is configured, we proceed with the insertion of the website content. 
+
+In our site there are now five articles, a bunch of categories and the copy for the homepage. In the "Settings" section, we also added an image as the website Favicon and the global SEO settings.
+
+To be able to read and use this data in our Middleman project, we can use a gem called "middleman-dato".
+
+Like any Middleman extension, we must first add it as a dependency within the Gemfile... and then activate it in the config.rb file specifying the site read-only API token as a configuration parameter. We also need to declare the final domain of the frontend website to make the SEO tags work.
+
+The extension "middleman-dato" provides a helper, called just "dato", through which we can obtain any information stored in our site. In the Admin Area we can see the API identifier through which we can access each item type and field. Let's start by replacing the name of the blog and the tagline with the values from DatoCMS.
+
+Great! The next step is to make use of the list of Articles coming from the Site. Inside the view we can access, reorder and iterate over the array of articles and, as we did for the homepage item type, replace the static content on the page with the individual fields of the article.
+
+Let's print the category name for each article. As you can see, the fields of type "Link" are "navigable": that is, you can access the fields of the linked item through the link itself.
+
+In the homepage, we want to show an unformatted excerpt rather than the entire article content, so we add the gem "sanitize" to our project to clean up the content of any HTML tags, and combine the result with the Middleman helper "truncate_words".
+
+It is now time to generate the detail pages of the individual articles. For this task, we'll make use of a very powerful feature of Middleman called proxy, which enables us to dynamically generate multiple pages within our site, starting from a common template.
+
+Inside the file config.rb, just as we did previously on the homepage view, we iterate over the articles to generate a different page for each of them. We build the URL of each page using the "slug" method, which returns a URL-friendly version of the title field.
+
+The image field deserves some explaination: you can get the URL of the uploaded image through its "file" method, but doing so is likely to generate slow pages, as you'll serve exactly the file the editor uploaded. Luckily DatoCMS, thanks to its integration with Imgix, allows on the fly image resizing, cropping, watermarking, format change and much more.
+
+Our blog is almost complete, it just needs some finishing touches, like correct SEO optimization. You can get "middleman-dato" to generate the meta tags for individual pages through a helper called "dato_meta_tags". Simply pass any item as an argument, and the extension will do it's best to determine the correct meta tags based on the fields it contains.
+
+Through the helper "dato_favicon_meta_tags", you can also also automatically generate the correct favicon meta tags for desktop, iOS, Android and Windows phones.
+
+Well... everything is done: not bad for 10 minutes of work! At this point, all we need to do is push the Git repository to see Netlify reflect our changes online.

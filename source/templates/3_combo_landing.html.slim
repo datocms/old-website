@@ -1,0 +1,31 @@
+.wrap.space--both-8
+  .grid--center: .grid__item.desk-10-12
+    .align--center
+      .space--bottom-2
+        .nav
+          .nav__item
+            = image_tag ssg.image_url, alt: "#{ssg.name} logo"
+          .nav__item
+            = image_tag cdp.image_url, alt: "#{cdp.name} logo"
+          .nav__item
+            = image_tag ghp.image_url, alt: "#{ghp.name} logo"
+      .space--bottom-3
+        h1.alpha
+          ' Meet a CMS for #{ssg.name} that let you host your project on #{ghp.name} and deploy on #{cdp.name}!
+
+  .grid--center: .grid__item.desk-8-12
+    .formatted-content
+      p
+        ' DatoCMS is a web-based administrative area for your #{ssg.name} static
+        ' websites. Build your site with <a href="#{ssg.website_url}">#{ssg.name} </a>
+        ' in #{ssg.language} and deploy the final static website using
+        ' <a href="#{cdp.website_url}">#{cdp.name}</a> (#{cdp.description}).
+      p
+        ' Feel free to host your project Git repository on
+        ' <a href="#{ghp.website_url}">#{ghp.name}</a>, just make sure you link it with #{cdp.name}
+        ' so that any change in code reflects in a new published build online!
+      p
+        ' How does it work? You just have to integrate our DatoCMS plugin for #{ssg.name} into your
+        ' project, and you're ready to go! Let your clients enjoy editing the site content autonomously
+        ' just like with any traditional CMS they've used before!
+

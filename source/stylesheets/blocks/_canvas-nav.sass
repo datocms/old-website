@@ -1,0 +1,18 @@
+.canvas-nav
+  background-color: white
+  +vertical-padding(3)
+  padding-left: $grid-gutter
+  padding-right: $grid-gutter
+  box-sizing: border-box
+
+.canvas-nav__logo
+  @extend .logo
+  width: 160px
+  +margin-bottom(3)
+
+.canvas-nav__item
+  +heading-font-family
+  +font-size(delta)
+  display: block
+  text-decoration: none
+  +margin-bottom(2)

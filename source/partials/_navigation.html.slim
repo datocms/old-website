@@ -1,0 +1,28 @@
+nav.navbar
+  .navbar__group
+    ul
+      li= active_link_to "Home", "/docs/index.html", class: "navbar__group__link"
+
+  .navbar__group
+    .navbar__group__title General concepts
+    ul
+      li= active_link_to "Data Model",           "/docs/concepts/data-model.html", class: "navbar__group__link"
+      li= active_link_to "Deployment solutions", "/docs/concepts/deployment.html", class: "navbar__group__link"
+
+  .navbar__group
+    .navbar__group__title Video tutorials
+    ul
+      = active_link_to "Middleman + Netlify", "/docs/tutorials/middleman_netlify.html", class: "navbar__group__link"
+
+  .navbar__group
+    .navbar__group__title Integrations
+    ul
+      = active_link_to "Middleman", "/docs/ssg/middleman.html", class: "navbar__group__link"
+
+  .navbar__group
+    .navbar__group__title API Reference
+    ul
+      li= active_link_to "API Basics",             "/docs/concepts/api-basics.html", class: "navbar__group__link"
+      li= active_link_to "Field types",            "/docs/concepts/field-types.html", class: "navbar__group__link"
+      li= active_link_to "Site Management API",    "/docs/api/sma.html", class: "navbar__group__link"
+      li= active_link_to "Account Management API", "/docs/api/ama.html", class: "navbar__group__link"
