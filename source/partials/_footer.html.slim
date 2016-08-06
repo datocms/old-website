@@ -1,8 +1,8 @@
 .footer-cta: .wrap
   .footer-cta__title= current_page.data.cta.try(:title) || "Ready to try it yourself?"
   .footer-cta__description= current_page.data.cta.try(:description) || "Set up you first Site with DatoCMS, and start creating something great!"
-  a.button.button--large.button--black href=(current_page.data.cta.try(:button) || "https://dashboard.datocms.com/register")
-    = current_page.data.cta.try(:title) || "Get started"
+  a.button.button--large.button--black href=(current_page.data.cta.try(:url) || "https://dashboard.datocms.com/register")
+    = current_page.data.cta.try(:button) || "Get started"
 
 .footer-nav: .wrap
   .footer-nav__items

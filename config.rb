@@ -32,10 +32,10 @@ ignore 'templates/*'
 data.integrations.tap do |i|
   metadata = {
     cta: {
-      title: "Interested?",
+      title: "Sounds interesting?",
       description: "DatoCMS makes it fun & easy to use static website generators with your non-techie clients and editors. Discover more of our features and try the service for free.",
-      button: "Learn more!",
-      url: "https://www.datocms.com"
+      button: "Learn more about DatoCMS",
+      url: "https://www.datocms.com/"
     }
 
   }
