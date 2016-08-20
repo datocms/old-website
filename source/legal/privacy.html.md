@@ -39,4 +39,4 @@ DatoCMS may periodically update this policy. We will notify you about significan
 
 ## Questions
 
-Any questions about this Privacy Policy should be addressed to team@siteleaf.com.
+Any questions about this Privacy Policy should be addressed to team@datocms.com.
