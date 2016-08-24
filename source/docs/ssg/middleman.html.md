@@ -1,5 +1,5 @@
 ---
-title: DatoCMS for Middleman
+title: DatoCMS for Middleman - CMS for Middleman
 ---
 
 ## Middleman
