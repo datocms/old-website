@@ -14,15 +14,15 @@ variants:
       - name: Jekyll
         getting_started_url: https://jekyllrb.com/docs/quickstart/
         build_command: jekyll build
-        integration_url: '#'
+        integration_url: https://github.com/datocms/ruby-datocms-client
       - name: Hugo
         getting_started_url: https://gohugo.io/overview/introduction/
         build_command: hugo
-        integration_url: '#'
+        integration_url: https://github.com/datocms/ruby-datocms-client
       - name: Metalsmith
         getting_started_url: http://www.metalsmith.io/
         build_command: node build.js
-        integration_url: '#'
+        integration_url: https://github.com/datocms/ruby-datocms-client
 
   - name: 'Git hosting platform'
     id: 'hosting'
