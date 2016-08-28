@@ -12,5 +12,6 @@
         = active_link_to "Pricing", "/pricing/", class: "main-nav__item"
       .main-nav__space.visible--on-desk
       nav.main-nav__nav.visible--on-desk
-        = link_to "Log in", "http://dashboard.datocms.com/sign_in", class: "main-nav__item"
-        = link_to "Try for free!", "http://dashboard.datocms.com/register", class: "main-nav__button"
+        = link_to "Log in", "http://dashboard.datocms.com/sign_in", class: "main-nav__item", role: "sign-in-link", style: "display: none"
+        = link_to "Try for free!", "http://dashboard.datocms.com/register", class: "main-nav__button", role: "register-link", style: "display: none"
+        = link_to "Go to Dashboard", "http://dashboard.datocms.com/", class: "main-nav__button", role: "dashboard-link", style: "display: none"
