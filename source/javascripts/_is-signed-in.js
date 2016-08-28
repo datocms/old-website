@@ -1,7 +1,7 @@
 var iframe = document.createElement("iframe");
 var dashboardBaseUrl = "https://dashboard.datocms.com";
 
-iframe.setAttribute("src", dashboardBaseUrl + "/?disableStart=1);
+iframe.setAttribute("src", dashboardBaseUrl + "/?disableStart=1");
 iframe.style.width = "1px";
 iframe.style.height = "1px";
 iframe.style.opacity = "0";
