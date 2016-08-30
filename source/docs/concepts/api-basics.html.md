@@ -27,6 +27,6 @@ Every DatoCMS site comes with the power of Imgix image processing. Imgix makes i
 
 ## Account Management API
 
-The Site Management API (SMA), available at https://api.datocms.com/frontend, is a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
+The Account Management API (AMA), available at https://api.datocms.com/frontend, is a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
 
 [Read the reference documentation for the Account Management API](/docs/api/ama.html)
