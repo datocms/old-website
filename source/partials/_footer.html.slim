@@ -1,6 +1,6 @@
 .footer-cta: .wrap
   .footer-cta__title= current_page.data.cta.try(:title) || "Ready to try it yourself?"
-  .footer-cta__description= current_page.data.cta.try(:description) || "Set up you first Site with DatoCMS, and start creating something great!"
+  .footer-cta__description= current_page.data.cta.try(:description) || "Join thousands of happy developers and designers: set up you first Site with DatoCMS, and start creating something great right away!"
   a.button.button--large.button--black href=(current_page.data.cta.try(:url) || "https://dashboard.datocms.com/register")
     = current_page.data.cta.try(:button) || "Get started"
 
