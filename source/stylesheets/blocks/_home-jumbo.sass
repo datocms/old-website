@@ -27,14 +27,39 @@
   font-style: italic
   color: $light-body-color
 
+.home-jumbo__features
+  display: none
+
 +at-breakpoint(tab)
   .home-jumbo__title
     +font-size(jumbo)
+
+  .home-jumbo__features
+    display: flex
+    justify-content: space-around
+    flex-wrap: wrap
+    +padding-bottom(2)
+
+  .home-jumbo__feature
+    color: $light-body-color
+    +padding(1)
+    +vertical-padding(2)
+    box-sizing: border-box
+    font-style: italic
+    max-width: 260px
+    min-width: 250px
+    flex: 1
+
+    &:nth-child(4)
+      display: none
 
 +at-breakpoint(desk)
   .home-jumbo__wall
     padding-top: 0
     padding-bottom: 0
-    height: 80vh
+    height: 70vh
     min-height: 550px
     max-height: 750px
+
+  .home-jumbo__feature:nth-child(4)
+    display: block
