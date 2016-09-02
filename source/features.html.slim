@@ -14,18 +14,20 @@ title: DatoCMS Features
 .space--both-6
   .features
     .features__item
-      .wrap
+      .wrap--wide: .features__item__inner
         .features__item__content
           .features__item__title All the field types you need
           .features__item__description
             p
               ' Strings, booleans, numbers, geo-points, files, images, SEO settings..
               ' DatoCMS makes it easy to generate great administrative areas in
-              ' no time thanks to its numerous field types. Build your forms just
-              ' the way you want, with no extra crap.
+              ' no time thanks to its numerous field types. 
+            p
+              ' Build your forms just the way you want, with no extra crap.
         .features__item__image
+          = image_tag "screenshots/fields.png"
     .features__item
-      .wrap
+      .wrap--wide: .features__item__inner
         .features__item__content
           .features__item__title Imgix Image Processing
           .features__item__description
@@ -34,12 +36,13 @@ title: DatoCMS Features
               ' Imgix makes image processing easy by allowing you to resize, crop,
               ' rotate, style, watermark images and more easily on-the-fly. This is
               ' especially useful when your app needs to keep image sizes dynamic for
-              ' optimal rendering speed across devices on desktop, mobile and native
-              ' apps. Check out the <a href="https://www.imgix.com/">Imgix website</a>
-              ' to learn more.
+              ' optimal rendering speed across devices on desktop and mobile.
+            p
+              ' Check out the <a href="https://www.imgix.com/">Imgix website</a> to learn more.
         .features__item__image
+          = image_tag "screenshots/imgix.png"
     .features__item
-      .wrap
+      .wrap--wide: .features__item__inner
         .features__item__content
           .features__item__title Localization
           .features__item__description
@@ -48,10 +51,11 @@ title: DatoCMS Features
               ' in different languages. DatoCMS makes localization easy so your
               ' content can reach a global audience.
         .features__item__image
+          = image_tag "screenshots/locales.png"
     .features__item
-      .wrap
+      .wrap--wide: .features__item__inner
         .features__item__content
-          .features__item__title Secure by default
+          .features__item__title Secure by default®
           .features__item__description
             p
               ' Content stored in DatoCMS and delivered by the API is protected
@@ -59,8 +63,9 @@ title: DatoCMS Features
               ' content by adding optional access tokens located in the Settings
               ' tab in your DatoCMS bucket.
         .features__item__image
+          = image_tag "screenshots/secure.png"
     .features__item
-      .wrap
+      .wrap--wide: .features__item__inner
         .features__item__content
           .features__item__title Custom domains
           .features__item__description
@@ -69,8 +74,9 @@ title: DatoCMS Features
               ' a custom domain (eg. <code>admin.mywebsite.com</code>) to provide a seamless
               ' integration with your sites.
         .features__item__image
+          = image_tag "screenshots/domain.png"
     .features__item
-      .wrap
+      .wrap--wide: .features__item__inner
         .features__item__content
           .features__item__title Team friendly
           .features__item__description
@@ -80,3 +86,4 @@ title: DatoCMS Features
               ' or Editor allowing each team member to only see what
               ' they need to get their job done.
         .features__item__image
+          = image_tag "screenshots/team.png"
