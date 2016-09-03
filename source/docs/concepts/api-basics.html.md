@@ -12,21 +12,22 @@ DatoCMS is an API-first CMS, offering two REST APIs for working with your conten
 
 ## Site Management API
 
-The Site Management API (SMA), available at https://api.datocms.com, is a read-write API for managing your content. The API requires you to authenticate as a DatoCMS user. It covers several use cases, such as:
+The Site Management API (SMA), available at https://site-api.datocms.com, is a read-write API for managing your content. The API requires you to authenticate as a DatoCMS user. It covers several use cases, such as:
 
 * Automatic imports from different CMSes like WordPress or Drupal
 * Integration with other backend systems, such as an e-commerce shop
 
 [Read the reference documentation for the Site Management API](/docs/api/sma.html)
 
+## Account Management API
+
+The Account Management API (AMA), available at https://account-api.datocms.com/frontend, is a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
+
+[Read the reference documentation for the Account Management API](/docs/api/ama.html)
+
 ## Images API
 
-Every DatoCMS site comes with the power of Imgix image processing. Imgix makes image processing easy by allowing you to resize, crop, rotate, style, watermark images and more easily on-the-fly. This is especially useful when your app needs to keep image sizes dynamic for optimal rendering speed across devices on desktop, mobile and native apps. Check out the Imgix website to learn more.
+Every DatoCMS site comes with the power of Imgix image processing. Imgix makes image processing easy by allowing you to resize, crop, rotate, style, watermark images and more easily on-the-fly. This is especially useful when your app needs to keep image sizes dynamic for optimal rendering speed across devices.
 
 [Read the reference documentation for the Image URL API](https://docs.imgix.com/apis/url)
 
-## Account Management API
-
-The Account Management API (AMA), available at https://api.datocms.com/frontend, is a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
-
-[Read the reference documentation for the Account Management API](/docs/api/ama.html)

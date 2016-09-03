@@ -6,8 +6,26 @@ title: Learn how it works - DatoCMS
   .wrap
     .space--bottom-5
       .page-header
-        .page-header__title Learn how it works
-        .page-header__subtitle Choose your preferred technology and learn how to deploy your first DatoCMS-powered website in 5 simple steps
+        .page-header__title How does it work?
+        .page-header__subtitle Learn how DatoCMS enable non-technical editors to update a completely static website
+
+    .wrap--tight: .space--bottom-5.formatted-content.formatted-content--big
+      markdown:
+        All the websites built with a static website generator (Jekyll, Hugo, etc.) are made of:
+
+        * Static files — usually [Markdown+Frontmatter](https://jekyllrb.com/docs/frontmatter/) or YAML/JSON/Toml config files — which represent **the actual content of the pages**;
+        * HTML templates that use these content files to generate the actual static HTML pages of the website.
+
+        Up until now, even the most basic change to a static website **could only be performed by tech-savvy users**, as too many things had to be known (Git, Markdown, etc). DatoCMS lets you tackle the problem in a different way:
+
+        1. You create an administrative interface that **fits exactly the needs** of your website;
+        2. Editors make changes to the content of the website **from a nice web interface**, just like they're used to do;
+        3. With our plugins, all the data stored in your administrative interface **gets transformed** into local Markdown/config files, so that can be "digested" by the static website generator just as they were written by hand.
+
+  .space--bottom-5
+    .page-header
+      .page-header__title Choose your stack
+      .page-header__subtitle Learn how to deploy your first DatoCMS website in 5 steps
 
   .home-tutorial data-behaviour="configurator": .wrap: .home-tutorial__inner
     .home-tutorial__options
@@ -38,4 +56,4 @@ title: Learn how it works - DatoCMS
         .home-tutorial__step__description There's no step five actually... you already made it! Just edit some data within your DatoCMS backend, hit "Publish" and watch your website update in a couple of seconds.
 
     .home-tutorial__videos 
-      | Not enough? See our <a href="/docs/tutorials/middleman_netlify">video tutorials</a> and <a href="/docs/">documentation</a> for more detailed informations!
+      | Not enough? See our <a href="/docs/">documentation</a> and <a href="/docs/tutorials/middleman_netlify">video tutorials</a> for more detailed informations!

@@ -10,16 +10,16 @@ nav.navbar
       li= active_link_to "Deployment solutions", "/docs/concepts/deployment.html", class: "navbar__group__link"
 
   .navbar__group
-    .navbar__group__title Video tutorials
-    ul
-      = active_link_to "Middleman + Netlify", "/docs/tutorials/middleman_netlify.html", class: "navbar__group__link"
-
-  .navbar__group
     .navbar__group__title Integrations
     ul
       = active_link_to "Middleman", "/docs/ssg/middleman.html", class: "navbar__group__link"
       = active_link_to "Jekyll", "/docs/ssg/jekyll.html", class: "navbar__group__link"
       = active_link_to "Hugo", "/docs/ssg/hugo.html", class: "navbar__group__link"
+
+  .navbar__group
+    .navbar__group__title Video tutorials
+    ul
+      = active_link_to "Middleman + Netlify", "/docs/tutorials/middleman_netlify.html", class: "navbar__group__link"
 
   .navbar__group
     .navbar__group__title API Reference

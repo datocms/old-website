@@ -16,11 +16,9 @@ Each Item Type defines which <strong>Fields</strong> a item of that type is supp
 
 One notable data type is Link, it enables the modeling of relationships between items. For example, you can have a category Item Type and link all blog posts belonging to that category to it, so that you can easily retrieve them. Each field in DatoCMS can also be localized into different locales, by providing a different value for each of them.
 
-<div class="space--both-5"><img src="/images/data-model.png" /></div>
+### Collection vs Single instance
 
-## Collection vs Singleton Item Types
-
-Real-world websites have often pages which don't resemble any other (eg. "About us" section or the homepage). If you want to allow the editors to change their content, you can create a <strong>Singleton Item Type</strong>. While standard Item Types enable the creation of a collection of multiple items, singletons permit just a single item to be edited.
+Real-world websites have often pages which don't resemble any other (eg. "About us" section or the homepage). If you want to allow the editors to change their content, you can create a <strong>Single-instance Item Type</strong>. While standard Item Types enable the creation of a collection of multiple items, single-instance item type permit just a single item to be edited.
 
 ## Customizing the Navigation Menu
 
@@ -28,7 +26,7 @@ Big websites tend to require a significant number of Item Types to properly mana
 
 You can easily help your editors by customizing the navigation menu they see on the left. You can easily organize the different Item Types in a more understandable way grouping and nesting them to mimic the structure of your frontend site. 
 
-## Links
+### Links
 
 Links are a very powerful way to model relationships between pieces of content. items can have Link fields which point to other items, for example:
 
@@ -37,13 +35,11 @@ Links are a very powerful way to model relationships between pieces of content. 
 
 Using Links, relationships are clearly defined and validated by specific Item Type Fields.
 
-<div class="space--both-5"><img src="/images/links.png" width="300"/></div>
-
-## Locales
+### Locales
 
 A Site in DatoCMS can support multiple locales, defined by the short ISO locale codes (ie. `en` or `de`). Each Field is localized individually, so you can pick and choose which specific content needs to be translated and which not. As soon as a localized Field is present within a Item Type, the forms for that specific Item Type will present one tab for each Locale.
 
-## Data migration and Invalid items
+### Data migration and Invalid items
 
 In DatoCMS you are free at any time you want to edit any Item Type and Field present in your Site. While this is great news for you, it also complicates the situation quite a bit on our part! 
 
