@@ -4,8 +4,8 @@ html
   body
     #sliding-content
       = render_partial "partials/header", locals: { style: {}}
-      .simple-page-header: .wrap= current_page.data.title
-      .space--both-5: .wrap
+      .simple-page-header: .wrap--tight= current_page.data.title
+      .space--both-5: .wrap--tight
         .formatted-content= yield
       = render_partial "partials/footer"
     = render_partial "partials/canvas_nav"

@@ -1,0 +1,74 @@
+.blog-post
+  +vertical-margin(5)
+
+.blog-post__title
+  +heading-font-family
+  +font-size(beta)
+  line-height: 1.2
+  +margin-bottom(1)
+
+  a
+    text-decoration: none
+    color: $base-body-color
+
+.blog-post__meta
+  color: $light-body-color
+  +margin-bottom(3)
+
+  &:last-child
+    margin-bottom: 0
+
+.blog-post__excerpt
+  +margin-bottom(2)
+
+.blog-post__meta__avatar
+  max-width: 40px
+  border-radius: 25px
+  display: inline-block
+  margin-right: 10px
+  vertical-align: middle
+
+  img
+    display: block
+    border-radius: 25px
+
+.blog-post__meta__content
+  display: inline-block
+  vertical-align: middle
+
+.blog-post__content__text
+  @extend .formatted-content
+  +margin-bottom(3)
+
+  @for $i from 2 through 6
+    h#{$i}
+      $index: $i + 2
+      color: #222
+
+      @if $index > length($heading-font-sizes)
+        $index: length($heading-font-sizes)
+
+      $size: nth(map-values($heading-font-sizes), $index)
+      +rem-rule(font-size, $size)
+
+  .blog-post__content__image + &
+    +margin-top(5)
+
+.blog-post__content__image
+  +margin-bottom(3)
+
+  img
+    box-shadow: 0 2px 3px rgba(black, 0.2)
+    border-radius: 5px
+    max-width: auto
+    margin: 0 auto
+    display: block
+
+  figcaption
+    text-align: center
+    max-width: 800px
+    margin: 0 auto
+    +margin-top(1)
+    font-style: italic
+    color: $light-body-color
+    font-weight: 300

@@ -1,0 +1,20 @@
+---
+title: DatoCMS Blog
+---
+
+.page-header.page-header--rev
+  .wrap--tight: .page-header__inner
+      .page-header__title DatoCMS Blog
+      .page-header__subtitle Here's where we document our progress, announce product updates and talk about static websites in general
+
+.wrap--tight: .space--both-8
+  - items.each do |blog_post|
+    .blog-post
+      h6.blog-post__title= link_to blog_post.title, "/blog/#{blog_post.slug}"
+      .blog-post__excerpt
+        = markdown blog_post.excerpt
+      .blog-post__meta
+        .blog-post__meta__avatar
+          = image_tag blog_post.author.avatar.url(w: 100, h: 100, fit: 'crop'), alt: blog_post.author.name
+        .blog-post__meta__content
+          p #{blog_post.author.name} wrote this on #{I18n.l blog_post.publication_date.to_date, format: :long }

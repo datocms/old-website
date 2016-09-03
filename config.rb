@@ -12,11 +12,15 @@ set :markdown, fenced_code_blocks: true, smartypants: true, with_toc_data: true
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
-
 page '/docs/*', layout: "docs"
 
 activate :directory_indexes
 activate :syntax
+activate :dato,
+  token: ENV.fetch('DATO_API_TOKEN'),
+  base_url: 'http://www.mywebsite.com'
+
+activate :pagination
 
 activate :external_pipeline,
   name: :webpack,
@@ -65,6 +69,18 @@ data.integrations.tap do |i|
   end
 end
 
+blog_posts = dato.blog_posts.select(&:publication_date).sort_by(&:publication_date)
+
+paginate blog_posts.reverse, "/blog", "/templates/blog_index.html"
+
+blog_posts.each do |blog_post|
+  proxy(
+    "/blog/#{blog_post.slug}/index.html",
+    "templates/blog_post.html",
+    locals: { blog_post: blog_post }
+  )
+end
+
 configure :development do
   activate :livereload
 end
@@ -109,5 +125,10 @@ helpers do
       options[:class] += " is-active"
     end
     link_to *args, options
+  end
+
+  def markdown(text)
+    renderer = Redcarpet::Render::HTML.new
+    Redcarpet::Markdown.new(renderer).render(text)
   end
 end

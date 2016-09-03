@@ -1,0 +1,25 @@
+- content_for(:head)
+  == dato_meta_tags(blog_post)
+
+.page-header.page-header--rev
+  .wrap--tight: .page-header__inner
+      .page-header__title DatoCMS Blog
+      .page-header__subtitle Here's where we document our progress, announce product updates and talk about static websites in general
+
+.wrap--tight: .space--both-8
+  .blog-post
+    h6.blog-post__title= blog_post.title
+    .blog-post__meta
+      .blog-post__meta__avatar
+        = image_tag blog_post.author.avatar.url(w: 100, h: 100, fit: 'crop'), alt: blog_post.author.name
+      .blog-post__meta__content
+        p #{blog_post.author.name} wrote this on #{I18n.l blog_post.publication_date.to_date, format: :long }
+    .blog-post__content
+      - blog_post.content.each do |item|
+        - case item.item_type.api_key
+        - when "text"
+          .blog-post__content__text= markdown(item.text)
+        - when "gallery_slide"
+          figure.blog-post__content__image
+            = image_tag item.image.url(w: 800, fit: :max, "format" => :png), alt: item.caption
+            figcaption= item.caption
