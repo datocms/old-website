@@ -5,9 +5,15 @@
 
 .page-header__title
   +heading-font-family
-  +font-size(jumbo)
+  +font-size(alpha)
+  line-height: 1
+  +margin-bottom(1)
 
 .page-header__subtitle
   +font-size(gamma)
   color: $light-body-color
   line-height: 1.4
+
++at-breakpoint(tab)
+  .page-header__title
+    +font-size(jumbo)
