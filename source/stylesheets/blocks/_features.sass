@@ -1,4 +1,5 @@
 .features
+  text-align: center
 
 .features__item:nth-child(2n+1)
   background-color: $light-bg-color
@@ -24,6 +25,9 @@
     max-width: 500%
 
 +at-breakpoint(desk)
+  .features
+    text-align: left
+
   .features__item__inner
     display: flex
     justify-content: space-between
