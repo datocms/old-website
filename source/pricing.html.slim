@@ -7,22 +7,57 @@ title: Pricing - DatoCMS
     .space--bottom-5
       .page-header
         .page-header__title Totally free during beta!
-        .page-header__subtitle Once the beta is over, a simple & transparent pricing awaits you
+        .page-header__subtitle If you like it, we just ask you a little word of mouth
 
     .space--bottom-8
       .pricing
-        - data.plans.each do |plan|
-          .pricing__plan class="pricing__plan--#{plan.name.downcase}"
-            .pricing__plan__inner
-              .pricing__plan__title= plan.name
-              .pricing__plan__price
-                .pricing__plan__price__currency $
-                .pricing__plan__price__amount= plan.price
-                .pricing__plan__price__infos per site/month
-              .pricing__plan__options
-                .pricing__plan__option <strong>#{plan.users}</strong> users
-                .pricing__plan__option <strong>#{plan.items}</strong> items
-                .pricing__plan__option <strong>#{plan.files}</strong> files
+        .pricing__plan
+          .pricing__plan__inner
+            .pricing__plan__title Starter
+            .pricing__plan__price: .pricing__plan__price__inner
+              .pricing__plan__price__amount Free
+            .pricing__plan__options: .pricing__plan__options__inner
+              .pricing__plan__option <strong>1</strong> editor
+              .pricing__plan__option <strong>15</strong> files
+              .pricing__plan__option <strong>30</strong> items
+        .pricing__plan
+          .pricing__plan__inner
+            .pricing__plan__title Basic
+            .pricing__plan__price: .pricing__plan__price__inner
+              .pricing__plan__price__amount Pay with a Tweet
+            .pricing__plan__options: .pricing__plan__options__inner
+              .pricing__plan__option <strong>2</strong> editors
+              .pricing__plan__option <strong>50</strong> files
+              .pricing__plan__option <strong>100</strong> items
+        .pricing__plan
+          .pricing__plan__inner
+            .pricing__plan__title Professional
+            .pricing__plan__price: .pricing__plan__price__inner
+              .pricing__plan__price__currency $
+              .pricing__plan__price__amount 10
+              .pricing__plan__price__infos per site/month
+            .pricing__plan__options: .pricing__plan__options__inner
+              .pricing__plan__option <strong>5</strong> editors
+              .pricing__plan__option <strong>250</strong> files
+              .pricing__plan__option <strong>1000</strong> items
+        .pricing__plan
+          .pricing__plan__inner
+            .pricing__plan__title Agency
+            .pricing__plan__price: .pricing__plan__price__inner
+              .pricing__plan__price__currency $
+              .pricing__plan__price__amount 15
+              .pricing__plan__price__infos per site/month
+            .pricing__plan__options: .pricing__plan__options__inner
+              .pricing__plan__option <strong>5</strong> editors
+              .pricing__plan__option <strong>400</strong> files
+              .pricing__plan__option <strong>2000</strong> items
+        .pricing__plan
+          .pricing__plan__inner
+            .pricing__plan__title Need more?
+            .pricing__plan__price: .pricing__plan__price__inner
+              .pricing__plan__price__amount Contact us
+            .pricing__plan__options: .pricing__plan__options__inner
+              p Drop us a line at <a href="mailto:support@datocms.com">support@datocms.com</a> and tell us what you need: we'll be happy to grant you more resources!
 
       .space--top-5: .align--center
         .home-jumbo__cta
@@ -33,29 +68,16 @@ title: Pricing - DatoCMS
   .pricing-faqs__title Pricing questions
 
   .pricing-faqs__item
-    .pricing-faqs__item__image= image_tag "faqs/plan.svg"
-    .pricing-faqs__item__content
-      .pricing-faqs__item__question Do I need to choose a plan?
-      .pricing-faqs__item__answer
-        p
-          ' Not really. Plans are automatically assigned on a monthly basis
-          ' based on the real usage of the resources. That is, at the end of
-          ' each month, we look at the number of users, items and files for
-          ' each Site present in your Account, and for each of them we pick
-          ' the miminum plan that covers the usage. The total monthly invoice
-          ' is the sum of the plans of your Sites for that month.
-
-  .pricing-faqs__item
     .pricing-faqs__item__image= image_tag "faqs/card.svg"
     .pricing-faqs__item__content
-      .pricing-faqs__item__question Is it a credit card required?
+      .pricing-faqs__item__question How much will it cost when out of beta?
       .pricing-faqs__item__answer
         p
-          ' No, it's not. You can use the free plan as long as you want without
-          ' credit cards. Just be aware that if you reach the free plan limits
-          ' in a Site and your Account is not associated with a credit card,
-          ' your users won't be able to add new content to their website until
-          ' you do it.
+          ' It's not clear at the moment: we're in the first months of public life
+          ' of the product and we are still trying to discover the real
+          ' value and target. One thing is certain: we want DatoCMS to have an
+          ' extremely aggressive price, especially for small websites and
+          ' web-agencies (we're one too!).
 
   .pricing-faqs__item
     .pricing-faqs__item__image= image_tag "faqs/site.svg"

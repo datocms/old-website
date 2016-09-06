@@ -16,14 +16,19 @@
 .pricing__plan__price
   font-weight: 800
   line-height: 1
-  +font-size(alpha)
-  +vertical-padding(2)
+  height: 150px
+  position: relative
+  +font-size(beta)
+
+.pricing__plan__price__inner
+  +center-vertically
+  left: 15px
+  right: 15px
 
 .pricing__plan__price__amount
   display: inline-block
 
 .pricing__plan__price__currency
-  content: "$"
   +font-size(gamma)
   display: inline-block
 
@@ -34,25 +39,34 @@
 
 .pricing__plan__options
   background-color: $light-bg-color
-  +vertical-padding(2)
+  position: relative
+  height: 180px
 
-.pricing__plan--starter .pricing__plan__title
+  a
+    font-weight: bold
+
+.pricing__plan__options__inner
+  +center-vertically
+  left: 15px
+  right: 15px
+
+.pricing__plan:nth-child(1) .pricing__plan__title
   background-color: #ffbb9e
   color: white
 
-.pricing__plan--basic .pricing__plan__title
+.pricing__plan:nth-child(2) .pricing__plan__title
   background-color: #65E8C6
   color: white
 
-.pricing__plan--plus .pricing__plan__title
+.pricing__plan:nth-child(3) .pricing__plan__title
   background-color: #FFDC2F
   color: white
 
-.pricing__plan--premium .pricing__plan__title
+.pricing__plan:nth-child(4) .pricing__plan__title
   background-color: #ff4c4c
   color: white
 
-.pricing__plan--max .pricing__plan__title
+.pricing__plan:nth-child(5) .pricing__plan__title
   background-color: #672b72
   color: white
 
