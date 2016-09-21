@@ -21,7 +21,7 @@ The Site Management API (SMA), available at https://site-api.datocms.com, is a r
 
 ## Account Management API
 
-The Account Management API (AMA), available at https://account-api.datocms.com/frontend, is a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
+The Account Management API (AMA), available at https://account-api.datocms.com a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
 
 [Read the reference documentation for the Account Management API](/docs/api/ama.html)
 
