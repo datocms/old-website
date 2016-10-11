@@ -28,6 +28,8 @@ DatoCMS offers an API that can be used inside most static website generators to 
 * [Middleman](/docs/ssg/middleman/)
 * [Hugo](/docs/ssg/hugo/)
 * [Jekyll](/docs/ssg/jekyll/)
+* [Hexo](/docs/ssg/hexo/)
+* [Metalsmth](/docs/ssg/metalsmith/)
 
 ### API references
 
