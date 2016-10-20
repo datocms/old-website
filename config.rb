@@ -37,9 +37,9 @@ data.integrations.tap do |i|
   metadata = {
     cta: {
       title: "Sounds interesting?",
-      description: "DatoCMS makes it fun & easy to use static website generators with your non-techie clients and editors. Discover more of our features and try the service for free.",
-      button: "Learn more about DatoCMS",
-      url: "https://www.datocms.com/"
+      description: "DatoCMS makes it fun & easy to use static website generators with your non-techie clients and editors. Join thousands of happy developers and set up your first site with DatoCMS right away!",
+      button: "Try it now for free",
+      url: "http://dashboard.datocms.com/register"
     }
 
   }
