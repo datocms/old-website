@@ -42,7 +42,7 @@
 
   @for $i from 2 through 6
     h#{$i}
-      $index: $i + 2
+      $index: $i + 1
       color: #222
 
       @if $index > length($heading-font-sizes)
@@ -54,6 +54,9 @@
   .blog-post__content__image + &
     +margin-top(5)
 
+  .code-snippet
+    +margin-bottom(3)
+
 .blog-post__content__image
   +margin-bottom(3)
 
@@ -63,6 +66,7 @@
     max-width: auto
     margin: 0 auto
     display: block
+    max-width: none
 
   figcaption
     text-align: center

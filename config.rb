@@ -4,6 +4,21 @@ require 'rouge/plugins/redcarpet'
 
 class RougeRender < Redcarpet::Render::HTML
   include Rouge::Plugins::Redcarpet
+
+  def block_code(code, language)
+    buf = "<div class='code-snippet'>"
+
+    if language
+      buf << "<div class='code-snippet__language'>#{language.titleize}</div>"
+    end
+
+    buf << "<div class='code-snippet__code'>"
+    buf << super
+    buf << "</div>"
+    buf << "</div>"
+
+    buf
+  end
 end
 
 set :markdown_engine, :redcarpet
@@ -15,10 +30,9 @@ page '/*.txt', layout: false
 page '/docs/*', layout: "docs"
 
 activate :directory_indexes
-activate :syntax
 activate :dato,
   token: ENV.fetch('DATO_API_TOKEN'),
-  base_url: 'http://www.mywebsite.com'
+  base_url: 'https://www.datocms.com'
 
 activate :pagination
 
@@ -128,7 +142,10 @@ helpers do
   end
 
   def markdown(text)
-    renderer = Redcarpet::Render::HTML.new
-    Redcarpet::Markdown.new(renderer).render(text)
+    Redcarpet::Markdown.new(
+      RougeRender.new,
+      tables: true,
+      fenced_code_blocks: true,
+    ).render(text)
   end
 end
