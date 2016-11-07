@@ -83,9 +83,13 @@ data.integrations.tap do |i|
   end
 end
 
-blog_posts = dato.blog_posts.select(&:publication_date).sort_by(&:publication_date)
+blog_posts = dato.
+  blog_posts.
+  select(&:publication_date).
+  sort_by(&:publication_date).
+  reverse
 
-paginate blog_posts.reverse, "/blog", "/templates/blog_index.html"
+paginate blog_posts, "/blog", "/templates/blog_index.html"
 
 blog_posts.each do |blog_post|
   proxy(
