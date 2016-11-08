@@ -14,13 +14,13 @@
         = image_tag blog_post.author.avatar.url(w: 100, h: 100, fit: 'crop'), alt: blog_post.author.name
       .blog-post__meta__content
         p #{blog_post.author.name} wrote this on #{I18n.l blog_post.publication_date.to_date, format: :long }
-    .blog-post__content
+    .blog-post__content: .blog-post__content__text
       - blog_post.content.each do |item|
         - case item.item_type.api_key
         - when "text"
-          .blog-post__content__text= markdown(item.text)
+          = markdown(item.text)
         - when "gallery_slide"
           figure.blog-post__content__image
-            = image_tag item.image.url(w: 800, fit: :max, fm: :png), alt: item.caption
+            = image_tag item.image.url(w: 652, fit: :max, fm: :png), alt: item.caption
             - if item.caption.present?
               figcaption= item.caption
