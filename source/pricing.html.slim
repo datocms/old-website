@@ -24,13 +24,13 @@ title: Pricing - DatoCMS
               .pricing__plan__options
                 .pricing__plan__option <strong>#{plan.editors}</strong> clients/editors
                 .pricing__plan__option <strong>#{plan.storage}</strong> file storage
-                .pricing__plan__option <strong>#{plan.items}</strong> records
+                .pricing__plan__option <strong>#{number_with_delimiter(plan.items)}</strong> records
                 .pricing__plan__option <strong>Free</strong>Imgix image processing
                 .pricing__plan__option <strong>Free</strong> multi-language support
                 - if plan.custom_domain
                   .pricing__plan__option <strong>Custom domain</strong> for the administrative area
                 - if plan.priority_email_support
-                  .pricing__plan__option <strong>Priority</strong> email support
+                  .pricing__plan__option <strong>Priority</strong> email/chat support
                 - if plan.phone_support
                   .pricing__plan__option <strong>Phone</strong> suppport
 
