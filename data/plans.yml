@@ -2,8 +2,8 @@
   description: Forever free, perfect for personal websites
   price: 0
   editors: 0
-  items: 300
-  storage: '100 MB'
+  items: 100
+  storage: '80 MB'
   custom_domain: false
   priority_email_support: false
   phone_support: false
@@ -12,8 +12,8 @@
   description: To build single-page websites for your clients
   price: 5
   editors: 2
-  items: 50
-  storage: '50 MB'
+  items: 250
+  storage: '150 MB'
   custom_domain: true
   priority_email_support: false
   phone_support: false
@@ -22,8 +22,8 @@
   description: Build big static websites for your agency clients
   price: 25
   editors: 2
-  items: 800
-  storage: '500 MB'
+  items: 1000
+  storage: '1 GB'
   custom_domain: true
   priority_email_support: false
   phone_support: false
@@ -33,7 +33,7 @@
   price: 70
   editors: 10
   items: 5000
-  storage: '2 GB'
+  storage: '3 GB'
   custom_domain: true
   priority_email_support: true
   phone_support: false
