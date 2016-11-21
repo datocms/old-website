@@ -1,7 +1,11 @@
+.pricing
+  +clearfix
+
 .pricing__plan
   text-align: center
   position: relative
   z-index: 1
+  +margin-bottom(4)
 
 .pricing__plan__inner
   background-color: white
@@ -84,7 +88,7 @@
 +at-breakpoint(tab)
   .pricing__plan
     float: left
-    width: 50%
+    width: (100%/3)
 
   .pricing__plan__inner
     margin-left: 2px
