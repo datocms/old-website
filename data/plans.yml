@@ -13,7 +13,7 @@
   price: 5
   editors: 2
   items: 250
-  storage: '150 MB'
+  storage: '200 MB'
   custom_domain: true
   priority_email_support: false
   phone_support: false
