@@ -1,27 +1,49 @@
-- name: Starter
+- name: Personal
+  description: Forever free, perfect for personal websites
   price: 0
-  users: 2
-  items: 150
-  files: 100
-- name: Basic
-  price: 10
-  users: 5
-  items: 1000
-  files: 250
-- name:  Plus
-  price: 15
-  users: 10
-  items: 2500
-  files: 450
-- name: Premium
-  price: 30
-  users: 15
-  items: 7000
-  files: 1500
-- name: Max
-  price: 80
-  users: Unlimited
-  items: Unlimited
-  files: 4000
+  editors: 0
+  items: 300
+  storage: '100 MB'
+  custom_domain: false
+  priority_email_support: false
+  phone_support: false
 
+- name: Single page
+  description: To build single-page websites for your clients
+  price: 5
+  editors: 2
+  items: 50
+  storage: '50 MB'
+  custom_domain: true
+  priority_email_support: false
+  phone_support: false
 
+- name: Brochure
+  description: Build big static websites for your agency clients
+  price: 25
+  editors: 2
+  items: 800
+  storage: '500 MB'
+  custom_domain: true
+  priority_email_support: false
+  phone_support: false
+
+- name: Startup
+  description: Marketing websites with a large team of editors
+  price: 70
+  editors: 10
+  items: 5000
+  storage: '2 GB'
+  custom_domain: true
+  priority_email_support: true
+  phone_support: false
+
+- name: Enterprise
+  description: For your mission critical projects
+  price: 250
+  editors: 'Unlimited'
+  items: 'Unlimited'
+  storage: 'Unlimited'
+  custom_domain: true
+  priority_email_support: true
+  phone_support: true

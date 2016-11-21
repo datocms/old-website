@@ -6,23 +6,33 @@ title: Pricing - DatoCMS
   .wrap
     .space--bottom-5
       .page-header
-        .page-header__title Totally free during beta!
-        .page-header__subtitle Once the beta is over, a simple & transparent pricing awaits you
+        .page-header__title Simple, transparent pricing
+        .page-header__subtitle One account, as many sites as you want, pay as you consume
 
     .space--bottom-8
       .pricing
         - data.plans.each do |plan|
-          .pricing__plan class="pricing__plan--#{plan.name.downcase}"
+          .pricing__plan class="pricing__plan--#{plan.name.gsub(/ +/, '-').downcase}"
             .pricing__plan__inner
               .pricing__plan__title= plan.name
+              .pricing__plan__target= plan.description
               .pricing__plan__price
                 .pricing__plan__price__currency $
                 .pricing__plan__price__amount= plan.price
                 .pricing__plan__price__infos per site/month
+                .pricing__plan__price__subinfos pro-rated daily
               .pricing__plan__options
-                .pricing__plan__option <strong>#{plan.users}</strong> users
-                .pricing__plan__option <strong>#{plan.items}</strong> items
-                .pricing__plan__option <strong>#{plan.files}</strong> files
+                .pricing__plan__option <strong>#{plan.editors}</strong> clients/editors
+                .pricing__plan__option <strong>#{plan.storage}</strong> file storage
+                .pricing__plan__option <strong>#{plan.items}</strong> records
+                .pricing__plan__option <strong>Free</strong>Imgix image processing
+                .pricing__plan__option <strong>Free</strong> multi-language support
+                - if plan.custom_domain
+                  .pricing__plan__option <strong>Custom domain</strong> for the administrative area
+                - if plan.priority_email_support
+                  .pricing__plan__option <strong>Priority</strong> email support
+                - if plan.phone_support
+                  .pricing__plan__option <strong>Phone</strong> suppport
 
       .space--top-5: .align--center
         .home-jumbo__cta
@@ -40,31 +50,32 @@ title: Pricing - DatoCMS
         p
           ' No, it's not. You can use the free plan as long as you want without
           ' credit cards. Just be aware that if you reach the free plan limits
-          ' in a Site and your Account is not associated with a credit card,
-          ' your users won't be able to add new content to their website until
+          ' in a site and your Account is not associated with a credit card,
+          ' your editors won't be able to add new content to their website until
           ' you do it.
-
-  .pricing-faqs__item
-    .pricing-faqs__item__image= image_tag "faqs/site.svg"
-    .pricing-faqs__item__content
-      .pricing-faqs__item__question What is a Site?
-      .pricing-faqs__item__answer
-        p
-          ' Every website you manage with DatoCMS needs a separate Site. Each
-          ' Site is completely isolated from the others, with different data
-          ' and users, and is accessible from a different domain. You can manage
-          ' your Sites from your Account dashboard.
 
   .pricing-faqs__item
     .pricing-faqs__item__image= image_tag "faqs/item.svg"
     .pricing-faqs__item__content
-      .pricing-faqs__item__question What is an Item?
+      .pricing-faqs__item__question What do you mean with "record"?
       .pricing-faqs__item__answer
         p
-          ' An item represents a single piece of information you store within a
-          ' Site. It can be anything: an blog post, a category, an image gallery,
-          ' a staff member in your About page. Within a Site, you can configure
-          ' the specific fields required for each kind of item.
+          ' A record represents a single piece of information you store within a
+          ' site. Think of it like a database-like entry. It can be anything: a
+          ' blog post, a category, an image gallery, a staff member in your about page.
+          ' Within each site, you can configure the specific fields required for
+          ' each kind of record.
+
+  .pricing-faqs__item
+    .pricing-faqs__item__image= image_tag "faqs/site.svg"
+    .pricing-faqs__item__content
+      .pricing-faqs__item__question What is a site?
+      .pricing-faqs__item__answer
+        p
+          ' Every website you manage with DatoCMS needs a separate site. Each
+          ' site is completely isolated from the others, with different data
+          ' and editors, and is accessible from a different domain. You can manage
+          ' your sites from your Account dashboard.
 
   .space--top-5: .align--center
     .home-jumbo__cta
