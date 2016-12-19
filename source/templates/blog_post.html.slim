@@ -21,6 +21,6 @@
           = markdown(item.text)
         - when "gallery_slide"
           figure.blog-post__content__image
-            = image_tag item.image.url(w: 652, fit: :max, fm: :png), alt: item.caption
+            = image_tag item.image.url(w: 652, fit: :max), alt: item.caption
             - if item.caption.present?
               figcaption= item.caption
