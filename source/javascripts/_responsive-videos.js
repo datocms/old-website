@@ -1,3 +1,3 @@
 var fitvids = require('fitvids');
 
-fitvids();
+fitvids({ players: '.blog-post__content__image iframe' });
