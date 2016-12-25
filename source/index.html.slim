@@ -24,8 +24,13 @@ title: DatoCMS - A CMS for static website generators
   .home-demo__title So easy to use your clients will love it
   .home-demo__description DatoCMS administrative interface is incredibly simple to use, yet flexible enough to allow the management of pretty much any kind of website.
 
-  a.preview: .preview__inner
-    = image_tag "frontend-big.gif"
+  .preview
+    .preview__bar
+    .preview__inner
+      video loop=true autoplay=true
+        source src=asset_path(:images, "video.webm") type="video/webm"
+        source src=asset_path(:images, "video.mp4") type="video/mp4"
+        source src=asset_path(:images, "video.ogv") type="video/ogg"
 
 .home-pros: .wrap
   .home-pros__title Ready to say goodbye to a lot of problems?
@@ -59,9 +64,13 @@ title: DatoCMS - A CMS for static website generators
   .home-demo__title Build your websites in minutes
   .home-demo__description DatoCMS offers a great way to build sophisticated, tailor-made backends in no time and without writing a single line of code.
 
-  a.preview
+  .preview
+    .preview__bar
     .preview__inner
-      = image_tag "backend-big.gif"
+      video loop=true autoplay=true
+        source src=asset_path(:images, "backend.webm") type="video/webm"
+        source src=asset_path(:images, "backend.mp4") type="video/mp4"
+        source src=asset_path(:images, "backend.ogv") type="video/ogg"
 
 .home-combos
   .wrap

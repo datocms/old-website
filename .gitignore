@@ -21,3 +21,5 @@
 /node_modules
 ama.md
 sma.md
+
+.env

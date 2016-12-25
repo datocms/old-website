@@ -30,10 +30,7 @@ page '/*.txt', layout: false
 page '/docs/*', layout: "docs"
 
 activate :directory_indexes
-activate :dato,
-  token: ENV.fetch('DATO_API_TOKEN'),
-  base_url: 'https://www.datocms.com'
-
+activate :dato
 activate :pagination
 
 activate :external_pipeline,

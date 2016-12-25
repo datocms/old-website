@@ -2,28 +2,33 @@
   display: block
   position: relative
   overflow: hidden
-  background-color: black
-  max-width: 800px
+  max-width: 956px
   margin: 0 auto
+  box-shadow: 0 3px 7px rgba(black, 0.5)
 
-  img, iframe
-    display: block
+.preview__bar
+  padding: 1px 8px
+  border-radius: 5px 5px 0 0
+  border-bottom: 1px solid #878b89
+  background-color: #E2E2E2
+  text-align: left
+  line-height: 1.2
 
-  img
-    width: 100%
-    display: block
-
-.preview--video
-  background-color: #ffdc2f
-  color: $base-body-color
-
-  .preview__inner:before
+  &:before, &:after
     content: ""
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-    background: image-url("play.svg") center center no-repeat
-    background-size: 19%
+    background-color: #FF4741
+    border-radius: 50%
+    height: 10px
+    width: 10px
+    display: inline-block
+    margin-right: 6px
 
+  &:after
+    background-color: #FFBD00
+
+.preview__inner
+  background-color: #F2F2F2
+
+  img, video
+    display: block
+    width: 100%
