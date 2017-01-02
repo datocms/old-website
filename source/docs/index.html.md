@@ -23,7 +23,7 @@ These series of screencast will walk you through the publishing of a fully-stati
 
 ### Integration with Static Website Generators
 
-DatoCMS offers an API that can be used inside most static website generators to fetch all the data contained inside a Site. We also have prepared specific plugins for the most popular generators, so that you can start developing right away.
+DatoCMS offers an API that can be used inside most static website generators to fetch all the data contained inside a site. We also have prepared specific plugins for the most popular generators, so that you can start developing right away.
 
 * [Middleman](/docs/ssg/middleman/)
 * [Hugo](/docs/ssg/hugo/)
@@ -40,5 +40,5 @@ Here you can find some generic overview of the API:
 
 There are two APIs available, each serves one specific purpose:
 
-* [Site Management API](/docs/api/sma/) for managing content inside a Site (e.g. creating, updating, deleting content)
-* [Account Management API](/docs/api/ama/) for creating new Sites programmatically
+* [Site Management API](/docs/api/sma/) for managing content inside a site (e.g. creating, updating, deleting content)
+* [Account Management API](/docs/api/ama/) for creating new sites programmatically

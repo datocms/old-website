@@ -39,6 +39,6 @@ build:
 
 In your Gitlab project repository, 
 
-* Go to **Settings > Triggers** and click on **Add Trigger**. Then copy the trigger URL (e.g. `https://gitlab.com/api/v3/projects/12345678/trigger/builds`) and the trigger token (e.g. `1ee351fbc97a373b37f3a1e86b4bf1`) in your Site settings, and save the Site.
-* Go to **Settings > Webhooks**. Copy the Notification Webhook URL from your Site settings page and paste it in the **URL** field. Check the **Build events** option and hit *Add Webhook*.
+* Go to **Settings > Triggers** and click on **Add Trigger**. Then copy the trigger URL (e.g. `https://gitlab.com/api/v3/projects/12345678/trigger/builds`) and the trigger token (e.g. `1ee351fbc97a373b37f3a1e86b4bf1`) in your site settings, and save the site.
+* Go to **Settings > Webhooks**. Copy the Notification Webhook URL from your site settings page and paste it in the **URL** field. Check the **Build events** option and hit *Add Webhook*.
 

@@ -22,7 +22,7 @@ title: Pricing - DatoCMS
                 .pricing__plan__price__infos per site/month
                 .pricing__plan__price__subinfos pro-rated daily
               .pricing__plan__options
-                .pricing__plan__option <strong>#{plan.editors}</strong> clients/editors
+                .pricing__plan__option <strong>#{plan.editors == 0 ? 'no' : plan.editors}</strong> additional editors
                 .pricing__plan__option <strong>#{plan.storage}</strong> file storage
                 .pricing__plan__option <strong>#{number_with_delimiter(plan.items)}</strong> records
                 .pricing__plan__option <strong>Free</strong>Imgix image processing

@@ -8,9 +8,6 @@ Netlify is a super-easy service that lets you build and host your static website
 
 ## Configuring DatoCMS integration
 
-In your Netlify site project, 
-
-* Search the **Webhooks** section, click **Edit**, insert "DatoCMS" as the title and hit **Add hook**. Copy the generated URL into your Site settings.
-* Visit the **Notifications** tab, go to the **When your site is deployed** section, click **Edit**, then select **Configure a new deploy notification > Webhook** and paste the **Notification Webhook URL** present your Site settings page.
-* Visit the **Notifications** tab, go to the **When a build fails** section, click **Edit**, then select **Configure a new deploy notification > Webhook** and paste the **Notification Webhook URL** present your Site settings page.
-
+* Once you have created a Netlify project pointing to the Github/Bitbucket/Gitlab repository of your website, go to the **Deployment Settings** present in the **Admin Area** of your site, and select Netlify as deployment option;
+* The system will ask for your Netlify credentials: once the authorization process succeeds, a list of your Netlify projects will be presented;
+* Once selected the correct Netlify project, DatoCMS will take care of automatically setting up the connections for you.

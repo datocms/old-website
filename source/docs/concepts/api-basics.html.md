@@ -8,7 +8,7 @@ DatoCMS is an API-first CMS, offering two REST APIs for working with your conten
 
 * If you want to programmatically create or update content items, you want to use the Site Management API.
 * When retrieving images stored in DatoCMS, they will come from dato-images.imgix.com. You can apply various transforms to images by appending query parameters to the URL.
-* Finally, if you want to create or update new Sites, you want to use the Account Management API.
+* Finally, if you want to create or update new sites, you want to use the Account Management API.
 
 ## Site Management API
 
@@ -21,7 +21,7 @@ The Site Management API (SMA), available at https://site-api.datocms.com, is a r
 
 ## Account Management API
 
-The Account Management API (AMA), available at https://account-api.datocms.com a read-write API for managing your account Sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
+The Account Management API (AMA), available at https://account-api.datocms.com a read-write API for managing your account's sites. The API requires you to authenticate as a DatoCMS account. It covers several use cases, such as:
 
 [Read the reference documentation for the Account Management API](/docs/api/ama.html)
 
