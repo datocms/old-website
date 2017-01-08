@@ -19,8 +19,8 @@
         - case item.item_type.api_key
         - when "text"
           = markdown(item.text)
-        - when "gallery_slide"
+        - when "image"
           figure.blog-post__content__image
-            = image_tag item.image.url(w: 652, fit: :max), alt: item.caption
-            - if item.caption.present?
-              figcaption= item.caption
+            = image_tag item.image.url(w: 652, fit: :max), alt: item.image.alt
+            - if item.image.title.present?
+              figcaption= item.image.title
