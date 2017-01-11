@@ -18,11 +18,15 @@ variants:
       - name: Hugo
         getting_started_url: https://gohugo.io/overview/introduction/
         build_command: hugo
-        integration_url: https://github.com/datocms/ruby-datocms-client
+        integration_url: https://github.com/datocms/js-datocms-client
       - name: Metalsmith
         getting_started_url: http://www.metalsmith.io/
         build_command: node build.js
-        integration_url: https://github.com/datocms/ruby-datocms-client
+        integration_url: https://github.com/datocms/js-datocms-client
+      - name: Hexo
+        getting_started_url: https://hexo.io/
+        build_command: hexo generate
+        integration_url: https://github.com/datocms/js-datocms-client
 
   - name: 'Git hosting platform'
     id: 'hosting'
