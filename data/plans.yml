@@ -21,7 +21,7 @@
 - name: Brochure
   description: Build big static websites for your agency clients
   price: 25
-  editors: 2
+  editors: 5
   items: 1000
   storage: '1 GB'
   custom_domain: true
