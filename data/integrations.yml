@@ -15,14 +15,14 @@ continuous_deployment_platforms:
     image_url: /images/tools/gitlab.png
     website_url: https://about.gitlab.com
     description: Continuous Deployment
+  - name: SemaphoreCI
+    image_url: /images/tools/semaphore.png
+    website_url: https://semaphoreci.com
+    description: Continuous Deployment
   - name: CircleCI
     image_url: /images/tools/circleci.png
     website_url: http://circleci.com
     description: Continuous Deployment
-  - name: Surge
-    image_url: /images/tools/surge.png
-    website_url: http://surge.sh
-    description: CDN
 git_hosting_platforms:
   - name: Github
     website_url: https://github.com
