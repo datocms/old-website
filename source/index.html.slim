@@ -79,7 +79,7 @@ title: DatoCMS - A CMS for static website generators
 
 
   .home-combos__tools
-    .home-combos__tools__title: span Static site generators
+    .home-combos__tools__title: span Officially supported generators
     .wrap: .home-combos__tools__list
       - data.integrations.static_site_generators.each do |tool|
         = link_to tool.website_url, target: "_blank", class: "home-combos__tool" do
@@ -88,7 +88,7 @@ title: DatoCMS - A CMS for static website generators
           span.home-combos__tool__language=> tool.language
 
   .home-combos__tools
-    .home-combos__tools__title: span Build, deploy and host
+    .home-combos__tools__title: span Build and publish your site with
     .wrap: .home-combos__tools__list
       - data.integrations.continuous_deployment_platforms.each do |tool|
         = link_to tool.website_url, target: "_blank", class: "home-combos__tool" do

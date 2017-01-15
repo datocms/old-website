@@ -1,12 +1,8 @@
 .home-tutorial
   text-align: center
 
-.home-tutorial__inner
-  max-width: 800px
-  margin: 0 auto
-
 .home-tutorial__steps
-  max-width: 640px
+  max-width: 680px
   margin: 0 auto
   padding-left: 30px
   box-sizing: border-box
@@ -45,6 +41,9 @@
   span[data-role=cd]
     color: #f76289
 
+  span[data-role=dato]
+    color: $primary-color
+
 .home-tutorial__step__description
   color: $light-body-color
   line-height: 1.6
@@ -65,7 +64,7 @@
   +margin-top(4)
 
 .home-tutorial__options
-  max-width: 690px
+  max-width: 710px
   margin: 0 auto
   +margin-bottom(5)
 
@@ -115,7 +114,7 @@
 +at-breakpoint(desk)
   .home-tutorial__options
     display: table
-    min-width: 700px
+    min-width: 900px
     text-align: left
 
   .home-tutorial__option
@@ -125,16 +124,18 @@
   .home-tutorial__option__name
     display: table-cell
     vertical-align: middle
-    +font-size(smallprint)
+    +font-size(regular)
+    font-weight: bold
     margin-right: 20px
     +padding-right(2)
     margin-bottom: 0
-    max-width: 80px
+    width: 200px
+    padding-top: 10px
 
   .home-tutorial__option__values
     display: table-cell
     vertical-align: middle
-    padding-top: 5px
+    padding-top: 10px
 
   .home-tutorial__option__value
     margin-top: 0

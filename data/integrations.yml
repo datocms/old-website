@@ -1,14 +1,18 @@
 continuous_deployment_platforms:
-  - name: Amazon AWS
-    image_url: https://logo.clearbit.com/aws.amazon.com
+  - name: Travis
+    image_url: /images/tools/travis.png
+    website_url: https://travis-ci.org
+    description: Continuous Deployment
+  - name: AWS
+    image_url: /images/tools/aws.png
     website_url: https://aws.amazon.com/
     description: S3 + Cloudfront
   - name: Netlify
-    image_url: https://logo.clearbit.com/www.netlify.com
+    image_url: /images/tools/netlify.png
     website_url: https://www.netlify.com/
     description: Continuous Deployment + CDN
   - name: Gitlab CI
-    image_url: https://logo.clearbit.com/about.gitlab.com
+    image_url: /images/tools/gitlab.png
     website_url: https://about.gitlab.com
     description: Continuous Deployment
   - name: CircleCI
@@ -16,47 +20,47 @@ continuous_deployment_platforms:
     website_url: http://circleci.com
     description: Continuous Deployment
   - name: Surge
-    image_url: https://logo.clearbit.com/surge.sh
+    image_url: /images/tools/surge.png
     website_url: http://surge.sh
     description: CDN
 git_hosting_platforms:
   - name: Github
     website_url: https://github.com
-    image_url: https://logo.clearbit.com/github.com
+    image_url: /images/tools/github.png
   - name: Bitbucket
     website_url: https://bitbucket.org
-    image_url: https://logo.clearbit.com/www.bitbucket.org
+    image_url: /images/tools/bitbucket.png
   - name: Gitlab
     website_url: https://about.gitlab.com
-    image_url: https://logo.clearbit.com/about.gitlab.com
+    image_url: /images/tools/gitlab.png
 static_site_generators:
-  - name: Middleman
-    image_url: https://logo.clearbit.com/middlemanapp.com
-    website_url: http://middlemanapp.com
-    getting_started_url: https://middlemanapp.com/basics/start_new_site/
-    language: Ruby
   - name: Jekyll
-    image_url: https://logo.clearbit.com/jekyllrb.com
+    image_url: /images/tools/jekyll.png
     website_url: https://jekyllrb.com/
     getting_started_url: https://jekyllrb.com/docs/quickstart/
     language: Ruby
   - name: Hugo
-    image_url: https://logo.clearbit.com/gohugo.io
+    image_url: /images/tools/hugo.png
     website_url: http://gohugo.io
     getting_started_url: https://gohugo.io/overview/introduction/
     language: Go
   - name: Metalsmith
-    image_url: https://logo.clearbit.com/metalsmith.io
+    image_url: /images/tools/metalsmith.png
     website_url: http://metalsmith.io
     getting_started_url: http://www.metalsmith.io/
     language: Javascript
+  - name: Middleman
+    image_url: /images/tools/middleman.png
+    website_url: http://middlemanapp.com
+    getting_started_url: https://middlemanapp.com/basics/start_new_site/
+    language: Ruby
+  - name: GatsbyJS
+    image_url: /images/tools/gatsby.png
+    website_url: https://github.com/gatsbyjs/gatsby
+    getting_started_url: http://blog.getpelican.com
+    language: Javascript
   - name: Hexo
-    image_url: https://logo.clearbit.com/hexo.io
+    image_url: /images/tools/hexo.png
     website_url: http://hexo.io
     getting_started_url: https://hexo.io/docs/setup.html
     language: Javascript
-  - name: Pelican
-    image_url: https://logo.clearbit.com/blog.getpelican.com
-    website_url: http://blog.getpelican.com
-    getting_started_url: http://docs.getpelican.com/en/3.6.3/install.html
-    language: Python

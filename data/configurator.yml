@@ -1,44 +1,54 @@
 start:
-  ssg: 'Middleman'
+  ssg: 'Hugo'
   hosting: 'Github'
   cd: 'Netlify'
 
 variants:
-  - name: 'Static website generator'
+  - name: 'My favorite generator is'
     id: 'ssg'
     options:
-      - name: Middleman
-        getting_started_url: https://middlemanapp.com/basics/start_new_site/
-        build_command: middleman build
-        integration_url: https://github.com/datocms/middleman-dato
-      - name: Jekyll
-        getting_started_url: https://jekyllrb.com/docs/quickstart/
-        build_command: jekyll build
-        integration_url: https://github.com/datocms/ruby-datocms-client
       - name: Hugo
         getting_started_url: https://gohugo.io/overview/introduction/
         build_command: hugo
         integration_url: https://github.com/datocms/js-datocms-client
+      - name: Jekyll
+        getting_started_url: https://jekyllrb.com/docs/quickstart/
+        build_command: jekyll build
+        integration_url: https://github.com/datocms/ruby-datocms-client
       - name: Metalsmith
         getting_started_url: http://www.metalsmith.io/
         build_command: node build.js
+        integration_url: https://github.com/datocms/js-datocms-client
+      - name: Middleman
+        getting_started_url: https://middlemanapp.com/basics/start_new_site/
+        build_command: middleman build
+        integration_url: https://github.com/datocms/middleman-dato
+      - name: Gatsby
+        getting_started_url: https://github.com/gatsbyjs/gatsby
+        build_command: hexo generate
         integration_url: https://github.com/datocms/js-datocms-client
       - name: Hexo
         getting_started_url: https://hexo.io/
         build_command: hexo generate
         integration_url: https://github.com/datocms/js-datocms-client
 
-  - name: 'Git hosting platform'
+  - name: 'My Git repos are on'
     id: 'hosting'
     options:
       - name: Github
       - name: Bitbucket
       - name: Gitlab
 
-  - name: 'Deployment solution'
+  - name: "I'll publish the site using"
     id: 'cd'
     options:
       - name: Netlify
         instructions_url: https://app.netlify.com/sites
+      - name: Travis
+        instructions_url: https://docs.travis-ci.com/user/deployment/s3/
       - name: Gitlab
         instructions_url: https://pages.gitlab.io/
+      - name: SemaphoreCI
+        instructions_url: https://semaphoreci.com/blog/2014/02/05/hands-free-deployment-of-static-websites.html
+      - name: CircleCI
+        instructions_url: https://circleci.com/docs/continuous-deployment-with-amazon-s3/
