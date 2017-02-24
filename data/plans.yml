@@ -9,7 +9,7 @@
   phone_support: false
 
 - name: Basic
-  description: Perfect for building average-sized brochure websites
+  description: To build average-sized brochure websites
   price: 9
   editors: 2
   items: 500
@@ -23,7 +23,7 @@
   price: 25
   editors: 5
   items: 2000
-  storage: '2 GB'
+  storage: '3 GB'
   custom_domain: true
   priority_email_support: false
   phone_support: false
@@ -32,8 +32,8 @@
   description: Marketing websites with a large team of editors
   price: 70
   editors: 10
-  items: 5000
-  storage: '3 GB'
+  items: 10000
+  storage: '5 GB'
   custom_domain: true
   priority_email_support: true
   phone_support: false
