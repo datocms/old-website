@@ -40,7 +40,7 @@
 
 - name: Max
   description: For your mission critical projects
-  price: 250
+  price: 150
   editors: 'Unlimited'
   items: 'Unlimited'
   storage: 'Unlimited'
