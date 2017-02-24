@@ -11,8 +11,8 @@ title: Pricing - DatoCMS
 
     .space--bottom-8
       .pricing
-        - data.plans.each do |plan|
-          .pricing__plan class="pricing__plan--#{plan.name.gsub(/ +/, '-').downcase}"
+        - data.plans.each_with_index do |plan, i|
+          .pricing__plan class="pricing__plan--#{i}"
             .pricing__plan__inner
               .pricing__plan__title= plan.name
               .pricing__plan__target= plan.description

@@ -3,7 +3,7 @@
   price: 0
   editors: 0
   items: 100
-  storage: '80 MB'
+  storage: '200 MB'
   custom_domain: false
   priority_email_support: false
   phone_support: false
