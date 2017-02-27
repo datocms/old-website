@@ -1,5 +1,5 @@
 - name: Free plan
-  description: Forever free, perfect for small personal websites
+  description: Great to test the product and for small, personal websites
   price: 0
   editors: 0
   items: 100
@@ -9,7 +9,7 @@
   phone_support: false
 
 - name: Basic
-  description: To build average-sized brochure websites
+  description: Perfect for the average brochure website
   price: 9
   editors: 2
   items: 500
@@ -19,7 +19,7 @@
   phone_support: false
 
 - name: Plus
-  description: Build big static websites for your agency clients
+  description: Build big static websites for your clients
   price: 25
   editors: 5
   items: 2000
@@ -28,22 +28,12 @@
   priority_email_support: false
   phone_support: false
 
-- name: Team
-  description: Marketing websites with a large team of editors
-  price: 70
-  editors: 10
-  items: 10000
-  storage: '5 GB'
+- name: Max
+  description: For editorial websites with a large team of editors
+  price: 50
+  editors: Unlimited
+  items: Unlimited
+  storage: Unlimited
   custom_domain: true
   priority_email_support: true
   phone_support: false
-
-- name: Max
-  description: For your mission critical projects
-  price: 150
-  editors: 'Unlimited'
-  items: 'Unlimited'
-  storage: 'Unlimited'
-  custom_domain: true
-  priority_email_support: true
-  phone_support: true

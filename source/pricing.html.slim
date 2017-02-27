@@ -6,8 +6,16 @@ title: Pricing - DatoCMS
   .wrap
     .space--bottom-5
       .page-header
-        .page-header__title Simple, transparent pricing
-        .page-header__subtitle One account, as many sites as you want, pay as you consume
+        .page-header__title The more sites you create,<br/>the less you pay
+        .page-header__subtitle A simple, predictable and transparent pricing
+
+    .pricing__range
+      input type="range" min=1 max=100 range=1
+
+      .pricing__range__text
+        span.pricing__range__sites 1 site
+        | &nbsp;&rarr;&nbsp;
+        span.pricing__range__discount 0% discount
 
     .space--bottom-8
       .pricing
@@ -17,18 +25,25 @@ title: Pricing - DatoCMS
               .pricing__plan__title= plan.name
               .pricing__plan__target= plan.description
               .pricing__plan__price
-                .pricing__plan__price__currency €
-                .pricing__plan__price__amount= plan.price
-                .pricing__plan__price__infos per site/month
-                .pricing__plan__price__subinfos pro-rated daily
+                - if plan.price == 0
+                  .pricing__plan__price__amount data-price="0" Free
+                  .pricing__plan__price__subinfos New accounts start here
+                - else
+                  .pricing__plan__price__currency €
+                  .pricing__plan__price__amount data-price=plan.price = plan.price
+                  .pricing__plan__price__infos per site/month
+                  .pricing__plan__price__subinfos Pro-rated daily
               .pricing__plan__options
-                .pricing__plan__option <strong>#{plan.editors == 0 ? 'no' : plan.editors}</strong> additional editors
+                - if plan.editors == 0
+                  .pricing__plan__option Only the account owner can edit content
+                - else
+                  .pricing__plan__option <strong>#{plan.editors}</strong> editors
                 .pricing__plan__option <strong>#{plan.storage}</strong> file storage
                 .pricing__plan__option <strong>#{number_with_delimiter(plan.items)}</strong> records
-                .pricing__plan__option <strong>Free</strong>Imgix image processing
-                .pricing__plan__option <strong>Free</strong> multi-language support
+                .pricing__plan__option <strong>Unlimited</strong> image processing
+                .pricing__plan__option <strong>Unlimited</strong> languages
                 - if plan.custom_domain
-                  .pricing__plan__option <strong>Custom domain</strong> for the administrative area
+                  .pricing__plan__option <strong>Custom domain</strong>
                 - if plan.priority_email_support
                   .pricing__plan__option <strong>Priority</strong> email/chat support
                 - if plan.phone_support
