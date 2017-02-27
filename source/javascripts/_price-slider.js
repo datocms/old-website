@@ -5,7 +5,7 @@ var slider = document.querySelector('input[type="range"]');
 
 function refresh(value) {
   document.querySelector(".pricing__range__sites").innerText = value + " site" + (value > 1 ? "s" : "");
-  var discount = parseInt((value - 1) / 99.0 * 0.6 * 100);
+  var discount = parseInt(easeOutCubic((value - 1) / 99.0) * 100.0 * 0.6);
   document.querySelector(".pricing__range__discount").innerText = discount + "% discount";
   [].forEach.call(document.querySelectorAll("[data-price]"), function(el) {
     var newPrice = parseInt(el.getAttribute('data-price') * (1.0 - discount / 100.0));
@@ -39,6 +39,10 @@ rangeSlider.create(
 function easing(pos) {
   if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,2);
   return -0.5 * ((pos-=2)*pos - 2);
+}
+
+function easeOutCubic(t) {
+  return (--t)*t*t+1;
 }
 
 new Tween({
