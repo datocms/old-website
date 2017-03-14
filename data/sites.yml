@@ -1,0 +1,64 @@
+- image_url: boomtown.png
+  name: Boomtown 2017
+  website_url: http://www.boomtownfair.co.uk/
+  description: Hugo
+
+- image_url: franzpedersen.png
+  website_url: https://gfranzp.dk/
+  name: Franz Pedersen
+  description: React.js
+
+- image_url: greenapes.png
+  website_url: https://www.greenapes.com/
+  name: GreenApes
+  description: Middleman
+
+- image_url: hanno.png
+  website_url: https://hanno.co/
+  name: Hanno.co
+  description: Jekyll
+
+- image_url: hjaltelin.png
+  website_url: https://hjaltelinstahl.com/
+  name: Hjaltelin Stahl
+  description: Metalsmith
+
+- image_url: inima.png
+  website_url: https://www.inimasnaredrums.com/
+  name: Inima Snaredrums
+  description: Middleman
+
+- image_url: latticehq.png
+  website_url: https://latticehq.com/
+  name: Lattice HQ
+  description: Jekyll
+
+- image_url: marcoverna.png
+  website_url: http://www.marcoverna.photo/
+  name: Marco Verna
+  description: Middleman
+
+- image_url: policygenius.png
+  website_url: https://www.policygenius.com/
+  name: Policy Genius
+  description: Middleman
+
+- image_url: rokoko.png
+  website_url: https://www.rokoko.com/
+  name: Rokoko
+  description: Metalsmith
+
+- image_url: stuart.png
+  website_url: http://www.stuart.com/
+  name: Stuart
+  description: Metalsmith
+
+- image_url: smn.png
+  website_url: http://www.smn.it/
+  name: Opera for Santa Maria Novella
+  description: Middleman
+
+- image_url: webworkshop.png
+  website_url: https://webworkshop.ltd/
+  name: Web Workshop
+  description: Hugo

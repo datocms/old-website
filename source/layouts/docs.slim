@@ -7,7 +7,7 @@ html
       .space--both-5: .wrap
         .grid
           .grid__item.desk-3-12
-            = yield_content(:sidebar) || render_partial("partials/navigation")
+            = yield_content(:sidebar)
           .grid__item.desk-9-12
             .formatted-content= yield
       = render_partial "partials/footer"

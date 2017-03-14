@@ -1,0 +1,17 @@
+.space--both-5
+  .wrap
+    .page-header
+      .page-header__title Gallery
+      .page-header__subtitle Real world websites powered by DatoCMS
+
+.gallery
+  .wrap
+    .grid.grid--wide
+      - data.sites.each do |site|
+        .grid__item.desk-6-12
+          .gallery__item
+            a.gallery__item__title href=site.website_url
+              = site.name
+            .gallery__item__info= site.description
+            a.gallery__item__image href=site.website_url
+              img src="/images/portfolio/#{site.image_url}"
