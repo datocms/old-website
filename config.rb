@@ -43,6 +43,9 @@ activate :external_pipeline,
 
 ignore 'fonts/svg/*'
 ignore 'templates/*'
+ignore 'redirects.txt'
+
+proxy("/_redirects", "redirects.txt")
 
 data.integrations.tap do |i|
   metadata = {
