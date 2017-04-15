@@ -1,4 +1,3 @@
----
 title: Pricing - DatoCMS
 ---
 
@@ -44,6 +43,8 @@ title: Pricing - DatoCMS
                 .pricing__plan__option <strong>Unlimited</strong> languages
                 - if plan.custom_domain
                   .pricing__plan__option <strong>Custom domain</strong>
+                - if plan.history
+                  .pricing__plan__option <strong>Content versioning</strong>
                 - if plan.priority_email_support
                   .pricing__plan__option <strong>Priority</strong> email/chat support
                 - if plan.phone_support
