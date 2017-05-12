@@ -8,6 +8,7 @@
   history: false
   priority_email_support: false
   phone_support: false
+  custom_imgix: false
 
 - name: Basic
   description: Perfect for the average brochure website
@@ -19,6 +20,7 @@
   priority_email_support: false
   phone_support: false
   history: true
+  custom_imgix: false
 
 - name: Plus
   description: Build big static websites for your clients
@@ -30,6 +32,7 @@
   priority_email_support: false
   phone_support: false
   history: true
+  custom_imgix: true
 
 - name: Max
   description: For editorial websites with a large team of editors
@@ -41,3 +44,4 @@
   priority_email_support: true
   phone_support: false
   history: true
+  custom_imgix: true
