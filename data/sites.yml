@@ -8,15 +8,20 @@
   name: Franz Pedersen
   description: React.js
 
-- image_url: greenapes.png
-  website_url: https://www.greenapes.com/
-  name: GreenApes
+- image_url: livestorm.png
+  website_url: http://livestorm.co/
+  name: Livestorm
   description: Middleman
 
 - image_url: hanno.png
   website_url: https://hanno.co/
   name: Hanno.co
   description: Jekyll
+
+- image_url: greenapes.png
+  website_url: https://www.greenapes.com/
+  name: GreenApes
+  description: Middleman
 
 - image_url: hjaltelin.png
   website_url: https://hjaltelinstahl.com/
