@@ -21,53 +21,51 @@ title: Pricing - DatoCMS
       .pricing
         - data.plans.each_with_index do |plan, i|
           .pricing__plan class="pricing__plan--#{i}"
-            .pricing__plan__inner
-              .pricing__plan__title= plan.name
-              .pricing__plan__target= plan.description
-              .pricing__plan__price
-                - if plan.price == 0
-                  .pricing__plan__price__amount data-price="0" Free
-                  .pricing__plan__price__subinfos New accounts start here
-                - else
-                  .pricing__plan__price__currency €
-                  .pricing__plan__price__amount data-price=plan.price = plan.price
-                  .pricing__plan__price__infos per site/month
-                  .pricing__plan__price__subinfos Pro-rated daily
-              .pricing__plan__options
-                - if plan.editors == 0
-                  .pricing__plan__option Only the account owner can edit content
-                - else
-                  .pricing__plan__option <strong>#{plan.editors}</strong> editors
-                .pricing__plan__option <strong>#{plan.storage}</strong> file storage
-                .pricing__plan__option <strong>#{number_with_delimiter(plan.items)}</strong> records
-                .pricing__plan__option <strong>Unlimited</strong> image processing
-                .pricing__plan__option <strong>Unlimited</strong> languages
-                - if plan.custom_domain
-                  .pricing__plan__option <strong>Custom admin domain</strong>
-                - if plan.history
-                  .pricing__plan__option <strong>Content versioning</strong>
-                - if plan.custom_imgix
-                  .pricing__plan__option <strong>Custom Imgix account and S3 bucket</strong>
-                - if plan.priority_email_support
-                  .pricing__plan__option <strong>Priority</strong> email/chat support
-                - if plan.phone_support
-                  .pricing__plan__option <strong>Phone</strong> support
-        .pricing__plan class="pricing__plan--max"
-          .pricing__plan__inner
-            .pricing__plan__title Enterprise
-            .pricing__plan__target For mission critical projects
+            .pricing__plan__title= "#{plan.name}<br/>Edition"
+            .pricing__plan__target= plan.description
             .pricing__plan__price
-                .pricing__plan__price__amount data-price="0" Let's talk!
+              - if plan.price == 0
+                .pricing__plan__price__amount data-price="0" Free
+                .pricing__plan__price__subinfos New accounts start here
+              - else
+                .pricing__plan__price__currency €
+                .pricing__plan__price__amount data-price=plan.price = plan.price
+                .pricing__plan__price__infos per site/month
+                .pricing__plan__price__subinfos Pro-rated daily
             .pricing__plan__options
-              .pricing__plan__option <strong>Unlimited everything</strong>
-              .pricing__plan__option <strong>Premium</strong> support
-              .pricing__plan__option <strong>Contractual SLAs</strong>
-              .pricing__plan__option <strong>SAML</strong> single-sign on
+              - if plan.editors == 0
+                .pricing__plan__option <strong>1</strong> editor
+              - else
+                .pricing__plan__option <strong>#{plan.editors}</strong> editors
+              .pricing__plan__option <strong>#{plan.storage}</strong> file storage
+              .pricing__plan__option <strong>#{number_with_delimiter(plan.items)}</strong> records
+              .pricing__plan__option <strong>Unlimited</strong> image processing
+              .pricing__plan__option <strong>Unlimited</strong> languages
+              - if plan.custom_domain
+                .pricing__plan__option <strong>Custom admin domain</strong>
+              - if plan.history
+                .pricing__plan__option <strong>Content versioning</strong>
+              - if plan.custom_imgix
+                .pricing__plan__option <strong>Custom Imgix account and S3 bucket</strong>
+              - if plan.priority_email_support
+                .pricing__plan__option <strong>Priority</strong> email/chat support
+              - if plan.phone_support
+                .pricing__plan__option <strong>Phone</strong> support
+            .pricing__plan__action
+              a.button.button--large.button--expand.button--black href="http://dashboard.datocms.com/register" Sign up!
 
-      .space--top-5: .align--center
-        .home-jumbo__cta
-          a.button.button--huge.button--black href="http://dashboard.datocms.com/register" Try it now for free!
-          .home-jumbo__cta__notice Signup in 15 seconds, no credit card needed!
+        .pricing__plan class="pricing__plan--max"
+          .pricing__plan__title Enterprise<br/>Edition
+          .pricing__plan__target For mission critical projects
+          .pricing__plan__price
+              .pricing__plan__price__amount data-price="0" Let's talk!
+          .pricing__plan__options
+            .pricing__plan__option <strong>Unlimited everything</strong>
+            .pricing__plan__option <strong>Premium</strong> support
+            .pricing__plan__option <strong>Contractual SLAs</strong>
+            .pricing__plan__option <strong>SAML</strong> single-sign on
+          .pricing__plan__action
+            a.button.button--large.button--expand.button--black href="mailto:support@datocms.com" Contact us!
 
 .pricing-faqs: .wrap: .pricing-faqs__inner
   .pricing-faqs__title Pricing questions

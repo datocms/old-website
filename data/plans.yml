@@ -1,5 +1,5 @@
-- name: Free plan
-  description: Great to test the product and for small, personal websites
+- name: Developer
+  description: Test the product and use it for small websites
   price: 0
   editors: 0
   items: 100
@@ -11,7 +11,7 @@
   custom_imgix: false
 
 - name: Basic
-  description: Perfect for the average brochure website
+  description: Perfect for the average "brochure" website
   price: 9
   editors: 2
   items: 500
