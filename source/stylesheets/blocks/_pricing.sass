@@ -72,12 +72,20 @@
   border-top-color: #672b72
 
 .pricing__range
+  max-width: 750px
+  margin: 0 auto
   +margin-bottom(3)
 
 .pricing__range__text
   +font-size(gamma)
   +margin-top(2)
   text-align: center
+
+.pricing__range__sites
+  font-weight: bold
+
+.pricing__range__discount
+  font-weight: bold
 
 +at-breakpoint(tab)
   .pricing__plan
@@ -95,7 +103,7 @@
 
   .pricing__plan
     float: left
-    width: 25%
+    width: 20%
     box-sizing: border-box
     position: relative
     +margin-bottom(0)
@@ -110,4 +118,12 @@
       .pricing__plan__inner
         transform: scale(1.2)
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2)
+
++at-breakpoint(wall)
+  .pricing
+    margin-left: -100px
+    margin-right: -100px
+
+  .pricing__plan__inner
+    margin-left: 10px
 

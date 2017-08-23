@@ -14,7 +14,7 @@ title: Pricing - DatoCMS
 
       .pricing__range__text
         span.pricing__range__sites 1 site
-        | &nbsp;&rarr;&nbsp;
+        | &nbsp;=&nbsp;
         span.pricing__range__discount 0% discount
 
     .space--bottom-8
@@ -43,7 +43,7 @@ title: Pricing - DatoCMS
                 .pricing__plan__option <strong>Unlimited</strong> image processing
                 .pricing__plan__option <strong>Unlimited</strong> languages
                 - if plan.custom_domain
-                  .pricing__plan__option <strong>Custom domain</strong>
+                  .pricing__plan__option <strong>Custom admin domain</strong>
                 - if plan.history
                   .pricing__plan__option <strong>Content versioning</strong>
                 - if plan.custom_imgix
@@ -52,6 +52,17 @@ title: Pricing - DatoCMS
                   .pricing__plan__option <strong>Priority</strong> email/chat support
                 - if plan.phone_support
                   .pricing__plan__option <strong>Phone</strong> support
+        .pricing__plan class="pricing__plan--max"
+          .pricing__plan__inner
+            .pricing__plan__title Enterprise
+            .pricing__plan__target For mission critical projects
+            .pricing__plan__price
+                .pricing__plan__price__amount data-price="0" Let's talk!
+            .pricing__plan__options
+              .pricing__plan__option <strong>Unlimited everything</strong>
+              .pricing__plan__option <strong>Premium</strong> support
+              .pricing__plan__option <strong>Contractual SLAs</strong>
+              .pricing__plan__option <strong>SAML</strong> single-sign on
 
       .space--top-5: .align--center
         .home-jumbo__cta

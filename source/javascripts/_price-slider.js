@@ -6,7 +6,11 @@ var slider = document.querySelector('input[type="range"]');
 function refresh(value) {
   document.querySelector(".pricing__range__sites").innerText = value + " site" + (value > 1 ? "s" : "");
   var discount = parseInt(easeOutCubic((value - 1) / 99.0) * 100.0 * 0.6);
-  document.querySelector(".pricing__range__discount").innerText = discount + "% discount";
+
+  document.querySelector(".pricing__range__discount").innerText = discount === 0 ?
+    "No discount :)" :
+    (discount + "% discount!");
+
   [].forEach.call(document.querySelectorAll("[data-price]"), function(el) {
     var newPrice = parseInt(el.getAttribute('data-price') * (1.0 - discount / 100.0));
     if (newPrice === 0) {
