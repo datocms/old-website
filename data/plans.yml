@@ -35,8 +35,8 @@
   custom_imgix: true
 
 - name: Max
-  description: For editorial websites with a large team of editors
-  price: 50
+  description: For high-volume sites with a large team of editors
+  price: 150
   editors: Unlimited
   items: Unlimited
   storage: Unlimited
