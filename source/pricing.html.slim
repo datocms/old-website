@@ -39,6 +39,7 @@ title: Pricing - DatoCMS
                 .pricing__plan__option <strong>#{plan.editors}</strong> editors
               .pricing__plan__option <strong>#{plan.storage}</strong> file storage
               .pricing__plan__option <strong>#{number_with_delimiter(plan.items)}</strong> records
+              .pricing__plan__option <strong>#{number_with_delimiter(plan.indexable_pages)}</strong> indexable pages
               .pricing__plan__option <strong>Unlimited</strong> image processing
               .pricing__plan__option <strong>Unlimited</strong> languages
               - if plan.custom_domain

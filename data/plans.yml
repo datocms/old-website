@@ -9,6 +9,7 @@
   priority_email_support: false
   phone_support: false
   custom_imgix: false
+  indexable_pages: 20
 
 - name: Basic
   description: Perfect for the average "brochure" website
@@ -21,6 +22,7 @@
   phone_support: false
   history: true
   custom_imgix: false
+  indexable_pages: 1000
 
 - name: Plus
   description: Build big static websites for your clients
@@ -33,6 +35,7 @@
   phone_support: false
   history: true
   custom_imgix: true
+  indexable_pages: Unlimited
 
 - name: Max
   description: For high-volume sites with a large team of editors
@@ -45,3 +48,4 @@
   phone_support: false
   history: true
   custom_imgix: true
+  indexable_pages: Unlimited
