@@ -1,3 +1,13 @@
+- image_url: hashicorp.png
+  name: Hashicorp
+  website_url: https://www.hashicorp.com/
+  description: Middleman
+
+- image_url: flywire.png
+  name: Flywire
+  website_url: https://www.flywire.com/
+  description: Middleman
+
 - image_url: boomtown.png
   name: Boomtown 2017
   website_url: http://www.boomtownfair.co.uk/
