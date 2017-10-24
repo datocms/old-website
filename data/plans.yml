@@ -10,6 +10,7 @@
   phone_support: false
   custom_imgix: false
   indexable_pages: 20
+  otp: false
 
 - name: Basic
   description: Perfect for the average "brochure" website
@@ -23,6 +24,7 @@
   history: true
   custom_imgix: false
   indexable_pages: 1000
+  otp: false
 
 - name: Plus
   description: Build big static websites for your clients
@@ -36,6 +38,7 @@
   history: true
   custom_imgix: true
   indexable_pages: Unlimited
+  otp: false
 
 - name: Max
   description: For high-volume sites with a large team of editors
@@ -49,3 +52,4 @@
   history: true
   custom_imgix: true
   indexable_pages: Unlimited
+  otp: true

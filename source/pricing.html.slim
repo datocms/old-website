@@ -48,6 +48,8 @@ title: Pricing - DatoCMS
                 .pricing__plan__option <strong>Content versioning</strong>
               - if plan.custom_imgix
                 .pricing__plan__option <strong>Custom Imgix account and S3 bucket</strong>
+              - if plan.otp
+                .pricing__plan__option <strong>Two-factor authentication</strong>
               - if plan.priority_email_support
                 .pricing__plan__option <strong>Priority</strong> email/chat support
               - if plan.phone_support
