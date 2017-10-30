@@ -46,6 +46,7 @@ ignore 'templates/*'
 ignore 'redirects.txt'
 
 proxy("/_redirects", "redirects.txt")
+proxy("/_headers", "headers.txt")
 
 data.integrations.tap do |i|
   metadata = {
