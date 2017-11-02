@@ -245,17 +245,13 @@ select, textarea
 input
   &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
     display: inline-block
-    padding: 4px
     margin-bottom: 9px
-    font-size: 14px
     line-height: 21.875px
     color: #f8f9fa
 
 .uneditable-input
   display: inline-block
-  padding: 4px
   margin-bottom: 9px
-  font-size: 14px
   line-height: 21.875px
   color: #f8f9fa
 
@@ -2880,10 +2876,6 @@ div#related_articles
   box-shadow: none
   border: solid 1px #dadfe3
   padding: 20px
-
-  hr
-    margin-left: -1em
-    margin-right: -1em
 
   a
     color: $primary-color
@@ -7964,9 +7956,8 @@ li
     margin: 0
 
   hr
-    margin-top: 10px
-    margin-bottom: 10px
-    border-top: 1px solid #efefef
+    margin-top: 20px
+    margin-bottom: 20px
 
 .p-desc
   word-break: normal
@@ -8856,9 +8847,9 @@ body .redactor_air
 
 .redactor_editor
   text-align: initial
+  font-size: 0.9em
 
   p, li, div
-    line-height: 18px
     margin: 0
 
   ul, ol, blockquote
@@ -8965,32 +8956,8 @@ body .redactor_air
   background: none
   background: #fff !important
   overflow-y: auto
-  font-family: "Source Sans Pro",Helvetica,Arial,sans-serif
-  font-size: 13px
   white-space: normal
   border-radius: 0 0 5px 5px
-
-  &:focus
-    position: relative
-    outline: none
-    box-shadow: none !important
-    padding: 15px !important
-    margin: 0 !important
-    background: none
-    background: #fff !important
-    overflow-y: auto
-    font-family: "Source Sans Pro",Helvetica,Arial,sans-serif
-    font-size: 13px
-    white-space: normal
-    border-radius: 0 0 5px 5px
-
-  li
-    padding: 0px
-    float: none
-
-  &.redactor_editor_wym
-    background: #f6f6f6 !important
-    padding: 5px 15px !important
 
 .redactor_editor_wym
   div, p, ul, ol, table, dl, pre, h1, h2, h3, h4, h5, blockquote

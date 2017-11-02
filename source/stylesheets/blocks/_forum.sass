@@ -1,13 +1,16 @@
-.forum
-
-.forum__header
-  display: flex
-
 .forum__header__title
   +heading-font-family
   +font-size(beta)
   +margin-bottom(1)
-  flex: 1
 
-.forum__header__actions
-  text-align: right
++at-breakpoint(desk)
+  .forum__header
+    display: flex
+
+  .forum__header__title
+    flex: 1
+    margin-right: 40px
+
+  .forum__header__actions
+    text-align: right
+
