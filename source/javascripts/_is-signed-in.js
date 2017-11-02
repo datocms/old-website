@@ -13,6 +13,8 @@ var elementsToShow = accountEmail ?
   el.removeAttribute("style");
 });
 
-[].forEach.call(document.querySelectorAll("[role=account-email]"), function(el) {
-  el.innerText = accountEmail;
-});
+if (accountEmail) {
+  [].forEach.call(document.querySelectorAll("[role=account-email]"), function(el) {
+    el.innerText = accountEmail;
+  });
+}
