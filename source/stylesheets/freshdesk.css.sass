@@ -1124,7 +1124,6 @@ input, textarea
   *line-height: 18px
   color: #183247
   text-align: center
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75)
   vertical-align: middle
   cursor: pointer
   position: relative
@@ -1290,15 +1289,13 @@ input, textarea
   color: #183247
 
 .btn-primary, .btn-danger
-  color: #9aa1a6
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75)
+  color: white
 
   &:hover
-    color: #9aa1a6
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75)
+    color: white
 
   &.active
-    color: rgba(255, 255, 255, 0.75)
+    color: white
 
 .btn-primary
   background-color: #a15ce0
@@ -1366,21 +1363,6 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 
 button.btn.btn-primary.pull-right
   margin: 0
-
-.btn-google
-  background-color: #d34836
-  color: #fff
-  text-shadow: none
-
-.btn-facebook
-  background-color: #3b5998
-  color: #fff
-  text-shadow: none
-
-.btn-twitter
-  background-color: #24a9e6
-  color: #fff
-  text-shadow: none
 
 .btn-group
   position: relative
@@ -2897,7 +2879,7 @@ div#related_articles
   -webkit-box-shadow: none
   box-shadow: none
   border: solid 1px #dadfe3
-  padding: 10px 16px
+  padding: 20px
 
   hr
     margin-left: -1em
@@ -2916,7 +2898,6 @@ div#related_articles
   -webkit-box-shadow: none
   box-shadow: none
   border: solid 1px #dadfe3
-  padding: 10px 16px
 
 .c-list
   border-bottom: 1px solid #f3f3f3
@@ -3012,19 +2993,6 @@ hr.content-divider
       width: 46%
       margin-bottom: 10px
       float: left
-
-  .cs-g-3
-    width: 30%
-    float: left
-    margin-right: 5%
-
-    &:nth-child(3n+3)
-      width: 30%
-      float: right
-      margin-right: 0
-
-    &:nth-child(3n+1)
-      clear: left
 
 @media (max-width: 60em)
   #new_topic
@@ -7972,7 +7940,7 @@ li
     z-index: 3
 
 .user-info
-  margin-bottom: 7px
+  margin-bottom: 15px
 
   &:before
     display: table
@@ -8172,15 +8140,6 @@ li
   textarea
     float: none
 
-.user-pointer-bottom
-  &:before, &:after
-    content: ""
-    border: 8px solid transparent
-    line-height: 0
-    height: 0
-    position: absolute
-    z-index: 1
-
 .user-pointer-right
   &:before, &:after
     content: ""
@@ -8190,22 +8149,9 @@ li
     position: absolute
     z-index: 1
 
-.user-pointer-bottom:after, .user-pointer-right:after
+.user-pointer-right:after
   border-width: 7px
   z-index: 2
-
-.user-pointer-bottom
-  &:before
-    bottom: -12px
-    right: 14px
-    border-bottom-color: #ebebeb
-
-  &:after
-    bottom: -12px
-    right: 14px
-    border-bottom-color: #ebebeb
-    right: 15px
-    border-bottom-color: #fafafa
 
 .user-pointer-right
   &:before
@@ -8219,13 +8165,6 @@ li
     border-right-color: #fafafa
 
 .comment-by-agent
-  .user-pointer-bottom
-    &:before
-      border-bottom-color: $border-color
-
-    &:after
-      border-bottom-color: #fffdf8
-
   .user-pointer-right
     &:before
       border-right-color: $border-color
@@ -8917,12 +8856,21 @@ body .redactor_air
 
 .redactor_editor
   text-align: initial
-  font-size: 13px
 
   p, li, div
-    font-size: 13px
     line-height: 18px
     margin: 0
+
+  ul, ol, blockquote
+    padding-left: 30px
+
+  ul li
+    list-style-type: disc
+    margin-bottom: 5px
+
+  ol li
+    list-style-type: decimal
+    margin-bottom: 5px
 
   code, pre, p, li, div
     word-break: normal
