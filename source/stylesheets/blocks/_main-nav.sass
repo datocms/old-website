@@ -28,6 +28,18 @@
   &:hover, &.is-active
     border-bottom-color: white
 
+.main-nav__item--account
+  font-weight: normal
+  max-width: 140px
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  vertical-align: middle
+  +font-size(smallprint)
+
+  +at-breakpoint(desk)
+    max-width: 160px
+
 .main-nav__button
   display: inline-block
   background-color: $base-body-color
