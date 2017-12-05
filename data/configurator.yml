@@ -25,8 +25,8 @@ variants:
         integration_url: https://github.com/datocms/middleman-dato
       - name: Gatsby
         getting_started_url: https://github.com/gatsbyjs/gatsby
-        build_command: hexo generate
-        integration_url: https://github.com/datocms/js-datocms-client
+        build_command: gatsby build
+        integration_url: https://github.com/datocms/gatsby-source-datocms
       - name: Hexo
         getting_started_url: https://hexo.io/
         build_command: hexo generate
