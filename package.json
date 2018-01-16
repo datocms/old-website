@@ -9,6 +9,8 @@
     "gatsby-plugin-react-helmet": "^2.0.3",
     "gatsby-plugin-styled-components": "2.0.4",
     "react-helmet": "^5.2.0",
+    "react-typist": "2.0.4",
+    "react-waypoint": "8.0.0",
     "styled-components": "2.4.0",
     "styled-flex-component": "2.1.0",
     "styled-is": "1.1.0"

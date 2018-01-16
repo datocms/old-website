@@ -4,7 +4,7 @@ import is from 'styled-is'
 import Link from 'gatsby-link'
 
 export const Wrap = styled.div`
-  max-width: 1000px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 25px;
 `

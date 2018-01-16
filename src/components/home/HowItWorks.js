@@ -4,6 +4,8 @@ import Flex, { FlexItem } from 'styled-flex-component'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
 import Browser from '../../components/Browser'
+import Waypoint from 'react-waypoint'
+import Typist from 'react-typist'
 
 const ColLeft = styled(FlexItem)`
   width: 35%;
@@ -31,6 +33,8 @@ const Input = styled.div`
   border-radius: 10px;
   background: ${props => props.theme.color.smoke};
   padding: 13px;
+  height: 22px;
+  line-height: 24px;
 `
 
 const Code = styled.pre`
@@ -40,50 +44,98 @@ const Code = styled.pre`
   font-size: 14px;
 `
 
-const HowItWorks = () => (
-  <Space both={10}>
-    <Wrap>
-      <Flex alignStretch justifyBetween>
-        <ColLeft>
-          <Space bottom={2}>
-            <Title>What your editors see:</Title>
-          </Space>
-          <Browser padded>
-            <Space bottom={2}>
-              <Label>Title</Label>
-              <Input>Harry Potter</Input>
-            </Space>
-            <Space bottom={2}>
-              <Label>Description</Label>
-              <Input>A super wizard</Input>
-            </Space>
-            <Label>Image</Label>
-            <Input>Image upload</Input>
-          </Browser>
-        </ColLeft>
-        <ColRight>
-          <Space bottom={2}>
-            <Title>What developers get:</Title>
-          </Space>
-          <Browser padded inverse>
-            <Space bottom={1}>
-              <Code>► curl https://api.datocms.com/site/items/123</Code>
-            </Space>
-            <Code>
-              {
-                JSON.stringify({
-                  "title": "Harry Potter",
-                  "description": "A super wizard",
-                  "image": "https://www.datocms-assets.com/harry-potter.png"
-                }, null, 4)
-              }
-            </Code>
-          </Browser>
-        </ColRight>
-      </Flex>
-    </Wrap>
-  </Space>
-)
+class HowItWorks extends React.Component {
+  constructor(props) {
+    super(...props);
+    this.state = {
+      title: false,
+      description: false,
+      image: false,
+      json: {
+        id: '123',
+        title: '',
+        description: ''
+      }
+    };
+  }
+
+  render() {
+
+    const opts = (attr) => ({
+      startDelay: 1000,
+      avgTypingDelay: 150,
+      stdTypingDelay: 80,
+      cursor: {
+        show: true,
+        blink: true,
+        element: '|',
+        hideWhenDone: true,
+        hideWhenDoneDelay: 0,
+      },
+      onCharacterTyped: (char) => {
+        this.setState({
+          json: {
+            ...this.state.json,
+            [attr]: this.state.json[attr] + char,
+          }
+        })
+      }
+    })
+
+    return (
+      <Space both={10}>
+        <Waypoint onEnter={() => this.setState({ title: true })}>
+          <Wrap>
+            <Flex alignStretch justifyBetween>
+              <ColLeft>
+                <Space bottom={2}>
+                  <Title>What your editors see:</Title>
+                </Space>
+                <Browser padded>
+                  <Space bottom={2}>
+                    <Label>Title</Label>
+                    <Input>
+                      {
+                        this.state.title &&
+                          <Typist {...opts('title')} onTypingDone={() => this.setState({ description: true })}>
+                            Harry Potter
+                          </Typist>
+                      }
+                    </Input>
+                  </Space>
+                  <Label>Description</Label>
+                  <Input>
+                    {
+                      this.state.description &&
+                        <Typist {...opts('description')}>
+                          A super wizard
+                        </Typist>
+                    }
+                  </Input>
+                </Browser>
+              </ColLeft>
+              <ColRight>
+                <Space bottom={2}>
+                  <Title>What developers get:</Title>
+                </Space>
+                <Browser padded inverse>
+                  <Space bottom={1}>
+                    <Code>► curl https://site-api.datocms.com/items</Code>
+                  </Space>
+                  <Code>
+                    {
+                      JSON.stringify([this.state.json], null, 4)
+                    }
+                  </Code>
+                </Browser>
+              </ColRight>
+            </Flex>
+          </Wrap>
+        </Waypoint>
+      </Space>
+    );
+  }
+}
 
 export default HowItWorks
 
