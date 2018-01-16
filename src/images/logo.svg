@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="46px" viewBox="0 0 51 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>pitto</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="87.7186551%" x2="78.2762097%" y2="17.5576105%" id="linearGradient-1">
+            <stop stop-color="#FF7059" offset="0%"></stop>
+            <stop stop-color="#FF664E" offset="34.1807733%"></stop>
+            <stop stop-color="#F2543A" offset="100%"></stop>
+        </linearGradient>
+        <path d="M27.9996975,34.2623736 C21.7793605,34.2623736 16.7370214,29.2200345 16.7370214,22.9996975 C16.7370214,16.7799655 21.7793605,11.7376264 27.9996975,11.7376264 C34.2200345,11.7376264 39.2623736,16.7799655 39.2623736,22.9996975 C39.2623736,29.2200345 34.2200345,34.2623736 27.9996975,34.2623736 M27.9996975,0 L9.47784398,0 C7.00447198,0 5,2.00507701 5,4.47784398 L5,41.522156 C5,43.994923 7.00447198,46 9.47784398,46 L27.9996975,46 C40.7023504,46 51,35.7023504 51,22.9996975 C51,10.2976496 40.7023504,0 27.9996975,0" id="path-2"></path>
+        <filter x="-19.6%" y="-19.6%" width="139.1%" height="139.1%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="8.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.296733469 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="87.7186551%" x2="136.991315%" y2="-95.6850559%" id="linearGradient-4">
+            <stop stop-color="#FF7751" offset="0%"></stop>
+            <stop stop-color="#FF664E" offset="34.1807733%"></stop>
+            <stop stop-color="#F2543A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Header" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo">
+            <g>
+                <g id="pitto">
+                    <g id="Fill-1">
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    </g>
+                    <path d="M22.9996975,34.2623736 C16.7793605,34.2623736 11.7370214,29.2200345 11.7370214,22.9996975 C11.7370214,16.7799655 16.7793605,11.7376264 22.9996975,11.7376264 C29.2200345,11.7376264 34.2623736,16.7799655 34.2623736,22.9996975 C34.2623736,29.2200345 29.2200345,34.2623736 22.9996975,34.2623736 M22.9996975,0 L4.47784398,0 C2.00447198,0 0,2.00507701 0,4.47784398 L0,41.522156 C0,43.994923 2.00447198,46 4.47784398,46 L22.9996975,46 C35.7023504,46 46,35.7023504 46,22.9996975 C46,10.2976496 35.7023504,0 22.9996975,0" id="Fill-1-Copy" fill="url(#linearGradient-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
