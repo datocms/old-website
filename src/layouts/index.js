@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 
 injectGlobal`
   @import url("https://use.typekit.net/iok7hkr.css");
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -62,6 +63,12 @@ injectGlobal`
 const theme = {
   color: {
     baseBody: '#30343F',
+    lightBody: '#5B616F',
+    ultraLightBody: '#a5a5a6',
+    smoke: '#F3F3F3',
+    azure: '#00A3B0',
+    violet: '#553450',
+    darkViolet: '#422C3F',
   },
   weight: {
     normal: 'normal',
