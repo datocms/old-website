@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import is from 'styled-is'
 import Link from 'gatsby-link'
+import theme from '../utils/theme'
 
 export const Wrap = styled.div`
   max-width: 1440px;
@@ -39,7 +38,7 @@ export const Button = styled(Link)`
   text-decoration: none;
   padding: 1.1em 1.2em 1em;
   transition: opacity 200ms ease-in-out;
-  font-weight: ${props => props.theme.weight.bold};
+  font-weight: ${theme.weight.bold};
   vertical-align: middle;
   line-height: 1;
 
@@ -55,14 +54,14 @@ const CustomTag = ({ tag = 'p', children, ...otherProps }) => (
 export const Text = styled(CustomTag)`
   ${
     is('size')`
-      font-size: ${props => props.theme.size[props.size]}px;
-      line-height: ${props => props.theme.lineHeight[props.size]};
+      font-size: ${props => theme.size[props.size]}px;
+      line-height: ${props => theme.lineHeight[props.size]};
     `
   };
 
   ${
     is('weight')`
-      font-weight: ${props => props.theme.weight[props.weight]};
+      font-weight: ${props => theme.weight[props.weight]};
     `
   };
 `

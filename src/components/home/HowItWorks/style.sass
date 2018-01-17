@@ -1,0 +1,97 @@
+@import 'utils/colors'
+@import 'blocks/mixins'
+
+.HomeHowItWorks
+  display: flex
+  align-items: stretch
+  justify-content: space-between
+
+.HomeHowItWorks__col-left
+  width: 35%
+
+.HomeHowItWorks__col-right
+  width: 60%
+
+.HomeHowItWorks__title
+  text-transform: uppercase;
+  color: $light-body-color
+  +weight(bold)
+  +size(small)
+  text-align: center
+
+.HomeHowItWorks__label
+  color: $ultra-light-body-color
+  +size(small)
+  margin-bottom: 10px
+
+.HomeHowItWorks__input
+  border-radius: 10px
+  background: $smoke-color
+  padding: 13px
+  height: 22px
+  line-height: 24px
+
+.HomeHowItWorks__code
+  font-family: "Roboto Mono"
+  color: white
+  opacity: 0.6
+  font-size: 14px
+
+.HomeHowItWorks__image-upload
+  border-radius: 10px
+  background: $smoke-color
+  padding: 13px
+  height: 22px
+  line-height: 24px
+
+.HomeHowItWorks__image-upload__placeholder
+  color: $ultra-light-body-color
+  position: relative
+
+.HomeHowItWorks__image-upload__file
+  background-color: red
+  width: 100px
+  height: 120px
+  border-radius: 3px
+  position: absolute
+  animation: 1.5s ease-in-out normal forwards HomeHowItWorks__drop
+  box-shadow: 0 6px 10px rgba(black, 0.2)
+  animation-iteration-count: 1
+
+.HomeHowItWorks__image-upload__progress
+  height: 10px
+  background-color: $azure-color
+  border-radius: 5px
+  width: 0%
+  animation: 1.5s ease-in-out normal forwards HomeHowItWorks__progress
+  animation-iteration-count: 1
+  margin-top: 6px
+
+@keyframes HomeHowItWorks__drop
+  0%
+    opacity: 0
+    top: -200px
+    left: 200px
+
+  90%
+    opacity: 1
+    top: -70px
+    left: 50px
+
+  100%
+    opacity: 0
+    top: -70px
+    left: 50px
+
+@keyframes HomeHowItWorks__progress
+  0%
+    width: 0%
+    opacity: 1
+
+  90%
+    width: 100%
+    opacity: 1
+
+  100%
+    width: 100%
+    opacity: 0

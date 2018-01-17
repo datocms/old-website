@@ -1,0 +1,40 @@
+@import 'utils/colors.sass'
+
+.HomeHero
+  background: url('../../../images/first-wave.svg')
+  background-position: bottom center
+  background-size: 100% 100%
+  position: relative
+  overflow: hidden
+
+.HomeHero__browser
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translateY(-50%)
+  margin-left: 90px
+
+.HomeHero__screenshot-image
+  display: block
+  width: 50vw
+
+.HomeHero__text-container
+  width: 50%
+  height: 80vh
+  display: flex
+  align-items: center
+
+.HomeHero__or-discover
+  display: inline-block
+  vertical-align: middle
+  margin-left: 20px
+  color: $base-body-color
+  text-decoration: none
+
+  &:hover
+    text-decoration: underline
+
+  img
+    display: inline-block
+    vertical-align: middle
+    margin-left: 5px

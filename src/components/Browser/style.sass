@@ -1,0 +1,38 @@
+@import 'utils/colors.sass'
+
+.Browser
+  box-shadow: 0px 14px 25px 0 rgba(black, 0.12)
+  border-radius: 10px
+
+.Browser__title-bar
+  background: linear-gradient(244.13deg, #F3F3F3 0%, #F9F9F9 100%)
+  border-radius: 10px 10px 0 0
+  padding: 10px 25px
+
+.Browser__button
+  border-radius: 50%
+  width: 15px
+  height: 15px
+  background: #DFDFDF
+  display: inline-block
+  vertical-align: middle
+  margin-right: 10px
+
+.Browser__content
+  border-radius: 0 0 10px 10px
+  overflow: hidden
+  background: linear-gradient(180deg, #FCFCFC 0%, #FFFFFF 100%)
+
+.Browser--inverse
+  .Browser__title-bar
+    background-color: $violet-color
+
+  .Browser__title-bar__button
+    background: $azure-color
+
+  .Browser__content
+    background: $dark-violet-color
+
+.Browser--padded
+  .Browser__content
+    padding: 25px

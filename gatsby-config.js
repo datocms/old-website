@@ -1,9 +1,14 @@
+const path = require('path')
+
 module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Default Starter',
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components'
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        includePaths: [path.resolve(__dirname, "./src")]
+      }
+    },
+    'gatsby-plugin-resolve-src',
   ],
 };

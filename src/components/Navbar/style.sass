@@ -1,0 +1,33 @@
+@import 'utils/colors'
+@import 'blocks/mixins'
+
+.Navbar
+  display: flex
+  align-content: center
+  justify-content: space-between
+
+.Navbar__nav
+  display: flex
+  justify-content: space-around
+
+.Navbar__text-link
+  text-decoration: none
+  text-align: center
+  display: block
+  color: $base-body-color
+  padding: 0.8em 1.2em
+
+  &:hover
+    text-decoration: underline
+
+.Navbar__Logo
+  display: inline-block
+  vertical-align: middle
+  width: 56px
+
+.Navbar__actions
+  display: flex
+  align-content: center
+
+  .Navbar__text-link
+    margin-right: 20px

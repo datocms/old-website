@@ -1,0 +1,10 @@
+$scale: ( small: ( size: 14px, line-height: 1.4), normal: ( size: 16px, line-height: 1.4), big: ( size: 20px, line-height: 1.2), hero: ( size: 48px, line-height: 1.2) )
+
+=size($name)
+  font-size: map-get(map-get($scale, $name), size)
+  line-height: map-get(map-get($scale, $name), line-height)
+
+$weight: ( normal: normal, bold: 500)
+
+=weight($name)
+  font-weight: map-get($weight, $name)

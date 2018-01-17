@@ -1,0 +1,10 @@
+@import 'blocks/mixins'
+
+@each $name, $values in $scale
+  .text--size-#{$name}
+    +size($name)
+
+@each $name, $value in $weight
+  .text--weight-#{$name}
+    +weight($name)
+
