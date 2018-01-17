@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require('path')
 
 module.exports = {
@@ -10,5 +11,12 @@ module.exports = {
       }
     },
     'gatsby-plugin-resolve-src',
+    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: process.env.DATO_API_TOKEN,
+      },
+    }
   ],
 };

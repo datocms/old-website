@@ -37,7 +37,7 @@ const Navbar = () => (
           <Link className={b('text-link')} to="/login">
             Login
           </Link>
-          <Link className={button()} to="/register">
+          <Link className={button({ red: true })} to="/register">
             Try it free
           </Link>
         </div>

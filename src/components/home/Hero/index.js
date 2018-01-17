@@ -5,32 +5,30 @@ import './style.sass'
 import { Wrap, button, Space, text } from 'blocks'
 
 import Browser from 'components/Browser'
-import theme from 'utils/theme'
 import bem from 'utils/bem'
 
-import firstWave from 'images/first-wave.svg'
 import screenshot from 'images/screen.png'
 import arrowDown from 'images/arrow-down-dropdown.svg'
 
 const b = bem.lock('HomeHero')
 
-const HomeHero = () => (
+const HomeHero = ({ data }) => (
   <div className={b()}>
     <Wrap>
       <div className={b('text-container')}>
         <div>
           <Space bottom="2">
             <h1 className={text({ size: 'hero', weight: 'bold' })}>
-              The API-based CMS for agencies
+              {data.home.heroText}
             </h1>
           </Space>
           <Space bottom="4">
             <p className={text({ size: 'big' })}>
-              Let your clients publish new content independently. Go headless!
+              {data.home.heroDescription}
             </p>
           </Space>
           <Space bottom="2">
-            <Link className={button()}>
+            <Link className={button({ red: true })}>
               Try it free
             </Link>
             <div className={b('or-discover')}>

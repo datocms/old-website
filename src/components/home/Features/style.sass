@@ -1,0 +1,64 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.HomeFeatures__title
+  +size(hero)
+  text-align: center
+  margin-bottom: 60px
+
+.HomeFeatures__toc
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
+.HomeFeatures__toc-item
+  width: 250px
+  margin-bottom: 8px
+
+.HomeFeatures__toc-item-button
+  background-color: transparent
+  border: 0
+  font-family: "colfax-web"
+  color: $azure-color
+  text-align: left
+  padding: 8px 15px
+  +size(normal)
+  border-radius: 9px
+  cursor: pointer
+
+  &:focus
+    outline: 0
+
+  &--selected
+    background-color: $azure-color
+    color: white
+
+.HomeFeatures__feature
+  display: flex
+  justify-content: space-around
+  align-items: center
+
+.HomeFeatures__feature-image
+  width: 420px
+
+  div
+    padding-top: 130%
+    background-color: red
+
+.HomeFeatures__feature-content
+  width: 420px
+
+.HomeFeatures__feature-title
+  text-transform: uppercase
+  color: $light-body-color
+  +weight(bold)
+  +size(small)
+  margin-bottom: 20px
+
+.HomeFeatures__feature-description
+  margin-bottom: 30px
+
+  p
+    margin-bottom: 10px
+
+

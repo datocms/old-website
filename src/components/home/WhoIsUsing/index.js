@@ -5,15 +5,9 @@ import bem from 'utils/bem'
 import { wrap, button, space, text } from 'blocks'
 import './style.sass'
 
-import sidney from 'images/client-cityofsidney.png'
-import flywire from 'images/client-flywire.png'
-import hashicorp from 'images/client-hashicorp.png'
-import policyGenius from 'images/client-policygenius.png'
-import vice from 'images/client-vice.png'
-
 const b = bem.lock('HomeWhoIsUsing')
 
-const HomeWhoIsUsing = () => (
+const HomeWhoIsUsing = ({ data }) => (
   <div className={wrap()}>
     <div className={space({ both: 4 })}>
       <div className={b()}>
@@ -24,8 +18,8 @@ const HomeWhoIsUsing = () => (
         </div>
         <div className={b('items')}>
           {
-            [hashicorp, sidney, policyGenius, vice, flywire].map((img, i) => (
-              <img key={i} src={img} />
+            data.home.whosUsingDatocms.map(({ logo }, i) => (
+              <img key={i} src={logo.url} />
             ))
           }
         </div>
