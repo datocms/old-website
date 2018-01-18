@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Malarquee from 'react-malarquee'
+import Img from 'gatsby-image'
 
 import './style.sass'
 import { Wrap, button, Space, text } from 'blocks'
@@ -51,7 +51,11 @@ class HomeFeatures extends React.Component {
             </Space>
             <div className={b('feature')}>
               <div className={b('feature-image')}>
-                <div />
+                {
+                  selectedFeature.image ?
+                    <Img sizes={selectedFeature.image.sizes} /> :
+                    <div className={b('feature-image-placeholder')} />
+                }
               </div>
               <div className={b('feature-content')}>
                 <h5 className={b('feature-title')}>

@@ -53,6 +53,11 @@ query IndexPageQuery {
             html
           }
         }
+        image {
+          sizes(maxWidth: 420) {
+            ...GatsbyDatoCmsSizes
+          }
+        }
       }
     }
   }
