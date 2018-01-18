@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import './style.sass'
 import { Wrap, button, Space, text } from 'blocks'
@@ -9,6 +10,16 @@ import Browser from 'components/Browser'
 import bem from 'utils/bem'
 
 const b = bem.lock('HomeFeatures')
+
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={500}
+    classNames={b('fade')}
+  >
+    {children}
+  </CSSTransition>
+);
 
 class HomeFeatures extends React.Component {
   constructor(...args) {
@@ -49,27 +60,31 @@ class HomeFeatures extends React.Component {
                 }
               </div>
             </Space>
-            <div className={b('feature')}>
-              <div className={b('feature-image')}>
-                {
-                  selectedFeature.image ?
-                    <Img sizes={selectedFeature.image.sizes} /> :
-                    <div className={b('feature-image-placeholder')} />
-                }
-              </div>
-              <div className={b('feature-content')}>
-                <h5 className={b('feature-title')}>
-                  {selectedFeature.title}
-                </h5>
-                <div
-                  className={b('feature-description')}
-                  dangerouslySetInnerHTML={{ __html: selectedFeature.description.markdown.html }}
-                />
-                <Link to="/" className={button()}>
-                  See all features
-                </Link>
-              </div>
-            </div>
+            <TransitionGroup className={b('feature-container')}>
+              <Fade key={selectedFeature.id}>
+                <div className={b('feature')}>
+                  <div className={b('feature-image')}>
+                    {
+                      selectedFeature.image ?
+                        <Img sizes={selectedFeature.image.sizes} /> :
+                        <div className={b('feature-image-placeholder')} />
+                    }
+                  </div>
+                  <div className={b('feature-content')}>
+                    <h5 className={b('feature-title')}>
+                      {selectedFeature.title}
+                    </h5>
+                    <div
+                      className={b('feature-description')}
+                      dangerouslySetInnerHTML={{ __html: selectedFeature.description.markdown.html }}
+                    />
+                    <Link to="/" className={button()}>
+                      See all features
+                    </Link>
+                  </div>
+                </div>
+              </Fade>
+            </TransitionGroup>
           </div>
         </Wrap>
       </Space>

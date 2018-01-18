@@ -10,9 +10,9 @@ import bem from 'utils/bem'
 
 const b = bem.lock('HomeTools')
 
-const HomeHero = ({ data }) => (
+const HomeTools = ({ data }) => (
   <Space both="6">
-    <Malarquee>
+    <Malarquee rate={50}>
       {
         data.home.integrations.map(({ logo }, i) => (
           <img className={b('item')} src={logo.url} key={i} />
@@ -22,5 +22,5 @@ const HomeHero = ({ data }) => (
   </Space>
 )
 
-export default HomeHero
+export default HomeTools
 

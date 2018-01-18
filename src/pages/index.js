@@ -7,6 +7,7 @@ import WhoIsUsing from '../components/home/WhoIsUsing'
 import HowItWorks from '../components/home/HowItWorks'
 import Tools from '../components/home/Tools'
 import Features from '../components/home/Features'
+import Quotes from '../components/home/Quotes'
 
 import './index.sass'
 
@@ -21,6 +22,7 @@ const IndexPage = ({ data }) => (
       <Tools data={data} />
     </div>
     <Features data={data} />
+    <Quotes data={data} />
   </div>
 )
 
@@ -44,9 +46,10 @@ query IndexPageQuery {
       }
     }
   }
-  features: allDatoCmsFeature {
+  features: allDatoCmsFeature(sort: { fields: [position], order: ASC }) {
     edges {
       node {
+        id
         title
         description: descriptionNode {
           markdown: childMarkdownRemark {
@@ -55,6 +58,26 @@ query IndexPageQuery {
         }
         image {
           sizes(maxWidth: 420) {
+            ...GatsbyDatoCmsSizes
+          }
+        }
+      }
+    }
+  }
+  reviews: allDatoCmsReview(sort: { fields: [position], order: ASC }) {
+    edges {
+      node {
+        id
+        name
+        role
+        website
+        quote: quoteNode {
+          markdown: childMarkdownRemark {
+            html
+          }
+        }
+        image {
+          sizes(maxWidth: 55) {
             ...GatsbyDatoCmsSizes
           }
         }

@@ -8,15 +8,15 @@
 
 .HomeFeatures__toc
   display: flex
-  justify-content: space-between
+  justify-content: start
   flex-wrap: wrap
 
 .HomeFeatures__toc-item
-  width: 250px
+  width: 25%
   margin-bottom: 8px
 
 .HomeFeatures__toc-item-button
-  background-color: transparent
+  background-color: white
   border: 0
   font-family: "colfax-web"
   color: $azure-color
@@ -25,6 +25,7 @@
   +size(normal)
   border-radius: 9px
   cursor: pointer
+  transition: all 250ms ease-in-out
 
   &:focus
     outline: 0
@@ -53,7 +54,6 @@
   text-transform: uppercase
   color: $light-body-color
   +weight(bold)
-  +size(small)
   margin-bottom: 20px
 
 .HomeFeatures__feature-description
@@ -65,4 +65,32 @@
   a
     color: $azure-color
 
+  strong
+    +weight(bold)
 
+.HomeFeatures__feature-container
+  position: relative
+
+.HomeFeatures__fade-enter
+  opacity: 0
+  transform: translateY(-50px)
+  transition: all 250ms ease-in-out
+  transition-delay: 250ms
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+.HomeFeatures__fade-enter-active
+  opacity: 1
+  transform: translateY(0px)
+
+.HomeFeatures__fade-exit
+  opacity: 1
+  transition: all 250ms ease-in-out
+  transform: translateY(0px)
+
+.HomeFeatures__fade-exit-active
+  opacity: 0
+  transform: translateY(50px)

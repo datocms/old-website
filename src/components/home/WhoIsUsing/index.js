@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import bem from 'utils/bem'
+import Zoom from 'react-reveal/Zoom'
 
 import { wrap, button, space, text } from 'blocks'
 import './style.sass'
@@ -19,7 +20,9 @@ const HomeWhoIsUsing = ({ data }) => (
         <div className={b('items')}>
           {
             data.home.whosUsingDatocms.map(({ logo }, i) => (
-              <img key={i} src={logo.url} />
+              <Zoom delay={200 * i} key={i}>
+                <img src={logo.url} />
+              </Zoom>
             ))
           }
         </div>
