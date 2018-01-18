@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Navbar from '../components/Navbar'
+import CallToAction from '../components/CallToAction'
+import Footer from '../components/Footer'
 
 import './style.sass'
 
@@ -10,6 +12,8 @@ const TemplateWrapper = ({ children }) => (
     <Helmet title="DatoCMS" />
       <Navbar />
       {children()}
+      <CallToAction />
+      <Footer />
   </div>
 )
 
