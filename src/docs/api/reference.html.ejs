@@ -1,0 +1,66 @@
+---
+layout: api.ejs
+title: HTTP API Reference
+path: /api/reference.html
+---
+
+<div class="api">
+  <section class="api__intro">
+    <h1 class="api__intro__title">DatoCMS JSON Schema Documentation</h1>
+
+    <div class="api__intro__body">
+      This documentation is generated from the <a href="https://site-api.datocms.com/docs/site-api-hyperschema.json">DatoCMS JSON Schema</a>. The site schema is available as <a href="https://site-api.datocms.com/docs/site-api-documentation.html" >HTML</a> and <a href="https://site-api.datocms.com/docs/site-api-hyperschema.json" >JSON</a>.
+    </div>
+  </section>
+
+  <div class="api__block">
+    <div class="api__block__left">
+      <h4 class="api__block__left__title">Authentication</h4>
+      <p>To authenticate with the API, add an <code>Authorization</code> HTTP header to your requests with your API key as the value. You can find and generate new API keys in the <em>Admin area > API tokens</em> section.</p>
+    </div>
+    <div class="api__block__right">
+      <div class="api__block__right__code">
+        <p class="api__block__right__code__title">Example request:</p>
+        <pre>
+          <code class="hljs">curl 'https://site-api.datocms.com/site' \
+-H 'Authorization: Bearer YOUR-API-KEY' \
+-H 'Accept: application/json'</code>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <% Object.entries(apiSchema.properties).sort((a, b) => a[1].position - b[1].position).forEach(([resource, schema]) => { %>
+    <% links = schema.links.filter(l => !l.private) %>
+    <% if (links.length > 0) { %>
+      <a id="<%= resource %>"></a>
+      <% links.forEach((link) => { %>
+        <div class="api__block">
+          <div class="api__block__left">
+            <h4 class="api__block__left__title">
+              <%= apiSchema.properties[resource].title %>: <%= link.title %>
+            </h4>
+            <div>
+              <%= link.description %>
+            </div>
+          </div>
+          <div class="api__block__right">
+            <div class="api__block__right__code">
+              <p class="api__block__right__code__title">Example request:</p>
+              <%= link.method %> https://site-api.datocms.com<%= parser.correctUrl(link.href) %>
+              <% if (link.schema) { %>
+                <%- highlight(JSON.stringify(parser.exampleFor(link.schema), null, 2), 'javascript') %>
+              <% } %>
+            </div>
+            <% if (link.targetSchema) { %>
+              <div class="api__block__right__code">
+                <p class="api__block__right__code__title">Example response:</p>
+                <%- highlight(JSON.stringify(parser.exampleFor(link.targetSchema), null, 2), 'javascript') %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  <% }) %>
+</div>

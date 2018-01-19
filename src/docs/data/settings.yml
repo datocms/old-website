@@ -1,0 +1,23 @@
+categories:
+  - id: overview
+    title: Overview
+  - id: schema
+    title: Building the admin area
+  - id: jekyll
+    title: Integrating with Jekyll
+  - id: gatsby
+    title: Integrating with Gatsby
+  - id: hugo
+    title: Integrating with Hugo
+  - id: middleman
+    title: Integrating with Middleman
+  - id: metalsmith
+    title: Integrating with Metalsmith
+  - id: other
+    title: Integrating with other generators
+  - id: deploy
+    title: Deploy your website
+  - id: search
+    title: DatoCMS Site Search (beta)
+  - id: api-client
+    title: API Clients

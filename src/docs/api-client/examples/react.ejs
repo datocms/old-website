@@ -1,0 +1,130 @@
+---
+layout: js_example.ejs
+title: React
+---
+
+<div id="app"></div>
+
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script src="https://npmcdn.com/datocms-client@0.3.37/dist/client.shims.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+<script type="text/babel">
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true, selectedSeasonId: null };
+  }
+
+  componentWillMount() {
+    const client = new Dato.SiteClient('1787efad8c2b7d47c0218a6b6a035730281ea10c2d3a10f083');
+
+  Promise.all([
+    client.items.all({ 'filter[type]': 'episode', 'page[limit]': 300 }),
+    client.items.all({ 'filter[type]': 'season' })
+  ])
+    .then(([episodes, seasons]) => {
+      this.setState({ episodes, seasons, loading: false });
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+  }
+
+  handleSeasonSelect(season, e) {
+    e.preventDefault();
+    this.setState({ selectedSeasonId: season.id });
+  }
+
+  renderSeason(season) {
+    return (
+      <li
+        role="presentation"
+        key={season.id}
+        className={this.state.selectedSeasonId == season.id ? "active" : ""}
+      >
+        <a href="#" onClick={this.handleSeasonSelect.bind(this, season)}>
+          {season.name}
+        </a>
+      </li>
+    );
+  }
+
+  renderSeasons() {
+    return (
+      <ul className="nav nav-pills nav-stacked">
+        {this.state.seasons.map(this.renderSeason, this)}
+      </ul>
+    );
+  }
+
+  renderEpisode(episode) {
+    return (
+      <div key={episode.id} className="media">
+        <div className="media-left">
+          {
+            episode.image &&
+              <img
+                src={new Dato.Image(episode.image).url({ w: 300 })}
+                width="150"
+              />
+          }
+        </div>
+        <div className="media-body">
+          <h4 className="media-heading">{episode.title}</h4>
+          <p>{episode.description}</p>
+        </div>
+      </div>
+    );
+  }
+
+  renderEpisodes() {
+    const episodes = this.state.episodes
+      .filter(episode => episode.season === this.state.selectedSeasonId)
+      .sort((a, b) => a.episodeNumber - b.episodeNumber);
+
+    return (
+      <div className="row">
+        {episodes.map(this.renderEpisode, this)}
+      </div>
+    );
+  }
+
+  renderApp() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-3">
+            <h4>Seasons</h4>
+            {this.renderSeasons()}
+          </div>
+          <div className="col-xs-9">
+            {
+              this.state.selectedSeasonId ?
+                this.renderEpisodes() :
+                <p>No season selected!</p>
+            }
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div style={{ margin: "30px 0"}}>
+        {
+          this.state.loading ?
+            <p>Loading...</p> :
+            this.renderApp()
+        }
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("app"));
+</script>
+
