@@ -18,8 +18,16 @@ const settings = {
   slidesToShow: 3,
   slidesToScroll: 1,
   centerMode: true,
-  centerPadding: '250px',
-  infinite: true
+  centerPadding: '100px',
+  infinite: true,
+  responsive: [
+    {
+      breakpoint: 1300,
+      settings: {
+        centerPadding: '250px',
+      }
+    }
+  ]
 };
 
 const HomeQuotes = ({ data }) => (

@@ -28,7 +28,7 @@ const HomeHero = ({ data }) => (
             </p>
           </Space>
           <Space bottom="2">
-            <Link className={button({ red: true })}>
+            <Link to="https://dashboard.datocms.com/register" className={button({ red: true })}>
               Try it free
             </Link>
             <div className={b('or-discover')}>

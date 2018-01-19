@@ -28,11 +28,11 @@ const Navbar = () => (
   <Space both={3}>
     <Wrap>
       <div className={b()}>
-        <Link className={b('logo-container')} to="/">
+        <div>
           <Link className={b('logo')} to="/">
             <img src={logo} alt="DatoCMS" />
           </Link>
-        </Link>
+        </div>
         <div className={b('nav')}>
           <ActiveLink to="/features">
             Features
