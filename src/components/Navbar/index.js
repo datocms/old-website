@@ -9,6 +9,13 @@ import logo from 'images/logo.svg'
 
 const b = bem.lock('Navbar')
 
+const ActiveLink = (props) => (
+  <Link
+    className={b('text-link')}
+    {...({ ...props, activeClassName: b('text-link', { active: true }) })}
+  />
+)
+
 const Navbar = () => (
   <Space both={3}>
     <Wrap>
@@ -17,21 +24,21 @@ const Navbar = () => (
           <img src={logo} alt="DatoCMS" />
         </Link>
         <div className={b('nav')}>
-          <Link className={b('text-link')} to="/features">
+          <ActiveLink to="/features">
             Features
-          </Link>
-          <Link className={b('text-link')} to="/use-cases">
+          </ActiveLink>
+          <ActiveLink to="/use-cases">
             Use cases
-          </Link>
-          <Link className={b('text-link')} to="/pricing">
+          </ActiveLink>
+          <ActiveLink to="/pricing">
             Pricing
-          </Link>
-          <Link className={b('text-link')} to="/learn">
+          </ActiveLink>
+          <ActiveLink to="/learn">
             Learn
-          </Link>
-          <Link className={b('text-link')} to="/support">
+          </ActiveLink>
+          <ActiveLink to="/support">
             Support
-          </Link>
+          </ActiveLink>
         </div>
         <div className={b('actions')}>
           <Link className={b('text-link')} to="/login">

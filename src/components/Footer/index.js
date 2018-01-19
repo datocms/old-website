@@ -35,7 +35,7 @@ const Footer = ({ data }) => (
           <img src={logo} alt="DatoCMS" />
         </Link>
         <Group title="DatoCMS">
-          <GroupLink to="/" label="Features" />
+          <GroupLink to="/features" label="Features" />
           <GroupLink to="/" label="Use Cases" />
           <GroupLink to="/" label="Pricing" />
         </Group>

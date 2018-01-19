@@ -1,31 +1,39 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
 
-.HomeFeatures__title
+.FeaturesPage__title
   +size(hero)
   text-align: center
   margin-bottom: 60px
 
-.HomeFeatures__toc
-  display: flex
-  justify-content: start
-  flex-wrap: wrap
+.FeaturesPage__content
+  position: relative
 
-.HomeFeatures__toc-item
-  width: 25%
-  margin-bottom: 8px
+@media screen and (max-width: 1500px)
+  .FeaturesPage__toc
+    display: none
 
-.HomeFeatures__toc-item-button
+@media screen and (min-width: 1501px)
+  .FeaturesPage__toc
+    position: absolute
+    left: 25px
+
+  .FeaturesPage__toc-item
+    margin-bottom: 5px
+    +size(small)
+
+.FeaturesPage__toc-item-button
   background-color: white
   border: 0
   font-family: "colfax-web"
   color: $azure-color
   text-align: left
   padding: 8px 15px
-  +size(normal)
   border-radius: 9px
   cursor: pointer
   transition: all 250ms ease-in-out
+  text-decoration: none
+  display: inline-block
 
   &:focus
     outline: 0
@@ -37,31 +45,38 @@
     background-color: $azure-color !important
     color: white !important
 
-.HomeFeatures__feature
+
+
+.FeaturesPage__feature
   display: flex
   justify-content: center
   align-items: center
 
-.HomeFeatures__feature-image
+.FeaturesPage__feature--odd
+  flex-direction: row-reverse
+
+  .FeaturesPage__feature-content
+    margin-left: 0px
+    margin-right: 80px
+
+.FeaturesPage__feature-image
   width: 420px
 
-.HomeFeatures__feature-image-placeholder
+.FeaturesPage__feature-image-placeholder
   padding-top: 130%
   background-color: red
 
-.HomeFeatures__feature-content
+.FeaturesPage__feature-content
   width: 420px
   margin-left: 80px
 
-.HomeFeatures__feature-title
+.FeaturesPage__feature-title
   text-transform: uppercase
   color: $light-body-color
   +weight(bold)
   margin-bottom: 20px
 
-.HomeFeatures__feature-description
-  margin-bottom: 30px
-
+.FeaturesPage__feature-description
   p
     margin-bottom: 10px
 
@@ -71,10 +86,10 @@
   strong
     +weight(bold)
 
-.HomeFeatures__feature-container
+.FeaturesPage__feature-container
   position: relative
 
-.HomeFeatures__fade-enter
+.FeaturesPage__fade-enter
   opacity: 0
   transform: translateY(-50px)
   transition: all 250ms ease-in-out
@@ -85,15 +100,16 @@
   right: 0
   bottom: 0
 
-.HomeFeatures__fade-enter-active
+.FeaturesPage__fade-enter-active
   opacity: 1
   transform: translateY(0px)
 
-.HomeFeatures__fade-exit
+.FeaturesPage__fade-exit
   opacity: 1
   transition: all 250ms ease-in-out
   transform: translateY(0px)
 
-.HomeFeatures__fade-exit-active
+.FeaturesPage__fade-exit-active
   opacity: 0
   transform: translateY(50px)
+
