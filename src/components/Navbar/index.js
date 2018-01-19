@@ -43,7 +43,7 @@ const Navbar = () => (
           <ActiveLink to="/pricing">
             Pricing
           </ActiveLink>
-          <ActiveLink to="/learn">
+          <ActiveLink to="/docs">
             Learn
           </ActiveLink>
           <div className={b('text-link', { handle: true })}>

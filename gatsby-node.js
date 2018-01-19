@@ -28,7 +28,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
       pages.forEach((page) => {
         const { path, frontmatter: { copyFrom, category } } = page
-        const url = path.replace(`${__dirname}/src`, '').replace(/\.md$/, '')
+        const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
 
         const contentPath = copyFrom ?
           p.join(__dirname, 'src', 'docs', copyFrom) :
