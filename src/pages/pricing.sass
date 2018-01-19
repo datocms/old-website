@@ -1,0 +1,182 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.PricingPage__title
+  +size(hero)
+  text-align: center
+  margin-bottom: 60px
+
+.PricingPage__recap
+  display: flex
+  margin: 0 -10px
+
+.PricingPage__recap-item
+  border: 1px solid $border-color
+  border-radius: 3px
+  text-align: center
+  margin: 0 10px
+  flex: 1
+
+.PricingPage__recap-item-plan-name
+  text-transform: uppercase
+  +size(small)
+  +weight(bold)
+  margin-bottom: 10px
+  color: $light-body-color
+  margin: 34px 20px 20px
+
+.PricingPage__recap-item-for
+  margin: 20px 20px 30px
+  height: 3em
+
+.PricingPage__recap-item-price
+  height: 105px
+  padding-bottom: 15px
+  position: relative
+
+.PricingPage__recap-item-price-free
+  color: $light-body-color
+  +weight(bold)
+  +size(bigger)
+  position: absolute
+  top: 20%
+  left: 20px
+  right: 20px
+
+.PricingPage__recap-item-price-amount
+  +size(hero)
+  line-height: 1
+  margin: 0 20px
+
+.PricingPage__recap-item-price-period
+  line-height: 1
+  margin: 0 20px 25px
+
+.PricingPage__recap-item-price-prorated
+  text-transform: uppercase
+  +size(smaller)
+  +weight(bold)
+  margin-bottom: 10px
+  color: $ultra-light-body-color
+  margin: 25px 20px 0px
+
+.PricingPage__recap-item-specs
+  position: relative
+
+.PricingPage__recap-item-spec
+  padding: 10px 20px 8px
+  line-height: 1
+  border-bottom: 1px solid $border-color
+
+  &:last-child
+    border-bottom: 0
+
+.PricingPage__recap-item-everything
+  padding: 10px 20px 8px
+  line-height: 1
+  border-bottom: 1px solid $border-color
+  border-top: 1px solid $border-color
+  position: absolute
+  top: 50%
+  left: 0
+  right: 0
+  transform: translateY(-50%)
+
+.PricingPage__recap-item-specs
+  height: 105px
+
+.PricingPage__recap-item-cta
+  display: block
+  background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
+  border-radius: 10px
+  color: white
+  text-decoration: none
+  padding: .8em 1.2em .7em
+  transition: opacity 200ms ease-in-out
+  font-weight: 500
+  vertical-align: middle
+  line-height: 1
+  margin: 20px
+
+  &:hover
+    opacity: 0.8
+
+.PricingPage__reassurance
+  padding: 90px
+  text-align: center
+  color: $light-body-color
+  +size(bigger)
+  +weight(bold)
+
+.PricingPage__details
+  width: 100%
+  border-top: 1px solid $border-color
+  border-left: 1px solid $border-color
+  table-layout: fixed
+
+  td
+    border-bottom: 1px solid $border-color
+    border-right: 1px solid $border-color
+    vertical-align: middle
+
+.PricingPage__details-header-cell
+  width: 27%
+
+.PricingPage__details-header
+  padding: 33px
+  display: flex
+  align-items: center
+  justify-content: center
+
+.PricingPage__details-price
+  text-align: center
+  height: 150px
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+
+.PricingPage__details-price-free
+  color: $light-body-color
+  +weight(bold)
+  +size(big)
+
+.PricingPage__details-header-title
+  color: $light-body-color
+  +weight(bold)
+  +size(big)
+  margin-bottom: 30px
+
+.PricingPage__details-plan-name
+  text-align: center
+  padding: 35px 20px
+  text-transform: uppercase
+  +size(small)
+  +weight(bold)
+  color: $light-body-color
+  width: 18%
+
+.PricingPage__details-feature-name
+  padding: 10px 33px
+  color: $light-body-color
+
+.PricingPage__details-feature-value
+  text-align: center
+  padding: 10px 20px
+
+.PricingPage__details-price-amount
+  +size(bigger)
+  line-height: 1
+  margin: 0 20px
+
+.PricingPage__details-price-period
+  line-height: 1
+  margin-bottom: 25px
+  +size(small)
+
+.PricingPage__details-price-prorated
+  text-transform: uppercase
+  +size(smaller)
+  +weight(bold)
+  color: $ultra-light-body-color
+  margin-top: 25px
