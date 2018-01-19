@@ -34,6 +34,20 @@ const PageLink = ({ to, children }) => (
   </Link>
 )
 
+const findTitle = (page, pages) => {
+  if (page.frontmatter.title) {
+    return page.frontmatter.title
+  }
+
+  const contentPage = pages.find(p => p.path.includes(page.frontmatter.copyFrom))
+
+  if (contentPage) {
+    return contentPage.frontmatter.title
+  }
+
+  return ''
+}
+
 export default class DocPage extends React.Component {
   render() {
     const { page } = this.props.data
@@ -64,10 +78,7 @@ export default class DocPage extends React.Component {
                               categoryPages.map(page => (
                                 <li key={page.path} className={b('menu-page')}>
                                   <PageLink to={page}>
-                                    {
-                                      page.frontmatter.title ||
-                                        pages.find(p => p.path.includes(page.frontmatter.copyFrom)).frontmatter.title
-                                    }
+                                    {findTitle(page, pages)}
                                   </PageLink>
                                 </li>
                               ))
@@ -82,10 +93,7 @@ export default class DocPage extends React.Component {
             <div className={b('content')}>
               <Space bottom={3}>
                 <h1 className={text({ size: 'hero' })}>
-                  {
-                    page.frontmatter.title ||
-                      pages.find(p => p.path.includes(page.frontmatter.copyFrom)).frontmatter.title
-                  }
+                  {findTitle(page, pages)}
                 </h1>
               </Space>
               <div dangerouslySetInnerHTML={{ __html: page.html }} />
