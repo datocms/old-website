@@ -5,10 +5,12 @@
   display: flex
   align-content: center
   justify-content: space-between
+  position: relative
 
 .Navbar__nav
   display: flex
-  justify-content: space-around
+  flex: 1
+  justify-content: center
 
 .Navbar__text-link
   text-decoration: none
@@ -16,17 +18,53 @@
   display: block
   color: $base-body-color
   padding: 0.8em 1.2em
+  position: relative
 
-  &:hover
-    text-decoration: underline
+a.Navbar__text-link:hover
+  text-decoration: underline
 
 .Navbar__text-link--active
   color: $azure-color
 
-.Navbar__Logo
-  display: inline-block
-  vertical-align: middle
-  width: 56px
+.Navbar__text-link--handle
+  &:hover .Navbar__menu
+    display: block
+
+  span:after
+    content: ''
+    background-image: url('../../images/arrow-down-dropdown.svg')
+    width: 15px
+    height: 15px
+    margin-left: 2px
+    background-position: center center
+    background-repeat: no-repeat
+    display: inline-block
+    vertical-align: middle
+
+.Navbar__menu
+  position: absolute
+  top: 100%
+  left: 50%
+  margin-left: -85px
+  background-color: white
+  box-shadow: 0 2px 4px 0 rgba(black, 0.1)
+  margin-top: -20px
+  padding: 12px
+  width: 180px
+  box-sizing: border-box
+  display: none
+
+.Navbar__menu-item
+  display: block
+  text-decoration: none
+  padding: 8px
+
+  &:hover
+    text-decoration: underline
+
+.Navbar__logo-container,
+.Navbar__actions
+  width: 280px
 
 .Navbar__actions
   display: flex

@@ -16,12 +16,22 @@ const ActiveLink = (props) => (
   />
 )
 
+const ActiveMenuLink = (props) => (
+  <a
+    className={b('menu-item')}
+    href={props.to}
+    children={props.children}
+  />
+)
+
 const Navbar = () => (
   <Space both={3}>
     <Wrap>
       <div className={b()}>
-        <Link className={b('logo')} to="/">
-          <img src={logo} alt="DatoCMS" />
+        <Link className={b('logo-container')} to="/">
+          <Link className={b('logo')} to="/">
+            <img src={logo} alt="DatoCMS" />
+          </Link>
         </Link>
         <div className={b('nav')}>
           <ActiveLink to="/features">
@@ -36,17 +46,28 @@ const Navbar = () => (
           <ActiveLink to="/learn">
             Learn
           </ActiveLink>
-          <ActiveLink to="/support">
-            Support
-          </ActiveLink>
+          <div className={b('text-link', { handle: true })}>
+            <span>Support</span>
+            <div className={b('menu')}>
+              <ActiveMenuLink to="http://support.datocms.com/support/tickets/new">
+                Ticket Center
+              </ActiveMenuLink>
+              <ActiveMenuLink to="http://support.datocms.com/support/discussions/forums/35000119870">
+                Feature Requests
+              </ActiveMenuLink>
+              <ActiveMenuLink to="http://slack.datocms.com/">
+                Slack Community
+              </ActiveMenuLink>
+            </div>
+          </div>
         </div>
         <div className={b('actions')}>
-          <Link className={b('text-link')} to="/login">
+          <a className={b('text-link')} href="https://dashboard.datocms.com/sign_in">
             Login
-          </Link>
-          <Link className={button({ red: true })} to="/register">
+          </a>
+          <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
             Try it free
-          </Link>
+          </a>
         </div>
       </div>
     </Wrap>

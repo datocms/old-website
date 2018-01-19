@@ -48,9 +48,12 @@ class PricingPage extends React.Component {
                     100 records
                   </div>
                 </div>
-                <div className={b('recap-item-cta')}>
+                <a
+                  className={b('recap-item-cta')}
+                  href="https://dashboard.datocms.com/register"
+                >
                   Sign up
-                </div>
+                </a>
               </div>
 
               <div className={b('recap-item')}>
@@ -82,9 +85,12 @@ class PricingPage extends React.Component {
                     500 records
                   </div>
                 </div>
-                <div className={b('recap-item-cta')}>
+                <a
+                  className={b('recap-item-cta')}
+                  href="https://dashboard.datocms.com/register"
+                >
                   Sign up
-                </div>
+                </a>
               </div>
 
               <div className={b('recap-item')}>
@@ -116,9 +122,12 @@ class PricingPage extends React.Component {
                     2.000 records
                   </div>
                 </div>
-                <div className={b('recap-item-cta')}>
+                <a
+                  className={b('recap-item-cta')}
+                  href="https://dashboard.datocms.com/register"
+                >
                   Sign up
-                </div>
+                </a>
               </div>
 
               <div className={b('recap-item')}>
@@ -150,9 +159,12 @@ class PricingPage extends React.Component {
                     Unlimited records
                   </div>
                 </div>
-                <div className={b('recap-item-cta')}>
+                <a
+                  className={b('recap-item-cta')}
+                  href="https://dashboard.datocms.com/register"
+                >
                   Sign up
-                </div>
+                </a>
               </div>
 
               <div className={b('recap-item')}>
@@ -172,9 +184,9 @@ class PricingPage extends React.Component {
                     Everything
                   </div>
                 </div>
-                <div className={b('recap-item-cta')}>
+                <a href="mailto:support@datocms.com" className={b('recap-item-cta')}>
                   Get in touch
-                </div>
+                </a>
               </div>
 
             </div>
@@ -403,7 +415,7 @@ class PricingPage extends React.Component {
                   Custom admin domain
                 </td>
                 <td className={b('details-feature-value')}>
-                  
+
                 </td>
                 <td className={b('details-feature-value')}>
                   <img src={check} alt="Available feature" />
@@ -423,7 +435,7 @@ class PricingPage extends React.Component {
                   Revision history
                 </td>
                 <td className={b('details-feature-value')}>
-                  
+
                 </td>
                 <td className={b('details-feature-value')}>
                   <img src={check} alt="Available feature" />
@@ -520,6 +532,50 @@ class PricingPage extends React.Component {
                 </td>
                 <td className={b('details-feature-value')}>
                   <img src={check} alt="Available feature" />
+                </td>
+              </tr>
+              <tr>
+                <td className={b('details-feature-name')}>
+                </td>
+                <td>
+                  <a
+                    className={b('details-cta')}
+                    href="https://dashboard.datocms.com/register"
+                  >
+                    Sign up
+                  </a>
+                </td>
+                <td>
+                  <a
+                    className={b('details-cta')}
+                    href="https://dashboard.datocms.com/register"
+                  >
+                    Sign up
+                  </a>
+                </td>
+                <td>
+                  <a
+                    className={b('details-cta')}
+                    href="https://dashboard.datocms.com/register"
+                  >
+                    Sign up
+                  </a>
+                </td>
+                <td>
+                  <a
+                    className={b('details-cta')}
+                    href="https://dashboard.datocms.com/register"
+                  >
+                    Sign up
+                  </a>
+                </td>
+                <td>
+                  <a
+                    className={b('details-cta')}
+                    href="mailto:support@datocms.com"
+                  >
+                    Get in touch
+                  </a>
                 </td>
               </tr>
             </table>
