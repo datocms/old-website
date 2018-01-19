@@ -8,6 +8,7 @@ import { Wrap, button, Space, text } from 'blocks'
 import Features from '../components/home/Features'
 
 import './pricing.sass'
+import check from 'images/check.svg'
 
 const b = bem.lock('PricingPage')
 
@@ -405,16 +406,16 @@ class PricingPage extends React.Component {
                   
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
               <tr>
@@ -425,16 +426,16 @@ class PricingPage extends React.Component {
                   
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
               <tr>
@@ -446,13 +447,13 @@ class PricingPage extends React.Component {
                 <td className={b('details-feature-value')}>
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
               <tr>
@@ -466,10 +467,10 @@ class PricingPage extends React.Component {
                 <td className={b('details-feature-value')}>
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
               <tr>
@@ -483,10 +484,10 @@ class PricingPage extends React.Component {
                 <td className={b('details-feature-value')}>
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
               <tr>
@@ -502,7 +503,7 @@ class PricingPage extends React.Component {
                 <td className={b('details-feature-value')}>
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
               <tr>
@@ -518,7 +519,7 @@ class PricingPage extends React.Component {
                 <td className={b('details-feature-value')}>
                 </td>
                 <td className={b('details-feature-value')}>
-                  Yes
+                  <img src={check} alt="Available feature" />
                 </td>
               </tr>
             </table>

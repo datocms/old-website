@@ -22,9 +22,14 @@ const Group = ({ title, children }) => (
 )
 
 const GroupLink = ({ to, label }) => (
-  <Link to={to} className={b('group-link')}>
-    {label}
-  </Link>
+  to.includes('http') ?
+    <a href={to} target="_blank" className={b('group-link')}>
+      {label}
+    </a>
+    :
+    <Link to={to} className={b('group-link')}>
+      {label}
+    </Link>
 )
 
 const Footer = ({ data }) => (
@@ -36,8 +41,8 @@ const Footer = ({ data }) => (
         </Link>
         <Group title="DatoCMS">
           <GroupLink to="/features" label="Features" />
-          <GroupLink to="/" label="Use Cases" />
-          <GroupLink to="/" label="Pricing" />
+          <GroupLink to="/use-cases" label="Use Cases" />
+          <GroupLink to="/pricing" label="Pricing" />
         </Group>
         <Group title="Learn">
           <GroupLink to="/" label="Quick Start" />
@@ -45,9 +50,9 @@ const Footer = ({ data }) => (
           <GroupLink to="/" label="Guides" />
         </Group>
         <Group title="Support">
-          <GroupLink to="/" label="Ticket Center" />
-          <GroupLink to="/" label="Feature Requests" />
-          <GroupLink to="/" label="Slack Community" />
+          <GroupLink to="http://support.datocms.com/support/tickets/new" label="Ticket Center" />
+          <GroupLink to="http://support.datocms.com/support/discussions/forums/35000119870" label="Feature Requests" />
+          <GroupLink to="http://slack.datocms.com/" label="Slack Community" />
         </Group>
         <Group title="About">
           <GroupLink to="/" label="Team" />
