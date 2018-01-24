@@ -6,3 +6,36 @@
   text-align: center
   margin-bottom: 60px
 
+.UseCasesPage__website
+  text-decoration: none
+  display: block
+  margin-bottom: 90px
+
+$gutter: 5%
+
+.UseCasesPage__gutter-sizer
+  width: $gutter
+
+.UseCasesPage__grid-sizer,
+.UseCasesPage__website,
+.UseCasesPage__website--type-0
+  width: (100% - 3 * $gutter) / 4
+
+.UseCasesPage__website--type-1
+  width: (100% - 3 * $gutter) / 4 * 2 + $gutter
+
+.UseCasesPage__website-name
+  display: block
+
+.UseCasesPage__screen
+  height: 600px
+  overflow: hidden
+  background-position: center top
+  background-size: cover
+  transition: all 3s ease-in-out
+
+  &:hover
+    background-position: center bottom
+
+.UseCasesPage__website-name
+  display: none

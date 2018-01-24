@@ -1,4 +1,5 @@
 @import 'utils/colors.sass'
+@import 'blocks/mixins'
 
 .Browser
   box-shadow: 0px 14px 25px 0 rgba(black, 0.12)
@@ -36,3 +37,29 @@
 .Browser--padded
   .Browser__content
     padding: 25px
+
+.Browser--small
+  .Browser__title-bar
+    padding: 8px 20px
+
+  .Browser__button
+    border-radius: 50%
+    width: 10px
+    height: 10px
+    margin-right: 5px
+
+.Browser__address
+  padding: 10px 20px
+  background-color: white
+  +size(small)
+  border-bottom: 1px solid $border-color
+  color: $light-body-color
+
+.Browser__title
+  display: inline-block
+  vertical-align: middle
+  +size(small)
+  margin-left: 10px
+  color: $light-body-color
+  +weight(bold)
+
