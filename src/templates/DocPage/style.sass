@@ -52,6 +52,8 @@
 .DocPage__content
   flex: 1
   margin-left: 80px
+  max-width: 100%
+  overflow-x: auto
 
 .DocPage__content-body
   font-size: 18px
@@ -91,6 +93,9 @@
       text-transform: uppercase
       font-size: 15px
       margin-bottom: 8px
+
+  i, em
+    font-style: italic
 
   a
     color: $red-color
@@ -152,7 +157,7 @@
   code
     font-family: "Source Code Pro", Menlo, monospace
     background-color: $smoke-color
-    padding: 0.3em 0.3em 0.2em 0.3em
+    padding: 0.2em 0.3em 0.1em 0.3em
     border: 1px $border-color
     border-radius: 3px
 
@@ -165,44 +170,6 @@
     width: 110%
     border-radius: 4px
     box-shadow: 0 2px 3px rgba(black, 0.2)
-
-  .small img
-    margin-left: auto
-    margin-right: auto
-    width: 100%
-
-  .smaller img
-    margin-left: auto
-    margin-right: auto
-    width: 80%
-
-  .two
-    margin: 80px
-    margin-left: 0
-    margin-right: 0
-    width: 100%
-    display: flex
-    align-items: center
-    align-content: space-between
-
-    &:after
-      content: ""
-      display: table
-      clear: both
-
-    div
-      margin: 0
-      flex: 1
-
-      &:first-child
-        margin-right: 30px
-        position: relative
-        z-index: 2
-        transform: scale(1.2)
-
-    img
-      margin: 0
-      width: 100%
 
   table
     margin-top: 50px

@@ -66,8 +66,7 @@ If the record doesn't have a *SEO meta tags* field, the method tries to guess re
 
 Your page title will be composed concatenating the title of the record together with the *Title suffix* setting. If the total length of the title exceeds 60 characters, the suffix will be omitted.
 
-
-```erb
+```html
 <html>
   <head>
     <!-- ... -->
@@ -147,7 +146,7 @@ faviconMetaTags:
 
 In you Metalsmith templates, you can generate proper HTML tags from this structure like this:
 
-```erb
+```html
 <html>
   <head>
     <!-- ... -->

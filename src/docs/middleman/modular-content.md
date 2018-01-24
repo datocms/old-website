@@ -14,7 +14,7 @@ Suppose a `blog_post` model has a modular-content field called `content`, which 
 
 A modular-content field works much like a [*multiple links* field](/docs/middleman/links), as it returns the array of inner records. In your Middleman templates, to present a modular-content field, you can do something like this:
 
-```erb
+```html
 <article>
   <header>
     <h1><%= blog_post.title %></h1>

@@ -8,6 +8,7 @@ import HowItWorks from '../components/home/HowItWorks'
 import Tools from '../components/home/Tools'
 import Features from '../components/home/Features'
 import Quotes from '../components/home/Quotes'
+import CallToAction from '../components/CallToAction'
 
 import './index.sass'
 

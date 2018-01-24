@@ -52,6 +52,7 @@ export default class DocPage extends React.Component {
   render() {
     const { page } = this.props.data
     const pages = this.props.data.pages.edges.map(edge => edge.node);
+    const category = categories.find(c => c.id === page.frontmatter.category);
 
     return (
       <div>
@@ -92,9 +93,12 @@ export default class DocPage extends React.Component {
             </ul>
             <div className={b('content')}>
               <Space bottom={5}>
-                <h6 className={b('content-category')}>
-                  {categories.find(c => c.id === page.frontmatter.category).title}
-                </h6>
+                {
+                  category &&
+                    <h6 className={b('content-category')}>
+                      {category.title}
+                    </h6>
+                }
                 <h1  className={b('content-title')}>
                   {findTitle(page, pages)}
                 </h1>

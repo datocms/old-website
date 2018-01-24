@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import { configureAnchors } from 'react-scrollable-anchor'
 
 import Navbar from '../components/Navbar'
-import CallToAction from '../components/CallToAction'
 import Footer from '../components/Footer'
 
 import './style.sass'

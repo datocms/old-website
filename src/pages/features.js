@@ -8,6 +8,7 @@ import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 
 import Features from '../components/home/Features'
+import CallToAction from '../components/CallToAction'
 import Waypoint from 'react-waypoint'
 
 import './features.sass'
