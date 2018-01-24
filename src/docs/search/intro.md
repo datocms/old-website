@@ -6,7 +6,7 @@ title: Introduction
 
 DatoCMS *Site Search* is a way to deliver tailored search results to your site visitors. You can think of it as a replacement for the now discontinued Google Site Search.
 
-![foo](/images/search/locales_widget.png)
+![foo](../images/search/locales_widget.png)
 
 There are many third-party services out there that fill this need ([SwiftType](https://swiftype.com/), [Algolia](https://www.algolia.com/), [Cludo](https://www.cludo.com/)). Our solution seeks to be the best deal for the majority of websites:
 

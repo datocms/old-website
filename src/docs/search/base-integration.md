@@ -10,11 +10,11 @@ Once you've configured your DatoCMS administrative area, from your website, you 
 
 To do that, first you need to generate an API token with the proper permissions. Go to *Settings > Roles* and create a new role with just the *Can perform Site Search API calls* option checked:
 
-![foo](/images/search/role.png)
+![foo](../images/search/role.png)
  
 You can then create a new API token associating it with the role you just created:
 
-![foo](/images/search/token.png)
+![foo](../images/search/token.png)
 
 Awesome! Let's test if everything is working by making a curl request to our API endpoint:
 

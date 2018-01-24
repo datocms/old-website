@@ -17,7 +17,6 @@ const TemplateWrapper = ({ children }) => (
     <Helmet title="DatoCMS" />
       <Navbar />
       {children()}
-      <CallToAction />
       <Footer />
   </div>
 )

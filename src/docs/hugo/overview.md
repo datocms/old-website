@@ -4,9 +4,7 @@ position: 1
 title: Overview
 ---
 
-<div class="note">
 **Disclaimer** This guide assumes you already know what Hugo is and how it works. If you need some help getting started with Hugo, you can read the official [Hugo documentation](https://gohugo.io/overview/introduction/) and [discussion forum](https://discuss.gohugo.io/).
-</div>
 
 ---
 

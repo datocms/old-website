@@ -3,9 +3,11 @@
 
 .DocPage
   display: flex
+  margin: 120px 0
 
 .DocPage__menu
   width: 350px
+  flex-shrink: 0
 
 .DocPage__menu-category
   margin-bottom: 5px
@@ -18,24 +20,52 @@
     color: $base-body-color
 
     &:hover
-      color: $azure-color
+      color: $red-color
 
 .DocPage__menu-pages
   margin-left: 20px
 
-.DocPage__menu-page a
-  text-decoration: none
-  color: $base-body-color
+.DocPage__menu-page
+  &:last-child
+    margin-bottom: 15px
 
-  &:hover, &.is-active
-    color: $azure-color
+  a
+    text-decoration: none
+    color: $base-body-color
+
+    &:hover
+      color: $red-color
+
+    &.is-active
+      color: $red-color
+      +weight(bold)
+
+.DocPage__content-title
+  +size(hero)
+  +weight(bold)
+
+.DocPage__content-category
+  color: $light-body-color
+  margin-bottom: 10px
+  +size(big)
 
 .DocPage__content
   flex: 1
   margin-left: 80px
 
+.DocPage__content-body
+  font-size: 18px
+  line-height: 1.7
+
+  h1, h2, h3, h4, h5, h6, p, ul
+    max-width: 75%
+
+  ul p
+    max-width: none
+
   h1, h2, h3, h4, h5, h6
     position: relative
+    +weight(bold)
 
     &:hover .heading-anchor span:before
       content: "¶"
@@ -63,27 +93,32 @@
       margin-bottom: 8px
 
   a
-    color: desaturate(darken($azure-color, 10%), 10%)
+    color: $red-color
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
 
     code
       background-color: transparent
       padding: 0
 
   a[href*="//"]:after
+    content: ""
+    background: url('../../images/external-link.svg') no-repeat center center
+    background-size: contain
+    vertical-align: middle
     display: inline-block
-    font: normal normal normal 14px/1 FontAwesome
-    font-size: inherit
-    text-rendering: auto
-    -webkit-font-smoothing: antialiased
-    content: "\f08e"
-    margin-left: 0.3em
-    font-size: 0.9em
+    width: 20px
+    height: 20px
+    margin-left: 4px
+    white-space: nowrap
 
   hr
     border: 0
     height: 1px
     background-color: $border-color
-    margin: 60px 0
+    margin: 80px 0
 
   h3
     font-size: 35px
@@ -177,3 +212,25 @@
       text-align: left
       padding: 10px
       border-bottom: 1px solid $border-color
+
+
+  .gatsby-highlight
+    margin: 50px 0
+    font-size: 15px
+
+    pre
+      overflow: auto
+      padding: 30px
+
+    code
+      background-color: transparent
+      border: 0
+      padding: 0
+      border-radius: 0
+
+  .gatsby-resp-image-link
+    margin: 60px 0
+
+  .gatsby-resp-image-background-image
+    border-radius: 4px
+    box-shadow: 0 5px 10px rgba(black, 0.1)

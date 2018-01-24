@@ -85,6 +85,7 @@ class FeaturesPage extends React.Component {
             </div>
           </div>
         </Space>
+        <CallToAction />
       </div>
     );
   }

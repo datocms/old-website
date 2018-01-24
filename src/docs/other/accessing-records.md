@@ -25,10 +25,8 @@ module.exports = (dato, root, i18n) => {
 
 Suppose you have a *Blog post* model in your administrative area, and you want retrieve the complete collection of its records. First thing first, you need to know its *Model ID*:
 
-<div class="two">
-  <div>![foo](/images/edit-model-dialog.png)</div>
-  <div>![foo](/images/edit-model-button.png)</div>
-</div>
+![foo](../images/edit-model-dialog.png)
+![foo](../images/edit-model-button.png)
 
 In this case, the ID is `blog_post`, so you can retrieve its records **pluralizing and camel-casing the Model ID**, and using the result as a method on the `dato` object:
 
@@ -44,7 +42,7 @@ module.exports = (dato, root, i18n) => {
 };
 ```
 
-If you need to access the record associated to a [single-instance model](/schema/single-instance.html), you don't need to pluralize the Model ID:
+If you need to access the record associated to a [single-instance model](/docs/schema/single-instance), you don't need to pluralize the Model ID:
 
 ```javascript
 // dato.config.js

@@ -36,7 +36,7 @@ To generate multi-language pages with Middleman and DatoCMS, you have multiple c
 
 Templates that live within the `source/localizable` directory will output one page per locale, and will have the `I18n.locale` already setup for you. 
 
-As an example, suppose we have a [single-instance](/schema/single-instance.html) model called `home_page`, with two localized single-line string fields: `title` and `catch_phrase`. We can create a multi-language homepage with the following template:
+As an example, suppose we have a [single-instance](/docs/schema/single-instance) model called `home_page`, with two localized single-line string fields: `title` and `catch_phrase`. We can create a multi-language homepage with the following template:
 
 ```erb
 # source/localizable/index.html.erb

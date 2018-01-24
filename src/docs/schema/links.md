@@ -13,11 +13,9 @@ In DatoCMS you don't need to define a field for the reverse relationship (ie. th
 
 When you add a new field of type **Link** (or **Links**) to a model, DatoCMS requires you to specify, within the *Validations* tab, the models that can be referenced in the field itself:
 
-<div class="small">![foo](/images/links/2.png)</div>
 
 To let the editors select one (or more) records to link, DatoCMS will present a dropdown with auto-completion turned on:
 
-<div class="smaller">![foo](/images/links/3.png)</div>
 
 ---
 
@@ -25,7 +23,6 @@ To let the editors select one (or more) records to link, DatoCMS will present a 
 
 While this is by far the most common usage for a link field, you can also use them to achieve a totally different editing experience changing the presentation mode of the field to **Embedded form**:
 
-<div class="small">![foo](/images/links/4.png)</div>
 
 Instead of referencing existing records, the *embedded form* mode allows the editors to create new records of the specified models **within the context of a parent record**. This is useful in at least two scenarios:
 
@@ -33,7 +30,6 @@ Instead of referencing existing records, the *embedded form* mode allows the edi
 
 Take as an example two models: each recipe has its own distinct collection of steps. Creating/editing steps inside a global collection might be cumbersome: in this case, you can just create a Links field in the *Recipe* model, and only edit the steps within the context of its recipe:
 
-<div class="smaller">![foo](/images/links/5.png)</div>
 
 ##### Inside a record, to model a group of optional fields
 

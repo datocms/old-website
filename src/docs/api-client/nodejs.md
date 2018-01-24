@@ -16,9 +16,7 @@ Or, if you're using Yarn as package manager:
 $ yarn add datocms-client
 ```
 
-<div class="note">
 **Warning** Due to historical reasons and backward compatibility, the API exposes some different naming compared to the rest of the product: Models are called Item Types, while Records are called Items. Keep that in mind!
-</div>
 
 The first step is to require the DatoCMS package, and initialize the client with the read-write API token you can find under the *Admin area > API tokens* section. Let's create an `import.js` file with the following content:
 
@@ -31,9 +29,7 @@ const client = new SiteClient('YOUR_API_READWRITE_TOKEN');
 
 Now, suppose we have an administrative area with an *Article* model, and we want to import a list of articles ie. from a JSON file:
 
-<div class="small">
-![foo](/images/import/article.png)
-</div>
+![foo](../images/import/article.png)
 
 The first thing to know is the ID of the model itself. Let's add the following line to pretty print the existing models:
 

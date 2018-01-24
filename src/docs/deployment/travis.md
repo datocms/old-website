@@ -5,11 +5,7 @@ title: Deploying to S3 with Travis CI
 draft: false
 ---
 
-<div class="note">
-**This guide assumes you have a working static website project on your machine integrated with DatoCMS**
-
-If that's not your case, you can return to the previous sections of this documentation to see how to properly configure the DatoCMS administrative area and how to integrate DatoCMS with your favorite static website generator. 
-</div>
+**This guide assumes you have a working static website project on your machine integrated with DatoCMS.** If that's not your case, you can return to the previous sections of this documentation to see how to properly configure the DatoCMS administrative area and how to integrate DatoCMS with your favorite static website generator. 
 
 ### Create your Git repository
 
@@ -44,17 +40,17 @@ Now that your project is up and running on GitHub, let's connect it to Travis.
 
 [Sign in to Travis CI](https://travis-ci.org/auth) with your GitHub account, go to your [profile page](https://travis-ci.org/profile) and enable Travis CI for the repository you want to build.
 
-![foo](/images/travis/enable.png)
+![foo](../images/travis/enable.png)
 
 ### Add the DatoCMS API token as environment variable
 
 Reach the TravisCI settings page of your project, and add an environment variable called `DATO_API_TOKEN` containing the read-only API token of your DatoCMS administrative area:
 
-![foo](/images/travis/env.png)
+![foo](../images/travis/env.png)
 
 You can find the API token in the *Admin area > API tokens* section:
 
-![foo](/images/api-token.png)
+![foo](../images/api-token.png)
 
 ### Configure .travis.yml
 
@@ -147,15 +143,11 @@ There's only one last step needed: connecting DatoCMS to TravisCI, so that every
 
 To do so, go to the *Admin area > Deployment settings* and select *TravisCI*:
 
-<div class="smaller">
-![foo](/images/netlify/9.png)
-</div>
+![foo](../images/netlify/9.png)
 
 In the window that will appear, follow the instructions to conclude the integration:
 
-<div class="smaller">
-![foo](/images/travis/dato.png)
-</div>
+![foo](../images/travis/dato.png)
 
 When everything is done, confirm the integration pressing the *Save Settings* button.
 

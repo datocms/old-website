@@ -4,17 +4,15 @@ category: middleman
 position: 7
 ---
 
-<div class="note">
-**Note** This guide assumes you have a basic knowledge of how Modular content fields work in DatoCMS. If this is not the case, please read [this introduction](/schema/modular-content.html) first.
-</div>
+**Note** This guide assumes you have a basic knowledge of how Modular content fields work in DatoCMS. If this is not the case, please read [this introduction](/docs/schema/modular-content) first.
 
-Suppose a `blog_post` model has a modular-content field called `content`, which in turn accepts the following models as [building-blocks](/schema/modular-content.html):
+Suppose a `blog_post` model has a modular-content field called `content`, which in turn accepts the following models as [building-blocks](/docs/schema/modular-content):
 
 * Model `blog_post_text_block`: made of a `text` field (*multi-paragraph text*);
 * Model `blog_post_quote_block`: made of a `quote` field (*multi-paragraph text*) and `author` field (*single-line string*);
 * Model `blog_post_gallery_block`: made of a `gallery` field (*image gallery*);
 
-A modular-content field works much like a [*multiple links* field](/middleman/links.html), as it returns the array of inner records. In your Middleman templates, to present a modular-content field, you can do something like this:
+A modular-content field works much like a [*multiple links* field](/docs/middleman/links), as it returns the array of inner records. In your Middleman templates, to present a modular-content field, you can do something like this:
 
 ```erb
 <article>

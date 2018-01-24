@@ -5,7 +5,7 @@ import sortBy from 'sort-by'
 
 import bem from 'utils/bem'
 
-import 'prismjs/themes/prism-solarizedlight.css'
+import 'prismjs/themes/prism-okaidia.css'
 import './style.sass'
 
 const b = bem.lock('DocPage')
@@ -62,7 +62,7 @@ export default class DocPage extends React.Component {
                 categories.map(category => {
                   const categoryPages = pages
                     .filter(page => page.frontmatter.category === category.id)
-                    .sort(sortBy('position'))
+                    .sort(sortBy('frontmatter.position'))
 
                   return (
                     <li key={category.id} className={b('menu-category')}>
@@ -91,12 +91,18 @@ export default class DocPage extends React.Component {
               }
             </ul>
             <div className={b('content')}>
-              <Space bottom={3}>
-                <h1 className={text({ size: 'hero' })}>
+              <Space bottom={5}>
+                <h6 className={b('content-category')}>
+                  {categories.find(c => c.id === page.frontmatter.category).title}
+                </h6>
+                <h1  className={b('content-title')}>
                   {findTitle(page, pages)}
                 </h1>
               </Space>
-              <div dangerouslySetInnerHTML={{ __html: page.html }} />
+              <div
+                className={b('content-body')}
+                dangerouslySetInnerHTML={{ __html: page.html }}
+              />
             </div>
           </div>
         </Wrap>
@@ -117,6 +123,7 @@ export const query = graphql`
             category
             title
             copyFrom
+            position
           }
         }
       }
@@ -127,6 +134,7 @@ export const query = graphql`
         category
         title
         copyFrom
+        position
       }
     }
   }

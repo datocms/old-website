@@ -36,7 +36,7 @@ $ ./node_modules/.bin/dato dump --token=READONLY_API_TOKEN
 
 You can find your API token in the *Admin area > API tokens* section:
 
-![foo](/images/api-token.png)
+![foo](../images/api-token.png)
 
 #### Passing the API token as environment variable
 

@@ -5,11 +5,9 @@ title: Deploying to S3 with Gitlab
 draft: true
 ---
 
-<div class="note">
 **This guide assumes you have a working static website project on your machine integrated with DatoCMS**
 
 If that's not your case, you can return to the previous sections of this documentation to see how to properly configure the DatoCMS administrative area and how to integrate DatoCMS with your favorite static website generator. 
-</div>
 
 ### Create your Git repository
 
@@ -48,11 +46,11 @@ GitLab offers a continuous integration service out of the box. If you add a `.gi
 
 Reach the *Settings > CI/CD Pipelines* settings page of your project, and in the *Secret Variables* section, add an environment variable called `DATO_API_TOKEN` containing the read-only API token of your DatoCMS administrative area:
 
-![foo](/images/gitlab/env.png)
+![foo](../images/gitlab/env.png)
 
 You can find the API token in the *Admin area > API tokens* section:
 
-![foo](/images/api-token.png)
+![foo](../images/api-token.png)
 
 ### Configure .gitlab-ci.yml
 
@@ -170,15 +168,11 @@ There's only one last step needed: connecting DatoCMS to TravisCI, so that every
 
 To do so, go to the *Admin area > Deployment settings* and select *TravisCI*:
 
-<div class="smaller">
-![foo](/images/netlify/9.png)
-</div>
+![foo](../images/netlify/9.png)
 
 In the window that will appear, follow the instructions to conclude the integration:
 
-<div class="smaller">
-![foo](/images/travis/dato.png)
-</div>
+![foo](../images/travis/dato.png)
 
 When everything is done, confirm the integration pressing the *Save Settings* button.
 

@@ -4,11 +4,7 @@ title: Localization
 position: 8
 ---
 
-<div class="note">
-**Note** 
-
-Just as explained in the [product overview](/), DatoCMS is totally agnostic in terms of static site generators: it just allows you to dump content locally, and the rest is up to you. There are several ways to handle multiple languages with Jekyll — just as an example, take a look at [this guide](https://www.sylvaindurand.org/making-jekyll-multilingual/), or [this plugin](https://github.com/vwochnik/jekyll-language-plugin).
-</div>
+**Note** Just as explained in the [product overview](/docs/), DatoCMS is totally agnostic in terms of static site generators: it just allows you to dump content locally, and the rest is up to you. There are several ways to handle multiple languages with Jekyll — just as an example, take a look at [this guide](https://www.sylvaindurand.org/making-jekyll-multilingual/), or [this plugin](https://github.com/vwochnik/jekyll-language-plugin).
 
 Within your `dato.config.rb` file, you can easily switch between your locales like this:
 

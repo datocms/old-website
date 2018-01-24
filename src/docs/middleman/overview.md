@@ -4,9 +4,7 @@ position: 1
 title: Overview
 ---
 
-<div class="note">
 **Disclaimer** This guide assumes you already know what Middleman is and how it works. If you need some help getting started with Middleman, you can read the official [Middleman documentation](https://middlemanapp.com/basics/install/).
-</div>
 
 ---
 
@@ -46,7 +44,7 @@ $ bundle exec middleman server
 
 You can find your API token in the *Admin area > API tokens* section:
 
-![foo](/images/api-token.png)
+![foo](../images/api-token.png)
 
 ---
 

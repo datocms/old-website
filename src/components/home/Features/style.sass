@@ -6,23 +6,23 @@
   text-align: center
   margin-bottom: 60px
 
-.HomeFeatures__toc
+.HomeFeatures__container
   display: flex
-  justify-content: start
-  flex-wrap: wrap
+  align-items: center
 
-.HomeFeatures__toc-item
-  width: 25%
-  margin-bottom: 8px
+.HomeFeatures__left
+  width: 280px
+
+.HomeFeatures__right
+  flex: 1
 
 .HomeFeatures__toc-item-button
-  background-color: white
   border: 0
   font-family: "colfax-web"
-  color: $azure-color
+  color: $base-body-color
   text-align: left
-  padding: 8px 15px
-  +size(normal)
+  padding: 8px 0
+  +size(small)
   border-radius: 9px
   cursor: pointer
   transition: all 250ms ease-in-out
@@ -31,11 +31,21 @@
     outline: 0
 
   &:hover
-    background-color: $smoke-color
+    color: $red-color
 
   &--selected
-    background-color: $azure-color !important
-    color: white !important
+    color: $red-color
+    +weight(bold)
+
+.HomeFeatures__toc-feature
+  margin-top: 30px
+  color: $ultra-light-body-color
+  +size(small)
+
+  a
+    color: $azure-color
+    text-decoration: none
+    +weight(bold)
 
 .HomeFeatures__feature
   display: flex

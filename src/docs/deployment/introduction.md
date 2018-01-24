@@ -6,17 +6,17 @@ title: Introduction
 
 Once you have your deployment set up, in the top navigation bar of the interface of DatoCMS you will find a *Publish changes* button: your editors will be able to request a new publication of the static website whenever they like.
 
-![foo](/images/publish-button.png)
+![foo](../images/publish-button.png)
 
 The job of building and deploying your static website is not performed directly by DatoCMS, but is delegated to an external Continuous Deployment service. We offer integrations to all the most popular solutions out there (most of them have a free plan available):
 
-* [Netlify](/deployment/netlify.html)
-* [Travis CI](/deployment/travis.html)
-* [Gitlab CI](/deployment/gitlab.html)
-* [Semaphore CI](/deployment/semaphore.html)
-* [CircleCI](/deployment/circleci.html)
+* [Netlify](/docs/deployment/netlify)
+* [Travis CI](/docs/deployment/travis)
+* [Gitlab CI](/docs/deployment/gitlab)
+* [Semaphore CI](/docs/deployment/semaphore)
+* [CircleCI](/docs/deployment/circleci)
 
-If you need to use some other CI tool, we also offer an [agnostic webhook](/deployment/custom.html) you can use to connect DatoCMS to your custom deployment solution. 
+If you need to use some other CI tool, we also offer an [agnostic webhook](/docs/deployment/custom) you can use to connect DatoCMS to your custom deployment solution. 
 
 Regardless the external service you intend to use, your CI build script needs to perform three steps:
 

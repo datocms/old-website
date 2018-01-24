@@ -4,9 +4,9 @@ position: 4
 title: Search widget
 ---
 
-In addition to the [low-level API calls](/search/integration.html) presented in the previous section, our [`datocms-search`](https://github.com/datocms/datocms-search) JS library also includes a full-featured widget ready to be used in your website:
+In addition to the [low-level API calls](/docs/search/integration) presented in the previous section, our [`datocms-search`](https://github.com/datocms/datocms-search) JS library also includes a full-featured widget ready to be used in your website:
 
-![foo](/images/search/base_widget.png)
+![foo](../images/search/base_widget.png)
 
 To use it, add our JS and CSS in your page:
 
@@ -61,7 +61,7 @@ client.addWidget(
 
 This will be the final result: 
 
-![foo](/images/search/locales_widget.png)
+![foo](../images/search/locales_widget.png)
 
 #### Other options
 

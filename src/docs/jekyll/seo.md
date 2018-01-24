@@ -34,9 +34,7 @@ dato.blog_posts.first.seo_meta_tags
 
 Meta tags are generated merging the values present in the record's *SEO meta tags* field together with the *Global SEO settings* you can configure under *Content > Settings*:
 
-<div class="smaller">
-  ![foo](/images/seo/global-seo.png)
-</div>
+![foo](../images/seo/global-seo.png)
 
 If the record doesn't have a *SEO meta tags* field, the method tries to guess reasonable values by inspecting the other fields of the record (single-line strings and images).
 
@@ -48,9 +46,7 @@ Your page title will be composed concatenating the title of the record together 
 
 Under the *Content > Settings* section you can also configure your website favicon:
 
-<div class="small">
-  ![foo](/images/seo/favicon.png)
-</div>
+![foo](../images/seo/favicon.png)
 
 You can get desktop, iOS, Android and Windows Phone favicon meta tags with the `dato.site.favicon_meta_tags` helper:
 

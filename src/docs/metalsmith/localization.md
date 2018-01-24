@@ -4,11 +4,7 @@ title: Localization
 position: 8
 ---
 
-<div class="note">
-**Note** 
-
-Just as explained in the [product overview](/), DatoCMS is totally agnostic in terms of static site generators: it just allows you to dump content locally, and the rest is up to you. There are several ways to handle multiple languages with Metalsmith — just as an example, take a look at [metalsmith-multi-language](https://github.com/doup/metalsmith-multi-language) plugin, that is perfectly compatible with DatoCMS.
-</div>
+**Note** Just as explained in the [product overview](/docs/), DatoCMS is totally agnostic in terms of static site generators: it just allows you to dump content locally, and the rest is up to you. There are several ways to handle multiple languages with Metalsmith — just as an example, take a look at [metalsmith-multi-language](https://github.com/doup/metalsmith-multi-language) plugin, that is perfectly compatible with DatoCMS.
 
 Within your `dato.config.js` file, you can easily switch between your locales changing the value of `i18n.locale`:
 

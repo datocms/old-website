@@ -23,6 +23,7 @@ const IndexPage = ({ data }) => (
     </div>
     <Features data={data} />
     <Quotes data={data} />
+    <CallToAction />
   </div>
 )
 

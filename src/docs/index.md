@@ -27,4 +27,3 @@ Our decoupled architecture offers many advantages over the traditional storage o
 * **Future-proof:** pretty much **any present (and future) static website generator is compatible with DatoCMS**. You are also free to switch to a different static website generator at any time, simply editing the configuration files that map remote content to local files;
 
 * **Interoperability**: using our REST API, the content of your static website can easily be used in other contexts (ie. mobile/desktop apps).
-

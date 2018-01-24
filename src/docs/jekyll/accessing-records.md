@@ -21,10 +21,8 @@ dato.find(3411)
 
 Suppose you have a *Blog post* model in your administrative area, and you want retrieve the complete collection of its records. First thing first, you need to know its *Model ID*:
 
-<div class="two">
-  <div>![foo](/images/edit-model-dialog.png)</div>
-  <div>![foo](/images/edit-model-button.png)</div>
-</div>
+![foo](../images/edit-model-dialog.png)
+![foo](../images/edit-model-button.png)
 
 In this case, the ID is `blog_post`, so you can retrieve its records **pluralizing the Model ID**, and using it as a method on the `dato` object:
 
@@ -36,7 +34,7 @@ dato.blog_posts.each do |record|
 end
 ```
 
-If you need to access the record associated to a [single-instance model](/schema/single-instance.html), you don't need to pluralize the Model ID:
+If you need to access the record associated to a [single-instance model](/docs/schema/single-instance), you don't need to pluralize the Model ID:
 
 ```ruby
 # returns the record for the `about_page` single-instance model

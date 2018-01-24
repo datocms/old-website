@@ -6,10 +6,8 @@ title: Retrieve fields values
 
 Once you have obtained a record object, you can access the value associated to a field using its *Field ID*:
 
-<div class="two">
-  <div>![foo](/images/edit-field-dialog.png)</div>
-  <div>![foo](/images/edit-field-button.png)</div>
-</div>
+![foo](../images/edit-field-dialog.png)
+![foo](../images/edit-field-button.png)
 
 In this case, the field ID is `title`, so we can use it as a method on the record object to retrieve its value.
 
@@ -96,7 +94,7 @@ blogPost.attachment.toMap()   // returns an hash containing all the above:
 
 ### Image fields
 
-*Image fields* share all the methods of *file attachment* fields, but they also expose some additional methods. The `.url()` method is the most important one, as it returns the full URL of the image, and can take a number of image transformation parameters (see the [Image Manipulation](./image-manipulation.html) chapter for all for the details).
+*Image fields* share all the methods of *file attachment* fields, but they also expose some additional methods. The `.url()` method is the most important one, as it returns the full URL of the image, and can take a number of image transformation parameters (see the [Image Manipulation](./image-manipulation) chapter for all for the details).
 
 ```javascript
 blogPost.coverImage.url()    // returns the image URL:

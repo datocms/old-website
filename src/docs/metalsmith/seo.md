@@ -60,9 +60,7 @@ This is the page content, yay!!
 
 Meta tags are generated merging the values present in the record's *SEO meta tags* field together with the *Global SEO settings* you can configure under *Content > Settings*:
 
-<div class="smaller">
-  ![foo](/images/seo/global-seo.png)
-</div>
+![foo](../images/seo/global-seo.png)
 
 If the record doesn't have a *SEO meta tags* field, the method tries to guess reasonable values by inspecting the other fields of the record (single-line strings and images).
 
@@ -109,9 +107,7 @@ Metalsmith(__dirname)
 
 Under the *Content > Settings* section you can also configure your website favicon:
 
-<div class="smaller">
-  ![foo](/images/seo/favicon.png)
-</div>
+![foo](../images/seo/favicon.png)
 
 You can get desktop, iOS, Android and Windows Phone favicon meta tags with the `dato.site.faviconMetaTags` method:
 

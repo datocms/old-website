@@ -41,50 +41,57 @@ class HomeFeatures extends React.Component {
             <div className={b('title')}>
               Features
             </div>
-            <Space both="6">
-              <div className={b('toc')}>
-                {
-                  data.features.edges.map(({ node: { title, description } }, i) => (
-                    <div
-                      key={i}
-                      className={b('toc-item')}
-                    >
-                      <button
-                        className={b('toc-item-button', { selected: i === this.state.selected })}
-                        onClick={() => this.setState({ selected: i })}
+            <div className={b('container')}>
+              <div className={b('left')}>
+                <div className={b('toc')}>
+                  {
+                    data.features.edges.map(({ node: { title, description } }, i) => (
+                      <div
+                        key={i}
+                        className={b('toc-item')}
                       >
-                        {title}
-                      </button>
-                    </div>
-                  ))
-                }
-              </div>
-            </Space>
-            <TransitionGroup className={b('feature-container')}>
-              <Fade key={selectedFeature.id}>
-                <div className={b('feature')}>
-                  <div className={b('feature-image')}>
-                    {
-                      selectedFeature.image ?
-                        <Img sizes={selectedFeature.image.sizes} /> :
-                        <div className={b('feature-image-placeholder')} />
-                    }
-                  </div>
-                  <div className={b('feature-content')}>
-                    <h5 className={b('feature-title')}>
-                      {selectedFeature.title}
-                    </h5>
-                    <div
-                      className={b('feature-description')}
-                      dangerouslySetInnerHTML={{ __html: selectedFeature.description.markdown.html }}
-                    />
-                    <Link to="/" className={button()}>
-                      See all features
-                    </Link>
+                        <button
+                          className={b('toc-item-button', { selected: i === this.state.selected })}
+                          onClick={() => this.setState({ selected: i })}
+                        >
+                          {title}
+                        </button>
+                      </div>
+                    ))
+                  }
+                  <div className={b('toc-feature')}>
+                    Need a feature? <a href="http://support.datocms.com/support/discussions/forums/35000119870">Just ask!</a>
                   </div>
                 </div>
-              </Fade>
-            </TransitionGroup>
+              </div>
+              <div className={b('right')}>
+                <TransitionGroup className={b('feature-container')}>
+                  <Fade key={selectedFeature.id}>
+                    <div className={b('feature')}>
+                      <div className={b('feature-image')}>
+                        {
+                          selectedFeature.image ?
+                            <Img sizes={selectedFeature.image.sizes} /> :
+                            <div className={b('feature-image-placeholder')} />
+                        }
+                      </div>
+                      <div className={b('feature-content')}>
+                        <h5 className={b('feature-title')}>
+                          {selectedFeature.title}
+                        </h5>
+                        <div
+                          className={b('feature-description')}
+                          dangerouslySetInnerHTML={{ __html: selectedFeature.description.markdown.html }}
+                        />
+                        <Link to="/" className={button()}>
+                          See all features
+                        </Link>
+                      </div>
+                    </div>
+                  </Fade>
+                </TransitionGroup>
+              </div>
+            </div>
           </div>
         </Wrap>
       </Space>

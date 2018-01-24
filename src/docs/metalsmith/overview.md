@@ -4,9 +4,7 @@ position: 1
 title: Overview
 ---
 
-<div class="note">
 **Disclaimer** This guide assumes you already know what Metalsmith is and how it works. If you need some help getting started with Metalsmith, you can read the official [Metalsmith documentation](http://www.metalsmith.io/), as well as [Awesome Metalsmith](https://github.com/metalsmith/awesome-metalsmith), which feature a comprehensive set of guides, videos and curated resources.
-</div>
 
 ---
 
