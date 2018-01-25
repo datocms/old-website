@@ -26,12 +26,12 @@
   background-color: white
   border: 0
   font-family: "colfax-web"
-  color: $azure-color
+  color: $base-body-color
   text-align: left
   padding: 8px 15px
   border-radius: 9px
   cursor: pointer
-  transition: all 250ms ease-in-out
+  transition: color 500ms ease-in-out
   text-decoration: none
   display: inline-block
 
@@ -39,13 +39,11 @@
     outline: 0
 
   &:hover
-    background-color: $smoke-color
+    color: $red-color
 
   &--selected
-    background-color: $azure-color !important
-    color: white !important
-
-
+    color: $red-color
+    +weight(bold)
 
 .FeaturesPage__feature
   display: flex

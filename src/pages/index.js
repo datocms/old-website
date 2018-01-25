@@ -41,10 +41,14 @@ query IndexPageQuery {
         url
       }
     }
-    integrations {
-      name
-      logo {
-        url
+  }
+  integrations: allDatoCmsIntegration(sort: { fields: [position], order: ASC }) {
+    edges {
+      node {
+        name
+        logo {
+          url
+        }
       }
     }
   }

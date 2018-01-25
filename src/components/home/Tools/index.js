@@ -14,7 +14,7 @@ const HomeTools = ({ data }) => (
   <Space both="6">
     <Malarquee rate={50}>
       {
-        data.home.integrations.map(({ logo }, i) => (
+        data.integrations.edges.map(({ node: { logo } }, i) => (
           <img className={b('item')} src={logo.url} key={i} />
         ))
       }

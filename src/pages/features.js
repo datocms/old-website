@@ -55,7 +55,7 @@ class FeaturesPage extends React.Component {
                 data.features.edges.map(({ node: feature }, i) => (
                   <Space key={feature.id} both="10">
                     <ScrollableAnchor id={feature.slug}>
-                      <Waypoint topOffset="40%" bottomOffset="40%" onEnter={() => this.setState({ activeFeature: i })} debug={i === 1}>
+                      <Waypoint topOffset="40%" bottomOffset="40%" onEnter={() => this.setState({ activeFeature: i })}>
                         <div>
                           <Wrap>
                             <div className={b('feature', { odd: i % 2 === 1 })}>
