@@ -2,6 +2,9 @@ require('dotenv').config()
 const path = require('path')
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://v2.datocms.com`,
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -72,6 +75,7 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-netlify`
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-sitemap`
   ],
 };
