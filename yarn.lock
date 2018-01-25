@@ -3846,6 +3846,15 @@ gatsby-react-router-scroll@^1.0.8:
     scroll-behavior "^0.9.1"
     warning "^3.0.0"
 
+gatsby-remark-autolink-headers@1.4.11:
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-1.4.11.tgz#d6d33613c18e405d90177dfa7dd54dd7853b4759"
+  dependencies:
+    babel-runtime "^6.26.0"
+    github-slugger "^1.1.1"
+    mdast-util-to-string "^1.0.2"
+    unist-util-visit "^1.1.1"
+
 gatsby-remark-images@1.5.37:
   version "1.5.37"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-1.5.37.tgz#8a8b872bac4bdac0af828b8e4e3ba4eccf5443eb"
