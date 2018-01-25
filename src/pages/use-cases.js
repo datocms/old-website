@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import Masonry from 'react-masonry-component'
 import loadImage from 'image-promise';
 import Waypoint from 'react-waypoint'
+import Sticky from 'react-stickynode';
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -59,48 +60,69 @@ class UseCasesPage extends React.Component {
               Use Cases
             </div>
             <div className={b('content')}>
-              <Wrap>
-                <Masonry
-                  options={{
-                    columnWidth: '.UseCasesPage__grid-sizer',
-                    gutter: '.UseCasesPage__gutter-sizer',
-                    itemSelector: '.UseCasesPage__website',
-                    percentPosition: true
-                  }}
-                >
-                  <div className={b('grid-sizer')} />
-                  <div className={b('gutter-sizer')} />
-                  {
-                    websites.map((website, i) => (
-                      <a
-                        href={website.url}
-                        className={b('website', { highlighted: website.highlighted })}
-                        key={website.id}
+              {
+                data.useCases.edges.map(({ node: useCase }) => (
+                  <div className={b('use-case')} key={useCase.id}>
+                    <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
+                      <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
+                        <div className={b('use-case-content-inner')}>
+                          <h3 className={b('use-case-title')}>
+                            {useCase.title}
+                          </h3>
+                          <div 
+                            className={b('use-case-description')}
+                            dangerouslySetInnerHTML={{ __html: useCase.description.markdown.html }}
+                          />
+                        </div>
+                      </Sticky>
+                    </div>
+                    <div className={b('use-case-gallery')}>
+                      <Masonry
+                        options={{
+                          columnWidth: '.UseCasesPage__grid-sizer',
+                          gutter: '.UseCasesPage__gutter-sizer',
+                          itemSelector: '.UseCasesPage__website',
+                          percentPosition: true
+                        }}
                       >
-                        <Browser
-                          small
-                          title={website.title}
-                          address={website.url}
-                        >
-                            <LazyImage website={website} />
-                            <div className={b('website-technologies')}>
-                              {
-                                website.technologies.map(tech => (
-                                  <div className={b('website-technology')} key={tech.name}>
-                                    <img src={tech.logo.url} className={b('website-technology-logo')} />
-                                    <div className={b('website-technology-name')}>
-                                      {tech.name}
-                                    </div>
+                        <div className={b('grid-sizer')} />
+                        <div className={b('gutter-sizer')} />
+                        {
+                          websites
+                          .filter(website => website.useCase.id === useCase.id)
+                          .map((website, i) => (
+                            <a
+                              href={website.url}
+                              className={b('website', { highlighted: website.highlighted })}
+                              key={website.id}
+                            >
+                              <Browser
+                                small
+                                title={website.title}
+                                address={website.url}
+                              >
+                                  <LazyImage website={website} />
+                                  <div className={b('website-technologies')}>
+                                    {
+                                      website.technologies.map(tech => (
+                                        <div className={b('website-technology')} key={tech.name}>
+                                          <img src={tech.logo.url} className={b('website-technology-logo')} />
+                                          <div className={b('website-technology-name')}>
+                                            {tech.name}
+                                          </div>
+                                        </div>
+                                      ))
+                                    }
                                   </div>
-                                ))
-                              }
-                            </div>
-                        </Browser>
-                      </a>
-                    ))
-                  }
-                </Masonry>
-              </Wrap>
+                              </Browser>
+                            </a>
+                          ))
+                        }
+                      </Masonry>
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </Space>
@@ -113,6 +135,20 @@ export default UseCasesPage
 
 export const query = graphql`
 query UseCasesQuery {
+  useCases: allDatoCmsUseCase(sort: { fields: [position] }) {
+    edges {
+      node {
+        id
+        title
+        description: descriptionNode {
+          markdown: childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+  }
+
   websites: allDatoCmsWebsite(sort: { fields: [position] }) {
     edges {
       node {
@@ -125,6 +161,9 @@ query UseCasesQuery {
           logo {
             url
           }
+        }
+        useCase {
+          id
         }
         image {
           width
