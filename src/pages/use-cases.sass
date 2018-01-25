@@ -17,15 +17,21 @@ $gutter: 5%
   width: $gutter
 
 .UseCasesPage__grid-sizer,
-.UseCasesPage__website,
-.UseCasesPage__website--type-0
-  width: (100% - 3 * $gutter) / 4
+.UseCasesPage__website
+  width: 100%
 
-.UseCasesPage__website--highlighted
-  width: (100% - 3 * $gutter) / 4 * 2 + $gutter
+@media screen and (min-width: 1100px)
+  .UseCasesPage__grid-sizer,
+  .UseCasesPage__website
+    width: (100% - 1 * $gutter) / 2
 
-.UseCasesPage__website-name
-  display: block
+@media screen and (min-width: 1650px)
+  .UseCasesPage__grid-sizer,
+  .UseCasesPage__website
+    width: (100% - 3 * $gutter) / 4
+
+  .UseCasesPage__website--highlighted
+    width: (100% - 3 * $gutter) / 4 * 2 + $gutter
 
 .UseCasesPage__screen
   height: 400px
@@ -74,8 +80,17 @@ $gutter: 5%
   margin-bottom: 20px
 
 .UseCasesPage__use-case-content
-  width: 400px
+  width: 300px
   margin-right: 120px
+
+  @media screen and (min-width: 1300px)
+    width: 400px
+
+.UseCasesPage__use-case-description
+  +size(small)
+
+  @media screen and (min-width: 1300px)
+    +size(normal)
 
 .UseCasesPage__use-case-content-inner
   padding-bottom: 90px
