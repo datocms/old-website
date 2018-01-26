@@ -71,7 +71,7 @@ class HomeFeatures extends React.Component {
                       <div className={b('feature-image')}>
                         {
                           selectedFeature.image ?
-                            <Img sizes={selectedFeature.image.sizes} /> :
+                            <img src={selectedFeature.image.url} /> :
                             <div className={b('feature-image-placeholder')} />
                         }
                       </div>

@@ -62,7 +62,7 @@ class FeaturesPage extends React.Component {
                               <div className={b('feature-image')}>
                                 {
                                   feature.image ?
-                                    <Img sizes={feature.image.sizes} /> :
+                                    <img src={feature.image.url} /> :
                                     <div className={b('feature-image-placeholder')} />
                                 }
                               </div>
@@ -108,9 +108,7 @@ query FeaturesPageQuery {
           }
         }
         image {
-          sizes(maxWidth: 420) {
-            ...GatsbyDatoCmsSizes
-          }
+          url
         }
       }
     }

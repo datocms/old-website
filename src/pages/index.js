@@ -63,9 +63,7 @@ query IndexPageQuery {
           }
         }
         image {
-          sizes(maxWidth: 420) {
-            ...GatsbyDatoCmsSizes
-          }
+          url
         }
       }
     }
