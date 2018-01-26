@@ -5,7 +5,6 @@ import sortBy from 'sort-by'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
-import 'prismjs/components/prism-ruby'
 
 import ScrollableAnchor from 'react-scrollable-anchor'
 import { Link, Element } from 'react-scroll'
@@ -122,7 +121,7 @@ puts ${variable}.inspect`;
 
     const code = `
 require "dato"
-client = Dato::Site::Client.new("YOUR_API_READWRITE_TOKEN")
+client = Dato::Site::Client.new("YOUR-API-KEY")
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
 ${returnCode}
 `
@@ -131,7 +130,6 @@ ${returnCode}
   }
 
   jsCode(resource, link) {
-
     let params = [];
     let precode = [];
 
@@ -201,14 +199,13 @@ ${returnCode}
 
     const code = `
 const SiteClient = require('datocms-client').SiteClient;
-const client = new SiteClient('YOUR_API_READWRITE_TOKEN');
+const client = new SiteClient("YOUR-API-KEY");
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
 client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
 ${returnCode}
 .catch((error) => {
   console.log(error);
-})
-    `
+})`;
 
     return code;
   }
@@ -269,21 +266,6 @@ ${returnCode}
 
         <div className={b('http')}>
           <div className={b('http-title')}>
-            Ruby example
-          </div>
-
-          <div className={b('example-code')}>
-            <pre
-              className="language-javascript"
-              dangerouslySetInnerHTML={{
-                __html: Prism.highlight(this.rubyCode(resource, link), Prism.languages.ruby)
-              }}
-            />
-          </div>
-        </div>
-
-        <div className={b('http')}>
-          <div className={b('http-title')}>
             Javascript example
           </div>
 
@@ -292,6 +274,21 @@ ${returnCode}
               className="language-javascript"
               dangerouslySetInnerHTML={{
                 __html: Prism.highlight(this.jsCode(resource, link), Prism.languages.javascript)
+              }}
+            />
+          </div>
+        </div>
+
+        <div className={b('http')}>
+          <div className={b('http-title')}>
+            Ruby example
+          </div>
+
+          <div className={b('example-code')}>
+            <pre
+              className="language-javascript"
+              dangerouslySetInnerHTML={{
+                __html: Prism.highlight(this.rubyCode(resource, link), Prism.languages.ruby)
               }}
             />
           </div>
