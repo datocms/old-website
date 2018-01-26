@@ -34,16 +34,16 @@ const Navbar = () => (
           </Link>
         </div>
         <div className={b('nav')}>
-          <ActiveLink to="/features">
+          <ActiveLink to="/features/">
             Features
           </ActiveLink>
-          <ActiveLink to="/use-cases">
+          <ActiveLink to="/use-cases/">
             Use cases
           </ActiveLink>
-          <ActiveLink to="/pricing">
+          <ActiveLink to="/pricing/">
             Pricing
           </ActiveLink>
-          <ActiveLink to="/docs">
+          <ActiveLink to="/docs/">
             Learn
           </ActiveLink>
           <div className={b('text-link', { handle: true })}>

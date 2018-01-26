@@ -94,7 +94,7 @@ blogPost.attachment.toMap()   // returns an hash containing all the above:
 
 ### Image fields
 
-*Image fields* share all the methods of *file attachment* fields, but they also expose some additional methods. The `.url()` method is the most important one, as it returns the full URL of the image, and can take a number of image transformation parameters (see the [Image Manipulation](./image-manipulation) chapter for all for the details).
+*Image fields* share all the methods of *file attachment* fields, but they also expose some additional methods. The `.url()` method is the most important one, as it returns the full URL of the image, and can take a number of image transformation parameters (see the [Image Manipulation](./image-manipulation/) chapter for all for the details).
 
 ```javascript
 blogPost.coverImage.url()    // returns the image URL:

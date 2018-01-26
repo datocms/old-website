@@ -11,12 +11,20 @@ import './style.sass'
 // Offset all anchors by -60 to account for a fixed header
 configureAnchors({ offset: -100 })
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ location, children }) => (
   <div>
     <Helmet title="DatoCMS" />
-      <Navbar />
-      {children()}
-      <Footer />
+      {
+        location.pathname === '/api' &&
+          <Navbar />
+      }
+      {
+        children()
+      }
+      {
+        location.pathname === '/api' &&
+          <Footer />
+      }
   </div>
 )
 

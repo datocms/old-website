@@ -24,18 +24,23 @@
     "gatsby-source-datocms": "1.0.17",
     "gatsby-source-filesystem": "1.5.11",
     "gatsby-transformer-remark": "1.7.28",
+    "humps": "2.0.1",
     "image-promise": "5.0.1",
+    "json-schema-ref-parser": "4.1.0",
+    "pluralize": "7.0.0",
     "react-helmet": "^5.2.0",
     "react-malarquee": "0.0.11",
     "react-masonry-component": "6.0.2",
     "react-reveal": "0.7.3",
+    "react-scroll": "1.7.6",
     "react-scrollable-anchor": "0.5.0",
     "react-slick": "0.16.0",
     "react-stickynode": "1.4.0",
     "react-transition-group": "2.2.1",
     "react-typist": "2.0.4",
     "react-waypoint": "8.0.0",
-    "sort-by": "1.2.0"
+    "sort-by": "1.2.0",
+    "whatwg-fetch": "2.0.3"
   },
   "keywords": [
     "gatsby"

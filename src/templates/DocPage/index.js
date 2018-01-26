@@ -27,7 +27,7 @@ const categories = [
 const PageLink = ({ to, children }) => (
   <Link
     exact
-    to={to.path.replace(/.*\/src/, '').replace(/(\/index)?\.md$/, '')}
+    to={to.path.replace(/.*\/src/, '').replace(/(\/index)?\.md$/, '/')}
     activeClassName="is-active"
   >
     {children}

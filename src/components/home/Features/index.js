@@ -83,7 +83,7 @@ class HomeFeatures extends React.Component {
                           className={b('feature-description')}
                           dangerouslySetInnerHTML={{ __html: selectedFeature.description.markdown.html }}
                         />
-                        <Link to="/" className={button()}>
+                        <Link to="/features/" className={button()}>
                           See all features
                         </Link>
                       </div>

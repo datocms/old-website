@@ -10,13 +10,13 @@ Once you have your deployment set up, in the top navigation bar of the interface
 
 The job of building and deploying your static website is not performed directly by DatoCMS, but is delegated to an external Continuous Deployment service. We offer integrations to all the most popular solutions out there (most of them have a free plan available):
 
-* [Netlify](/docs/deployment/netlify)
-* [Travis CI](/docs/deployment/travis)
-* [Gitlab CI](/docs/deployment/gitlab)
-* [Semaphore CI](/docs/deployment/semaphore)
-* [CircleCI](/docs/deployment/circleci)
+* [Netlify](/docs/deployment/netlify/)
+* [Travis CI](/docs/deployment/travis/)
+* [Gitlab CI](/docs/deployment/gitlab/)
+* [Semaphore CI](/docs/deployment/semaphore/)
+* [CircleCI](/docs/deployment/circleci/)
 
-If you need to use some other CI tool, we also offer an [agnostic webhook](/docs/deployment/custom) you can use to connect DatoCMS to your custom deployment solution. 
+If you need to use some other CI tool, we also offer an [agnostic webhook](/docs/deployment/custom/) you can use to connect DatoCMS to your custom deployment solution. 
 
 Regardless the external service you intend to use, your CI build script needs to perform three steps:
 

@@ -1,0 +1,180 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins'
+
+$padding: 60px
+
+.ApiPage__menu-category
+  margin-bottom: 5px
+
+  a
+    text-decoration: none
+    color: $base-body-color
+    transition: color 200ms ease-in-out
+
+    &.active,
+    &:hover
+      color: $red-color
+
+.ApiPage__content-title
+  +size(hero)
+  +weight(bold)
+
+.ApiPage__content-category
+  color: $light-body-color
+  margin-bottom: 10px
+  +size(big)
+
+.ApiPage
+  display: flex
+  height: 100vh
+  align-items: stretch
+
+.ApiPage__menu
+  flex-shrink: 0
+  overflow: auto
+  padding: 50px $padding
+
+.ApiPage__content
+  flex: 1
+  padding: 50px
+  max-width: 100%
+  overflow: auto
+
+.ApiPage__example
+  flex: 1
+  overflow: auto
+  padding: 50px $padding
+  background-color: darken($dark-violet-color, 5%)
+  color: white
+
+.ApiPage__resource
+  margin-bottom: 60px
+
+.ApiPage__resource-title
+  +size(bigger)
+  +weight(bold)
+  margin-bottom: 20px
+
+.ApiPage__link
+  display: block
+  cursor: pointer
+  padding: 15px 25px
+  background-color: $smoke-color
+  margin-bottom: 3px
+  border-left: 10px $smoke-color solid
+  border-radius: 4px
+
+.ApiPage__link--active
+  border-left-color: $red-color
+
+.ApiPage__link-title
+  +size(big)
+  +weight(bold)
+
+.ApiPage__example-title
+  +size(bigger)
+  margin-bottom: 20px
+
+.ApiPage__example-link-title
+  +weight(bold)
+
+.ApiPage__example-call
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+  padding: 20px $padding
+  margin: 0 (-$padding)
+  background: rgba(black, 0.2)
+  margin-bottom: 30px
+
+.ApiPage__placeholder
+  color: $red-color
+
+.ApiPage__example-method
+  background: rgba(black, 0.4)
+  border: 1px solid rgba(white, 0.2)
+  border-radius: 4px
+  padding: 4px 9px 2px
+  display: inline-block
+  vertical-align: middle
+  margin-right: 10px
+
+.ApiPage__http
+  margin: 50px 0
+
+  &:last-child
+    margin-bottom: 0
+
+.ApiPage__http-title
+  text-transform: uppercase
+  border-bottom: 1px solid rgba(white, 0.2)
+  padding: 0 $padding 5px
+  margin: 0 (-$padding)
+  +size(small)
+  +weight(bold)
+
+.ApiPage__http-headers
+  margin: 20px 0
+
+.ApiPage__http-header
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+  +size(small)
+
+.ApiPage__http-header-name,
+.ApiPage__http-header-value
+  display: inline
+  vertical-align: middle
+
+.ApiPage__http-header-name
+  color: #f92672
+
+.ApiPage__http-header-value
+  margin-left: 8px
+  color: #ae81ff
+
+.ApiPage__example-code
+  margin: 20px 0
+
+  &:last-child
+    margin-bottom: 0
+
+  pre
+    line-height: 1.2
+    +size(small)
+    background-color: transparent
+    padding: 0
+    margin: 0
+
+.ApiPage__http-queries
+  margin: 20px 0
+  width: 100%
+
+.ApiPage__http-query
+  +size(small)
+
+  td, td
+    padding-bottom: 4px
+
+.ApiPage__http-query-name,
+.ApiPage__http-query-value
+  display: inline
+  vertical-align: middle
+
+.ApiPage__http-query-name
+  color: #f92672
+
+.ApiPage__http-query-name,
+.ApiPage__http-query-value,
+.ApiPage__http-query-example span
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+
+.ApiPage__http-query-value
+  margin-left: 8px
+  color: #ae81ff
+
+.ApiPage__http-query-example span
+  background: rgba(black, 0.4)
+  border: 1px solid rgba(white, 0.2)
+  border-radius: 4px
+  padding: 2px 4px 0
+  display: inline-block
+  vertical-align: middle
+  margin-left: 5px

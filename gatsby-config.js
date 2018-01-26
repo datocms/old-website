@@ -32,7 +32,12 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-plugin-sharp`,
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: 60,
+            }
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
