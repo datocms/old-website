@@ -15,14 +15,14 @@ const TemplateWrapper = ({ location, children }) => (
   <div>
     <Helmet title="DatoCMS" />
       {
-        location.pathname === '/api' &&
+        location.pathname !== '/api/' &&
           <Navbar />
       }
       {
         children()
       }
       {
-        location.pathname === '/api' &&
+        location.pathname !== '/api/' &&
           <Footer />
       }
   </div>
