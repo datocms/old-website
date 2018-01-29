@@ -45,9 +45,8 @@ const Footer = ({ data }) => (
           <GroupLink to="/pricing/" label="Pricing" />
         </Group>
         <Group title="Learn">
-          <GroupLink to="/" label="Quick Start" />
           <GroupLink to="/docs/" label="Documentation" />
-          <GroupLink to="/" label="Guides" />
+          <GroupLink to="/api/" label="API Reference" />
         </Group>
         <Group title="Support">
           <GroupLink to="http://support.datocms.com/support/tickets/new" label="Ticket Center" />
