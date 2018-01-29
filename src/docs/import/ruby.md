@@ -9,8 +9,6 @@ We released a Ruby gem to make it easy to programmatically read/create/edit/dest
 gem "dato"
 ```
 
-**Warning:** due to historical reasons and backward compatibility, the API exposes some different naming compared to the rest of the product: Models are called Item Types, while Records are called Items. Keep that in mind!
-
 The first step is to require the DatoCMS gem, and initialize the client with the read-write API token you can find under the *Admin area > API tokens* section. Let's create an `import.rb` file with the following content:
 
 ```ruby
@@ -37,7 +35,7 @@ client = Dato::Site::Client.new("YOUR_API_READWRITE_TOKEN")
 pp client.item_types.all
 ```
 
-Executing the script the following output appears:
+Due to historical reasons and backward compatibility, the API exposes some different naming compared to the rest of the product: Models are called Item Types, while Records are called Items. Keep that in mind! Executing the script the following output appears:
 
 ```
 $ ruby import.rb
@@ -102,7 +100,7 @@ pp client.fields.all("7149")
 # ]
 ```
 
-Great, here there are our three fields. Let's create our article:
+Great, here there are our three fields. Let's create a new article:
 
 ```ruby
 # create a new Article record
