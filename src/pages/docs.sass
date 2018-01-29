@@ -11,24 +11,14 @@
 
 .LearnPage__section-title
   +size(bigger)
-  margin-bottom: 30px
+  margin-bottom: 50px
   text-align: center
 
 .LearnPage__section-items
   display: flex
-  justify-content: center
+  justify-content: space-between
   flex-wrap: wrap
-
-.LearnPage__section-item
-  padding: 30px
-  width: 25%
-  box-sizing: border-box
-  transition: all 0.2s ease-in-out
-  position: relative
-  top: 0
-
-.LearnPage__section-item--bigger
-  width: 33%
+  align-items: stretch
 
 .Guide
   border-radius: 10px
@@ -37,28 +27,38 @@
   display: block
   margin-bottom: 40px
   color: $base-body-color
+  width: 31%
+  position: relative
 
 .Guide__title
   +weight(bold)
   +size(bigger)
-  padding: 40px 20px 10px
+  padding: 60px 40px 10px
+
+.Guide__read
+  margin-top: 20px
+  color: $azure-color
+  position: absolute
+  bottom: 40px
+  left: 40px
+  right: 40px
+
+  .Guide:hover &
+    text-decoration: underline
+
+.Guide--guide
+  padding-bottom: 60px
 
 .Guide__description
-  padding: 10px 20px 40px
-  line-height: 1.3
   color: $light-body-color
-  +size(small)
+  padding: 10px 40px 40px
+  line-height: 1.3
+  +size(big)
 
-.Guide--bigger
-  .Guide__title
-    +size(bigger)
-    padding: 60px 40px 10px
+  a
+    color: $azure-color
+    text-decoration: none
 
-  .Guide__description
-    padding: 10px 40px 60px
-    line-height: 1.3
-    +size(big)
-
-    a
-      color: $azure-color
+    &:hover
+      text-decoration: underline
 

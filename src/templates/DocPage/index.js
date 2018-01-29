@@ -57,7 +57,7 @@ export default class DocPage extends React.Component {
     const pages = data.pages.edges.map(edge => edge.node);
 
     const categoryPages = pages
-      .filter(page => page.path.startsWith(dir))
+      .filter(page => page.path.replace(/[^\/]*$/, '') === dir)
       .sort((a, b) => (
         findPosition(a, pages) - findPosition(b, pages)
       ));

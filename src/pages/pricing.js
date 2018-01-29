@@ -196,390 +196,391 @@ class PricingPage extends React.Component {
             </div>
 
             <table className={b('details')}>
-              <tr>
-                <td className={b('details-header-cell')} rowSpan="2">
-                  <div className={b('details-header')}>
-                    <div className={b('details-header-inner')}>
-                      <div className={b('details-header-title')}>
-                        Feature comparison
-                      </div>
-                      <div className={b('details-header-description')}>
-                        Choose the best for you and get in touch for any help
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className={b('details-plan-name')}>
-                  Dev
-                </td>
-                <td className={b('details-plan-name')}>
-                  Basic
-                </td>
-                <td className={b('details-plan-name')}>
-                  Plus
-                </td>
-                <td className={b('details-plan-name')}>
-                  Max
-                </td>
-                <td className={b('details-plan-name')}>
-                  Enterprise
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className={b('details-price')}>
-                    <div className={b('details-price-inner')}>
-                      <div className={b('details-price-free')}>
-                        Free
+              <tbody>
+                <tr>
+                  <td className={b('details-header-cell')} rowSpan="2">
+                    <div className={b('details-header')}>
+                      <div className={b('details-header-inner')}>
+                        <div className={b('details-header-title')}>
+                          Feature comparison
+                        </div>
+                        <div className={b('details-header-description')}>
+                          Choose the best for you and get in touch for any help
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <div className={b('details-price')}>
-                    <div className={b('details-price-inner')}>
-                      <div className={b('details-price-amount')}>
-                        €9
-                      </div>
-                      <div className={b('details-price-period')}>
-                        per site/month
-                      </div>
-                      <div className={b('details-price-prorated')}>
-                        Pro-rated daily
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className={b('details-price')}>
-                    <div className={b('details-price-inner')}>
-                      <div className={b('details-price-amount')}>
-                        €25
-                      </div>
-                      <div className={b('details-price-period')}>
-                        per site/month
-                      </div>
-                      <div className={b('details-price-prorated')}>
-                        Pro-rated daily
+                  </td>
+                  <td className={b('details-plan-name')}>
+                    Dev
+                  </td>
+                  <td className={b('details-plan-name')}>
+                    Basic
+                  </td>
+                  <td className={b('details-plan-name')}>
+                    Plus
+                  </td>
+                  <td className={b('details-plan-name')}>
+                    Max
+                  </td>
+                  <td className={b('details-plan-name')}>
+                    Enterprise
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className={b('details-price')}>
+                      <div className={b('details-price-inner')}>
+                        <div className={b('details-price-free')}>
+                          Free
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <div className={b('details-price')}>
-                    <div className={b('details-price-inner')}>
-                      <div className={b('details-price-amount')}>
-                        €150
-                      </div>
-                      <div className={b('details-price-period')}>
-                        per site/month
-                      </div>
-                      <div className={b('details-price-prorated')}>
-                        Pro-rated daily
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className={b('details-price')}>
-                    <div className={b('details-price-inner')}>
-                      <div className={b('details-price-free')}>
-                        Let's talk
+                  </td>
+                  <td>
+                    <div className={b('details-price')}>
+                      <div className={b('details-price-inner')}>
+                        <div className={b('details-price-amount')}>
+                          €9
+                        </div>
+                        <div className={b('details-price-period')}>
+                          per site/month
+                        </div>
+                        <div className={b('details-price-prorated')}>
+                          Pro-rated daily
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Invitations
-                </td>
-                <td className={b('details-feature-value')}>
-                  0
-                </td>
-                <td className={b('details-feature-value')}>
-                  2
-                </td>
-                <td className={b('details-feature-value')}>
-                  5
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  File storage
-                </td>
-                <td className={b('details-feature-value')}>
-                  200 MB
-                </td>
-                <td className={b('details-feature-value')}>
-                  1 GB
-                </td>
-                <td className={b('details-feature-value')}>
-                  3 GB
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Records
-                </td>
-                <td className={b('details-feature-value')}>
-                  100
-                </td>
-                <td className={b('details-feature-value')}>
-                  500
-                </td>
-                <td className={b('details-feature-value')}>
-                  2.000
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Indexable pages
-                </td>
-                <td className={b('details-feature-value')}>
-                  20
-                </td>
-                <td className={b('details-feature-value')}>
-                  1.000
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Image manipulations
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Languages
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-                <td className={b('details-feature-value')}>
-                  Unlimited
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Custom admin domain
-                </td>
-                <td className={b('details-feature-value')}>
+                  </td>
+                  <td>
+                    <div className={b('details-price')}>
+                      <div className={b('details-price-inner')}>
+                        <div className={b('details-price-amount')}>
+                          €25
+                        </div>
+                        <div className={b('details-price-period')}>
+                          per site/month
+                        </div>
+                        <div className={b('details-price-prorated')}>
+                          Pro-rated daily
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className={b('details-price')}>
+                      <div className={b('details-price-inner')}>
+                        <div className={b('details-price-amount')}>
+                          €150
+                        </div>
+                        <div className={b('details-price-period')}>
+                          per site/month
+                        </div>
+                        <div className={b('details-price-prorated')}>
+                          Pro-rated daily
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className={b('details-price')}>
+                      <div className={b('details-price-inner')}>
+                        <div className={b('details-price-free')}>
+                          Let's talk
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Invitations
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    0
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    2
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    5
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    File storage
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    200 MB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    1 GB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    3 GB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Records
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    100
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    500
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    2.000
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Indexable pages
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    20
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    1.000
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Image manipulations
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Languages
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Unlimited
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Custom admin domain
+                  </td>
+                  <td className={b('details-feature-value')}>
 
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Revision history
-                </td>
-                <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Revision history
+                  </td>
+                  <td className={b('details-feature-value')}>
 
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Use your own S3 for file uploads
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Two-factor authentication
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Priority chat/email support
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  SAML Single Sign-on
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                  Contract SLAs
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                </td>
-                <td className={b('details-feature-value')}>
-                  <img src={check} alt="Available feature" />
-                </td>
-              </tr>
-              <tr>
-                <td className={b('details-feature-name')}>
-                </td>
-                <td>
-                  <a
-                    className={b('details-cta')}
-                    href="https://dashboard.datocms.com/register"
-                  >
-                    Sign up
-                  </a>
-                </td>
-                <td>
-                  <a
-                    className={b('details-cta')}
-                    href="https://dashboard.datocms.com/register"
-                  >
-                    Sign up
-                  </a>
-                </td>
-                <td>
-                  <a
-                    className={b('details-cta')}
-                    href="https://dashboard.datocms.com/register"
-                  >
-                    Sign up
-                  </a>
-                </td>
-                <td>
-                  <a
-                    className={b('details-cta')}
-                    href="https://dashboard.datocms.com/register"
-                  >
-                    Sign up
-                  </a>
-                </td>
-                <td>
-                  <a
-                    className={b('details-cta')}
-                    href="mailto:support@datocms.com"
-                  >
-                    Get in touch
-                  </a>
-                </td>
-              </tr>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Use your own S3 for file uploads
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Two-factor authentication
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Priority chat/email support
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    SAML Single Sign-on
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    Contract SLAs
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                  </td>
+                  <td>
+                    <a
+                      className={b('details-cta')}
+                      href="https://dashboard.datocms.com/register"
+                    >
+                      Sign up
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      className={b('details-cta')}
+                      href="https://dashboard.datocms.com/register"
+                    >
+                      Sign up
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      className={b('details-cta')}
+                      href="https://dashboard.datocms.com/register"
+                    >
+                      Sign up
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      className={b('details-cta')}
+                      href="https://dashboard.datocms.com/register"
+                    >
+                      Sign up
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      className={b('details-cta')}
+                      href="mailto:support@datocms.com"
+                    >
+                      Get in touch
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
             </table>
-
           </div>
         </Wrap>
       </Space>
