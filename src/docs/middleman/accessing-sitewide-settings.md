@@ -1,5 +1,4 @@
 ---
-category: middleman
 title: Accessing site-wide settings
 position: 10
 draft: true

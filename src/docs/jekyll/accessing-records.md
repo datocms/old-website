@@ -1,5 +1,4 @@
 ---
-category: jekyll
 position: 3
 title: Accessing records
 ---

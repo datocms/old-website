@@ -9,21 +9,21 @@
   width: 350px
   flex-shrink: 0
 
-.DocPage__menu-category
-  margin-bottom: 5px
+.DocPage__menu-title
+  +size(big)
+  color: $light-body-color
+  margin-bottom: 10px
 
-.DocPage__menu-category-name
-  margin-bottom: 5px
+.DocPage__menu-back a
+  display: block
+  margin-top: 30px
+  text-decoration: none
+  color: $azure-color
+  +weight(bold)
+  +size(small)
 
-  a
-    text-decoration: none
-    color: $base-body-color
-
-    &:hover
-      color: $red-color
-
-.DocPage__menu-pages
-  margin-left: 20px
+  &:hover
+    text-decoration: underline
 
 .DocPage__menu-page
   &:last-child
@@ -59,10 +59,10 @@
   font-size: 18px
   line-height: 1.7
 
-  h1, h2, h3, h4, h5, h6, p, ul
+  h1, h2, h3, h4, h5, h6, p, ul, ol
     max-width: 75%
 
-  ul p
+  ul p, ol p
     max-width: none
 
   h1, h2, h3, h4, h5, h6
@@ -97,6 +97,9 @@
   i, em
     font-style: italic
 
+  strong
+    +weight(bold)
+
   a
     color: $red-color
     text-decoration: none
@@ -128,7 +131,7 @@
   h3
     font-size: 35px
     line-height: 1.3
-    margin: 35px 0
+    margin: 90px 0 35px
 
   h4
     font-size: 25px

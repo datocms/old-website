@@ -1,5 +1,4 @@
 ---
-category: jekyll
 title: Managing SEO
 position: 9
 ---

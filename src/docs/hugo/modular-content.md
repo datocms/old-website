@@ -1,6 +1,5 @@
 ---
 title: Modular content fields
-category: hugo
 position: 7
 ---
 

@@ -1,5 +1,4 @@
 ---
-category: other
 title: Localization
 position: 8
 ---

@@ -1,5 +1,4 @@
 ---
-category: metalsmith
 position: 3
 title: Accessing records
 ---

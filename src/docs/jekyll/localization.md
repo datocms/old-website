@@ -1,5 +1,4 @@
 ---
-category: jekyll
 title: Localization
 position: 8
 ---
@@ -67,7 +66,6 @@ directory "_posts" do
             :yaml,
             title: article.title,
             language: locale,
-            category: article.categories.map(&:name)
           )
 
           content(article.content)

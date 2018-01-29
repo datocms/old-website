@@ -1,5 +1,4 @@
 ---
-category: other
 position: 3
 title: Accessing records
 ---

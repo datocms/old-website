@@ -1,5 +1,4 @@
 ---
-category: search
 position: 3
 title: Integrating search on your site
 ---

@@ -1,5 +1,4 @@
 ---
-category: metalsmith
 title: Localization
 position: 8
 ---

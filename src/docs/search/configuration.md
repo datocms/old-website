@@ -1,5 +1,4 @@
 ---
-category: search
 position: 2
 title: Configuration
 ---

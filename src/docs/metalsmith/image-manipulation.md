@@ -1,5 +1,4 @@
 ---
-category: metalsmith
 title: Image manipulation
 position: 6
 ---

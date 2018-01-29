@@ -1,5 +1,4 @@
 ---
-category: search
 position: 4
 title: Search widget
 ---

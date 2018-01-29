@@ -1,5 +1,4 @@
 ---
-category: metalsmith
 title: Managing SEO
 position: 9
 ---

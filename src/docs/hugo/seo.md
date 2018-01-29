@@ -1,5 +1,4 @@
 ---
-category: hugo
 title: Managing SEO
 position: 9
 ---

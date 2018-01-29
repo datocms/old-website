@@ -15,7 +15,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 path: fileAbsolutePath
                 frontmatter {
                   copyFrom
-                  category
                 }
               }
             }
@@ -30,14 +29,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         const { path, frontmatter: { copyFrom, category } } = page
         const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
 
-        const contentPath = copyFrom ?
-          p.join(__dirname, 'src', 'docs', copyFrom) :
-          path;
-
         createPage({
           path: url,
           component: p.resolve(`./src/templates/DocPage/index.js`),
-          context: { path: contentPath },
+          context: { path },
         })
       });
     })

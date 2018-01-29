@@ -1,6 +1,5 @@
 ---
 title: Modular content fields
-category: jekyll
 position: 7
 ---
 

@@ -1,5 +1,4 @@
 ---
-category: deploy
 position: 1
 title: Introduction
 ---

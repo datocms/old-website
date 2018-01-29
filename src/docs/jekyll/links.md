@@ -1,5 +1,4 @@
 ---
-category: jekyll
 position: 4
 title: Link fields
 ---

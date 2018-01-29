@@ -1,5 +1,4 @@
 ---
-category: search
 position: 5
 title: Exclude content from indexing
 ---

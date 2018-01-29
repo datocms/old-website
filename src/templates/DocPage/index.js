@@ -10,20 +10,6 @@ import './style.sass'
 
 const b = bem.lock('DocPage')
 
-const categories = [
-  { id: 'overview',   title: 'Overview' },
-  { id: 'schema',     title: 'Building the admin area' },
-  { id: 'jekyll',     title: 'Integrating with Jekyll' },
-  { id: 'gatsby',     title: 'Integrating with Gatsby' },
-  { id: 'hugo',       title: 'Integrating with Hugo' },
-  { id: 'middleman',  title: 'Integrating with Middleman' },
-  { id: 'metalsmith', title: 'Integrating with Metalsmith' },
-  { id: 'other',      title: 'Integrating with other generators' },
-  { id: 'deploy',     title: 'Deploy your website' },
-  { id: 'search',     title: 'DatoCMS Site Search (beta)' },
-  { id: 'api-client', title: 'API Clients' },
-];
-
 const PageLink = ({ to, children }) => (
   <Link
     exact
@@ -34,76 +20,86 @@ const PageLink = ({ to, children }) => (
   </Link>
 )
 
-const findTitle = (page, pages) => {
-  if (page.frontmatter.title) {
-    return page.frontmatter.title
+const findFrontmatterValue = (value, page, pages) => {
+  if (page.frontmatter[value]) {
+    return page.frontmatter[value]
   }
 
-  const contentPage = pages.find(p => p.path.includes(page.frontmatter.copyFrom))
+  const contentPage = pages
+    .find(p => p.path.includes(page.frontmatter.copyFrom))
 
   if (contentPage) {
-    return contentPage.frontmatter.title
+    return contentPage.frontmatter[value]
   }
 
   return ''
 }
 
+const findTitle = findFrontmatterValue.bind(this, 'title');
+const findPosition = findFrontmatterValue.bind(this, 'position');
+
+const findHtml = (page, pages) => {
+  if (page.frontmatter.copyFrom) {
+    const contentPage = pages
+      .find(p => p.path.includes(page.frontmatter.copyFrom))
+
+    return contentPage.html;
+  }
+
+  return page.html;
+}
+
 export default class DocPage extends React.Component {
   render() {
-    const { page } = this.props.data
-    const pages = this.props.data.pages.edges.map(edge => edge.node);
-    const category = categories.find(c => c.id === page.frontmatter.category);
+    const { pathContext, data } = this.props;
+
+    const dir = pathContext.path.replace(/[^\/]*$/, '');
+    const pages = data.pages.edges.map(edge => edge.node);
+
+    const categoryPages = pages
+      .filter(page => page.path.startsWith(dir))
+      .sort((a, b) => (
+        findPosition(a, pages) - findPosition(b, pages)
+      ));
+
+    const page = pages.find(page => page.path === pathContext.path);
+
+    const categoryTitle = findTitle(categoryPages[0], pages);
 
     return (
       <div>
         <Wrap>
           <div className={b()}>
-            <ul className={b('menu')}>
-              {
-                categories.map(category => {
-                  const categoryPages = pages
-                    .filter(page => page.frontmatter.category === category.id)
-                    .sort(sortBy('frontmatter.position'))
+            <div className={b('menu')}>
+              <div className={b('menu-title')}>
+                {categoryTitle}
+              </div>
 
-                  return (
-                    <li key={category.id} className={b('menu-category')}>
-                      <div className={b('menu-category-name')}>
-                        <PageLink to={categoryPages[0]}>
-                          {category.title}
-                        </PageLink>
-                      </div>
-                      {
-                        category.id === page.frontmatter.category &&
-                          <ul className={b('menu-pages')}>
-                            {
-                              categoryPages.map(page => (
-                                <li key={page.path} className={b('menu-page')}>
-                                  <PageLink to={page}>
-                                    {findTitle(page, pages)}
-                                  </PageLink>
-                                </li>
-                              ))
-                            }
-                          </ul>
-                      }
+              <ul className={b('menu-pages')}>
+                {
+                  categoryPages.map((page, i) => (
+                    <li key={page.path} className={b('menu-page')}>
+                      <PageLink to={page}>
+                        {i === 0 ? "Introduction" : findTitle(page, pages)}
+                      </PageLink>
                     </li>
-                  )
-                })
-              }
-              <li className={b('menu-category')}>
-                <div className={b('menu-category-name')}>
-                  <Link to="/api/">
-                    API Reference
-                  </Link>
-                </div>
-              </li>
-            </ul>
+                  ))
+                }
+              </ul>
+
+              <div className={b('menu-back')}>
+                <Link to="/docs">
+                  &laquo; Go back to docs
+                </Link>
+              </div>
+            </div>
+
             <div className={b('content')}>
               <Space bottom={5}>
                 {
-                  category &&
+                  categoryPages.length > 1 && findPosition(page, pages) !== 1 &&
                     <h6 className={b('content-category')}>
-                      {category.title}
+                      {categoryTitle}
                     </h6>
                 }
                 <h1  className={b('content-title')}>
@@ -112,7 +108,7 @@ export default class DocPage extends React.Component {
               </Space>
               <div
                 className={b('content-body')}
-                dangerouslySetInnerHTML={{ __html: page.html }}
+                dangerouslySetInnerHTML={{ __html: findHtml(page, pages) }}
               />
             </div>
           </div>
@@ -123,29 +119,20 @@ export default class DocPage extends React.Component {
 }
 
 export const query = graphql`
-  query DocPageQuery($path: String!) {
+  query DocPageQuery {
     pages: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/.*docs.*/" } }
     ) {
       edges {
         node {
+          html
           path: fileAbsolutePath
           frontmatter {
-            category
             title
             copyFrom
             position
           }
         }
-      }
-    }
-    page: markdownRemark(fileAbsolutePath: { eq: $path }) {
-      html
-      frontmatter {
-        category
-        title
-        copyFrom
-        position
       }
     }
   }

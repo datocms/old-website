@@ -1,5 +1,4 @@
 ---
-category: other
 title: Managing SEO
 position: 9
 ---

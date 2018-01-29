@@ -1,5 +1,4 @@
 ---
-category: jekyll
 title: Image manipulation
 position: 6
 ---

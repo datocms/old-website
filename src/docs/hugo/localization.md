@@ -1,5 +1,4 @@
 ---
-category: hugo
 title: Localization
 position: 8
 ---

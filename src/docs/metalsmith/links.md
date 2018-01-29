@@ -1,5 +1,4 @@
 ---
-category: metalsmith
 position: 4
 title: Link fields
 ---
