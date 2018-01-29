@@ -39,6 +39,7 @@
     "react-typist": "2.0.4",
     "react-waypoint": "8.0.0",
     "sort-by": "1.2.0",
+    "sort-object": "3.0.2",
     "whatwg-fetch": "2.0.3"
   },
   "keywords": [

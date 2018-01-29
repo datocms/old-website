@@ -90,6 +90,13 @@ export default class DocPage extends React.Component {
                   )
                 })
               }
+              <li className={b('menu-category')}>
+                <div className={b('menu-category-name')}>
+                  <Link to="/api/">
+                    API Reference
+                  </Link>
+                </div>
+              </li>
             </ul>
             <div className={b('content')}>
               <Space bottom={5}>

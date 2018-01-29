@@ -1,13 +1,15 @@
 import 'whatwg-fetch';
 import React from 'react'
-import parser from 'json-schema-ref-parser';
+import parser from 'json-schema-ref-parser'
 import sortBy from 'sort-by'
 import Prism from 'prismjs'
+import Link from 'gatsby-link'
+import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
 
 import ScrollableAnchor from 'react-scrollable-anchor'
-import { Link, Element } from 'react-scroll'
+import { Link as ScrollLink, Element } from 'react-scroll'
 import humps from 'humps'
 import pluralize from 'pluralize'
 
@@ -23,6 +25,14 @@ const methods = {
   instances: 'all',
   self: 'find'
 };
+
+const defaultLinksOrder = [
+  'instances',
+  'self',
+  'create',
+  'update',
+  'destroy',
+];
 
 const regexp = /{\(%2Fschemata%2F([^%]+).*$/g;
 
@@ -44,7 +54,15 @@ class ApiPage extends React.Component {
           .map(([resource, resourceSchema]) => ({
             id: resource,
             ...resourceSchema,
-            links: resourceSchema.links.filter(l => !l.private),
+            attributes: resourceSchema.definitions.attributes ?
+              resourceSchema.definitions.attributes.properties :
+              {},
+            links: resourceSchema.links.filter(l => !l.private)
+              .map(link => ({
+                ...link,
+                position: (defaultLinksOrder.includes(link.rel) ? defaultLinksOrder.indexOf(link.rel) : 99),
+              }))
+              .sort(sortBy('position')),
             position: resourceSchema.position || 99
           }))
           .filter(resource => resource.links.length > 0)
@@ -55,7 +73,6 @@ class ApiPage extends React.Component {
   }
 
   rubyCode(resource, link) {
-
     let params = [];
     let precode = [];
 
@@ -74,21 +91,30 @@ class ApiPage extends React.Component {
 
     const fix = string => string.replace(/^{/g, '').replace(/}$/g, '').replace(/": /g, '" => ')
 
+    const deserialize = (data, withId = false) => {
+      const id = withId ? { id: data.id } : {};
+
+      const attrs = {
+        ...id,
+        ...(sortObject(data.attributes) || {}),
+        ...sortObject(
+          Object.entries(data.relationships || {}).reduce((acc, [name, value]) => {
+            acc[name] = value.data ? value.data.id : null;
+            return acc;
+          }, {})
+        )
+      }
+
+      return attrs;
+    }
+
     if (link.schema) {
       const example = schemaExampleFor(link.schema);
 
       if (link.method === 'GET') {
         params.push(fix(JSON.stringify(example, null, 2)));
       } else {
-        const attrs = {
-          ...(example.data.attributes || {}),
-          ...Object.entries(example.data.relationships || {}).reduce((acc, [name, value]) => {
-            acc[name] = value.data ? value.data.id : null;
-            return acc;
-          }, {})
-        }
-
-        params.push(fix(JSON.stringify(attrs, null, 2)));
+        params.push(fix(JSON.stringify(deserialize(example.data), null, 2)));
       }
     }
 
@@ -109,13 +135,19 @@ class ApiPage extends React.Component {
       const variable = resource.id;
 
       if (Array.isArray(example.data)) {
+        const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    # ').replace(/": /g, '" => ');
+
         returnCode = `${call}.each do |${variable}|
   puts ${variable}.inspect
+${result}
 end`;
       } else {
+        const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '# ').replace(/": /g, '" => ');
         returnCode = `${variable} = ${call}
 
-puts ${variable}.inspect`;
+puts ${variable}.inspect
+${result}
+`;
       }
     }
 
@@ -146,21 +178,29 @@ ${returnCode}
       params.push(`${humps.camelize(placeholder)}Id`);
     });
 
+    const deserialize = (data, withId = false) => {
+      const id = withId ? { id: data.id } : {};
+
+      const attrs = {
+        ...id,
+        ...sortObject(humps.camelizeKeys(data.attributes) || {}),
+        ...sortObject(
+          Object.entries(data.relationships || {}).reduce((acc, [name, value]) => {
+            acc[humps.camelize(name)] = value.data ? value.data.id : null;
+            return acc;
+          }, {})
+        )
+      }
+      return attrs;
+    }
+
     if (link.schema) {
       const example = schemaExampleFor(link.schema);
 
       if (link.method === 'GET') {
         params.push(JSON.stringify(example, null, 2));
       } else {
-        const attrs = {
-          ...humps.camelizeKeys(example.data.attributes) || {},
-          ...Object.entries(example.data.relationships || {}).reduce((acc, [name, value]) => {
-            acc[humps.camelize(name)] = value.data ? value.data.id : null;
-            return acc;
-          }, {})
-        }
-
-        params.push(JSON.stringify(attrs, null, 2));
+        params.push(JSON.stringify(deserialize(example.data), null, 2));
       }
     }
 
@@ -173,16 +213,21 @@ ${returnCode}
         const singleVariable = humps.camelize(resource.id);
         const multipleVariable = humps.camelize(pluralize(resource.id));
 
+        const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    // ');
+
         returnCode = `.then((${multipleVariable}) => {
   ${multipleVariable}.forEach((${singleVariable}) => {
     console.log(${singleVariable});
+${result}
   });
 })`;
       } else {
         const variable = humps.camelize(resource.id);
+        const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '  // ');;
 
         returnCode = `.then((${variable}) => {
   console.log(${variable});
+${result}
 })`;
       }
     } else {
@@ -218,7 +263,7 @@ ${returnCode}
     return (
       <div>
         <div className={b('example-title')}>
-          {resource.title} / <span className={b('example-link-title')}>{link.title}</span>
+          {resource.title} / <span className={b('example-link-title')}>{link.description}</span>
         </div>
 
         <div className={b('example-call')}>
@@ -372,27 +417,87 @@ ${returnCode}
     const { resources } = this.state;
 
     return (
-      <ul>
-        {
-          resources.map(resource => (
-            <li key={resource.id} className={b('menu-category')}>
-              <Link
-                href={`#${resource.id}`}
-                to={resource.id}
-                activeClass="active"
-                spy
-                hashSpy
-                smooth
-                duration={500}
-                containerId="container"
-                offset={-50}
-              >
-                {resource.title}
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
+      <div >
+        <ul>
+          {
+            resources.map(resource => (
+              <li key={resource.id} className={b('menu-category')}>
+                <ScrollLink
+                  href={`#${resource.id}`}
+                  to={resource.id}
+                  activeClass="active"
+                  spy
+                  hashSpy
+                  smooth
+                  duration={500}
+                  containerId="container"
+                  offset={-50}
+                >
+                  {resource.title}
+                </ScrollLink>
+              </li>
+            ))
+          }
+        </ul>
+        <div className={b('menu-back')}>
+          <Link to="/docs">
+            &laquo; Go back to docs
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  renderAttribute(name, schema) {
+    let schemaType = schema.type || [];
+
+    if (!Array.isArray(schema.type)) {
+      schemaType = [schemaType];
+    }
+
+    schemaType = schemaType.filter(type => type);
+
+    return (
+      <div key={name} className={b('attribute')}>
+        <div className={b('attribute-left')}>
+          <div className={b('attribute-name')}>
+            {name}
+          </div>
+          <div className={b('attribute-type')}>
+            {schemaType.join(', ')}
+          </div>
+        </div>
+        <div className={b('attribute-right')}>
+          {
+            schema.description &&
+              <div className={b('attribute-description')}>
+                {schema.description}
+              </div>
+          }
+          {
+            schema.example &&
+              <div className={b('attribute-example')}>
+                Example:
+                {
+                  JSON.stringify(schema.example, null, 2).split(/\r\n|\r|\n/).length === 1 ?
+                    <span>&nbsp;{JSON.stringify(schema.example)}</span> 
+                    :
+                    <div className={b('attribute-example-code')}>
+                      <pre
+                        className="language-javascript"
+                        dangerouslySetInnerHTML={{
+                          __html: Prism.highlight(
+                            JSON.stringify(schema.example, null, 2),
+                            Prism.languages.javascript
+                          )
+                        }}
+                      />
+                    </div>
+                }
+              </div>
+          }
+        </div>
+      </div>
     );
   }
 
@@ -401,6 +506,9 @@ ${returnCode}
 
     return (
       <div>
+        <div className={b('title')}>
+          DatoCMS API Reference
+        </div>
         {
           resources.map(resource => (
             <Element
@@ -411,6 +519,18 @@ ${returnCode}
                 <h2 className={b('resource-title')}>
                   {resource.title}
                 </h2>
+                <div className={b('resource-description')}>
+                  {resource.description}
+                </div>
+
+                <div className={b('attributes')}>
+                  {
+                    Object.entries(sortObject(resource.attributes)).map(([name, schema]) => (
+                      this.renderAttribute(name, schema)
+                    ))
+                  }
+                </div>
+
                 <div>
                   {
                     resource.links.map((link, i) => (
@@ -438,9 +558,8 @@ ${returnCode}
                         }
                       >
                         <h4 className={b('link-title')}>
-                          {link.title}
+                          {link.description}
                         </h4>
-                        {link.description}
                       </div>
                     ))
                   }

@@ -3,6 +3,10 @@
 
 $padding: 60px
 
+.ApiPage__title
+  +size(hero)
+  margin-bottom: 80px
+
 .ApiPage__menu-category
   margin-bottom: 5px
 
@@ -34,6 +38,16 @@ $padding: 60px
   overflow: auto
   padding: 50px $padding
 
+.ApiPage__menu-back a
+  display: block
+  margin-top: 30px
+  text-decoration: none
+  color: $azure-color
+  +size(small)
+
+  &:hover
+    text-decoration: underline
+
 .ApiPage__content
   flex: 1
   padding: 50px
@@ -48,12 +62,15 @@ $padding: 60px
   color: white
 
 .ApiPage__resource
-  margin-bottom: 60px
+  margin-bottom: 120px
 
 .ApiPage__resource-title
   +size(bigger)
   +weight(bold)
   margin-bottom: 20px
+
+.ApiPage__resource-description
+  margin-bottom: 30px
 
 .ApiPage__link
   display: block
@@ -69,7 +86,6 @@ $padding: 60px
 
 .ApiPage__link-title
   +size(big)
-  +weight(bold)
 
 .ApiPage__example-title
   +size(bigger)
@@ -150,7 +166,7 @@ $padding: 60px
 .ApiPage__http-query
   +size(small)
 
-  td, td
+  th, td
     padding-bottom: 4px
 
 .ApiPage__http-query-name,
@@ -178,3 +194,45 @@ $padding: 60px
   display: inline-block
   vertical-align: middle
   margin-left: 5px
+
+.ApiPage__attributes
+  margin: 20px 0
+  width: 100%
+
+.ApiPage__attributes
+  +size(small)
+  text-align: left
+  border-top: 1px solid $border-color
+  margin: 50px 0
+
+.ApiPage__attribute
+  display: flex
+  border-bottom: 1px solid $border-color
+  padding: 10px 0
+
+.ApiPage__attribute-left
+  width: 35%
+  flex-shrink: 0
+  padding-right: 50px
+  box-sizing: border-box
+
+.ApiPage__attribute-right
+  width: 65%
+  overflow: auto
+
+.ApiPage__attribute-name
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+
+.ApiPage__attribute-type
+  color: $ultra-light-body-color
+  +size(smaller)
+
+.ApiPage__attribute-example
+  +size(smaller)
+
+  span
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+    color: #FE6252
+
+.ApiPage__attribute-description
+  margin-bottom: 10px

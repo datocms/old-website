@@ -3,7 +3,7 @@ export default function schemaExampleFor(schema) {
     return null;
   }
 
-  if (schema.example) {
+  if (schema.hasOwnProperty('example')) {
     return schema.example;
   }
 
