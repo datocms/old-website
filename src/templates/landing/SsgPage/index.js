@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Wrap, button, Space, text } from 'blocks'
 import Masonry from 'react-masonry-component'
+import Zoom from 'react-reveal/Zoom'
 
 import bem from 'utils/bem'
 
@@ -42,28 +43,34 @@ export default class SsgPage extends React.Component {
             <div className={b('works-inner')}>
               <div className={b('works-logos')}>
                 <div className={b('works-logos-inner')}>
-                  <img src={ssg.logo.url} alt={ssg.name} />
-                  <img src={logo} alt="DatoCMS" />
+                  <Zoom delay={0}>
+                    <img src={ssg.logo.url} alt={ssg.name} />
+                  </Zoom>
+                  <Zoom delay={200}>
+                    <img src={logo} alt="DatoCMS" />
+                  </Zoom>
                 </div>
               </div>
               <div className={b('works-content')}>
-                <div className={b('works-content-inner')}>
-                  <div className={b('works-content-title')}>
-                    How does it work?
+                <Zoom delay={400}>
+                  <div className={b('works-content-inner')}>
+                    <div className={b('works-content-title')}>
+                      How does it work?
+                    </div>
+                    <div className={b('works-content-content')}>
+                      <ol>
+                        <li>Use our visual builder to generate a custom administrative area</li>
+                        <li>Invite your editors in and let them make changes to the site content</li>
+                        <li>Integrate your {ssg.name} project with our <a href={ssg.documentationUrl}>our DatoCMS plugin</a></li>
+                      </ol>
+                    </div>
+                    <div className={b('works-content-actions')}>
+                      <Link to={ssg.documentationUrl} className={button({ red: true })}>
+                        Go to our {ssg.name} integration guide
+                      </Link>
+                    </div>
                   </div>
-                  <div className={b('works-content-content')}>
-                    <ol>
-                      <li>Use our visual builder to generate a custom administrative area</li>
-                      <li>Invite your editors in and let them make changes to the site content</li>
-                      <li>Integrate your {ssg.name} project with our <a href={ssg.documentationUrl}>our DatoCMS plugin</a></li>
-                    </ol>
-                  </div>
-                  <div className={b('works-content-actions')}>
-                    <Link to={ssg.documentationUrl} className={button({ red: true })}>
-                      Go to our {ssg.name} integration guide
-                    </Link>
-                  </div>
-                </div>
+                </Zoom>
               </div>
             </div>
           </Wrap>
