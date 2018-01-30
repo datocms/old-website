@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { Wrap, button, Space, text } from 'blocks'
-import Masonry from 'react-masonry-component'
 import Zoom from 'react-reveal/Zoom'
 
 import bem from 'utils/bem'
@@ -23,13 +22,6 @@ const b = bem.lock('LandingPage')
 export default class SsgPage extends React.Component {
   render() {
     const { data: { ssg, home, features, reviews } } = this.props;
-
-    const websites = this.props.data.websites.edges
-      .map(({ node }) => node)
-      .filter((website) => (
-        website.technologies.map(t => t.slug).includes(ssg.slug)
-      ))
-      .slice(0, 4);
 
     return (
       <div>
@@ -93,29 +85,6 @@ export const query = graphql`
       slug
     }
 
-    websites: allDatoCmsWebsite(sort: { fields: [position] }) {
-      edges {
-        node {
-          id
-          title
-          url
-          useCase {
-            id
-          }
-          technologies {
-            slug
-          }
-          image {
-            width
-            height
-            resize(width: 700, imgixParams: { fm: "jpg", q: 90 }) {
-              src
-            }
-          }
-        }
-      }
-    }
-
     home: datoCmsHomePage {
       whosUsingDatocms {
         name
@@ -163,47 +132,3 @@ export const query = graphql`
     }
   }
 `
-
-// <Space both={10}>
-//   <Wrap>
-//     <div className={b()}>
-//       <div className={b('content')}>
-//         <div className={b('logos')}>
-//           <img src={ssg.logo.url} />
-//         </div>
-//         <div className={b('title')}>
-//           Meet the CMS for {ssg.name}!
-//         </div>
-//         <div className={b('description')}>
-//           <p>DatoCMS is a web-based administrative area for your <a href={ssg.projectUrl} target="_blank">{ssg.name}</a> static websites.</p>
-
-//           <ol>
-//             <li>Use our visual builder to generate a custom administrative area</li>
-//             <li>Invite your editors and let them make changes to the site content</li>
-//             <li>Integrate your {ssg.name} project with our <a href={ssg.documentationUrl}>our DatoCMS plugin</a></li>
-//           </ol>
-//         </div>
-//       </div>
-//       <div className={b('gallery')}>
-//         <Masonry
-//           options={{
-//             columnWidth: '.LandingPage__grid-sizer',
-//             gutter: '.LandingPage__gutter-sizer',
-//             itemSelector: '.LandingPage__website',
-//             percentPosition: true
-//           }}
-//         >
-//           <div className={b('grid-sizer')} />
-//           <div className={b('gutter-sizer')} />
-//           {
-//             websites.map((website) => (
-//               <div key={website.url} className={b('website')}>
-//                 <LazyImage height={200} image={website.image} slow={website.highlighted} />
-//               </div>
-//             ))
-//           }
-//         </Masonry>
-//       </div>
-//     </div>
-//   </Wrap>
-// </Space>

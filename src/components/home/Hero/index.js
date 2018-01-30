@@ -28,9 +28,9 @@ const HomeHero = ({ title, description }) => (
             </p>
           </Space>
           <Space bottom="2">
-            <Link to="https://dashboard.datocms.com/register" className={button({ red: true })}>
+            <a href="https://dashboard.datocms.com/register" className={button({ red: true })}>
               Try it free
-            </Link>
+            </a>
             <div className={b('or-discover')}>
               or discover more <img src={arrowDown} />
             </div>
