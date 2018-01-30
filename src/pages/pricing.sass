@@ -201,9 +201,47 @@
 .Tooltip
   border-bottom: 1px dashed $border-color
   position: relative
+  display: inline-block
+
+  img
+    display: inline-block
+    vertical-align: middle
+    margin-left: 3px
+    height: 14px
 
 .Tooltip__hint
-  display: none
+  opacity: 0
+  transition: all 200ms 300ms ease-in-out
+  background-color: $dark-violet-color
+  border-radius: 7px
+  z-index: 1
+  position: absolute
+  bottom: 100%
+  left: 50%
+  transform: translateX(-50%)
+  padding: 14px
+  color: white
+  +size(small)
+  min-width: 250px
+  line-height: 1.2
+  margin-bottom: 13px
+  text-align: left
+  pointer-events: none
+
+  &:after
+    content: ""
+    width: 0px
+    position: absolute
+    bottom: -10px
+    left: 50%
+    transform: translateX(-50%)
+    border-top: 10px solid $dark-violet-color
+    border-right: 10px solid transparent
+    border-left: 10px solid transparent
 
   .Tooltip:hover &
-    display: block
+    opacity: 1
+
+.Tooltip--icon .Tooltip__hint
+  left: 100%
+  margin-left: -8px

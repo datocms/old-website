@@ -9,18 +9,29 @@ import Features from '../components/home/Features'
 
 import './pricing.sass'
 import check from 'images/check.svg'
+import tooltip from 'images/info-tooltip-dark.svg'
 
 const b = bem.lock('PricingPage')
 
 const tooltips = {
-  invitations: 'The number of editors/marketers you can invite inside your administrative area to manage content',
-  fileStorage: 'Any image/file you upload to DatoCMS counts towards this limit',
-  records: 'A record represents a single piece of information you store within a site. Think of it like a database-like entry. It can be anything: a blog post, a category, an image gallery...',
+  invitations: 'The number of editors/marketers you can invite inside your administrative area to manage content.',
+  fileStorage: 'Any image/file you upload to DatoCMS counts towards this limit.',
+  records: 'A record represents a single piece of information you store within a site. Think of it like a database-like entry. It can be anything: a blog post, a category, an image gallery, etc.',
+  indexablePages: 'If you use DatoCMS with a static website and you want to use our "Google Search"-like feature, that\'s the number of pages in your frontend website that we\'ll scrape and index',
+  imgix: 'Every image you upload in DatoCMS is stored on Imgix, a super-fast CDN optimized for image delivery. By adding some parameters to your image URL you can apply multiple transformations (resize, crop, compress, etc.)',
+  languages: 'For an international website, that\'s the number of different languages you can specify your content.',
+  customDomain: 'The ability to access your administrative area using a custom domain (ie. admin.yoursite.com).',
+  revisionHistory: 'View the complete history of changes made to every stored content, and restore them when needed.',
+  s3: 'The ability to use a custom AWS S3 bucket and Imgix account, that you own, to store every image/file your editors upload to DatoCMS.',
+  otp: 'Enforce two-factor authentication to your editors using the Google Authenticator app.',
+  sla: 'SLA packages provide legally binding service availability and support response time guarantees.',
+  saml: 'Ability to provision, deprovision and manage privileges of Contentful users through a SAML-based Identity Provider (IdP) of your choice.',
+  bandwidth: 'Amount of asset data transferred between our Asset CDN and content consumers.'
 }
 
-const Tooltip = ({ children, code }) => (
-  <span className="Tooltip">
-    {children}
+const Tooltip = ({ children, icon, code }) => (
+  <span className={bem('Tooltip', { icon })}>
+    {children} { icon && <img src={tooltip} /> }
     <span className="Tooltip__hint">
       {tooltips[code]}
     </span>
@@ -91,13 +102,13 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-specs')}>
                   <div className={b('recap-item-spec')}>
-                    2 invitations
+                    <Tooltip code="invitations">2 invitations</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    1GB file storage
+                    <Tooltip code="fileStorage">1GB file storage</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    500 records
+                    <Tooltip code="records">500 records</Tooltip>
                   </div>
                 </div>
                 <a
@@ -128,13 +139,13 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-specs')}>
                   <div className={b('recap-item-spec')}>
-                    5 invitations
+                    <Tooltip code="invitations">5 invitations</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    3GB file storage
+                    <Tooltip code="fileStorage">3GB file storage</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    2.000 records
+                    <Tooltip code="records">2.000 records</Tooltip>
                   </div>
                 </div>
                 <a
@@ -165,13 +176,13 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-specs')}>
                   <div className={b('recap-item-spec')}>
-                    Unlimited invitations
+                    <Tooltip code="invitations">Unlimited invitations</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    Unlimited file storage
+                    <Tooltip code="fileStorage">Unlimited file storage</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    Unlimited records
+                    <Tooltip code="records">Unlimited records</Tooltip>
                   </div>
                 </div>
                 <a
@@ -308,7 +319,27 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Invitations
+                    Support
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Low-priority
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Standard
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Advanced
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Advanced
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Premium
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    <Tooltip icon code="invitations">Invitations</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     0
@@ -328,7 +359,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    File storage
+                    <Tooltip icon code="fileStorage">File storage</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     200 MB
@@ -348,7 +379,27 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Records
+                    <Tooltip icon code="bandwidth">Bandwidth</Tooltip>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    1 TB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    1 TB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    1 TB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    1 TB
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    Custom
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    <Tooltip icon code="records">Records</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     100
@@ -368,7 +419,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Indexable pages
+                    <Tooltip icon code="indexablePages">Indexable pages</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     20
@@ -388,7 +439,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Image manipulations
+                    <Tooltip icon code="imgix">Image manipulations</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     Unlimited
@@ -408,7 +459,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Languages
+                    <Tooltip icon code="languages">Languages</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     Unlimited
@@ -428,7 +479,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Custom admin domain
+                    <Tooltip icon code="customDomain">Custom admin domain</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
 
@@ -448,7 +499,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Revision history
+                    <Tooltip icon code="revisionHistory">Revision history</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
 
@@ -468,7 +519,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Use your own S3 for file uploads
+                    <Tooltip icon code="s3">Use your own S3 for file uploads</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -486,7 +537,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Two-factor authentication
+                    <Tooltip icon code="otp">Two-factor authentication</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -503,24 +554,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Priority chat/email support
-                  </td>
-                  <td className={b('details-feature-value')}>
-                  </td>
-                  <td className={b('details-feature-value')}>
-                  </td>
-                  <td className={b('details-feature-value')}>
-                  </td>
-                  <td className={b('details-feature-value')}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value')}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    SAML Single Sign-on
+                    <Tooltip icon code="saml">SAML Single Sign-on</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -536,7 +570,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    Contract SLAs
+                    <Tooltip icon code="sla">Contract SLAs</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
