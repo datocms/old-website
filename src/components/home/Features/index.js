@@ -32,7 +32,7 @@ class HomeFeatures extends React.Component {
 
   render() {
     const { data } = this.props
-    const selectedFeature = data.features.edges[this.state.selected].node
+    const selectedFeature = data[this.state.selected]
 
     return (
       <Space both="10">
@@ -45,7 +45,7 @@ class HomeFeatures extends React.Component {
               <div className={b('left')}>
                 <div className={b('toc')}>
                   {
-                    data.features.edges.map(({ node: { title, description } }, i) => (
+                    data.map(({ title, description }, i) => (
                       <div
                         key={i}
                         className={b('toc-item')}

@@ -19,7 +19,7 @@ const HomeWhoIsUsing = ({ data }) => (
         </div>
         <div className={b('items')}>
           {
-            data.home.whosUsingDatocms.map(({ logo }, i) => (
+            data.map(({ logo }, i) => (
               <Zoom delay={200 * i} key={i}>
                 <img src={logo.url} />
               </Zoom>

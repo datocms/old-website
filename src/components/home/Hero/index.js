@@ -12,19 +12,19 @@ import arrowDown from 'images/arrow-down-dropdown.svg'
 
 const b = bem.lock('HomeHero')
 
-const HomeHero = ({ data }) => (
+const HomeHero = ({ title, description }) => (
   <div className={b()}>
     <Wrap>
       <div className={b('text-container')}>
         <div>
           <Space bottom="2">
             <h1 className={text({ size: 'hero', weight: 'bold' })}>
-              {data.home.heroText}
+              {title}
             </h1>
           </Space>
           <Space bottom="4">
             <p className={text({ size: 'big' })}>
-              {data.home.heroDescription}
+              {description}
             </p>
           </Space>
           <Space bottom="2">

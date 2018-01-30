@@ -39,7 +39,7 @@ const HomeQuotes = ({ data }) => (
       <div className={b('slider')}>
         <Slider {...settings}>
           {
-            data.reviews.edges.map(({ node: card }) => (
+            data.map((card) => (
               <div key={card.id} className={b('card')}>
                 <div className={b('card-inner')}>
                   <div className={b('card-header')}>
