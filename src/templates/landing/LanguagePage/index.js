@@ -109,6 +109,8 @@ export const query = graphql`
           }
           image {
             url
+            format
+            inlineSvg
           }
         }
       }

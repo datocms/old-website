@@ -197,3 +197,13 @@
 
   &:hover
     opacity: 0.8
+
+.Tooltip
+  border-bottom: 1px dashed $border-color
+  position: relative
+
+.Tooltip__hint
+  display: none
+
+  .Tooltip:hover &
+    display: block

@@ -7,6 +7,7 @@ import './style.sass'
 import { Wrap, button, Space, text } from 'blocks'
 
 import Browser from 'components/Browser'
+import InlineSVG from 'components/InlineSVG'
 import bem from 'utils/bem'
 
 const b = bem.lock('HomeFeatures')
@@ -70,8 +71,15 @@ class HomeFeatures extends React.Component {
                     <div className={b('feature')}>
                       <div className={b('feature-image')}>
                         {
-                          selectedFeature.image ?
-                            <img src={selectedFeature.image.url} /> :
+                          selectedFeature.image && selectedFeature.image.format === 'svg' &&
+                            <InlineSVG src={selectedFeature.image.inlineSvg.replace("Colfax-Regular, Colfax", "colfax-web")} />
+                        }
+                        {
+                          selectedFeature.image && selectedFeature.image.format !== 'svg' &&
+                            <img src={selectedFeature.image.url} />
+                        }
+                        {
+                          !selectedFeature.image &&
                             <div className={b('feature-image-placeholder')} />
                         }
                       </div>

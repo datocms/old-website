@@ -12,6 +12,21 @@ import check from 'images/check.svg'
 
 const b = bem.lock('PricingPage')
 
+const tooltips = {
+  invitations: 'The number of editors/marketers you can invite inside your administrative area to manage content',
+  fileStorage: 'Any image/file you upload to DatoCMS counts towards this limit',
+  records: 'A record represents a single piece of information you store within a site. Think of it like a database-like entry. It can be anything: a blog post, a category, an image gallery...',
+}
+
+const Tooltip = ({ children, code }) => (
+  <span className="Tooltip">
+    {children}
+    <span className="Tooltip__hint">
+      {tooltips[code]}
+    </span>
+  </span>
+)
+
 class PricingPage extends React.Component {
   render() {
     const { data } = this.props;
@@ -39,13 +54,13 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-specs')}>
                   <div className={b('recap-item-spec')}>
-                    No invitations
+                    <Tooltip code="invitations">No invitations</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    200MB file storage
+                    <Tooltip code="fileStorage">200MB file storage</Tooltip>
                   </div>
                   <div className={b('recap-item-spec')}>
-                    100 records
+                    <Tooltip code="records">100 records</Tooltip>
                   </div>
                 </div>
                 <a

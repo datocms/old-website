@@ -7,8 +7,9 @@ import ScrollableAnchor from 'react-scrollable-anchor'
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 
-import Features from '../components/home/Features'
-import CallToAction from '../components/CallToAction'
+import Features from 'components/home/Features'
+import CallToAction from 'components/CallToAction'
+import InlineSVG from 'components/InlineSVG'
 import Waypoint from 'react-waypoint'
 
 import './features.sass'
@@ -52,36 +53,45 @@ class FeaturesPage extends React.Component {
                 </div>
               </Sticky>
               {
-                data.features.edges.map(({ node: feature }, i) => (
-                  <Space key={feature.id} both="10">
-                    <ScrollableAnchor id={feature.slug}>
-                      <Waypoint topOffset="40%" bottomOffset="40%" onEnter={() => this.setState({ activeFeature: i })}>
-                        <div>
-                          <Wrap>
-                            <div className={b('feature', { odd: i % 2 === 1 })}>
-                              <div className={b('feature-image')}>
-                                {
-                                  feature.image ?
-                                    <img src={feature.image.url} /> :
-                                    <div className={b('feature-image-placeholder')} />
-                                }
+                data.features.edges.map(({ node: feature }, i) => {
+                  return (
+                    <Space key={feature.id} both="10">
+                      <ScrollableAnchor id={feature.slug}>
+                        <Waypoint topOffset="40%" bottomOffset="40%" onEnter={() => this.setState({ activeFeature: i })}>
+                          <div>
+                            <Wrap>
+                              <div className={b('feature', { odd: i % 2 === 1 })}>
+                                <div className={b('feature-image')}>
+                                  {
+                                    feature.image && feature.image.format === 'svg' &&
+                                      <InlineSVG src={feature.image.inlineSvg} />
+                                  }
+                                  {
+                                    feature.image && feature.image.format !== 'svg' &&
+                                      <img src={feature.image.url} />
+                                  }
+                                  {
+                                    !feature.image &&
+                                      <div className={b('feature-image-placeholder')} />
+                                  }
+                                </div>
+                                <div className={b('feature-content')}>
+                                  <h5 className={b('feature-title')}>
+                                    {feature.title}
+                                  </h5>
+                                  <div
+                                    className={b('feature-description')}
+                                    dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
+                                  />
+                                </div>
                               </div>
-                              <div className={b('feature-content')}>
-                                <h5 className={b('feature-title')}>
-                                  {feature.title}
-                                </h5>
-                                <div
-                                  className={b('feature-description')}
-                                  dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
-                                />
-                              </div>
-                            </div>
-                          </Wrap>
-                        </div>
-                      </Waypoint>
-                    </ScrollableAnchor>
-                  </Space>
-                ))
+                            </Wrap>
+                          </div>
+                        </Waypoint>
+                      </ScrollableAnchor>
+                    </Space>
+                  )
+                })
               }
             </div>
           </div>
@@ -109,6 +119,8 @@ query FeaturesPageQuery {
         }
         image {
           url
+          format
+          inlineSvg
         }
       }
     }
