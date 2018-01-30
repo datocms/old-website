@@ -8,7 +8,6 @@ import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
 
-import ScrollableAnchor from 'react-scrollable-anchor'
 import { Link as ScrollLink, Element } from 'react-scroll'
 import humps from 'humps'
 import pluralize from 'pluralize'
@@ -427,7 +426,6 @@ ${returnCode}
                   to={resource.id}
                   activeClass="active"
                   spy
-                  hashSpy
                   smooth
                   duration={500}
                   containerId="container"

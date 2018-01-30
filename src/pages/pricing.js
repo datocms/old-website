@@ -17,7 +17,7 @@ const tooltips = {
   invitations: 'The number of editors/marketers you can invite inside your administrative area to manage content.',
   fileStorage: 'Any image/file you upload to DatoCMS counts towards this limit.',
   records: 'A record represents a single piece of information you store within a site. Think of it like a database-like entry. It can be anything: a blog post, a category, an image gallery, etc.',
-  indexablePages: 'If you use DatoCMS with a static website and you want to use our "Google Search"-like feature, that\'s the number of pages in your frontend website that we\'ll scrape and index',
+  indexablePages: 'If you use DatoCMS with a static website and you want to use our "Google Search"-like feature, that\'s the number of pages in your frontend website that we\'ll scrape and index.',
   imgix: 'Every image you upload in DatoCMS is stored on Imgix, a super-fast CDN optimized for image delivery. By adding some parameters to your image URL you can apply multiple transformations (resize, crop, compress, etc.)',
   languages: 'For an international website, that\'s the number of different languages you can specify your content.',
   customDomain: 'The ability to access your administrative area using a custom domain (ie. admin.yoursite.com).',
@@ -26,7 +26,8 @@ const tooltips = {
   otp: 'Enforce two-factor authentication to your editors using the Google Authenticator app.',
   sla: 'SLA packages provide legally binding service availability and support response time guarantees.',
   saml: 'Ability to provision, deprovision and manage privileges of Contentful users through a SAML-based Identity Provider (IdP) of your choice.',
-  bandwidth: 'Amount of asset data transferred between our Asset CDN and content consumers.'
+  bandwidth: 'Amount of asset data transferred between our Asset CDN and content consumers.',
+  backups: 'Nightly copies of your content to your own Amazon S3 buckets.'
 }
 
 const Tooltip = ({ children, icon, code }) => (
@@ -571,6 +572,22 @@ class PricingPage extends React.Component {
                 <tr>
                   <td className={b('details-feature-name')}>
                     <Tooltip icon code="sla">Contract SLAs</Tooltip>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                  </td>
+                  <td className={b('details-feature-value')}>
+                    <img src={check} alt="Available feature" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className={b('details-feature-name')}>
+                    <Tooltip icon code="backups">Offline backups</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>

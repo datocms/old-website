@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import Sticky from 'react-stickynode';
-import ScrollableAnchor from 'react-scrollable-anchor'
+import { Link as ScrollLink, Element } from 'react-scroll'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -16,12 +16,22 @@ import './features.sass'
 
 const b = bem.lock('FeaturesPage')
 
-class FeaturesPage extends React.Component {
-  constructor(props) {
-    super(...props)
-    this.state = { activeFeature: 0 };
-  }
+const ScrollableAnchor = ({ children, id }) => (
+  <ScrollLink
+    href={`#${id}`}
+    to={id}
+    className={b('toc-item-button')}
+    activeClass={b('toc-item-button', { selected: true })}
+    spy
+    smooth
+    duration={500}
+    offset={-50}
+  >
+    {children}
+  </ScrollLink>
+)
 
+class FeaturesPage extends React.Component {
   render() {
     const { data } = this.props;
 
@@ -41,12 +51,11 @@ class FeaturesPage extends React.Component {
                         key={i}
                         className={b('toc-item')}
                       >
-                        <a
-                          href={`#${slug}`}
-                          className={b('toc-item-button', { selected: i === this.state.activeFeature })}
-                        >
+
+                      
+                        <ScrollableAnchor id={slug}>
                           {title}
-                        </a>
+                        </ScrollableAnchor>
                       </div>
                     ))
                   }
@@ -56,8 +65,8 @@ class FeaturesPage extends React.Component {
                 data.features.edges.map(({ node: feature }, i) => {
                   return (
                     <Space key={feature.id} both="10">
-                      <ScrollableAnchor id={feature.slug}>
-                        <Waypoint topOffset="40%" bottomOffset="40%" onEnter={() => this.setState({ activeFeature: i })}>
+                      <Element name={feature.slug}>
+                        <Waypoint topOffset="40%" bottomOffset="40%">
                           <div>
                             <Wrap>
                               <div className={b('feature', { odd: i % 2 === 1 })}>
@@ -88,7 +97,7 @@ class FeaturesPage extends React.Component {
                             </Wrap>
                           </div>
                         </Waypoint>
-                      </ScrollableAnchor>
+                      </Element>
                     </Space>
                   )
                 })
