@@ -42,7 +42,7 @@ class IntegrationsPage extends React.Component {
               }
 
               {
-                byType['language'].map(({ slug }, i) => (
+                byType['language'].map(({ slug, name }, i) => (
                   <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
                     {name}
                   </Link>
@@ -50,7 +50,7 @@ class IntegrationsPage extends React.Component {
               }
 
               {
-                byType['framework'].map(({ slug }, i) => (
+                byType['framework'].map(({ slug, name }, i) => (
                   <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
                     {name}
                   </Link>
