@@ -55,7 +55,7 @@ const Footer = ({ data }) => (
         </Group>
         <Group title="About">
           <GroupLink to="/" label="Team" />
-          <GroupLink to="/" label="Integrations" />
+          <GroupLink to="/integrations/" label="Integrations" />
           <GroupLink to="/" label="Blog" />
         </Group>
         <Group title="Follow us">
