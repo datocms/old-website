@@ -1,0 +1,28 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins'
+
+.BlogAside
+  display: flex
+  align-items: start
+  max-width: 1366px
+  margin: 0 auto
+
+.BlogAside__cols-left
+  flex: 1
+  margin-right: 120px
+
+.BlogAside__cols-right
+  width: 330px
+  border-left: 1px solid $border-color
+  padding-left: 50px
+
+.BlogAside__section
+  margin-bottom: 30px
+
+.BlogAside__section-title
+  margin-bottom: 20px
+  +weight(bold)
+
+.BlogAside__section-content
+  +size(small)
+

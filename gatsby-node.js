@@ -1,6 +1,60 @@
 const p = require('path')
 const groupBy = require('group-by');
 const cartesianProduct = require('cartesian-product');
+const createPaginatedPages = require('gatsby-paginate');
+
+const articles = ({ graphql, boundActionCreators: { createPage } }) => {
+  return graphql(
+    `
+      {
+        articles: allDatoCmsBlogPost(sort: { fields: [publicationDate], order: DESC }) {
+          edges {
+            node {
+              slug
+              title
+              publicationDate(formatString: "MMM D, YYYY")
+              author {
+                name
+                avatar {
+                  url
+                  sizes(maxWidth: 80) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
+              excerpt: excerptNode {
+                markdown: childMarkdownRemark {
+                  html
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+  .then(result => {
+    createPaginatedPages({
+      edges: result.data.articles.edges,
+      createPage: createPage,
+      pageTemplate: `./src/templates/BlogPage/index.js`,
+      pageLength: 10,
+      pathPrefix: 'blog'
+    });
+
+    result.data.articles.edges.forEach(({ node: article }) => {
+      createPage({
+        path: `/blog/${article.slug}/`,
+        component: p.resolve(`./src/templates/ArticlePage/index.js`),
+        context: { slug: article.slug },
+      })
+    })
+  })
+}
 
 const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
   return graphql(
@@ -125,5 +179,6 @@ exports.createPages = (options) => {
   return Promise.all([
     docPages(options),
     landingPages(options),
+    articles(options),
   ]);
 }

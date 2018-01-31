@@ -1,0 +1,44 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins'
+
+.BlogPage__article
+  margin-bottom: 50px
+  padding: 50px
+  box-shadow: 0px 4px 15px 0 rgba(black, 0.12)
+  border-radius: 10px
+  padding-right: 150px
+
+.BlogPage__article-title
+  +size(bigger)
+  +weight(bold)
+  margin-bottom: 15px
+
+  a
+    text-decoration: none
+    color: $base-body-color
+
+.BlogPage__article-image
+  width: 30px
+  border-radius: 50%
+
+.BlogPage__article-excerpt
+  color: $light-body-color
+
+.BlogPage__article-meta
+  +size(small)
+  margin-top: 20px
+  color: $light-body-color
+
+  a
+    color: $base-body-color
+    text-decoration: none
+    +weight(bold)
+
+    &:hover
+      text-decoration: underline
+
+  .gatsby-image-outer-wrapper
+    display: inline-block
+    vertical-align: middle
+    margin-right: 10px
+
