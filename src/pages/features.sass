@@ -6,21 +6,25 @@
   text-align: center
   margin-bottom: 60px
 
+.FeaturesPage__cols
+  display: flex
+
+.FeaturesPage__cols-toc
+  width: 260px
+
+.FeaturesPage__cols-content
+  flex: 1
+
+.FeaturesPage__toc
+  position: absolute
+  left: 25px
+
+.FeaturesPage__toc-item
+  margin-bottom: 5px
+  +size(small)
+
 .FeaturesPage__content
   position: relative
-
-@media screen and (max-width: 1500px)
-  .FeaturesPage__toc
-    display: none
-
-@media screen and (min-width: 1501px)
-  .FeaturesPage__toc
-    position: absolute
-    left: 25px
-
-  .FeaturesPage__toc-item
-    margin-bottom: 5px
-    +size(small)
 
 .FeaturesPage__toc-item-button
   border: 0
@@ -48,6 +52,7 @@
   display: flex
   justify-content: center
   align-items: center
+  margin-bottom: 100px
 
 .FeaturesPage__feature--odd
   flex-direction: row-reverse

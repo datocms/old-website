@@ -1,11 +1,15 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
-$padding: 60px
+$padding: 40px
 
 .ApiPage__title
   +size(hero)
   margin-bottom: 80px
+
+.ApiPage__logo
+  display: block
+  margin-bottom: 40px
 
 .ApiPage__menu-category
   margin-bottom: 5px
@@ -36,13 +40,14 @@ $padding: 60px
 .ApiPage__menu
   flex-shrink: 0
   overflow: auto
-  padding: 50px $padding
+  padding: 50px 0 50px $padding
 
 .ApiPage__menu-back a
   display: block
   margin-top: 30px
   text-decoration: none
   color: $azure-color
+  +weight(bold)
   +size(small)
 
   &:hover
@@ -85,7 +90,7 @@ $padding: 60px
   border-left-color: $red-color
 
 .ApiPage__link-title
-  +size(big)
+  +size(normalBig)
 
 .ApiPage__example-title
   +size(bigger)
@@ -196,14 +201,10 @@ $padding: 60px
   margin-left: 5px
 
 .ApiPage__attributes
-  margin: 20px 0
-  width: 100%
-
-.ApiPage__attributes
   +size(small)
   text-align: left
   border-top: 1px solid $border-color
-  margin: 50px 0
+  width: 100%
 
 .ApiPage__attribute
   display: flex
@@ -236,3 +237,13 @@ $padding: 60px
 
 .ApiPage__attribute-description
   margin-bottom: 10px
+
+.ApiPage__resource-section
+  margin-bottom: 50px
+
+.ApiPage__resource-section-title
+  color: $light-body-color
+  margin-bottom: 20px
+  text-transform: uppercase
+  +weight(bold)
+  +size(small)

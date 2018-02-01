@@ -7,6 +7,7 @@ import Link from 'gatsby-link'
 import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
+import logo from 'images/logo.svg'
 
 import { Link as ScrollLink, Element } from 'react-scroll'
 import humps from 'humps'
@@ -462,7 +463,7 @@ ${returnCode}
             {name}
           </div>
           <div className={b('attribute-type')}>
-            {schemaType.join(', ')}
+            {schemaType.sort().join(', ')}
           </div>
         </div>
         <div className={b('attribute-right')}>
@@ -521,46 +522,56 @@ ${returnCode}
                   {resource.description}
                 </div>
 
-                <div className={b('attributes')}>
-                  {
-                    Object.entries(sortObject(resource.attributes)).map(([name, schema]) => (
-                      this.renderAttribute(name, schema)
-                    ))
-                  }
+                <div className={b('resource-section')}>
+                  <div className={b('resource-section-title')}>
+                    API Methods
+                  </div>
+                  <div>
+                    {
+                      resource.links.map((link, i) => (
+                        <div
+                          key={link.title}
+                          className={
+                            b(
+                              'link',
+                              {
+                                active: (
+                                  activeLink &&
+                                    activeLink.resourceId === resource.id &&
+                                    activeLink.linkIndex === i
+                                )
+                              }
+                            )
+                          }
+                          onClick={
+                            () => this.setState({
+                              activeLink: {
+                                resourceId: resource.id,
+                                linkIndex: i,
+                              }
+                            })
+                          }
+                        >
+                          <h4 className={b('link-title')}>
+                            {link.description}
+                          </h4>
+                        </div>
+                      ))
+                    }
+                  </div>
                 </div>
 
-                <div>
-                  {
-                    resource.links.map((link, i) => (
-                      <div
-                        key={link.title}
-                        className={
-                          b(
-                            'link',
-                            {
-                              active: (
-                                activeLink &&
-                                  activeLink.resourceId === resource.id &&
-                                  activeLink.linkIndex === i
-                              )
-                            }
-                          )
-                        }
-                        onClick={
-                          () => this.setState({
-                            activeLink: {
-                              resourceId: resource.id,
-                              linkIndex: i,
-                            }
-                          })
-                        }
-                      >
-                        <h4 className={b('link-title')}>
-                          {link.description}
-                        </h4>
-                      </div>
-                    ))
-                  }
+                <div className={b('resource-section')}>
+                  <div className={b('resource-section-title')}>
+                    Resource Attributes
+                  </div>
+                  <div className={b('attributes')}>
+                    {
+                      Object.entries(sortObject(resource.attributes)).map(([name, schema]) => (
+                        this.renderAttribute(name, schema)
+                      ))
+                    }
+                  </div>
                 </div>
               </div>
             </Element>
@@ -577,6 +588,9 @@ ${returnCode}
     return (
       <div className={b()}>
         <div className={b('menu')}>
+          <Link className={b('logo')} to="/">
+            <img src={logo} />
+          </Link>
           { resources && this.renderMenu() }
         </div>
         <div className={b('content')} id="container">

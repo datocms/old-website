@@ -12,7 +12,7 @@ const b = bem.lock('LearnPage')
 const g = bem.lock('Guide')
 const sg = bem.lock('SmallGuide')
 
-const Guide = ({ title, children, description, link }) => (
+const Guide = ({ title, children, description, cta, link }) => (
   link ?
     <Link className={g({ guide: !children })} to={link}>
       <div className={g('image')}>
@@ -25,7 +25,7 @@ const Guide = ({ title, children, description, link }) => (
         {
           !children &&
             <div className={g('read')}>
-              Read the guide
+              { cta || 'Read the guide' }
             </div>
         }
       </div>
@@ -61,14 +61,23 @@ export default class LearnPage extends React.Component {
                   link="/docs/introduction/"
                 />
                 <Guide
-                  title="Importing data"
-                  description="Learn how to import any kind of existing content into DatoCMS using our JS/Ruby clients."
-                  link="/docs/import/nodejs/"
-                />
+                  title="Import/export"
+                >
+                  <Space bottom={2}>
+                    <p>
+                      Use our API to import existing content from external sources, or implement a full-backup strategy in no time.
+                    </p>
+                  </Space>
+                  <ul>
+                    <li><Link to="/docs/import/nodejs/">Importing data</Link></li>
+                    <li><Link to="/docs/gatsby/">Making offline backups</Link></li>
+                  </ul>
+                </Guide>
                 <Guide
-                  title="Making backups"
-                  description="Make your clients feel safer implementing a full-backup strategy in no time."
-                  link="/docs/import/nodejs/"
+                  title="API Reference"
+                  description="We offer a complete, strong-consistent REST API that let's you to programmatically build any kind of product."
+                  link="/api/"
+                  cta="Explore our API"
                 />
               </div>
             </div>
@@ -126,7 +135,7 @@ export default class LearnPage extends React.Component {
                 Build apps with DatoCMS
               </h3>
 
-              <div className={b('section-items')}>
+              <div className={b('section-items', { center: true })}>
                 <Guide
                   title="Client-side apps"
                 >
@@ -157,11 +166,6 @@ export default class LearnPage extends React.Component {
                     <li><Link to="/docs/gatsby/">PHP</Link></li>
                   </ul>
                 </Guide>
-                <Guide
-                  title="API Reference"
-                  description="Explore our extensive REST API"
-                  link="/api/"
-                />
               </div>
             </div>
           </div>

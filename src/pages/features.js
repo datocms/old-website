@@ -42,66 +42,70 @@ class FeaturesPage extends React.Component {
             <div className={b('title')}>
               Features
             </div>
-            <div className={b('content')}>
-              <Sticky top={50}>
-                <div className={b('toc')}>
-                  {
-                    data.features.edges.map(({ node: { title, slug, description } }, i) => (
-                      <div
-                        key={i}
-                        className={b('toc-item')}
-                      >
+            <div className={b('cols')}>
+              <div className={b('cols-toc')}>
+                <Sticky top={50}>
+                  <div className={b('toc')}>
+                    {
+                      data.features.edges.map(({ node: { title, slug, description } }, i) => (
+                        <div
+                          key={i}
+                          className={b('toc-item')}
+                        >
 
-                      
-                        <ScrollableAnchor id={slug}>
-                          {title}
-                        </ScrollableAnchor>
-                      </div>
-                    ))
+                        
+                          <ScrollableAnchor id={slug}>
+                            {title}
+                          </ScrollableAnchor>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </Sticky>
+              </div>
+              <div className={b('cols-content')}>
+                <div className={b('content')}>
+                  {
+                    data.features.edges.map(({ node: feature }, i) => {
+                      return (
+                        <Element name={feature.slug}>
+                          <Waypoint topOffset="40%" bottomOffset="40%">
+                            <div>
+                              <Wrap>
+                                <div className={b('feature', { odd: i % 2 === 1 })}>
+                                  <div className={b('feature-image')}>
+                                    {
+                                      feature.image && feature.image.format === 'svg' &&
+                                        <InlineSVG src={feature.image.inlineSvg} />
+                                    }
+                                    {
+                                      feature.image && feature.image.format !== 'svg' &&
+                                        <img src={feature.image.url} />
+                                    }
+                                    {
+                                      !feature.image &&
+                                        <div className={b('feature-image-placeholder')} />
+                                    }
+                                  </div>
+                                  <div className={b('feature-content')}>
+                                    <h5 className={b('feature-title')}>
+                                      {feature.title}
+                                    </h5>
+                                    <div
+                                      className={b('feature-description')}
+                                      dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
+                                    />
+                                  </div>
+                                </div>
+                              </Wrap>
+                            </div>
+                          </Waypoint>
+                        </Element>
+                      )
+                    })
                   }
                 </div>
-              </Sticky>
-              {
-                data.features.edges.map(({ node: feature }, i) => {
-                  return (
-                    <Space key={feature.id} both="10">
-                      <Element name={feature.slug}>
-                        <Waypoint topOffset="40%" bottomOffset="40%">
-                          <div>
-                            <Wrap>
-                              <div className={b('feature', { odd: i % 2 === 1 })}>
-                                <div className={b('feature-image')}>
-                                  {
-                                    feature.image && feature.image.format === 'svg' &&
-                                      <InlineSVG src={feature.image.inlineSvg} />
-                                  }
-                                  {
-                                    feature.image && feature.image.format !== 'svg' &&
-                                      <img src={feature.image.url} />
-                                  }
-                                  {
-                                    !feature.image &&
-                                      <div className={b('feature-image-placeholder')} />
-                                  }
-                                </div>
-                                <div className={b('feature-content')}>
-                                  <h5 className={b('feature-title')}>
-                                    {feature.title}
-                                  </h5>
-                                  <div
-                                    className={b('feature-description')}
-                                    dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
-                                  />
-                                </div>
-                              </div>
-                            </Wrap>
-                          </div>
-                        </Waypoint>
-                      </Element>
-                    </Space>
-                  )
-                })
-              }
+              </div>
             </div>
           </div>
         </Space>

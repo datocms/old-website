@@ -2,12 +2,25 @@
 @import 'blocks/mixins'
 
 .LegalPage
-  display: flex
   margin: 120px 0
 
+  @media screen and (min-width: 900px)
+    display: flex
+
 .LegalPage__menu
-  width: 350px
-  flex-shrink: 0
+  display: none
+
+  @media screen and (min-width: 900px)
+    display: block
+    width: 20%
+    flex-shrink: 0
+
+@media screen and (min-width: 900px)
+  .LegalPage__content
+    flex: 1
+    padding-left: 80px
+    max-width: 100%
+    overflow-x: auto
 
 .LegalPage__menu-title
   +size(big)
@@ -49,18 +62,13 @@
   margin-bottom: 10px
   +size(big)
 
-.LegalPage__content
-  flex: 1
-  padding-left: 80px
-  max-width: 100%
-  overflow-x: auto
-
 .LegalPage__content-body
   font-size: 18px
   line-height: 1.7
 
-  h1, h2, h3, h4, h5, h6, p, ul, ol
-    max-width: 75%
+  @media screen and (min-width: 1300px)
+    h1, h2, h3, h4, h5, h6, p, ul, ol
+      max-width: 75%
 
   ul p, ol p
     max-width: none
