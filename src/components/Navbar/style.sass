@@ -27,6 +27,9 @@ a.Navbar__text-link:hover
   color: $azure-color
 
 .Navbar__text-link--handle
+  position: relative
+  cursor: pointer
+
   &:hover .Navbar__menu
     display: block
 
@@ -36,10 +39,12 @@ a.Navbar__text-link:hover
     width: 15px
     height: 15px
     margin-left: 2px
+    position: absolute
+    top: 50%
+    margin-top: -10px
+    right: 2px
     background-position: center center
     background-repeat: no-repeat
-    display: inline-block
-    vertical-align: middle
 
 .Navbar__menu
   position: absolute
@@ -47,19 +52,21 @@ a.Navbar__text-link:hover
   left: 50%
   margin-left: -85px
   background-color: white
-  box-shadow: 0 2px 4px 0 rgba(black, 0.1)
-  margin-top: -20px
-  padding: 12px
+  box-shadow: 0 2px 12px 0 rgba(black, 0.1)
+  margin-top: -10px
+  padding: 20px 12px
   width: 180px
   box-sizing: border-box
   display: none
   z-index: 2
+  border-radius: 4px
 
 .Navbar__menu-item
   display: block
   text-decoration: none
   padding: 8px
   color: $base-body-color
+  border-radius: 4px
 
   &:hover
     text-decoration: underline

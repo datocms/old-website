@@ -1,6 +1,10 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
 
+.HomeFeatures
+  background: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 100%)
+  padding-bottom: 140px
+
 .HomeFeatures__title
   +size(hero)
   text-align: center
@@ -23,7 +27,7 @@
   text-align: left
   padding: 8px 0
   +size(small)
-  border-radius: 9px
+  background: transparent
   cursor: pointer
   transition: all 250ms ease-in-out
 
@@ -51,6 +55,7 @@
   display: flex
   justify-content: center
   align-items: center
+  text-align: justify
 
 .HomeFeatures__feature-image
   width: 420px

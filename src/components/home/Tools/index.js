@@ -11,7 +11,7 @@ import bem from 'utils/bem'
 const b = bem.lock('HomeTools')
 
 const HomeTools = ({ data }) => (
-  <Space both="6">
+  <Space both="15">
     <Malarquee rate={50}>
       {
         data.integrations.edges.map(({ node: { logo } }, i) => (

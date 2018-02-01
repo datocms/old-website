@@ -36,9 +36,9 @@ class HomeFeatures extends React.Component {
     const selectedFeature = data[this.state.selected]
 
     return (
-      <Space both="10">
+      <div className={b()}>
         <Wrap>
-          <div className={b()}>
+          <div>
             <div className={b('title')}>
               Features
             </div>
@@ -61,7 +61,9 @@ class HomeFeatures extends React.Component {
                     ))
                   }
                   <div className={b('toc-feature')}>
-                    Need a feature? <a href="http://support.datocms.com/support/discussions/forums/35000119870">Just ask!</a>
+                    Need a feature?
+                    <br />
+                    <a href="http://support.datocms.com/support/discussions/forums/35000119870">Just ask!</a>
                   </div>
                 </div>
               </div>
@@ -102,7 +104,7 @@ class HomeFeatures extends React.Component {
             </div>
           </div>
         </Wrap>
-      </Space>
+      </div>
     )
   }
 }

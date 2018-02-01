@@ -15,11 +15,11 @@ const CallToAction = ({ data }) => (
         <div className={b('title')}>
           Ready to try it yourself?
         </div>
-        <Link className={button({ red: true, big: true })} to="/">
+        <Link className={button({ red: true })} to="/">
           Try it free!
         </Link>
         <div className={b('no-card')}>
-          No credit card required
+          No credit card required, 30 seconds sign-up.
         </div>
       </div>
     </Wrap>

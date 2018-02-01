@@ -440,7 +440,7 @@ ${returnCode}
         </ul>
         <div className={b('menu-back')}>
           <Link to="/docs">
-            &laquo; Go back to docs
+            ‹ Go back to docs
           </Link>
         </div>
       </div>

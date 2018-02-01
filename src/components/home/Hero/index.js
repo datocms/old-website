@@ -36,7 +36,7 @@ const HomeHero = ({ title, description }) => (
             </div>
           </Space>
           <p className={text({ size: 'small' })}>
-            No credit card required, 30 seconds sign-up
+            No credit card required, 30 seconds sign-up.
           </p>
         </div>
       </div>

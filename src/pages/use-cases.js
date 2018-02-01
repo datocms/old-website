@@ -27,73 +27,79 @@ class UseCasesPage extends React.Component {
               Use Cases
             </div>
             <div className={b('content')}>
-              {
-                data.useCases.edges.map(({ node: useCase }) => (
-                  <div className={b('use-case')} key={useCase.id}>
-                    <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
-                      <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
-                        <div className={b('use-case-content-inner')}>
-                          <h3 className={b('use-case-title')}>
-                            {useCase.title}
-                          </h3>
-                          <div
-                            className={b('use-case-description')}
-                            dangerouslySetInnerHTML={{ __html: useCase.description.markdown.html }}
-                          />
-                        </div>
-                      </Sticky>
-                    </div>
-                    <div className={b('use-case-gallery')}>
-                      <Masonry
-                        options={{
-                          columnWidth: '.UseCasesPage__grid-sizer',
-                          gutter: '.UseCasesPage__gutter-sizer',
-                          itemSelector: '.UseCasesPage__website',
-                          percentPosition: true
-                        }}
-                      >
-                        <div className={b('grid-sizer')} />
-                        <div className={b('gutter-sizer')} />
-                        {
-                          websites
-                          .filter(website => website.useCase.id === useCase.id)
-                          .map((website, i) => (
-                            <a
-                              href={website.url}
-                              className={b('website', { highlighted: website.highlighted })}
-                              key={website.id}
-                            >
-                              <Browser
-                                small
-                                title={website.title}
-                                address={website.url}
-                              >
-                                  <LazyImage
-                                    height={400}
-                                    image={website.image}
-                                    slow={website.highlighted}
-                                  />
-                                  <div className={b('website-technologies')}>
-                                    {
-                                      website.technologies.map(tech => (
+              <Wrap>
+                {
+                  data.useCases.edges.map(({ node: useCase }) => (
+                    <div className={b('use-case')} key={useCase.id}>
+                      <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
+                        <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
+                          <div className={b('use-case-content-inner')}>
+                            <h3 className={b('use-case-title')}>
+                              {useCase.title}
+                            </h3>
+                            <div
+                              className={b('use-case-description')}
+                              dangerouslySetInnerHTML={{ __html: useCase.description.markdown.html }}
+                            />
+                          </div>
+                        </Sticky>
+                      </div>
+                      <div className={b('use-case-gallery')}>
+                        <Masonry
+                          options={{
+                            columnWidth: '.UseCasesPage__grid-sizer',
+                            gutter: '.UseCasesPage__gutter-sizer',
+                            itemSelector: '.UseCasesPage__website',
+                            percentPosition: true
+                          }}
+                        >
+                          <div className={b('grid-sizer')} />
+                          <div className={b('gutter-sizer')} />
+                          {
+                            websites
+                            .filter(website => website.useCase.id === useCase.id)
+                            .map((website, i) => {
+                              const tech = website.technologies.find(x => x.type.slug === 'static-generator');
+
+                              return (
+                                <a
+                                  href={website.url}
+                                  className={b('website', { highlighted: website.highlighted })}
+                                  key={website.id}
+                                >
+                                  <Browser
+                                    small
+                                    title={website.title}
+                                    address={website.url}
+                                  >
+                                      <LazyImage
+                                        height={i % 2 === 0 ? 300 : 200}
+                                        image={website.image}
+                                        slow={website.highlighted}
+                                      />
+                                  </Browser>
+
+                                  {
+                                    tech &&
+                                      <div className={b('website-technologies')}>
                                         <div className={b('website-technology')} key={tech.name}>
                                           <img src={tech.logo.url} className={b('website-technology-logo')} />
                                           <div className={b('website-technology-name')}>
-                                            {tech.name}
+                                            Made with {tech.name}
                                           </div>
                                         </div>
-                                      ))
-                                    }
-                                  </div>
-                              </Browser>
-                            </a>
-                          ))
-                        }
-                      </Masonry>
+                                      </div>
+                                  }
+                                </a>
+                              )
+                            })
+                          }
+                        </Masonry>
+                      </div>
                     </div>
-                  </div>
-                ))
-              }
+                  ))
+                }
+              </Wrap>
             </div>
           </div>
         </Space>
@@ -131,6 +137,9 @@ query UseCasesQuery {
           name
           logo {
             url
+          }
+          type: integrationType {
+            slug
           }
         }
         useCase {

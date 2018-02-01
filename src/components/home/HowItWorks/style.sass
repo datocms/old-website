@@ -4,16 +4,14 @@
 .HomeHowItWorks
   display: flex
   align-items: stretch
-  justify-content: space-between
+  justify-content: space-around
 
-.HomeHowItWorks__col-left
-  width: 45%
-
+.HomeHowItWorks__col-left,
 .HomeHowItWorks__col-right
-  width: 45%
+  width: 500px
 
 .HomeHowItWorks__title
-  text-transform: uppercase;
+  text-transform: uppercase
   color: $light-body-color
   +weight(bold)
   +size(small)
@@ -27,12 +25,13 @@
 .HomeHowItWorks__input
   border-radius: 10px
   background: $smoke-color
-  padding: 13px
+  padding: 18px
   height: 22px
   line-height: 24px
 
 .HomeHowItWorks__code
   font-family: "Roboto Mono"
+  font-weight: 300
   color: white
   opacity: 0.6
   font-size: 14px
@@ -40,7 +39,7 @@
 .HomeHowItWorks__image-upload
   border-radius: 10px
   background: $smoke-color
-  padding: 13px
+  padding: 18px
   height: 22px
   line-height: 24px
 
@@ -49,13 +48,14 @@
   position: relative
 
 .HomeHowItWorks__image-upload__file
-  background-color: red
   width: 100px
   height: 120px
-  border-radius: 3px
   position: absolute
   animation: 1.5s ease-in-out normal forwards HomeHowItWorks__drop
-  box-shadow: 0 6px 10px rgba(black, 0.2)
+  background: url('../../../images/png.svg')
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: contain
   animation-iteration-count: 1
 
 .HomeHowItWorks__image-upload__progress
@@ -63,7 +63,7 @@
   background-color: $azure-color
   border-radius: 5px
   width: 0%
-  animation: 1.5s ease-in-out normal forwards HomeHowItWorks__progress
+  animation: 2s ease-in-out normal forwards HomeHowItWorks__progress
   animation-iteration-count: 1
   margin-top: 6px
 

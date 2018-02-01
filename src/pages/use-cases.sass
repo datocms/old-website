@@ -9,9 +9,9 @@
 .UseCasesPage__website
   text-decoration: none
   display: block
-  margin-bottom: 90px
+  margin-bottom: 60px
 
-$gutter: 5%
+$gutter: 6%
 
 .UseCasesPage__gutter-sizer
   width: $gutter
@@ -23,33 +23,17 @@ $gutter: 5%
 @media screen and (min-width: 1100px)
   .UseCasesPage__grid-sizer,
   .UseCasesPage__website
-    width: (100% - 1 * $gutter) / 2
-
-@media screen and (min-width: 1650px)
-  .UseCasesPage__grid-sizer,
-  .UseCasesPage__website
-    width: (100% - 3 * $gutter) / 4
-
-  .UseCasesPage__website--highlighted
-    width: (100% - 3 * $gutter) / 4 * 2 + $gutter
+    width: (100% - 2 * $gutter) / 3
 
 .UseCasesPage__website-technologies
-  position: absolute
-  bottom: 10px
-  right: 20px
-  left: 0
   text-align: center
+  padding-top: 10px
 
 .UseCasesPage__website-technology
   padding: 8px 15px
-  background-color: white
-  border-radius: 5px
   color: $base-body-color
   display: inline-block
-  margin-left: 10px
   +size(small)
-  box-shadow: 0px 10px 25px 0 rgba(black, 0.2)
-  margin-bottom: 10px
 
 .UseCasesPage__website-technology-logo
   height: 20px
@@ -62,7 +46,7 @@ $gutter: 5%
   margin-left: 6px
 
 .UseCasesPage__use-case
-  padding: 80px 50px
+  padding: 80px 0
   display: flex
 
 .UseCasesPage__use-case-title
@@ -70,20 +54,17 @@ $gutter: 5%
   margin-bottom: 20px
 
 .UseCasesPage__use-case-content
-  width: 300px
-  margin-right: 120px
+  width: 280px
+  margin-right: 150px
 
   @media screen and (min-width: 1300px)
-    width: 400px
+    width: 300px
 
 .UseCasesPage__use-case-description
   +size(small)
 
   p
     margin-bottom: 20px
-
-  @media screen and (min-width: 1300px)
-    +size(normal)
 
 .UseCasesPage__use-case-content-inner
   padding-bottom: 90px

@@ -71,10 +71,6 @@ export default class DocPage extends React.Component {
         <Wrap>
           <div className={b()}>
             <div className={b('menu')}>
-              <div className={b('menu-title')}>
-                {categoryTitle}
-              </div>
-
               <ul className={b('menu-pages')}>
                 {
                   categoryPages.map((page, i) => (
@@ -89,7 +85,7 @@ export default class DocPage extends React.Component {
 
               <div className={b('menu-back')}>
                 <Link to="/docs">
-                  &laquo; Go back to docs
+                  ‹ Go back to docs
                 </Link>
               </div>
             </div>

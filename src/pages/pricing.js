@@ -30,9 +30,9 @@ const tooltips = {
   backups: 'Nightly copies of your content to your own Amazon S3 buckets.'
 }
 
-const Tooltip = ({ children, icon, code }) => (
-  <span className={bem('Tooltip', { icon })}>
-    {children} { icon && <img src={tooltip} /> }
+const Tooltip = ({ children, code }) => (
+  <span className={bem('Tooltip', { })}>
+    {children} <img src={tooltip} />
     <span className="Tooltip__hint">
       {tooltips[code]}
     </span>
@@ -340,7 +340,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="invitations">Invitations</Tooltip>
+                    <Tooltip code="invitations">Invitations</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     0
@@ -360,7 +360,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="fileStorage">File storage</Tooltip>
+                    <Tooltip code="fileStorage">File storage</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     200 MB
@@ -380,7 +380,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="bandwidth">Bandwidth</Tooltip>
+                    <Tooltip code="bandwidth">Bandwidth</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     1 TB
@@ -400,7 +400,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="records">Records</Tooltip>
+                    <Tooltip code="records">Records</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     100
@@ -420,7 +420,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="indexablePages">Indexable pages</Tooltip>
+                    <Tooltip code="indexablePages">Indexable pages</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     20
@@ -440,7 +440,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="imgix">Image manipulations</Tooltip>
+                    <Tooltip code="imgix">Image manipulations</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     Unlimited
@@ -460,7 +460,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="languages">Languages</Tooltip>
+                    <Tooltip code="languages">Languages</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                     Unlimited
@@ -480,7 +480,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="customDomain">Custom admin domain</Tooltip>
+                    <Tooltip code="customDomain">Custom admin domain</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
 
@@ -500,7 +500,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="revisionHistory">Revision history</Tooltip>
+                    <Tooltip code="revisionHistory">Revision history</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
 
@@ -520,7 +520,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="s3">Use your own S3 for file uploads</Tooltip>
+                    <Tooltip code="s3">Use your own S3 for file uploads</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -538,7 +538,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="otp">Two-factor authentication</Tooltip>
+                    <Tooltip code="otp">Two-factor authentication</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -555,7 +555,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="saml">SAML Single Sign-on</Tooltip>
+                    <Tooltip code="saml">SAML Single Sign-on</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -571,7 +571,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="sla">Contract SLAs</Tooltip>
+                    <Tooltip code="sla">Contract SLAs</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>
@@ -587,7 +587,7 @@ class PricingPage extends React.Component {
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
-                    <Tooltip icon code="backups">Offline backups</Tooltip>
+                    <Tooltip code="backups">Offline backups</Tooltip>
                   </td>
                   <td className={b('details-feature-value')}>
                   </td>

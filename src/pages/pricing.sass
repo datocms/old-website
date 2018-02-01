@@ -12,7 +12,7 @@
 
 .PricingPage__recap-item
   border: 1px solid $border-color
-  border-radius: 3px
+  border-radius: 10px
   text-align: center
   margin: 0 10px
   flex: 1
@@ -93,7 +93,6 @@
   text-decoration: none
   padding: .8em 1.2em .7em
   transition: opacity 200ms ease-in-out
-  font-weight: 500
   vertical-align: middle
   line-height: 1
   margin: 20px
@@ -189,7 +188,6 @@
   text-decoration: none
   padding: .8em 1.2em .7em
   transition: opacity 200ms ease-in-out
-  font-weight: 500
   vertical-align: middle
   line-height: 1
   text-align: center
@@ -199,7 +197,6 @@
     opacity: 0.8
 
 .Tooltip
-  border-bottom: 1px dashed $border-color
   position: relative
   display: inline-block
 
@@ -217,7 +214,6 @@
   z-index: 1
   position: absolute
   bottom: 100%
-  left: 50%
   transform: translateX(-50%)
   padding: 14px
   color: white
@@ -227,6 +223,8 @@
   margin-bottom: 13px
   text-align: left
   pointer-events: none
+  left: 100%
+  margin-left: -7px
 
   &:after
     content: ""
@@ -241,7 +239,3 @@
 
   .Tooltip:hover &
     opacity: 1
-
-.Tooltip--icon .Tooltip__hint
-  left: 100%
-  margin-left: -8px

@@ -61,7 +61,13 @@ export default class LearnPage extends React.Component {
                   link="/docs/introduction/"
                 />
                 <Guide
-                  title="Import/export"
+                  title="API Reference"
+                  description="We offer a complete, strong-consistent REST API that let's you to programmatically build any kind of product."
+                  link="/api/"
+                  cta="Explore our API"
+                />
+                <Guide
+                  title="Import & Export"
                 >
                   <Space bottom={2}>
                     <p>
@@ -73,12 +79,6 @@ export default class LearnPage extends React.Component {
                     <li><Link to="/docs/gatsby/">Making offline backups</Link></li>
                   </ul>
                 </Guide>
-                <Guide
-                  title="API Reference"
-                  description="We offer a complete, strong-consistent REST API that let's you to programmatically build any kind of product."
-                  link="/api/"
-                  cta="Explore our API"
-                />
               </div>
             </div>
 

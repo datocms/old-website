@@ -15,7 +15,7 @@ const b = bem.lock('HomeQuotes')
 
 const settings = {
   dots: false,
-  slidesToShow: 3,
+  slidesToShow: 5,
   slidesToScroll: 1,
   centerMode: true,
   centerPadding: '100px',
@@ -24,14 +24,14 @@ const settings = {
     {
       breakpoint: 1300,
       settings: {
-        centerPadding: '250px',
+        centerPadding: '350px',
       }
     }
   ]
 };
 
 const HomeQuotes = ({ data }) => (
-  <Space both="6">
+  <Space bottom="6">
     <div className={b()}>
       <h6 className={b('title')}>
         People are saying

@@ -2,7 +2,7 @@
 
 $space-unit: 12px
 
-@each $amount in ( 1, 2, 3, 4, 5, 6, 7, 8, 10 )
+@each $amount in ( 1, 2, 3, 4, 5, 6, 7, 8, 10, 15 )
   @each $direction in ( top, bottom )
     .space--#{$direction}-#{$amount}
       margin-#{$direction}: $amount * $space-unit
