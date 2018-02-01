@@ -4,6 +4,8 @@ import { Wrap, button, Space, text } from 'blocks'
 import bem from 'utils/bem'
 import './style.sass'
 
+import twitter from 'images/twitter.svg'
+
 const b = bem.lock('BlogAside')
 
 const BlogAside = ({ children }) => (
@@ -31,7 +33,12 @@ const BlogAside = ({ children }) => (
               Stay in touch
             </div>
             <div className={b('section-content')}>
-              Foo bar
+              <div className={b('follow')}>
+                <img src={twitter} />
+                <a href="https://twitter.com/datocms" target="_blank">
+                  Follow us on Twitter
+                </a>
+              </div>
             </div>
           </div>
         </div>

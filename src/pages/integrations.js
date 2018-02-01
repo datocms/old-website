@@ -60,7 +60,7 @@ class IntegrationsPage extends React.Component {
               {
                 cartesianProduct([
                   byType['static-generator'],
-                  byType['cdn'].concat(byType['git'])
+                  byType['cdn'].concat(byType['git']).concat(byType['ci'])
                 ]).map(([{ slug: ssgSlug, name: ssgName }, { slug: cdnSlug, name: cdnName }], i) => (
                   <Link className={b('link')} key={i} to={`/cms/${ssgSlug}/${cdnSlug}/`}>
                     {ssgName} + {cdnName}
@@ -71,7 +71,7 @@ class IntegrationsPage extends React.Component {
               {
                 cartesianProduct([
                   byType['static-generator'],
-                  byType['cdn'],
+                  byType['ci'],
                   byType['git']
                 ]).map(([{ slug: ssgSlug, name: ssgName }, { slug: cdnSlug, name: cdnName }, { slug: gitSlug, name: gitName }], i) => (
                   <Link className={b('link')} key={i} to={`/cms/${ssgSlug}/${cdnSlug}/${gitSlug}/`}>

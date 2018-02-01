@@ -24,7 +24,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/docs`,
-        name: "markdown-pages",
+        name: 'doc',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/legal`,
+        name: 'legal',
       },
     },
     {
@@ -81,6 +88,13 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-sitemap`
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-22858312-5`,
+        anonymize: true,
+      },
+    }
   ],
 };

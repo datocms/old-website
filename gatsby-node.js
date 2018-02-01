@@ -91,6 +91,38 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
+const legalPages = ({ graphql, boundActionCreators: { createPage } }) => {
+  return graphql(
+    `
+      {
+        files: allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/.*legal.*/" } }
+        ) {
+          edges {
+            node {
+              path: fileAbsolutePath
+            }
+          }
+        }
+      }
+    `
+  )
+  .then(result => {
+    const pages = result.data.files.edges.map(edge => edge.node);
+
+    pages.forEach((page) => {
+      const { path } = page
+      const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
+
+      createPage({
+        path: url,
+        component: p.resolve(`./src/templates/LegalPage/index.js`),
+        context: { path },
+      })
+    })
+  })
+}
+
 const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
   return graphql(
     `
@@ -178,6 +210,7 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
 exports.createPages = (options) => {
   return Promise.all([
     docPages(options),
+    legalPages(options),
     landingPages(options),
     articles(options),
   ]);

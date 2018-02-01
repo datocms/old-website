@@ -28,7 +28,7 @@ const Navbar = () => (
   <Space both={3}>
     <Wrap>
       <div className={b()}>
-        <div>
+        <div className={b('logo-container')}>
           <Link className={b('logo')} to="/">
             <img src={logo} alt="DatoCMS" />
           </Link>
@@ -45,6 +45,9 @@ const Navbar = () => (
           </ActiveLink>
           <ActiveLink to="/docs/">
             Learn
+          </ActiveLink>
+          <ActiveLink to="/blog/">
+            Blog
           </ActiveLink>
           <div className={b('text-link', { handle: true })}>
             <span>Support</span>

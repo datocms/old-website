@@ -58,11 +58,9 @@ const Footer = ({ data }) => (
           <GroupLink to="/integrations/" label="Integrations" />
           <GroupLink to="/blog/" label="Blog" />
         </Group>
-        <Group title="Follow us">
-          Ciao
-        </Group>
-        <Group title="Get stunning updates">
-          Ciao
+        <Group title="Legal">
+          <GroupLink to="/legal/terms/" label="Terms & Conditions" />
+          <GroupLink to="/legal/privacy-policy/" label="Privacy Policy" />
         </Group>
       </div>
     </Wrap>

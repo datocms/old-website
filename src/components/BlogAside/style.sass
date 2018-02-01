@@ -20,9 +20,27 @@
   margin-bottom: 30px
 
 .BlogAside__section-title
+  color: $light-body-color
   margin-bottom: 20px
+  text-transform: uppercase
   +weight(bold)
+  +size(small)
 
 .BlogAside__section-content
   +size(small)
 
+.BlogAside__follow
+
+  a
+    display: inline-block
+    vertical-align: middle
+    text-decoration: none
+    color: $azure-color
+
+    &:hover
+      text-decoration: underline
+
+  img
+    display: inline-block
+    vertical-align: middle
+    margin-right: 0.5em
