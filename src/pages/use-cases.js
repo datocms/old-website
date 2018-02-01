@@ -2,7 +2,8 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import Masonry from 'react-masonry-component'
-import Sticky from 'react-stickynode';
+import Sticky from 'react-stickynode'
+import Slider from 'react-slick'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -11,13 +12,78 @@ import Browser from 'components/Browser'
 import LazyImage from 'components/LazyImage'
 
 import './use-cases.sass'
+import 'slick-carousel/slick/slick.css'
 
 const b = bem.lock('UseCasesPage')
 
+const settings = {
+  dots: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  centerMode: true,
+  centerPadding: '30px',
+  infinite: true,
+  responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        centerPadding: '30px',
+      }
+    },
+    {
+      breakpoint: 750,
+      settings: {
+        centerPadding: '140px',
+      }
+    },
+    {
+      breakpoint: 850,
+      settings: {
+        centerPadding: '170px',
+      }
+    }
+  ]
+};
+
 class UseCasesPage extends React.Component {
+  renderWebsite(differentHeight, website, i) {
+    const tech = website.technologies.find(x => x.type.slug === 'static-generator');
+
+    return (
+      <div className={b('website-container')} key={website.id}>
+        <a
+          href={website.url}
+          className={b('website', { highlighted: website.highlighted })}
+        >
+          <Browser
+            small
+            title={website.title}
+            address={website.url}
+          >
+              <LazyImage
+                height={differentHeight && i % 2 === 0 ? 300 : 200}
+                image={website.image}
+                slow={website.highlighted}
+              />
+          </Browser>
+
+          {
+            tech &&
+              <div className={b('website-technology')}>
+                <img src={tech.logo.url} className={b('website-technology-logo')} />
+                <div className={b('website-technology-name')}>
+                  Made with {tech.name}
+                </div>
+              </div>
+          }
+        </a>
+      </div>
+    )
+  }
+
   render() {
     const { data } = this.props;
-    const websites = data.websites.edges.map(e => e.node).filter(w => w.image);
+    const allWebsites = data.websites.edges.map(e => e.node).filter(w => w.image);
 
     return (
       <div>
@@ -29,75 +95,48 @@ class UseCasesPage extends React.Component {
             <div className={b('content')}>
               <Wrap>
                 {
-                  data.useCases.edges.map(({ node: useCase }) => (
-                    <div className={b('use-case')} key={useCase.id}>
-                      <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
-                        <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
-                          <div className={b('use-case-content-inner')}>
-                            <h3 className={b('use-case-title')}>
-                              {useCase.title}
-                            </h3>
-                            <div
-                              className={b('use-case-description')}
-                              dangerouslySetInnerHTML={{ __html: useCase.description.markdown.html }}
-                            />
+                  data.useCases.edges.map(({ node: useCase }) => {
+                    const websites = allWebsites.filter(website => website.useCase.id === useCase.id);
+
+                    return (
+                      <div className={b('use-case')} key={useCase.id}>
+                        <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
+                          <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
+                            <div className={b('use-case-content-inner')}>
+                              <h3 className={b('use-case-title')}>
+                                {useCase.title}
+                              </h3>
+                              <div
+                                className={b('use-case-description')}
+                                dangerouslySetInnerHTML={{ __html: useCase.description.markdown.html }}
+                              />
+                            </div>
+                          </Sticky>
+                        </div>
+                        <div className={b('use-case-gallery')}>
+                          <div className={b('masonry')}>
+                            <Masonry
+                              options={{
+                                columnWidth: '.UseCasesPage__grid-sizer',
+                                gutter: '.UseCasesPage__gutter-sizer',
+                                itemSelector: '.UseCasesPage__website',
+                                percentPosition: true
+                              }}
+                            >
+                              <div className={b('grid-sizer')} />
+                              <div className={b('gutter-sizer')} />
+                              {websites.map(this.renderWebsite.bind(this, true))}
+                            </Masonry>
                           </div>
-                        </Sticky>
+                          <div className={b('gallery')}>
+                            <Slider {...settings}>
+                              {websites.map(this.renderWebsite.bind(this, false))}
+                            </Slider>
+                          </div>
+                        </div>
                       </div>
-                      <div className={b('use-case-gallery')}>
-                        <Masonry
-                          options={{
-                            columnWidth: '.UseCasesPage__grid-sizer',
-                            gutter: '.UseCasesPage__gutter-sizer',
-                            itemSelector: '.UseCasesPage__website',
-                            percentPosition: true
-                          }}
-                        >
-                          <div className={b('grid-sizer')} />
-                          <div className={b('gutter-sizer')} />
-                          {
-                            websites
-                            .filter(website => website.useCase.id === useCase.id)
-                            .map((website, i) => {
-                              const tech = website.technologies.find(x => x.type.slug === 'static-generator');
-
-                              return (
-                                <a
-                                  href={website.url}
-                                  className={b('website', { highlighted: website.highlighted })}
-                                  key={website.id}
-                                >
-                                  <Browser
-                                    small
-                                    title={website.title}
-                                    address={website.url}
-                                  >
-                                      <LazyImage
-                                        height={i % 2 === 0 ? 300 : 200}
-                                        image={website.image}
-                                        slow={website.highlighted}
-                                      />
-                                  </Browser>
-
-                                  {
-                                    tech &&
-                                      <div className={b('website-technologies')}>
-                                        <div className={b('website-technology')} key={tech.name}>
-                                          <img src={tech.logo.url} className={b('website-technology-logo')} />
-                                          <div className={b('website-technology-name')}>
-                                            Made with {tech.name}
-                                          </div>
-                                        </div>
-                                      </div>
-                                  }
-                                </a>
-                              )
-                            })
-                          }
-                        </Masonry>
-                      </div>
-                    </div>
-                  ))
+                    )
+                  })
                 }
               </Wrap>
             </div>

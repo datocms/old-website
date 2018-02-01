@@ -13,52 +13,85 @@
 
 $gutter: 6%
 
-.UseCasesPage__gutter-sizer
-  width: $gutter
+.UseCasesPage__masonry
+  .UseCasesPage__gutter-sizer
+    width: $gutter
 
-.UseCasesPage__grid-sizer,
-.UseCasesPage__website
-  width: 100%
-
-@media screen and (min-width: 1100px)
   .UseCasesPage__grid-sizer,
   .UseCasesPage__website
-    width: (100% - 2 * $gutter) / 3
+    width: 100%
 
-.UseCasesPage__website-technologies
-  text-align: center
-  padding-top: 10px
+  @media screen and (min-width: 1000px)
+    .UseCasesPage__grid-sizer,
+    .UseCasesPage__website
+      width: (100% - 1 * $gutter) / 2
+
+  @media screen and (min-width: 1300px)
+    .UseCasesPage__grid-sizer,
+    .UseCasesPage__website
+      width: (100% - 2 * $gutter) / 3
+
+.UseCasesPage__gallery
+  margin: 0 -30px
+
+  .slick-slider
+    background-color: $smoke-color
+    padding: 50px 0 (50px + 23px + 15px)
+
+  .UseCasesPage__website-container
+    width: 80vw
+
+  .UseCasesPage__website
+    margin: 0 10px
+
+  .slick-prev, .slick-next
+    position: absolute
+    bottom: 50px
+    left: 50%
+    background: transparent
+    background-repeat: no-repeat
+    background-size: contain
+    border: none
+    outline: none
+    padding: 0
+    color: transparent
+    width: 23px
+    height: 23px
+    font-size: 0
+    cursor: pointer
+    transition: transform 100ms ease-in-out
+
+    &:hover
+      transform: scale(1.2)
+
+  .slick-prev
+    margin-left: -40px
+    background-image: url('../images/arrow-left.svg')
+
+  .slick-next
+    margin-left: 10px
+    background-image: url('../images/arrow-right.svg')
 
 .UseCasesPage__website-technology
-  padding: 8px 15px
+  text-align: center
+  padding: 15px
   color: $base-body-color
-  display: inline-block
+  display: block
   +size(small)
 
-.UseCasesPage__website-technology-logo
-  height: 20px
-  display: inline-block
-  vertical-align: middle
+  .UseCasesPage__website-technology-logo
+    height: 20px
+    display: inline-block
+    vertical-align: middle
 
-.UseCasesPage__website-technology-name
-  display: inline-block
-  vertical-align: middle
-  margin-left: 6px
-
-.UseCasesPage__use-case
-  padding: 80px 0
-  display: flex
+  .UseCasesPage__website-technology-name
+    display: inline-block
+    vertical-align: middle
+    margin-left: 6px
 
 .UseCasesPage__use-case-title
   +size(bigger)
   margin-bottom: 20px
-
-.UseCasesPage__use-case-content
-  width: 280px
-  margin-right: 150px
-
-  @media screen and (min-width: 1300px)
-    width: 300px
 
 .UseCasesPage__use-case-description
   +size(small)
@@ -67,7 +100,39 @@ $gutter: 6%
     margin-bottom: 20px
 
 .UseCasesPage__use-case-content-inner
-  padding-bottom: 90px
+  padding-bottom: 50px
 
-.UseCasesPage__use-case-gallery
-  flex: 1
+  @media screen and (min-width: 1100px)
+    padding-bottom: 90px
+
+.UseCasesPage__use-case
+  padding: 80px 0
+
+.UseCasesPage__masonry
+  display: none
+
+@media screen and (min-width: 850px)
+  .UseCasesPage__gallery
+    display: none
+
+  .UseCasesPage__masonry
+    display: block
+
+  .UseCasesPage__use-case
+    display: flex
+
+  .UseCasesPage__use-case-content
+    width: 230px
+    margin-right: 80px
+
+  .UseCasesPage__use-case-gallery
+    flex: 1
+
+@media screen and (min-width: 1100px)
+  .UseCasesPage__use-case-content
+    width: 280px
+    margin-right: 150px
+
+@media screen and (min-width: 1300px)
+  .UseCasesPage__use-case-content
+    width: 300px
