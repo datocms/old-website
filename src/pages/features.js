@@ -54,8 +54,6 @@ class FeaturesPage extends React.Component {
                           key={i}
                           className={b('toc-item')}
                         >
-
-                        
                           <ScrollableAnchor id={slug}>
                             {title}
                           </ScrollableAnchor>
@@ -70,12 +68,12 @@ class FeaturesPage extends React.Component {
                   {
                     data.features.edges.map(({ node: feature }, i) => {
                       return (
-                        <Element name={feature.slug}>
+                        <Element key={i} name={feature.slug}>
                           <Waypoint topOffset="40%" bottomOffset="40%">
                             <div>
                               <Fade left={i % 2 === 1} right={i % 2 === 0} duration={200}>
-                                <div className={b('feature', { odd: i % 2 === 1 })}>
-                                  <Wrap>
+                                <Wrap>
+                                  <div className={b('feature', { odd: i % 2 === 1 })}>
                                     <div className={b('feature-inner')}>
                                       <div className={b('feature-content')}>
                                         <h5 className={b('feature-title')}>
@@ -105,8 +103,8 @@ class FeaturesPage extends React.Component {
                                         </Pulse>
                                       </div>
                                     </div>
-                                  </Wrap>
-                                </div>
+                                  </div>
+                                </Wrap>
                               </Fade>
                             </div>
                           </Waypoint>
