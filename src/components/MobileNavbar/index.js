@@ -69,6 +69,7 @@ class MobileNavbar extends React.Component {
 
   componentDidMount() {
     this.unlisten = this.props.history.listen((location, action) => {
+      document.body.classList.toggle('no-scroll', false)
       this.setState({ active: false });
     });
   }
