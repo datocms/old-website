@@ -2,12 +2,25 @@
 @import 'blocks/mixins'
 
 .DocPage
-  display: flex
   margin: 120px 0
 
 .DocPage__menu
-  width: 350px
-  flex-shrink: 0
+  display: none
+
+@media screen and (min-width: 900px)
+  .DocPage
+    display: flex
+
+  .DocPage__menu
+    display: block
+    width: 350px
+    flex-shrink: 0
+
+  .DocPage__content
+    flex: 1
+    padding-left: 80px
+    max-width: 100%
+    overflow-x: auto
 
 .DocPage__menu-title
   +size(big)
@@ -50,18 +63,14 @@
   margin-bottom: 10px
   +size(big)
 
-.DocPage__content
-  flex: 1
-  padding-left: 80px
-  max-width: 100%
-  overflow-x: auto
-
 .DocPage__content-body
-  font-size: 18px
+  font-size: 16px
   line-height: 1.7
 
-  h1, h2, h3, h4, h5, h6, p, ul, ol
-    max-width: 75%
+  @media screen and (min-width: 900px)
+    h1, h2, h3, h4, h5, h6, p, ul, ol
+      max-width: 75%
+      font-size: 18px
 
   ul p, ol p
     max-width: none
@@ -173,7 +182,6 @@
     max-width: 110%
     width: 110%
     border-radius: 4px
-    // box-shadow: 0 2px 3px rgba(black, 0.2)
 
   table
     margin-top: 50px
@@ -187,7 +195,10 @@
 
   .gatsby-highlight
     margin: 50px 0
-    font-size: 15px
+    font-size: 13px
+
+    @media screen and (min-width: 900px)
+      font-size: 15px
 
     pre
       overflow: auto
@@ -204,7 +215,6 @@
 
   .gatsby-resp-image-background-image
     border-radius: 4px
-    // box-shadow: 0 5px 10px rgba(black, 0.1)
 
   a.anchor
     margin-left: -35px
@@ -212,3 +222,22 @@
       width: 25px
       height: 25px
 
+.DocPage__nav
+  display: flex
+  margin-top: 80px
+
+  @media screen and (min-width: 900px)
+    font-size: 18px
+
+.DocPage__nav-prev,
+.DocPage__nav-next
+  flex: 1
+
+  a
+    color: $azure-color
+
+    &:hover
+      text-decoration: none
+
+.DocPage__nav-next
+  text-align: right

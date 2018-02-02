@@ -41,7 +41,7 @@ module.exports = (dato, root, i18n) => {
 
 Depending on your static generator, you can then use the `content` key present in the frontmatter of the article to iterate over the blocks and present them in the page. Something like this:
 
-```erb
+```html
 <article>
   <header>
     <h1><%= title %></h1>

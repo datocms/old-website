@@ -14,18 +14,6 @@
   margin-bottom: 50px
   text-align: center
 
-.LearnPage__section-items
-  display: flex
-  justify-content: space-between
-  flex-wrap: wrap
-  align-items: stretch
-
-.LearnPage__section-items--center
-  justify-content: center
-
-  .Guide
-    margin: 0 30px
-
 .Guide
   border-radius: 10px
   border: 1px solid $border-color
@@ -33,7 +21,6 @@
   display: block
   margin-bottom: 40px
   color: $base-body-color
-  width: 31%
   position: relative
 
 .Guide__title
@@ -68,6 +55,22 @@
     &:hover
       text-decoration: underline
 
-
   ul
     +size(normalBig)
+
+@media screen and (min-width: 1000px)
+  .LearnPage__section-items
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    align-items: stretch
+
+  .LearnPage__section-items--center
+    justify-content: center
+
+    .Guide
+      margin: 0 30px
+
+  .Guide
+    width: 31%
+

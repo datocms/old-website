@@ -5,8 +5,8 @@ position: 9
 
 Given a record object, you can obtain its title, description, [OpenGraph](http://ogp.me/) and [Twitter card](https://dev.twitter.com/cards/overview) meta tags using the `dato_meta_tags` helper:
 
-```erb
-# source/templates/article.html.erb
+```html
+<!-- source/templates/article.html.erb -->
 
 <% content_for(:head) do %>
   <%= dato_meta_tags(article) %>
@@ -15,8 +15,7 @@ Given a record object, you can obtain its title, description, [OpenGraph](http:/
 <h1><%= article.title %></h1>
 ```
 
-```erb
-
+```html
 <html>
   <head>
     <%= yield_content :head %>
@@ -74,8 +73,7 @@ Under the *Content > Settings* section you can also configure your website favic
 
 You can get desktop, iOS, Android and Windows Phone favicon meta tags with the `dato_favicon_meta_tags` helper:
 
-```erb
-
+```html
 <html>
   <head>
     <%= yield_content :head %>

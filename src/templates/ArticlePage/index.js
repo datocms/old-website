@@ -17,6 +17,9 @@ export default class ArticlePage extends React.Component {
     return (
       <BlogAside>
         <div className={b()}>
+          <Link to="/blog/" className={b('heading')}>
+            From our Blog
+          </Link>
           <h1 className={b('title')}>
             <Link to={`/blog/${article.slug}/`}>
               {article.title}

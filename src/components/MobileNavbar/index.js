@@ -75,7 +75,7 @@ class MobileNavbar extends React.Component {
   }
 
   componentWillUnmount() {
-    this.unlisten();
+    this.unlisten && this.unlisten();
   }
 
   render() {

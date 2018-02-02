@@ -2,24 +2,39 @@
 @import 'blocks/mixins'
 
 .ArticlePage__title
-  +size(hero)
+  +size(bigger)
   margin-bottom: 60px
+
+  @media screen and (min-width: 1100px)
+    +size(hero)
 
   a
     color: $base-body-color
     text-decoration: none
     +weight(bold)
 
+.ArticlePage__heading
+  color: $light-body-color
+  margin-bottom: 20px
+  +size(normalBig)
+  text-decoration: none
+  display: block
+
+  @media screen and (min-width: 1100px)
+    display: none
+
 .ArticlePage__content-image
   margin: 70px 0
-  // box-shadow: 0px 4px 15px 0 rgba(black, 0.12)
   border-radius: 5px
   overflow: hidden
   max-width: 650px
 
 .ArticlePage__content-text
-  font-size: 18px
+  font-size: 16px
   line-height: 1.7
+
+  @media screen and (min-width: 900px)
+    font-size: 18px
 
   h1, h2, h3, h4, h5, h6
     position: relative

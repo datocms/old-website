@@ -37,8 +37,8 @@ Templates that live within the `source/localizable` directory will output one pa
 
 As an example, suppose we have a [single-instance](/docs/schema/single-instance) model called `home_page`, with two localized single-line string fields: `title` and `catch_phrase`. We can create a multi-language homepage with the following template:
 
-```erb
-# source/localizable/index.html.erb
+```html
+<!-- source/localizable/index.html.erb -->
 
 <h1><%= dato.homepage.title %></h1>
 <p><%= dato.homepage.catch_phrase %></p>

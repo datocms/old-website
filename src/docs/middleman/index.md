@@ -45,8 +45,8 @@ You can find your API token in the *Admin area > API tokens* section:
 
 Once the plugin is activated, an object called `dato` will be available in your Middleman views to access content coming from your administrative area:
 
-```erb
-# source/index.html.erb
+```html
+<!-- source/index.html.erb -->
 
 <h1><%= dato.homepage.title %></h1>
 ```
@@ -80,8 +80,8 @@ end
 ignore "/templates/article.html.erb"
 ```
 
-```erb
-# source/templates/article.html.erb
+```html
+<!-- source/templates/article.html.erb -->
 
 <h1><%= article.title %></h1>
 

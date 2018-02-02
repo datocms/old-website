@@ -1,20 +1,29 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
-.BlogAside
-  display: flex
-  align-items: start
-  justify-content: space-between
-  max-width: 1366px
-  margin: 0 auto
-
-.BlogAside__cols-left
-  flex: 1
-  margin-right: 120px
-  max-width: 820px
-
 .BlogAside__cols-right
-  width: 330px
+  margin-top: 90px
+
+@media screen and (min-width: 900px)
+  .BlogAside
+    display: flex
+    align-items: start
+    justify-content: space-between
+    max-width: 1366px
+    margin: 0 auto
+
+  .BlogAside__cols-left
+    flex: 1
+    margin-right: 80px
+    max-width: 820px
+
+  .BlogAside__cols-right
+    width: 330px
+    margin-top: 0
+
+@media screen and (min-width: 1100px)
+  .BlogAside__cols-left
+    margin-right: 120px
 
 .BlogAside__section
   margin-bottom: 30px

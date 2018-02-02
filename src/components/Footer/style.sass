@@ -3,7 +3,6 @@
 
 .Footer
   background-color: $violet-color
-  padding: 60px 0
   color: white
 
   a
@@ -11,7 +10,6 @@
 
 .Footer__group-title
   +weight(bold)
-  margin-bottom: 20px
 
 .Footer__group-link
   display: block
@@ -20,11 +18,72 @@
 
 .Footer__logo
   margin-right: 120px
+  display: none
+
+.Footer__us
+  padding: 10px
+  text-align: center
+  +size(smaller)
+  color: white
+  +weight(bold)
+  background-color: #633B5D
+
+@media screen and (max-width: 1099px)
+
+  .Footer__group
+    border-bottom: 1px solid rgba(white, 0.1)
+    transition: all 200ms ease-in-out
+
+  .Footer__group--open
+    padding-bottom: 15px
+
+  .Footer__group-title
+    line-height: 1.1
+    padding: 20px
+    position: relative
+
+    &:after
+      content: ''
+      position: absolute
+      height: 20px
+      width: 20px
+      top: 50%
+      right: 20px
+      margin-top: -10px
+      background-image: url('../../images/arrow-white-down.svg')
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: contain
+
+  .Footer__group-link:last-child
+    margin-bottom: 0
+
+  .Footer__group-content
+    max-height: 0
+    transition: all 200ms ease-in-out
+    overflow: hidden
+    padding: 0 20px
+
+  .Footer__group--open .Footer__group-content
+    max-height: 400px
+
+  .Footer__group--open .Footer__group-title:after
+    background-image: url('../../images/arrow-white-up.svg')
 
 @media screen and (min-width: 1100px)
-  .Footer__inner
+  .Footer__body
+    padding: 60px 0
+
+  .Footer__logo
+    display: block
+
+  .Footer__body
     display: flex
+    max-width: 1440px
+    margin: 0 auto
 
   .Footer__group
     flex: 1
 
+  .Footer__group-title
+    margin-bottom: 20px

@@ -62,7 +62,14 @@ export default class DocPage extends React.Component {
         findPosition(a, pages) - findPosition(b, pages)
       ));
 
-    const page = pages.find(page => page.path === pathContext.path);
+    const page = categoryPages.find(page => page.path === pathContext.path);
+    const index = categoryPages.indexOf(page)
+
+    const prevPage = index > 0 &&
+      categoryPages[index - 1]
+
+    const nextPage = index < categoryPages.length - 1 &&
+      categoryPages[index + 1]
 
     const categoryTitle = findTitle(categoryPages[0], pages);
 
@@ -102,10 +109,30 @@ export default class DocPage extends React.Component {
                   {findTitle(page, pages)}
                 </h1>
               </Space>
+
               <div
                 className={b('content-body')}
                 dangerouslySetInnerHTML={{ __html: findHtml(page, pages) }}
               />
+
+              <div className={b('nav')}>
+                <div className={b('nav-prev')}>
+                  {
+                    prevPage &&
+                      <PageLink to={prevPage}>
+                        ‹ {index === 1 ? "Introduction" : findTitle(prevPage, pages)}
+                      </PageLink>
+                  }
+                </div>
+                <div className={b('nav-next')}>
+                  {
+                    nextPage &&
+                      <PageLink to={nextPage}>
+                        {findTitle(nextPage, pages)} ›
+                      </PageLink>
+                  }
+                </div>
+              </div>
             </div>
           </div>
         </Wrap>

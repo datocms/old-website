@@ -40,7 +40,7 @@ module.exports = (dato, root, i18n) => {
 ```
 
 
-```erb
+```html
 <article>
   <header>
     <h1>{{ .Title }}</h1>
