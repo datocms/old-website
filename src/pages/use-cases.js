@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import Masonry from 'react-masonry-component'
 import Sticky from 'react-stickynode'
 import Slider from 'react-slick'
+import CallToAction from 'components/CallToAction'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -20,6 +21,7 @@ const settings = {
   dots: false,
   slidesToShow: 1,
   slidesToScroll: 1,
+  arrows: false,
   centerMode: true,
   centerPadding: '30px',
   infinite: true,
@@ -142,6 +144,7 @@ class UseCasesPage extends React.Component {
             </div>
           </div>
         </Space>
+        <CallToAction />
       </div>
     );
   }

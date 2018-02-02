@@ -63,15 +63,24 @@
     margin-bottom: 60px
 
   .FeaturesPage__feature-image
-    padding-right: 20%
-    max-width: 300px
+    max-width: 340px
 
   .FeaturesPage__feature-content
     margin-bottom: 50px
 
+  .FeaturesPage__feature-title
+    +size(bigger)
+    margin-bottom: 20px
+
 @media screen and (min-width: 801px)
   .FeaturesPage__feature
     margin-bottom: 100px
+
+  .FeaturesPage__feature-title
+    text-transform: uppercase
+    color: $light-body-color
+    +weight(bold)
+    margin-bottom: 20px
 
   .FeaturesPage__feature-inner
     display: flex
@@ -97,12 +106,6 @@
 .FeaturesPage__feature-image-placeholder
   padding-top: 130%
   background-color: red
-
-.FeaturesPage__feature-title
-  text-transform: uppercase
-  color: $light-body-color
-  +weight(bold)
-  margin-bottom: 20px
 
 .FeaturesPage__feature-description
   p

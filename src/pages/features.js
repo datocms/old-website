@@ -72,8 +72,8 @@ class FeaturesPage extends React.Component {
                           <Waypoint topOffset="40%" bottomOffset="40%">
                             <div>
                               <Fade left={i % 2 === 1} right={i % 2 === 0} duration={200}>
-                                <Wrap>
-                                  <div className={b('feature', { odd: i % 2 === 1 })}>
+                                <div className={b('feature', { odd: i % 2 === 1 })}>
+                                  <Wrap>
                                     <div className={b('feature-inner')}>
                                       <div className={b('feature-content')}>
                                         <h5 className={b('feature-title')}>
@@ -103,8 +103,8 @@ class FeaturesPage extends React.Component {
                                         </Pulse>
                                       </div>
                                     </div>
-                                  </div>
-                                </Wrap>
+                                  </Wrap>
+                                </div>
                               </Fade>
                             </div>
                           </Waypoint>
