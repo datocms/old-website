@@ -53,10 +53,7 @@ class UseCasesPage extends React.Component {
 
     return (
       <div className={b('website-container')} key={website.id}>
-        <a
-          href={website.url}
-          className={b('website', { highlighted: website.highlighted })}
-        >
+        <div className={b('website', { highlighted: website.highlighted })}>
           <Browser
             small
             title={website.title}
@@ -78,7 +75,7 @@ class UseCasesPage extends React.Component {
                 </div>
               </div>
           }
-        </a>
+        </div>
       </div>
     )
   }

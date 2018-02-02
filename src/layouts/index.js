@@ -10,21 +10,23 @@ import './style.sass'
 
 const TemplateWrapper = ({ location, children }) => (
   <div>
-    <Helmet title="DatoCMS" />
-      {
-        location.pathname !== '/api/' &&
-          <div>
-            <Navbar />
-            <MobileNavbar />
-          </div>
-      }
-      {
-        children()
-      }
-      {
-        location.pathname !== '/api/' &&
-          <Footer />
-      }
+    <Helmet title="DatoCMS">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    </Helmet>
+    {
+      location.pathname !== '/api/' &&
+        <div>
+          <Navbar />
+          <MobileNavbar />
+        </div>
+    }
+    {
+      children()
+    }
+    {
+      location.pathname !== '/api/' &&
+        <Footer />
+    }
   </div>
 )
 
