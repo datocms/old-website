@@ -30,6 +30,18 @@ class HomeHowItWorks extends React.Component {
   }
 
   handleStartUpload() {
+    this.setState({
+      title: false,
+      description: false,
+      image: false,
+      json: {
+        id: '123',
+        title: '',
+        description: '',
+        image: ''
+      }
+    })
+
     wait(500)
     .then(() => this.setState({ image: 'drop' }))
     .then(() => wait(1500))
@@ -105,7 +117,7 @@ class HomeHowItWorks extends React.Component {
                       {
                         this.state.image === 'done' &&
                           <div className={b('image-upload__placeholder')}>
-                            harry-potter.png (524 KB)
+                            harry.png (524 KB)
                           </div>
                       }
                     </div>
@@ -121,21 +133,19 @@ class HomeHowItWorks extends React.Component {
                       }
                     </div>
                   </Space>
-                  <Space bottom="2">
-                    <div className={b('label')}>Description</div>
-                    <div className={b('input')}>
-                      {
-                        this.state.description &&
-                          <Typist {...opts('description')}>
-                            A super wizard
-                          </Typist>
-                      }
-                    </div>
-                  </Space>
+                  <div className={b('label')}>Description</div>
+                  <div className={b('input')}>
+                    {
+                      this.state.description &&
+                        <Typist {...opts('description')}>
+                          A super wizard
+                        </Typist>
+                    }
+                  </div>
                 </Browser>
             </div>
               <div className={b('col-right')}>
-                <Space bottom="3">
+                <Space bottom="2">
                   <h6 className={b('title')}>
                     What developers get
                   </h6>

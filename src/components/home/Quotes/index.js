@@ -15,16 +15,62 @@ const b = bem.lock('HomeQuotes')
 
 const settings = {
   dots: false,
-  slidesToShow: 5,
+  slidesToShow: 1,
   slidesToScroll: 1,
   centerMode: true,
-  centerPadding: '100px',
+  centerPadding: '20px',
   infinite: true,
   responsive: [
     {
-      breakpoint: 1300,
+      breakpoint: 500,
       settings: {
-        centerPadding: '350px',
+        centerPadding: '30px',
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        centerPadding: '100px',
+      }
+    },
+    {
+      breakpoint: 750,
+      settings: {
+        centerPadding: '130px',
+      }
+    },
+    {
+      breakpoint: 950,
+      settings: {
+        centerPadding: '170px',
+      }
+    },
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 3,
+        centerPadding: '30px',
+      }
+    },
+    {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 3,
+        centerPadding: '70px',
+      }
+    },
+    {
+      breakpoint: 1700,
+      settings: {
+        slidesToShow: 5,
+        centerPadding: '30px',
+      }
+    },
+    {
+      breakpoint: 9600,
+      settings: {
+        slidesToShow: 5,
+        centerPadding: '160px',
       }
     }
   ]

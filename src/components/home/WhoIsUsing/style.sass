@@ -8,10 +8,19 @@
   +size(small)
   text-align: center
 
-.HomeWhoIsUsing__items
-  display: flex
-  align-items: center
-  justify-content: space-between
+@media screen and (max-width: 999px)
+  .HomeWhoIsUsing__items
+    text-align: center
 
-  img
-    height: 32px
+    img
+      margin-bottom: 15px
+      height: 32px
+
+@media screen and (min-width: 1000px)
+  .HomeWhoIsUsing__items
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    img
+      height: 32px

@@ -2,7 +2,29 @@
 
 .HomeTools
 
+.HomeTools__marquee
+  overflow: hidden
+  position: relative
+  height: 45px
+
+.HomeTools__marquee-track
+  display: block
+  height: 45px
+  position: absolute
+  overflow: hidden
+  animation: marquee 6s linear infinite
+  white-space: nowrap
+
+  @media screen and (min-width: 1000px)
+    animation: marquee 25s linear infinite
+
 .HomeTools__item
   height: 45px
   margin: 0 30px
+
+@keyframes marquee
+  0%
+    left: 0
+  100%
+    left: -100%
 

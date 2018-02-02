@@ -8129,10 +8129,6 @@ react-hot-loader@^3.0.0-beta.6:
     redbox-react "^1.3.6"
     source-map "^0.6.1"
 
-react-malarquee@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/react-malarquee/-/react-malarquee-0.0.11.tgz#453b0816ea340305e8ceed0c06b73d7658cfab50"
-
 react-masonry-component@6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/react-masonry-component/-/react-masonry-component-6.0.2.tgz#6c768652be34602f2dd0d162c8f6266b09d9e272"

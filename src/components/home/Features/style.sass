@@ -4,28 +4,53 @@
 .HomeFeatures
   background: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 100%)
   padding-bottom: 140px
+  display: none
+
+  @media screen and (min-width: 750px)
+    display: block
 
 .HomeFeatures__title
   +size(hero)
   text-align: center
   margin-bottom: 60px
 
-.HomeFeatures__container
-  display: flex
-  align-items: center
+@media screen and (max-width: 1299px)
+  .HomeFeatures__toc
+    text-align: center
+    margin-bottom: 30px
 
-.HomeFeatures__left
-  width: 280px
+  .HomeFeatures__toc-item-button
+    padding: 8px 13px
 
-.HomeFeatures__right
-  flex: 1
+  .HomeFeatures__toc-item
+    display: inline-block
+
+    &:nth-child(n + 8)
+      display: none
+
+  .HomeFeatures__toc-feature
+    display: none
+
+@media screen and (min-width: 1300px)
+  .HomeFeatures__container
+    display: flex
+    align-items: center
+
+  .HomeFeatures__left
+    display: block
+    width: 280px
+
+  .HomeFeatures__right
+    flex: 1
+
+  .HomeFeatures__toc-item-button
+    padding: 8px 0
 
 .HomeFeatures__toc-item-button
   border: 0
   font-family: "colfax-web"
   color: $base-body-color
   text-align: left
-  padding: 8px 0
   +size(small)
   background: transparent
   cursor: pointer

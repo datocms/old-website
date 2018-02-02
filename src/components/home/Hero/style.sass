@@ -1,28 +1,5 @@
 @import 'utils/colors.sass'
-
-.HomeHero
-  background: url('../../../images/first-wave.svg')
-  background-position: bottom center
-  background-size: 100% 100%
-  position: relative
-  overflow: hidden
-
-.HomeHero__browser
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translateY(-50%)
-  margin-left: 90px
-
-.HomeHero__screenshot-image
-  display: block
-  width: 50vw
-
-.HomeHero__text-container
-  width: 50%
-  height: 80vh
-  display: flex
-  align-items: center
+@import 'blocks/mixins'
 
 .HomeHero__or-discover
   display: inline-block
@@ -38,3 +15,59 @@
     display: inline-block
     vertical-align: middle
     margin-left: 5px
+
+@media screen and (max-width: 999px)
+  .HomeHero
+    background: url('../../../images/first-wave.svg')
+    background-position: center center
+    background-size: 100% 60%
+    background-repeat: no-repeat
+    margin: 90px 0 0
+    padding: 50px 30px
+    text-align: center
+
+  .HomeHero__title
+    +size(bigger)
+    +weight(bold)
+    margin-bottom: 30px
+
+  .HomeHero__browser
+    display: none
+
+@media screen and (min-width: 1000px)
+  .HomeHero
+    background: url('../../../images/first-wave.svg')
+    background-position: bottom center
+    background-size: 100% 100%
+    position: relative
+    overflow: hidden
+
+  .HomeHero__inner
+    max-width: 1440px
+    margin: 0 auto
+    padding: 0 30px
+
+  .HomeHero__browser
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translateY(-50%)
+    margin-left: 90px
+
+  .HomeHero__screenshot-image
+    display: block
+    width: 50vw
+
+  .HomeHero__title
+    +size(hero)
+    +weight(bold)
+    margin-bottom: 30px
+
+  .HomeHero__text-container
+    width: 50%
+    max-width: 580px
+    padding-left: 50px
+    height: 80vh
+    display: flex
+    align-items: center
+

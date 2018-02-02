@@ -1,14 +1,29 @@
 @import 'utils/colors'
 @import 'blocks/mixins'
 
-.HomeHowItWorks
-  display: flex
-  align-items: stretch
-  justify-content: space-around
-
-.HomeHowItWorks__col-left,
 .HomeHowItWorks__col-right
-  width: 500px
+  margin-top: 50px
+
+@media screen and (min-width: 1000px)
+  .HomeHowItWorks
+    display: flex
+    align-items: stretch
+    justify-content: space-around
+
+  .HomeHowItWorks__col-left,
+  .HomeHowItWorks__col-right
+    width: 500px
+    display: flex
+    flex-direction: column
+    margin-top: 0
+
+    .Browser--inverse
+      flex: 1
+      display: flex
+      flex-direction: column
+
+      .Browser__content
+        flex: 1
 
 .HomeHowItWorks__title
   text-transform: uppercase
