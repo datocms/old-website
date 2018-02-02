@@ -101,11 +101,15 @@
     opacity: 0.8
 
 .PricingPage__reassurance
-  padding: 90px
+  padding: 60px 30px
   text-align: center
   color: $light-body-color
-  +size(bigger)
+  +size(big)
   +weight(bold)
+
+  @media screen and (min-width: 1270px)
+    padding: 90px 0
+    +size(bigger)
 
 .PricingPage__details
   width: 100%
@@ -180,7 +184,7 @@
   color: $ultra-light-body-color
   margin-top: 25px
 
-.PricingPage__details-cta
+.PricingPage__details-cta a
   display: block
   background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
   border-radius: 10px
@@ -239,3 +243,46 @@
 
   .Tooltip:hover &
     opacity: 1
+
+.PricingPage__plan-changer
+  text-align: center
+  margin-bottom: 30px
+
+  @media screen and (min-width: 1271px)
+    display: none
+
+.PricingPage__plan-changer__plan
+  padding: 6px 10px
+  display: inline-block
+  vertical-align: middle
+  margin: 0 5px
+  border: 0
+  border-radius: 4px
+  +size(small)
+
+.PricingPage__plan-changer__plan--active
+  background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
+  color: white
+
+@media screen and (max-width: 1270px)
+  .PricingPage__details
+    +size(small)
+
+  .PricingPage__details-feature-name,
+  .PricingPage__details-feature-value
+    padding: 10px
+
+  .PricingPage__recap-item,
+  .PricingPage__details-feature-value,
+  .PricingPage__details-plan-name,
+  .PricingPage__details-price-cell,
+  .PricingPage__details-cta,
+  .PricingPage__details-header-row
+    display: none
+
+  .PricingPage__recap-item--active,
+  .PricingPage__details-feature-value--active,
+  .PricingPage__details-plan-name--active,
+  .PricingPage__details-price-cell--active,
+  .PricingPage__details-cta--active
+    display: table-cell

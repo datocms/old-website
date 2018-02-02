@@ -73,38 +73,40 @@ class FeaturesPage extends React.Component {
                         <Element name={feature.slug}>
                           <Waypoint topOffset="40%" bottomOffset="40%">
                             <div>
-                              <Fade bottom duration={200}>
-                                <Wrap>
-                                  <div className={b('feature', { odd: i % 2 === 1 })}>
-                                    <div className={b('feature-image')}>
-                                      <Pulse delay={700} duration={300}>
-                                        <div>
-                                          {
-                                            feature.image && feature.image.format === 'svg' &&
-                                              <InlineSVG src={feature.image.inlineSvg} />
-                                          }
-                                          {
-                                            feature.image && feature.image.format !== 'svg' &&
-                                              <img src={feature.image.url} />
-                                          }
-                                          {
-                                            !feature.image &&
-                                              <div className={b('feature-image-placeholder')} />
-                                          }
-                                        </div>
-                                      </Pulse>
+                              <Fade left={i % 2 === 1} right={i % 2 === 0} duration={200}>
+                                <div className={b('feature', { odd: i % 2 === 1 })}>
+                                  <Wrap>
+                                    <div className={b('feature-inner')}>
+                                      <div className={b('feature-content')}>
+                                        <h5 className={b('feature-title')}>
+                                          {feature.title}
+                                        </h5>
+                                        <div
+                                          className={b('feature-description')}
+                                          dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
+                                        />
+                                      </div>
+                                      <div className={b('feature-image')}>
+                                        <Pulse delay={700} duration={300}>
+                                          <div>
+                                            {
+                                              feature.image && feature.image.format === 'svg' &&
+                                                <InlineSVG src={feature.image.inlineSvg} />
+                                            }
+                                            {
+                                              feature.image && feature.image.format !== 'svg' &&
+                                                <img src={feature.image.url} />
+                                            }
+                                            {
+                                              !feature.image &&
+                                                <div className={b('feature-image-placeholder')} />
+                                            }
+                                          </div>
+                                        </Pulse>
+                                      </div>
                                     </div>
-                                    <div className={b('feature-content')}>
-                                      <h5 className={b('feature-title')}>
-                                        {feature.title}
-                                      </h5>
-                                      <div
-                                        className={b('feature-description')}
-                                        dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
-                                      />
-                                    </div>
-                                  </div>
-                                </Wrap>
+                                  </Wrap>
+                                </div>
                               </Fade>
                             </div>
                           </Waypoint>

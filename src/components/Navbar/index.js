@@ -25,56 +25,58 @@ const ActiveMenuLink = (props) => (
 )
 
 const Navbar = () => (
-  <Space both={3}>
-    <Wrap>
-      <div className={b()}>
-        <div className={b('logo-container')}>
-          <Link className={b('logo')} to="/">
-            <img src={logo} alt="DatoCMS" />
-          </Link>
-        </div>
-        <div className={b('nav')}>
-          <ActiveLink to="/features/">
-            Features
-          </ActiveLink>
-          <ActiveLink to="/use-cases/">
-            Use cases
-          </ActiveLink>
-          <ActiveLink to="/pricing/">
-            Pricing
-          </ActiveLink>
-          <ActiveLink to="/docs/">
-            Learn
-          </ActiveLink>
-          <ActiveLink to="/blog/">
-            Blog
-          </ActiveLink>
-          <div className={b('text-link', { handle: true })}>
-            <span>Support</span>
-            <div className={b('menu')}>
-              <ActiveMenuLink to="http://support.datocms.com/support/tickets/new">
-                Ticket Center
-              </ActiveMenuLink>
-              <ActiveMenuLink to="http://support.datocms.com/support/discussions/forums/35000119870">
-                Feature Requests
-              </ActiveMenuLink>
-              <ActiveMenuLink to="http://slack.datocms.com/">
-                Slack Community
-              </ActiveMenuLink>
+  <div className={b()}>
+    <Space both={3}>
+      <Wrap>
+        <div className={b('inner')}>
+          <div className={b('logo-container')}>
+            <Link className={b('logo')} to="/">
+              <img src={logo} alt="DatoCMS" />
+            </Link>
+          </div>
+          <div className={b('nav')}>
+            <ActiveLink to="/features/">
+              Features
+            </ActiveLink>
+            <ActiveLink to="/use-cases/">
+              Use cases
+            </ActiveLink>
+            <ActiveLink to="/pricing/">
+              Pricing
+            </ActiveLink>
+            <ActiveLink to="/docs/">
+              Learn
+            </ActiveLink>
+            <ActiveLink to="/blog/">
+              Blog
+            </ActiveLink>
+            <div className={b('text-link', { handle: true })}>
+              <span>Support</span>
+              <div className={b('menu')}>
+                <ActiveMenuLink to="http://support.datocms.com/support/tickets/new">
+                  Ticket Center
+                </ActiveMenuLink>
+                <ActiveMenuLink to="http://support.datocms.com/support/discussions/forums/35000119870">
+                  Feature Requests
+                </ActiveMenuLink>
+                <ActiveMenuLink to="http://slack.datocms.com/">
+                  Slack Community
+                </ActiveMenuLink>
+              </div>
             </div>
           </div>
+          <div className={b('actions')}>
+            <a className={b('text-link')} href="https://dashboard.datocms.com/sign_in">
+              Login
+            </a>
+            <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
+              Try it free
+            </a>
+          </div>
         </div>
-        <div className={b('actions')}>
-          <a className={b('text-link')} href="https://dashboard.datocms.com/sign_in">
-            Login
-          </a>
-          <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
-            Try it free
-          </a>
-        </div>
-      </div>
-    </Wrap>
-  </Space>
+      </Wrap>
+    </Space>
+  </div>
 )
 
 export default Navbar

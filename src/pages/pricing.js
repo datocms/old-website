@@ -40,8 +40,57 @@ const Tooltip = ({ children, code }) => (
 )
 
 class PricingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { plan: 'developer' };
+  }
+
+  handleChangePlan(plan) {
+    this.setState({ plan });
+  }
+
+  renderPlanChanger() {
+    const { plan } = this.state;
+
+    return (
+      <div className={b('plan-changer')}>
+        <button
+          className={b('plan-changer__plan', { active: plan === 'developer' })}
+          onClick={this.handleChangePlan.bind(this, 'developer')}
+        >
+          Dev
+        </button>
+        <button
+          className={b('plan-changer__plan', { active: plan === 'basic' })}
+          onClick={this.handleChangePlan.bind(this, 'basic')}
+        >
+          Basic
+        </button>
+        <button
+          className={b('plan-changer__plan', { active: plan === 'plus' })}
+          onClick={this.handleChangePlan.bind(this, 'plus')}
+        >
+          Plus
+        </button>
+        <button
+          className={b('plan-changer__plan', { active: plan === 'max' })}
+          onClick={this.handleChangePlan.bind(this, 'max')}
+        >
+          Max
+        </button>
+        <button
+          className={b('plan-changer__plan', { active: plan === 'enterprise' })}
+          onClick={this.handleChangePlan.bind(this, 'enterprise')}
+        >
+          Enterprise
+        </button>
+      </div>
+    );
+  }
+
   render() {
     const { data } = this.props;
+    const { plan } = this.state;
 
     return (
       <Space both="10">
@@ -50,9 +99,9 @@ class PricingPage extends React.Component {
             <div className={b('title')}>
               Pricing
             </div>
+            {this.renderPlanChanger()}
             <div className={b('recap')}>
-
-              <div className={b('recap-item')}>
+              <div className={b('recap-item', { active: plan === 'developer' })}>
                 <div className={b('recap-item-plan-name')}>
                   Developer
                 </div>
@@ -83,7 +132,7 @@ class PricingPage extends React.Component {
                 </a>
               </div>
 
-              <div className={b('recap-item')}>
+              <div className={b('recap-item', { active: plan === 'basic' })}>
                 <div className={b('recap-item-plan-name')}>
                   Basic
                 </div>
@@ -120,7 +169,7 @@ class PricingPage extends React.Component {
                 </a>
               </div>
 
-              <div className={b('recap-item')}>
+              <div className={b('recap-item', { active: plan === 'plus' })}>
                 <div className={b('recap-item-plan-name')}>
                   Plus
                 </div>
@@ -157,7 +206,7 @@ class PricingPage extends React.Component {
                 </a>
               </div>
 
-              <div className={b('recap-item')}>
+              <div className={b('recap-item', { active: plan === 'max' })}>
                 <div className={b('recap-item-plan-name')}>
                   Max
                 </div>
@@ -194,7 +243,7 @@ class PricingPage extends React.Component {
                 </a>
               </div>
 
-              <div className={b('recap-item')}>
+              <div className={b('recap-item', { active: plan === 'enterprise' })}>
                 <div className={b('recap-item-plan-name')}>
                   Enterprise
                 </div>
@@ -222,9 +271,11 @@ class PricingPage extends React.Component {
               No credit card required. Sign up in 15 seconds. 30 days free trial.
             </div>
 
+            {this.renderPlanChanger()}
+
             <table className={b('details')}>
               <tbody>
-                <tr>
+                <tr className={b('details-header-row')}>
                   <td className={b('details-header-cell')} rowSpan="2">
                     <div className={b('details-header')}>
                       <div className={b('details-header-inner')}>
@@ -237,24 +288,24 @@ class PricingPage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td className={b('details-plan-name')}>
+                  <td className={b('details-plan-name', { active: plan === 'developer' })} >
                     Dev
                   </td>
-                  <td className={b('details-plan-name')}>
+                  <td className={b('details-plan-name', { active: plan === 'basic' })}>
                     Basic
                   </td>
-                  <td className={b('details-plan-name')}>
+                  <td className={b('details-plan-name', { active: plan === 'plus' })}>
                     Plus
                   </td>
-                  <td className={b('details-plan-name')}>
+                  <td className={b('details-plan-name', { active: plan === 'max' })}>
                     Max
                   </td>
-                  <td className={b('details-plan-name')}>
+                  <td className={b('details-plan-name', { active: plan === 'enterprise' })}>
                     Enterprise
                   </td>
                 </tr>
-                <tr>
-                  <td>
+                <tr className={b('details-header-row')}>
+                  <td className={b('details-price-cell', { active: plan === 'developer' })}>
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-free')}>
@@ -263,7 +314,7 @@ class PricingPage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td className={b('details-price-cell', { active: plan === 'basic' })}>
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-amount')}>
@@ -278,7 +329,7 @@ class PricingPage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td className={b('details-price-cell', { active: plan === 'plus' })}>
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-amount')}>
@@ -293,7 +344,7 @@ class PricingPage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td className={b('details-price-cell', { active: plan === 'max' })}>
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-amount')}>
@@ -308,7 +359,7 @@ class PricingPage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td className={b('details-price-cell', { active: plan === 'enterprise' })}>
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-free')}>
@@ -322,19 +373,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     Support
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     Low-priority
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     Standard
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     Advanced
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Advanced
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Premium
                   </td>
                 </tr>
@@ -342,19 +393,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="invitations">Invitations</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     0
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     2
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     5
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Unlimited
                   </td>
                 </tr>
@@ -362,19 +413,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="fileStorage">File storage</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     200 MB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     1 GB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     3 GB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Unlimited
                   </td>
                 </tr>
@@ -382,19 +433,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="bandwidth">Bandwidth</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     1 TB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     1 TB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     1 TB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     1 TB
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Custom
                   </td>
                 </tr>
@@ -402,19 +453,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="records">Records</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     100
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     500
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     2.000
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Unlimited
                   </td>
                 </tr>
@@ -422,19 +473,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="indexablePages">Indexable pages</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     20
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     1.000
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Unlimited
                   </td>
                 </tr>
@@ -442,19 +493,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="imgix">Image manipulations</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Unlimited
                   </td>
                 </tr>
@@ -462,19 +513,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="languages">Languages</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     Unlimited
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     Unlimited
                   </td>
                 </tr>
@@ -482,19 +533,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="customDomain">Custom admin domain</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
 
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
@@ -502,19 +553,19 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="revisionHistory">Revision history</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
 
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
@@ -522,17 +573,17 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="s3">Use your own S3 for file uploads</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
@@ -540,16 +591,16 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="otp">Two-factor authentication</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                     <img src={check} alt="Available feature" />
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
@@ -557,15 +608,15 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="saml">SAML Single Sign-on</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
@@ -573,15 +624,15 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="sla">Contract SLAs</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
@@ -589,58 +640,43 @@ class PricingPage extends React.Component {
                   <td className={b('details-feature-name')}>
                     <Tooltip code="backups">Offline backups</Tooltip>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'max' })}>
                   </td>
-                  <td className={b('details-feature-value')}>
+                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
                     <img src={check} alt="Available feature" />
                   </td>
                 </tr>
                 <tr>
                   <td className={b('details-feature-name')}>
                   </td>
-                  <td>
-                    <a
-                      className={b('details-cta')}
-                      href="https://dashboard.datocms.com/register"
-                    >
+                  <td className={b('details-cta', { active: plan === 'developer' })}>
+                    <a href="https://dashboard.datocms.com/register">
                       Sign up
                     </a>
                   </td>
-                  <td>
-                    <a
-                      className={b('details-cta')}
-                      href="https://dashboard.datocms.com/register"
-                    >
+                  <td className={b('details-cta', { active: plan === 'basic' })}>
+                    <a href="https://dashboard.datocms.com/register">
                       Sign up
                     </a>
                   </td>
-                  <td>
-                    <a
-                      className={b('details-cta')}
-                      href="https://dashboard.datocms.com/register"
-                    >
+                  <td className={b('details-cta', { active: plan === 'plus' })}>
+                    <a href="https://dashboard.datocms.com/register">
                       Sign up
                     </a>
                   </td>
-                  <td>
-                    <a
-                      className={b('details-cta')}
-                      href="https://dashboard.datocms.com/register"
-                    >
+                  <td className={b('details-cta', { active: plan === 'max' })}>
+                    <a href="https://dashboard.datocms.com/register">
                       Sign up
                     </a>
                   </td>
-                  <td>
-                    <a
-                      className={b('details-cta')}
-                      href="mailto:support@datocms.com"
-                    >
+                  <td className={b('details-cta', { active: plan === 'enterprise' })}>
+                    <a href="mailto:support@datocms.com">
                       Get in touch
                     </a>
                   </td>

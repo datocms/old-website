@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import Navbar from '../components/Navbar'
+import MobileNavbar from '../components/MobileNavbar'
 import Footer from '../components/Footer'
 
 import './style.sass'
@@ -12,7 +13,10 @@ const TemplateWrapper = ({ location, children }) => (
     <Helmet title="DatoCMS" />
       {
         location.pathname !== '/api/' &&
-          <Navbar />
+          <div>
+            <Navbar />
+            <MobileNavbar />
+          </div>
       }
       {
         children()

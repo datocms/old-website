@@ -1,0 +1,108 @@
+@import 'utils/colors'
+@import 'blocks/mixins'
+
+.MobileNavbar
+  display: block
+  background-color: white
+
+  @media screen and (min-width: 1250px)
+    display: none
+
+.MobileNavbar__bar
+  display: flex
+  padding: 15px 20px
+  align-items: center
+  border-bottom: 1px solid $border-color
+  height: 61px
+  background-color: white
+  box-sizing: border-box
+  z-index: 100
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+
+.MobileNavbar__hamburger-container
+  flex: 1
+  text-align: right
+
+.MobileNavbar__logo img
+  display: block
+  height: 30px
+
+.MobileNavbar__hamburger-container button
+  +size(normal)
+  border: 0
+  background: transparent
+
+  &:focus
+    outline: 0
+
+.MobileNavbar__menu
+  background-color: white
+  padding-top: 61px
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  height: 0
+  transition: all 200ms ease-in-out
+  opacity: 0
+  overflow: hidden
+  z-index: 99
+
+.MobileNavbar__menu--active
+  height: 100%
+  opacity: 1
+
+.MobileNavbar__menu-item,
+.MobileNavbar__group-handle
+  padding: 20px
+  text-decoration: none
+  display: block
+  border: 0
+  border-bottom: 1px solid $border-color
+  +size(normalBig)
+  color: $base-body-color
+  background: transparent
+  width: 100%
+  box-sizing: border-box
+  text-align: left
+
+  &:focus
+    outline: 0
+
+.MobileNavbar__group-handle:after
+  content: ''
+  background-image: url('../../images/arrow-down-dropdown.svg')
+  display: inline-block
+  vertical-align: middle
+  width: 20px
+  height: 20px
+  margin-left: 2px
+  background-position: center center
+  background-repeat: no-repeat
+
+.MobileNavbar__group-handle
+  border-bottom-width: 0
+
+.MobileNavbar__group
+  border-bottom: 1px solid $border-color
+
+.MobileNavbar__group-content
+  padding: 0px 20px 20px
+  +size(normal)
+
+.MobileNavbar__group-item
+  text-decoration: none
+  color: $base-body-color
+  display: block
+  padding: 6px 0
+
+.MobileNavbar__actions
+  padding: 20px
+  display: flex
+  justify-content: space-between
+
+  .button
+    width: 47%

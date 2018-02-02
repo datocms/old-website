@@ -1,3 +1,6 @@
+@import 'utils/colors'
+@import 'blocks/mixins'
+
 .button
   display: inline-block
   // box-shadow: 0px 14px 25px 0 rgba(0, 0, 0, 0.12)
@@ -9,6 +12,8 @@
   transition: opacity 200ms ease-in-out
   vertical-align: middle
   line-height: 1
+  text-align: center
+  box-sizing: border-box
 
   &:hover
     opacity: 0.8
@@ -18,3 +23,8 @@
 
 .button--big
   +size(big)
+
+.button--border
+  background: transparent
+  border: 1px solid $border-color
+  color: $base-body-color

@@ -6,14 +6,19 @@
   text-align: center
   margin-bottom: 60px
 
-.FeaturesPage__cols
-  display: flex
-
 .FeaturesPage__cols-toc
-  width: 260px
+  display: none
 
-.FeaturesPage__cols-content
-  flex: 1
+@media screen and (min-width: 1400px)
+  .FeaturesPage__cols
+    display: flex
+
+  .FeaturesPage__cols-toc
+    width: 260px
+    display: block
+
+  .FeaturesPage__cols-content
+    flex: 1
 
 .FeaturesPage__toc
   position: absolute
@@ -48,29 +53,49 @@
     color: $red-color
     +weight(bold)
 
-.FeaturesPage__feature
-  display: flex
-  justify-content: center
-  align-items: center
-  margin-bottom: 100px
+.FeaturesPage__feature-inner
+  display: block
 
-.FeaturesPage__feature--odd
-  flex-direction: row-reverse
+@media screen and (max-width: 800px)
+  .FeaturesPage__feature
+    background: linear-gradient(0deg, #f8f8f8 0%, #FFFFFF 100%)
+    padding-bottom: 30px
+    margin-bottom: 60px
+
+  .FeaturesPage__feature-image
+    padding-right: 20%
+    max-width: 300px
 
   .FeaturesPage__feature-content
-    margin-left: 0px
-    margin-right: 80px
+    margin-bottom: 50px
 
-.FeaturesPage__feature-image
-  width: 420px
+@media screen and (min-width: 801px)
+  .FeaturesPage__feature
+    margin-bottom: 100px
+
+  .FeaturesPage__feature-inner
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: row-reverse
+
+  .FeaturesPage__feature-image
+    width: 420px
+
+  .FeaturesPage__feature-content
+    width: 420px
+    margin-left: 80px
+
+  .FeaturesPage__feature--odd
+    flex-direction: row
+
+    .FeaturesPage__feature-content
+      margin-left: 0px
+      margin-right: 80px
 
 .FeaturesPage__feature-image-placeholder
   padding-top: 130%
   background-color: red
-
-.FeaturesPage__feature-content
-  width: 420px
-  margin-left: 80px
 
 .FeaturesPage__feature-title
   text-transform: uppercase
