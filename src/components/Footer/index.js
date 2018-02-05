@@ -75,9 +75,6 @@ const Footer = ({ data, linkComponent: Link }) => (
         </Link>
       </Group>
       <Group title="About">
-        <Link className={b('group-link')} to="/">
-          Team
-        </Link>
         <Link className={b('group-link')} to="/integrations/">
           Integrations
         </Link>

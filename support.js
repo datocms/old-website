@@ -5,7 +5,10 @@ import MobileNavbar from './src/components/MobileNavbar'
 import Footer from './src/components/Footer'
 
 const Link = ({ to, ...props }) => (
-  <a href={to} {...props} />
+  <a
+    href={to.startsWith('http') ? to : `https://v2.datocms.com${to}`}
+    {...props}
+  />
 );
 
 ReactDOM.render(
