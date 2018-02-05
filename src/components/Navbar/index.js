@@ -25,7 +25,7 @@ const ActiveMenuLink = (props) => (
 )
 
 const Navbar = () => (
-  <div className={b()}>
+  <div className={b()} data-datocms-noindex>
     <Space both={3}>
       <Wrap>
         <div className={b('inner')}>

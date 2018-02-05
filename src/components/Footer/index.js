@@ -51,7 +51,7 @@ const GroupLink = ({ to, label }) => (
 )
 
 const Footer = ({ data }) => (
-  <div className={b()}>
+  <div className={b()} data-datocms-noindex>
     <div className={b('body')}>
       <Link className={b('logo')} to="/">
         <img src={logo} alt="DatoCMS" />

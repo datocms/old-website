@@ -10,7 +10,7 @@ import bem from 'utils/bem'
 const b = bem.lock('HomeTools')
 
 const HomeTools = ({ data }) => (
-  <Space both="15">
+  <div className={b()}>
     <div className={b('marquee')}>
       <div className={b('marquee-track')}>
         {
@@ -25,7 +25,7 @@ const HomeTools = ({ data }) => (
         }
       </div>
     </div>
-  </Space>
+  </div>
 )
 
 export default HomeTools

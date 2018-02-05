@@ -81,7 +81,7 @@ class HomeHowItWorks extends React.Component {
     })
 
     return (
-      <Space both={10}>
+      <Space top={10}>
         <Waypoint onEnter={this.handleStartUpload.bind(this)}>
           <div className={wrap()}>
             <div className={b()}>
