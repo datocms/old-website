@@ -10,6 +10,7 @@ import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 
 import Features from 'components/home/Features'
+import DatoEditor from 'components/DatoEditor'
 import CallToAction from 'components/CallToAction'
 import InlineSVG from 'components/InlineSVG'
 import Waypoint from 'react-waypoint'
@@ -72,7 +73,7 @@ class FeaturesPage extends React.Component {
                           <Waypoint topOffset="40%" bottomOffset="40%">
                             <div>
                               <Fade left={i % 2 === 1} right={i % 2 === 0} duration={200}>
-                                <div className={b('feature', { odd: i % 2 === 1 })}>
+                                <DatoEditor record={feature} className={b('feature', { odd: i % 2 === 1 })}>
                                   <Wrap>
                                     <div className={b('feature-inner')}>
                                       <div className={b('feature-content')}>
@@ -104,7 +105,7 @@ class FeaturesPage extends React.Component {
                                       </div>
                                     </div>
                                   </Wrap>
-                                </div>
+                                </DatoEditor>
                               </Fade>
                             </div>
                           </Waypoint>
@@ -133,6 +134,7 @@ query FeaturesPageQuery {
         id
         title
         slug
+        model { id }
         description: descriptionNode {
           markdown: childMarkdownRemark {
             html

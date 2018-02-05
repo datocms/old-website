@@ -18,17 +18,17 @@ $gutter: 6%
     width: $gutter
 
   .UseCasesPage__grid-sizer,
-  .UseCasesPage__website
+  .UseCasesPage__website-container
     width: 100%
 
   @media screen and (min-width: 1000px)
     .UseCasesPage__grid-sizer,
-    .UseCasesPage__website
+    .UseCasesPage__website-container
       width: (100% - 1 * $gutter) / 2
 
   @media screen and (min-width: 1300px)
     .UseCasesPage__grid-sizer,
-    .UseCasesPage__website
+    .UseCasesPage__website-container
       width: (100% - 2 * $gutter) / 3
 
 .UseCasesPage__gallery
@@ -37,9 +37,6 @@ $gutter: 6%
   .slick-slider
     background-color: $smoke-color
     padding: 50px 0
-
-  .UseCasesPage__website-container
-    width: 80vw
 
   .UseCasesPage__website
     margin: 0 10px
@@ -110,6 +107,10 @@ $gutter: 6%
 
 .UseCasesPage__masonry
   display: none
+
+@media screen and (max-width: 849px)
+  .UseCasesPage__website-container
+    width: 80vw
 
 @media screen and (min-width: 850px)
   .UseCasesPage__gallery

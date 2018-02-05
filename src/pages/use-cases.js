@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component'
 import Sticky from 'react-stickynode'
 import Slider from 'react-slick'
 import CallToAction from 'components/CallToAction'
+import DatoEditor from 'components/DatoEditor'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -52,7 +53,7 @@ class UseCasesPage extends React.Component {
     const tech = website.technologies.find(x => x.type.slug === 'static-generator');
 
     return (
-      <div className={b('website-container')} key={website.id}>
+      <DatoEditor record={website} className={b('website-container')} key={website.id}>
         <div className={b('website', { highlighted: website.highlighted })}>
           <Browser
             small
@@ -70,13 +71,13 @@ class UseCasesPage extends React.Component {
             tech &&
               <div className={b('website-technology')}>
                 <img src={tech.logo.url} className={b('website-technology-logo')} />
-                <div className={b('website-technology-name')}>
+                <DatoEditor record={tech} className={b('website-technology-name')}>
                   Made with {tech.name}
-                </div>
+                </DatoEditor>
               </div>
           }
         </div>
-      </div>
+      </DatoEditor>
     )
   }
 
@@ -99,7 +100,7 @@ class UseCasesPage extends React.Component {
 
                     return (
                       <div className={b('use-case')} key={useCase.id}>
-                        <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
+                        <DatoEditor record={useCase} className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
                           <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
                             <div className={b('use-case-content-inner')}>
                               <h3 className={b('use-case-title')}>
@@ -111,14 +112,14 @@ class UseCasesPage extends React.Component {
                               />
                             </div>
                           </Sticky>
-                        </div>
+                        </DatoEditor>
                         <div className={b('use-case-gallery')}>
                           <div className={b('masonry')}>
                             <Masonry
                               options={{
                                 columnWidth: '.UseCasesPage__grid-sizer',
                                 gutter: '.UseCasesPage__gutter-sizer',
-                                itemSelector: '.UseCasesPage__website',
+                                itemSelector: '.UseCasesPage__website-container',
                                 percentPosition: true
                               }}
                             >
@@ -173,6 +174,7 @@ query UseCasesQuery {
         url
         highlighted
         technologies {
+          id
           name
           logo {
             url
