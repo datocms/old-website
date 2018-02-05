@@ -1,13 +1,16 @@
 ---
 position: 1
-title: Offline backups
+title: Making offline backups
 ---
 
-Making offline backups of every content stored in DatoCMS is extremely easy 
-using our API client. Here's a quick example script that:
+Higher tier of DatoCMS offer the ability to generate nightly copies of your 
+content to your own Amazon S3 buckets, but even if you're on lower plans
+making offline backups is extremely easy. 
 
-1. dumps every record into a `records.json` file, and
-2. locally downloads every asset
+Here's a quick example script that uses our [REST API](/api/) to dump every record 
+into a `records.json` file, and locally downloads every asset. 
+
+You can then add this script into a cron-job and store the result in a S3 bucket:
 
 ```js
 const SiteClient = require('datocms-client').SiteClient;

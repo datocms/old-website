@@ -130,44 +130,47 @@ export default class LearnPage extends React.Component {
               </div>
             </div>
 
-            <div className={b('section')}>
-              <h3 className={b('section-title')}>
-                Build apps with DatoCMS
-              </h3>
+            {
+              false &&
+                <div className={b('section')}>
+                  <h3 className={b('section-title')}>
+                    Build apps with DatoCMS
+                  </h3>
 
-              <div className={b('section-items', { center: true })}>
-                <Guide
-                  title="Client-side apps"
-                >
-                  <Space bottom={2}>
-                    <p>
-                      Use our Javascript client to build your app with any frontend technology you want:
-                    </p>
-                  </Space>
-                  <ul>
-                    <li><Link to="/docs/jekyll/">Plain JS</Link></li>
-                    <li><Link to="/docs/gatsby/">React</Link></li>
-                    <li><Link to="/docs/middleman/">Angular</Link></li>
-                    <li><Link to="/docs/hugo/">Vue.js</Link></li>
-                  </ul>
-                </Guide>
+                  <div className={b('section-items', { center: true })}>
+                    <Guide
+                      title="Client-side apps"
+                    >
+                      <Space bottom={2}>
+                        <p>
+                          Use our Javascript client to build your app with any frontend technology you want:
+                        </p>
+                      </Space>
+                      <ul>
+                        <li><Link to="/docs/jekyll/">Plain JS</Link></li>
+                        <li><Link to="/docs/gatsby/">React</Link></li>
+                        <li><Link to="/docs/middleman/">Angular</Link></li>
+                        <li><Link to="/docs/hugo/">Vue.js</Link></li>
+                      </ul>
+                    </Guide>
 
-                <Guide
-                  title="Server-side apps"
-                >
-                  <Space bottom={2}>
-                    <p>
-                      Stop reinventing the wheel and use DatoCMS to manage your server-side website:
-                    </p>
-                  </Space>
-                  <ul>
-                    <li><Link to="/docs/jekyll/">Ruby/Rails</Link></li>
-                    <li><Link to="/docs/gatsby/">NodeJS/Express</Link></li>
-                    <li><Link to="/docs/gatsby/">PHP</Link></li>
-                  </ul>
-                </Guide>
-              </div>
-            </div>
+                    <Guide
+                      title="Server-side apps"
+                    >
+                      <Space bottom={2}>
+                        <p>
+                          Stop reinventing the wheel and use DatoCMS to manage your server-side website:
+                        </p>
+                      </Space>
+                      <ul>
+                        <li><Link to="/docs/jekyll/">Ruby/Rails</Link></li>
+                        <li><Link to="/docs/gatsby/">NodeJS/Express</Link></li>
+                        <li><Link to="/docs/gatsby/">PHP</Link></li>
+                      </ul>
+                    </Guide>
+                  </div>
+                </div>
+            }
           </div>
         </Wrap>
       </Space>
