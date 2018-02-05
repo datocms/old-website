@@ -1,0 +1,48 @@
+---
+position: 1
+title: Offline backups
+---
+
+Making offline backups of every content stored in DatoCMS is extremely easy 
+using our API client. Here's a quick example script that:
+
+1. dumps every record into a `records.json` file, and
+2. locally downloads every asset
+
+```js
+const SiteClient = require('datocms-client').SiteClient;
+const fs = require('fs');
+const path = require('path');
+const request = require('request');
+
+const client = new SiteClient('YOUR-API-TOKEN');
+
+console.log('Downloading records...');
+
+client.items.all({}, { allPages: true })
+.then(response => {
+  fs.writeFileSync('records.json', JSON.stringify(response, null, 2));
+})
+.then(() => {
+  return client.site.find();
+})
+.then((site) => {
+  client.uploads.all({}, { allPages: true })
+  .then(uploads => {
+    return uploads.reduce((chain, upload) => {
+      return chain.then(() => {
+        return new Promise((resolve) => {
+          const imageUrl = 'https://' + site.imgixHost + upload.path;
+          console.log(`Downloading ${imageUrl}...`);
+
+          const stream = fs.createWriteStream('./' + path.basename(upload.path));
+          stream.on('close', resolve);
+          request(imageUrl).pipe(stream);
+        });
+      });
+    }, Promise.resolve());
+  });
+});
+
+console.log('Done!');
+```

@@ -76,7 +76,7 @@ export default class LearnPage extends React.Component {
                   </Space>
                   <ul>
                     <li><Link to="/docs/import/nodejs/">Importing data</Link></li>
-                    <li><Link to="/docs/gatsby/">Making offline backups</Link></li>
+                    <li><Link to="/docs/backups/">Making offline backups</Link></li>
                   </ul>
                 </Guide>
               </div>
