@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -94,6 +95,7 @@ class PricingPage extends React.Component {
 
     return (
       <Space both="10">
+        <HelmetDatoCms seo={data.page.seoMetaTags} />
         <Wrap>
           <div className={b()}>
             <div className={b('title')}>
@@ -692,3 +694,12 @@ class PricingPage extends React.Component {
 
 export default PricingPage
 
+export const query = graphql`
+query PricingPageQuery {
+  page: datoCmsPricingPage {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+}
+`

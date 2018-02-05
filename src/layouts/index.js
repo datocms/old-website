@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Navbar from '../components/Navbar'
 import MobileNavbar from '../components/MobileNavbar'
@@ -18,11 +19,12 @@ const SmartLink = ({ to, ...props }) => (
 
 const MobileNavbarWithRouter = withRouter(MobileNavbar);
 
-const TemplateWrapper = ({ location, children }) => (
+const TemplateWrapper = ({ data, location, children }) => (
   <div>
     <Helmet title="DatoCMS">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     </Helmet>
+    <HelmetDatoCms favicon={data.site.faviconMetaTags} />
     {
       location.pathname !== '/api/' &&
         <div>
@@ -45,3 +47,13 @@ TemplateWrapper.propTypes = {
 }
 
 export default TemplateWrapper
+
+export const query = graphql`
+query LayoutQuery {
+  site: datoCmsSite {
+    faviconMetaTags {
+      ...GatsbyDatoCmsFaviconMetaTags
+    }
+  }
+}
+`

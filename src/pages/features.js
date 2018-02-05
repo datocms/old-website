@@ -5,6 +5,7 @@ import Sticky from 'react-stickynode';
 import { Link as ScrollLink, Element } from 'react-scroll'
 import Fade from 'react-reveal/Fade'
 import Pulse from 'react-reveal/Pulse'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -39,6 +40,7 @@ class FeaturesPage extends React.Component {
 
     return (
       <div>
+        <HelmetDatoCms seo={data.page.seoMetaTags} />
         <Space both="10">
           <div className={b()}>
             <div className={b('title')}>
@@ -127,6 +129,12 @@ export default FeaturesPage
 
 export const query = graphql`
 query FeaturesPageQuery {
+  page: datoCmsFeaturesPage {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+
   features: allDatoCmsFeature(sort: { fields: [position], order: ASC }) {
     edges {
       node {

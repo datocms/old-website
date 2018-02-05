@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component'
 import Sticky from 'react-stickynode'
 import Slider from 'react-slick'
 import CallToAction from 'components/CallToAction'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
@@ -86,6 +87,7 @@ class UseCasesPage extends React.Component {
 
     return (
       <div>
+        <HelmetDatoCms seo={data.page.seoMetaTags} />
         <Space both="10">
           <div className={b()}>
             <div className={b('title')}>
@@ -151,6 +153,12 @@ export default UseCasesPage
 
 export const query = graphql`
 query UseCasesQuery {
+  page: datoCmsUseCasesPage {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+
   useCases: allDatoCmsUseCase(sort: { fields: [position] }) {
     edges {
       node {

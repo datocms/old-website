@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import bem from 'utils/bem'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Hero from 'components/home/Hero'
 import WhoIsUsing from 'components/home/WhoIsUsing'
@@ -16,6 +17,7 @@ const b = bem.lock('IndexPage')
 
 const IndexPage = ({ data }) => (
   <div>
+    <HelmetDatoCms seo={data.home.seoMetaTags} />
     <Hero title={data.home.heroText} description={data.home.heroDescription} />
     <WhoIsUsing data={data.home.whosUsingDatocms} />
     <div className={b('second-wave')}>

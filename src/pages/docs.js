@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Wrap, button, Space, text } from 'blocks'
 import sortBy from 'sort-by'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 
@@ -47,6 +48,7 @@ export default class LearnPage extends React.Component {
   render() {
     return (
       <Space both="10">
+        <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <Wrap>
           <div className={b()}>
             <h1 className={b('title')}>
@@ -177,3 +179,13 @@ export default class LearnPage extends React.Component {
     )
   }
 }
+
+export const query = graphql`
+query DocsPageQuery {
+  page: datoCmsLearnPage {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+}
+`
