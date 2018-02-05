@@ -1,7 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import bem from 'utils/bem'
-import { withRouter } from 'react-router';
 
 import { Wrap, button, Space, Text } from 'blocks'
 import './style.sass'
@@ -9,20 +7,6 @@ import './style.sass'
 import logo from 'images/logo.svg'
 
 const b = bem.lock('MobileNavbar')
-
-const MenuItem = (props) => (
-  <Link
-    className={b('menu-item')}
-    {...({ ...props, activeClassName: b('menu-item', { active: true }) })}
-  />
-)
-
-const GroupItem = (props) => (
-  <Link
-    className={b('group-item')}
-    {...({ ...props, activeClassName: b('group-item', { active: true }) })}
-  />
-)
 
 class Group extends React.Component {
   constructor(props) {
@@ -68,10 +52,12 @@ class MobileNavbar extends React.Component {
   }
 
   componentDidMount() {
-    this.unlisten = this.props.history.listen((location, action) => {
-      document.body.classList.toggle('no-scroll', false)
-      this.setState({ active: false });
-    });
+    if (this.props.history) {
+      this.unlisten = this.props.history.listen((location, action) => {
+        document.body.classList.toggle('no-scroll', false)
+        this.setState({ active: false });
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -79,6 +65,8 @@ class MobileNavbar extends React.Component {
   }
 
   render() {
+    const { linkComponent: Link } = this.props;
+
     return (
       <div className={b()}>
         <div className={b('bar')}>
@@ -94,31 +82,31 @@ class MobileNavbar extends React.Component {
           </div>
         </div>
         <div className={b('menu', { active: this.state.active })}>
-          <MenuItem to="/features/">
+          <Link className={b('menu-item')} to="/features/">
             Features
-          </MenuItem>
-          <MenuItem to="/use-cases/">
+          </Link>
+          <Link className={b('menu-item')} to="/use-cases/">
             Use cases
-          </MenuItem>
-          <MenuItem to="/pricing/">
+          </Link>
+          <Link className={b('menu-item')} to="/pricing/">
             Pricing
-          </MenuItem>
-          <MenuItem to="/docs/">
+          </Link>
+          <Link className={b('menu-item')} to="/docs/">
             Learn
-          </MenuItem>
-          <MenuItem to="/blog/">
+          </Link>
+          <Link className={b('menu-item')} to="/blog/">
             Blog
-          </MenuItem>
+          </Link>
           <Group name="Support">
-            <GroupItem to="http://support.datocms.com/support/tickets/new">
+            <Link className={b('group-item')} to="http://support.datocms.com/support/tickets/new">
               Ticket Center
-            </GroupItem>
-            <GroupItem to="http://support.datocms.com/support/discussions/forums/35000119870">
+            </Link>
+            <Link className={b('group-item')} to="http://support.datocms.com/support/discussions/forums/35000119870">
               Feature Requests
-            </GroupItem>
-            <GroupItem to="http://slack.datocms.com/">
+            </Link>
+            <Link className={b('group-item')} to="http://slack.datocms.com/">
               Slack Community
-            </GroupItem>
+            </Link>
           </Group>
           <div className={b('actions')}>
             <a className={button({ border: true })} href="https://dashboard.datocms.com/sign_in">
@@ -134,5 +122,5 @@ class MobileNavbar extends React.Component {
   }
 }
 
-export default withRouter(MobileNavbar)
+export default MobileNavbar;
 

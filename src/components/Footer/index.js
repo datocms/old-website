@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import './style.sass'
 import { Wrap, button, Space, text } from 'blocks'
@@ -39,45 +38,60 @@ class Group extends React.Component {
   }
 }
 
-const GroupLink = ({ to, label }) => (
-  to.includes('http') ?
-    <a href={to} target="_blank" className={b('group-link')}>
-      {label}
-    </a>
-    :
-    <Link to={to} className={b('group-link')}>
-      {label}
-    </Link>
-)
-
-const Footer = ({ data }) => (
+const Footer = ({ data, linkComponent: Link }) => (
   <div className={b()} data-datocms-noindex>
     <div className={b('body')}>
       <Link className={b('logo')} to="/">
         <img src={logo} alt="DatoCMS" />
       </Link>
       <Group title="DatoCMS">
-        <GroupLink to="/features/" label="Features" />
-        <GroupLink to="/use-cases/" label="Use Cases" />
-        <GroupLink to="/pricing/" label="Pricing" />
+        <Link className={b('group-link')} to="/features/">
+          Features
+        </Link>
+        <Link className={b('group-link')} to="/use-cases/">
+          Use Cases
+        </Link>
+        <Link className={b('group-link')} to="/pricing/">
+          Pricing
+        </Link>
       </Group>
       <Group title="Learn">
-        <GroupLink to="/docs/" label="Documentation" />
-        <GroupLink to="/api/" label="API Reference" />
+        <Link className={b('group-link')} to="/docs/">
+          Documentation
+        </Link>
+        <Link className={b('group-link')} to="/api/">
+          API Reference
+        </Link>
       </Group>
       <Group title="Support">
-        <GroupLink to="http://support.datocms.com/support/tickets/new" label="Ticket Center" />
-        <GroupLink to="http://support.datocms.com/support/discussions/forums/35000119870" label="Feature Requests" />
-        <GroupLink to="http://slack.datocms.com/" label="Slack Community" />
+        <Link className={b('group-link')} to="http://support.datocms.com/support/tickets/new">
+          Ticket Center
+        </Link>
+        <Link className={b('group-link')} to="http://support.datocms.com/support/discussions/forums/35000119870">
+          Feature Requests
+        </Link>
+        <Link className={b('group-link')} to="http://slack.datocms.com/">
+          Slack Community
+        </Link>
       </Group>
       <Group title="About">
-        <GroupLink to="/" label="Team" />
-        <GroupLink to="/integrations/" label="Integrations" />
-        <GroupLink to="/blog/" label="Blog" />
+        <Link className={b('group-link')} to="/">
+          Team
+        </Link>
+        <Link className={b('group-link')} to="/integrations/">
+          Integrations
+        </Link>
+        <Link className={b('group-link')} to="/blog/">
+          Blog
+        </Link>
       </Group>
       <Group title="Legal">
-        <GroupLink to="/legal/terms/" label="Terms & Conditions" />
-        <GroupLink to="/legal/privacy-policy/" label="Privacy Policy" />
+        <Link className={b('group-link')} to="/legal/terms/">
+          Terms &amp; Conditions
+        </Link>
+        <Link className={b('group-link')} to="/legal/privacy-policy/">
+          Privacy Policy
+        </Link>
       </Group>
     </div>
     <div className={b('us')}>

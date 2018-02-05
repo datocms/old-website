@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import bem from 'utils/bem'
 
 import { Wrap, button, Space, Text } from 'blocks'
@@ -9,22 +8,7 @@ import logo from 'images/logo.svg'
 
 const b = bem.lock('Navbar')
 
-const ActiveLink = (props) => (
-  <Link
-    className={b('text-link')}
-    {...({ ...props, activeClassName: b('text-link', { active: true }) })}
-  />
-)
-
-const ActiveMenuLink = (props) => (
-  <a
-    className={b('menu-item')}
-    href={props.to}
-    children={props.children}
-  />
-)
-
-const Navbar = () => (
+const Navbar = ({ linkComponent: Link }) => (
   <div className={b()} data-datocms-noindex>
     <Space both={3}>
       <Wrap>
@@ -35,43 +19,43 @@ const Navbar = () => (
             </Link>
           </div>
           <div className={b('nav')}>
-            <ActiveLink to="/features/">
+            <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/features/">
               Features
-            </ActiveLink>
-            <ActiveLink to="/use-cases/">
+            </Link>
+            <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/use-cases/">
               Use cases
-            </ActiveLink>
-            <ActiveLink to="/pricing/">
+            </Link>
+            <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/pricing/">
               Pricing
-            </ActiveLink>
-            <ActiveLink to="/docs/">
+            </Link>
+            <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/docs/">
               Learn
-            </ActiveLink>
-            <ActiveLink to="/blog/">
+            </Link>
+            <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/blog/">
               Blog
-            </ActiveLink>
+            </Link>
             <div className={b('text-link', { handle: true })}>
               <span>Support</span>
               <div className={b('menu')}>
-                <ActiveMenuLink to="http://support.datocms.com/support/tickets/new">
+                <Link className={b('menu-item')} to="http://support.datocms.com/support/tickets/new">
                   Ticket Center
-                </ActiveMenuLink>
-                <ActiveMenuLink to="http://support.datocms.com/support/discussions/forums/35000119870">
+                </Link>
+                <Link className={b('menu-item')} to="http://support.datocms.com/support/discussions/forums/35000119870">
                   Feature Requests
-                </ActiveMenuLink>
-                <ActiveMenuLink to="http://slack.datocms.com/">
+                </Link>
+                <Link className={b('menu-item')} to="http://slack.datocms.com/">
                   Slack Community
-                </ActiveMenuLink>
+                </Link>
               </div>
             </div>
           </div>
           <div className={b('actions')}>
-            <a className={b('text-link')} href="https://dashboard.datocms.com/sign_in">
+            <Link className={b('text-link')} to="https://dashboard.datocms.com/sign_in">
               Login
-            </a>
-            <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
+            </Link>
+            <Link className={button({ red: true })} to="https://dashboard.datocms.com/register">
               Try it free
-            </a>
+            </Link>
           </div>
         </div>
       </Wrap>

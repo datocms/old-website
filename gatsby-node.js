@@ -215,3 +215,18 @@ exports.createPages = (options) => {
     articles(options),
   ]);
 }
+
+exports.modifyWebpackConfig = ({ config, stage }) => {
+  if (stage === 'build-javascript') {
+    config.merge((current) => {
+      console.log(current.entry);
+      console.log(current.output);
+
+      current.entry.support = './support.js';
+
+      return current;
+    });
+  }
+
+  return config;
+}
