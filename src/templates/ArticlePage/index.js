@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import { Wrap, button, Space, text } from 'blocks'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import './style.sass'
@@ -16,6 +17,7 @@ export default class ArticlePage extends React.Component {
 
     return (
       <BlogAside>
+        <HelmetDatoCms seo={article.seoMetaTags} />
         <div className={b()}>
           <Link to="/blog/" className={b('heading')}>
             From our Blog
@@ -55,6 +57,9 @@ export default class ArticlePage extends React.Component {
 export const query = graphql`
   query ArticlePageQuery($slug: String!) {
     article: datoCmsBlogPost(slug: { eq: $slug }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       slug
       title
       content {
