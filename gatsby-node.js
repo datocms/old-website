@@ -2,6 +2,13 @@ const p = require('path')
 const groupBy = require('group-by');
 const cartesianProduct = require('cartesian-product');
 const createPaginatedPages = require('gatsby-paginate');
+const redirects = require('./redirects.json');
+
+const createRedirects = ({ boundActionCreators: { createRedirect } }) => {
+  Object.entries(redirects).forEach(([fromPath, toPath]) => {
+    createRedirect({ fromPath, toPath });
+  });
+}
 
 const articles = ({ graphql, boundActionCreators: { createPage } }) => {
   return graphql(
@@ -213,6 +220,7 @@ exports.createPages = (options) => {
     legalPages(options),
     landingPages(options),
     articles(options),
+    createRedirects(options),
   ]);
 }
 
