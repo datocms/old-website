@@ -51,8 +51,9 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build && node renameSupport.js",
+    "build": "gatsby build && node renameSupport.js && mv freshdesk/freshdesk.css public",
     "develop": "gatsby develop",
+    "freshdesk": "sass --watch freshdesk/freshdesk.sass:freshdesk/freshdesk.css",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

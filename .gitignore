@@ -7,3 +7,4 @@ public/
 .DS_Store
 .env
 yarn-error.log
+freshdesk/.sass-cache
