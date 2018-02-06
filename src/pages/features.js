@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import Sticky from 'react-stickynode';
 import { Link as ScrollLink, Element } from 'react-scroll'
-import Fade from 'react-reveal/Fade'
 import Pulse from 'react-reveal/Pulse'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
@@ -72,42 +71,38 @@ class FeaturesPage extends React.Component {
                       return (
                         <Element key={i} name={feature.slug}>
                           <Waypoint topOffset="40%" bottomOffset="40%">
-                            <div>
-                              <Fade left={i % 2 === 1} right={i % 2 === 0} duration={200}>
-                                <div className={b('feature', { odd: i % 2 === 1 })}>
-                                  <Wrap>
-                                    <div className={b('feature-inner')}>
-                                      <div className={b('feature-content')}>
-                                        <h5 className={b('feature-title')}>
-                                          {feature.title}
-                                        </h5>
-                                        <div
-                                          className={b('feature-description')}
-                                          dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
-                                        />
+                            <div className={b('feature', { odd: i % 2 === 1 })}>
+                              <Wrap>
+                                <div className={b('feature-inner')}>
+                                  <div className={b('feature-content')}>
+                                    <h5 className={b('feature-title')}>
+                                      {feature.title}
+                                    </h5>
+                                    <div
+                                      className={b('feature-description')}
+                                      dangerouslySetInnerHTML={{ __html: feature.description.markdown.html }}
+                                    />
+                                  </div>
+                                  <div className={b('feature-image')}>
+                                    <Pulse delay={700} duration={300}>
+                                      <div>
+                                        {
+                                          feature.image && feature.image.format === 'svg' &&
+                                            <InlineSVG src={feature.image.inlineSvg} />
+                                        }
+                                        {
+                                          feature.image && feature.image.format !== 'svg' &&
+                                            <img src={feature.image.url} />
+                                        }
+                                        {
+                                          !feature.image &&
+                                            <div className={b('feature-image-placeholder')} />
+                                        }
                                       </div>
-                                      <div className={b('feature-image')}>
-                                        <Pulse delay={700} duration={300}>
-                                          <div>
-                                            {
-                                              feature.image && feature.image.format === 'svg' &&
-                                                <InlineSVG src={feature.image.inlineSvg} />
-                                            }
-                                            {
-                                              feature.image && feature.image.format !== 'svg' &&
-                                                <img src={feature.image.url} />
-                                            }
-                                            {
-                                              !feature.image &&
-                                                <div className={b('feature-image-placeholder')} />
-                                            }
-                                          </div>
-                                        </Pulse>
-                                      </div>
-                                    </div>
-                                  </Wrap>
+                                    </Pulse>
+                                  </div>
                                 </div>
-                              </Fade>
+                              </Wrap>
                             </div>
                           </Waypoint>
                         </Element>
