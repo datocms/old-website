@@ -41,7 +41,7 @@ module.exports = (dato, root, i18n) => {
 };
 ```
 
-If you need to access the record associated to a [single-instance model](/docs/schema/single-instance), you don't need to pluralize the Model ID:
+If you need to access the record associated to a [single-instance model](/docs/introduction/single-instance/), you don't need to pluralize the Model ID:
 
 ```javascript
 // dato.config.js

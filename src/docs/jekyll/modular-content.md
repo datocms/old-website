@@ -3,9 +3,9 @@ title: Modular content fields
 position: 7
 ---
 
-**Note** This guide assumes you have a basic knowledge of how Modular content fields work in DatoCMS. If this is not the case, please read [this introduction](/docs/schema/modular-content) first.
+**Note** This guide assumes you have a basic knowledge of how Modular content fields work in DatoCMS. If this is not the case, please read [this introduction](/docs/introduction/modular-content/) first.
 
-Suppose a `blog_post` model has a modular-content field called `body`, which in turn accepts the following models as [building-blocks](/docs/schema/modular-content):
+Suppose a `blog_post` model has a modular-content field called `body`, which in turn accepts the following models as [building-blocks](/docs/introduction/modular-content/):
 
 * Model `blog_post_text_block`: made of a `text` field (*multi-paragraph text*);
 * Model `blog_post_quote_block`: made of a `quote` field (*multi-paragraph text*) and `author` field (*single-line string*);

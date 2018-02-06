@@ -32,7 +32,7 @@ You can find your API token in the *Admin area > API tokens* section:
 ### Pull DatoCMS content into components
 
 [Gatsby uses GraphQL](https://www.gatsbyjs.org/tutorial/part-four/#how-gatsbys-data-layer-uses-graphql-to-pull-data-into-components) to let components declare the data it needs and then gives this data to components. Suppose your DatoCMS administrative area has a
-[single-instance model](/docs/schema/single-instance/) called *About page* (with an `about_page` API identifier).
+[single-instance model](/docs/introduction/single-instance/) called *About page* (with an `about_page` API identifier).
 
 In your Gatsby project you can create an `About` React component in `src/pages/about.js`, and pull data from DatoCMS like this:
 
