@@ -30,10 +30,18 @@
   display: block
   height: 30px
 
-.MobileNavbar__hamburger-container button
+.MobileNavbar__hamburger-container a
   +size(normal)
   border: 0
   background: transparent
+  display: inline-block
+  text-decoration: none
+  color: $base-body-color
+
+  img
+    display: inline-block
+    vertical-align: middle
+    height: 30px
 
   &:focus
     outline: 0

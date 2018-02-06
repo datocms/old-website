@@ -5,6 +5,7 @@ import { Wrap, button, Space, Text } from 'blocks'
 import './style.sass'
 
 import logo from 'images/logo.svg'
+import hamburger from 'images/hamburger.svg'
 
 const b = bem.lock('MobileNavbar')
 
@@ -43,7 +44,9 @@ class MobileNavbar extends React.Component {
     this.state = { active: false };
   }
 
-  handleToggle() {
+  handleToggle(e) {
+    e.preventDefault()
+
     document.body.classList.toggle('no-scroll', !this.state.active)
 
     this.setState({
@@ -76,9 +79,9 @@ class MobileNavbar extends React.Component {
             </Link>
           </div>
           <div className={b('hamburger-container')}>
-            <button onClick={this.handleToggle.bind(this)}>
-              Menu
-            </button>
+            <a href="#" onClick={this.handleToggle.bind(this)}>
+              <img src={hamburger} alt="Menu" />
+            </a>
           </div>
         </div>
         <div className={b('menu', { active: this.state.active })}>
