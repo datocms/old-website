@@ -21,7 +21,9 @@
 
   video
     display: block
-    width: 960px
+
+.HomeHero__description
+  margin-bottom: 40px
 
 @media screen and (max-width: 999px)
   .HomeHero
@@ -38,8 +40,14 @@
     +weight(bold)
     margin-bottom: 30px
 
+  .HomeHero__description
+    +size(normalBig)
+
   .HomeHero__browser
-    display: none
+    margin-top: 60px
+
+  .HomeHero__browser .Browser__content video
+    width: 100%
 
 @media screen and (min-width: 1000px)
   .HomeHero
@@ -70,6 +78,9 @@
     +weight(bold)
     margin-bottom: 30px
 
+  .HomeHero__description
+    +size(bigger)
+
   .HomeHero__text-container
     width: 50%
     max-width: 580px
@@ -77,4 +88,7 @@
     height: 80vh
     display: flex
     align-items: center
+
+  .HomeHero__browser .Browser__content video
+    width: 960px
 

@@ -22,11 +22,9 @@ const HomeHero = ({ title, description }) => (
             <h1 className={b('title')}>
               {title}
             </h1>
-            <Space bottom="4">
-              <p className={text({ size: 'big' })}>
-                {description}
-              </p>
-            </Space>
+            <div className={b('description')}>
+              {description}
+            </div>
             <Space bottom="2">
               <a href="https://dashboard.datocms.com/register" className={button({ red: true })}>
                 Try it free
@@ -48,7 +46,7 @@ const HomeHero = ({ title, description }) => (
           </div>
         </div>
         <div className={b('browser')}>
-          <Browser small>
+          <Browser small title="DatoCMS">
             <video autoPlay loop>
               <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.webm" type="video/webm" />
               <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.mp4" type="video/mp4" />
