@@ -19,28 +19,45 @@ const SmartLink = ({ to, ...props }) => (
 
 const MobileNavbarWithRouter = withRouter(MobileNavbar);
 
-const TemplateWrapper = ({ data, location, children }) => (
-  <div>
-    <Helmet title="DatoCMS">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </Helmet>
-    <HelmetDatoCms favicon={data.site.faviconMetaTags} />
-    {
-      location.pathname !== '/api/' &&
-        <div>
-          <Navbar linkComponent={SmartLink} />
-          <MobileNavbarWithRouter linkComponent={SmartLink} />
-        </div>
-    }
-    {
-      children()
-    }
-    {
-      location.pathname !== '/api/' &&
-        <Footer linkComponent={SmartLink} />
-    }
-  </div>
-)
+class TemplateWrapper extends React.Component {
+  componentDidMount() {
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = 'f6c597e6-eda0-477a-ac60-9abea56354eb';
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = false;
+    script.src = 'https://client.crisp.im/l.js';
+    document.body.appendChild(script);
+  }
+
+  render() {
+    const { data, location, children } = this.props;
+
+    return (
+      <div>
+        <Helmet title="DatoCMS">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        </Helmet>
+        <HelmetDatoCms favicon={data.site.faviconMetaTags} />
+        {
+          location.pathname !== '/api/' &&
+            <div>
+              <Navbar linkComponent={SmartLink} />
+              <MobileNavbarWithRouter linkComponent={SmartLink} />
+            </div>
+        }
+        {
+          children()
+        }
+        {
+          location.pathname !== '/api/' &&
+            <Footer linkComponent={SmartLink} />
+        }
+      </div>
+    );
+  }
+}
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
