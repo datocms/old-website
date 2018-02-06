@@ -49,7 +49,22 @@ const HomeHero = ({ title, description }) => (
         </div>
         <div className={b('browser')}>
           <Browser>
-            <img className={b('screenshot-image')} src={screenshot} />
+            {
+              true &&
+                <video autoPlay>
+                  <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.webm" type="video/webm" />
+                  <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.mp4" type="video/mp4" />
+                  <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.ogv" type="video/ogg" />
+                </video>
+            }
+            {
+              false &&
+                <video autoPlay>
+                  <source src="http://res.cloudinary.com/dato/video/upload/v1517918414/ScreenFlowZoom_ne5xqs.webm" type="video/webm" />
+                  <source src="http://res.cloudinary.com/dato/video/upload/v1517918414/ScreenFlowZoom_ne5xqs.mp4" type="video/mp4" />
+                  <source src="http://res.cloudinary.com/dato/video/upload/v1517918414/ScreenFlowZoom_ne5xqs.ogv" type="video/ogg" />
+                </video>
+            }
           </Browser>
         </div>
       </div>
