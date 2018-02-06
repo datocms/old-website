@@ -47,10 +47,10 @@ const HomeHero = ({ title, description }) => (
         </div>
         <div className={b('browser')}>
           <Browser small title="DatoCMS">
-            <video autoPlay loop>
-              <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.webm" type="video/webm" />
-              <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.mp4" type="video/mp4" />
-              <source src="http://res.cloudinary.com/dato/video/upload/ScreenFlow_ay4kne.ogv" type="video/ogg" />
+            <video autoPlay loop muted playsinline>
+              <source src="http://res.cloudinary.com/dato/video/upload/v1517927739/ScreenFlowSlow_p0kvjw.webm" type="video/webm" />
+              <source src="http://res.cloudinary.com/dato/video/upload/v1517927739/ScreenFlowSlow_p0kvjw.mp4" type="video/mp4" />
+              <source src="http://res.cloudinary.com/dato/video/upload/v1517927739/ScreenFlowSlow_p0kvjw.ogv" type="video/ogg" />
             </video>
           </Browser>
         </div>
