@@ -6,7 +6,7 @@ const redirects = require('./redirects.json');
 
 const createRedirects = ({ boundActionCreators: { createRedirect } }) => {
   Object.entries(redirects).forEach(([fromPath, toPath]) => {
-    createRedirect({ fromPath, toPath });
+    createRedirect({ fromPath, toPath, isPermanent: true });
   });
 }
 
