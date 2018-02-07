@@ -26,7 +26,7 @@ const tooltips = {
   s3: 'The ability to use a custom AWS S3 bucket and Imgix account, that you own, to store every image/file your editors upload to DatoCMS.',
   otp: 'Enforce two-factor authentication to your editors using the Google Authenticator app.',
   sla: 'SLA packages provide legally binding service availability and support response time guarantees.',
-  saml: 'Ability to provision, deprovision and manage privileges of Contentful users through a SAML-based Identity Provider (IdP) of your choice.',
+  saml: 'Ability to provision, deprovision and manage privileges of DatoCMS users through a SAML-based Identity Provider (IdP) of your choice.',
   bandwidth: 'Amount of asset data transferred between our Asset CDN and content consumers.',
   backups: 'Nightly copies of your content to your own Amazon S3 buckets.'
 }
@@ -270,7 +270,7 @@ class PricingPage extends React.Component {
             </div>
 
             <div className={b('reassurance')}>
-              No credit card required. Sign up in 15 seconds. 30 days free trial.
+              Start with free plan. No credit card required. Sign up in 15 seconds.
             </div>
 
             {this.renderPlanChanger()}

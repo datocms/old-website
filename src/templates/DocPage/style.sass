@@ -13,7 +13,7 @@
 
   .DocPage__menu
     display: block
-    width: 350px
+    width: 250px
     flex-shrink: 0
 
   .DocPage__content
@@ -21,6 +21,10 @@
     padding-left: 80px
     max-width: 100%
     overflow-x: auto
+
+@media screen and (min-width: 1200px)
+  .DocPage__menu
+    width: 350px
 
 .DocPage__menu-title
   +size(big)

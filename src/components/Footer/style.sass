@@ -6,7 +6,11 @@
   color: white
 
   a
-    color: $azure-color
+    color: rgba(white, 0.6)
+    transition: color 200ms ease-in-out
+
+    &:hover
+      color: white
 
 .Footer__group-title
   +weight(bold)
@@ -27,6 +31,9 @@
   color: white
   +weight(bold)
   background-color: #633B5D
+
+  a
+    color: $azure-color
 
 @media screen and (max-width: 1099px)
 

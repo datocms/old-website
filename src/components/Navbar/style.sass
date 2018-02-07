@@ -4,7 +4,7 @@
 .Navbar
   display: none
 
-  @media screen and (min-width: 1250px)
+  @media screen and (min-width: 1000px)
     display: block
 
 .Navbar__inner
@@ -16,7 +16,7 @@
 .Navbar__nav
   display: flex
   flex: 1
-  justify-content: center
+  margin-left: 30px
 
 .Navbar__text-link
   text-decoration: none
@@ -77,10 +77,6 @@ a.Navbar__text-link:hover
   &:hover
     text-decoration: underline
 
-.Navbar__logo-container,
-.Navbar__actions
-  width: 280px
-
 .Navbar__actions
   display: flex
   align-items: center
@@ -88,3 +84,14 @@ a.Navbar__text-link:hover
 
   .Navbar__text-link
     margin-right: 20px
+
+@media screen and (min-width: 1250px)
+  .Navbar__logo-container,
+  .Navbar__actions
+    width: 280px
+
+  .Navbar__nav
+    display: flex
+    flex: 1
+    justify-content: center
+    margin-left: 0

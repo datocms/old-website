@@ -84,7 +84,7 @@
       transform: rotateY(-7deg)
 
     .Browser__content video
-      width: 900px
+      height: 60vh
 
   .HomeHero__screenshot-image
     display: block
@@ -104,17 +104,13 @@
     align-items: center
     box-sizing: border-box
 
+@media screen and (min-width: 1000px) and (max-width: 1249px)
+  .HomeHero
+    margin-top: 60px
+
 @media screen and (min-width: 1200px)
   .HomeHero__title
     +size(hero)
 
   .HomeHero__description
     +size(big)
-
-  .HomeHero__browser
-    .Browser__content video
-      width: 1052px
-
-@media screen and (min-width: 1500px)
-  .HomeHero__browser .Browser__content video
-    width: 1152px

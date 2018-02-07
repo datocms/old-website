@@ -13,52 +13,64 @@ import arrowDown from 'images/arrow-down-dropdown.svg'
 
 const b = bem.lock('HomeHero')
 
-const HomeHero = ({ title, description }) => (
-  <div>
-    <div className={b()}>
-      <div className={b('inner')}>
-        <div className={b('text-container')}>
-          <div>
-            <h1 className={b('title')}>
-              {title}
-            </h1>
-            <div className={b('description')}>
-              {description}
+class HomeHero extends React.Component {
+  componentDidMount() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.video.controls = true;
+    }
+  }
+
+  render() {
+    const { title, description } = this.props;
+
+    return (
+      <div>
+        <div className={b()}>
+          <div className={b('inner')}>
+            <div className={b('text-container')}>
+              <div>
+                <h1 className={b('title')}>
+                  {title}
+                </h1>
+                <div className={b('description')}>
+                  {description}
+                </div>
+                <Space bottom="2">
+                  <a href="https://dashboard.datocms.com/register" className={button({ red: true })}>
+                    Try it free
+                  </a>
+                  <ScrollLink
+                    href="#"
+                    to="discover"
+                    className={b('or-discover')}
+                    smooth
+                    duration={500}
+                    offset={-50}
+                  >
+                    or discover more <img src={arrowDown} />
+                  </ScrollLink>
+                </Space>
+                <p className={text({ size: 'small' })}>
+                  No credit card required, 30 seconds sign-up.
+                </p>
+              </div>
             </div>
-            <Space bottom="2">
-              <a href="https://dashboard.datocms.com/register" className={button({ red: true })}>
-                Try it free
-              </a>
-              <ScrollLink
-                href="#"
-                to="discover"
-                className={b('or-discover')}
-                smooth
-                duration={500}
-                offset={-50}
-              >
-                or discover more <img src={arrowDown} />
-              </ScrollLink>
-            </Space>
-            <p className={text({ size: 'small' })}>
-              No credit card required, 30 seconds sign-up.
-            </p>
+            <div className={b('browser')}>
+              <Browser small title="DatoCMS">
+                <video autoPlay loop muted playsInline ref={(el) => this.video = el}>
+                  <source src="http://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.webm" type="video/webm" />
+                  <source src="http://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.mp4" type="video/mp4" />
+                  <source src="http://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.ogg" type="video/ogg" />
+                </video>
+              </Browser>
+            </div>
           </div>
         </div>
-        <div className={b('browser')}>
-          <Browser small title="DatoCMS">
-            <video autoPlay loop muted playsInline>
-              <source src="https://res.cloudinary.com/dato/video/upload/v1517927739/ScreenFlowSlow_p0kvjw.webm" type="video/webm" />
-              <source src="https://res.cloudinary.com/dato/video/upload/v1517927739/ScreenFlowSlow_p0kvjw.mp4" type="video/mp4" />
-              <source src="https://res.cloudinary.com/dato/video/upload/v1517927739/ScreenFlowSlow_p0kvjw.ogv" type="video/ogg" />
-            </video>
-          </Browser>
-        </div>
+        <Element name="discover" />
       </div>
-    </div>
-    <Element name="discover" />
-  </div>
-)
+    );
+  }
+}
 
 export default HomeHero
 

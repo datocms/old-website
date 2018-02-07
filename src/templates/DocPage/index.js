@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Wrap, button, Space, text } from 'blocks'
 import sortBy from 'sort-by'
+import Sticky from 'react-stickynode'
 
 import bem from 'utils/bem'
 
@@ -78,23 +79,25 @@ export default class DocPage extends React.Component {
         <Wrap>
           <div className={b()}>
             <div className={b('menu')}>
-              <ul className={b('menu-pages')}>
-                {
-                  categoryPages.map((page, i) => (
-                    <li key={page.path} className={b('menu-page')}>
-                      <PageLink to={page}>
-                        {i === 0 ? "Introduction" : findTitle(page, pages)}
-                      </PageLink>
-                    </li>
-                  ))
-                }
-              </ul>
+              <Sticky top={100}>
+                <ul className={b('menu-pages')}>
+                  {
+                    categoryPages.map((page, i) => (
+                      <li key={page.path} className={b('menu-page')}>
+                        <PageLink to={page}>
+                          {i === 0 ? "Introduction" : findTitle(page, pages)}
+                        </PageLink>
+                      </li>
+                    ))
+                  }
+                </ul>
 
-              <div className={b('menu-back')}>
-                <Link to="/docs">
-                  ‹ Go back to docs
-                </Link>
-              </div>
+                <div className={b('menu-back')}>
+                  <Link to="/docs">
+                    ‹ Go back to docs
+                  </Link>
+                </div>
+              </Sticky>
             </div>
 
             <div className={b('content')}>
