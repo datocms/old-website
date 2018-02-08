@@ -6,7 +6,7 @@ import Footer from './src/components/Footer'
 
 const Link = ({ to, ...props }) => (
   <a
-    href={to.startsWith('http') ? to : `https://v2.datocms.com${to}`}
+    href={to.startsWith('http') ? to : `https://www.datocms.com${to}`}
     {...props}
   />
 );
