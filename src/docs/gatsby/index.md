@@ -8,7 +8,7 @@ DatoCMS offers an official [source plugin](https://github.com/datocms/gatsby-sou
 Inside your Gatsby project, you can install the `gatsby-source-datocms` package by running this command:
 
 ```bash
-$ npm install datocms-client --save-dev
+$ npm install --save gatsby-source-datocms
 ```
 
 Add the plugin in you `gatsby-config.js` file, specifying the API token of your administrative area:
