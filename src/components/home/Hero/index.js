@@ -58,9 +58,9 @@ class HomeHero extends React.Component {
             <div className={b('browser')}>
               <Browser small title="DatoCMS">
                 <video autoPlay loop muted playsInline ref={(el) => this.video = el}>
-                  <source src="http://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.webm" type="video/webm" />
-                  <source src="http://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.mp4" type="video/mp4" />
-                  <source src="http://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.ogg" type="video/ogg" />
+                  <source src="https://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.webm" type="video/webm" />
+                  <source src="https://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/dato/video/upload/v1517995699/ScreenFlowSlow2_ugs3zh.ogg" type="video/ogg" />
                 </video>
               </Browser>
             </div>
