@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://v2.datocms.com`,
+    siteUrl: `https://www.datocms.com`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
