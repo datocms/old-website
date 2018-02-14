@@ -22,7 +22,8 @@ const b = bem.lock('LandingPage')
 
 export default class LanguagePage extends React.Component {
   render() {
-    const { data: { ssg, home, features, reviews } } = this.props;
+    const { data: { ssg }, pathContext } = this.props;
+    const { home, features, reviews } = pathContext;
 
     return (
       <div>
@@ -88,52 +89,6 @@ export const query = graphql`
       projectUrl
       documentationUrl
       slug
-    }
-    home: datoCmsHomePage {
-      whosUsingDatocms {
-        name
-        logo {
-          url
-        }
-      }
-    }
-    features: allDatoCmsFeature(sort: { fields: [position], order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          description: descriptionNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
-          image {
-            url
-            format
-            inlineSvg
-          }
-        }
-      }
-    }
-    reviews: allDatoCmsReview(sort: { fields: [position], order: ASC }) {
-      edges {
-        node {
-          id
-          name
-          role
-          website
-          quote: quoteNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
-          image {
-            sizes(maxWidth: 55) {
-              ...GatsbyDatoCmsSizes
-            }
-          }
-        }
-      }
     }
   }
 `
