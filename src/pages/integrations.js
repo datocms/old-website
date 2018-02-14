@@ -67,19 +67,6 @@ class IntegrationsPage extends React.Component {
                   </Link>
                 ))
               }
-
-              {
-                cartesianProduct([
-                  byType['static-generator'],
-                  byType['ci'],
-                  byType['git']
-                ]).map(([{ slug: ssgSlug, name: ssgName }, { slug: cdnSlug, name: cdnName }, { slug: gitSlug, name: gitName }], i) => (
-                  <Link className={b('link')} key={i} to={`/cms/${ssgSlug}/${cdnSlug}/${gitSlug}/`}>
-                    {ssgName} + {cdnName} + {gitName}
-                  </Link>
-                ))
-              }
-
             </div>
           </div>
         </Wrap>
