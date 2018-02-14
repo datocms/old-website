@@ -180,7 +180,7 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
 
     cartesianProduct([
       byType['static-generator'],
-      byType['cdn']
+      byType['cdn'].concat(byType['ci'])
     ]).forEach(([{ slug: ssgSlug }, { slug: cdnSlug }]) => (
       createPage({
         path: `/cms/${ssgSlug}/${cdnSlug}/`,
@@ -202,7 +202,7 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
 
     cartesianProduct([
       byType['static-generator'],
-      byType['cdn'],
+      byType['cdn'].concat(byType['cdn']),
       byType['git']
     ]).forEach(([{ slug: ssgSlug }, { slug: cdnSlug }, { slug: gitSlug }]) => (
       createPage({

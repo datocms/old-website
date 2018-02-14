@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Wrap, button, Space, text } from 'blocks'
 import Zoom from 'react-reveal/Zoom'
+import Helmet from 'react-helmet'
 
 import bem from 'utils/bem'
 
@@ -25,6 +26,7 @@ export default class SsgPage extends React.Component {
 
     return (
       <div>
+        <Helmet title={`CMS for ${ssg.name} - Admin interface for ${ssg.name} sites - DatoCMS`} />
         <Hero
           title={`Meet the perfect CMS for ${ssg.name}`}
           description={`DatoCMS is an API-based administrative area for your ${ssg.name} websites. Let your clients publish new content independently, host the site anywhere you like.`}
@@ -84,7 +86,6 @@ export const query = graphql`
       documentationUrl
       slug
     }
-
     home: datoCmsHomePage {
       whosUsingDatocms {
         name
@@ -93,7 +94,6 @@ export const query = graphql`
         }
       }
     }
-
     features: allDatoCmsFeature(sort: { fields: [position], order: ASC }) {
       edges {
         node {
