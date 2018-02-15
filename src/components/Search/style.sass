@@ -1,15 +1,25 @@
+@import 'utils/colors'
+@import 'blocks/mixins'
+
+.Search
+  margin-top: 30px
+  margin-bottom: 30px
+  text-align: center
+
 .react-autosuggest__container
   position: relative
+  display: inline-block
 
 .react-autosuggest__input
-  width: 240px
-  height: 30px
+  width: 750px
+  height: 52px
   padding: 10px 20px
-  font-family: Helvetica, sans-serif
   font-weight: 300
   font-size: 16px
   border: 1px solid #aaa
   border-radius: 4px
+  font-family: colfax-web, Open Sans, Helvetica, Arial, sans-serif
+  box-sizing: border-box
 
   &:focus
     outline: none
@@ -25,10 +35,10 @@
   display: block
   position: absolute
   top: 51px
-  width: 280px
+  width: 750px
   border: 1px solid #aaa
+  box-sizing: border-box
   background-color: #fff
-  font-family: Helvetica, sans-serif
   font-weight: 300
   font-size: 16px
   border-bottom-left-radius: 4px
@@ -42,16 +52,32 @@
 
 .react-autosuggest__suggestion
   cursor: pointer
-  padding: 10px 20px
+  padding: 20px
 
   &:not(:first-child)
     border-top: 1px solid #ddd
 
-.react-autosuggest__suggestion--focused
-  background-color: #0C7EAF
+.react-autosuggest__suggestion--highlighted
+  background-color: #00A3B0
   color: #fff
 
 .suggestion-content
   display: flex
   align-items: center
   background-repeat: no-repeat
+
+.Search__suggestion
+  text-align: left
+
+.Search__suggestion-url
+  +size(smaller)
+  color: $light-body-color
+
+.Search__suggestion-body
+  +size(small)
+
+.highlight
+  background-color: #FFF0C0
+
+  .react-autosuggest__suggestion--highlighted &
+    background-color: mix(#00A3B0, white, 70%)

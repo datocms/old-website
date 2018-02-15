@@ -46,11 +46,20 @@ export default class Search extends React.Component {
 
   renderSuggestion(suggestion, { query }) {
     return (
-      <span>
+      <div className={b('suggestion')}>
         <div
+          className={b('suggestion-title')}
           dangerouslySetInnerHTML={{ __html: suggestion.title }}
         />
-      </span>
+        <div
+          className={b('suggestion-url')}
+          dangerouslySetInnerHTML={{ __html: suggestion.url }}
+        />
+        <div
+          className={b('suggestion-body')}
+          dangerouslySetInnerHTML={{ __html: suggestion.body }}
+        />
+      </div>
     );
   }
 
@@ -64,13 +73,16 @@ export default class Search extends React.Component {
     };
 
     return (
-      <AutoSuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(this)}
-        onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(this)}
-        getSuggestionValue={this.handleGetSuggestionValue.bind(this)}
-        renderSuggestion={this.renderSuggestion.bind(this)}
-        inputProps={inputProps} />
+      <div className={b()}>
+        <AutoSuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(this)}
+          onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(this)}
+          getSuggestionValue={this.handleGetSuggestionValue.bind(this)}
+          renderSuggestion={this.renderSuggestion.bind(this)}
+          inputProps={inputProps} 
+        />
+      </div>
     );
   }
 }
