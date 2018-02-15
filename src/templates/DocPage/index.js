@@ -66,7 +66,7 @@ export default class DocPage extends React.Component {
 
     return (
       <div>
-        <Helmet title={`${findTitle(page, pages)} - ${categoryTitle} - DatoCMS`} />
+        <Helmet title={`${index === 0 ? 'Introduction' : findTitle(page, pages)} - ${categoryTitle} - DatoCMS`} />
         <Wrap>
           <div className={b()}>
             <div className={b('menu')}>
