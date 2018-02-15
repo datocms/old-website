@@ -15,7 +15,7 @@ const getImage = (image, cacheDir) => {
 
   return request(requestUrl)
   .then((body) => {
-    const prefix = `prefix-${md5(image.url)}-`;
+    const prefix = `prefix-${md5(requestUrl)}-`;
 
     const fixedBody = getExtractedSVG(
       body,
