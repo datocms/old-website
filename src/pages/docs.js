@@ -9,6 +9,8 @@ import bem from 'utils/bem'
 import 'prismjs/themes/prism-okaidia.css'
 import './docs.sass'
 
+import Search from 'components/Search';
+
 const b = bem.lock('LearnPage')
 const g = bem.lock('Guide')
 const sg = bem.lock('SmallGuide')
@@ -53,6 +55,8 @@ export default class LearnPage extends React.Component {
           <h1 className={b('title')}>
             Learn
           </h1>
+
+          <Search />
 
           <div>
             <div className={b('section')}>
