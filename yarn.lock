@@ -2535,37 +2535,9 @@ dateformat@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
 
-datocms-client@0.3.43:
+datocms-client@0.3.43, datocms-client@>=0.3.43:
   version "0.3.43"
   resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-0.3.43.tgz#24817c96db51aa08c35a458c55740582691d66d2"
-  dependencies:
-    babel-polyfill "6.16.0"
-    chokidar "^1.6.1"
-    core-js "2.4.1"
-    denodeify "1.2.1"
-    docopt "0.6.2"
-    dotenv "^2.0.0"
-    https-proxy-agent "^1.0.0"
-    humps "1.1.0"
-    js-yaml "3.6.1"
-    mkdirp "0.5.1"
-    node-fetch "1.6.3"
-    ora "^0.4.0"
-    pluralize "3.0.0"
-    pretty-error "2.0.1"
-    pusher-js "^4.0.0"
-    query-string "4.2.3"
-    request "2.75.0"
-    rimraf "2.5.4"
-    speakingurl "10.0.0"
-    tmp "0.0.29"
-    toml-js "0.0.8"
-    traverse "0.6.6"
-    whatwg-fetch "1.0.0"
-
-datocms-client@>=0.3.40:
-  version "0.3.41"
-  resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-0.3.41.tgz#653f8d935f5aa34d2bcf7f4a3c6ee5548ed63594"
   dependencies:
     babel-polyfill "6.16.0"
     chokidar "^1.6.1"
@@ -3958,13 +3930,13 @@ gatsby-remark-prismjs@1.2.12:
     prismjs "^1.7.0"
     unist-util-visit "^1.1.1"
 
-gatsby-source-datocms@1.0.23:
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-1.0.23.tgz#1be197da209a7aaabb14322b73673a038b2a807b"
+gatsby-source-datocms@1.0.26:
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-1.0.26.tgz#a0d48954a923a2c1f076ec9fa91100255696a030"
   dependencies:
     babel-runtime "^6.26.0"
     base64-img "1.0.3"
-    datocms-client ">=0.3.40"
+    datocms-client ">=0.3.43"
     fs-extra ">=4.0.2"
     graphql-type-json "0.1.4"
     humps ">=2.0.1"
