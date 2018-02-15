@@ -210,7 +210,6 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
     `
   )
   .then(result => {
-    console.log(result);
     const { home, features, reviews } = result.data
 
     const integrations = result.data.integrations.edges
@@ -280,7 +279,6 @@ exports.createPages = (options) => {
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === 'build-javascript') {
     config.merge((current) => {
-      console.log(current);
       current.devtool = false;
       current.entry.support = './support.js';
       return current;

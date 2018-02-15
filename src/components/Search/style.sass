@@ -8,11 +8,10 @@
 
 .react-autosuggest__container
   position: relative
-  display: inline-block
 
 .react-autosuggest__input
-  width: 750px
   height: 52px
+  width: 100%
   padding: 10px 20px
   font-weight: 300
   font-size: 16px
@@ -35,7 +34,7 @@
   display: block
   position: absolute
   top: 51px
-  width: 750px
+  width: 100%
   border: 1px solid #aaa
   box-sizing: border-box
   background-color: #fff
@@ -54,7 +53,7 @@
 
 .react-autosuggest__suggestion
   cursor: pointer
-  padding: 20px
+  padding: 10px 20px
 
   &:not(:first-child)
     border-top: 1px solid #ddd
@@ -73,21 +72,39 @@
 
 .Search__suggestion-title
   +weight(bold)
+  line-height: 1.2
 
 .Search__suggestion-url
   +size(smaller)
   color: $light-body-color
-  margin-bottom: 5px
-
+  word-wrap: break-word
 
   .react-autosuggest__suggestion--highlighted &
     color: white
 
 .Search__suggestion-body
   +size(small)
+  display: none
+  line-height: 1.2
 
 .highlight
   background-color: #FFF0C0
 
   .react-autosuggest__suggestion--highlighted &
     background-color: mix(#00A3B0, white, 70%)
+
+@media screen and (min-width: 800px)
+  .react-autosuggest__container
+    display: inline-block
+
+  .react-autosuggest__input
+    width: 750px
+
+  .Search__suggestion-body
+    display: block
+
+  .Search__suggestion-url
+    margin-bottom: 5px
+
+  .react-autosuggest__suggestion
+    padding: 20px

@@ -56,7 +56,9 @@ export default class LearnPage extends React.Component {
             Learn
           </h1>
 
-          <Search />
+          <Wrap>
+            <Search />
+          </Wrap>
 
           <div>
             <div className={b('section')}>

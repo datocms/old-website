@@ -41,7 +41,11 @@ export default class Search extends React.Component {
   }
 
   handleGetSuggestionValue(suggestion) {
-    return suggestion.raw.title;
+    return suggestion.raw.title.replace(/ - DatoCMS$/, '');
+  }
+
+  handleSelectSuggestion(event, { suggestion }) {
+    document.location = suggestion.url;
   }
 
   renderSuggestion(suggestion, { query }) {
@@ -49,7 +53,7 @@ export default class Search extends React.Component {
       <div className={b('suggestion')}>
         <div
           className={b('suggestion-title')}
-          dangerouslySetInnerHTML={{ __html: suggestion.title }}
+          dangerouslySetInnerHTML={{ __html: suggestion.title.replace(/ - DatoCMS$/, '') }}
         />
         <div
           className={b('suggestion-url')}
@@ -67,7 +71,7 @@ export default class Search extends React.Component {
     const { value, suggestions } = this.state;
 
     const inputProps = {
-      placeholder: "Type something!",
+      placeholder: "Search something! :)",
       value,
       onChange: this.handleChange.bind(this),
     };
@@ -78,6 +82,7 @@ export default class Search extends React.Component {
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(this)}
           onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(this)}
+          onSuggestionSelected={this.handleSelectSuggestion.bind(this)}
           getSuggestionValue={this.handleGetSuggestionValue.bind(this)}
           renderSuggestion={this.renderSuggestion.bind(this)}
           inputProps={inputProps} 
