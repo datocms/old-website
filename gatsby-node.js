@@ -267,7 +267,8 @@ exports.createPages = (options) => {
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === 'build-javascript') {
     config.merge((current) => {
-      config.merge({ devtool: false });
+      console.log(current);
+      current.devtool = false;
       current.entry.support = './support.js';
       return current;
     });
