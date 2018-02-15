@@ -1,6 +1,6 @@
 import React from 'react'
 import bem from 'utils/bem'
-import DatoCmsSearch from 'datocms-search/src/base'
+import DatoCmsSearch from 'datocms-search/dist/datocms-search.base'
 import AutoSuggest from 'react-autosuggest'
 
 import { Wrap, button, Space, Text } from 'blocks'
