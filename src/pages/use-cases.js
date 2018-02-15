@@ -50,7 +50,7 @@ const settings = {
 
 class UseCasesPage extends React.Component {
   renderWebsite(differentHeight, website, i) {
-    const tech = website.technologies.find(x => x.type.slug === 'static-generator');
+    const tech = website.technologies.find(x => x.type.slug === 'static-generator' || x.type.slug === 'framework');
 
     return (
       <div className={b('website-container')} key={website.id}>
