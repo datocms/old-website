@@ -69,7 +69,7 @@ export default class DocPage extends React.Component {
         <Helmet title={`${index === 0 ? 'Introduction' : findTitle(page, pages)} - ${categoryTitle} - DatoCMS`} />
         <Wrap>
           <div className={b()}>
-            <div className={b('menu')}>
+            <div className={b('menu')} data-datocms-noindex>
               <Sticky top={100}>
                 <ul className={b('menu-pages')}>
                   {
