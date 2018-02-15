@@ -142,7 +142,6 @@ export const query = graphql`
     ) {
       edges {
         node {
-          html
           path: fileAbsolutePath
           frontmatter {
             title
