@@ -267,6 +267,7 @@ exports.createPages = (options) => {
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === 'build-javascript') {
     config.merge((current) => {
+      config.merge({ devtool: false });
       current.entry.support = './support.js';
       return current;
     });
@@ -274,10 +275,3 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
 
   return config;
 }
-
-exports.modifyWebpackConfig = ({ config, stage }) => {
-  if (stage === 'build-javascript') {
-    // turn off source-maps
-    config.merge({ devtool: false });
-  }
-};

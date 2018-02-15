@@ -51,7 +51,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build && node renameSupport.js && mv freshdesk/freshdesk.css public",
+    "build": "gatsby build && mv public/support*.js public/support.js && mv freshdesk/freshdesk.css public",
     "develop": "gatsby develop",
     "freshdesk": "sass --watch freshdesk/freshdesk.sass:freshdesk/freshdesk.css",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
