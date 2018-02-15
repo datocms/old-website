@@ -72,18 +72,7 @@ class HomeFeatures extends React.Component {
                   <Fade key={selectedFeature.id}>
                     <div className={b('feature')}>
                       <div className={b('feature-image')}>
-                        {
-                          selectedFeature.image && selectedFeature.image.format === 'svg' &&
-                            <InlineSVG src={selectedFeature.image.inlineSvg.replace("Colfax-Regular, Colfax", "colfax-web")} />
-                        }
-                        {
-                          selectedFeature.image && selectedFeature.image.format !== 'svg' &&
-                            <img src={selectedFeature.image.url} />
-                        }
-                        {
-                          !selectedFeature.image &&
-                            <div className={b('feature-image-placeholder')} />
-                        }
+                        <InlineSVG image={selectedFeature.image} />
                       </div>
                       <div className={b('feature-content')}>
                         <h5 className={b('feature-title')}>

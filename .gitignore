@@ -8,3 +8,4 @@ public/
 .env
 yarn-error.log
 freshdesk/.sass-cache
+static/features

@@ -63,6 +63,17 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
+const findHtml = (page, pages) => {
+  if (page.frontmatter.copyFrom) {
+    const contentPage = pages
+      .find(p => p.path.includes(page.frontmatter.copyFrom))
+
+    return contentPage.html;
+  }
+
+  return page.html;
+}
+
 const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
   return graphql(
     `
@@ -72,6 +83,7 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
         ) {
           edges {
             node {
+              html
               path: fileAbsolutePath
               frontmatter {
                 copyFrom
@@ -88,11 +100,12 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
     pages.forEach((page) => {
       const { path, frontmatter: { copyFrom, category } } = page
       const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
+      const html = findHtml(page, pages);
 
       createPage({
         path: url,
         component: p.resolve(`./src/templates/DocPage/index.js`),
-        context: { path },
+        context: { path, html },
       })
     })
   })
@@ -165,7 +178,6 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
               image {
                 url
                 format
-                inlineSvg
               }
             }
           }

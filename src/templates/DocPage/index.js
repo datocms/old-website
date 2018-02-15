@@ -39,17 +39,6 @@ const findFrontmatterValue = (value, page, pages) => {
 const findTitle = findFrontmatterValue.bind(this, 'title');
 const findPosition = findFrontmatterValue.bind(this, 'position');
 
-const findHtml = (page, pages) => {
-  if (page.frontmatter.copyFrom) {
-    const contentPage = pages
-      .find(p => p.path.includes(page.frontmatter.copyFrom))
-
-    return contentPage.html;
-  }
-
-  return page.html;
-}
-
 export default class DocPage extends React.Component {
   render() {
     const { pathContext, data } = this.props;
@@ -115,7 +104,7 @@ export default class DocPage extends React.Component {
 
               <div
                 className={b('content-body')}
-                dangerouslySetInnerHTML={{ __html: findHtml(page, pages) }}
+                dangerouslySetInnerHTML={{ __html: pathContext.html }}
               />
 
               <div className={b('nav')}>

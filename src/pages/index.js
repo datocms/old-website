@@ -67,7 +67,6 @@ query IndexPageQuery {
         image {
           url
           format
-          inlineSvg
         }
       }
     }

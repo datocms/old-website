@@ -86,18 +86,7 @@ class FeaturesPage extends React.Component {
                                   <div className={b('feature-image')}>
                                     <Pulse delay={700} duration={300}>
                                       <div>
-                                        {
-                                          feature.image && feature.image.format === 'svg' &&
-                                            <InlineSVG src={feature.image.inlineSvg} />
-                                        }
-                                        {
-                                          feature.image && feature.image.format !== 'svg' &&
-                                            <img src={feature.image.url} />
-                                        }
-                                        {
-                                          !feature.image &&
-                                            <div className={b('feature-image-placeholder')} />
-                                        }
+                                        <InlineSVG image={feature.image} />
                                       </div>
                                     </Pulse>
                                   </div>
@@ -144,7 +133,6 @@ query FeaturesPageQuery {
         image {
           url
           format
-          inlineSvg
         }
       }
     }
