@@ -20,3 +20,13 @@ To do that, you can simply add a `data-datocms-noindex` attribute to the HTML el
   </div>
 </body>
 ```
+
+The scraper bot will follow the rules of your site's `robots.txt` file, so if you want to completely ignore a set of pages, you can target the `DatoCmsSearchBot` agent:
+
+```
+User-Agent: DatoCmsSearchBot
+Disallow: /useless-stuff/
+
+User-agent: *
+Disallow:
+```
