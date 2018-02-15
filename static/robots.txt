@@ -1,3 +1,4 @@
 User-agent: *
 Sitemap: https://www.datocms.com/sitemap.xml
 Disallow:
+DatoCmsSearch-Disallow: https://www.datocms.com/cms/
