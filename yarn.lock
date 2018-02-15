@@ -2563,9 +2563,9 @@ datocms-client@0.3.43, datocms-client@>=0.3.43:
     traverse "0.6.6"
     whatwg-fetch "1.0.0"
 
-datocms-search@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/datocms-search/-/datocms-search-0.1.6.tgz#3a125c9a997544caf5e96195db0069d32bc8efb9"
+datocms-search@0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/datocms-search/-/datocms-search-0.1.7.tgz#ff7a417217ed282b8d139d8e45efc5acad2db4a4"
   dependencies:
     inferno "^3.9.0"
     inferno-component "^3.9.0"
