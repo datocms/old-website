@@ -8,7 +8,7 @@
     "blueimp-md5": "2.10.0",
     "cartesian-product": "2.1.2",
     "datocms-client": "0.3.43",
-    "datocms-search": "0.1.5",
+    "datocms-search": "0.1.6",
     "dotenv": "4.0.0",
     "gatsby": "^1.9.153",
     "gatsby-image": "1.0.33",

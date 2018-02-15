@@ -26,8 +26,10 @@ export default class Search extends React.Component {
   }
 
   handleSuggestionsFetchRequested({ value }) {
+    const client = new DatoCmsSearch(token, "production");
+
     client.search(value)
-    .then(function(response) {
+    .then((response) => {
       this.setState({ suggestions: response.results });
     })
   }
@@ -39,13 +41,15 @@ export default class Search extends React.Component {
   }
 
   handleGetSuggestionValue(suggestion) {
-    return `${suggestion.first} ${suggestion.last}`;
+    return suggestion.raw.title;
   }
 
   renderSuggestion(suggestion, { query }) {
     return (
       <span>
-        {suggestion.title}
+        <div
+          dangerouslySetInnerHTML={{ __html: suggestion.title }}
+        />
       </span>
     );
   }
