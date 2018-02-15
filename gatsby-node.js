@@ -210,6 +210,7 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
     `
   )
   .then(result => {
+    console.log(result);
     const { home, features, reviews } = result.data
 
     const integrations = result.data.integrations.edges
