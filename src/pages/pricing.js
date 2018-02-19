@@ -687,6 +687,26 @@ class PricingPage extends React.Component {
             </table>
           </div>
         </Wrap>
+
+        <Wrap>
+          <div className={b('faq')}>
+            <div className={b('faq-title')}>
+              Frequently Asked Questions
+            </div>
+            <div className={b('faq-questions')}>
+              {
+                data.faqs.edges.map(e => e.node).map((faq) => (
+                  <div className={b('faq-item')} key={faq.id}>
+                    <div className={b('faq-item-question')}>{faq.question}</div>
+                    <div className={b('faq-item-answer')}>{faq.answer}</div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <Space both={6}>
+          </Space>
+        </Wrap>
       </Space>
     );
   }
@@ -699,6 +719,15 @@ query PricingPageQuery {
   page: datoCmsPricingPage {
     seoMetaTags {
       ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+
+  faqs: allDatoCmsFaq(sort: { fields: [position] }) {
+    edges {
+      node {
+        question
+        answer
+      }
     }
   }
 }

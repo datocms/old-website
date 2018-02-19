@@ -305,3 +305,38 @@
   .PricingPage__details-price-cell--active,
   .PricingPage__details-cta--active
     display: table-cell
+
+.PricingPage__faq
+  margin: 180px auto 120px
+  max-width: 1100px
+
+.PricingPage__faq-title
+  +size(bigger)
+  margin-bottom: 90px
+  text-align: center
+
+  @media screen and (min-width: 900px)
+    +size(hero)
+
+@media screen and (min-width: 900px)
+  .PricingPage__faq-questions
+    column-count: 2
+    column-gap: 100px
+
+.PricingPage__faq-item
+  margin-bottom: 30px
+  display: inline-block
+  width: 100%
+
+.PricingPage__faq-item-question
+  margin-bottom: 14px
+  +size(normalBig)
+
+  @media screen and (min-width: 900px)
+    +size(big)
+
+.PricingPage__faq-item-answer
+  +size(small)
+
+  @media screen and (min-width: 900px)
+    +size(normal)
