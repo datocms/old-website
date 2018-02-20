@@ -61,7 +61,7 @@ end
           <img src="{{ image.url }}" alt="{{ image.alt }}" title="{{ image.title }}" />
         {% endfor %}
       </div>
-    {% endif %>
+    {% endif %}
   {% endfor %}
 </article>
 ```
