@@ -101,11 +101,12 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
       const { path, frontmatter: { copyFrom, category } } = page
       const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
       const html = findHtml(page, pages);
+      const repoPath = path.replace(__dirname, 'https://github.com/datocms/website/blob/gatsby')
 
       createPage({
         path: url,
         component: p.resolve(`./src/templates/DocPage/index.js`),
-        context: { path, html },
+        context: { path, html, repoPath },
       })
     })
   })

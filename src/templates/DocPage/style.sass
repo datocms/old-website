@@ -245,3 +245,25 @@
 
 .DocPage__nav-next
   text-align: right
+
+.DocPage__contribute
+  margin-top: 70px
+  max-width: 240px
+  border-radius: 4px
+  +size(small)
+
+  &:before
+    content: ""
+    display: block
+    margin-bottom: 30px
+    height: 1px
+    background-color: $border-color
+    width: 100px
+
+  a
+    color: $base-body-color
+
+.DocPage__contribute-title
+  +weight(bold)
+  margin-bottom: 3px
+  line-height: 1.2

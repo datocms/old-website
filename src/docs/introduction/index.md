@@ -3,19 +3,13 @@ position: 1
 title: How DatoCMS works
 ---
 
-DatoCMS is a cloud-based content management system designed to work with static websites. Freelancers, agencies and startups use DatoCMS to allow non-technical clients and team members to manage the content of their static websites within a web-based CMS.
+DatoCMS is a cloud-based content management system designed to work with static websites, mobile apps and server-side applications of any kind. Freelancers, agencies and startups use DatoCMS to allow non-technical clients and team members to manage the content of their digital products within a web-based CMS.
 
-When you signup to DatoCMS, you'll be able to create and manage an arbitrary number of static websites. It's important to understand that **every website you create is totally isolated from the others**:
-
-* each website is editable from an administrative area located at a specific domain (ie. https://my-website.admin.datocms.com);
-* each website can invite a different set of editors to manage the content;
-* within each administrative area you will be able to manage different kind of content, structured following each website needs, and data will be saved in a separate database;
-
-This is particularly handy for agencies, which will be able to manage multiple websites for different clients within a single account, generating a single, cumulative invoice.
+Once you signup to DatoCMS and create your account, you'll be able to create an arbitrary number of different projects. For each one of those you'll be given an administrative area at a specific domain (ie. https://my-project.admin.datocms.com) from which you'll be able to invite a number collaborators to manage its specific content. All the projects you create will be completely isolated from each other.
 
 ---
 
-### An API-driven approach
+### DatoCMS for static websites
 
 The first thing to understand is that — unlike other solutions — **DatoCMS is API-driven and decouples the content of your website from the Git repository** that contains the static website project. That is, content is created and managed independently from where it's used, and is always accessible through our REST API.
 
@@ -23,9 +17,7 @@ Put simply, DatoCMS is a client-friendly interface over a database – that mean
 
 To make the integration with static generators convenient, we built a set of libraries and command-line tools that let you declare exactly **how content needs to be converted into Markdown/Yaml files**, so that they can be "digested" during the build phase of your static website generator just as if they were written by hand.
 
----
-
-### Advantages
+#### Advantages
 
 Our decoupled architecture offers many advantages over the traditional storage of content within the Git repository of the project:
 

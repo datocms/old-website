@@ -41,6 +41,12 @@ const findTitle = findFrontmatterValue.bind(this, 'title');
 const findPosition = findFrontmatterValue.bind(this, 'position');
 
 export default class DocPage extends React.Component {
+
+  handleOpenCrisp(e) {
+    e.preventDefault();
+    $crisp.push(["do", "chat:open"])
+  }
+
   render() {
     const { pathContext, data } = this.props;
 
@@ -87,6 +93,13 @@ export default class DocPage extends React.Component {
                   <Link to="/docs">
                     ‹ Go back to docs
                   </Link>
+                </div>
+
+                <div className={b('contribute')}>
+                  <div className={b('contribute-title')}>
+                    Something is missing in this page?
+                  </div>
+                  <a href="#" onClick={this.handleOpenCrisp.bind(this)}>Chat with us</a>, submit an <a target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a target="_blank" href={pathContext.repoPath}>propose a change</a> on Github!
                 </div>
               </Sticky>
             </div>

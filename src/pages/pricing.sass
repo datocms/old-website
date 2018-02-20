@@ -324,12 +324,13 @@
     column-gap: 100px
 
 .PricingPage__faq-item
-  margin-bottom: 30px
+  margin-bottom: 40px
   display: inline-block
   width: 100%
 
 .PricingPage__faq-item-question
   margin-bottom: 14px
+  color: $light-body-color
   +size(normalBig)
 
   @media screen and (min-width: 900px)
@@ -338,5 +339,34 @@
 .PricingPage__faq-item-answer
   +size(small)
 
-  @media screen and (min-width: 900px)
-    +size(normal)
+
+.PricingPage__billing
+  text-align: center
+  margin-bottom: 80px
+
+.PricingPage__billing-group-item
+  padding: 10px 15px
+  border: 1px solid $border-color
+  text-transform: uppercase
+  display: inline-block
+  text-decoration: none
+  color: $light-body-color
+  +weight(bold)
+  +size(small)
+
+  &:first-child
+    border-radius: 4px 0 0 4px
+    border-right: 0
+
+  &:last-child
+    border-radius: 0 4px 4px 0
+
+.PricingPage__billing-group-item--active
+  background-color: $red-color
+  border-color: $red-color
+  color: white
+
+.PricingPage__billing-info
+  color: $light-body-color
+  +size(small)
+  margin-top: 20px

@@ -43,11 +43,16 @@ const Tooltip = ({ children, code }) => (
 class PricingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { plan: 'developer' };
+    this.state = { plan: 'developer', billing: 'yearly' };
   }
 
   handleChangePlan(plan) {
     this.setState({ plan });
+  }
+
+  handleBillingChange(billing, e) {
+    e.preventDefault()
+    this.setState({ billing });
   }
 
   renderPlanChanger() {
@@ -89,6 +94,32 @@ class PricingPage extends React.Component {
     );
   }
 
+  renderBillingChanger() {
+    return (
+      <div className={b('billing')}>
+        <div className={b('billing-group')}>
+          <a
+            href="#"
+            onClick={this.handleBillingChange.bind(this, 'monthly')}
+            className={b('billing-group-item', { active: this.state.billing === 'monthly' })}
+          >
+            Monthly
+          </a>
+          <a
+            href="#"
+            onClick={this.handleBillingChange.bind(this, 'yearly')}
+            className={b('billing-group-item', { active: this.state.billing === 'yearly' })}
+          >
+            Annual
+          </a>
+        </div>
+        <div className={b('billing-info')}>
+          (Up to 20% off on annual plan)
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const { data } = this.props;
     const { plan } = this.state;
@@ -101,6 +132,7 @@ class PricingPage extends React.Component {
             <div className={b('title')}>
               Pricing
             </div>
+            {this.renderBillingChanger()}
             {this.renderPlanChanger()}
             <div className={b('recap')}>
               <div className={b('recap-item', { active: plan === 'developer' })}>
@@ -143,7 +175,7 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-price')}>
                   <div className={b('recap-item-price-amount')}>
-                    €9
+                    { this.state.billing === 'monthly' ? '€9' : '€7' }
                   </div>
                   <div className={b('recap-item-price-period')}>
                     per site/month
@@ -180,7 +212,7 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-price')}>
                   <div className={b('recap-item-price-amount')}>
-                    €25
+                    { this.state.billing === 'monthly' ? '€25' : '€20' }
                   </div>
                   <div className={b('recap-item-price-period')}>
                     per site/month
@@ -217,7 +249,7 @@ class PricingPage extends React.Component {
                 </div>
                 <div className={b('recap-item-price')}>
                   <div className={b('recap-item-price-amount')}>
-                    €150
+                    { this.state.billing === 'monthly' ? '€150' : '€125' }
                   </div>
                   <div className={b('recap-item-price-period')}>
                     per site/month
@@ -320,7 +352,7 @@ class PricingPage extends React.Component {
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-amount')}>
-                          €9
+                          { this.state.billing === 'monthly' ? '€9' : '€7' }
                         </div>
                         <div className={b('details-price-period')}>
                           per site/month
@@ -335,7 +367,7 @@ class PricingPage extends React.Component {
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-amount')}>
-                          €25
+                          { this.state.billing === 'monthly' ? '€25' : '€20' }
                         </div>
                         <div className={b('details-price-period')}>
                           per site/month
@@ -350,7 +382,7 @@ class PricingPage extends React.Component {
                     <div className={b('details-price')}>
                       <div className={b('details-price-inner')}>
                         <div className={b('details-price-amount')}>
-                          €150
+                          { this.state.billing === 'monthly' ? '€150' : '€125' }
                         </div>
                         <div className={b('details-price-period')}>
                           per site/month
