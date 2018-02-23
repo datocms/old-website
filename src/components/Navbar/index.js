@@ -38,7 +38,10 @@ const Navbar = ({ linkComponent: Link }) => (
               <span>Support</span>
               <div className={b('menu')}>
                 <Link className={b('menu-item')} to="http://support.datocms.com/support/tickets/new">
-                  Ticket Center
+                  Open a Ticket
+                </Link>
+                <Link className={b('menu-item')} to="http://support.datocms.com/support/tickets">
+                  My Tickets
                 </Link>
                 <Link className={b('menu-item')} to="http://support.datocms.com/support/discussions/forums/35000119870">
                   Feature Requests

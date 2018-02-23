@@ -102,7 +102,10 @@ class MobileNavbar extends React.Component {
           </Link>
           <Group name="Support">
             <Link className={b('group-item')} to="http://support.datocms.com/support/tickets/new">
-              Ticket Center
+              Open a Ticket
+            </Link>
+            <Link className={b('group-item')} to="http://support.datocms.com/support/tickets">
+              My Tickets
             </Link>
             <Link className={b('group-item')} to="http://support.datocms.com/support/discussions/forums/35000119870">
               Feature Requests
