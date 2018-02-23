@@ -135,14 +135,14 @@ class ApiPage extends React.Component {
       const variable = resource.id;
 
       if (Array.isArray(example.data)) {
-        const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    # ').replace(/": /g, '" => ');
+        const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    # ').replace(/": /g, '" => ').replace(/null/g, 'nil');
 
         returnCode = `${call}.each do |${variable}|
   puts ${variable}.inspect
 ${result}
 end`;
       } else {
-        const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '# ').replace(/": /g, '" => ');
+        const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '# ').replace(/": /g, '" => ').replace(/null/g, 'nil');
         returnCode = `${variable} = ${call}
 
 puts ${variable}.inspect
