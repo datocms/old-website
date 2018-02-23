@@ -85,7 +85,7 @@ class ApiPage extends React.Component {
     }
 
     placeholders.forEach(placeholder => {
-      precode.push(`${placeholder}_id = "43";`);
+      precode.push(`${placeholder}_id = "43"`);
       params.push(`${placeholder}_id`);
     });
 
