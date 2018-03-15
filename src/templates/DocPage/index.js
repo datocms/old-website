@@ -50,7 +50,7 @@ export default class DocPage extends React.Component {
   render() {
     const { pathContext, data } = this.props;
 
-    const dir = pathContext.path.replace(/[^\/]*$/, '');
+    const dir = pathContext.sourcePath.replace(/[^\/]*$/, '');
     const pages = data.pages.edges.map(edge => edge.node);
 
     const categoryPages = pages
@@ -59,7 +59,7 @@ export default class DocPage extends React.Component {
         findPosition(a, pages) - findPosition(b, pages)
       ));
 
-    const page = categoryPages.find(page => page.path === pathContext.path);
+    const page = categoryPages.find(page => page.path === pathContext.sourcePath);
     const index = categoryPages.indexOf(page)
 
     const prevPage = index > 0 &&

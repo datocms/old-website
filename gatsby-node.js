@@ -106,7 +106,7 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
       createPage({
         path: url,
         component: p.resolve(`./src/templates/DocPage/index.js`),
-        context: { path, html, repoPath },
+        context: { sourcePath: path, html, repoPath },
       })
     })
   })
@@ -138,7 +138,7 @@ const legalPages = ({ graphql, boundActionCreators: { createPage } }) => {
       createPage({
         path: url,
         component: p.resolve(`./src/templates/LegalPage/index.js`),
-        context: { path },
+        context: { sourcePath: path },
       })
     })
   })

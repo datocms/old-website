@@ -65,8 +65,8 @@ export default class LegalPage extends React.Component {
 }
 
 export const query = graphql`
-  query LegalPageQuery($path: String!) {
-    page: markdownRemark(fileAbsolutePath: { eq: $path }) {
+  query LegalPageQuery($sourcePath: String!) {
+    page: markdownRemark(fileAbsolutePath: { eq: $sourcePath }) {
       html
       path: fileAbsolutePath
       frontmatter {

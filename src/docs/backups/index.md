@@ -3,7 +3,7 @@ position: 1
 title: Making offline backups
 ---
 
-Higher tier of DatoCMS offer the ability to generate nightly copies of your 
+Higher tiers of DatoCMS offer the ability to generate nightly copies of your 
 content to your own Amazon S3 buckets, but even if you're on lower plans
 making offline backups is extremely easy. 
 
