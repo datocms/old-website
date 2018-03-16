@@ -20,6 +20,8 @@ plugins: [
     resolve: `gatsby-source-datocms`,
     options: {
       apiToken: `YOUR_READONLY_API_TOKEN`,
+      preview: false,
+      disableLiveReload: false,
     },
   },
 ]

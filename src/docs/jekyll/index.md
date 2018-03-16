@@ -62,6 +62,16 @@ $ bundle exec dato dump
 
 ---
 
+#### Published vs latest versions
+
+If you are working on development/staging environment, you might want to preview the latest version of records instead of the published one. In this case, you can add a `--preview` flag:
+
+```bash
+$ bundle exec dato dump --preview
+```
+
+---
+
 ### The config file
 
 The `dump` command will read a file `dato.config.rb` (or the file passed by the `--config` option). This file should contain instructions to transform the content stored remotely in DatoCMS into local files.

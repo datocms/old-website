@@ -41,6 +41,16 @@ You can find your API token in the *Admin area > API tokens* section:
 
 ---
 
+#### Published vs latest versions
+
+If you are working on development/staging environment, you might want to preview the latest version of records instead of the published one. In this case, you can activate the `preview` flag:
+
+```ruby
+activate :dato, preview: true
+```
+
+---
+
 ### Accessing DatoCMS content
 
 Once the plugin is activated, an object called `dato` will be available in your Middleman views to access content coming from your administrative area:
