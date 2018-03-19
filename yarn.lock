@@ -3967,9 +3967,9 @@ gatsby-remark-prismjs@1.2.12:
     prismjs "^1.7.0"
     unist-util-visit "^1.1.1"
 
-gatsby-source-datocms@1.0.26:
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-1.0.26.tgz#a0d48954a923a2c1f076ec9fa91100255696a030"
+gatsby-source-datocms@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-1.1.0.tgz#1335d6fb34a69556fe2a5e6c23280230b8aa4cec"
   dependencies:
     babel-runtime "^6.26.0"
     base64-img "1.0.3"
