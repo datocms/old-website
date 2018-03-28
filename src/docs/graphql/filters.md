@@ -1,24 +1,7 @@
 ---
-position: 2
+position: 3
 title: Filtering and ordering
 ---
-
-### Ordering records
-
-When retrieving records of a specific model you can supply the `orderBy` argument for every scalar field of the model: `orderBy: <field>_ASC` or `orderBy: <field>_DESC`. For tree and sortable models, you can also order them by `position`:
-
-Example:
-
-```graphql
-query {
-  allArtists(
-    orderBy: [name_ASC]
-  ) {
-    id
-    name
-  }
-}
-```
 
 ### Filtering records
 
@@ -72,14 +55,29 @@ If you specify multiple conditions, they will be combined in a logical AND expre
 }
 ```
 
+
+### Ordering records
+
+When retrieving records of a specific model you can supply the `orderBy` argument for every scalar field of the model: `orderBy: <field>_ASC` or `orderBy: <field>_DESC`. For tree and sortable models, you can also order them by `position`:
+
+Example:
+
+```graphql
+query {
+  allArtists(
+    orderBy: [name_ASC]
+  ) {
+    id
+    name
+  }
+}
+```
+
 #### Pagination
 
-When querying all records of a specific model you can supply arguments that allow you to paginate the query response. Pagination allows you to request a certain amount of records at the same time. You can seek forwards or backwards through the records and supply an optional starting record:
+When querying all records of a specific model you can supply arguments that allow you to paginate the query response. Pagination allows you to request a certain amount of records at the same time.
 
-* to seek forwards, use `first`; specify a starting record with after.
-* to seek backwards, use `last`; specify a starting record with before.
-
-You can also skip an arbitrary amount of records in whichever direction you are seeking by supplying the skip argument:
+Use `first` to limit the number of results:
 
 ```graphql
 {
@@ -90,28 +88,16 @@ You can also skip an arbitrary amount of records in whichever direction you are 
 }
 ```
 
-To query the first two artists after the artists with id `123`:
+You can also skip an arbitrary amount of records by supplying the `skip` argument:
+
 
 ```graphql
-query {
-  allArtists(first: 2, after: "123") {
+{
+  allArtists(first: 5, skip: 10) {
     id
     name
   }
 }
 ```
-
-To query the last 5 artists use last:
-
-```graphql
-query {
-  allArtists(last: 5) {
-    id
-    name
-  }
-}
-```
-
-Note: You cannot combine first with before or last with after. 
 
 Note: If you query more records than exist, your response will simply contain all records that actually do exist in that direction.
