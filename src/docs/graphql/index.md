@@ -113,3 +113,30 @@ client.query({ query: gql`{ allPosts { title } }` })
   console.log(error);
 });
 ```
+
+### Discovering the GraphQL API
+
+The schema of each administrative is different, and depends on the models it contains.
+
+GraphQL is [introspective](http://graphql.org/learn/introspection/). This means you can query a GraphQL schema for details about itself. 
+
+Query `__schema` to list all types defined in the schema and get details about each:
+
+```graphql
+query {
+  __schema {
+    types {
+      name
+      kind
+      description
+      fields {
+        name
+      }
+    }
+  }
+}
+```
+
+A more visual approach to see what queries are available in your schema is to use our [GraphQL API Explorer](http://site-api.datocms.com/graphiql):
+
+[TODO IMMAGINE]
