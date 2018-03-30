@@ -101,18 +101,18 @@ class MobileNavbar extends React.Component {
             Blog
           </Link>
           <Group name="Support">
-            <Link className={b('group-item')} to="http://support.datocms.com/support/tickets/new">
+            <a className={b('group-item')} href="http://support.datocms.com/support/tickets/new" rel="nofollow">
               Open a Ticket
-            </Link>
-            <Link className={b('group-item')} to="http://support.datocms.com/support/tickets">
+            </a>
+            <a className={b('group-item')} href="http://support.datocms.com/support/tickets" rel="nofollow">
               My Tickets
-            </Link>
-            <Link className={b('group-item')} to="http://support.datocms.com/support/discussions/forums/35000119870">
+            </a>
+            <a className={b('group-item')} href="http://support.datocms.com/support/discussions/forums/35000119870" rel="nofollow">
               Feature Requests
-            </Link>
-            <Link className={b('group-item')} to="http://slack.datocms.com/">
+            </a>
+            <a className={b('group-item')} href="http://slack.datocms.com/">
               Slack Community
-            </Link>
+            </a>
           </Group>
           <div className={b('actions')}>
             <a className={button({ border: true })} href="https://dashboard.datocms.com/sign_in">
