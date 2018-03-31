@@ -37,26 +37,26 @@ const Navbar = ({ linkComponent: Link }) => (
             <div className={b('text-link', { handle: true })}>
               <span>Support</span>
               <div className={b('menu')}>
-                <a className={b('menu-item')} src="http://support.datocms.com/support/tickets/new" rel="nofollow">
+                <a className={b('menu-item')} href="http://support.datocms.com/support/tickets/new" rel="nofollow">
                   Open a Ticket
                 </a>
-                <a className={b('menu-item')} src="http://support.datocms.com/support/tickets" rel="nofollow">
+                <a className={b('menu-item')} href="http://support.datocms.com/support/tickets" rel="nofollow">
                   My Tickets
                 </a>
-                <a className={b('menu-item')} src="http://support.datocms.com/support/discussions/forums/35000119870" rel="nofollow">
+                <a className={b('menu-item')} href="http://support.datocms.com/support/discussions/forums/35000119870" rel="nofollow">
                   Feature Requests
                 </a>
-                <a className={b('menu-item')} src="http://slack.datocms.com/">
+                <a className={b('menu-item')} href="http://slack.datocms.com/">
                   Slack Community
                 </a>
               </div>
             </div>
           </div>
           <div className={b('actions')}>
-            <a className={b('text-link')} src="https://dashboard.datocms.com/sign_in">
+            <a className={b('text-link')} href="https://dashboard.datocms.com/sign_in">
               Login
             </a>
-            <a className={button({ red: true })} src="https://dashboard.datocms.com/register">
+            <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
               Try it free
             </a>
           </div>
