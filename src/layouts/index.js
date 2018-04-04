@@ -38,6 +38,7 @@ class TemplateWrapper extends React.Component {
       <div>
         <Helmet title="DatoCMS">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <meta name="google-site-verification" content="wfOsq57h3qCQUTbHcX-4qEEY07vgi4KgH9rdT1ywwwc" />
         </Helmet>
         <HelmetDatoCms favicon={data.site.faviconMetaTags} />
         {
