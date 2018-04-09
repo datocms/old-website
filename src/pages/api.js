@@ -39,10 +39,23 @@ const regexp = /{\(%2Fschemata%2F([^%]+).*$/g;
 class ApiPage extends React.Component {
   constructor(props) {
     super(...props)
-    this.state = {
-      resources: null,
-      activeLink: null
-    };
+
+    if (props.location.hash) {
+      const chunks = props.location.hash.substr(1).split("-");
+
+      this.state = {
+        resources: null,
+        activeLink: {
+          resourceId: chunks[0],
+          linkIndex: parseInt(chunks[1])
+        }
+      };
+    } else {
+      this.state = {
+        resources: null,
+        activeLink: null
+      };
+    }
   }
 
   componentDidMount() {
@@ -70,6 +83,19 @@ class ApiPage extends React.Component {
 
         this.setState({ resources });
       })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.hash !== nextProps.location.hash) {
+      const chunks = nextProps.location.hash.substr(1).split("-");
+
+      this.setState({
+        activeLink: {
+          resourceId: chunks[0],
+          linkIndex: parseInt(chunks[1])
+        }
+      });
+    }
   }
 
   rubyCode(resource, link) {
@@ -257,8 +283,13 @@ ${returnCode}
 
   renderExample() {
     const { resources, activeLink: { resourceId, linkIndex } } = this.state;
-    const resource = resources.find(r => r.id === resourceId);
-    const link = resource.links[linkIndex];
+
+    const resource = resources && resources.find(r => r.id === resourceId);
+    const link = resource && resource.links[linkIndex];
+
+    if (!resource || !link) {
+      return null;
+    }
 
     return (
       <div>
@@ -479,7 +510,7 @@ ${returnCode}
                 Example:
                 {
                   JSON.stringify(schema.example, null, 2).split(/\r\n|\r|\n/).length === 1 ?
-                    <span>&nbsp;{JSON.stringify(schema.example)}</span> 
+                    <span>&nbsp;{JSON.stringify(schema.example)}</span>
                     :
                     <div className={b('attribute-example-code')}>
                       <pre
@@ -529,8 +560,9 @@ ${returnCode}
                   <div>
                     {
                       resource.links.map((link, i) => (
-                        <div
+                        <a
                           key={link.title}
+                          href={`#${resource.id}-${i}`}
                           className={
                             b(
                               'link',
@@ -543,19 +575,11 @@ ${returnCode}
                               }
                             )
                           }
-                          onClick={
-                            () => this.setState({
-                              activeLink: {
-                                resourceId: resource.id,
-                                linkIndex: i,
-                              }
-                            })
-                          }
                         >
                           <h4 className={b('link-title')}>
                             {link.description}
                           </h4>
-                        </div>
+                        </a>
                       ))
                     }
                   </div>
