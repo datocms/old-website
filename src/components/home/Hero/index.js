@@ -58,8 +58,8 @@ class HomeHero extends React.Component {
             <div className={b('browser')}>
               <Browser small title="DatoCMS">
                 <video autoPlay loop muted playsInline ref={(el) => this.video = el}>
-                  <source src="videos/hero.webm" type="video/webm" />
-                  <source src="videos/hero.mp4" type="video/mp4" />
+                  <source src="/videos/hero.webm" type="video/webm" />
+                  <source src="/videos/hero.mp4" type="video/mp4" />
                 </video>
               </Browser>
             </div>
