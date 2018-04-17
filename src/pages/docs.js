@@ -78,12 +78,11 @@ export default class LearnPage extends React.Component {
                   >
                     <Space bottom={2}>
                       <p>
-                        DatoCMS offers both a REST API and a GraphQL API that you can use to build any kind of digital product.
+                        We offer a complete, strong-consistent REST API that let's you to programmatically build any kind of product.
                       </p>
                     </Space>
                     <ul>
                       <li><Link to="/api/">REST API Documentation</Link></li>
-                      <li><Link to="/docs/graphql/">GraphQL API Documentation</Link></li>
                     </ul>
                   </Guide>
                   <Guide
