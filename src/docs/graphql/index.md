@@ -137,4 +137,4 @@ query {
 
 A more visual approach to see what queries are available in your schema is to use our [GraphQL API Explorer](http://site-api.datocms.com/graphiql):
 
-[TODO IMMAGINE]
+![foo](../images/graphql/graphiql.png)
