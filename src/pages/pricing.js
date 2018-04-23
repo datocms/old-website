@@ -13,29 +13,11 @@ import check from 'images/check.svg'
 import tooltip from 'images/info-tooltip-dark.svg'
 
 const b = bem.lock('PricingPage')
-
-const tooltips = {
-  invitations: 'The number of editors/marketers you can invite inside your administrative area to manage content.',
-  fileStorage: 'Any image/file you upload to DatoCMS counts towards this limit.',
-  records: 'A record represents a single piece of information you store within a site. Think of it like a database-like entry. It can be anything: a blog post, a category, an image gallery, etc.',
-  indexablePages: 'If you use DatoCMS with a static website and you want to use our "Google Search"-like feature, that\'s the number of pages in your frontend website that we\'ll scrape and index.',
-  imgix: 'Every image you upload in DatoCMS is stored on Imgix, a super-fast CDN optimized for image delivery. By adding some parameters to your image URL you can apply multiple transformations (resize, crop, compress, etc.)',
-  languages: 'For an international website, that\'s the number of different languages you can specify your content.',
-  customDomain: 'The ability to access your administrative area using a custom domain (ie. admin.yoursite.com).',
-  revisionHistory: 'View the complete history of changes made to every stored content, and restore them when needed.',
-  s3: 'The ability to use a custom AWS S3 bucket and Imgix account, that you own, to store every image/file your editors upload to DatoCMS.',
-  otp: 'Enforce two-factor authentication to your editors using the Google Authenticator app.',
-  sla: 'SLA packages provide legally binding service availability and support response time guarantees.',
-  saml: 'Ability to provision, deprovision and manage privileges of DatoCMS users through a SAML-based Identity Provider (IdP) of your choice.',
-  bandwidth: 'Amount of asset data transferred between our Asset CDN and content consumers.',
-  backups: 'Nightly copies of your content to your own Amazon S3 buckets.'
-}
-
-const Tooltip = ({ children, code }) => (
+const Tooltip = ({ children, hints, code }) => (
   <span className={bem('Tooltip', { })}>
     {children} <img src={tooltip} />
     <span className="Tooltip__hint">
-      {tooltips[code]}
+      {hints[code].description}
     </span>
   </span>
 )
@@ -43,11 +25,11 @@ const Tooltip = ({ children, code }) => (
 class PricingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { plan: 'developer', billing: 'yearly' };
+    this.state = { activePlan: 'developer', billing: 'yearly' };
   }
 
-  handleChangePlan(plan) {
-    this.setState({ plan });
+  handleChangePlan(activePlan) {
+    this.setState({ activePlan });
   }
 
   handleBillingChange(billing, e) {
@@ -56,36 +38,36 @@ class PricingPage extends React.Component {
   }
 
   renderPlanChanger() {
-    const { plan } = this.state;
+    const { activePlan } = this.state;
 
     return (
       <div className={b('plan-changer')}>
         <button
-          className={b('plan-changer__plan', { active: plan === 'developer' })}
+          className={b('plan-changer__plan', { active: activePlan === 'developer' })}
           onClick={this.handleChangePlan.bind(this, 'developer')}
         >
           Dev
         </button>
         <button
-          className={b('plan-changer__plan', { active: plan === 'basic' })}
+          className={b('plan-changer__plan', { active: activePlan === 'basic' })}
           onClick={this.handleChangePlan.bind(this, 'basic')}
         >
           Basic
         </button>
         <button
-          className={b('plan-changer__plan', { active: plan === 'plus' })}
+          className={b('plan-changer__plan', { active: activePlan === 'plus' })}
           onClick={this.handleChangePlan.bind(this, 'plus')}
         >
           Plus
         </button>
         <button
-          className={b('plan-changer__plan', { active: plan === 'max' })}
+          className={b('plan-changer__plan', { active: activePlan === 'max' })}
           onClick={this.handleChangePlan.bind(this, 'max')}
         >
           Max
         </button>
         <button
-          className={b('plan-changer__plan', { active: plan === 'enterprise' })}
+          className={b('plan-changer__plan', { active: activePlan === 'enterprise' })}
           onClick={this.handleChangePlan.bind(this, 'enterprise')}
         >
           Enterprise
@@ -122,7 +104,21 @@ class PricingPage extends React.Component {
 
   render() {
     const { data } = this.props;
-    const { plan } = this.state;
+    const { activePlan } = this.state;
+
+    const plans = data.plans.edges.map(e => e.node)
+    const hints = data.hints.edges.map(e => e.node).reduce((acc, hint) => {
+      acc[hint.code] = {
+        name: hint.name,
+        description: hint.description,
+        plans: hint.plans.reduce((acc, plan) => {
+          acc[plan.plan.code] = plan.value;
+          return acc;
+        }, {})
+      };
+      return acc;
+    }, {})
+    const hintCodes = data.hints.edges.map(e => e.node.code)
 
     return (
       <Space both="10">
@@ -135,170 +131,76 @@ class PricingPage extends React.Component {
             {this.renderBillingChanger()}
             {this.renderPlanChanger()}
             <div className={b('recap')}>
-              <div className={b('recap-item', { active: plan === 'developer' })}>
-                <div className={b('recap-item-plan-name')}>
-                  Developer
-                </div>
-                <div className={b('recap-item-for')}>
-                  Test the product and use it for small websites
-                </div>
-                <div className={b('recap-item-price')}>
-                  <div className={b('recap-item-price-free')}>
-                    Free
+              {
+                plans.map(plan => (
+                  <div key={plan.code} className={b('recap-item', { active: activePlan === plan.code })}>
+                    <div className={b('recap-item-plan-name')}>
+                      {plan.name}
+                    </div>
+                    <div className={b('recap-item-for')}>
+                      {plan.description}
+                    </div>
+                    <div className={b('recap-item-price')}>
+                      {
+                        plan.code === 'developer' &&
+                          <div className={b('recap-item-price-free')}>
+                            Free
+                          </div>
+                      }
+                      {
+                        plan.code === 'enterprise' &&
+                          <div className={b('recap-item-price-free')}>
+                            Let's talk
+                          </div>
+                      }
+                      {
+                        plan.monthlyPrice &&
+                          [
+                            <div key="amount" className={b('recap-item-price-amount')}>
+                              { this.state.billing === 'monthly' ? `€${plan.monthlyPrice}` : `€${plan.yearlyPrice}` }
+                            </div>,
+                            <div key="period" className={b('recap-item-price-period')}>
+                              per site/month
+                            </div>
+                          ]
+                      }
+                    </div>
+                    <div className={b('recap-item-specs')}>
+                      {
+                        plan.code === 'enterprise' ?
+                          <div className={b('recap-item-everything')}>
+                            Everything
+                          </div>
+                          :
+                          <div>
+                            <div className={b('recap-item-spec')}>
+                              <Tooltip hints={hints} code="invitations">{hints.invitations.plans[plan.code]} invitations</Tooltip>
+                            </div>
+                            <div className={b('recap-item-spec')}>
+                              <Tooltip hints={hints} code="file-storage">200MB file storage</Tooltip>
+                            </div>
+                            <div className={b('recap-item-spec')}>
+                              <Tooltip hints={hints} code="records">100 records</Tooltip>
+                            </div>
+                          </div>
+                      }
+                    </div>
+                    {
+                      plan.code === 'enterprise' ?
+                        <a href="mailto:support@datocms.com" className={b('recap-item-cta')}>
+                          Get in touch
+                        </a>
+                        :
+                        <a
+                          className={b('recap-item-cta')}
+                          href="https://dashboard.datocms.com/register"
+                        >
+                          Sign up
+                        </a>
+                    }
                   </div>
-                </div>
-                <div className={b('recap-item-specs')}>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="invitations">No invitations</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="fileStorage">200MB file storage</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="records">100 records</Tooltip>
-                  </div>
-                </div>
-                <a
-                  className={b('recap-item-cta')}
-                  href="https://dashboard.datocms.com/register"
-                >
-                  Sign up
-                </a>
-              </div>
-
-              <div className={b('recap-item', { active: plan === 'basic' })}>
-                <div className={b('recap-item-plan-name')}>
-                  Basic
-                </div>
-                <div className={b('recap-item-for')}>
-                  Perfect for the average brochure site
-                </div>
-                <div className={b('recap-item-price')}>
-                  <div className={b('recap-item-price-amount')}>
-                    { this.state.billing === 'monthly' ? '€9' : '€7' }
-                  </div>
-                  <div className={b('recap-item-price-period')}>
-                    per site/month
-                  </div>
-                  <div className={b('recap-item-price-prorated')}>
-                    Pro-rated daily
-                  </div>
-                </div>
-                <div className={b('recap-item-specs')}>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="invitations">2 invitations</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="fileStorage">1GB file storage</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="records">500 records</Tooltip>
-                  </div>
-                </div>
-                <a
-                  className={b('recap-item-cta')}
-                  href="https://dashboard.datocms.com/register"
-                >
-                  Sign up
-                </a>
-              </div>
-
-              <div className={b('recap-item', { active: plan === 'plus' })}>
-                <div className={b('recap-item-plan-name')}>
-                  Plus
-                </div>
-                <div className={b('recap-item-for')}>
-                  Build big static websites for your clients
-                </div>
-                <div className={b('recap-item-price')}>
-                  <div className={b('recap-item-price-amount')}>
-                    { this.state.billing === 'monthly' ? '€25' : '€20' }
-                  </div>
-                  <div className={b('recap-item-price-period')}>
-                    per site/month
-                  </div>
-                  <div className={b('recap-item-price-prorated')}>
-                    Pro-rated daily
-                  </div>
-                </div>
-                <div className={b('recap-item-specs')}>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="invitations">5 invitations</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="fileStorage">3GB file storage</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="records">2.000 records</Tooltip>
-                  </div>
-                </div>
-                <a
-                  className={b('recap-item-cta')}
-                  href="https://dashboard.datocms.com/register"
-                >
-                  Sign up
-                </a>
-              </div>
-
-              <div className={b('recap-item', { active: plan === 'max' })}>
-                <div className={b('recap-item-plan-name')}>
-                  Max
-                </div>
-                <div className={b('recap-item-for')}>
-                  For high-volume sites with a large team of editors
-                </div>
-                <div className={b('recap-item-price')}>
-                  <div className={b('recap-item-price-amount')}>
-                    { this.state.billing === 'monthly' ? '€150' : '€125' }
-                  </div>
-                  <div className={b('recap-item-price-period')}>
-                    per site/month
-                  </div>
-                  <div className={b('recap-item-price-prorated')}>
-                    Pro-rated daily
-                  </div>
-                </div>
-                <div className={b('recap-item-specs')}>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="invitations">Unlimited invitations</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="fileStorage">Unlimited file storage</Tooltip>
-                  </div>
-                  <div className={b('recap-item-spec')}>
-                    <Tooltip code="records">Unlimited records</Tooltip>
-                  </div>
-                </div>
-                <a
-                  className={b('recap-item-cta')}
-                  href="https://dashboard.datocms.com/register"
-                >
-                  Sign up
-                </a>
-              </div>
-
-              <div className={b('recap-item', { active: plan === 'enterprise' })}>
-                <div className={b('recap-item-plan-name')}>
-                  Enterprise
-                </div>
-                <div className={b('recap-item-for')}>
-                  For mission critical projects
-                </div>
-                <div className={b('recap-item-price')}>
-                  <div className={b('recap-item-price-free')}>
-                    Let's talk
-                  </div>
-                </div>
-                <div className={b('recap-item-specs')}>
-                  <div className={b('recap-item-everything')}>
-                    Everything
-                  </div>
-                </div>
-                <a href="mailto:support@datocms.com" className={b('recap-item-cta')}>
-                  Get in touch
-                </a>
-              </div>
-
+                ))
+              }
             </div>
 
             <div className={b('reassurance')}>
@@ -322,398 +224,96 @@ class PricingPage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td className={b('details-plan-name', { active: plan === 'developer' })} >
-                    Dev
-                  </td>
-                  <td className={b('details-plan-name', { active: plan === 'basic' })}>
-                    Basic
-                  </td>
-                  <td className={b('details-plan-name', { active: plan === 'plus' })}>
-                    Plus
-                  </td>
-                  <td className={b('details-plan-name', { active: plan === 'max' })}>
-                    Max
-                  </td>
-                  <td className={b('details-plan-name', { active: plan === 'enterprise' })}>
-                    Enterprise
-                  </td>
+                  {
+                    plans.map(plan => (
+                      <td key={plan.code} className={b('details-plan-name', { active: activePlan === plan.code })} >
+                        {plan.name}
+                      </td>
+                    ))
+                  }
                 </tr>
                 <tr className={b('details-header-row')}>
-                  <td className={b('details-price-cell', { active: plan === 'developer' })}>
-                    <div className={b('details-price')}>
-                      <div className={b('details-price-inner')}>
-                        <div className={b('details-price-free')}>
-                          Free
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className={b('details-price-cell', { active: plan === 'basic' })}>
-                    <div className={b('details-price')}>
-                      <div className={b('details-price-inner')}>
-                        <div className={b('details-price-amount')}>
-                          { this.state.billing === 'monthly' ? '€9' : '€7' }
-                        </div>
-                        <div className={b('details-price-period')}>
-                          per site/month
-                        </div>
-                        <div className={b('details-price-prorated')}>
-                          Pro-rated daily
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className={b('details-price-cell', { active: plan === 'plus' })}>
-                    <div className={b('details-price')}>
-                      <div className={b('details-price-inner')}>
-                        <div className={b('details-price-amount')}>
-                          { this.state.billing === 'monthly' ? '€25' : '€20' }
-                        </div>
-                        <div className={b('details-price-period')}>
-                          per site/month
-                        </div>
-                        <div className={b('details-price-prorated')}>
-                          Pro-rated daily
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className={b('details-price-cell', { active: plan === 'max' })}>
-                    <div className={b('details-price')}>
-                      <div className={b('details-price-inner')}>
-                        <div className={b('details-price-amount')}>
-                          { this.state.billing === 'monthly' ? '€150' : '€125' }
-                        </div>
-                        <div className={b('details-price-period')}>
-                          per site/month
-                        </div>
-                        <div className={b('details-price-prorated')}>
-                          Pro-rated daily
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className={b('details-price-cell', { active: plan === 'enterprise' })}>
-                    <div className={b('details-price')}>
-                      <div className={b('details-price-inner')}>
-                        <div className={b('details-price-free')}>
-                          Let's talk
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    Support
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    Low-priority
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    Standard
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    Advanced
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Advanced
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Premium
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="invitations">Invitations</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    0
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    2
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    5
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Unlimited
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="fileStorage">File storage</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    200 MB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    1 GB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    3 GB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Unlimited
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="bandwidth">Bandwidth</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    1 TB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    1 TB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    1 TB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    1 TB
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Custom
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="records">Records</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    100
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    500
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    2.000
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Unlimited
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="indexablePages">Indexable pages</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    20
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    1.000
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Unlimited
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="imgix">Image manipulations</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Unlimited
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="languages">Languages</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    Unlimited
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    Unlimited
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="customDomain">Custom admin domain</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
+                  {
+                    plans.map(plan => (
+                      <td className={b('details-price-cell', { active: activePlan === 'developer' })}>
+                        <div className={b('details-price')}>
+                          <div className={b('details-price-inner')}>
+                            {
+                              plan.code === 'developer' &&
+                                <div className={b('details-price-free')}>
+                                  Free
+                                </div>
+                            }
 
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="revisionHistory">Revision history</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
+                            {
+                              plan.code === 'enterprise' &&
+                                <div className={b('details-price-free')}>
+                                  Let's talk
+                                </div>
+                            }
 
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
+                            {
+                              plan.monthlyPrice &&
+                                [
+                                  <div key="1" className={b('details-price-amount')}>
+                                    { this.state.billing === 'monthly' ? `€${plan.monthlyPrice}` : `€${plan.yearlyPrice}` }
+                                  </div>,
+                                  <div key="2" className={b('details-price-period')}>
+                                    per site/month
+                                  </div>,
+                                  <div key="3" className={b('details-price-prorated')}>
+                                    Pro-rated daily
+                                  </div>
+                                ]
+                            }
+                          </div>
+                        </div>
+                      </td>
+                    ))
+                  }
                 </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="s3">Use your own S3 for file uploads</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="otp">Two-factor authentication</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="saml">SAML Single Sign-on</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="sla">Contract SLAs</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={b('details-feature-name')}>
-                    <Tooltip code="backups">Offline backups</Tooltip>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'developer' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'basic' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'plus' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'max' })}>
-                  </td>
-                  <td className={b('details-feature-value', { active: plan === 'enterprise' })}>
-                    <img src={check} alt="Available feature" />
-                  </td>
-                </tr>
+                {
+                  hintCodes.map(hintCode => (
+                    <tr key={hintCode}>
+                      <td className={b('details-feature-name')}>
+                        <Tooltip hints={hints} code={hintCode}>
+                          {hints[hintCode].name}
+                        </Tooltip>
+                      </td>
+                      {
+                        plans.map(plan => (
+                          <td key={plan.code} className={b('details-feature-value', { active: activePlan === plan.code })}>
+                            {
+                              hints[hintCode].plans[plan.code] === ':check:' ?
+                                <img src={check} alt="Available feature" />
+                                :
+                                <span>{hints[hintCode].plans[plan.code]}</span>
+                            }
+                          </td>
+                        ))
+                      }
+                    </tr>
+                  ))
+                }
                 <tr>
                   <td className={b('details-feature-name')}>
                   </td>
-                  <td className={b('details-cta', { active: plan === 'developer' })}>
-                    <a href="https://dashboard.datocms.com/register">
-                      Sign up
-                    </a>
-                  </td>
-                  <td className={b('details-cta', { active: plan === 'basic' })}>
-                    <a href="https://dashboard.datocms.com/register">
-                      Sign up
-                    </a>
-                  </td>
-                  <td className={b('details-cta', { active: plan === 'plus' })}>
-                    <a href="https://dashboard.datocms.com/register">
-                      Sign up
-                    </a>
-                  </td>
-                  <td className={b('details-cta', { active: plan === 'max' })}>
-                    <a href="https://dashboard.datocms.com/register">
-                      Sign up
-                    </a>
-                  </td>
-                  <td className={b('details-cta', { active: plan === 'enterprise' })}>
-                    <a href="mailto:support@datocms.com">
-                      Get in touch
-                    </a>
-                  </td>
+                  {
+                    plans.map(plan => (
+                      plan.code === 'enterprise' ?
+                      <td className={b('details-cta', { active: activePlan === 'enterprise' })}>
+                        <a href="mailto:support@datocms.com">
+                          Get in touch
+                        </a>
+                      </td>
+                      :
+                      <td className={b('details-cta', { active: activePlan === plan.code })}>
+                        <a href="https://dashboard.datocms.com/register">
+                          Sign up
+                        </a>
+                      </td>
+                    ))
+                  }
                 </tr>
               </tbody>
             </table>
@@ -759,6 +359,34 @@ query PricingPageQuery {
       node {
         question
         answer
+      }
+    }
+  }
+
+  plans: allDatoCmsPlan(sort: {fields: [position]}) {
+    edges {
+      node{
+        code
+        name
+        description
+        monthlyPrice
+        yearlyPrice
+      }
+    }
+  }
+
+  hints: allDatoCmsPricingHint(sort: {fields: [position]}) {
+    edges {
+      node {
+        code
+        description
+        name
+        plans {
+          plan {
+            code
+          }
+          value
+        }
       }
     }
   }
