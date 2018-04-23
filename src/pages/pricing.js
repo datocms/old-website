@@ -177,10 +177,10 @@ class PricingPage extends React.Component {
                               <Tooltip hints={hints} code="invitations">{hints.invitations.plans[plan.code]} invitations</Tooltip>
                             </div>
                             <div className={b('recap-item-spec')}>
-                              <Tooltip hints={hints} code="file-storage">200MB file storage</Tooltip>
+                              <Tooltip hints={hints} code="file-storage">{hints['file-storage'].plans[plan.code]} file storage</Tooltip>
                             </div>
                             <div className={b('recap-item-spec')}>
-                              <Tooltip hints={hints} code="records">100 records</Tooltip>
+                              <Tooltip hints={hints} code="records">{hints.records.plans[plan.code]} records</Tooltip>
                             </div>
                           </div>
                       }
