@@ -14,12 +14,24 @@
   line-height: 1
   text-align: center
   box-sizing: border-box
+  cursor: pointer
 
   &:hover
     opacity: 0.8
 
+  &[disabled]
+    opacity: 0.8
+
 .button--red
   background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
+
+.button--normal-big
+  padding: 0.9em 1.2em 0.7em
+  +size(normalBig)
+
+.button--expand
+  width: 100%
+  box-sizing: border-box
 
 .button--big
   +size(big)

@@ -110,7 +110,7 @@ class MobileNavbar extends React.Component {
             <a className={b('group-item')} href="http://support.datocms.com/support/discussions/forums/35000119870" rel="nofollow">
               Feature Requests
             </a>
-            <a className={b('group-item')} href="http://slack.datocms.com/">
+            <a className={b('group-item')} href="/slack/">
               Slack Community
             </a>
           </Group>

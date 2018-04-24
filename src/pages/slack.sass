@@ -1,0 +1,63 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.SlackPage
+  text-align: center
+
+.SlackPage__logo
+  margin-bottom: 30px
+
+  img
+    height: 100px
+
+.SlackPage__title
+  +size(hero)
+  margin-bottom: 40px
+
+.SlackPage__content
+  max-width: 450px
+  margin: 0 auto
+  +size(normalBig)
+
+.SlackPage__form
+  width: 450px
+  margin: 40px auto 0
+
+  input[type="email"]
+    border: 1px solid $border-color
+    padding: 10px
+    +size(normalBig)
+    font-family: "colfax-web"
+    color: #30343F
+    text-align: center
+    border-radius: 4px
+    display: block
+    box-sizing: border-box
+    width: 100%
+    margin-bottom: 10px
+
+  form
+    margin-bottom: 20px
+
+.SlackPage__stats
+  strong
+    font-weight: 500
+
+.SlackPage__error
+  background-color: $violet-color
+  padding: 15px
+  +size(small)
+  color: white
+  border-radius: 4px
+  margin-bottom: 20px
+
+.SlackPage__success
+  background-color: $azure-color
+  padding: 30px
+  color: white
+  border-radius: 4px
+
+.SlackPage__success__title
+  +size(big)
+  margin-bottom: 10px
+  font-weight: 500

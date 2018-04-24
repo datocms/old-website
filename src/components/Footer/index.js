@@ -70,7 +70,7 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="http://support.datocms.com/support/discussions/forums/35000119870">
           Feature Requests
         </Link>
-        <Link className={b('group-link')} to="http://slack.datocms.com/">
+        <Link className={b('group-link')} to="/slack/">
           Slack Community
         </Link>
       </Group>
