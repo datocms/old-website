@@ -5,7 +5,7 @@ import { Wrap, button, Space, text } from 'blocks'
 
 import bem from 'utils/bem'
 
-import logo from 'images/logo.svg'
+import logo from 'images/d_logo.svg'
 
 const b = bem.lock('Footer')
 
