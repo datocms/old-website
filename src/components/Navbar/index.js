@@ -4,7 +4,7 @@ import bem from 'utils/bem'
 import { Wrap, button, Space, Text } from 'blocks'
 import './style.sass'
 
-import logo from 'images/logo.svg'
+import logo from 'images/dato_logo_full.svg'
 
 const b = bem.lock('Navbar')
 

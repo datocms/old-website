@@ -9,7 +9,8 @@
 
 .Navbar__inner
   display: flex
-  align-content: center
+  //align-content: center
+  align-items: center
   justify-content: space-between
   position: relative
 
@@ -85,10 +86,21 @@ a.Navbar__text-link:hover
   .Navbar__text-link
     margin-right: 20px
 
+.Navbar__logo-container
+  line-height: 0
+
+.Navbar__logo
+  img
+    width: 125px
+
 @media screen and (min-width: 1250px)
   .Navbar__logo-container,
   .Navbar__actions
     width: 280px
+
+  .Navbar__logo
+    img
+      max-width: 160px
 
   .Navbar__nav
     display: flex
