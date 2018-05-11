@@ -21,13 +21,12 @@ const MobileNavbarWithRouter = withRouter(MobileNavbar);
 
 class TemplateWrapper extends React.Component {
   componentDidMount() {
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = 'f6c597e6-eda0-477a-ac60-9abea56354eb';
+    window.FCSP = '42908c8b2b73d83094ea1b5c6bbca2bc';
 
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.async = false;
-    script.src = 'https://client.crisp.im/l.js';
+    script.src = 'https://chat-assets.frontapp.com/v1/chat.bundle.js';
     document.body.appendChild(script);
   }
 
