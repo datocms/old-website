@@ -1,0 +1,38 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.SupportPage
+
+.SupportPage__logo
+  margin-top: 100px
+  margin-bottom: 80px
+
+  img
+    height: 60px
+    border-radius: 50%
+    transform: scale(1.4)
+
+    @media screen and (min-width: 1000px)
+      height: 120px
+
+.SupportPage__title
+  +size(hero)
+  margin-bottom: 40px
+
+.SupportPage__content
+  +size(normalBig)
+  line-height: 1.6
+
+  a
+    color: $azure-color
+
+.SupportPage__info
+  margin-top: 20px
+  +size(small)
+  color: $light-body-color
+
+.SupportPage__left
+  max-width: 600px
+  margin: 0 auto
+  text-align: center
+

@@ -37,11 +37,8 @@ const Navbar = ({ linkComponent: Link }) => (
             <div className={b('text-link', { handle: true })}>
               <span>Support</span>
               <div className={b('menu')}>
-                <a className={b('menu-item')} href="http://support.datocms.com/support/tickets/new" rel="nofollow">
+                <a className={b('menu-item')} href="/support/" rel="nofollow">
                   Open a Ticket
-                </a>
-                <a className={b('menu-item')} href="http://support.datocms.com/support/tickets" rel="nofollow">
-                  My Tickets
                 </a>
                 <a className={b('menu-item')} href="http://support.datocms.com/support/discussions/forums/35000119870" rel="nofollow">
                   Feature Requests
