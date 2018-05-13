@@ -280,8 +280,8 @@ exports.createPages = (options) => {
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === 'build-javascript') {
     config.merge((current) => {
-      current.devtool = false;
-      current.entry.support = './support.js';
+      current.output.jsonpFunction = 'webpackJsonpDato';
+      console.log(current);
       return current;
     });
   }
