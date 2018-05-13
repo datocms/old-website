@@ -64,10 +64,10 @@ const Footer = ({ data, linkComponent: Link }) => (
         </Link>
       </Group>
       <Group title="Support">
-        <Link className={b('group-link')} to="http://support.datocms.com/support/tickets/new">
+        <Link className={b('group-link')} to="/support/">
           Ticket Center
         </Link>
-        <Link className={b('group-link')} to="http://support.datocms.com/support/discussions/forums/35000119870">
+        <Link className={b('group-link')} to="https://github.com/datocms/feature-requests/issues">
           Feature Requests
         </Link>
         <Link className={b('group-link')} to="/slack/">
