@@ -38,7 +38,7 @@ class Support extends React.Component {
                 <div className={b('content')}>
                   Just write us using <a href="#" onClick={this.handleOpenChat.bind(this)}>the chat widget</a> or 
                   send us a mail at <a href="mailto:support@datocms.com">support@datocms.com</a>, we'll get back to
-                  you as soon as possible.
+                  you as soon as possible.<br/>You can also find help in our awesome <Link to="/slack/">Slack channel</Link>.
                 </div>
                 <div className={b('info')}>
                   Higher priority will be given to customers with plans with guarantees of faster response times.
