@@ -38,13 +38,13 @@ const Navbar = ({ linkComponent: Link }) => (
               <span>Support</span>
               <div className={b('menu')}>
                 <a className={b('menu-item')} href="/support/" rel="nofollow">
-                  Open a Ticket
+                  Open a ticket
                 </a>
                 <a className={b('menu-item')} href="https://github.com/datocms/feature-requests/issues" rel="nofollow">
-                  Feature Requests
+                  Feature requests
                 </a>
                 <a className={b('menu-item')} href="/slack/">
-                  Slack Community
+                  Slack community
                 </a>
               </div>
             </div>
