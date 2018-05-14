@@ -65,35 +65,9 @@ blogPost.toMap(10)   // this will go down 10 levels deep!
 
 ---
 
-### File attachment fields
+### File fields
 
-
-*File attachment* fields expose the following methods. The `.url()` method is the most important one, as it returns the full URL of the file.
-
-```javascript
-blogPost.attachment.url()     // returns the file URL:
-                              // => "https://www.datocms-assets.com/123/12345-report.pdf"
-
-blogPost.attachment.size      // returns the filesize in bytes:
-                              // => 1489134
-
-blogPost.attachment.format    // returns the extension:
-                              // => "pdf"
-
-blogPost.attachment.toMap()   // returns an hash containing all the above:
-                              //
-                              // => {
-                              //   size: 1489134,
-                              //   format: "pdf",
-                              //   url: "https://www.datocms-assets.com/123/12345-report.pdf"
-                              // }
-```
-
----
-
-### Image fields
-
-*Image fields* share all the methods of *file attachment* fields, but they also expose some additional methods. The `.url()` method is the most important one, as it returns the full URL of the image, and can take a number of image transformation parameters (see the [Image Manipulation](./image-manipulation/) chapter for all for the details).
+*File* fields expose the following methods. The `.url()` method is the most important one, as it returns the full URL of the file.
 
 ```javascript
 blogPost.coverImage.url()    // returns the image URL:
@@ -136,9 +110,9 @@ blogPost.coverImage.toMap()  // returns an hash containing all the above:
 
 ---
 
-### Image gallery fields
+### Multiple files field
 
-*Image gallery* fields simply return an array of image objects:
+*Multiple files* fields simply return an array of file objects:
 
 ```javascript
 blogPost.gallery.forEach(image => {

@@ -120,14 +120,7 @@ client.uploadImage('http://i.giphy.com/NXOF5rlaSXdAc.gif')
 //   isValid: true,
 //   title: 'My first article!',
 //   content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod.',
-//   coverImage:
-//    { path: '/932/1490020446-nxof5rlasxdac-gif',
-//      width: 432,
-//      height: 250,
-//      format: 'gif',
-//      size: 5475424,
-//      alt: null,
-//      title: null },
+//   coverImage: '1834832',
 //   itemType: '7149' }
 ```
 

@@ -118,16 +118,8 @@ pp client.items.create(
 #  "is_valid"    => true,
 #  "title"       => "My first article!",
 #  "content"     => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod.",
-#  "cover_image" => {
-#    "path"   => "/932/1490016285-nxof5rlasxdac-gif",
-#    "width"  => 432,
-#    "height" => 250,
-#    "format" => "gif",
-#    "size"   => 5475424,
-#    "alt"    => nil,
-#    "title"  => nil
-#  },
-#  "item_type"=>"7149"
+#  "cover_image" => "398402",
+#  "item_type"   => "7149"
 # }
 ```
 

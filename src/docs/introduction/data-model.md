@@ -23,8 +23,8 @@ Each model consists of a set of <strong>fields</strong> that you define. Fields 
 * **Integer** and **Floating-point number**: For storing integer SKUs, quantities, prices, etc.
 * **Boolean**: For storing values that have two states, e.g. yes or no, true or false etc.
 * **Date** and **DateTime**: A timestamp value for storing dates and times (ie. an event start, office opening hours).
-* [**File attachment**](/docs/other/fields/#file-attachment-fields): To store any kind of document (PDF, ZIP, etc.).
-* [**Image**](/docs/other/fields/#image-fields) and [**Image gallery**](/docs/other/fields/#image-gallery-fields): To store one or more images (for sliders, carousels, etc.).
+* [**File**](/docs/other/fields/#file-fields): To store any kind of document (images, PDFs, ZIPs, etc.).
+* [**Multiple files**](/docs/other/fields/#multiple-file-fields): To store one or more files (for sliders, carousels, etc.).
 * [**Video**](/docs/other/fields/#video-fields): To reference to an external YouTube/Vimeo video.
 * [**Color**](/docs/other/fields/#color-fields): For storing colors (with or without alpha channel).
 * [**Geolocation**](/docs/other/fields/#geolocation-fields): Coordinate values for storing the latitude and longitude of a physical location.
