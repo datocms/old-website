@@ -1,5 +1,6 @@
 import React from 'react'
 import bem from 'utils/bem'
+import getCookie from 'utils/getCookie';
 
 import { Wrap, button, Space, Text } from 'blocks'
 import './style.sass'
@@ -69,6 +70,7 @@ class MobileNavbar extends React.Component {
 
   render() {
     const { linkComponent: Link } = this.props;
+    const loggedInEmail = getCookie('datoAccountEmail');
 
     return (
       <div className={b()}>
@@ -111,14 +113,23 @@ class MobileNavbar extends React.Component {
               Slack community
             </a>
           </Group>
-          <div className={b('actions')}>
-            <a className={button({ border: true })} href="https://dashboard.datocms.com/sign_in">
-              Login
-            </a>
-            <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
-              Try it for free
-            </a>
-          </div>
+          {
+            loggedInEmail ?
+              <div className={b('actions')}>
+                <a className={button({ red: true, expand: true })} href="https://dashboard.datocms.com">
+                  Open the Dashboard
+                </a>
+              </div>
+              :
+              <div className={b('actions')}>
+                <a className={button({ border: true })} href="https://dashboard.datocms.com/sign_in">
+                  Login
+                </a>
+                <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
+                  Try it for free
+                </a>
+              </div>
+          }
         </div>
       </div>
     );
