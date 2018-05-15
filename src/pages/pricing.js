@@ -193,7 +193,7 @@ class PricingPage extends React.Component {
                         :
                         <a
                           className={b('recap-item-cta')}
-                          href="https://dashboard.datocms.com/register"
+                          href="https://dashboard.datocms.com/signup"
                         >
                           Sign up
                         </a>
@@ -308,7 +308,7 @@ class PricingPage extends React.Component {
                       </td>
                       :
                       <td className={b('details-cta', { active: activePlan === plan.code })}>
-                        <a href="https://dashboard.datocms.com/register">
+                        <a href="https://dashboard.datocms.com/signup">
                           Sign up
                         </a>
                       </td>

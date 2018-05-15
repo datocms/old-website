@@ -15,7 +15,7 @@ const CallToAction = ({ data }) => (
         <div className={b('title')}>
           Ready to try it yourself?
         </div>
-        <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
+        <a className={button({ red: true })} href="https://dashboard.datocms.com/signup">
           Try it free!
         </a>
         <div className={b('no-card')}>

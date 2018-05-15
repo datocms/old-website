@@ -65,7 +65,7 @@ const Navbar = ({ linkComponent: Link }) => {
                   <a className={b('text-link')} href="https://dashboard.datocms.com/sign_in">
                     Login
                   </a>
-                  <a className={button({ red: true })} href="https://dashboard.datocms.com/register">
+                  <a className={button({ red: true })} href="https://dashboard.datocms.com/signup">
                     Try it free
                   </a>
                 </div>
