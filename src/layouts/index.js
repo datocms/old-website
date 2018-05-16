@@ -21,7 +21,7 @@ const MobileNavbarWithRouter = withRouter(MobileNavbar);
 
 class TemplateWrapper extends React.Component {
   componentDidMount() {
-    window.FCSP = '42908c8b2b73d83094ea1b5c6bbca2bc';
+    window.FCSP = '4517cfc9daff1bacb8672f591c5c944f';
 
     const script = document.createElement('script');
     script.type = 'text/javascript';
