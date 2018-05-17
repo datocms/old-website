@@ -62,8 +62,7 @@ class SlackPage extends React.Component {
 
   recaptchaCallback(response) {
     fetch(
-      //'https://internal.datocms.com/slack/invite',
-      'http://dato-internal.lvh.me:3001/slack/invite',
+      'https://internal.datocms.com/slack/invite',
       {
         method: 'POST',
         body: new FormData(this.form),
