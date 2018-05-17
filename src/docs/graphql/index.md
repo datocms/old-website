@@ -1,6 +1,6 @@
 ---
 position: 1
-title: Introduction to GraphQL API
+title: GraphQL API
 ---
 
 DatoCMS offers a single GraphQL endpoint:
