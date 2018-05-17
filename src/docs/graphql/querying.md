@@ -1,5 +1,5 @@
 ---
-position: 2
+position: 3
 title: Querying the API
 ---
 
