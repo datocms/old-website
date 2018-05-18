@@ -35,7 +35,7 @@ Both endpoints offer exactly the same queries, the only thing that will change w
 
 #### Rate limits
 
-API Rate limits specify the number of requests a client can make to DatoCMS APIs in a specific time frame. Since this API is meant to be used for delivering content from DatoCMS to apps, websites and other media, there are no limits enforced on requests that hit our CDN.
+API Rate limits specify the number of requests a client can make to DatoCMS APIs in a specific time frame. Since this API is meant to be used for delivering content from DatoCMS to apps, websites and other media, every site with a paying plan offers no limits on requests that hit our CDN.
 
 #### Communicating with GraphQL
 
