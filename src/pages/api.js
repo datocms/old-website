@@ -34,7 +34,7 @@ const defaultLinksOrder = [
   'destroy',
 ];
 
-const regexp = /{\(%2Fschemata%2F([^%]+).*$/g;
+const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 class ApiPage extends React.Component {
   constructor(props) {
@@ -139,7 +139,7 @@ class ApiPage extends React.Component {
 
       if (link.method === 'GET') {
         params.push(fix(JSON.stringify(example, null, 2)));
-      } else {
+      } else if (example.data) {
         params.push(fix(JSON.stringify(deserialize(example.data), null, 2)));
       }
     }
@@ -225,7 +225,7 @@ ${returnCode}
 
       if (link.method === 'GET') {
         params.push(JSON.stringify(example, null, 2));
-      } else {
+      } else if (example.data) {
         params.push(JSON.stringify(deserialize(example.data), null, 2));
       }
     }
