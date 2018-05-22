@@ -17,7 +17,9 @@ import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 import schemaExampleFor from 'utils/schemaExampleFor'
 
-import './api.sass'
+import apiTokenImage from '../docs/images/api-token.png';
+
+import './content-management-api.sass'
 
 const b = bem.lock('ApiPage')
 
@@ -35,6 +37,29 @@ const defaultLinksOrder = [
 ];
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
+
+class Http extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+  }
+
+  handleToggle(e) {
+    e.preventDefault();
+    this.setState({ open: !this.state.open });
+  }
+
+  render() {
+    return (
+      <div className={b('http')}>
+        <a href="#" onClick={this.handleToggle.bind(this)} className={b('http-title', { open: this.state.open })}>
+          {this.props.title}
+        </a>
+        { this.state.open && this.props.children }
+      </div>
+    );
+  }
+}
 
 class ApiPage extends React.Component {
   constructor(props) {
@@ -340,41 +365,7 @@ ${returnCode}
             </div>
         }
 
-        <div className={b('http')}>
-          <div className={b('http-title')}>
-            Javascript example
-          </div>
-
-          <div className={b('example-code')}>
-            <pre
-              className="language-javascript"
-              dangerouslySetInnerHTML={{
-                __html: Prism.highlight(this.jsCode(resource, link), Prism.languages.javascript)
-              }}
-            />
-          </div>
-        </div>
-
-        <div className={b('http')}>
-          <div className={b('http-title')}>
-            Ruby example
-          </div>
-
-          <div className={b('example-code')}>
-            <pre
-              className="language-javascript"
-              dangerouslySetInnerHTML={{
-                __html: Prism.highlight(this.rubyCode(resource, link), Prism.languages.ruby)
-              }}
-            />
-          </div>
-        </div>
-
-        <div className={b('http')}>
-          <div className={b('http-title')}>
-            HTTP Request
-          </div>
-
+        <Http title="HTTP Request">
           <div className={b('http-headers')}>
             <div className={b('http-header')}>
               <div className={b('http-header-name')}>
@@ -419,14 +410,11 @@ ${returnCode}
                 />
               </div>
           }
-        </div>
+        </Http>
 
         {
           link.targetSchema &&
-            <div className={b('http')}>
-              <div className={b('http-title')}>
-                HTTP Response
-              </div>
+            <Http title="HTTP Response">
               <div className={b('example-code')}>
                 <pre
                   className="language-json"
@@ -438,8 +426,29 @@ ${returnCode}
                   }}
                 />
               </div>
-            </div>
+            </Http>
         }
+        <Http title="JS client example">
+          <div className={b('example-code')}>
+            <pre
+              className="language-javascript"
+              dangerouslySetInnerHTML={{
+                __html: Prism.highlight(this.jsCode(resource, link), Prism.languages.javascript)
+              }}
+            />
+          </div>
+        </Http>
+
+        <Http title="Ruby client example">
+          <div className={b('example-code')}>
+            <pre
+              className="language-javascript"
+              dangerouslySetInnerHTML={{
+                __html: Prism.highlight(this.rubyCode(resource, link), Prism.languages.ruby)
+              }}
+            />
+          </div>
+        </Http>
       </div>
     );
   }
@@ -450,6 +459,62 @@ ${returnCode}
     return (
       <div >
         <ul>
+          <li className={b('menu-category')}>
+            <ScrollLink
+              href={`#overview`}
+              to="overview"
+              activeClass="active"
+              spy
+              smooth
+              duration={500}
+              containerId="container"
+              offset={-50}
+            >
+              Overview
+            </ScrollLink>
+          </li>
+          <li className={b('menu-category')}>
+            <ScrollLink
+              href={`#authentication`}
+              to="authentication"
+              activeClass="active"
+              spy
+              smooth
+              duration={500}
+              containerId="container"
+              offset={-50}
+            >
+              Authentication
+            </ScrollLink>
+          </li>
+          <li className={b('menu-category')}>
+            <ScrollLink
+              href={`#schema`}
+              to="schema"
+              activeClass="active"
+              spy
+              smooth
+              duration={500}
+              containerId="container"
+              offset={-50}
+            >
+              JSON Schema
+            </ScrollLink>
+          </li>
+          <li className={b('menu-category', { spacer: true })}>
+            <ScrollLink
+              href={`#clients`}
+              to="clients"
+              activeClass="active"
+              spy
+              smooth
+              duration={500}
+              containerId="container"
+              offset={-50}
+            >
+              Official clients
+            </ScrollLink>
+          </li>
           {
             resources.map(resource => (
               <li key={resource.id} className={b('menu-category')}>
@@ -537,8 +602,113 @@ ${returnCode}
     return (
       <div>
         <div className={b('title')}>
-          DatoCMS API Reference
+          Content Management API
         </div>
+
+        <Element name="overview">
+          <div className={b('resource')}>
+            <h2 className={b('resource-title')}>
+              Overview
+            </h2>
+            <div className={b('resource-description')}>
+              <p>
+                DatoCMS is a headless, API-first content management system (CMS)
+                that provides everything you need to power your web or mobile projects.
+                To learn more about DatoCMS, visit <Link to="/">our website</Link> or
+                refer <Link to="/docs/">to our documentation site</Link> to understand
+                what we do.
+              </p>
+              <p>
+                This document is a detailed reference to DatoCMS's Content
+                Management API.
+              </p>
+              <p>
+                The Content Management API is used to manage the content of your
+                DatoCMS projects. This includes creating, updating, deleting, and
+                fetching content of your projects. To use the Content Management
+                API, you will need to authenticate yourself with an API token.
+                Read more about it in <Link to="/content-management-api/#authentication">Authentication</Link>.
+              </p>
+              <p>
+                The Content Management APIs also include many GET requests.
+                However, it is highly recommended that you always use the&nbsp;
+                <Link to="/graphql">Content Delivery API</Link> to deliver
+                content to your public-facing web or mobile projects.
+              </p>
+            </div>
+          </div>
+        </Element>
+
+        <Element name="authentication">
+          <div className={b('resource')}>
+            <h2 className={b('resource-title')}>
+              Authentication
+            </h2>
+            <div className={b('resource-description')}>
+              <p>
+                In order to make any Content Management API (CMA) requests,
+                you need to first obtain a full-access API token. To retrieve
+                this API token, enter your project administrative area
+                (ie. http://your-project.admin.datocms.com) and go to the&nbsp;
+                <em>Settings > API Tokens</em> section:
+              </p>
+              <p>
+                <img src={apiTokenImage} />
+              </p>
+              <p>
+                Once you have the API Token, you need to pass it as a header
+                in each Content Management API request.
+              </p>
+            </div>
+          </div>
+        </Element>
+
+        <Element name="schema">
+          <div className={b('resource')}>
+            <h2 className={b('resource-title')}>
+              JSON Schema
+            </h2>
+            <div className={b('resource-description')}>
+              <p>
+                The Content Management API exposes a machine-readable JSON
+                schema that describes what resources are available via the API,
+                what their URLs are, how they are represented and what operations
+                they support.
+              </p>
+              <p>
+                This schema follows the <a href="http://json-schema.org/">JSON Schema format</a>,
+                combined with the draft <a href="http://tools.ietf.org/html/draft-fge-json-schema-validation-00">Validation</a> and&nbsp;
+                <a href="http://tools.ietf.org/html/draft-luff-json-hyper-schema-00">Hypertext</a> extensions.
+              </p>
+              <p>
+                The latest version of the API schema will always be available at the
+                following URL:
+              </p>
+              <div className={b('resource-url')}>
+                https://site-api.datocms.com/docs/site-api-hyperschema.json
+              </div>
+            </div>
+          </div>
+        </Element>
+
+
+        <Element name="clients">
+          <div className={b('resource')}>
+            <h2 className={b('resource-title')}>
+              Official clients
+            </h2>
+            <div className={b('resource-description')}>
+              <p>
+                DatoCMS ships with an official API client for <a href="https://github.com/datocms/js-datocms-client">Javascript</a> and <a href="https://github.com/datocms/ruby-datocms-client">Ruby</a>.
+                In this document you will find examples of usage with both clients for each endpoint the API exposes.
+              </p>
+              <p>
+                Both clients are built upn the API <Link to="/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
+              </p>
+            </div>
+          </div>
+        </Element>
+
         {
           resources.map(resource => (
             <Element

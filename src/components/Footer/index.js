@@ -59,8 +59,11 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="/docs/">
           Documentation
         </Link>
-        <Link className={b('group-link')} to="/api/">
-          API Reference
+        <Link className={b('group-link')} to="/docs/content-delivery-api/">
+          Content Delivery API
+        </Link>
+        <Link className={b('group-link')} to="/content-management-api/">
+          Content Management API
         </Link>
       </Group>
       <Group title="Support">

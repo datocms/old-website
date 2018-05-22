@@ -41,7 +41,7 @@ class TemplateWrapper extends React.Component {
         </Helmet>
         <HelmetDatoCms favicon={data.site.faviconMetaTags} />
         {
-          location.pathname !== '/api/' &&
+          location.pathname !== '/content-management-api/' &&
             <div>
               <Navbar linkComponent={SmartLink} />
               <MobileNavbarWithRouter linkComponent={SmartLink} />
@@ -51,7 +51,7 @@ class TemplateWrapper extends React.Component {
           children()
         }
         {
-          location.pathname !== '/api/' &&
+          location.pathname !== '/content-management-api/' &&
             <Footer linkComponent={SmartLink} />
         }
       </div>

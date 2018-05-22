@@ -3,6 +3,8 @@
   "/legal/privacy/": "/legal/privacy-policy/",
   "/why-static/": "/",
   "/gallery/": "/use-cases/",
+  "/api/*": "/content-management-api/:splat",
+  "/graphql/*": "/content-delivery-api/:splat",
   "https://v2.datocms.com/*": "https://www.datocms.com/:splat"
 }
 

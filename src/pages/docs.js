@@ -78,11 +78,12 @@ export default class LearnPage extends React.Component {
                   >
                     <Space bottom={2}>
                       <p>
-                        We offer a complete, strong-consistent REST API that let's you to programmatically build any kind of product.
+                        We offer a complete, strong-consistent API that let's you to programmatically build any kind of product.
                       </p>
                     </Space>
                     <ul>
-                      <li><Link to="/api/">REST API Documentation</Link></li>
+                      <li><Link to="/docs/content-delivery-api/">Content Delivery API</Link></li>
+                      <li><Link to="/content-management-api/">Content Management API</Link></li>
                     </ul>
                   </Guide>
                   <Guide
@@ -118,6 +119,7 @@ export default class LearnPage extends React.Component {
                       </p>
                     </Space>
                     <ul>
+                      <li><Link to="/docs/static-websites/">Introduction</Link></li>
                       <li><Link to="/docs/jekyll/">Jekyll</Link></li>
                       <li><Link to="/docs/gatsby/">Gatsby</Link></li>
                       <li><Link to="/docs/middleman/">Middleman</Link></li>

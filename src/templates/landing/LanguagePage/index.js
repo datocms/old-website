@@ -63,7 +63,7 @@ export default class LanguagePage extends React.Component {
                       <Link to={ssg.documentationUrl} className={button({ red: true })}>
                         {ssg.name} integration guide
                       </Link>
-                      <Link to="/api/" className={button({ red: true })}>
+                      <Link to="/docs/" className={button({ red: true })}>
                         API reference
                       </Link>
                     </div>

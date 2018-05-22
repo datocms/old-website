@@ -5,6 +5,7 @@ $padding: 40px
 
 .ApiPage__title
   +size(hero)
+  font-weight: 500
   margin-bottom: 50px
 
 .ApiPage__logo
@@ -24,6 +25,11 @@ $padding: 40px
     &:hover
       color: $red-color
 
+.ApiPage__menu-category--spacer
+  margin-bottom: 30px
+  padding-bottom: 30px
+  border-bottom: 1px solid $border-color
+
 .ApiPage__content-title
   +size(hero)
   +weight(bold)
@@ -41,7 +47,7 @@ $padding: 40px
 .ApiPage__menu
   flex-shrink: 0
   overflow: auto
-  padding: 50px 0 50px $padding
+  padding: 50px 30px 50px $padding
 
 .ApiPage__menu-back a
   display: block
@@ -68,6 +74,30 @@ $padding: 40px
 
 .ApiPage__resource
   margin-bottom: 120px
+
+  p
+    margin-bottom: 15px
+    line-height: 1.7
+
+    a
+      color: $red-color
+
+    em
+      font-style: italic
+
+    img
+      width: 100%
+      display: block
+      margin: 30px 0
+
+.ApiPage__resource-url
+  background-color: darken($dark-violet-color, 5%)
+  color: white
+  padding: 20px
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+  font-size: 13px
+  border-radius: 4px
+  margin: 30px 0
 
 .ApiPage__resource-title
   +size(bigger)
@@ -121,7 +151,7 @@ $padding: 40px
   margin-right: 10px
 
 .ApiPage__http
-  margin: 50px 0
+  margin: 30px 0
 
   &:last-child
     margin-bottom: 0
@@ -133,6 +163,19 @@ $padding: 40px
   margin: 0 (-$padding)
   +size(small)
   +weight(bold)
+  text-decoration: none
+  color: white
+  display: block
+
+  &:before
+    content: "\25b6"
+    display: inline-block
+    margin-right: 6px
+    font-size: 10px
+
+.ApiPage__http-title--open
+  &:before
+    content: "\25bc"
 
 .ApiPage__http-headers
   margin: 20px 0

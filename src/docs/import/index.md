@@ -3,7 +3,7 @@ position: 1
 title: Importing data
 ---
 
-Our [REST API](/api/) allows to programmatically manage every object you
+Our [Content Management API](/content-management-api/) allows to programmatically manage every object you
 find on the interface of DatoCMS (models, fields, records, etc.).
 
 In this guide you will find a step-by-step tutorial to understand how to 
