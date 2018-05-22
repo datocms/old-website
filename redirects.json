@@ -4,7 +4,7 @@
   "/why-static/": "/",
   "/gallery/": "/use-cases/",
   "/api/*": "/content-management-api/:splat",
-  "/graphql/*": "/content-delivery-api/:splat",
+  "/docs/graphql/*": "/docs/content-delivery-api/:splat",
   "https://v2.datocms.com/*": "https://www.datocms.com/:splat"
 }
 
