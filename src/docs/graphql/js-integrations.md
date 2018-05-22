@@ -9,7 +9,7 @@ title: JS integration examples
 const token = 'YOUR-API-TOKEN';
 
 fetch(
-  'https://site-api.datocms.com/graphql',
+  'https://graphql.datocms.com/',
   {
     method: 'POST',
     headers: {
@@ -43,7 +43,7 @@ import gql from 'graphql-tag';
 const token = 'YOUR-API-TOKEN';
 
 const httpLink = createHttpLink({
-  uri: 'https://site-api.datocms.com/graphql',
+  uri: 'https://graphql.datocms.com/',
 });
 
 const authLink = setContext((_, { headers }) => {

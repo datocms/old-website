@@ -42,7 +42,7 @@ API Rate limits specify the number of requests a client can make to DatoCMS APIs
 In REST, HTTP verbs determine the operation performed. In GraphQL, you'll provide a JSON-encoded body even if you're performing a query operation, so the HTTP verb is always `POST`.
 
 ```bash
-$ curl 'https://site-api.datocms.com/graphql' \
+$ curl 'https://graphql.datocms.com/' \
     -H 'Authorization: YOUR-API-TOKEN' \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
