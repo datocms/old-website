@@ -1,0 +1,167 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins'
+
+.ArticlePage__title
+  +size(bigger)
+  margin-bottom: 60px
+
+  @media screen and (min-width: 1100px)
+    +size(hero)
+
+  a
+    color: $base-body-color
+    text-decoration: none
+    +weight(bold)
+
+.ArticlePage__heading
+  color: $light-body-color
+  margin-bottom: 20px
+  +size(normalBig)
+  text-decoration: none
+  display: block
+
+  @media screen and (min-width: 1100px)
+    display: none
+
+.ArticlePage__content-image
+  margin: 70px 0
+  border-radius: 5px
+  overflow: hidden
+
+.ArticlePage__content-text
+  font-size: 16px
+  line-height: 1.7
+
+  @media screen and (min-width: 900px)
+    font-size: 18px
+
+  h1, h2, h3, h4, h5, h6
+    position: relative
+    +weight(bold)
+
+  i, em
+    font-style: italic
+
+  strong
+    +weight(bold)
+
+  a
+    color: $red-color
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+    code
+      background-color: transparent
+      padding: 0
+
+  hr
+    border: 0
+    height: 1px
+    background-color: $border-color
+    margin: 80px 0
+
+  h2
+    font-size: 35px
+    line-height: 1.3
+    margin: 90px 0 35px
+
+  h3
+    font-size: 25px
+    line-height: 1.3
+    margin: 50px 0 15px
+
+  h4
+    font-size: 23px
+    line-height: 1.3
+    margin: 15px 0
+
+  p
+    margin-bottom: 20px
+
+  ul, ol, blockquote
+    padding-left: 30px
+
+  ul li
+    list-style-type: disc
+    margin-bottom: 15px
+
+  ol li
+    list-style-type: decimal
+    margin-bottom: 20px
+
+  code
+    font-family: "Source Code Pro", Menlo, monospace
+    background-color: $smoke-color
+    padding: 0.2em 0.3em 0.1em 0.3em
+    border: 1px $border-color
+    border-radius: 3px
+
+  img
+    display: block
+    margin: 50px
+    margin-left: -5%
+    margin-right: -5%
+    max-width: 110%
+    width: 110%
+    border-radius: 4px
+    // box-shadow: 0 2px 3px rgba(black, 0.2)
+
+  table
+    margin-top: 50px
+    margin-bottom: 50px
+
+    th, td
+      text-align: left
+      padding: 10px
+      border-bottom: 1px solid $border-color
+
+  .gatsby-highlight
+    margin: 50px 0
+    font-size: 15px
+
+    pre
+      overflow: auto
+      padding: 30px
+
+    code
+      background-color: transparent
+      border: 0
+      padding: 0
+      border-radius: 0
+
+  .gatsby-resp-image-link
+    margin: 60px 0
+
+  .gatsby-resp-image-background-image
+    border-radius: 4px
+    // box-shadow: 0 5px 10px rgba(black, 0.1)
+
+  a.anchor
+    margin-left: -35px
+    svg
+      width: 25px
+      height: 25px
+
+.ArticlePage__meta
+  margin-top: 50px
+  color: $light-body-color
+
+  a
+    color: $base-body-color
+    text-decoration: none
+    +weight(bold)
+
+    &:hover
+      text-decoration: underline
+
+  .gatsby-image-outer-wrapper
+    display: inline-block
+    vertical-align: middle
+    margin-right: 15px
+
+.ArticlePage__image
+  width: 50px
+  border-radius: 50%
+

@@ -63,6 +63,48 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
+const changelog = ({ graphql, boundActionCreators: { createPage } }) => {
+  return graphql(
+    `
+      {
+        articles: allDatoCmsChangelogEntry(sort: { fields: [publicationDate], order: DESC }) {
+          edges {
+            node {
+              id
+              title
+              slug
+              content: contentNode {
+                markdown: childMarkdownRemark {
+                  html
+                }
+              }
+              publicationDate(formatString: "MMM D, YYYY")
+              categories { name }
+            }
+          }
+        }
+      }
+    `
+  )
+  .then(result => {
+    createPaginatedPages({
+      edges: result.data.articles.edges,
+      createPage: createPage,
+      pageTemplate: `./src/templates/ChangelogPage/index.js`,
+      pageLength: 10,
+      pathPrefix: 'changelog'
+    });
+
+    result.data.articles.edges.forEach(({ node: article }) => {
+      createPage({
+        path: `/changelog/${article.id}/`,
+        component: p.resolve(`./src/templates/ChangelogEntryPage/index.js`),
+        context: { id: article.id },
+      })
+    })
+  })
+}
+
 const findHtml = (page, pages) => {
   if (page.frontmatter.copyFrom) {
     const contentPage = pages
@@ -273,6 +315,7 @@ exports.createPages = (options) => {
     legalPages(options),
     landingPages(options),
     articles(options),
+    changelog(options),
     createRedirects(options),
   ]);
 }

@@ -369,6 +369,14 @@ ${returnCode}
           <div className={b('http-headers')}>
             <div className={b('http-header')}>
               <div className={b('http-header-name')}>
+                X-Api-Version:
+              </div>
+              <div className={b('http-header-value')}>
+                2
+              </div>
+            </div>
+            <div className={b('http-header')}>
+              <div className={b('http-header-name')}>
                 Authorization:
               </div>
               <div className={b('http-header-value')}>

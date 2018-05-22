@@ -1,0 +1,64 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins'
+
+.ChangelogPage__article
+  margin-bottom: 50px
+  padding: 25px
+  display: flex
+  flex-direction: row-reverse
+  align-items: stretch
+  max-width: 850px
+
+.ChangelogPage__article-meta
+  width: 220px
+  border-right: 3px solid $border-color
+  text-align: right
+  padding-right: 60px
+  color: $light-body-color
+
+.ChangelogPage__article-body
+  font-size: 16px
+  flex: 1
+  margin-left: 60px
+
+.ChangelogPage__article-content
+  line-height: 1.5
+
+  i, em
+    font-style: italic
+
+  strong
+    +weight(bold)
+
+  a
+    color: $red-color
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+    code
+      background-color: transparent
+      padding: 0
+
+  p
+    margin-bottom: 10px
+
+  ul, ol, blockquote
+    padding-left: 30px
+
+  ul li
+    list-style-type: disc
+    margin-bottom: 5px
+
+  ol li
+    list-style-type: decimal
+    margin-bottom: 20px
+
+  code
+    font-family: "Source Code Pro", Menlo, monospace
+    background-color: $smoke-color
+    padding: 0.2em 0.3em 0.1em 0.3em
+    border: 1px $border-color
+    border-radius: 3px
+

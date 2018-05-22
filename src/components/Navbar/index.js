@@ -35,15 +35,23 @@ const Navbar = ({ linkComponent: Link }) => {
               <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/docs/">
                 Learn
               </Link>
-              <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/blog/">
-                Blog
-              </Link>
+              <div className={b('text-link', { handle: true })}>
+                <span>News</span>
+                <div className={b('menu')}>
+                  <Link className={b('menu-item')} to="/blog/">
+                    Blog
+                  </Link>
+                  <Link className={b('menu-item')} to="/changelog">
+                    Changelog
+                  </Link>
+                </div>
+              </div>
               <div className={b('text-link', { handle: true })}>
                 <span>Support</span>
                 <div className={b('menu')}>
-                  <a className={b('menu-item')} href="/support/" rel="nofollow">
+                  <Link className={b('menu-item')} to="/support/">
                     Open a ticket
-                  </a>
+                  </Link>
                   <a className={b('menu-item')} href="https://github.com/datocms/feature-requests/issues" rel="nofollow">
                     Feature requests
                   </a>
