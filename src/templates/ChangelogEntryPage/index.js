@@ -49,6 +49,7 @@ export const query = graphql`
       title
       categories {
         name
+        color { hex }
       }
       content: contentNode {
         markdown: childMarkdownRemark {

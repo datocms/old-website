@@ -2611,9 +2611,9 @@ dateformat@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
 
-datocms-client@0.3.43:
-  version "0.3.43"
-  resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-0.3.43.tgz#24817c96db51aa08c35a458c55740582691d66d2"
+datocms-client@>=0.5.1:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-0.5.2.tgz#d99699faa0c7e89577fcacc39a7f996a714e3d06"
   dependencies:
     babel-polyfill "6.16.0"
     chokidar "^1.6.1"
@@ -2639,9 +2639,9 @@ datocms-client@0.3.43:
     traverse "0.6.6"
     whatwg-fetch "1.0.0"
 
-datocms-client@>=0.5.1:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-0.5.2.tgz#d99699faa0c7e89577fcacc39a7f996a714e3d06"
+datocms-client@^0.3.43:
+  version "0.3.46"
+  resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-0.3.46.tgz#a9d00bc421c04cbcfa0bea98b9fdc4dd68cb6f91"
   dependencies:
     babel-polyfill "6.16.0"
     chokidar "^1.6.1"

@@ -1,25 +1,64 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
+.ChangelogPage
+  max-width: 850px
+  margin: 0 auto
+
+.ChangelogPage__title
+  +size(hero)
+  text-align: center
+  margin-bottom: 10px
+
+.ChangelogPage__subtitle
+  font-size: 18px
+  margin-bottom: 80px
+  text-align: center
+  color: $light-body-color
+
 .ChangelogPage__article
   margin-bottom: 50px
-  padding: 25px
-  display: flex
-  flex-direction: row-reverse
-  align-items: stretch
-  max-width: 850px
+
+  @media screen and (min-width: 900px)
+    display: flex
+    align-items: stretch
 
 .ChangelogPage__article-meta
-  width: 220px
-  border-right: 3px solid $border-color
-  text-align: right
-  padding-right: 60px
   color: $light-body-color
+  margin-bottom: 5px
+
+  @media screen and (min-width: 900px)
+    padding-right: 60px
+    text-align: right
+    border-right: 3px solid $border-color
+    width: 100px
+    margin-bottom: 0
 
 .ChangelogPage__article-body
   font-size: 16px
-  flex: 1
-  margin-left: 60px
+
+  @media screen and (min-width: 900px)
+    margin-left: 60px
+    flex: 1
+
+.ChangelogPage__article-title
+  font-weight: 500
+  margin-bottom: 10px
+  font-size: 24px
+
+.ChangelogPage__article-categories
+  margin-bottom: 20px
+
+.ChangelogPage__article-category
+  background-color: red
+  padding: 4px 15px 2px
+  color: white
+  font-size: 13px
+  border-radius: 15px
+  display: inline-block
+  white-space: nowrap
+  margin-right: 10px
+  font-weight: 500
 
 .ChangelogPage__article-content
   line-height: 1.5
@@ -31,7 +70,7 @@
     +weight(bold)
 
   a
-    color: $red-color
+    color: $azure-color
     text-decoration: none
 
     &:hover
@@ -41,15 +80,15 @@
       background-color: transparent
       padding: 0
 
-  p
-    margin-bottom: 10px
+  p, ul, ol
+    margin-bottom: 15px
 
   ul, ol, blockquote
     padding-left: 30px
 
   ul li
     list-style-type: disc
-    margin-bottom: 5px
+    margin-bottom: 10px
 
   ol li
     list-style-type: decimal
@@ -59,6 +98,7 @@
     font-family: "Source Code Pro", Menlo, monospace
     background-color: $smoke-color
     padding: 0.2em 0.3em 0.1em 0.3em
+    font-size: 0.9em
     border: 1px $border-color
     border-radius: 3px
 

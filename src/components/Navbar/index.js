@@ -35,17 +35,9 @@ const Navbar = ({ linkComponent: Link }) => {
               <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/docs/">
                 Learn
               </Link>
-              <div className={b('text-link', { handle: true })}>
-                <span>News</span>
-                <div className={b('menu')}>
-                  <Link className={b('menu-item')} to="/blog/">
-                    Blog
-                  </Link>
-                  <Link className={b('menu-item')} to="/changelog">
-                    Changelog
-                  </Link>
-                </div>
-              </div>
+              <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/blog/">
+                Blog
+              </Link>
               <div className={b('text-link', { handle: true })}>
                 <span>Support</span>
                 <div className={b('menu')}>

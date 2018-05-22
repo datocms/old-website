@@ -19,30 +19,41 @@ export default class BlogPage extends React.Component {
       <Space both={10}>
         <Wrap>
           <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
-          {
-            articles.map((article) => (
-              <div key={article.slug} className={b('article')}>
-                <div className={b('article-body')}>
-                  <div
-                    className={b('article-content')}
-                    dangerouslySetInnerHTML={{ __html: article.content.markdown.html }}
-                  />
-                  <div className={b('article-categories')}>
-                    {
-                      article.categories.map(cat => (
-                        <div key={cat.name} className={b('article-category')}>
-                          {cat.name}
-                        </div>
-                      ))
-                    }
+          <div className={b()}>
+            <div className={b('title')}>
+              DatoCMS Changelog
+            </div>
+            <div className={b('subtitle')}>
+              Here we document our progress and announce product updates.
+            </div>
+            {
+              articles.map((article) => (
+                <div key={article.slug} className={b('article')}>
+                  <div className={b('article-meta')}>
+                    {article.publicationDate}
+                  </div>
+                  <div className={b('article-body')}>
+                    <div className={b('article-title')}>
+                      {article.title}
+                    </div>
+                    <div className={b('article-categories')}>
+                      {
+                        article.categories.map(cat => (
+                          <div key={cat.name} className={b('article-category')} style={{ backgroundColor: cat.color.hex }}>
+                            {cat.name}
+                          </div>
+                        ))
+                      }
+                    </div>
+                    <div
+                      className={b('article-content')}
+                      dangerouslySetInnerHTML={{ __html: article.content.markdown.html }}
+                    />
                   </div>
                 </div>
-                <div className={b('article-meta')}>
-                  {article.publicationDate}
-                </div>
-              </div>
-            ))
-          }
+              ))
+            }
+          </div>
         </Wrap>
       </Space>
     );

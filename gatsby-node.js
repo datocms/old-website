@@ -79,7 +79,10 @@ const changelog = ({ graphql, boundActionCreators: { createPage } }) => {
                 }
               }
               publicationDate(formatString: "MMM D, YYYY")
-              categories { name }
+              categories {
+                name
+                color { hex }
+              }
             }
           }
         }

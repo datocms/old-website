@@ -59,11 +59,11 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="/docs/">
           Documentation
         </Link>
-        <Link className={b('group-link')} to="/docs/content-delivery-api/">
-          Content Delivery API
+        <Link className={b('group-link')} to="/changelog/">
+          Changelog
         </Link>
-        <Link className={b('group-link')} to="/content-management-api/">
-          Content Management API
+        <Link className={b('group-link')} to="/blog/">
+          Blog
         </Link>
       </Group>
       <Group title="Support">
@@ -76,13 +76,13 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="/slack/">
           Slack community
         </Link>
+        <Link className={b('group-link')} to="http://status.datocms.com/">
+          System status
+        </Link>
       </Group>
       <Group title="About">
         <Link className={b('group-link')} to="/integrations/">
           Integrations
-        </Link>
-        <Link className={b('group-link')} to="/blog/">
-          Blog
         </Link>
       </Group>
       <Group title="Legal">
