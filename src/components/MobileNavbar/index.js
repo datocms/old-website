@@ -74,6 +74,11 @@ class MobileNavbar extends React.Component {
 
     return (
       <div className={b()}>
+        <div className="banner">
+          <Wrap>
+            <strong>NEW</strong> DatoCMS now offers a CDN-powered GraphQL API that you can use to create any kind of digital product! <Link to="/blog/releasing-content-delivery-api/">Read more</Link>
+          </Wrap>
+        </div>
         <div className={b('bar')}>
           <div className={b('logo-container')}>
             <Link className={b('logo')} to="/">

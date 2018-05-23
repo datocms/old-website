@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar'
 import MobileNavbar from '../components/MobileNavbar'
 import Footer from '../components/Footer'
 import { withRouter } from 'react-router';
+import { Wrap } from 'blocks';
 
 import './style.sass'
 
@@ -43,6 +44,11 @@ class TemplateWrapper extends React.Component {
         {
           location.pathname !== '/content-management-api/' &&
             <div>
+              <div className="banner">
+                <Wrap>
+                  <strong>NEW</strong> DatoCMS now offers a CDN-powered GraphQL API that you can use to create any kind of digital product! <Link to="/blog/releasing-content-delivery-api/">Read more</Link>
+                </Wrap>
+              </div>
               <Navbar linkComponent={SmartLink} />
               <MobileNavbarWithRouter linkComponent={SmartLink} />
             </div>

@@ -14,3 +14,27 @@ body.no-scroll
   overflow: hidden !important
   height: 100% !important
 
+.banner
+  background-color: $violet-color
+  padding: 10px
+  color: white
+  text-align: center
+  +size(small)
+
+  a
+    color: white
+
+    &:hover
+      text-decoration: none
+
+  strong
+    background: rgba(white, 0.3)
+    +weight(bold)
+    font-size: 0.8em
+    padding: 3px 7px 2px
+    border-radius: 3px
+    vertical-align: middle
+    margin-right: 8px
+
+  @media screen and (max-width: 999px)
+    display: none
