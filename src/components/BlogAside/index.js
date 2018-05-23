@@ -1,11 +1,13 @@
 import React from 'react'
 import { Wrap, button, Space, text } from 'blocks'
 import Sticky from 'react-stickynode'
+import Link from 'gatsby-link'
 
 import bem from 'utils/bem'
 import './style.sass'
 
 import twitter from 'images/twitter.svg'
+import medium from 'images/medium.svg'
 
 const b = bem.lock('BlogAside')
 
@@ -13,20 +15,25 @@ const BlogAside = ({ children }) => (
   <Space both={10}>
     <Wrap>
       <div className={b()}>
-        <div className={b('cols-left')}>
+        <div className={b('mobile-title')}>
+          DatoCMS Blog
+        </div>
+        <div className={b('cols-content')}>
           {children}
         </div>
-        <div className={b('cols-right')}>
+        <div className={b('cols-aside')}>
           <Sticky top={100}>
+            <div className={b('title')}>
+              DatoCMS Blog
+            </div>
             <div className={b('section')}>
-              <div className={b('section-title')}>
-                About
-              </div>
               <div className={b('section-content')}>
                 <p>
-                  This blog is curated by the team behind DatoCMS. We document our 
-                  progress, announce product updates and publish on topics such 
+                  Here we post product updates and publish articles on topics such
                   as digital publishing, content strategy, and software development.
+                </p>
+                <p>
+                  Be sure also to check out our <Link to="/changelog/">Product Changelog</Link> for more news!
                 </p>
               </div>
             </div>
@@ -39,6 +46,12 @@ const BlogAside = ({ children }) => (
                   <img src={twitter} />
                   <a href="https://twitter.com/datocms" target="_blank">
                     Follow us on Twitter
+                  </a>
+                </div>
+                <div className={b('follow')}>
+                  <img src={medium} />
+                  <a href="https://medium.com/datocms" target="_blank">
+                    Read us on Medium
                   </a>
                 </div>
               </div>

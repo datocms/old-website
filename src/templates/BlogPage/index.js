@@ -14,31 +14,59 @@ const b = bem.lock('BlogPage')
 export default class BlogPage extends React.Component {
   render() {
     const articles = this.props.pathContext.group.map(({ node }) => node);
+    const { pageCount, first, last, index } = this.props.pathContext;
 
     return (
       <BlogAside>
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
-        {
-          articles.map((article) => (
-            <div key={article.slug} className={b('article')}>
-              <h3 className={b('article-title')}>
-                <Link to={`/blog/${article.slug}/`}>
-                  {article.title}
+        <div>
+          {
+            articles.map((article) => (
+              <div key={article.slug} className={b('article')}>
+                <div className={b('article-body')}>
+                  <h3 className={b('article-title')}>
+                    <Link to={`/blog/${article.slug}/`}>
+                      {article.title}
+                    </Link>
+                  </h3>
+                  <div className={b('article-meta')}>
+                    <Img
+                      className={b('article-author-image')}
+                      sizes={article.author.avatar.sizes}
+                    />
+                    {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
+                  </div>
+                  <div className={b('article-excerpt')}>
+                    <div dangerouslySetInnerHTML={{ __html: article.excerpt.markdown.html }} />
+                  </div>
+                  <Link
+                    to={`/blog/${article.slug}/`}
+                    className="button button--red"
+                  >
+                    Read the article
+                  </Link>
+                </div>
+                <Link to={`/blog/${article.slug}/`} className={b('article-image')}>
+                  {
+                    article.coverImage &&
+                      <img src={article.coverImage.url + '?w=250&h=250&fit=crop'} />
+                  }
                 </Link>
-              </h3>
-              <div
-                className={b('article-excerpt')}
-                dangerouslySetInnerHTML={{ __html: article.excerpt.markdown.html }}
-              />
-              <div className={b('article-meta')}>
-                <Img
-                  className={b('article-image')}
-                  sizes={article.author.avatar.sizes}
-                />
-                {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
               </div>
-            </div>
-          ))
+            ))
+          }
+        </div>
+        {
+          !first &&
+            <Link to={index === 2 ? '/blog/' : `/blog/${index-1}/`} className={b('previous')}>
+              See next posts &raquo;
+            </Link>
+        }
+        {
+          !last &&
+            <Link to={`/blog/${index+1}/`} className={b('previous')}>
+              &laquo; See previous posts
+            </Link>
         }
       </BlogAside>
     );

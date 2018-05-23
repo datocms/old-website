@@ -4,29 +4,49 @@
 .BlogAside__cols-right
   margin-top: 90px
 
-@media screen and (min-width: 900px)
+@media screen and (max-width: 1199px)
+  .BlogAside
+    .sticky-inner-wrapper
+      position: static !important
+      transform: none !important
+      width: auto !important
+
+  .BlogAside__cols-aside
+    margin-top: 50px
+    padding-top: 50px
+    border-top: 2px solid $border-color
+
+  .BlogAside__mobile-title
+    +size(hero)
+    margin-bottom: 50px
+
+@media screen and (min-width: 1200px)
+  .BlogAside__mobile-title
+    display: none
+
   .BlogAside
     display: flex
+    flex-direction: row-reverse
     align-items: start
     justify-content: space-between
-    max-width: 1366px
-    margin: 0 auto
 
-  .BlogAside__cols-left
+  .BlogAside__cols-content
     flex: 1
-    margin-right: 80px
-    max-width: 820px
+    margin-left: 80px
 
-  .BlogAside__cols-right
+  .BlogAside__cols-aside
     width: 330px
     margin-top: 0
 
-@media screen and (min-width: 1100px)
-  .BlogAside__cols-left
-    margin-right: 120px
+.BlogAside__title
+  +size(bigger)
+  margin-bottom: 30px
 
 .BlogAside__section
   margin-bottom: 30px
+
+  &:last-child
+    margin-bottom: 0
 
 .BlogAside__section-title
   color: $light-body-color
@@ -38,13 +58,23 @@
 .BlogAside__section-content
   +size(small)
 
+  p
+    margin-bottom: 10px
+
+    &:last-child
+      margin-bottom: 0
+
+  a
+    color: $azure-color
+
 .BlogAside__follow
+  margin-bottom: 10px
 
   a
     display: inline-block
     vertical-align: middle
     text-decoration: none
-    color: $azure-color
+    color: $base-body-color
 
     &:hover
       text-decoration: underline
@@ -52,4 +82,5 @@
   img
     display: inline-block
     vertical-align: middle
-    margin-right: 0.5em
+    margin-right: 1em
+    height: 20px

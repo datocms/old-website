@@ -11,9 +11,10 @@ import BlogAside from 'components/BlogAside'
 
 const b = bem.lock('ChangelogPage')
 
-export default class BlogPage extends React.Component {
+export default class ChangelogPage extends React.Component {
   render() {
     const articles = this.props.pathContext.group.map(({ node }) => node);
+    const { pageCount, first, last, index } = this.props.pathContext;
 
     return (
       <Space both={10}>
@@ -21,10 +22,7 @@ export default class BlogPage extends React.Component {
           <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
           <div className={b()}>
             <div className={b('title')}>
-              DatoCMS Changelog
-            </div>
-            <div className={b('subtitle')}>
-              Here we document our progress and announce product updates.
+              Product Changelog
             </div>
             {
               articles.map((article) => (

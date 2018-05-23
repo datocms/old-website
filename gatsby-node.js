@@ -19,6 +19,16 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
             node {
               slug
               title
+              coverImage {
+                url
+                sizes(maxWidth: 850) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
               publicationDate(formatString: "MMM D, YYYY")
               author {
                 name
@@ -97,14 +107,6 @@ const changelog = ({ graphql, boundActionCreators: { createPage } }) => {
       pageLength: 10,
       pathPrefix: 'changelog'
     });
-
-    result.data.articles.edges.forEach(({ node: article }) => {
-      createPage({
-        path: `/changelog/${article.id}/`,
-        component: p.resolve(`./src/templates/ChangelogEntryPage/index.js`),
-        context: { id: article.id },
-      })
-    })
   })
 }
 

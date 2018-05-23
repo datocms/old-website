@@ -23,8 +23,8 @@ class Group extends React.Component {
     const { title, children } = this.props;
 
     return (
-      <div 
-        className={b('group', { open: this.state.open })} 
+      <div
+        className={b('group', { open: this.state.open })}
         onClick={this.handleToggle.bind(this)}
       >
         <div className={b('group-title')}>
@@ -55,18 +55,21 @@ const Footer = ({ data, linkComponent: Link }) => (
           Pricing
         </Link>
       </Group>
-      <Group title="Learn">
-        <Link className={b('group-link')} to="/docs/">
-          Documentation
-        </Link>
-        <Link className={b('group-link')} to="/changelog/">
-          Changelog
-        </Link>
+      <Group title="News">
         <Link className={b('group-link')} to="/blog/">
           Blog
         </Link>
+        <Link className={b('group-link')} to="/changelog/">
+          Product changelog
+        </Link>
+        <Link className={b('group-link')} to="http://status.datocms.com/">
+          System status
+        </Link>
       </Group>
       <Group title="Support">
+        <Link className={b('group-link')} to="/docs/">
+          Documentation
+        </Link>
         <Link className={b('group-link')} to="/support/">
           Open a ticket
         </Link>
@@ -75,9 +78,6 @@ const Footer = ({ data, linkComponent: Link }) => (
         </Link>
         <Link className={b('group-link')} to="/slack/">
           Slack community
-        </Link>
-        <Link className={b('group-link')} to="http://status.datocms.com/">
-          System status
         </Link>
       </Group>
       <Group title="About">

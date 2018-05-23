@@ -3,44 +3,73 @@
 
 .BlogPage__article
   margin-bottom: 50px
-  border-radius: 10px
-  border: 1px solid $border-color
-  padding: 25px
+  padding-bottom: 50px
+  border-bottom: 2px solid $border-color
 
-  @media screen and (min-width: 1100px)
-    padding: 50px
+  @media screen and (min-width: 900px)
+    display: flex
+    margin-bottom: 80px
+    padding-bottom: 80px
 
-  @media screen and (min-width: 1300px)
-    padding-right: 150px
+  &:last-child
+    margin-bottom: 0
+    padding-bottom: 0
+    border-bottom-width: 0
 
 .BlogPage__article-title
   +weight(bold)
-  margin-bottom: 15px
+  margin-bottom: 10px
   +size(big)
 
   a
     text-decoration: none
     color: $base-body-color
 
+    &:hover
+      text-decoration: underline
+
   @media screen and (min-width: 900px)
     +size(bigger)
 
+@media screen and (min-width: 900px)
+  .BlogPage__article-body
+    flex: 1
+
 .BlogPage__article-image
+  width: 200px
+  margin-left: 80px
+
+  img
+    border: 1px solid $border-color
+    border-radius: 50%
+    width: 100%
+
+  @media screen and (max-width: 899px)
+    display: none
+
+.BlogPage__article-author-image
   width: 40px
   border-radius: 50%
 
 .BlogPage__article-excerpt
   color: $light-body-color
+  margin-bottom: 30px
+
+  a
+    color: $light-body-color
+
+  p
+    margin-bottom: 10px
 
 .BlogPage__article-meta
   +size(small)
-  margin-top: 20px
+  margin-top: 10px
+  margin-bottom: 30px
   color: $light-body-color
 
   a
-    color: $base-body-color
     text-decoration: none
-    +weight(bold)
+    color: $light-body-color
 
     &:hover
       text-decoration: underline
@@ -48,5 +77,12 @@
   .gatsby-image-outer-wrapper
     display: inline-block
     vertical-align: middle
-    margin-right: 10px
+    margin-right: 15px
+
+.BlogPage__previous
+  color: $azure-color
+  +weight(bold)
+  display: block
+  margin: 50px 0
+
 
