@@ -64,7 +64,7 @@ export default class LearnPage extends React.Component {
             <div className={b('section')}>
               <Wrap>
                 <h3 className={b('section-title')}>
-                  Getting started with DatoCMS
+                  The Basics
                 </h3>
 
                 <div className={b('section-items')}>
@@ -106,12 +106,49 @@ export default class LearnPage extends React.Component {
             <div className={b('section')}>
               <Wrap>
                 <h3 className={b('section-title')}>
-                  Build static websites with DatoCMS
+                  Examples
+                </h3>
+
+                <div className={b('section-items')}>
+                  {
+                    this.props.data.demoCategories.edges.map(({ node: cat }) => (
+                      <Guide
+                        key={cat.id}
+                        title={`${cat.name} examples`}
+                      >
+                        <Space bottom={2}>
+                          <p>
+                            {cat.description} (<a href={cat.demoUrl} target="_blank">see it live</a>)
+                          </p>
+                        </Space>
+                        <ul>
+                          {
+                            cat.templates.map((template) => (
+                              <li key={template.code}>
+                                <a target="_blank" href={`https://dashboard.datocms.com/projects/new-from-template/${cat.code}/${template.code}`}>
+                                  <img src={(template.technology.squareLogo || template.technology.logo).url} />
+                                  {template.technology.name}
+                                </a>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </Guide>
+                    ))
+                  }
+                </div>
+              </Wrap>
+            </div>
+
+            <div className={b('section')}>
+              <Wrap>
+                <h3 className={b('section-title')}>
+                  Integrating with static websites
                 </h3>
 
                 <div className={b('section-items')}>
                   <Guide
-                    title="Static websites"
+                    title="Static website generators"
                   >
                     <Space bottom={2}>
                       <p>
@@ -154,47 +191,6 @@ export default class LearnPage extends React.Component {
               </Wrap>
             </div>
 
-            {
-              false &&
-                <div className={b('section')}>
-                  <h3 className={b('section-title')}>
-                    Build apps with DatoCMS
-                  </h3>
-
-                  <div className={b('section-items', { center: true })}>
-                    <Guide
-                      title="Client-side apps"
-                    >
-                      <Space bottom={2}>
-                        <p>
-                          Use our Javascript client to build your app with any frontend technology you want:
-                        </p>
-                      </Space>
-                      <ul>
-                        <li><Link to="/docs/jekyll/">Plain JS</Link></li>
-                        <li><Link to="/docs/gatsby/">React</Link></li>
-                        <li><Link to="/docs/middleman/">Angular</Link></li>
-                        <li><Link to="/docs/hugo/">Vue.js</Link></li>
-                      </ul>
-                    </Guide>
-
-                    <Guide
-                      title="Server-side apps"
-                    >
-                      <Space bottom={2}>
-                        <p>
-                          Stop reinventing the wheel and use DatoCMS to manage your server-side website:
-                        </p>
-                      </Space>
-                      <ul>
-                        <li><Link to="/docs/jekyll/">Ruby/Rails</Link></li>
-                        <li><Link to="/docs/gatsby/">NodeJS/Express</Link></li>
-                        <li><Link to="/docs/gatsby/">PHP</Link></li>
-                      </ul>
-                    </Guide>
-                  </div>
-                </div>
-            }
           </div>
         </div>
       </Space>
@@ -207,6 +203,30 @@ query DocsPageQuery {
   page: datoCmsLearnPage {
     seoMetaTags {
       ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+  demoCategories: allDatoCmsTemplateCategory(sort:{fields:[position]}) {
+    edges {
+      node {
+        id
+        name
+        code
+        description
+        demoUrl
+        templates {
+          name
+          code
+          technology {
+            name
+            logo {
+              url
+            }
+            squareLogo {
+              url
+            }
+          }
+        }
+      }
     }
   }
 }
