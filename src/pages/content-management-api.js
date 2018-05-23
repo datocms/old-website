@@ -7,7 +7,8 @@ import Link from 'gatsby-link'
 import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
-import logo from 'images/logo.svg'
+import logo from 'images/dato_logo_full.svg'
+import Helmet from 'react-helmet'
 
 import { Link as ScrollLink, Element } from 'react-scroll'
 import humps from 'humps'
@@ -789,6 +790,9 @@ ${returnCode}
 
     return (
       <div className={b()}>
+        <Helmet title="DatoCMS">
+          <title>Content Management API Reference - DatoCMS</title>
+        </Helmet>
         <div className={b('menu')}>
           <Link className={b('logo')} to="/">
             <img src={logo} />
