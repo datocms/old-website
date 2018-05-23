@@ -93,69 +93,71 @@ class SlackPage extends React.Component {
     return (
       <div>
         <Space both="8">
-          <div className={b()}>
-            <div className={b('logo')}>
-              <img src={slackLogo} alt="Slack" />
-            </div>
-            <div className={b('title')}>
-              Join DatoCMS on Slack
-            </div>
-            <div className={b('content')}>
-              Become a part of DatoCMS community, try out new product updates
-              before they're widely released, help us test and improve the product!
-            </div>
-            <div className={b('form')}>
-              {
-                success &&
-                  <div className={b('success')}>
-                    <div className={b('success__title')}>
-                      Awesome, welcome on board! 🎉
+          <Wrap>
+            <div className={b()}>
+              <div className={b('logo')}>
+                <img src={slackLogo} alt="Slack" />
+              </div>
+              <div className={b('title')}>
+                Join DatoCMS on Slack
+              </div>
+              <div className={b('content')}>
+                Become a part of DatoCMS community, try out new product updates
+                before they're widely released, help us test and improve the product!
+              </div>
+              <div className={b('form')}>
+                {
+                  success &&
+                    <div className={b('success')}>
+                      <div className={b('success__title')}>
+                        Awesome, welcome on board! 🎉
+                      </div>
+                       Check your email for the invitation!
                     </div>
-                     Check your email for the invitation!
-                  </div>
-              }
-              {
-                error &&
-                  <div className={b('error')}>
-                    {
-                      error === 'already_invited' ?
-                        <span>
-                          You have already been invited to Slack! Check for an email from feedback@slack.com.
-                        </span>
-                        :
-                        <span>
-                          {error}
-                        </span>
-                    }
-                  </div>
-              }
-              {
-                success === null &&
-                  <div>
-                    <form ref={el => this.form = el} onSubmit={this.handleSubmit.bind(this)}>
-                      <div>
-                        <input name="email" type="email" placeholder="you@yourdomain.com" />
-                      </div>
-                      <div>
-                        <button
-                          className="button button--red button--normal-big button--expand"
-                          disabled={submitting}
-                        >
-                          Get my invite
-                        </button>
-                        <div id="g-recaptcha" />
-                      </div>
-                    </form>
-                    {
-                      stats &&
-                        <div className={b('stats')}>
-                          <strong>{stats.active}</strong> users online now of <strong>{stats.total}</strong> registered
+                }
+                {
+                  error &&
+                    <div className={b('error')}>
+                      {
+                        error === 'already_invited' ?
+                          <span>
+                            You have already been invited to Slack! Check for an email from feedback@slack.com.
+                          </span>
+                          :
+                          <span>
+                            {error}
+                          </span>
+                      }
+                    </div>
+                }
+                {
+                  success === null &&
+                    <div>
+                      <form ref={el => this.form = el} onSubmit={this.handleSubmit.bind(this)}>
+                        <div>
+                          <input name="email" type="email" placeholder="you@yourdomain.com" />
                         </div>
-                    }
-                  </div>
-              }
+                        <div>
+                          <button
+                            className="button button--red button--normal-big button--expand"
+                            disabled={submitting}
+                          >
+                            Get my invite
+                          </button>
+                          <div id="g-recaptcha" />
+                        </div>
+                      </form>
+                      {
+                        stats &&
+                          <div className={b('stats')}>
+                            <strong>{stats.active}</strong> users online now of <strong>{stats.total}</strong> registered
+                          </div>
+                      }
+                    </div>
+                }
+              </div>
             </div>
-          </div>
+          </Wrap>
         </Space>
       </div>
     );
