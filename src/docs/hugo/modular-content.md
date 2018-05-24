@@ -27,8 +27,8 @@ module.exports = (dato, root, i18n) => {
       // ...and create a markdown file for each article!
       articlesDir.createPost(
         `${article.slug}.md`, "yaml", {
-          frontmatter: { 
-            title: article.title, 
+          frontmatter: {
+            title: article.title,
             author: article.author.name,
             content: article.content.toMap()
           }
@@ -38,7 +38,6 @@ module.exports = (dato, root, i18n) => {
   });
 };
 ```
-
 
 ```html
 <article>

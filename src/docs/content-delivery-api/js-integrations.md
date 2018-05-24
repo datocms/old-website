@@ -1,5 +1,5 @@
 ---
-position: 7
+position: 100
 title: JS integration examples
 ---
 
