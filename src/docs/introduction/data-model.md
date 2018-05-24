@@ -1,6 +1,6 @@
 ---
 position: 2
-title: Define the schema
+title: Models and fields
 ---
 
 DatoCMS can be seen as a client-friendly interface over a database, so the first step is to build the actual schema upon which users will generate the actual website content.
