@@ -96,6 +96,140 @@ module.exports = {
         trackingId: `UA-22858312-5`,
         anonymize: true,
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            query: `
+              {
+                entries: allDatoCmsChangelogEntry(sort: { fields: [publicationDate], order: DESC }, limit: 10) {
+                  edges {
+                    node {
+                      title
+                      slug
+                      content: contentNode {
+                        markdown: childMarkdownRemark {
+                          excerpt(pruneLength: 100000)
+                          html
+                        }
+                      }
+                      publicationDate
+                      categories {
+                        name
+                        color { hex }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            title: 'DatoCMS Product Changelog',
+            description: 'Here we document our progress and announce product updates',
+            setup: ({ title, description }) => {
+              return { title, description };
+            },
+            serialize: ({ query: { site, entries } }) => {
+              return entries.edges.map(({ node: entry }) => {
+                return {
+                  title: entry.title,
+                  date: new Date(entry.publicationDate),
+                  description: entry.content.markdown.excerpt,
+                  url: `https://www.datocms.com/changelog/${entry.slug}/`,
+                  guid: `https://www.datocms.com/changelog/${entry.slug}/`,
+                  custom_elements: [{ "content:encoded": entry.content.markdown.html }],
+                };
+              });
+            },
+            output: "/product-changelog.xml",
+          },
+          {
+            query: `
+              {
+                articles: allDatoCmsBlogPost(sort: { fields: [publicationDate], order: DESC }, limit: 10) {
+                  edges {
+                    node {
+                      slug
+                      title
+                      coverImage {
+                        url
+                      }
+                      publicationDate
+                      author {
+                        name
+                        avatar {
+                          url
+                        }
+                      }
+                      excerpt: excerptNode {
+                        markdown: childMarkdownRemark {
+                          excerpt(pruneLength: 100000)
+                        }
+                      }
+                      content {
+                        ... on DatoCmsText {
+                          id
+                          model { apiKey }
+                          text: textNode {
+                            markdown: childMarkdownRemark {
+                              html
+                            }
+                          }
+                        }
+                        ... on DatoCmsImage {
+                          id
+                          model { apiKey }
+                          image {
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            title: 'DatoCMS Blog',
+            description: 'Where we post product updates and publish articles on topics such as digital publishing, content strategy, and software development.',
+            setup: ({ title, description }) => {
+              return { title, description };
+            },
+            serialize: ({ query: { site, articles } }) => {
+              return articles.edges.map(({ node: article }) => {
+                return {
+                  title: article.title,
+                  date: new Date(article.publicationDate),
+                  description: article.excerpt.markdown.excerpt,
+                  url: `https://www.datocms.com/blog/${article.slug}/`,
+                  guid: `https://www.datocms.com/blog/${article.slug}/`,
+                  language: 'en',
+                  custom_elements: [
+                    {
+                      "content:encoded": article.content.map((block) => (
+                        block.model.apiKey === 'text' ?
+                          block.text.markdown.html
+                          :
+                          `<img src="${block.image.url}?w=900" />`
+                      )).join("\n")
+                    }
+                  ],
+                };
+              });
+            },
+            output: "/blog.xml",
+          }
+        ],
+      },
+    },
   ],
 };

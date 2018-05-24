@@ -107,6 +107,14 @@ const changelog = ({ graphql, boundActionCreators: { createPage } }) => {
       pageLength: 10,
       pathPrefix: 'changelog'
     });
+
+    result.data.articles.edges.forEach(({ node: entry }) => {
+      createPage({
+        path: `/changelog/${entry.slug}/`,
+        component: p.resolve(`./src/templates/ChangelogEntry/index.js`),
+        context: { slug: entry.slug },
+      })
+    })
   })
 }
 
@@ -329,7 +337,6 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === 'build-javascript') {
     config.merge((current) => {
       current.output.jsonpFunction = 'webpackJsonpDato';
-      console.log(current);
       return current;
     });
   }

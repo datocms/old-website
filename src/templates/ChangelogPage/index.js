@@ -31,9 +31,9 @@ export default class ChangelogPage extends React.Component {
                     {article.publicationDate}
                   </div>
                   <div className={b('article-body')}>
-                    <div className={b('article-title')}>
+                    <Link to={`/changelog/${article.slug}/`} className={b('article-title')}>
                       {article.title}
-                    </div>
+                    </Link>
                     <div className={b('article-categories')}>
                       {
                         article.categories.map(cat => (
