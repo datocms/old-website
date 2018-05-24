@@ -204,3 +204,38 @@ blog_post.seo.to_hash       # => {
                             #   }
                             # }
 ```
+
+---
+
+### Tree-like collections
+
+If you have [tree-like collections](/docs/introduction/trees/) you can use
+the `.children` and `.parent` attributes to find the top-level objects of the
+collection and then navigate in depth:
+
+```ruby
+def traverse(records, depth = 0, &block)
+  records.each do |record|
+    block.call(record, depth)
+    traverse(record.children, depth + 1, &block);
+  end
+end
+
+root_categories = dato.categories.select do |category|
+  !category.parent
+end
+
+traverse(root_categories) do |category, depth|
+  puts "  " * depth  + "* #{category.name}"
+end
+```
+
+This will output something similar to this:
+
+```
+* Tote Panniers
+  * Handlebar bag
+  * Backpacks and Rucksacks
+* Double Panniers
+  * Satchel
+```

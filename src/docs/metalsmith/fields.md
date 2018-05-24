@@ -210,3 +210,39 @@ blogPost.seo.toMap()       // => {
                            //   }
                            // }
 ```
+
+---
+
+### Tree-like collections
+
+If you have [tree-like collections](/docs/introduction/trees/) you can use
+the `.children` and `.parent` attributes to find the top-level objects of the
+collection and then navigate in depth:
+
+```javascript
+module.exports = (dato, root, i18n) => {
+  function traverse(records, cb, depth = 0) {
+    records.forEach((record) => {
+      cb(record, depth);
+      traverse(record.children, cb, depth + 1);
+    });
+  }
+
+  traverse(
+    dato.categories.filter(category => !category.parent),
+    (category, depth) => {
+      console.log(`${'  '.repeat(depth)} * ${category.name}`);
+    }
+  );
+};
+```
+
+This will output something similar to this:
+
+```
+* Tote Panniers
+  * Handlebar bag
+  * Backpacks and Rucksacks
+* Double Panniers
+  * Satchel
+```
