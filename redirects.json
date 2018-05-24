@@ -1,6 +1,6 @@
 {
   "/how-it-works/": "/docs/",
-  "/legal/privacy/": "/legal/privacy-policy/",
+  "/legal/privacy/": "https://www.iubenda.com/privacy-policy/64648824/full-legal",
   "/why-static/": "/",
   "/gallery/": "/use-cases/",
   "/api/*": "/content-management-api/:splat",

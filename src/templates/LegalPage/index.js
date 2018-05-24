@@ -35,11 +35,6 @@ export default class LegalPage extends React.Component {
                     Terms & Conditions
                   </PageLink>
                 </li>
-                <li className={b('menu-page')}>
-                  <PageLink to="/legal/privacy-policy/">
-                    Privacy Policy
-                  </PageLink>
-                </li>
               </ul>
             </div>
 

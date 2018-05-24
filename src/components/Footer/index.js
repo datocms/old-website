@@ -89,9 +89,8 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="/legal/terms/">
           Terms &amp; Conditions
         </Link>
-        <Link className={b('group-link')} to="/legal/privacy-policy/">
-          Privacy Policy
-        </Link>
+        <a href="https://www.iubenda.com/privacy-policy/64648824/full-legal" className={b('group-link')} target="_blank" title="Privacy Policy">Privacy Policy</a>
+        <a href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy" className={b('group-link')} target="_blank" title="Cookie Policy">Cookie Policy</a>
       </Group>
     </div>
     <div className={b('us')}>
