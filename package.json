@@ -36,6 +36,7 @@
     "json-schema-ref-parser": "4.1.0",
     "pluralize": "7.0.0",
     "react-autosuggest": "9.3.3",
+    "react-cookie-consent": "^1.0.7",
     "react-helmet": "^5.2.0",
     "react-masonry-component": "6.0.2",
     "react-reveal": "0.7.3",
