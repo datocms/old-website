@@ -42,23 +42,21 @@ class TemplateWrapper extends React.Component {
           <meta name="google-site-verification" content="wfOsq57h3qCQUTbHcX-4qEEY07vgi4KgH9rdT1ywwwc" />
         </Helmet>
         <HelmetDatoCms favicon={data.site.faviconMetaTags} />
-        <div className="banner">
-          <CookieConsent
-            cookieName="cookies-accepted"
-            location="top"
-            onAccept={() => {}}
+        <CookieConsent
+          cookieName="cookies-accepted"
+          location="bottom"
+          onAccept={() => {}}
+          disableStyles
+        >
+          We use cookies to help our site work and to understand how it is used.
+          By continuing to browse the site you're agreeing to our&nbsp;
+          <a
+            href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy"
+            target="_blank"
           >
-            We use cookies to help our site work, to understand how it is used.
-            By continuing to browse the site you're agreeing to our use of cookies.
-            &nbsp;
-            <a
-              href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy"
-              target="_blank"
-            >
-              Cookie Policy
-            </a>
-          </CookieConsent>
-        </div>
+            use of cookies
+          </a>.
+        </CookieConsent>
         {
           location.pathname !== '/content-management-api/' &&
             <div>

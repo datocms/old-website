@@ -38,3 +38,36 @@ body.no-scroll
 
   @media screen and (max-width: 999px)
     display: none
+
+.cookieConsent
+  position: fixed
+  bottom: 0
+  left: 0
+  z-index: 999999999
+  width: 350px
+  max-width: 100%
+  background-color: #333
+  box-sizing: border-box
+  border-radius: 4px
+  color: white
+  font-size: 13px
+  padding: 20px
+  margin-left: 20px
+  margin-bottom: 20px
+
+  a
+    color: white
+
+  button
+    display: block
+    margin-top: 15px
+    background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
+    padding: 7px 10px
+    text-transform: uppercase
+    color: white
+    +size(smaller)
+    +weight(bold)
+    border-radius: 3px
+    cursor: pointer
+    width: 100%
+    box-sizing: border-box
