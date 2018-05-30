@@ -193,6 +193,15 @@ module.exports = {
                             url
                           }
                         }
+                        ... on DatoCmsVideo {
+                          id
+                          model { apiKey }
+                          video {
+                            url
+                            title
+                            providerUid
+                          }
+                        }
                       }
                     }
                   }
@@ -216,9 +225,9 @@ module.exports = {
                   custom_elements: [
                     {
                       "content:encoded": article.content.map((block) => (
-                        block.model.apiKey === 'text' ?
-                          block.text.markdown.html
-                          :
+                        block.model.apiKey === 'text' &&
+                          block.text.markdown.html,
+                        block.model.apiKey === 'image' &&
                           `<img src="${block.image.url}?w=900" />`
                       )).join("\n")
                     }
