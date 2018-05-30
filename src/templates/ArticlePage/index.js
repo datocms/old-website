@@ -30,14 +30,31 @@ export default class ArticlePage extends React.Component {
           <div className={b('content')}>
             {
               article.content.map((block) => (
-                block.model.apiKey === 'text' ?
-                  <div className={b('content-text')} key={block.id}>
-                    <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
-                  </div>
-                  :
-                  <div className={b('content-image')} key={block.id}>
-                    <Img sizes={block.image.sizes} />
-                  </div>
+                <div key={ block.id }>
+                  {
+                    block.model.apiKey === 'text' &&
+                      <div className={b('content-text')}>
+                        <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
+                      </div>
+                  }
+                  {
+                    block.model.apiKey === 'image' &&
+                      <div className={b('content-image')}>
+                        <Img sizes={block.image.sizes} />
+                      </div>
+                  }
+                  {
+                    block.model.apiKey === 'video' &&
+                      <div className={b('content-video')}>
+                        <div className={b('content-video__wrapper')}>
+                          <iframe
+                            frameborder="0"
+                            src={`https://www.youtube.com/embed/${ block.video.providerUid}`}
+                            allowfullscreen />
+                        </div>
+                      </div>
+                  }
+                </div>
               ))
             }
           </div>
@@ -80,6 +97,15 @@ export const query = graphql`
             sizes(maxWidth: 900) {
               ...GatsbyDatoCmsSizes
             }
+          }
+        }
+        ... on DatoCmsVideo {
+          id
+          model { apiKey }
+          video {
+            url
+            title
+            providerUid
           }
         }
       }
