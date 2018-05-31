@@ -52,3 +52,26 @@ If you specify multiple conditions, they will be combined in a logical AND expre
   }
 }
 ```
+
+You can also combine AND and OR logical expressions. For example, the folling 
+query will return all the point of interest located in New York that either have
+a rating greater than 4 or are a restourant:
+
+```graphql
+{
+  allPois(
+    filter: {
+      address: { matches: { pattern: "new york" } },
+      OR: [
+        { rating: { gt: 4 } },
+        { name: { matches: { pattern: "restaurant" } } },
+      ]
+    }
+  ) {
+    address
+    name
+    when
+    rating
+  }
+}
+```
