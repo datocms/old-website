@@ -1,5 +1,8 @@
 require('dotenv').config()
 const path = require('path')
+const fetch = require('node-fetch');
+const buildCmaResources = require('./src/utils/buildCmaResources');
+const { parse, stringify } = require('flatted/cjs');
 
 module.exports = {
   siteMetadata: {
@@ -238,6 +241,16 @@ module.exports = {
             output: "/blog.xml",
           }
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-json`,
+      options: {
+        fetch: () => {
+          return buildCmaResources(fetch)
+            .then(resources => stringify(resources));
+        },
+        type: 'CmaResources'
       },
     },
   ],

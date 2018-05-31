@@ -1,22 +1,21 @@
 import 'whatwg-fetch';
 import React from 'react'
-import parser from 'json-schema-ref-parser'
-import sortBy from 'sort-by'
 import Prism from 'prismjs'
 import Link from 'gatsby-link'
 import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
 import logo from 'images/dato_logo_full.svg'
-import Helmet from 'react-helmet'
-
+import Helmet from 'react-helmet' 
 import { Link as ScrollLink, Element } from 'react-scroll'
 import humps from 'humps'
 import pluralize from 'pluralize'
+import { parse } from 'flatted/cjs';
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 import schemaExampleFor from 'utils/schemaExampleFor'
+import buildCmaResources from 'utils/buildCmaResources'
 
 import apiTokenImage from '../docs/images/api-token.png';
 
@@ -28,14 +27,6 @@ const methods = {
   instances: 'all',
   self: 'find'
 };
-
-const defaultLinksOrder = [
-  'instances',
-  'self',
-  'create',
-  'update',
-  'destroy',
-];
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
@@ -70,7 +61,7 @@ class ApiPage extends React.Component {
       const chunks = props.location.hash.substr(1).split("-");
 
       this.state = {
-        resources: null,
+        resources: parse(props.data.resources.body),
         activeLink: {
           resourceId: chunks[0],
           linkIndex: parseInt(chunks[1])
@@ -78,37 +69,16 @@ class ApiPage extends React.Component {
       };
     } else {
       this.state = {
-        resources: null,
+        resources: parse(props.data.resources.body),
         activeLink: null
       };
     }
   }
 
   componentDidMount() {
-    fetch('https://site-api.datocms.com/docs/site-api-hyperschema.json')
-      .then(r => r.json())
-      .then(schema => parser.dereference(schema))
-      .then(schema => {
-        const resources = Object.entries(schema.properties)
-          .map(([resource, resourceSchema]) => ({
-            id: resource,
-            ...resourceSchema,
-            attributes: resourceSchema.definitions.attributes ?
-              resourceSchema.definitions.attributes.properties :
-              {},
-            links: resourceSchema.links.filter(l => !l.private)
-              .map(link => ({
-                ...link,
-                position: (defaultLinksOrder.includes(link.rel) ? defaultLinksOrder.indexOf(link.rel) : 99),
-              }))
-              .sort(sortBy('position')),
-            position: resourceSchema.position || 99
-          }))
-          .filter(resource => resource.links.length > 0)
-          .sort(sortBy('position'));
-
-        this.setState({ resources });
-      })
+    buildCmaResources(fetch).then(resources => {
+      this.setState({ resources });
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -811,3 +781,11 @@ ${returnCode}
 }
 
 export default ApiPage
+
+export const query = graphql`
+query ApiPageQuery {
+  resources: cmaResources {
+    body
+  }
+}
+`

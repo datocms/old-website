@@ -53,9 +53,9 @@ If you specify multiple conditions, they will be combined in a logical AND expre
 }
 ```
 
-You can also combine AND and OR logical expressions. For example, the folling 
+You can also combine AND and OR logical expressions. For example, the following
 query will return all the point of interest located in New York that either have
-a rating greater than 4 or are a restourant:
+a rating greater than 4 or are a restaurant:
 
 ```graphql
 {
@@ -68,9 +68,8 @@ a rating greater than 4 or are a restourant:
       ]
     }
   ) {
-    address
     name
-    when
+    address
     rating
   }
 }
