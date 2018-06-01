@@ -60,7 +60,7 @@ const exampleForField = (intro, type, field) => {
   }
 
   return `query {
-  allProducts(filter: { ${type.exampleFieldName}: { ${filter} } }) {
+  allProducts(filter: {${type.exampleFieldName}: {${filter}}}) {
     title
   }
 }`;
