@@ -36,9 +36,9 @@ const exampleForType = (intro, typeRef) => {
   } else if (type.name === 'Date') {
     return '"2018-02-13"';
   } else if (type.name === 'StringMatchesFilter') {
-    return '{pattern: "bi(cycl|k)e", caseSensitive: false}';
+    return '{ pattern: "bi(cycl|k)e", caseSensitive: false }';
   } else if (type.name === 'LatLonNearFilter') {
-    return '{latitude: 40.73, longitude: -73.93, radius: 10}';
+    return '{ latitude: 40.73, longitude: -73.93, radius: 10 }';
   } else {
     return type.name;
   }
@@ -62,7 +62,7 @@ const exampleForField = (intro, type, field) => {
   }
 
   return `query {
-  allProducts(filter: {${type.exampleFieldName}: {${filter}}}) {
+  allProducts(filter: { ${type.exampleFieldName}: { ${filter} } }) {
     title
   }
 }`;
