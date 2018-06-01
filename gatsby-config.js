@@ -275,14 +275,6 @@ module.exports = {
                        types {
                          ...FullType
                        }
-                       directives {
-                         name
-                         description
-                         locations
-                         args {
-                           ...InputValue
-                         }
-                       }
                      }
                    }
 
@@ -290,32 +282,9 @@ module.exports = {
                      kind
                      name
                      description
-                     fields(includeDeprecated: true) {
-                       name
-                       description
-                       args {
-                         ...InputValue
-                       }
-                       type {
-                         ...TypeRef
-                       }
-                       isDeprecated
-                       deprecationReason
-                     }
+                     docHints
                      inputFields {
                        ...InputValue
-                     }
-                     interfaces {
-                       ...TypeRef
-                     }
-                     enumValues(includeDeprecated: true) {
-                       name
-                       description
-                       isDeprecated
-                       deprecationReason
-                     }
-                     possibleTypes {
-                       ...TypeRef
                      }
                    }
 

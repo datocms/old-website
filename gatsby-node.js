@@ -141,6 +141,7 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
               html
               path: fileAbsolutePath
               frontmatter {
+                template
                 copyFrom
               }
             }
@@ -153,14 +154,18 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
     const pages = result.data.files.edges.map(edge => edge.node);
 
     pages.forEach((page) => {
-      const { path, frontmatter: { copyFrom, category } } = page
+      const { path, frontmatter: { copyFrom, template } } = page
       const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
       const html = findHtml(page, pages);
       const repoPath = path.replace(__dirname, 'https://github.com/datocms/website/blob/master')
 
       createPage({
         path: url,
-        component: p.resolve(`./src/templates/DocPage/index.js`),
+        component: (
+          template ?
+            p.resolve(`./src/templates/${template}/index.js`) :
+            p.resolve(`./src/templates/DocPage/index.js`)
+        ),
         context: { sourcePath: path, html, repoPath },
       })
     })
