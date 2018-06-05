@@ -682,7 +682,7 @@ ${returnCode}
                 In this document you will find examples of usage with both clients for each endpoint the API exposes.
               </p>
               <p>
-                Both clients are built upn the API <Link to="/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
+                Both clients are built upon the API <Link to="/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
               </p>
             </div>
           </div>
