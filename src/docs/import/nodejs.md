@@ -158,6 +158,7 @@ client.items.create({
     itemType: '7149',
     title: 'My first article!',
     content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod.',
+    category: category.id,
   });
 })
 .then((record) => console.log(record));
