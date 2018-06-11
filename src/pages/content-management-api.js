@@ -94,7 +94,7 @@ class ApiPage extends React.Component {
     }
   }
 
-  rubyCode(resource, link) {
+  rubyCode(resource, link, allPages = false) {
     let params = [];
     let precode = [];
 
@@ -111,7 +111,7 @@ class ApiPage extends React.Component {
       params.push(`${placeholder}_id`);
     });
 
-    const fix = string => string.replace(/^{/g, '').replace(/}$/g, '').replace(/": /g, '" => ')
+    const fix = string => string.replace(/": /g, '" => ')
 
     const deserialize = (data, withId = false) => {
       const id = withId ? { id: data.id } : {};
@@ -131,10 +131,13 @@ class ApiPage extends React.Component {
     }
 
     if (link.schema) {
-      const example = schemaExampleFor(link.schema);
+      const example = schemaExampleFor(link.schema, !allPages);
 
       if (link.method === 'GET') {
         params.push(fix(JSON.stringify(example, null, 2)));
+        if (allPages && link.targetSchema && link.targetSchema.properties.meta) {
+          params.push(fix(JSON.stringify({ all_pages: true }, null, 2)));
+        }
       } else if (example.data) {
         params.push(fix(JSON.stringify(deserialize(example.data), null, 2)));
       }
@@ -147,7 +150,11 @@ class ApiPage extends React.Component {
 
     let call = `client.${namespace}.${methods[link.rel] || link.rel}`;
     if (params.length > 0) {
-      call += `(${params.join(', ')})`;
+      if (allPages) {
+        call += `(\n${params.join(',\n').replace(/^/gm, '  ')}\n)`;
+      } else {
+        call += `(${params.join(', ')})`;
+      }
     }
 
     let returnCode = '';
@@ -160,30 +167,34 @@ class ApiPage extends React.Component {
         const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    # ').replace(/": /g, '" => ').replace(/null/g, 'nil');
 
         returnCode = `${call}.each do |${variable}|
-  puts ${variable}.inspect
-${result}
+  puts ${variable}.inspect${!allPages ? "\n" + result : ''}
 end`;
       } else {
         const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '# ').replace(/": /g, '" => ').replace(/null/g, 'nil');
         returnCode = `${variable} = ${call}
 
 puts ${variable}.inspect
-${result}
+${!allPages ? result : ''}
 `;
       }
     }
 
-    const code = `
+    if (!allPages) {
+      const code = `
 require "dato"
 client = Dato::Site::Client.new("YOUR-API-KEY")
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
 ${returnCode}
-`
+${link.targetSchema && link.targetSchema.properties.meta && '\n\n# if you want to fetch all the pages with just one call:\n\n' + this.rubyCode(resource, link, true)}`
+      return code;
+    } else {
+      return returnCode;
+    }
 
     return code;
   }
 
-  jsCode(resource, link) {
+  jsCode(resource, link, allPages = false) {
     let params = [];
     let precode = [];
 
@@ -217,10 +228,13 @@ ${returnCode}
     }
 
     if (link.schema) {
-      const example = schemaExampleFor(link.schema);
+      const example = schemaExampleFor(link.schema, !allPages);
 
       if (link.method === 'GET') {
         params.push(JSON.stringify(example, null, 2));
+        if (allPages && link.targetSchema && link.targetSchema.properties.meta) {
+          params.push(JSON.stringify({ allPages: true }, null, 2));
+        }
       } else if (example.data) {
         params.push(JSON.stringify(deserialize(example.data), null, 2));
       }
@@ -239,8 +253,7 @@ ${returnCode}
 
         returnCode = `.then((${multipleVariable}) => {
   ${multipleVariable}.forEach((${singleVariable}) => {
-    console.log(${singleVariable});
-${result}
+    console.log(${singleVariable});${!allPages ? "\n" + result : ''}
   });
 })`;
       } else {
@@ -248,8 +261,7 @@ ${result}
         const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '  // ');;
 
         returnCode = `.then((${variable}) => {
-  console.log(${variable});
-${result}
+  console.log(${variable});${!allPages ? "\n" + result : ''}
 })`;
       }
     } else {
@@ -264,7 +276,8 @@ ${result}
         humps.camelize(pluralize(resource.id)) :
         humps.camelize(resource.id);
 
-    const code = `
+    if (!allPages) {
+      const code = `
 const SiteClient = require('datocms-client').SiteClient;
 const client = new SiteClient("YOUR-API-KEY");
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
@@ -272,9 +285,15 @@ client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
 ${returnCode}
 .catch((error) => {
   console.log(error);
-})`;
-
-    return code;
+});
+${link.targetSchema && link.targetSchema.properties.meta && '\n\n// if you want to fetch all the pages with just one call:\n' + this.jsCode(resource, link, true)}`;
+      return code;
+    } else {
+      const code = `
+client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
+${returnCode}`;
+      return code;
+    }
   }
 
   renderExample() {

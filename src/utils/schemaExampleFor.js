@@ -1,4 +1,4 @@
-export default function schemaExampleFor(schema) {
+export default function schemaExampleFor(schema, pagination = true) {
   if (!schema) {
     return null;
   }
@@ -25,6 +25,9 @@ export default function schemaExampleFor(schema) {
     }
 
     return Object.keys(schema.properties).reduce((acc, property) => {
+      if (!pagination && property.match(/^page/)) {
+        return acc;
+      }
       return Object.assign({}, acc, { [property]: schemaExampleFor(schema.properties[property]) });
     }, {});
   } else if (type === 'array') {
