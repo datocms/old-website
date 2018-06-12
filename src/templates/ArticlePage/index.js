@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import ResponsiveEmbed from 'react-responsive-embed'
 
 import bem from 'utils/bem'
 import './style.sass'
@@ -47,10 +48,20 @@ export default class ArticlePage extends React.Component {
                     block.model.apiKey === 'video' &&
                       <div className={b('content-video')}>
                         <div className={b('content-video__wrapper')}>
-                          <iframe
-                            frameborder="0"
-                            src={`https://www.youtube.com/embed/${ block.video.providerUid}`}
-                            allowfullscreen />
+                          {
+                            block.video.provider === 'youtube' ?
+                              <ResponsiveEmbed
+                                src={`//www.youtube.com/embed/${block.video.providerUid}`}
+                                ratio={`${block.video.width}:${block.video.height}`}
+                                allowFullScreen
+                              />
+                              :
+                              <ResponsiveEmbed
+                                src={`//player.vimeo.com/video/${block.video.providerUid}?title=0&byline=0&portrait=0`}
+                                ratio={`${block.video.width}:${block.video.height}`}
+                                allowFullScreen
+                              />
+                          }
                         </div>
                       </div>
                   }
@@ -105,6 +116,9 @@ export const query = graphql`
           video {
             url
             title
+            provider
+            width
+            height
             providerUid
           }
         }
