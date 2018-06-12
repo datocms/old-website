@@ -42,6 +42,12 @@ export default class ArticlePage extends React.Component {
                     block.model.apiKey === 'image' &&
                       <div className={b('content-image')}>
                         <Img sizes={block.image.sizes} />
+                        {
+                          block.image.title &&
+                            <div className={b('content-image__label')}>
+                              {block.image.title}
+                            </div>
+                        }
                       </div>
                   }
                   {
@@ -105,6 +111,7 @@ export const query = graphql`
           model { apiKey }
           image {
             url
+            title
             sizes(maxWidth: 900) {
               ...GatsbyDatoCmsSizes
             }
