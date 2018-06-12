@@ -7,7 +7,7 @@ exports.sourceNodes = async (
   const { createNode } = boundActionCreators;
 
   fetch().then((body) => {
-    createNode({
+    const node = {
       id: type,
       parent: null,
       children: [],
@@ -16,6 +16,8 @@ exports.sourceNodes = async (
         contentDigest: crypto.createHash('md5').update(body).digest('hex'),
       },
       body
-    });
+    };
+
+    createNode(node);
   });
 }
