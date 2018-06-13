@@ -62,7 +62,7 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="/changelog/">
           Product changelog
         </Link>
-        <Link className={b('group-link')} to="http://status.datocms.com/">
+        <Link className={b('group-link')} to="https://status.datocms.com/">
           System status
         </Link>
       </Group>
