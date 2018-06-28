@@ -31,11 +31,13 @@ export default class LegalPage extends React.Component {
             <div className={b('menu')}>
               <ul className={b('menu-pages')}>
                 <li className={b('menu-page')}>
-                  <PageLink to="/legal/gdpr/">
-                    GDPR Compliance
-                  </PageLink>
                   <PageLink to="/legal/terms/">
                     Terms & Conditions
+                  </PageLink>
+                </li>
+                <li className={b('menu-page')}>
+                  <PageLink to="/legal/gdpr/">
+                    GDPR Compliance
                   </PageLink>
                 </li>
               </ul>
