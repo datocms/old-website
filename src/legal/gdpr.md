@@ -2,7 +2,7 @@
 title: GDPR Compliance
 ---
 
-DatoCMS takes great care when handling user's personally identifiable data.
+DatoCMS takes great care when handling users' personally identifiable data.
 
 Details of this are given in this document,
 in our [Terms of Service][datocms-terms-of-service]
@@ -87,7 +87,9 @@ account, supplying them with:
 * first name,
 * last name.
 
-##  MixPanel
+[Mailchimp GDPR Compliance announcement][https://mailchimp.com/help/about-the-general-data-protection-regulation/]
+
+## Mixpanel
 
 We pass some information to Mixpanel to analyse user behavior.
 
@@ -96,6 +98,8 @@ The information is:
 * email,
 * first name,
 * last name.
+
+[Mixpanel GDPR Compliance][https://help.mixpanel.com/hc/en-us/articles/360000345423-GDPR-Compliance]
 
 # Legal Basis
 
