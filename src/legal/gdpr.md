@@ -1,4 +1,6 @@
-# GDPR Compliance
+---
+title: GDPR Compliance
+---
 
 DatoCMS takes great care when handling user's personally identifiable data.
 
