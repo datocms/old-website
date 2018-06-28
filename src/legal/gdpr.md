@@ -54,16 +54,46 @@ The information is:
 * VAT number,
 * billing address.
 
+[Chargebee GDPR Compliance][https://www.chargebee.com/security/gdpr/]
+
+## Chartmogul
+
+We analyze system statistics with Chartmogul, to do so we integrate with
+Chargebee which passes on the information it receives.
+
+The information passed on to Chartmogul is:
+
+* email,
+* first name,
+* last name,
+* company,
+* VAT number,
+* billing address.
+
+[Chartmogul GDPR Compliance][https://blog.chartmogul.com/gdpr/]
+
+## Front - Help System
+
+When you open a ticket, we do not share any info with Front.
+
 ## Mailchimp
 
 If you opt to sign up for our newsletter, we register you on our Mailchimp
 account, supplying them with:
 
-* email
+* email,
+* first name,
+* last name.
 
-## Front - Help System
+##  MixPanel
 
-When you open a ticket, we do not share any info with Front.
+We pass some information to Mixpanel to analyse user behavior.
+
+The information is:
+
+* email,
+* first name,
+* last name.
 
 # Legal Basis
 
