@@ -54,11 +54,13 @@ Go to [Imgix](https://www.imgix.com/) and create a new account. Create a new sou
 
 ![foo](../images/custom-uploads/1.png)
 
-Add your custom domain to the source, then configure your custom domain so its CNAME record points to `your-source.imgix.net`:
+### Adding a custom domain
+
+If you're not satisfied with the default Imgix subdomain (ie. https://your-source.imgix.net) you can add a custom domain to the Imgix source, then configure your domain DNS settings so that its CNAME record points to `your-source.imgix.net`:
 
 ![foo](../images/custom-uploads/2.png)
 
-### Enable HTTPS for the Imgix source
+#### Enable HTTPS for the Imgix source
 
 DatoCMS requires HTTPS for custom domains. There are two different ways you can enable it. The first one is to request an HTTP certificate to Imgix. From the [Imgix documentation](https://docs.imgix.com/setup/creating-sources/advanced-settings):
 
@@ -72,6 +74,6 @@ Once everything is ready, send an email to [support@datocms.com](mailto:support@
 
 * Your S3 bucket name (`my-bucket-name`) and region (ie. `eu-west-1`)
 * Your IAM key ID and secret
-* The Imgix custom domain (ie. `assets.superduper.com`)
+* The Imgix domain (ie. `your-source.imgix.net` or `assets.superduper.com`)
 
 Together we'll schedule a maintenance window where we'll transfer every assets already uploaded to your Project to the new S3 bucket, and enable the custom domain.
