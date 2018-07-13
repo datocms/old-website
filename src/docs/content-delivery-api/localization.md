@@ -7,7 +7,7 @@ If you have [localized fields](/docs/introduction/localization/) you can add a `
 
 ```graphql
 query {
-  allBlogPosts(locale: 'it') {
+  allBlogPosts(locale: it) {
     title
   }
 }
@@ -17,9 +17,9 @@ You can also select a locale on a per-field basis:
 
 ```graphql
 query {
-  allBlogPosts(locale: 'it') {
+  allBlogPosts(locale: it) {
     title
-    englishTitle: title(locale: 'en')
+    englishTitle: title(locale: en)
   }
 }
 ```
