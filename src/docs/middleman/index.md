@@ -3,7 +3,7 @@ position: 1
 title: Integrating with Middleman
 ---
 
-DatoCMS offers Middleman plugin that makes it extremely convenient to use content stored in your administrative area inside your website views.
+DatoCMS offers a Middleman plugin that makes it extremely convenient to use content stored in your administrative area inside your website views.
 
 **Disclaimer** This guide assumes you already know what Middleman is and how it works. If you need some help getting started with Middleman, you can read the official [Middleman documentation](https://middlemanapp.com/basics/install/).
 
