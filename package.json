@@ -29,7 +29,7 @@
     "gatsby-remark-images": "1.5.37",
     "gatsby-remark-prismjs": "1.2.12",
     "gatsby-source-apiserver": "1.2.6",
-    "gatsby-source-datocms": "*",
+    "gatsby-source-datocms": "1.1.14",
     "gatsby-source-filesystem": "1.5.11",
     "gatsby-transformer-remark": "1.7.28",
     "group-by": "0.0.1",
