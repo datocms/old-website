@@ -6,7 +6,7 @@ import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
 import logo from 'images/dato_logo_full.svg'
-import Helmet from 'react-helmet' 
+import Helmet from 'react-helmet'
 import { Link as ScrollLink, Element } from 'react-scroll'
 import humps from 'humps'
 import pluralize from 'pluralize'
@@ -111,7 +111,7 @@ class ApiPage extends React.Component {
       params.push(`${placeholder}_id`);
     });
 
-    const fix = string => string.replace(/": /g, '" => ')
+    const fix = string => string.replace(/": /g, '" => ').replace(/null/g, 'nil')
 
     const deserialize = (data, withId = false) => {
       const id = withId ? { id: data.id } : {};
@@ -185,7 +185,11 @@ require "dato"
 client = Dato::Site::Client.new("YOUR-API-KEY")
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
 ${returnCode}
-${link.targetSchema && link.targetSchema.properties.meta && '\n\n# if you want to fetch all the pages with just one call:\n\n' + this.rubyCode(resource, link, true)}`
+${
+  link.targetSchema && link.targetSchema.properties.meta ?
+    '\n\n# if you want to fetch all the pages with just one call:\n\n' + this.rubyCode(resource, link, true) :
+    ''
+}`
       return code;
     } else {
       return returnCode;
@@ -286,7 +290,11 @@ ${returnCode}
 .catch((error) => {
   console.log(error);
 });
-${link.targetSchema && link.targetSchema.properties.meta && '\n\n// if you want to fetch all the pages with just one call:\n' + this.jsCode(resource, link, true)}`;
+${
+  link.targetSchema && link.targetSchema.properties.meta ?
+    '\n\n// if you want to fetch all the pages with just one call:\n' + this.jsCode(resource, link, true) :
+    ''
+}`;
       return code;
     } else {
       const code = `

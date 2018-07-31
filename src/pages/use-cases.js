@@ -195,9 +195,7 @@ query UseCasesQuery {
         image {
           width
           height
-          resize(width: 600, imgixParams: { fm: "jpg", q: 90 }) {
-            src
-          }
+          url
         }
       }
     }
