@@ -3,6 +3,7 @@ const path = require('path')
 const fetch = require('node-fetch');
 const buildCmaResources = require('./src/utils/buildCmaResources');
 const { parse, stringify } = require('flatted/cjs');
+const camelcaseKeys = require('camelcase-keys');
 
 module.exports = {
   siteMetadata: {
@@ -204,8 +205,7 @@ module.exports = {
                             title
                             providerUid
                           }
-                        }
-                      }
+                        } }
                     }
                   }
                 }
@@ -253,6 +253,24 @@ module.exports = {
         type: 'CmaResources'
       },
     },
+
+    {
+      resolve: `gatsby-source-json`,
+      options: {
+        fetch: () => {
+          return fetch(
+            'https://account-api.datocms.com/plans',
+            {
+              headers: { 'Accept': 'application/json' },
+            }
+          )
+            .then(res => res.json())
+            .then(res => stringify(camelcaseKeys(res.data, { deep: true })));
+        },
+        type: 'Plans'
+      },
+    },
+
     {
       resolve: `gatsby-source-json`,
       options: {

@@ -23,12 +23,22 @@ const MobileNavbarWithRouter = withRouter(MobileNavbar);
 
 class TemplateWrapper extends React.Component {
   componentDidMount() {
-    window.FCSP = '4517cfc9daff1bacb8672f591c5c944f';
+    window.kayako = {};
+    window.kayako.readyQueue = [];
+    window.kayako.newEmbedCode = true;
+
+    window.kayako._settings = {
+      apiUrl: 'https://datocms.kayako.com/api/v1',
+      messengerUrl: 'https://datocms.kayakocdn.com/messenger',
+      realtimeUrl: 'wss://kre.kayako.net/socket',
+    };
 
     const script = document.createElement('script');
-    script.type = 'text/javascript';
     script.async = false;
-    script.src = 'https://chat-assets.frontapp.com/v1/chat.bundle.js';
+    script.type = 'text/javascript';
+    script.src = window.kayako._settings.messengerUrl;
+    script.crossOrigin = 'anonymous';
+
     document.body.appendChild(script);
   }
 

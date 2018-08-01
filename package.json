@@ -6,6 +6,7 @@
   "dependencies": {
     "b_": "1.3.4",
     "blueimp-md5": "2.10.0",
+    "camelcase-keys": "^4.2.0",
     "cartesian-product": "2.1.2",
     "datocms-client": "*",
     "datocms-search": "0.1.7",

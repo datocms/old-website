@@ -11,16 +11,88 @@ import Features from '../components/home/Features'
 import './pricing.sass'
 import check from 'images/check.svg'
 import tooltip from 'images/info-tooltip-dark.svg'
+import { parse } from 'flatted/cjs';
+import { camelize } from 'humps';
+
+const units = ['bytes', 'kB', 'MB', 'GB', 'TB', 'PB'];
+
+function prettyBytes(num) {
+  if (isNaN(parseFloat(num)) || !isFinite(num)) {
+    return '-';
+  }
+
+  if (num === 0) {
+    return '0 bytes';
+  }
+
+  const number = Math.floor(Math.log(num) / Math.log(1024));
+
+  return `${(num / (1024 ** Math.floor(number))).toFixed(0)} ${units[number]}`;
+}
+
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const b = bem.lock('PricingPage')
-const Tooltip = ({ children, hints, code }) => (
+const Tooltip = ({ children, hints, apiId }) => (
   <span className={bem('Tooltip', { })}>
     {children} <img src={tooltip} />
     <span className="Tooltip__hint">
-      {hints[code].description}
+      {hints[apiId].description}
     </span>
   </span>
 )
+
+const formatValue = (name, value) => {
+  if (name.endsWith("Bytes")) {
+    return prettyBytes(value);
+  }
+
+  if (Number.isInteger(value)) {
+    return numberWithCommas(value);
+  }
+
+  return value;
+}
+
+const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
+  if (datoPlan && datoPlan.attributes.hasOwnProperty(apiId)) {
+    const value = datoPlan.attributes[apiId];
+
+    if (value === null) {
+      return (
+        <span>Unlimited</span>
+      );
+    }
+
+    if (value === true) {
+      return (
+        <img src={check} alt="Available feature" />
+      );
+    }
+
+    return (
+      <span>{formatValue(apiId, value)}</span>
+    );
+  }
+
+  const value = hint.plans[plan.apiId];
+
+  if (value === ':check:') {
+    return <img src={check} alt="Available feature" />;
+  }
+
+  if (value === undefined) {
+    return (
+      <span>
+        Unlimited
+      </span>
+    );
+  }
+
+  return <span>{value}</span>;
+}
 
 class PricingPage extends React.Component {
   constructor(props) {
@@ -102,23 +174,153 @@ class PricingPage extends React.Component {
     );
   }
 
+  renderPlanRecap(hints, plan) {
+    const { activePlan } = this.state;
+
+    const datoPlans = parse(this.props.data.datoPlans.body);
+    const datoPlan = datoPlans.find(p => p.id === plan.apiId);
+
+    const isEnterprise = !datoPlan;
+    const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
+
+    return (
+      <div key={plan.apiId} className={b('recap-item', { active: activePlan === plan.apiId })}>
+        <div className={b('recap-item-plan-name')}>
+          {plan.name}
+        </div>
+        <div className={b('recap-item-for')}>
+          {plan.description}
+        </div>
+        <div className={b('recap-item-price')}>
+          {
+            isFree &&
+              <div className={b('recap-item-price-free')}>
+                Free
+              </div>
+          }
+          {
+            isEnterprise &&
+              <div className={b('recap-item-price-free')}>
+                Let's talk
+              </div>
+          }
+          {
+            !isFree && !isEnterprise &&
+              [
+                <div key="amount" className={b('recap-item-price-amount')}>
+                  { this.state.billing === 'monthly' ? `€${datoPlan.attributes.monthlyPrice}` : `€${parseInt(datoPlan.attributes.yearlyPrice / 12)}` }
+                </div>,
+                <div key="period" className={b('recap-item-price-period')}>
+                  per site/month
+                </div>
+              ]
+          }
+        </div>
+        <div className={b('recap-item-specs')}>
+          {
+            isEnterprise ?
+              <div className={b('recap-item-everything')}>
+                Everything
+              </div>
+              :
+              <div>
+                <div className={b('recap-item-spec')}>
+                  <Tooltip hints={hints} apiId="users">{hints.users.plans[plan.apiId]} invitations</Tooltip>
+                </div>
+                <div className={b('recap-item-spec')}>
+                  <Tooltip hints={hints} apiId="uploadableBytes">{hints.uploadableBytes.plans[plan.apiId]} file storage</Tooltip>
+                </div>
+                <div className={b('recap-item-spec')}>
+                  <Tooltip hints={hints} apiId="items">{hints.items.plans[plan.apiId]} records</Tooltip>
+                </div>
+              </div>
+          }
+        </div>
+        {
+          isEnterprise ?
+            <a href="mailto:support@datocms.com" className={b('recap-item-cta')}>
+              Get in touch
+            </a>
+            :
+            <a
+              className={b('recap-item-cta')}
+              href="https://dashboard.datocms.com/signup"
+            >
+              Sign up
+            </a>
+        }
+      </div>
+    );
+  }
+
+  renderTablePriceRow(plan) {
+    const { activePlan } = this.state;
+
+    const datoPlans = parse(this.props.data.datoPlans.body);
+    const datoPlan = datoPlans.find(p => p.id === plan.apiId);
+
+    const isEnterprise = !datoPlan;
+    const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
+
+    return (
+      <td key={plan.apiId} className={b('details-price-cell', { active: activePlan === 'developer' })}>
+        <div className={b('details-price')}>
+          <div className={b('details-price-inner')}>
+            {
+              isFree &&
+                <div className={b('details-price-free')}>
+                  Free
+                </div>
+            }
+
+            {
+              isEnterprise &&
+                <div className={b('details-price-free')}>
+                  Let's talk
+                </div>
+            }
+
+            {
+              !isFree && !isEnterprise &&
+                [
+                  <div key="1" className={b('details-price-amount')}>
+                    { this.state.billing === 'monthly' ? `€${datoPlan.attributes.monthlyPrice}` : `€${parseInt(datoPlan.attributes.yearlyPrice / 12)}` }
+                  </div>,
+                  <div key="2" className={b('details-price-period')}>
+                    per site/month
+                  </div>,
+                  <div key="3" className={b('details-price-prorated')}>
+                    Pro-rated daily
+                  </div>
+                ]
+            }
+          </div>
+        </div>
+      </td>
+    );
+  }
+
   render() {
     const { data } = this.props;
     const { activePlan } = this.state;
 
     const plans = data.plans.edges.map(e => e.node)
     const hints = data.hints.edges.map(e => e.node).reduce((acc, hint) => {
-      acc[hint.code] = {
+      acc[camelize(hint.apiId)] = {
         name: hint.name,
         description: hint.description,
         plans: hint.plans.reduce((acc, plan) => {
-          acc[plan.plan.code] = plan.value;
+          acc[plan.plan.apiId] = plan.value;
           return acc;
         }, {})
       };
       return acc;
     }, {})
-    const hintCodes = data.hints.edges.map(e => e.node.code)
+
+   const hintKeys = Object.keys(hints);
+
+    const datoPlans = parse(this.props.data.datoPlans.body);
+
 
     return (
       <Space both="10">
@@ -131,76 +333,7 @@ class PricingPage extends React.Component {
             {this.renderBillingChanger()}
             {this.renderPlanChanger()}
             <div className={b('recap')}>
-              {
-                plans.map(plan => (
-                  <div key={plan.code} className={b('recap-item', { active: activePlan === plan.code })}>
-                    <div className={b('recap-item-plan-name')}>
-                      {plan.name}
-                    </div>
-                    <div className={b('recap-item-for')}>
-                      {plan.description}
-                    </div>
-                    <div className={b('recap-item-price')}>
-                      {
-                        plan.code === 'developer' &&
-                          <div className={b('recap-item-price-free')}>
-                            Free
-                          </div>
-                      }
-                      {
-                        plan.code === 'enterprise' &&
-                          <div className={b('recap-item-price-free')}>
-                            Let's talk
-                          </div>
-                      }
-                      {
-                        plan.monthlyPrice &&
-                          [
-                            <div key="amount" className={b('recap-item-price-amount')}>
-                              { this.state.billing === 'monthly' ? `€${plan.monthlyPrice}` : `€${plan.yearlyPrice}` }
-                            </div>,
-                            <div key="period" className={b('recap-item-price-period')}>
-                              per site/month
-                            </div>
-                          ]
-                      }
-                    </div>
-                    <div className={b('recap-item-specs')}>
-                      {
-                        plan.code === 'enterprise' ?
-                          <div className={b('recap-item-everything')}>
-                            Everything
-                          </div>
-                          :
-                          <div>
-                            <div className={b('recap-item-spec')}>
-                              <Tooltip hints={hints} code="invitations">{hints.invitations.plans[plan.code]} invitations</Tooltip>
-                            </div>
-                            <div className={b('recap-item-spec')}>
-                              <Tooltip hints={hints} code="file-storage">{hints['file-storage'].plans[plan.code]} file storage</Tooltip>
-                            </div>
-                            <div className={b('recap-item-spec')}>
-                              <Tooltip hints={hints} code="records">{hints.records.plans[plan.code]} records</Tooltip>
-                            </div>
-                          </div>
-                      }
-                    </div>
-                    {
-                      plan.code === 'enterprise' ?
-                        <a href="mailto:support@datocms.com" className={b('recap-item-cta')}>
-                          Get in touch
-                        </a>
-                        :
-                        <a
-                          className={b('recap-item-cta')}
-                          href="https://dashboard.datocms.com/signup"
-                        >
-                          Sign up
-                        </a>
-                    }
-                  </div>
-                ))
-              }
+              {plans.map(this.renderPlanRecap.bind(this, hints))}
             </div>
 
             <div className={b('reassurance')}>
@@ -226,69 +359,32 @@ class PricingPage extends React.Component {
                   </td>
                   {
                     plans.map(plan => (
-                      <td key={plan.code} className={b('details-plan-name', { active: activePlan === plan.code })} >
+                      <td key={plan.apiId} className={b('details-plan-name', { active: activePlan === plan.apiId })} >
                         {plan.name}
                       </td>
                     ))
                   }
                 </tr>
                 <tr className={b('details-header-row')}>
-                  {
-                    plans.map(plan => (
-                      <td className={b('details-price-cell', { active: activePlan === 'developer' })}>
-                        <div className={b('details-price')}>
-                          <div className={b('details-price-inner')}>
-                            {
-                              plan.code === 'developer' &&
-                                <div className={b('details-price-free')}>
-                                  Free
-                                </div>
-                            }
-
-                            {
-                              plan.code === 'enterprise' &&
-                                <div className={b('details-price-free')}>
-                                  Let's talk
-                                </div>
-                            }
-
-                            {
-                              plan.monthlyPrice &&
-                                [
-                                  <div key="1" className={b('details-price-amount')}>
-                                    { this.state.billing === 'monthly' ? `€${plan.monthlyPrice}` : `€${plan.yearlyPrice}` }
-                                  </div>,
-                                  <div key="2" className={b('details-price-period')}>
-                                    per site/month
-                                  </div>,
-                                  <div key="3" className={b('details-price-prorated')}>
-                                    Pro-rated daily
-                                  </div>
-                                ]
-                            }
-                          </div>
-                        </div>
-                      </td>
-                    ))
-                  }
+                  {plans.map(this.renderTablePriceRow.bind(this))}
                 </tr>
                 {
-                  hintCodes.map(hintCode => (
-                    <tr key={hintCode}>
+                  hintKeys.map(hintKey => (
+                    <tr key={hintKey}>
                       <td className={b('details-feature-name')}>
-                        <Tooltip hints={hints} code={hintCode}>
-                          {hints[hintCode].name}
+                        <Tooltip hints={hints} apiId={hintKey}>
+                          {hints[hintKey].name}
                         </Tooltip>
                       </td>
                       {
                         plans.map(plan => (
-                          <td key={plan.code} className={b('details-feature-value', { active: activePlan === plan.code })}>
-                            {
-                              hints[hintCode].plans[plan.code] === ':check:' ?
-                                <img src={check} alt="Available feature" />
-                                :
-                                <span>{hints[hintCode].plans[plan.code]}</span>
-                            }
+                          <td key={plan.apiId} className={b('details-feature-value', { active: activePlan === plan.apiId })}>
+                            <ValueForLimit
+                              apiId={hintKey}
+                              hint={hints[hintKey]}
+                              plan={plan}
+                              datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                            />
                           </td>
                         ))
                       }
@@ -366,11 +462,9 @@ query PricingPageQuery {
   plans: allDatoCmsPlan(sort: {fields: [position]}) {
     edges {
       node{
-        code
+        apiId
         name
         description
-        monthlyPrice
-        yearlyPrice
       }
     }
   }
@@ -378,17 +472,19 @@ query PricingPageQuery {
   hints: allDatoCmsPricingHint(sort: {fields: [position]}) {
     edges {
       node {
-        code
-        description
+        apiId
         name
+        description
         plans {
-          plan {
-            code
-          }
+          plan { apiId }
           value
         }
       }
     }
+  }
+
+  datoPlans: plans {
+    body
   }
 }
 `
