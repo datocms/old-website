@@ -97,7 +97,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
 class PricingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activePlan: 'developer', billing: 'yearly' };
+    this.state = { activePlan: '1', billing: 'yearly' };
   }
 
   handleChangePlan(activePlan) {
@@ -111,39 +111,28 @@ class PricingPage extends React.Component {
 
   renderPlanChanger() {
     const { activePlan } = this.state;
+    const { data } = this.props;
+
+    const plans = data.plans.edges.map(e => e.node);
+    const datoPlans = parse(data.datoPlans.body);
 
     return (
       <div className={b('plan-changer')}>
-        <button
-          className={b('plan-changer__plan', { active: activePlan === 'developer' })}
-          onClick={this.handleChangePlan.bind(this, 'developer')}
-        >
-          Dev
-        </button>
-        <button
-          className={b('plan-changer__plan', { active: activePlan === 'basic' })}
-          onClick={this.handleChangePlan.bind(this, 'basic')}
-        >
-          Basic
-        </button>
-        <button
-          className={b('plan-changer__plan', { active: activePlan === 'plus' })}
-          onClick={this.handleChangePlan.bind(this, 'plus')}
-        >
-          Plus
-        </button>
-        <button
-          className={b('plan-changer__plan', { active: activePlan === 'max' })}
-          onClick={this.handleChangePlan.bind(this, 'max')}
-        >
-          Max
-        </button>
-        <button
-          className={b('plan-changer__plan', { active: activePlan === 'enterprise' })}
-          onClick={this.handleChangePlan.bind(this, 'enterprise')}
-        >
-          Enterprise
-        </button>
+        {
+          plans.map(plan => {
+            const datoPlan = datoPlans.find(p => p.id === plan.apiId);
+
+            return (
+              <button
+                key={plan.apiId}
+                className={b('plan-changer__plan', { active: activePlan === plan.apiId })}
+                onClick={this.handleChangePlan.bind(this, plan.apiId)}
+              >
+                {plan.name === 'Developer' ? 'Dev' : plan.name}
+              </button>
+            )
+          })
+        }
       </div>
     );
   }
@@ -284,7 +273,7 @@ class PricingPage extends React.Component {
     const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
 
     return (
-      <td key={plan.apiId} className={b('details-price-cell', { active: activePlan === 'developer' })}>
+      <td key={plan.apiId} className={b('details-price-cell', { active: activePlan === plan.apiId })}>
         <div className={b('details-price')}>
           <div className={b('details-price-inner')}>
             {
@@ -418,13 +407,13 @@ class PricingPage extends React.Component {
                   {
                     plans.map(plan => (
                       plan.code === 'enterprise' ?
-                      <td className={b('details-cta', { active: activePlan === 'enterprise' })}>
+                      <td className={b('details-cta', { active: activePlan === plan.apiId })}>
                         <a href="mailto:support@datocms.com">
                           Get in touch
                         </a>
                       </td>
                       :
-                      <td className={b('details-cta', { active: activePlan === plan.code })}>
+                      <td className={b('details-cta', { active: activePlan === plan.apiId })}>
                         <a href="https://dashboard.datocms.com/signup">
                           Sign up
                         </a>
