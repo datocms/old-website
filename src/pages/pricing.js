@@ -225,13 +225,34 @@ class PricingPage extends React.Component {
               :
               <div>
                 <div className={b('recap-item-spec')}>
-                  <Tooltip hints={hints} apiId="users">{hints.users.plans[plan.apiId]} invitations</Tooltip>
+                  <Tooltip hints={hints} apiId="users">
+                    <ValueForLimit
+                      apiId="users"
+                      hint={hints.users}
+                      plan={plan}
+                      datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                    /> invitations
+                  </Tooltip>
                 </div>
                 <div className={b('recap-item-spec')}>
-                  <Tooltip hints={hints} apiId="uploadableBytes">{hints.uploadableBytes.plans[plan.apiId]} file storage</Tooltip>
+                  <Tooltip hints={hints} apiId="uploadableBytes">
+                    <ValueForLimit
+                      apiId="uploadableBytes"
+                      hint={hints.uploadableBytes}
+                      plan={plan}
+                      datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                    /> file storage
+                  </Tooltip>
                 </div>
                 <div className={b('recap-item-spec')}>
-                  <Tooltip hints={hints} apiId="items">{hints.items.plans[plan.apiId]} records</Tooltip>
+                  <Tooltip hints={hints} apiId="items">
+                    <ValueForLimit
+                      apiId="items"
+                      hint={hints.items}
+                      plan={plan}
+                      datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                    /> records
+                  </Tooltip>
                 </div>
               </div>
           }
