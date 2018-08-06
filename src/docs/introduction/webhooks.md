@@ -35,6 +35,7 @@ You can add as many triggers as you want to a single webhook. DatoCMS supports e
 * **Record**: triggers whenever a record is created, updated, deleted, published, unpublished or all of the above. Additionally, you can trigger the webhook only for specific records or records belonging to specific models
 * **Model**: triggers whenever a model is created, updated, deleted or all of the above. Changes made to a model's field will trigger a call as well. Additionally, you can trigger the webhook only for specific models
 * **Upload**: triggers whenever any upload is created, updated, deleted or all of the above
+* **Deployment environment**: triggers whenever an environment gets deployed
 
 ### HTTP request details
 
