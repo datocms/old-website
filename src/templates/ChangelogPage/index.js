@@ -51,6 +51,20 @@ export default class ChangelogPage extends React.Component {
                 </div>
               ))
             }
+            <div className={b('pagination')}>
+              {
+                !first &&
+                  <Link to={index === 2 ? '/changelog/' : `/changelog/${index-1}/`} className={b('previous')}>
+                    See next announcements &raquo;
+                  </Link>
+              }
+              {
+                !last &&
+                  <Link to={`/changelog/${index + 1}/`} className={b('previous')}>
+                    &laquo; See previous announcements
+                  </Link>
+              }
+            </div>
           </div>
         </Wrap>
       </Space>
