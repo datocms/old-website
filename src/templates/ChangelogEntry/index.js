@@ -23,7 +23,9 @@ export default class ChangelogEntry extends React.Component {
           <Helmet title={`${article.title} - DatoCMS Product Changelog`} />
           <div className={b()}>
             <div className={b('title')}>
-              Product Changelog
+              <Link to="/changelog/">
+                Product Changelog
+              </Link>
             </div>
             <div key={article.slug} className={b('article')}>
               <div className={b('article-meta')}>
@@ -47,6 +49,11 @@ export default class ChangelogEntry extends React.Component {
                   dangerouslySetInnerHTML={{ __html: article.content.markdown.html }}
                 />
               </div>
+            </div>
+            <div className={b('pagination')}>
+              <Link to="/changelog/" className={b('previous')}>
+                See all the announcements
+              </Link>
             </div>
           </div>
         </Wrap>

@@ -20,6 +20,42 @@ export default class BlogPage extends React.Component {
       <BlogAside>
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <div>
+          <div className={b('article')}>
+            <div className={b('article-body')}>
+              <h3 className={b('article-title')}>
+                <Link to="/changelog/">
+                  Latest product changes
+                </Link>
+              </h3>
+              <div className={b('article-meta')}>
+                <Img
+                  className={b('article-author-image')}
+                  sizes={this.props.data.author.avatar.sizes}
+                />
+                {this.props.data.author.name}, on <Link to="/changelog/">{this.props.data.latestEntries.edges[0].node.publicationDate}</Link>
+              </div>
+              <div className={b('article-excerpt')}>
+                <p>Here's the latest changes made to DatoCMS:</p>
+                <ul className={b('changelog-entries')}>
+                  {
+                    this.props.data.latestEntries.edges.map(({ node }) => (
+                      <li>
+                        <Link key={node.slug} to={`/changelog/${node.slug}/`}>
+                          {node.title}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <Link
+                to="/changelog/"
+                className="button button--red"
+              >
+                Read the complete changelog
+              </Link>
+            </div>
+          </div>
           {
             articles.map((article) => (
               <div key={article.slug} className={b('article')}>
@@ -78,6 +114,28 @@ query BlogPageQuery {
   page: datoCmsBlog {
     seoMetaTags {
       ...GatsbyDatoCmsSeoMetaTags
+    }
+  }
+  author: datoCmsAuthor {
+    name
+    avatar {
+      url
+      sizes(maxWidth: 80) {
+        base64
+        aspectRatio
+        src
+        srcSet
+        sizes
+      }
+    }
+  }
+  latestEntries: allDatoCmsChangelogEntry(limit: 5, sort: {fields: [publicationDate], order: DESC}) {
+    edges {
+      node {
+        title
+        slug
+        publicationDate(formatString: "MMM D, YYYY")
+      }
     }
   }
 }

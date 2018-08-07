@@ -11,7 +11,7 @@ import medium from 'images/medium.svg'
 
 const b = bem.lock('BlogAside')
 
-const BlogAside = ({ children }) => (
+const BlogAside = ({ latestEntries, children }) => (
   <Space both={10}>
     <Wrap>
       <div className={b()}>

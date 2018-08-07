@@ -22,7 +22,9 @@ export default class ChangelogPage extends React.Component {
           <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
           <div className={b()}>
             <div className={b('title')}>
-              Product Changelog
+              <Link to="/changelog/">
+                Product Changelog
+              </Link>
             </div>
             {
               articles.map((article) => (
