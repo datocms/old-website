@@ -24,3 +24,16 @@ query {
 }
 ```
 
+If you want to get the value of a field in every locale:
+
+```graphql
+query {
+  allBlogPosts {
+    _allTitleLocales {
+      locale
+      value
+    }
+  }
+}
+```
+
