@@ -131,14 +131,14 @@ As you can see, we use the helper method `client.uploadImage` to pass DatoCMS th
 To retrieve the stored records:
 
 ```js
-client.items.all()
+client.items.all({}, { allPages: true })
 .then((records) => console.log(records));
 ```
 
 If you want to retrieve just the records of a specific model (ie. `article`):
 
 ```js
-client.items.all({ 'filter[type]': 'article' })
+client.items.all({ 'filter[type]': 'article' }, { allPages: true })
 .then((records) => console.log(records));
 ```
 

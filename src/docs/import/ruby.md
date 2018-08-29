@@ -139,13 +139,13 @@ client.upload_image(escaped)
 To retrieve the stored records:
 
 ```ruby
-records = client.items.all
+records = client.items.all({}, all_pages: true)
 ```
 
 If you want to retrieve just the records of a specific model (ie. `article`):
 
 ```ruby
-records = client.items.all("filter[type]" => "article")
+records = client.items.all({ "filter[type]" => "article" }, all_pages: true)
 ```
 
 You can also pass the model ID instead of the model API identifier.
