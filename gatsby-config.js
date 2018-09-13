@@ -205,7 +205,8 @@ module.exports = {
                             title
                             providerUid
                           }
-                        } }
+                        }
+                      }
                     }
                   }
                 }
@@ -227,12 +228,15 @@ module.exports = {
                   language: 'en',
                   custom_elements: [
                     {
-                      "content:encoded": article.content.map((block) => (
-                        block.model.apiKey === 'text' &&
-                          block.text.markdown.html,
-                        block.model.apiKey === 'image' &&
-                          `<img src="${block.image.url}?w=900" />`
-                      )).join("\n")
+                      "content:encoded": article.content.map((block) => {
+                        if (block.model.apiKey === 'text') {
+                          return block.text.markdown.html;
+                        }
+
+                        if (block.model.apiKey === 'image') {
+                          return `<img src="${block.image.url}?w=900" />`;
+                        }
+                      }).join("\n")
                     }
                   ],
                 };
