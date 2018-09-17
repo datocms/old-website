@@ -19,7 +19,7 @@ The query response can be further controlled by supplying `filter` and `orderBy`
 
 ```graphql
 query {
-  artist(filter: { name: { eq: { "Blank Banshee" } } }) {
+  artist(filter: { name: { eq: "Blank Banshee" } }) {
     name
     genre
   }
