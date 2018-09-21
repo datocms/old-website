@@ -219,7 +219,7 @@ class PricingPage extends React.Component {
           isEnterprise ?
             <div className={b('recap-item-specs')}>
               <div className={b('recap-item-everything')}>
-                <span>Everything unlimited</span>
+                <span>Everything unlimited, SLA contracts, team training, custom developments</span>
               </div>
             </div>
             :
@@ -367,6 +367,9 @@ class PricingPage extends React.Component {
                 <a className={button({ red: true, 'normal-big': true })} href="https://dashboard.datocms.com/signup">
                   Try it for free
                 </a>
+                <div className={b('free-plan-credit-card')}>
+                  No credit card required, 30 seconds sign-up
+                </div>
               </div>
             </div>
 
