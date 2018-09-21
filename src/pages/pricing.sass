@@ -2,36 +2,54 @@
 @import 'blocks/mixins.sass'
 
 .PricingPage__title
-  +size(hero)
+  +size(bigger)
+  text-align: center
+  margin-bottom: 10px
+
+  @media screen and (min-width: 600px)
+    +size(hero)
+
+.PricingPage__subtitle
+  +size(normalBig)
   text-align: center
   margin-bottom: 60px
+  font-weight: 300
 
 .PricingPage__recap
   display: flex
   margin: 0 -10px
 
 .PricingPage__recap-item
-  border: 1px solid $border-color
+  border: 3px solid $border-color
   border-radius: 10px
   text-align: center
   margin: 0 10px
   flex: 1
 
+  &:nth-child(1) .PricingPage__recap-item-plan-name
+    color: #10b6ce
+
+  &:nth-child(2) .PricingPage__recap-item-plan-name
+    color: #ef6424
+
+  &:nth-child(3) .PricingPage__recap-item-plan-name
+    color: #834abd
+
 .PricingPage__recap-item-plan-name
   text-transform: uppercase
-  +size(small)
+  +size(big)
   +weight(bold)
   margin-bottom: 10px
   color: $light-body-color
-  margin: 34px 20px 20px
+  margin: 40px 20px 30px
 
 .PricingPage__recap-item-for
   margin: 20px 20px 30px
-  height: 3em
+  line-height: 1.2
 
 .PricingPage__recap-item-price
-  height: 105px
-  padding-bottom: 15px
+  height: 60px
+  margin-bottom: 40px
   position: relative
 
 .PricingPage__recap-item-price-free
@@ -50,7 +68,8 @@
 
 .PricingPage__recap-item-price-period
   line-height: 1
-  margin: 0 20px 25px
+  margin: 0 20px
+  color: $light-body-color
 
 .PricingPage__recap-item-price-prorated
   text-transform: uppercase
@@ -62,28 +81,35 @@
 
 .PricingPage__recap-item-specs
   position: relative
+  clear: both
+  height: 121px
 
 .PricingPage__recap-item-spec
-  padding: 10px 20px 8px
+  padding: 22px 20px
   line-height: 1
-  border-bottom: 1px solid $border-color
+  border-top: 1px solid $border-color
+  width: 50%
+  box-sizing: border-box
+  float: left
 
-  &:last-child
-    border-bottom: 0
+  &:nth-child(odd)
+    border-right: 1px solid $border-color
 
 .PricingPage__recap-item-everything
   padding: 10px 20px 8px
   line-height: 1
-  border-bottom: 1px solid $border-color
-  border-top: 1px solid $border-color
   position: absolute
-  top: 50%
+  top: 0
   left: 0
   right: 0
-  transform: translateY(-50%)
+  bottom: 0
+  background-color: $dark-violet-color
+  display: flex
+  align-items: center
 
-.PricingPage__recap-item-specs
-  height: 105px
+  span
+    width: 100%
+    text-align: center
 
 .PricingPage__recap-item-cta
   display: block
@@ -100,18 +126,72 @@
   &:hover
     opacity: 0.8
 
-.PricingPage__reassurance
-  padding: 60px 30px
-  max-width: 500px
-  margin: 0 auto
-  text-align: center
-  color: $light-body-color
-  +size(big)
-  +weight(bold)
+.PricingPage__recap-item--enterprise
+  background-color: $violet-color
+  color: white
+  border-color: $dark-violet-color
 
-  @media screen and (min-width: 1270px)
-    padding: 90px 0
-    +size(bigger)
+  .PricingPage__recap-item-plan-name,
+  .PricingPage__recap-item-price-free
+    color: white
+
+  .PricingPage__recap-item-price-free a
+    color: white
+    text-decoration: none
+    border-bottom: 1px dashed rgba(white, 0.5)
+    transition: opacity 0.2s ease-in-out
+
+    &:hover
+      opacity: 0.9
+
+.PricingPage__free-plan
+  margin: 100px 0
+  border-radius: 10px
+  text-align: center
+
+.PricingPage__free-plan-title
+  +size(bigger)
+  margin-bottom: 10px
+  color: $azure-color
+
+  @media screen and (min-width: 600px)
+    +size(smallHero)
+
+.PricingPage__free-plan-description
+  color: $light-body-color
+  font-weight: 300
+  margin-bottom: 20px
+  +size(normalBig)
+
+.PricingPage__free-plan-features
+  margin: 0 auto
+  margin-bottom: 40px
+
+.PricingPage__free-plan-features li
+  color: $light-body-color
+
+  &:before
+    content: ""
+    display: inline-block
+    vertical-align: middle
+    background: url('../images/check.svg') no-repeat center center
+    width: 30px
+    height: 30px
+    margin-right: 5px
+
+@media screen and (min-width: 600px)
+  .PricingPage__free-plan-description
+    margin-bottom: 40px
+
+  .PricingPage__free-plan-features
+    display: flex
+    flex-wrap: wrap
+    max-width: 600px
+    justify-content: center
+
+  .PricingPage__free-plan-features li
+    width: 33.33%
+    margin-bottom: 10px
 
 .PricingPage__details
   width: 100%
@@ -260,7 +340,7 @@
   text-align: center
   margin-bottom: 30px
 
-  @media screen and (min-width: 1271px)
+  @media screen and (min-width: 1371px)
     display: none
 
 .PricingPage__plan-changer__plan
@@ -276,7 +356,7 @@
   background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
   color: white
 
-@media screen and (max-width: 1270px)
+@media screen and (max-width: 1370px)
   .PricingPage__recap
     max-width: 350px
     margin: 0 auto
@@ -366,7 +446,3 @@
   border-color: $red-color
   color: white
 
-.PricingPage__billing-info
-  color: $light-body-color
-  +size(small)
-  margin-top: 20px

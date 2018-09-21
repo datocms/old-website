@@ -20,9 +20,6 @@ export default class ArticlePage extends React.Component {
       <BlogAside>
         <HelmetDatoCms seo={article.seoMetaTags} />
         <div className={b()}>
-          <Link to="/blog/" className={b('heading')}>
-            From our Blog
-          </Link>
           <h1 className={b('title')}>
             <Link to={`/blog/${article.slug}/`}>
               {article.title}
@@ -40,7 +37,7 @@ export default class ArticlePage extends React.Component {
                   }
                   {
                     block.model.apiKey === 'image' &&
-                      <div className={b('content-image')}>
+                      <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
                         <Img sizes={block.image.sizes} />
                         {
                           block.image.title &&
@@ -111,6 +108,7 @@ export const query = graphql`
           model { apiKey }
           image {
             url
+            width
             title
             sizes(maxWidth: 900) {
               ...GatsbyDatoCmsSizes

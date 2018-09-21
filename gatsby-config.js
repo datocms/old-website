@@ -263,7 +263,7 @@ module.exports = {
       options: {
         fetch: () => {
           return fetch(
-            'https://account-api.datocms.com/plans',
+            'http://account-api.lvh.me:3001/plans',
             {
               headers: { 'Accept': 'application/json' },
             }

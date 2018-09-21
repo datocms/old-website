@@ -17,8 +17,10 @@
     border-top: 2px solid $border-color
 
   .BlogAside__mobile-title
-    +size(hero)
-    margin-bottom: 50px
+    display: block
+    color: $light-body-color
+    text-decoration: none
+    margin-bottom: 20px
 
 @media screen and (min-width: 1200px)
   .BlogAside__mobile-title
@@ -29,6 +31,8 @@
     flex-direction: row-reverse
     align-items: start
     justify-content: space-between
+    max-width: 1250px
+    margin: 0 auto
 
   .BlogAside__cols-content
     flex: 1

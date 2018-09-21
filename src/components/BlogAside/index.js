@@ -15,9 +15,9 @@ const BlogAside = ({ latestEntries, children }) => (
   <Space both={10}>
     <Wrap>
       <div className={b()}>
-        <div className={b('mobile-title')}>
-          DatoCMS Blog
-        </div>
+        <Link to="/blog/" className={b('mobile-title')}>
+          From our Blog
+        </Link>
         <div className={b('cols-content')}>
           {children}
         </div>

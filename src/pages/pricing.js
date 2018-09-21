@@ -97,7 +97,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
 class PricingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activePlan: '1', billing: 'yearly' };
+    this.state = { activePlan: '15', billing: 'yearly' };
   }
 
   handleChangePlan(activePlan) {
@@ -119,7 +119,7 @@ class PricingPage extends React.Component {
     return (
       <div className={b('plan-changer')}>
         {
-          plans.map(plan => {
+          plans.filter(plan => plan.name !== 'Developer').map(plan => {
             const datoPlan = datoPlans.find(p => p.id === plan.apiId);
 
             return (
@@ -128,7 +128,7 @@ class PricingPage extends React.Component {
                 className={b('plan-changer__plan', { active: activePlan === plan.apiId })}
                 onClick={this.handleChangePlan.bind(this, plan.apiId)}
               >
-                {plan.name === 'Developer' ? 'Dev' : plan.name}
+                {plan.name}
               </button>
             )
           })
@@ -153,11 +153,8 @@ class PricingPage extends React.Component {
             onClick={this.handleBillingChange.bind(this, 'yearly')}
             className={b('billing-group-item', { active: this.state.billing === 'yearly' })}
           >
-            Annual
+            Annual (20% off)
           </a>
-        </div>
-        <div className={b('billing-info')}>
-          (Up to 20% off on annual plan)
         </div>
       </div>
     );
@@ -172,8 +169,12 @@ class PricingPage extends React.Component {
     const isEnterprise = !datoPlan;
     const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
 
+    if (isFree) {
+      return null;
+    }
+
     return (
-      <div key={plan.apiId} className={b('recap-item', { active: activePlan === plan.apiId })}>
+      <div key={plan.apiId} className={b('recap-item', { active: activePlan === plan.apiId, enterprise: isEnterprise })}>
         <div className={b('recap-item-plan-name')}>
           {plan.name}
         </div>
@@ -190,7 +191,9 @@ class PricingPage extends React.Component {
           {
             isEnterprise &&
               <div className={b('recap-item-price-free')}>
-                Let's talk
+                <a href="mailto:support@datocms.com">
+                  Let's talk
+                </a>
               </div>
           }
           {
@@ -200,64 +203,61 @@ class PricingPage extends React.Component {
                   { this.state.billing === 'monthly' ? `€${datoPlan.attributes.monthlyPrice}` : `€${parseInt(datoPlan.attributes.yearlyPrice / 12)}` }
                 </div>,
                 <div key="period" className={b('recap-item-price-period')}>
-                  per site/month
+                  per project/month
                 </div>
               ]
           }
         </div>
-        <div className={b('recap-item-specs')}>
-          {
-            isEnterprise ?
-              <div className={b('recap-item-everything')}>
-                Everything
-              </div>
-              :
-              <div>
-                <div className={b('recap-item-spec')}>
-                  <Tooltip hints={hints} apiId="users">
-                    <ValueForLimit
-                      apiId="users"
-                      hint={hints.users}
-                      plan={plan}
-                      datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                    /> invitations
-                  </Tooltip>
-                </div>
-                <div className={b('recap-item-spec')}>
-                  <Tooltip hints={hints} apiId="uploadableBytes">
-                    <ValueForLimit
-                      apiId="uploadableBytes"
-                      hint={hints.uploadableBytes}
-                      plan={plan}
-                      datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                    /> file storage
-                  </Tooltip>
-                </div>
-                <div className={b('recap-item-spec')}>
-                  <Tooltip hints={hints} apiId="items">
-                    <ValueForLimit
-                      apiId="items"
-                      hint={hints.items}
-                      plan={plan}
-                      datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                    /> records
-                  </Tooltip>
-                </div>
-              </div>
-          }
-        </div>
         {
           isEnterprise ?
-            <a href="mailto:support@datocms.com" className={b('recap-item-cta')}>
-              Get in touch
-            </a>
+            <div className={b('recap-item-specs')}>
+              <div className={b('recap-item-everything')}>
+                <span>Everything unlimited</span>
+              </div>
+            </div>
             :
-            <a
-              className={b('recap-item-cta')}
-              href="https://dashboard.datocms.com/signup"
-            >
-              Sign up
-            </a>
+            <div className={b('recap-item-specs')}>
+              <div className={b('recap-item-spec')}>
+                <Tooltip hints={hints} apiId="itemTypes">
+                  <ValueForLimit
+                    apiId="itemTypes"
+                    hint={hints.itemTypes}
+                    plan={plan}
+                    datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                  /> models
+                </Tooltip>
+              </div>
+              <div className={b('recap-item-spec')}>
+                <Tooltip hints={hints} apiId="locales">
+                  <ValueForLimit
+                    apiId="locales"
+                    hint={hints.locales}
+                    plan={plan}
+                    datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                  /> locales
+                </Tooltip>
+              </div>
+              <div className={b('recap-item-spec')}>
+                <Tooltip hints={hints} apiId="users">
+                  <ValueForLimit
+                    apiId="users"
+                    hint={hints.users}
+                    plan={plan}
+                    datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                  /> users
+                </Tooltip>
+              </div>
+              <div className={b('recap-item-spec')}>
+                <Tooltip hints={hints} apiId="roles">
+                  <ValueForLimit
+                    apiId="roles"
+                    hint={hints.roles}
+                    plan={plan}
+                    datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                  /> roles
+                </Tooltip>
+              </div>
+            </div>
         }
       </div>
     );
@@ -297,7 +297,7 @@ class PricingPage extends React.Component {
                     { this.state.billing === 'monthly' ? `€${datoPlan.attributes.monthlyPrice}` : `€${parseInt(datoPlan.attributes.yearlyPrice / 12)}` }
                   </div>,
                   <div key="2" className={b('details-price-period')}>
-                    per site/month
+                    per project/month
                   </div>,
                   <div key="3" className={b('details-price-prorated')}>
                     Pro-rated daily
@@ -338,7 +338,10 @@ class PricingPage extends React.Component {
         <Wrap>
           <div className={b()}>
             <div className={b('title')}>
-              Pricing
+              The right price for any digital product
+            </div>
+            <div className={b('subtitle')}>
+              Unlimited records and file storage. A pricing that scales on complexity, not quantity.
             </div>
             {this.renderBillingChanger()}
             {this.renderPlanChanger()}
@@ -346,8 +349,25 @@ class PricingPage extends React.Component {
               {plans.map(this.renderPlanRecap.bind(this, hints))}
             </div>
 
-            <div className={b('reassurance')}>
-              Start with free plan. No credit card required. Sign up in 15 seconds.
+            <div className={b('free-plan')}>
+              <div className={b('free-plan-title')}>
+                Start with our forever free plan
+              </div>
+              <div>
+                <div className={b('free-plan-description')}>
+                  All the essential features included, no credit card required
+                </div>
+                <ul className={b('free-plan-features')}>
+                  <li>1,000 records</li>
+                  <li>15 models</li>
+                  <li>1GB file storage</li>
+                  <li>No multi-lingual</li>
+                  <li>No client invitation</li>
+                </ul>
+                <a className={button({ red: true, 'normal-big': true })} href="https://dashboard.datocms.com/signup">
+                  Try it for free
+                </a>
+              </div>
             </div>
 
             {this.renderPlanChanger()}
@@ -469,7 +489,7 @@ query PricingPageQuery {
     }
   }
 
-  plans: allDatoCmsPlan(sort: {fields: [position]}) {
+  plans: allDatoCmsNewPlan(sort: {fields: [position]}) {
     edges {
       node{
         apiId
@@ -479,7 +499,7 @@ query PricingPageQuery {
     }
   }
 
-  hints: allDatoCmsPricingHint(sort: {fields: [position]}) {
+  hints: allDatoCmsNewPricingHint(sort: {fields: [position]}) {
     edges {
       node {
         apiId
