@@ -1,5 +1,5 @@
 ---
-position: 12
+position: 14
 title: Custom assets domain
 ---
 
