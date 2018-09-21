@@ -208,6 +208,13 @@ class PricingPage extends React.Component {
               ]
           }
         </div>
+        <div className={b('recap-item-unlimited')}>
+          {
+            isEnterprise ?
+              'Custom SLA contracts, plus' :
+              'Unlimited records and file storage, plus'
+          }
+        </div>
         {
           isEnterprise ?
             <div className={b('recap-item-specs')}>
@@ -355,15 +362,8 @@ class PricingPage extends React.Component {
               </div>
               <div>
                 <div className={b('free-plan-description')}>
-                  All the essential features included, no credit card required
+                  All the essential features included, 1,000 records, 15 models, 1GB file storage
                 </div>
-                <ul className={b('free-plan-features')}>
-                  <li>1,000 records</li>
-                  <li>15 models</li>
-                  <li>1GB file storage</li>
-                  <li>No multi-lingual</li>
-                  <li>No client invitation</li>
-                </ul>
                 <a className={button({ red: true, 'normal-big': true })} href="https://dashboard.datocms.com/signup">
                   Try it for free
                 </a>

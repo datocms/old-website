@@ -61,6 +61,12 @@
   left: 20px
   right: 20px
 
+.PricingPage__recap-item-unlimited
+  text-align: center
+  margin: 20px 0
+  color: $light-body-color
+  +size(small)
+
 .PricingPage__recap-item-price-amount
   +size(hero)
   line-height: 1
@@ -132,8 +138,12 @@
   border-color: $dark-violet-color
 
   .PricingPage__recap-item-plan-name,
-  .PricingPage__recap-item-price-free
+  .PricingPage__recap-item-price-free,
+  .PricingPage__recap-item-unlimited
     color: white
+
+  .PricingPage__recap-item-unlimited
+    visibility: hidden
 
   .PricingPage__recap-item-price-free a
     color: white
@@ -164,34 +174,7 @@
   +size(normalBig)
 
 .PricingPage__free-plan-features
-  margin: 0 auto
-  margin-bottom: 40px
-
-.PricingPage__free-plan-features li
-  color: $light-body-color
-
-  &:before
-    content: ""
-    display: inline-block
-    vertical-align: middle
-    background: url('../images/check.svg') no-repeat center center
-    width: 30px
-    height: 30px
-    margin-right: 5px
-
-@media screen and (min-width: 600px)
-  .PricingPage__free-plan-description
-    margin-bottom: 40px
-
-  .PricingPage__free-plan-features
-    display: flex
-    flex-wrap: wrap
-    max-width: 600px
-    justify-content: center
-
-  .PricingPage__free-plan-features li
-    width: 33.33%
-    margin-bottom: 10px
+  margin-bottom: 30px
 
 .PricingPage__details
   width: 100%
@@ -435,11 +418,11 @@
   +size(small)
 
   &:first-child
-    border-radius: 4px 0 0 4px
+    border-radius: 10px 0 0 10px
     border-right: 0
 
   &:last-child
-    border-radius: 0 4px 4px 0
+    border-radius: 0 10px 10px 0
 
 .PricingPage__billing-group-item--active
   background-color: $red-color
