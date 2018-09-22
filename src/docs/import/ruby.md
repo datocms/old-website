@@ -1,6 +1,6 @@
 ---
-position: 3
-title: Ruby client
+position: 5
+title: Import from other sources with Ruby
 ---
 
 We released a Ruby gem to make it easy to programmatically read/create/edit/destroy DatoCMS records. Add this line to your application's `Gemfile` and then install the gem running `bundle install` within your terminal:

@@ -1,6 +1,6 @@
 ---
-position: 2
-title: NodeJS client
+position: 4
+title: Import from other sources with NodeJS
 ---
 
 We released an NPM package to make it easy to programmatically read/create/edit/destroy DatoCMS records. Install the `datocms-client` package in your application:

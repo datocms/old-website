@@ -3,12 +3,15 @@ position: 1
 title: Importing data
 ---
 
-Our [Content Management API](/content-management-api/) allows to programmatically manage every object you
-find on the interface of DatoCMS (models, fields, records, etc.).
+If you're coming from Wordpress or Contentful, we released some specific tools that require no coding at all:
 
-In this guide you will find a step-by-step tutorial to understand how to 
-use both our NodeJS and Ruby clients:
+* [Importing data from Wordpress](/blog/wordpress-importer/)
+* [Importing data from Contentful](/blog/from-contentful-to-datocms/)
 
-* [Importing data using the NodeJS client](/docs/import/nodejs/)
-* [Importing data using the Ruby client](/docs/import/ruby/)
+If you want to import content from other sources, you can still use our [Content Management API](/content-management-api/) to programmatically create any object in DatoCMS — models, fields, records, etc. 
+
+Here you can learn how to use our API clients to create content into DatoCMS:
+
+* [Importing data using DatoCMS NodeJS API client](/docs/import/nodejs/)
+* [Importing data using DatoCMS Ruby API client](/docs/import/ruby/)
 
