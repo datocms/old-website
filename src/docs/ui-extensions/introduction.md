@@ -13,6 +13,19 @@ Technically speaking UI Extensions are small HTML5 applications that exist in a 
 
 In DatoCMS you can build two different kinds of extensions:
 
-* **Single field extensions** reside in the record editor body and operate on top of a particular field (or set of fields);
+* **Single field extensions** reside in the record editor body and operate on top of a particular field (or set of fields),
 * **Sidebar extensions** reside on the sidebar of the record editor and make it possible add custom behaviour based on the state of the entire record instead of a single field.
 
+### Sidebar extensions
+
+Sidebar extensions are rendered on the sidebar of the record editor. They make most sense if the functionality provided by the extension applies to an entire record instead of a single field. 
+
+Examples of sidebar extensions are:
+
+* Custom webhooks/notifications,
+* Integration with a preview environment,
+* Moving entries across different projects
+
+A UI Extension becomes as sidebar extension by setting the property `sidebar` to true when creating or updating the extension.
+
+A sidebar extension is still assigned to a field which is then ommited from the entry editor. The field's value can be used to store data for the sidebar extension.
