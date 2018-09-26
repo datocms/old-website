@@ -37,6 +37,8 @@
     "humps": "2.0.1",
     "image-promise": "5.0.1",
     "json-schema-ref-parser": "4.1.0",
+    "mdast-util-toc": "^2.1.0",
+    "micromatch": "^3.1.10",
     "pluralize": "7.0.0",
     "react-autosuggest": "9.3.3",
     "react-cookie-consent": "^1.0.7",

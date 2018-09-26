@@ -122,8 +122,7 @@
       text-decoration: underline
 
     code
-      background-color: transparent
-      padding: 0
+      background-color: rgba($red-color, 0.1)
 
   a[href*="//"]:after
     content: ""
@@ -171,12 +170,18 @@
     list-style-type: decimal
     margin-bottom: 20px
 
+  ul, ol
+    ul, ol
+      li
+        margin-bottom: 5px
+
   code
     font-family: "Source Code Pro", Menlo, monospace
     background-color: $smoke-color
     padding: 0.2em 0.3em 0.1em 0.3em
     border: 1px $border-color
     border-radius: 3px
+    font-size: 0.9em
 
   iframe
     border: 0
@@ -200,11 +205,16 @@
   table
     margin-top: 50px
     margin-bottom: 50px
+    font-size: 0.9em
 
     th, td
       text-align: left
-      padding: 10px
+      padding: 8px
       border-bottom: 1px solid $border-color
+      max-width: 30%
+
+    th
+      font-weight: 500
 
   blockquote
     border-left: 2px solid $base-body-color
