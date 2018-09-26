@@ -7,7 +7,7 @@ UI Extensions allow developers to extend the basic functionality of the DatoCMS 
 
 You, the developer, are in charge of writing and hosting the UI Extension. UI Extensions can be implemented with basic HTML and JavaScript, or using more advanced client-side frameworks such as React, Angular or Vue.
 
-Technically speaking UI Extensions are small HTML5 applications that exist in a sandboxed `<iframe>` and interact with the main DatoCMS webapp through a JS library you need to include — the [UI Extensions SDK](https://github.com/datocms/ui-extensions-sdk/).
+Technically speaking UI Extensions are small HTML5 applications that exist in a sandboxed `<iframe>` and interact with the main DatoCMS webapp through a JS library you need to include — the [UI Extensions SDK](/docs/ui-extensions/sdk-reference/).
 
 ### Two types of extensions
 
