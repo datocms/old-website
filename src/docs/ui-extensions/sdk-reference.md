@@ -34,6 +34,10 @@ DatoCmsExtension.init(function(extension) {
 });
 ```
 
+### Examples
+
+You can take a look at some extensions we already made in our [Github repository](https://github.com/datocms/ui-extensions-sdk/tree/master/examples/).
+
 ### Table of Contents
 
 ### Extension methods
