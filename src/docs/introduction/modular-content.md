@@ -7,9 +7,11 @@ Everyone hates WYSIWYG editors: developers know they produce dirty code, designe
 
 In DatoCMS you can achieve structured, rich-content editing using a specific type of field called **Modular content**:
 
+![foo](../images/modular-content/1.png)
 
 The idea is to give your authors the choice to compose their content by alternating certain blocks (ie. text, images, videos, etc.), which are nothing more but "low-level" models. Authors, to compose a structured content, will be able to add and reorder these blocks as they prefer:
 
+![foo](../images/modular-content/0.png)
 
 This gives authors a lot of freedom to organise their content, much like Medium editor does, while keeping the content clean and structured.
 
@@ -26,6 +28,7 @@ Suppose we have an *Article* model, and we want to add a modular content field t
 
 To achieve this result, first we create the Article model, and add a Modular content field to it:
 
+![foo](../images/modular-content/2.png)
 
 ![foo](../images/modular-content/1.png)
 ![foo](../images/modular-content/3.png)
@@ -39,6 +42,8 @@ Blocks are just a composition of fields, just like ordinary models. In our case,
 
 You can click on the *Settings* button on the Quote block, to edit its fields:
 
-
+![foo](../images/modular-content/6.png)
+![foo](../images/modular-content/7.png)
+![foo](../images/modular-content/8.png)
 
 
