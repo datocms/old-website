@@ -21,7 +21,7 @@ When the fields provided by DatoCMS do not meet the specific requirements of you
 
 You can also use UI Extensions to communicate with external APIs and integrate third-party data in DatoCMS, for example:
 
-* Translating text from one locale to other locales external translation APIs,
+* Translating text from one locale to other locales using external translation APIs,
 * Fetching product details from an external e-commerce website (Shopify, Commerce Layer) and embedding it in DatoCMS.
 
 ### Next steps
