@@ -16,7 +16,7 @@ We want UI Extensions to be reused across multiple projects, so we made it easy 
 
 ### `extension.json`
 
-The `extension.json` file, also known as the *manifest file*, can be used to describe the properties of an extension.
+The `extension.json` file, also known as the *manifest file*, describes the properties of an extension.
 
 If you plan to release your custom UI Extension on Github, remember to add the manifest file to the repository to make its installation on a DatoCMS project super-easy.
 

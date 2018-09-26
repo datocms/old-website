@@ -36,7 +36,7 @@ DatoCmsExtension.init(function(extension) {
 
 ### Examples
 
-You can take a look at some extensions we already made in our [Github repository](https://github.com/datocms/ui-extensions-sdk/tree/master/examples/).
+If you have doubts regarding how to structure the logic of your extension, please take a look at some examples we already made available in our [Github repository](https://github.com/datocms/ui-extensions-sdk/tree/master/examples/).
 
 ### Table of Contents
 
@@ -60,7 +60,13 @@ console.log(extension.getFieldValue(extension.fieldPath));
 
 #### `extension.setFieldValue(...pathChunks, newValue)`
 
-Sets the value of a specific field. To set the value of the current field the extension is attached to see you can use [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath). Returns a Promise that resolves once the change has been acknowledged. The type of the value must match the expected field type. For example, if the extension is attached to a "single-line string" field you must pass a string.
+Sets the value of a specific field.
+
+To set the value of the current field the extension is attached to see you can use [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
+
+The type of the value must match the expected field type. For example, if the extension is attached to a "single-line string" field you must pass a string.
+
+The method returns a Promise that resolves once the change has been acknowledged by the DatoCMS webapp.
 
 ```js
 // set the value of the 'title' field
@@ -84,7 +90,7 @@ extension.setFieldValue(alternativeLanguageFieldPath, 'New title!');
 
 Calls the `callbackFn` every time the value of the field specified is changed by an external event (e.g. when multiple editors are working on the same entry) or when `setFieldValue()` is called.
 
-To be notified when the current field the extension is attached changes value use [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
+To be notified about changes regarding the field the extension is attached to, use the method [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
 
 The method returns a function you can call to stop listening to changes.
 

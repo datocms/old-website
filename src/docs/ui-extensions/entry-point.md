@@ -3,13 +3,15 @@ position: 5
 title: The extension entry point
 ---
 
-From a technical point of view, an UI Extension is an HTML page that will be showed inside an `<iframe>` by the DatoCMS webapp. You, the developer, are in charge of writing and hosting this HTML page, which we call the extension *entry-point*. When you [create a new extension](/docs/ui-extensions/creating-a-new-extension/), you will be asked for the URL of this web page.
+As already mentioned, from a technical point of view, an UI Extension is an HTML page that will be showed inside an `<iframe>` by the DatoCMS webapp. You, the developer, are in charge of writing and hosting this HTML page, which we call the extension *entry-point*.
+
+When you [create a new extension](/docs/ui-extensions/creating-a-new-extension/), you will be asked for the URL of this web page.
 
 You can implement this entry-point with basic HTML and JavaScript, or using more advanced client-side frameworks such as React, Angular or Vue.
 
 ### Skeleton code
 
-This is the minimal code you need to write to make a working custom extension with just a single text input:
+This is the minimal code you need to write to make a custom extension that renders and updates a simple text input:
 
 ```html
 <!doctype html>
@@ -62,11 +64,11 @@ DatoCmsExtension.init(function(extension) {
 });
 ```
 
-The `DatoCmsExtension.init()` callback will invoked once the extension is ready with an `extension` argument, which will give you all the methods you might need to get info and communicate to the main DatoCMS webapp. 
+The `DatoCmsExtension.init()` callback will invoked once the extension is ready with an `extension` argument, which will give you all the methods you might need to get info and communicate to the main DatoCMS webapp.
 
 We'll take a detailed look the methods our SDK offers and how to use them in the [next section of the guide](/docs/ui-extensions/sdk-reference/).
 
 
 ### Examples
 
-You can take a look at some extensions we already made in our [Github repository](https://github.com/datocms/ui-extensions-sdk/tree/master/examples/).
+If you have doubts regarding how to structure your entry-point HTML file, please take a look at some of the extensions we already made available in our [Github repository](https://github.com/datocms/ui-extensions-sdk/tree/master/examples/).
