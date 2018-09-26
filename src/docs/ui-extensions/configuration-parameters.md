@@ -8,7 +8,7 @@ When building an extension, you might feel the need to add some configuration op
 There are two types of configuration parameters that can be set up for an extension:
 
 * **Global parameters** are project-wide settings and are applied to every field within the project that uses the extension. You can set them up under the *Settings > UI Extensions* section;
-* **Instance parameters** are field-specific settings. Every time you assing an extension to a field you set different parameters directly within the Presentation tab of the fields settings.
+* **Instance parameters** are field-specific settings. Every time you assing an extension to a field you can set different parameters directly within the Presentation tab of the fields's settings.
 
 ### Defining parameters
 
@@ -32,4 +32,3 @@ As soon as you edit the *Parameter definitions* field, a preview of the resultin
 ![foo](../images/ui-extensions/parameters-preview.png)
 
 **WARNING:** Configuration parameters can be read by anybody who is allowed to use the extension. It's not secure to use parameters to inject access tokens with access level permitting data manipulation. Read-only tokens can be used but keep in mind their value is not hidden.
-
