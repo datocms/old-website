@@ -44,7 +44,7 @@ If you have doubts regarding how to structure the logic of your extension, pleas
 
 #### `extension.getFieldValue(...pathChunks)`
 
-Returns the value of a specific field. To get the value of the current field the extension is attached to see you can use [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
+Returns the value of a specific field. To get the value of the current field the extension is attached to, use the [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath) option.
 
 ```js
 // get the value of the 'title' field
@@ -62,7 +62,7 @@ console.log(extension.getFieldValue(extension.fieldPath));
 
 Sets the value of a specific field.
 
-To set the value of the current field the extension is attached to see you can use [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
+To set the value of the current field the extension is attached to, you can use the [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath) method.
 
 The type of the value must match the expected field type. For example, if the extension is attached to a "single-line string" field you must pass a string.
 
