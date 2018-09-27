@@ -11,7 +11,7 @@ The SDK exposes the `DatoCmsExtension.init()` method. This is the main entry-poi
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script src="https://unpkg.com/datocms-ui-extensions-sdk@0.0.2"></script>
+  <script src="https://unpkg.com/datocms-ui-extensions-sdk"></script>
 </head>
 <body>
   <input type="text" />

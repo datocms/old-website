@@ -18,8 +18,8 @@ This is the minimal code you need to write to make a custom extension that rende
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script src="https://unpkg.com/datocms-ui-extensions-sdk@0.0.2"></script>
-  <link href="https://unpkg.com/datocms-ui-extensions-sdk@0.0.2/dist/sdk.css" media="all" rel="stylesheet" />
+  <script src="https://unpkg.com/datocms-ui-extensions-sdk"></script>
+  <link href="https://unpkg.com/datocms-ui-extensions-sdk/dist/sdk.css" media="all" rel="stylesheet" />
 </head>
 <body>
   <input type="text" />
@@ -47,13 +47,13 @@ This is the minimal code you need to write to make a custom extension that rende
 As you can see, the entry-point includes a reference to the [UI Extensions SDK](https://github.com/datocms/ui-extensions-sdk/), which enables the extension to communicate with the DatoCMS web app:
 
 ```html
-<script src="https://unpkg.com/datocms-ui-extensions-sdk@0.0.2"></script>
+<script src="https://unpkg.com/datocms-ui-extensions-sdk"></script>
 ```
 
 It is also suggested to add the official SDK style sheet to get some default styling that's coherent to the DatoCMS UI:
 
 ```html
-<link href="https://unpkg.com/datocms-ui-extensions-sdk@0.0.2/dist/sdk.css" media="all" rel="stylesheet" />
+<link href="https://unpkg.com/datocms-ui-extensions-sdk/dist/sdk.css" media="all" rel="stylesheet" />
 ```
 
 The SDK exposes a `DatoCmsExtension.init()`, that you can use within the page to initialize the extension:

@@ -37,7 +37,7 @@ Here is a complete example of an `extension.json` file:
 ```json
 {
   "name": "Yandex translate",
-  "extensionUrl": "https://rawgit.com/datocms/ui-extensions-sdk/master/examples/translate/index.html",
+  "extensionUrl": "https://rawgit.com/datocms/extensions/master/translate/index.html",
   "fieldTypes": ["string", "text"],
   "sidebar": false,
   "parameters": {
