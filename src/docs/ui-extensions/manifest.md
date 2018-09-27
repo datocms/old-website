@@ -3,12 +3,12 @@ position: 7
 title: Sharing/reusing extensions
 ---
 
-We want UI Extensions to be reused across multiple projects, so we made it easy to share them on Github and install them in new projects.
+We want UI Extensions to be reused across multiple projects, so we made it easy to share them on GitHub and install them in new projects.
 
 ### Installing an existing extension
 
 1. Navigate to *Settings > UI Extensions* in your project administrative area;
-1. Select *Install from URL* hovering the mouse on the plus button;
+1. Hover the mouse on the plus button and select *Install from URL* ;
 1. Enter a public GitHub link to an [`extension.json` manifest file](/docs/ui-extensions/manifest/) or select one from the [datocms/extensions](datocms/extensions) repository.
 
 ![foo](../images/ui-extensions/url.png)
@@ -18,14 +18,14 @@ We want UI Extensions to be reused across multiple projects, so we made it easy 
 
 The `extension.json` file, also known as the *manifest file*, describes the properties of an extension.
 
-If you plan to release your custom UI Extension on Github, remember to add the manifest file to the repository to make its installation on a DatoCMS project super-easy.
+If you plan to release your custom UI Extension on GitHub, remember to add the manifest file to the repository to make its installation on a DatoCMS project super-easy.
 
 The following table describes the properties that can be set on the manifest file:
 
 Property       | Required | Type           | Description
 ---------------|----------|----------------|------------
 `name`         | yes      | String         | Extension name
-`fieldTypes`   | yes      | Array<String>  | The field types of a content type where an extension can be used
+`fieldTypes`   | yes      | Array<String>  | The kind of field types the extension can be used with
 `extensionUrl` | yes      | String         | URL where the HTML entry-point of the extension can be found
 `sidebar`      | no       | Boolean        | Controls the location of the extension. If true it will be rendered on the sidebar
 `parameters`   | no       |                | [Configuration parameters]([configuration parameters](/docs/ui-extensions/configuration-parameters/)) for the extension

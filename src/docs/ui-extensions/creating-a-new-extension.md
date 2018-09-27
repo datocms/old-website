@@ -18,7 +18,7 @@ Click Save to create the extension.
 
 ### Assigning an extension to a field
 
-Once an extension has been successfully installed, they can be assigned to one (or many) fields in one of your models. To do that:
+Once an extension has been successfully installed, it can be assigned to one (or many) fields in one of your models. To do that:
 
 1. Navigate to a Model and select a field;
 1. Navigate to the *Settings > Presentation* tab of the field;

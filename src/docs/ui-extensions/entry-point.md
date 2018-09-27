@@ -64,7 +64,7 @@ DatoCmsExtension.init(function(extension) {
 });
 ```
 
-The `DatoCmsExtension.init()` callback will invoked once the extension is ready with an `extension` argument, which will give you all the methods you might need to get info and communicate to the main DatoCMS webapp.
+The `DatoCmsExtension.init()` callback will be invoked once the extension is ready with an `extension` argument, which will give you all the methods you might need to get info and communicate to the main DatoCMS webapp.
 
 We'll take a detailed look the methods our SDK offers and how to use them in the [next section of the guide](/docs/ui-extensions/sdk-reference/).
 

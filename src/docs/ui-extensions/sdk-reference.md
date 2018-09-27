@@ -62,11 +62,11 @@ console.log(extension.getFieldValue(extension.fieldPath));
 
 Sets the value of a specific field.
 
-To set the value of the current field the extension is attached to, you can use the [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath) method.
-
 The type of the value must match the expected field type. For example, if the extension is attached to a "single-line string" field you must pass a string.
 
 The method returns a Promise that resolves once the change has been acknowledged by the DatoCMS webapp.
+
+You can get the path of the field the extension is attached to using the method [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
 
 ```js
 // set the value of the 'title' field
@@ -90,9 +90,9 @@ extension.setFieldValue(alternativeLanguageFieldPath, 'New title!');
 
 Calls the `callbackFn` every time the value of the field specified is changed by an external event (e.g. when multiple editors are working on the same entry) or when `setFieldValue()` is called.
 
-To be notified about changes regarding the field the extension is attached to, use the method [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
-
 The method returns a function you can call to stop listening to changes.
+
+You can get the path of the field the extension is attached to using the method [`extension.fieldPath`](/docs/ui-extensions/sdk-reference/#extensionfieldpath).
 
 ```js
 const input = document.querySelector("input");
@@ -107,7 +107,7 @@ unsubscribe();
 
 #### `extension.addChangeListener(...pathChunks, callbackFn)`
 
-Calls the `callbackFn` every time one of the extension options changes by an external event. The method returns a function you can call to stop listening to changes.
+Calls the `callbackFn` every time one of the extension options is changed by an external event. The method returns a function you can call to stop listening to changes.
 
 ```js
 const input = document.querySelector("input");

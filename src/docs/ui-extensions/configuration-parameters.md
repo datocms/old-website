@@ -31,4 +31,4 @@ As soon as you edit the *Parameter definitions* field, a preview of the resultin
 
 ![foo](../images/ui-extensions/parameters-preview.png)
 
-**WARNING:** Configuration parameters can be read by anybody who is allowed to use the extension. It's not secure to use parameters to inject access tokens with access level permitting data manipulation. Read-only tokens can be used but keep in mind their value is not hidden.
+**WARNING:** Configuration parameters can be read by anybody who is allowed to use the extension. It's not secure to use parameters to inject access tokens that permit data manipulation. Read-only tokens can be used but keep in mind their value is not hidden.

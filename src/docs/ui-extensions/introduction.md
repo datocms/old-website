@@ -26,6 +26,4 @@ Examples of sidebar extensions are:
 * Integration with a preview environment,
 * Moving entries across different projects
 
-A UI Extension becomes as sidebar extension by setting the property `sidebar` to true when creating or updating the extension.
-
 A sidebar extension is still assigned to a field which is then ommited from the entry editor. The field's value can be used to store data for the sidebar extension.
