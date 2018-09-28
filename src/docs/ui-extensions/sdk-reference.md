@@ -38,8 +38,7 @@ DatoCmsExtension.init(function(extension) {
 
 If you have doubts regarding how to structure the logic of your extension, please take a look at some examples we already made available in our [Github repository](https://github.com/datocms/ui-extensions-sdk/tree/master/examples/).
 
-### Table of Contents
-
+### Table of Contents 
 ### Extension methods
 
 #### `extension.getFieldValue(...pathChunks)`
@@ -179,6 +178,23 @@ extension.itemType.relationships.fields.data.forEach(function(link) {
   console.log(extension.fields[link.id].attributes.api_key);
 });
 ```
+
+#### `extension.currentUser`
+
+Returns information about of the current DatoCMS user. It can either be an [Account](https://www.datocms.com/content-management-api/#user-1) or an [Editor](https://www.datocms.com/content-management-api/#user-1) object.
+
+```js
+// returns the email of the current user
+console.log(extension.currentUser.attributes.email);
+```
+
+#### `extension.users`
+
+Returns all the users of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMS API Editor object](https://www.datocms.com/content-management-api/#user-1).
+
+#### `extension.account`
+
+Returns the account user of the current DatoCMS project. The objects take the same format as the [CMS API Account object](https://www.datocms.com/content-management-api/#user-1).
 
 #### `extension.disabled`
 
