@@ -638,7 +638,7 @@ ${returnCode}`;
               <p>
                 The Content Management APIs also include many GET requests.
                 However, it is highly recommended that you always use the&nbsp;
-                <Link to="/graphql">Content Delivery API</Link> to deliver
+                <Link to="/docs/content-delivery-api/">Content Delivery API</Link> to deliver
                 content to your public-facing web or mobile projects.
               </p>
             </div>
