@@ -92,7 +92,7 @@ module.exports = {
             resolve: 'gatsby-toc',
             options: {
               include: [
-                'src/docs/ui-extensions/sdk-reference.md' // an include glob to match against
+                'src/docs/plugins/sdk-reference.md' // an include glob to match against
               ],
               mdastUtilTocOptions: {
                 heading: 'Table of Contents'

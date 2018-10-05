@@ -3,18 +3,18 @@ position: 4
 title: Configuration parameters
 ---
 
-When building an extension, you might feel the need to add some configuration options, so that you can reuse the same extension with slight differences multiple times in different fields.
+When building an plugin, you might feel the need to add some configuration options, so that you can reuse the same plugin with slight differences multiple times in different fields.
 
-There are two types of configuration parameters that can be set up for an extension:
+There are two types of configuration parameters that can be set up for an plugin:
 
-* **Global parameters** are project-wide settings and are applied to every field within the project that uses the extension. You can set them up under the *Settings > UI Extensions* section;
-* **Instance parameters** are field-specific settings. Every time you assing an extension to a field you can set different parameters directly within the Presentation tab of the fields's settings.
+* **Global parameters** are project-wide settings and are applied to every field within the project that uses the plugin. You can set them up under the *Settings > Plugins* section;
+* **Instance parameters** are field-specific settings. Every time you assing an plugin to a field you can set different parameters directly within the Presentation tab of the fields's settings.
 
 ### Defining parameters
 
-When creating a new extension, you can define which configuration options it will accept using a specific JSON format:
+When creating a new plugin, you can define which configuration options it will accept using a specific JSON format:
 
-![foo](../images/ui-extensions/parameters.png)
+![foo](../images/plugins/parameters.png)
 
 As you can see, both global and instance parameters take an array of **parameter definitions**. Every parameter definition is an object constructed as described in the table below:
 
@@ -29,6 +29,6 @@ Property    | Type and value                               | Required? | Remarks
 
 As soon as you edit the *Parameter definitions* field, a preview of the resulting fields will be shown under the field:
 
-![foo](../images/ui-extensions/parameters-preview.png)
+![foo](../images/plugins/parameters-preview.png)
 
-**WARNING:** Configuration parameters can be read by anybody who is allowed to use the extension. It's not secure to use parameters to inject access tokens that permit data manipulation. Read-only tokens can be used but keep in mind their value is not hidden.
+**WARNING:** Configuration parameters can be read by anybody who is allowed to use the plugin. It's not secure to use parameters to inject access tokens that permit data manipulation. Read-only tokens can be used but keep in mind their value is not hidden.
