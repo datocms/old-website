@@ -5,7 +5,9 @@ title: Plugins
 
 While DatoCMS offers a great number of fields with different appearance configurations, we cannot cover every possible scenario. Plugins enable developers to replace the default fields that DatoCMS provides with third-party HTML5 applications, so the editing experience of your administrative backend can be fully customized.
 
-[IMAGE]
+An example of a field editor plugin is our [Star rating editor](https://github.com/datocms/plugins/tree/master/star-rating-editor) plugin, which will present an Integer field with a star rating widget instead of using the default textual input:
+
+![foo](../images/plugins/field-editor.png)
 
 ### When is it useful to use them?
 
