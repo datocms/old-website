@@ -29,12 +29,10 @@ An example of a field addon plugin is our [Yandex Translate](https://github.com/
 
 #### "Sidebar widget" plugins
 
-Sidebar plugins are rendered on the sidebar of the record editor. They make most sense if the functionality provided by the plugin applies to an entire record instead of a single field. 
+Sidebar plugins are rendered on the sidebar of the record editor. They make most sense if the functionality provided by the plugin applies to an entire record instead of a single field.
 
-Examples of sidebar plugins are:
+An example of a field addon plugin is our [Notes](https://github.com/datocms/plugins/tree/master/notes) plugin, that you can use to add Post-It notes to your records:
 
-* Custom webhooks/notifications,
-* Integration with a preview environment,
-* Moving entries across different projects
+![foo](../images/plugins/sidebar.png)
 
 A sidebar plugin is still assigned to a field which is then ommited from the entry editor. The field's value can be used to store data for the sidebar plugin.
