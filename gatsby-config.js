@@ -44,6 +44,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-plugin-sharp`,
+          `gatsby-remark-gemoji-to-emoji`,
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {

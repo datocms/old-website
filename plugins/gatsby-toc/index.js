@@ -29,6 +29,8 @@ module.exports = function generateTOCNodes({
     return;
   }
 
+  toc.data = { hProperties: { className: 'table-of-contents' } };
+
   markdownAST.children = [].concat(
     markdownAST.children.slice(0, index),
     toc,

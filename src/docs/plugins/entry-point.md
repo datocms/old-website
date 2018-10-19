@@ -1,17 +1,25 @@
 ---
 position: 5
-title: The plugin entry point
+title: The entry point
 ---
 
-As already mentioned, from a technical point of view, an Plugin is an HTML page that will be showed inside an `<iframe>` by the DatoCMS webapp. You, the developer, are in charge of writing and hosting this HTML page, which we call the plugin *entry-point*.
-
-When you [create a new plugin](/docs/plugins/creating-a-new-plugin/), you will be asked for the URL of this web page.
-
-You can implement this entry-point with basic HTML and JavaScript, or using more advanced client-side frameworks such as React, Angular or Vue.
+A plugin is just an HTML page that will be showed inside an `<iframe>` by the DatoCMS webapp. When you [create a new plugin](/docs/plugins/creating-a-new-plugin/), you will be asked for the URL of this web page. We call this page the plugin's *entry point*.
 
 ### Skeleton code
 
-This is the minimal code you need to write to make a custom plugin that renders and updates a simple text input:
+The entry point must import the [Plugins SDK](https://github.com/datocms/plugins-sdk/), which enables the plugin to communicate with the DatoCMS web app:
+
+```html
+<script src="https://unpkg.com/datocms-plugins-sdk"></script>
+```
+
+It is also suggested to add the official SDK style sheet to get some default styling that's coherent to the DatoCMS webapp UI:
+
+```html
+<link href="https://unpkg.com/datocms-plugins-sdk/dist/sdk.css" media="all" rel="stylesheet" />
+```
+
+This is the minimal code you need to write to make a field-editor plugin that renders and updates a simple text input:
 
 ```html
 <!doctype html>
@@ -27,7 +35,7 @@ This is the minimal code you need to write to make a custom plugin that renders 
     DatoCmsPlugin.init(function(plugin) {
       const input = document.querySelector("input");
 
-      plugin.startAutoResizer();
+      plugin.startAutoResizer()
 
       input.value = plugin.getFieldValue(plugin.fieldPath);
 
@@ -44,18 +52,6 @@ This is the minimal code you need to write to make a custom plugin that renders 
 </html>
 ```
 
-As you can see, the entry-point includes a reference to the [Plugins SDK](https://github.com/datocms/plugins-sdk/), which enables the plugin to communicate with the DatoCMS web app:
-
-```html
-<script src="https://unpkg.com/datocms-plugins-sdk"></script>
-```
-
-It is also suggested to add the official SDK style sheet to get some default styling that's coherent to the DatoCMS UI:
-
-```html
-<link href="https://unpkg.com/datocms-plugins-sdk/dist/sdk.css" media="all" rel="stylesheet" />
-```
-
 The SDK exposes a `DatoCmsPlugin.init()`, that you can use within the page to initialize the plugin:
 
 ```js
@@ -66,9 +62,30 @@ DatoCmsPlugin.init(function(plugin) {
 
 The `DatoCmsPlugin.init()` callback will be invoked once the plugin is ready with an `plugin` argument, which will give you all the methods you might need to get info and communicate to the main DatoCMS webapp.
 
+While in this example we're just writing vanilla JS code, you are free to use any third-party library or advanced client-side frameworks such as React, Angular or Vue. 
+
+If you're using Webpack, you can also include the SDK as a regular NPM package:
+
+```js
+const DatoCmsPlugin = require('datocms-plugins-sdk');
+
+DatoCmsPlugin.init(function(plugin) {
+  // place your custom plugin code here
+});
+```
+
 We'll take a detailed look the methods our SDK offers and how to use them in the [next section of the guide](/docs/plugins/sdk-reference/).
 
+### Theme colors
 
-### Examples
+To make it easier for you to style plugins based on the project current theme colors, the following CSS variables will be available within the page:
 
-If you have doubts regarding how to structure your entry-point HTML file, please take a look at some of the plugins we already made available in our [Github repository](https://github.com/datocms/plugins-sdk/tree/master/examples/).
+* `--primary-color`, ie. `rgb(20, 152, 172)`
+* `--accent-color`, ie. `rgb(20, 179, 204)`
+* `--semi-transparent-accent-color`, ie. `rgb(20, 179, 204, 0.1)`
+* `--light-color`, ie. `rgb(227, 249, 252)`
+* `--dark-color`, ie. `rgb(47, 59, 59)`
+
+### Need some examples? :balloon:
+
+If you have doubts regarding how to structure your entry point HTML file, please take a look at some of the plugins we already made available in our [Github repository](https://github.com/datocms/plugins/tree/master/).

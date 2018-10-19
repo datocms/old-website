@@ -4,6 +4,7 @@ import { Wrap, button, Space, text } from 'blocks'
 import sortBy from 'sort-by'
 import Sticky from 'react-stickynode'
 import Helmet from 'react-helmet'
+import Lightbox from 'react-images'
 
 import bem from 'utils/bem'
 
@@ -41,10 +42,30 @@ const findTitle = findFrontmatterValue.bind(this, 'title');
 const findPosition = findFrontmatterValue.bind(this, 'position');
 
 export default class DocAside extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { image: null };
+  }
 
   handleOpenCrisp(e) {
     e.preventDefault();
     $crisp.push(["do", "chat:open"])
+  }
+
+  componentDidMount() {
+    this.contentBody.addEventListener('click', (event) => {
+      if (event.target.classList.contains('gatsby-resp-image-image')) {
+        let link = event.target;
+
+        while (!link.classList.contains('gatsby-resp-image-link')) {
+          link = link.parentElement;
+        }
+
+        this.setState({ image: link.href });
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    });
   }
 
   render() {
@@ -117,7 +138,7 @@ export default class DocAside extends React.Component {
                 </h1>
               </Space>
 
-              <div className={b('content-body')}>
+              <div className={b('content-body')} ref={x => this.contentBody = x}>
                 <div dangerouslySetInnerHTML={{ __html: pathContext.html }} />
                 {this.props.children}
               </div>
@@ -144,6 +165,18 @@ export default class DocAside extends React.Component {
             </div>
           </div>
         </Wrap>
+        <Lightbox
+          backdropClosesModal
+          width={1400}
+          images={[{ src: this.state.image }]}
+          isOpen={this.state.image}
+          theme={{
+            footer: {
+              display: 'none',
+            },
+          }}
+          onClose={() => this.setState({ image: null })}
+        />
       </div>
     )
   }

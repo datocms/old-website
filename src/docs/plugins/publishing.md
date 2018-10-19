@@ -1,6 +1,6 @@
 ---
 position: 7
-title: Sharing/reusing plugins
+title: Publishing plugins
 ---
 
 We want Plugins to be reused across multiple projects, so we made it easy to share them on GitHub and install them in new projects.
