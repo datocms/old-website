@@ -22,7 +22,7 @@ const BlogAside = ({ latestEntries, children }) => (
           {children}
         </div>
         <div className={b('cols-aside')}>
-          <Sticky top={100}>
+          <Sticky top={100} bottomBoundary={`.${b()}`}>
             <div className={b('title')}>
               DatoCMS Blog
             </div>

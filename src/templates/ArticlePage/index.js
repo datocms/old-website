@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ResponsiveEmbed from 'react-responsive-embed'
+import Lightbox from 'react-images'
 
 import bem from 'utils/bem'
 import './style.sass'
@@ -13,6 +14,21 @@ import BlogAside from 'components/BlogAside'
 const b = bem.lock('ArticlePage')
 
 export default class ArticlePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { image: null };
+  }
+
+  handleOpenImage(image, e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    this.setState({ image });
+
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   render() {
     const { article } = this.props.data;
 
@@ -38,7 +54,13 @@ export default class ArticlePage extends React.Component {
                   {
                     block.model.apiKey === 'image' &&
                       <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
-                        <Img sizes={block.image.sizes} />
+                        <a
+                          href={`${block.image.url}?w=1200&fit=max`}
+                          className={b('content-image__image')}
+                          onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
+                        >
+                          <Img sizes={block.image.sizes} />
+                        </a>
                         {
                           block.image.title &&
                             <div className={b('content-image__label')}>
@@ -80,6 +102,18 @@ export default class ArticlePage extends React.Component {
             {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
           </div>
         </div>
+        <Lightbox
+          backdropClosesModal
+          width={1400}
+          images={this.state.image ? [{ src: this.state.image }] : []}
+          isOpen={this.state.image}
+          theme={{
+            footer: {
+              display: 'none',
+            },
+          }}
+          onClose={() => this.setState({ image: null })}
+        />
       </BlogAside>
     );
   }

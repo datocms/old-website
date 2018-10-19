@@ -1,6 +1,6 @@
 ---
 position: 6
-title: Plugins SDK reference
+title: SDK Reference
 ---
 
 If you require the script from the web without any module system you can include it like this:

@@ -25,8 +25,20 @@
 
 .ArticlePage__content-image
   margin: 70px auto
-  border-radius: 5px
-  overflow: hidden
+
+  .gatsby-image-wrapper
+    overflow: hidden
+    border-radius: 4px
+
+.ArticlePage__content-image__image
+  cursor: zoom-in
+  box-shadow: 0 2px 4px rgba(black, 0.2)
+  transition: box-shadow 0.1s ease-in-out
+  border-radius: 4px
+  display: block
+
+  &:hover
+    box-shadow: 0 4px 10px rgba(black, 0.2)
 
 .ArticlePage__content-image__label
   font-style: italic
@@ -159,13 +171,6 @@
       border: 0
       padding: 0
       border-radius: 0
-
-  .gatsby-resp-image-link
-    margin: 60px 0
-
-  .gatsby-resp-image-background-image
-    border-radius: 4px
-    // box-shadow: 0 5px 10px rgba(black, 0.1)
 
   a.anchor
     margin-left: -35px

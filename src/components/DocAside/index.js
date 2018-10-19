@@ -97,7 +97,7 @@ export default class DocAside extends React.Component {
         <Wrap>
           <div className={b()}>
             <div className={b('menu')} data-datocms-noindex>
-              <Sticky top={100}>
+              <Sticky top={100} bottomBoundary={`.${b()}`}>
                 <ul className={b('menu-pages')}>
                   {
                     categoryPages.map((page, i) => (
@@ -168,7 +168,7 @@ export default class DocAside extends React.Component {
         <Lightbox
           backdropClosesModal
           width={1400}
-          images={[{ src: this.state.image }]}
+          images={this.state.image ? [{ src: this.state.image }] : []}
           isOpen={this.state.image}
           theme={{
             footer: {

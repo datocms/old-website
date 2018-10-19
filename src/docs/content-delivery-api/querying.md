@@ -38,13 +38,16 @@ A few examples for query names:
 * Model API identifier: `track`, query name: `allTracks` 
 * Model API identifier: `use_case`, query name: `allUseCases`
 
-A query which fetches all records from the `artist` model could look like the following:
+A query which fetches the first ten records from the `artist` model — togheter with the total number of artists — could look like the following:
 
 ```graphql
 query {
-  allArtists {
+  allArtists(first: 10) {
     id
     name
+  }
+  _allArtistsMeta {
+  count
   }
 }
 ```
