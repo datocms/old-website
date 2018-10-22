@@ -17,7 +17,7 @@ Once installed, depending on the plugin, you might need to specify some global s
 
 ![foo](../images/plugins/global-settings.png)
 
-### Assigning an plugin to a field
+### Assigning a plugin to a field
 
 Once an plugin has been successfully installed, it can be assigned to one (or many) fields in one of your models. To do that navigate to a Model, select a field and navigate to the *Settings > Presentation* tab of the field:
 
