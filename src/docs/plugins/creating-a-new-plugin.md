@@ -27,7 +27,7 @@ Click Save to create the plugin.
 
 When building an plugin, you might feel the need to add some configuration options, so that you can reuse the same plugin with slight differences multiple times in different fields.
 
-There are two types of configuration parameters that can be set up for an plugin:
+There are two types of configuration parameters that can be set up:
 
 * **Global parameters** are project-wide settings and are applied to every field within the project that uses the plugin. You can set them up under the *Settings > Plugins* section;
 * **Instance parameters** are field-specific settings. Every time you assing an plugin to a field you can set different parameters directly within the Presentation tab of the fields's settings.

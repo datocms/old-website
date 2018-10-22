@@ -3,7 +3,7 @@ position: 7
 title: Publishing plugins
 ---
 
-If you've [created a new plugin](/docs/plugins/creating-a-new-plugin/), we strongly encourage you to share it with the community as an [Npm package](https://www.npmjs.com/), so that it will become available in our Plugin Explorer:
+If you've [created a new plugin](/docs/plugins/creating-a-new-plugin/), we strongly encourage you to share it with the community as an [Npm package](https://www.npmjs.com/), so that it will become available in our Plugins Explorer:
 
 ![foo](../images/plugins/explorer.png)
 

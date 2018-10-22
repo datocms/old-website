@@ -86,6 +86,8 @@ To make it easier for you to style plugins based on the project current theme co
 * `--light-color`, ie. `rgb(227, 249, 252)`
 * `--dark-color`, ie. `rgb(47, 59, 59)`
 
+You will also be able to access to theme colors programmatically from the Plugins SDK [plugin.theme](/docs/plugins/sdk-reference/#plugintheme) getter.
+
 ### Need some examples? :balloon:
 
 If you have doubts regarding how to structure your entry point HTML file, please take a look at some of the plugins we already made available in our [Github repository](https://github.com/datocms/plugins/tree/master/).

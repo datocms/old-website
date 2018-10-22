@@ -3,7 +3,7 @@ position: 6
 title: SDK Reference
 ---
 
-If you require the script from the web without any module system you can include it like this:
+If you require the script from the web without any module system you can include the SDK like this:
 
 ```html
 <html lang="en">
@@ -22,7 +22,7 @@ If you require the script from the web without any module system you can include
 </html>
 ```
 
-If you use Webpack or Browserify, you'll need to require the Plugins SDK NPM package:
+If you use Webpack or Browserify, you'll need to require the [`datocms-plugins-sdk` npm package](https://www.npmjs.com/package/datocms-plugins-sdk):
 
 ```js
 const DatoCmsPlugin = require('datocms-plugins-sdk');
@@ -32,7 +32,14 @@ DatoCmsPlugin.init(function(plugin) {
 });
 ```
 
-The SDK exposes the `DatoCmsPlugin.init()` method, which is the main entry point for all plugin related code.
+The SDK exposes the `DatoCmsPlugin.init()` method, which is the main entry point for all plugin related code. The `.init` method also returns a Promise, so the following code is equivalent:
+
+```js
+DatoCmsPlugin.init()
+  .then(function(plugin) {
+    /* ... */
+  });
+```
 
 #### Need some examples? :balloon:
 
