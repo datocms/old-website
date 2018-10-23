@@ -19,7 +19,7 @@ Once installed, depending on the plugin, you might need to specify some global s
 
 ### Assigning a plugin to a field
 
-Once an plugin has been successfully installed, it can be assigned to one (or many) fields in one of your models. To do that navigate to a Model, select a field and navigate to the *Settings > Presentation* tab of the field:
+Once an plugin has been successfully installed, it can be assigned to one (or many) fields in one of your models. To do that navigate to a Model, select a field and navigate to the *Settings > Presentation* tab of the field.
 
 If a plugin is a field editor or a sidebar widget — and the plugin is compatible with the type of field you've selected — you will be able to select it and setup any configuration options:
 
