@@ -52,6 +52,6 @@ Make sure to follow these rules:
 * `name` MUST be prefixed with `datocms-plugin`;
 * `datoCmsPlugin.entryPoint` and `datoCmsPlugin.previewImage` must be files contained in the package, and need to be defined as relative paths to the package root;
 * `keywords` MUST contain the `datocms-plugin` keyword, otherwise the plugin won't be visible in the Plugin explorer;
-* `datoCmsPlugin.fieldTypes` MUST contain one or more of the following values: `boolean`, `date`, `date_time`, `file`, `float`, `integer`, `string`, `text`, `lat_lon`, `json`, `seo`, `link`, `links`, `video`, `slug`, `gallery` and `color`;
-* `datoCmsPlugin.pluginType` MUST be one of the following values: `field_editor`, `field_addon` or `sidebar`.
+* `datoCmsPlugin.fieldTypes` MUST contain one or more of the following values: `boolean`, `date`, `date_time`, `float`, `integer`, `string`, `text`, `lat_lon`, `json`, `seo`, `link`, `links`, `video`, `color`;
+* `datoCmsPlugin.pluginType` MUST be one of the following values: `field_editor`, `field_addon` or `sidebar`;
 * `datoCmsPlugin.parameters` MUST follow the syntax detailed in the [Configuration parameters](/docs/plugins/creating-a-new-plugin/#configuration-parameters) section of this guide.
