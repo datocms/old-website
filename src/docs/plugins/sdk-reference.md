@@ -305,3 +305,36 @@ Calculates the body's `scrollHeight` and sets the containers height to this valu
 
 Sets the iframe height to the given value in pixels. `height` must be an integer.
 
+### Dialogs
+
+#### `plugin.createNewItem(itemTypeId)`
+
+Opens a dialog for creating a new record. It returns a promise resolved with the newly created record or `null` if the user closes the dialog without creating anything.
+
+```js
+// open modal to create a new record of model with ID=999
+plugin.createNewItem(999)
+  .then(function(item) {
+    if (item) {
+      console.log('Item created: ', item);
+    } else {
+      console.log('Model closed!');
+    }
+  });
+```
+
+#### `plugin.editItem(itemTypeId)`
+
+Opens a dialog for editing an existing record. It returns a promise resolved with the edited record or `null` if the user closes the dialog without persisting any change.
+
+```js
+// open modal to edit record #4941
+plugin.editItem(4941)
+  .then(function(item) {
+    if (item) {
+      console.log('Item edited: ', item);
+    } else {
+      console.log('Model closed!');
+    }
+  });
+```
