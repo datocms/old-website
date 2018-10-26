@@ -2,22 +2,9 @@ const crypto = require('crypto');
 
 exports.sourceNodes = async (
   { boundActionCreators },
-  { fetch, type }
+  { resolve }
 ) => {
   const { createNode } = boundActionCreators;
-
-  fetch().then((body) => {
-    const node = {
-      id: type,
-      parent: null,
-      children: [],
-      internal: {
-        type,
-        contentDigest: crypto.createHash('md5').update(body).digest('hex'),
-      },
-      body
-    };
-
-    createNode(node);
-  });
+  const digest = (blob) => crypto.createHash('md5').update(JSON.stringify(blob)).digest('hex');
+  return resolve(createNode, digest);
 }

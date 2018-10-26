@@ -204,6 +204,54 @@ const legalPages = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
+const createMarketplace = ({ graphql, boundActionCreators: { createPage } }) => {
+  return graphql(
+    `
+      {
+        plugins: allPlugin {
+          edges {
+            node {
+              name
+              version
+              publisher {
+                username
+                email
+              }
+              homepage
+              description
+              keywords
+              license
+              datoCmsPlugin {
+                title
+                previewImage
+                fieldTypes
+                pluginType
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+  .then(result => {
+    createPaginatedPages({
+      edges: result.data.plugins.edges,
+      createPage: createPage,
+      pageTemplate: `./src/templates/MarketplacePage/index.js`,
+      pageLength: 10,
+      pathPrefix: 'plugins'
+    });
+
+    result.data.plugins.edges.forEach(({ node: plugin }) => {
+      createPage({
+        path: `/plugin/${plugin.name}/`,
+        component: p.resolve(`./src/templates/PluginPage/index.js`),
+        context: { name: plugin.name },
+      });
+    })
+  })
+}
+
 const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
   return graphql(
     `
@@ -335,6 +383,7 @@ exports.createPages = (options) => {
     articles(options),
     changelog(options),
     createRedirects(options),
+    createMarketplace(options),
   ]);
 }
 

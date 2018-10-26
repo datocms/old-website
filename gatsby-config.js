@@ -2,6 +2,7 @@ require('dotenv').config()
 const path = require('path')
 const fetch = require('node-fetch');
 const buildCmaResources = require('./src/utils/buildCmaResources');
+const buildGraphQlFilters = require('./src/utils/buildGraphQlFilters');
 const { parse, stringify } = require('flatted/cjs');
 const camelcaseKeys = require('camelcase-keys');
 
@@ -259,116 +260,128 @@ module.exports = {
         ],
       },
     },
+
     {
       resolve: `gatsby-source-json`,
       options: {
-        fetch: () => {
-          return buildCmaResources(fetch)
-            .then(resources => stringify(resources));
-        },
-        type: 'CmaResources'
+        resolve: (createNode, digest) => (
+          buildCmaResources(fetch)
+            .then(resources => stringify(resources))
+            .then(blob => (
+              createNode({
+                id: 'CmaResources',
+                children: [],
+                parent: null,
+                internal: {
+                  type: 'CmaResources',
+                  contentDigest: digest(blob),
+                },
+                body: blob,
+              })
+            ))
+        ),
       },
     },
 
     {
       resolve: `gatsby-source-json`,
       options: {
-        fetch: () => {
-          return fetch(
+        resolve: (createNode, digest) => (
+          fetch(
             'https://account-api.datocms.com/plans',
-            {
-              headers: { 'Accept': 'application/json' },
-            }
+            { headers: { 'Accept': 'application/json' } }
           )
             .then(res => res.json())
-            .then(res => stringify(camelcaseKeys(res.data, { deep: true })));
-        },
-        type: 'Plans'
+            .then(res => stringify(camelcaseKeys(res.data, { deep: true })))
+            .then(blob => (
+              createNode({
+                id: 'Plans',
+                children: [],
+                parent: null,
+                internal: {
+                  type: 'Plans',
+                  contentDigest: digest(blob),
+                },
+                body: blob,
+              })
+            ))
+        ),
       },
     },
 
     {
       resolve: `gatsby-source-json`,
       options: {
-        fetch: () => {
-          const token = 'aa01834acf28627c3859e59dbc821f';
+        resolve: (createNode, digest) => (
+          buildGraphQlFilters(fetch)
+            .then(res => stringify(res.data))
+            .then(blob => (
+              createNode({
+                id: 'Cda',
+                children: [],
+                parent: null,
+                internal: {
+                  type: 'Cda',
+                  contentDigest: digest(blob),
+                },
+                body: blob,
+              })
+            ))
+        ),
+      },
+    },
 
-          return fetch(
-            'https://graphql.datocms.com/',
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`,
-              },
-              body: JSON.stringify({
-                query: `
-                  query IntrospectionQuery {
-                     __schema {
-                       types {
-                         ...FullType
-                       }
-                     }
-                   }
-
-                   fragment FullType on __Type {
-                     kind
-                     name
-                     description
-                     docHints
-                     inputFields {
-                       ...InputValue
-                     }
-                   }
-
-                   fragment InputValue on __InputValue {
-                     name
-                     description
-                     type { ...TypeRef }
-                     defaultValue
-                   }
-
-                   fragment TypeRef on __Type {
-                     kind
-                     name
-                     ofType {
-                       kind
-                       name
-                       ofType {
-                         kind
-                         name
-                         ofType {
-                           kind
-                           name
-                           ofType {
-                             kind
-                             name
-                             ofType {
-                               kind
-                               name
-                               ofType {
-                                 kind
-                                 name
-                                 ofType {
-                                   kind
-                                   name
-                                 }
-                               }
-                             }
-                           }
-                         }
-                       }
-                     }
-                   }
-                `
-              }),
-            }
-          )
+    {
+      resolve: `gatsby-source-json`,
+      options: {
+        resolve: (createNode, digest) => {
+          return fetch(`https://registry.npmjs.org/-/v1/search?text=keywords%3Adatocms-plugin&size=250`)
             .then(res => res.json())
-            .then(res => stringify(res.data));
+            .then(res => Promise.all(
+              res.objects.map(object => (
+                fetch(`https://unpkg.com/${object.package.name}@${object.package.version}/package.json`)
+                  .then(res => res.json())
+                  .then(package => Object.assign({}, package, { id: object.package.name, publisher: object.package.publisher }))
+              ))
+            ))
+            .then(packages => Promise.all(
+              packages.map(package => (
+                fetch(`https://unpkg.com/${package.name}@${package.version}/README.md`)
+                  .then(res => res.text())
+                  .then(readme => Object.assign({}, package, { readme }))
+              ))
+            ))
+            .then(plugins => (
+              plugins.forEach(plugin => {
+                createNode({
+                  id: `Plugin-${plugin.name}-readme`,
+                  parent: `Plugin-${plugin.name}`,
+                  children: [],
+                  internal: {
+                    type: 'PluginReadme',
+                    mediaType: 'text/markdown',
+                    content: plugin.readme,
+                    contentDigest: digest(plugin.readme),
+                  },
+                });
+
+                createNode(Object.assign(
+                  {},
+                  plugin,
+                  {
+                    id: `Plugin-${plugin.name}`,
+                    parent: null,
+                    children: [`Plugin-${plugin.name}-readme`],
+                    internal: {
+                      type: 'Plugin',
+                      contentDigest: digest(plugin),
+                    },
+                    readmeNode___NODE: `Plugin-${plugin.name}-readme`,
+                  }
+                ));
+              })
+            ))
         },
-        type: 'Cda'
       },
     },
   ],
