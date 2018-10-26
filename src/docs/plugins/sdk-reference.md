@@ -323,7 +323,7 @@ plugin.createNewItem(999)
   });
 ```
 
-#### `plugin.editItem(itemTypeId)`
+#### `plugin.editItem(itemId)`
 
 Opens a dialog for editing an existing record. It returns a promise resolved with the edited record or `null` if the user closes the dialog without persisting any change.
 
