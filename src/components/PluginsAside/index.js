@@ -9,9 +9,9 @@ import './style.sass'
 import twitter from 'images/twitter.svg'
 import medium from 'images/medium.svg'
 
-const b = bem.lock('MarketplaceAside')
+const b = bem.lock('PluginsAside')
 
-const MarketplaceAside = ({ latestEntries, children }) => (
+const PluginsAside = ({ latestEntries, children }) => (
   <Space both={10}>
     <Wrap>
       <div className={b()}>
@@ -59,4 +59,4 @@ const MarketplaceAside = ({ latestEntries, children }) => (
   </Space>
 )
 
-export default MarketplaceAside;
+export default PluginsAside;

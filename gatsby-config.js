@@ -330,59 +330,5 @@ module.exports = {
         ),
       },
     },
-
-    {
-      resolve: `gatsby-source-json`,
-      options: {
-        resolve: (createNode, digest) => {
-          return fetch(`https://registry.npmjs.org/-/v1/search?text=keywords%3Adatocms-plugin&size=250`)
-            .then(res => res.json())
-            .then(res => Promise.all(
-              res.objects.map(object => (
-                fetch(`https://unpkg.com/${object.package.name}@${object.package.version}/package.json`)
-                  .then(res => res.json())
-                  .then(package => Object.assign({}, package, { id: object.package.name, publisher: object.package.publisher }))
-              ))
-            ))
-            .then(packages => Promise.all(
-              packages.map(package => (
-                fetch(`https://unpkg.com/${package.name}@${package.version}/README.md`)
-                  .then(res => res.text())
-                  .then(readme => Object.assign({}, package, { readme }))
-              ))
-            ))
-            .then(plugins => (
-              plugins.forEach(plugin => {
-                createNode({
-                  id: `Plugin-${plugin.name}-readme`,
-                  parent: `Plugin-${plugin.name}`,
-                  children: [],
-                  internal: {
-                    type: 'PluginReadme',
-                    mediaType: 'text/markdown',
-                    content: plugin.readme,
-                    contentDigest: digest(plugin.readme),
-                  },
-                });
-
-                createNode(Object.assign(
-                  {},
-                  plugin,
-                  {
-                    id: `Plugin-${plugin.name}`,
-                    parent: null,
-                    children: [`Plugin-${plugin.name}-readme`],
-                    internal: {
-                      type: 'Plugin',
-                      contentDigest: digest(plugin),
-                    },
-                    readmeNode___NODE: `Plugin-${plugin.name}-readme`,
-                  }
-                ));
-              })
-            ))
-        },
-      },
-    },
   ],
 };

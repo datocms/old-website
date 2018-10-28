@@ -1,32 +1,32 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
-.MarketplaceAside__cols-right
+.PluginsAside__cols-right
   margin-top: 90px
 
 @media screen and (max-width: 1199px)
-  .MarketplaceAside
+  .PluginsAside
     .sticky-inner-wrapper
       position: static !important
       transform: none !important
       width: auto !important
 
-  .MarketplaceAside__cols-aside
+  .PluginsAside__cols-aside
     margin-top: 50px
     padding-top: 50px
     border-top: 2px solid $border-color
 
-  .MarketplaceAside__mobile-title
+  .PluginsAside__mobile-title
     display: block
     color: $light-body-color
     text-decoration: none
     margin-bottom: 20px
 
 @media screen and (min-width: 1200px)
-  .MarketplaceAside__mobile-title
+  .PluginsAside__mobile-title
     display: none
 
-  .MarketplaceAside
+  .PluginsAside
     display: flex
     flex-direction: row-reverse
     align-items: start
@@ -34,36 +34,36 @@
     max-width: 1250px
     margin: 0 auto
 
-  .MarketplaceAside__cols-content
+  .PluginsAside__cols-content
     flex: 1
     margin-left: 80px
     min-width: 50px
 
-  .MarketplaceAside__cols-aside
+  .PluginsAside__cols-aside
     width: 330px
     margin-top: 0
 
-.MarketplaceAside__title
+.PluginsAside__title
   +size(bigger)
   margin-bottom: 30px
   display: block
   text-decoration: none
   color: $base-body-color
 
-.MarketplaceAside__section
+.PluginsAside__section
   margin-bottom: 30px
 
   &:last-child
     margin-bottom: 0
 
-.MarketplaceAside__section-title
+.PluginsAside__section-title
   color: $light-body-color
   margin-bottom: 20px
   text-transform: uppercase
   +weight(bold)
   +size(small)
 
-.MarketplaceAside__section-content
+.PluginsAside__section-content
   +size(small)
 
   p
@@ -75,7 +75,7 @@
   a
     color: $azure-color
 
-.MarketplaceAside__follow
+.PluginsAside__follow
   margin-bottom: 10px
 
   a

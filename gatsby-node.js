@@ -204,28 +204,27 @@ const legalPages = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
-const createMarketplace = ({ graphql, boundActionCreators: { createPage } }) => {
+const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
   return graphql(
     `
       {
-        plugins: allPlugin {
+        plugins: allDatoCmsPlugin(sort: {fields: [installs], order: DESC}) {
           edges {
             node {
-              name
+              packageName
               version
-              publisher {
-                username
-                email
-              }
-              homepage
+              author { name email }
               description
-              keywords
-              license
-              datoCmsPlugin {
-                title
-                previewImage
-                fieldTypes
-                pluginType
+              tags { tag }
+              title
+              coverImage {
+                sizes(maxWidth: 430) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
               }
             }
           }
@@ -237,16 +236,16 @@ const createMarketplace = ({ graphql, boundActionCreators: { createPage } }) => 
     createPaginatedPages({
       edges: result.data.plugins.edges,
       createPage: createPage,
-      pageTemplate: `./src/templates/MarketplacePage/index.js`,
+      pageTemplate: `./src/templates/PluginsPage/index.js`,
       pageLength: 10,
       pathPrefix: 'plugins'
     });
 
     result.data.plugins.edges.forEach(({ node: plugin }) => {
       createPage({
-        path: `/plugin/${plugin.name}/`,
+        path: `/plugin/${plugin.packageName}/`,
         component: p.resolve(`./src/templates/PluginPage/index.js`),
-        context: { name: plugin.name },
+        context: { packageName: plugin.packageName },
       });
     })
   })
@@ -383,7 +382,7 @@ exports.createPages = (options) => {
     articles(options),
     changelog(options),
     createRedirects(options),
-    createMarketplace(options),
+    createPlugins(options),
   ]);
 }
 
