@@ -71,7 +71,7 @@ export default class Search extends React.Component {
     const { value, suggestions } = this.state;
 
     const inputProps = {
-      placeholder: "Search in our docs",
+      placeholder: "Search something in our docs",
       value,
       onChange: this.handleChange.bind(this),
     };

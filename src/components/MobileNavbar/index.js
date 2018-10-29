@@ -102,7 +102,10 @@ class MobileNavbar extends React.Component {
             Pricing
           </Link>
           <Link className={b('menu-item')} to="/docs/">
-            Learn
+            Docs
+          </Link>
+          <Link className={b('menu-item')} to="/plugins/">
+            Plugins
           </Link>
           <Link className={b('menu-item')} to="/blog/">
             Blog

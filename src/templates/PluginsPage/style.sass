@@ -1,29 +1,109 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
+.PluginsPage__title
+  +size(hero)
+  text-align: center
+  margin-bottom: 10px
+
+@media screen and (min-width: 600px)
+  +size(hero)
+
+.PluginsPage__subtitle
+  +size(normalBig)
+  text-align: center
+  font-weight: 300
+  max-width: 800px
+  margin: 0 auto 60px
+
+.PluginsPage__content
+
+  @media screen and (min-width: 900px)
+    display: flex
+
+.PluginsPage__sidebar
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+
+  @media screen and (min-width: 900px)
+    display: block
+    margin-right: 50px
+    width: 200px
+
+  @media screen and (min-width: 1100px)
+    width: 250px
+
+.PluginsPage__cats__title
+  margin-bottom: 10px
+  font-weight: 400
+  +size(normalBig)
+
+.PluginsPage__cats
+  margin-bottom: 50px
+  font-size: 0.9em
+  min-width: 200px
+
+  @media screen and (min-width: 1100px)
+    font-size: 1em
+    min-width: none
+
+  a
+    display: block
+    padding: 4px 0
+    text-decoration: none
+    border-left: 3px solid transparent
+    padding-left: 15px
+    transition: border-color 0.2s ease-in-out
+    margin-bottom: 3px
+    color: $light-body-color
+
+    &.active, &:hover
+      border-left-color: $azure-color
+
+    &.active
+      color: $azure-color
+      font-weight: 400
+
+    span
+      color: lighten($light-body-color, 20%)
+      font-size: 0.9em
+      font-weight: 300
+
+.PluginsPage__body
+  flex: 1
+
 .PluginsPage__plugins
   display: flex
   align-items: stretch
   flex-wrap: wrap
-  margin-left: -15px
+  margin-left: -20px
 
 .PluginsPage__plugin
-  flex: 1
-  min-width: 220px
-  margin-left: 15px
-  margin-bottom: 15px
+  width: 100%
+  margin-left: 20px
+  margin-bottom: 20px
   border-radius: 5px
-  box-shadow: 0 3px 7px -1px rgba(black, 0.1)
   overflow: hidden
   text-align: center
   display: block
   text-decoration: none
   transition: .12s ease-out
   color: $base-body-color
+  padding: 4px
+  box-sizing: border-box
+  border: 1px solid $border-color
+  border-radius: 4px
+  box-shadow: 0 1px 4px rgba(black, 0.1)
 
   &:hover
     transform: translateY(-2px)
-    box-shadow: 0 8px 16px -4px rgba(black, .15)
+
+  @media screen and (min-width: 500px)
+    width: calc((100% / 2) - 20px)
+
+  @media screen and (min-width: 1100px)
+    width: calc((100% / 3) - 20px)
 
 .PluginsPage__plugin-image
   height: 190px
@@ -31,9 +111,12 @@
   position: relative
   margin-bottom: 30px
   position: relative
+  border-radius: 3px 3px 0 0
 
   .gatsby-image-wrapper
     position: absolute
+    border-radius: 3px 3px 0 0
+    overflow: hidden
     top: 0
     left: 0
     width: 100%

@@ -1,6 +1,10 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
+.ArticlePage
+  max-width: 710px
+  margin: 0 auto
+
 .ArticlePage__title
   +size(bigger)
   margin-bottom: 60px
@@ -67,12 +71,14 @@
 .ArticlePage__content-text
   font-size: 16px
   line-height: 1.7
+  font-family: freight-text-pro
 
   @media screen and (min-width: 900px)
-    font-size: 18px
+    font-size: 19px
 
   h1, h2, h3, h4, h5, h6
     position: relative
+    font-family: colfax-web
     +weight(bold)
 
   i, em
@@ -82,8 +88,8 @@
     +weight(bold)
 
   a
-    color: $red-color
-    text-decoration: none
+    color: $base-body-color
+    text-decoration: underline
 
     &:hover
       text-decoration: underline
@@ -121,11 +127,11 @@
 
   ul li
     list-style-type: disc
-    margin-bottom: 15px
+    margin-bottom: 10px
 
   ol li
     list-style-type: decimal
-    margin-bottom: 20px
+    margin-bottom: 10px
 
   code
     font-family: "Source Code Pro", Menlo, monospace

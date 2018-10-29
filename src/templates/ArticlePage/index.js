@@ -33,9 +33,9 @@ export default class ArticlePage extends React.Component {
     const { article } = this.props.data;
 
     return (
-      <BlogAside>
-        <HelmetDatoCms seo={article.seoMetaTags} />
+      <Space both={10}>
         <div className={b()}>
+          <HelmetDatoCms seo={article.seoMetaTags} />
           <h1 className={b('title')}>
             <Link to={`/blog/${article.slug}/`}>
               {article.title}
@@ -101,20 +101,20 @@ export default class ArticlePage extends React.Component {
             />
             {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
           </div>
+          <Lightbox
+            backdropClosesModal
+            width={1400}
+            images={this.state.image ? [{ src: this.state.image }] : []}
+            isOpen={this.state.image}
+            theme={{
+              footer: {
+                display: 'none',
+              },
+            }}
+            onClose={() => this.setState({ image: null })}
+          />
         </div>
-        <Lightbox
-          backdropClosesModal
-          width={1400}
-          images={this.state.image ? [{ src: this.state.image }] : []}
-          isOpen={this.state.image}
-          theme={{
-            footer: {
-              display: 'none',
-            },
-          }}
-          onClose={() => this.setState({ image: null })}
-        />
-      </BlogAside>
+      </Space>
     );
   }
 }

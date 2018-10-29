@@ -1,20 +1,51 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
+.BlogPage
+
+.BlogPage__title
+  +size(bigger)
+  text-align: center
+  margin-bottom: 10px
+
+  @media screen and (min-width: 600px)
+    +size(hero)
+
+.BlogPage__subtitle
+  +size(normalBig)
+  text-align: center
+  margin-bottom: 60px
+  font-weight: 300
+
+$gutter: 6%
+
+.BlogPage__masonry
+  .BlogPage__gutter-sizer
+    width: $gutter
+
+  .BlogPage__grid-sizer,
+  .BlogPage__article
+    width: 100%
+
+  @media screen and (min-width: 1000px)
+    .BlogPage__grid-sizer,
+    .BlogPage__article
+      width: (100% - 1 * $gutter) / 2
+
+  @media screen and (min-width: 1300px)
+    .BlogPage__grid-sizer,
+    .BlogPage__article
+      width: (100% - 2 * $gutter) / 3
+
 .BlogPage__article
-  margin-bottom: 50px
-  padding-bottom: 50px
-  border-bottom: 2px solid $border-color
-
-  @media screen and (min-width: 900px)
-    display: flex
-    margin-bottom: 80px
-    padding-bottom: 80px
-
-  &:last-child
-    margin-bottom: 0
-    padding-bottom: 0
-    border-bottom-width: 0
+  margin-bottom: 30px
+  border: 1px solid $border-color
+  border-radius: 4px
+  box-shadow: 0 1px 4px rgba(black, 0.1)
+  padding: 22px
+  text-decoration: none
+  color: $base-body-color
+  display: block
 
 .BlogPage__article-title
   +weight(bold)
@@ -28,35 +59,26 @@
     &:hover
       text-decoration: underline
 
-  @media screen and (min-width: 900px)
-    +size(bigger)
-
-@media screen and (min-width: 900px)
-  .BlogPage__article-body
-    flex: 1
-
 .BlogPage__article-image
-  width: 200px
-  margin-left: 80px
+  width: 100%
+  border-radius: 3px
+  margin-bottom: 30px
+  filter: grayscale(50%)
+  transition: filter 0.2s ease-in-out
 
-  img
-    border: 1px solid $border-color
-    border-radius: 50%
-    width: 100%
-
-  @media screen and (max-width: 899px)
-    display: none
+  .BlogPage__article:hover &
+    filter: grayscale(0%)
 
 .BlogPage__article-author-image
   width: 40px
   border-radius: 50%
 
 .BlogPage__article-excerpt
-  color: $light-body-color
-  margin-bottom: 30px
+  font-family: freight-text-pro
+  font-size: 17px
 
   a
-    color: $light-body-color
+    color: $base-body-color
 
   p
     margin-bottom: 10px
@@ -66,16 +88,15 @@
 
   ul li
     list-style-type: disc
-    margin-bottom: 5px
 
   ol li
     list-style-type: decimal
-    margin-bottom: 5px
 
 .BlogPage__article-meta
   +size(small)
-  margin-top: 10px
-  margin-bottom: 30px
+  margin-top: 30px
+  display: flex
+  align-items: center
   color: $light-body-color
 
   a
@@ -88,7 +109,12 @@
   .gatsby-image-outer-wrapper
     display: inline-block
     vertical-align: middle
-    margin-right: 15px
+
+.BlogPage__article-meta-left
+  margin-right: 15px
+
+.BlogPage__article-meta-right
+  flex: 1
 
 .BlogPage__previous
   color: $azure-color

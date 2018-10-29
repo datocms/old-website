@@ -59,7 +59,7 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
       edges: result.data.articles.edges,
       createPage: createPage,
       pageTemplate: `./src/templates/BlogPage/index.js`,
-      pageLength: 10,
+      pageLength: 30,
       pathPrefix: 'blog'
     });
 
@@ -217,6 +217,8 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
               description
               tags { tag }
               title
+              pluginType { code }
+              fieldTypes { code }
               coverImage {
                 sizes(maxWidth: 430) {
                   base64
@@ -229,21 +231,72 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
             }
           }
         }
+        pluginTypes: allDatoCmsPluginType {
+          edges {
+            node {
+              code
+            }
+          }
+        }
+        fieldTypes: allDatoCmsPluginFieldType {
+          edges {
+            node {
+              code
+            }
+          }
+        }
       }
     `
   )
   .then(result => {
-    createPaginatedPages({
-      edges: result.data.plugins.edges,
-      createPage: createPage,
-      pageTemplate: `./src/templates/PluginsPage/index.js`,
-      pageLength: 10,
-      pathPrefix: 'plugins'
+
+    const combos = cartesianProduct([
+      result.data.pluginTypes.edges.map(({ node }) => node.code).concat([null]),
+      result.data.fieldTypes.edges.map(({ node }) => node.code).concat([null]),
+    ]);
+
+    const combosWithResults = {};
+
+    combos.forEach(([pluginType, fieldType]) => {
+      let path = '/plugins/';
+
+      if (pluginType) {
+        path += pluginType + '/';
+      }
+
+      if (fieldType) {
+        path += fieldType + '/';
+      }
+
+      const plugins = result.data.plugins.edges
+        .filter(({ node: plugin }) => (
+          (!pluginType || plugin.pluginType.code === pluginType) &&
+          (!fieldType || plugin.fieldTypes.some(f => f.code === fieldType))
+        ));
+
+      if (plugins.length > 0) {
+        combosWithResults[path] = { plugins, pluginType, fieldType };
+      }
+    });
+
+    Object.entries(combosWithResults).forEach(([pathPrefix, info]) => {
+      createPaginatedPages({
+        edges: info.plugins,
+        createPage: createPage,
+        pageTemplate: `./src/templates/PluginsPage/index.js`,
+        pageLength: 10,
+        pathPrefix: pathPrefix.substring(1),
+        context: {
+          combosWithResults,
+          pluginType: info.pluginType,
+          fieldType: info.fieldType,
+        },
+      });
     });
 
     result.data.plugins.edges.forEach(({ node: plugin }) => {
       createPage({
-        path: `/plugin/${plugin.packageName}/`,
+        path: `/plugins/i/${plugin.packageName}/`,
         component: p.resolve(`./src/templates/PluginPage/index.js`),
         context: { packageName: plugin.packageName },
       });

@@ -33,7 +33,10 @@ const Navbar = ({ linkComponent: Link }) => {
                 Pricing
               </Link>
               <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/docs/">
-                Learn
+                Docs
+              </Link>
+              <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/plugins/">
+                Plugins
               </Link>
               <Link className={b('text-link')} activeClassName={b('text-link', { active: true })} to="/blog/">
                 Blog

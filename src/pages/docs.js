@@ -18,8 +18,6 @@ const sg = bem.lock('SmallGuide')
 const Guide = ({ title, children, description, cta, link }) => (
   link ?
     <Link className={g({ guide: !children })} to={link}>
-      <div className={g('image')}>
-      </div>
       <div className={g('title')}>
         {title}
       </div>
@@ -53,8 +51,11 @@ export default class LearnPage extends React.Component {
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <div className={b()}>
           <h1 className={b('title')}>
-            Learn
+            Documentation
           </h1>
+          <p className={b('subtitle')}>
+            Get the most out of DatoCMS following our guides, tutorials and demos
+          </p>
 
           <Wrap>
             <Search />
