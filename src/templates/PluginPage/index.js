@@ -85,7 +85,7 @@ export default class PluginPage extends React.Component {
                 <div>
                   <p className={b('info')}>
                     <strong>NPM package name</strong>
-                    <a target="_blank" href={`https://www.npmjs.com/package/datocms-client`}>
+                    <a target="_blank" href={`https://www.npmjs.com/package/${plugin.packageName}`}>
                       {plugin.packageName}
                     </a>
                   </p>
