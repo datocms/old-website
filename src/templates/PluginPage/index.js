@@ -19,10 +19,10 @@ const b = bem.lock('PluginPage')
 const getHost = (url) => {
   if (typeof document !== 'undefined') {
     const link = document.createElement('a');
-    link.href = str;
+    link.href = url;
     return link.hostname;
   } else {
-    return require('url').parse(str).hostname;
+    return require('url').parse(url).hostname;
   }
 }
 
