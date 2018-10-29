@@ -69,7 +69,7 @@ export default class PluginPage extends React.Component {
               <Sticky top={50} bottomBoundary={`.PluginPage`}>
                 <div href="" className={b('install')}>
                   <a
-                    href={`https://dashboard.datocms.com/projects/install-plugin?name=${plugin.packageName}`}
+                    href={`https://dashboard.datocms.com/projects/redirect-to-project?path=/admin/plugins/install/${plugin.packageName}`}
                     className="button button--expand button--normal-big button--red"
                   >
                     Install
