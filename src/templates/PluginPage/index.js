@@ -16,13 +16,20 @@ import './style.sass'
 
 const b = bem.lock('PluginPage')
 
+const getHost = (url) => {
+  if (typeof document !== 'undefined') {
+    const link = document.createElement('a');
+    link.href = str;
+    return link.hostname;
+  } else {
+    return require('url').parse(str).hostname;
+  }
+}
+
 export default class PluginPage extends React.Component {
   render() {
     const { data } = this.props;
     const plugin = data.plugin;
-
-    const l = document.createElement("a");
-    l.href = plugin.homepage;
 
     return (
       <Space both={10}>
@@ -86,7 +93,7 @@ export default class PluginPage extends React.Component {
                     plugin.homepage &&
                       <p className={b('info')}>
                         <strong>Homepage</strong>
-                        <a target="_blank" href={plugin.homepage}>{l.hostname}</a>
+                        <a target="_blank" href={plugin.homepage}>{getHost(plugin.homepage)}</a>
                       </p>
                   }
                   <p className={b('info')}>
