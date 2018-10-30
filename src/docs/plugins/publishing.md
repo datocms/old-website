@@ -34,23 +34,25 @@ In order to properly release a plugin, you need to make sure to fill the `packag
 
 The following table describes the properties that can be set on the file:
 
-Property                     | Type           | Description
------------------------------|----------------|------------
-`name`                       | String         | Npm package name
-`version`                    | String         | Plugin version
-`homepage`                   | String         | URL of the plugin homepage, will be shown in the Plugin Explorer
-`keywords`                   | Array<String>  | Plugin keywords, useful to help users find your plugin
-`datoCmsPlugin.title`        | String         | Plugin title
-`datoCmsPlugin.previewImage` | String         | Relative path to a plugin preview image
-`datoCmsPlugin.entryPoint`   | String         | Relative path to the plugin entry point
-`datoCmsPlugin.fieldTypes`   | Array<String>  | The type of plugin
-`datoCmsPlugin.pluginType`   | String         | The types of field the plugin can be used with
-`datoCmsPlugin.parameters`   | Hash           | Configuration parameters for the plugin
+Property                     | Mandatory? | Type           | Description
+-----------------------------| ---------- |----------------|------------
+`name`                       | ✓          | String         | Npm package name
+`version`                    | ✓          | String         | Plugin version
+`description`                | ✓          | String         | Short description of what the plugin does
+`homepage`                   |            | String         | URL of the plugin homepage, will be shown in the Plugin Explorer
+`keywords`                   | ✓          | Array<String>  | Plugin keywords, useful to help users find your plugin
+`datoCmsPlugin.title`        | ✓          | String         | Plugin title
+`datoCmsPlugin.previewImage` |            | String         | Relative path to a plugin preview image (better if it's a GIF)
+`datoCmsPlugin.coverImage`   |            | String         | Relative path to a cover image (will be used in the [Plugins explorer](https://www.datocms.com/plugins/) page)
+`datoCmsPlugin.entryPoint`   | ✓          | String         | Relative path to the plugin entry point
+`datoCmsPlugin.pluginType`   | ✓          | String         | The type of plugin
+`datoCmsPlugin.fieldTypes`   | ✓          | Array<String>  | The types of field the plugin can be used with
+`datoCmsPlugin.parameters`   | ✓          | Hash           | Configuration parameters for the plugin
 
 Make sure to follow these rules:
 
 * `name` MUST be prefixed with `datocms-plugin`;
-* `datoCmsPlugin.entryPoint` and `datoCmsPlugin.previewImage` must be files contained in the package, and need to be defined as relative paths to the package root;
+* `datoCmsPlugin.entryPoint`, `datoCmsPlugin.previewImage` and `datoCmsPlugin.coverImage` must be files contained in the package, and need to be defined as relative paths to the package root;
 * `keywords` MUST contain the `datocms-plugin` keyword, otherwise the plugin won't be visible in the Plugin explorer;
 * `datoCmsPlugin.fieldTypes` MUST contain one or more of the following values: `boolean`, `date`, `date_time`, `float`, `integer`, `string`, `text`, `lat_lon`, `json`, `seo`, `link`, `links`, `video`, `color`;
 * `datoCmsPlugin.pluginType` MUST be one of the following values: `field_editor`, `field_addon` or `sidebar`;
