@@ -93,7 +93,7 @@ export default class PluginPage extends React.Component {
                     Install
                   </a>
                 </div>
-                <div>
+                <div className={b('info-groups')}>
                   <div className={b('info-group')}>
                     <p className={b('info')}>
                       <strong>NPM package name</strong>

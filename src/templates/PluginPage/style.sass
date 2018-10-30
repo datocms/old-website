@@ -4,15 +4,25 @@
 .PluginPage
   max-width: 950px
   margin: 0 auto
-  padding-right: 330px
   position: relative
   box-sizing: border-box
 
+  @media screen and (min-width: 930px)
+    padding-right: 330px
+
 .PluginPage__sidebar
-  position: absolute
-  top: 0
-  right: 0
-  width: 250px
+  margin-top: 40px
+
+  @media screen and (min-width: 930px)
+    position: absolute
+    top: 0
+    right: 0
+    width: 250px
+
+.PluginPage__info-groups
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
 
 .PluginPage__header
   margin-bottom: 70px
@@ -39,8 +49,11 @@
     margin-bottom: 6px
 
 .PluginPage__title
-  +size(hero)
+  +size(smallHero)
   margin-bottom: 10px
+
+  @media screen and (min-width: 500px)
+    +size(hero)
 
 .PluginPage__description
   color: $light-body-color
@@ -48,9 +61,14 @@
 
 .PluginPage__preview-block
   margin-bottom: 40px
-  background-color: $violet-color
-  border-radius: 5px
-  padding: 30px
+
+  @media screen and (min-width: 600px)
+    background-color: $violet-color
+    border-radius: 5px
+    padding: 30px
+
+    .PluginPage__preview-block-title
+      color: white
 
 .PluginPage__readme-block-title,
 .PluginPage__preview-block-title
@@ -60,21 +78,18 @@
   font-size: 13px
   font-weight: 500
 
-.PluginPage__preview-block-title
-  color: white
-
 .PluginPage__readme-block-title
   margin-bottom: 20px
 
 .PluginPage__preview-block-image
   box-sizing: border-box
-  box-shadow: 0 0 10px -1px rgba(black, 0.1)
-  border: 5px solid white
   overflow: hidden
-  border-radius: 5px
   background-color: white
   display: block
   position: relative
+  box-shadow: 0 0 10px -1px rgba(black, 0.1)
+  border: 5px solid white
+  border-radius: 5px
 
   img
     position: absolute
@@ -84,6 +99,7 @@
 
 .PluginPage__info-group
   margin-bottom: 40px
+  min-width: 250px
 
 .PluginPage__info
   margin-bottom: 15px
@@ -118,11 +134,12 @@
     vertical-align: middle
     margin-right: 5px
 
-.PluginPage__readme-block
-  padding: 30px
-  border: 1px solid $border-color
-  border-radius: 4px
-  box-shadow: 0 1px 4px rgba(black, 0.1)
+@media screen and (min-width: 600px)
+  .PluginPage__readme-block
+    padding: 30px
+    border: 1px solid $border-color
+    border-radius: 4px
+    box-shadow: 0 1px 4px rgba(black, 0.1)
 
 .PluginPage__readme-block-readme
   -ms-text-size-adjust: 100%

@@ -34,86 +34,88 @@ export default class ArticlePage extends React.Component {
 
     return (
       <Space both={10}>
-        <div className={b()}>
-          <HelmetDatoCms seo={article.seoMetaTags} />
-          <h1 className={b('title')}>
-            <Link to={`/blog/${article.slug}/`}>
-              {article.title}
-            </Link>
-          </h1>
-          <div className={b('content')}>
-            {
-              article.content.map((block) => (
-                <div key={ block.id }>
-                  {
-                    block.model.apiKey === 'text' &&
-                      <div className={b('content-text')}>
-                        <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
-                      </div>
-                  }
-                  {
-                    block.model.apiKey === 'image' &&
-                      <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
-                        <a
-                          href={`${block.image.url}?w=1200&fit=max`}
-                          className={b('content-image__image')}
-                          onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
-                        >
-                          <Img sizes={block.image.sizes} />
-                        </a>
-                        {
-                          block.image.title &&
-                            <div className={b('content-image__label')}>
-                              {block.image.title}
-                            </div>
-                        }
-                      </div>
-                  }
-                  {
-                    block.model.apiKey === 'video' &&
-                      <div className={b('content-video')}>
-                        <div className={b('content-video__wrapper')}>
+        <Wrap>
+          <div className={b()}>
+            <HelmetDatoCms seo={article.seoMetaTags} />
+            <h1 className={b('title')}>
+              <Link to={`/blog/${article.slug}/`}>
+                {article.title}
+              </Link>
+            </h1>
+            <div className={b('content')}>
+              {
+                article.content.map((block) => (
+                  <div key={ block.id }>
+                    {
+                      block.model.apiKey === 'text' &&
+                        <div className={b('content-text')}>
+                          <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
+                        </div>
+                    }
+                    {
+                      block.model.apiKey === 'image' &&
+                        <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
+                          <a
+                            href={`${block.image.url}?w=1200&fit=max`}
+                            className={b('content-image__image')}
+                            onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
+                          >
+                            <Img sizes={block.image.sizes} />
+                          </a>
                           {
-                            block.video.provider === 'youtube' ?
-                              <ResponsiveEmbed
-                                src={`//www.youtube.com/embed/${block.video.providerUid}`}
-                                ratio={`${block.video.width}:${block.video.height}`}
-                                allowFullScreen
-                              />
-                              :
-                              <ResponsiveEmbed
-                                src={`//player.vimeo.com/video/${block.video.providerUid}?title=0&byline=0&portrait=0`}
-                                ratio={`${block.video.width}:${block.video.height}`}
-                                allowFullScreen
-                              />
+                            block.image.title &&
+                              <div className={b('content-image__label')}>
+                                {block.image.title}
+                              </div>
                           }
                         </div>
-                      </div>
-                  }
-                </div>
-              ))
-            }
-          </div>
-          <div className={b('meta')}>
-            <Img
-              className={b('image')}
-              sizes={article.author.avatar.sizes}
+                    }
+                    {
+                      block.model.apiKey === 'video' &&
+                        <div className={b('content-video')}>
+                          <div className={b('content-video__wrapper')}>
+                            {
+                              block.video.provider === 'youtube' ?
+                                <ResponsiveEmbed
+                                  src={`//www.youtube.com/embed/${block.video.providerUid}`}
+                                  ratio={`${block.video.width}:${block.video.height}`}
+                                  allowFullScreen
+                                />
+                                :
+                                <ResponsiveEmbed
+                                  src={`//player.vimeo.com/video/${block.video.providerUid}?title=0&byline=0&portrait=0`}
+                                  ratio={`${block.video.width}:${block.video.height}`}
+                                  allowFullScreen
+                                />
+                            }
+                          </div>
+                        </div>
+                    }
+                  </div>
+                ))
+              }
+            </div>
+            <div className={b('meta')}>
+              <Img
+                className={b('image')}
+                sizes={article.author.avatar.sizes}
+              />
+              {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
+            </div>
+            <Lightbox
+              backdropClosesModal
+              width={1400}
+              images={this.state.image ? [{ src: this.state.image }] : []}
+              isOpen={this.state.image}
+              theme={{
+                footer: {
+                  display: 'none',
+                },
+              }}
+              onClose={() => this.setState({ image: null })}
             />
-            {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
           </div>
-          <Lightbox
-            backdropClosesModal
-            width={1400}
-            images={this.state.image ? [{ src: this.state.image }] : []}
-            isOpen={this.state.image}
-            theme={{
-              footer: {
-                display: 'none',
-              },
-            }}
-            onClose={() => this.setState({ image: null })}
-          />
-        </div>
+        </Wrap>
       </Space>
     );
   }
