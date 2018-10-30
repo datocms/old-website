@@ -88,7 +88,7 @@ export default class PluginsPage extends React.Component {
               Plugins
             </div>
             <div className={b('subtitle')}>
-              Extend your DatoCMS projects with powerful plugins
+              Extend the functionality of DatoCMS
             </div>
             <div className={b('content')}>
               <div className={b('sidebar')}>
