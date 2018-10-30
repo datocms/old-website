@@ -82,7 +82,7 @@ export default class LearnPage extends React.Component {
                         We offer a complete, strong-consistent API that let's you to programmatically build any kind of product.
                       </p>
                     </Space>
-                    <ul>
+                    <ul className="fullwidth">
                       <li><Link to="/docs/content-delivery-api/">Content Delivery API</Link></li>
                       <li><Link to="/content-management-api/">Content Management API</Link></li>
                     </ul>
