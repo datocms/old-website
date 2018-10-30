@@ -45,7 +45,7 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
               }
               excerpt: excerptNode {
                 markdown: childMarkdownRemark {
-                  html
+                  excerpt(pruneLength: 200)
                 }
               }
             }

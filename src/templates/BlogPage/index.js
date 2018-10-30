@@ -81,7 +81,7 @@ export default class BlogPage extends React.Component {
                         {article.title}
                       </h3>
                       <div className={b('article-excerpt')}>
-                        <div dangerouslySetInnerHTML={{ __html: article.excerpt.markdown.html }} />
+                        <p>{article.excerpt.markdown.excerpt}</p>
                       </div>
                       <div className={b('article-meta')}>
                         <div className={b('article-meta-left')}>
