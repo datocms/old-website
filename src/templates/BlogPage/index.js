@@ -39,7 +39,7 @@ export default class BlogPage extends React.Component {
               >
                 <div className={b('grid-sizer')} />
                 <div className={b('gutter-sizer')} />
-                <Link className={b('article')} to="/changelog/">
+                <div className={b('article')} to="/changelog/">
                   <h3 className={b('article-title')}>
                     Latest product changes
                   </h3>
@@ -69,7 +69,7 @@ export default class BlogPage extends React.Component {
                       <p>{this.props.data.latestEntries.edges[0].node.publicationDate}</p>
                     </div>
                   </div>
-                </Link>
+                </div>
                 {
                   articles.map((article) => (
                     <Link to={`/blog/${article.slug}/`} key={article.slug} className={b('article')}>

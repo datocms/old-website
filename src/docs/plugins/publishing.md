@@ -58,7 +58,7 @@ Make sure to follow these rules:
 * `datoCmsPlugin.pluginType` MUST be one of the following values: `field_editor`, `field_addon` or `sidebar`;
 * `datoCmsPlugin.parameters` MUST follow the syntax detailed in the [Configuration parameters](/docs/plugins/creating-a-new-plugin/#configuration-parameters) section of this guide.
 
-## Requiring external JS/CSS inside of your entrypoint
+### Requiring external JS/CSS inside of your entrypoint
 
 We'll use [unpkg.com](https://unpkg.com/) to serve the entrypoint as an iframe, so ie. if your plugin is called `datocms-plugin-foobar` and the entry point specified in the `package.json` is `dist/index.html`, the URL that will be loaded will be something like this:
 

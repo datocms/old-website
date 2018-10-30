@@ -8788,9 +8788,9 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-masonry-component@6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/react-masonry-component/-/react-masonry-component-6.0.2.tgz#6c768652be34602f2dd0d162c8f6266b09d9e272"
+react-masonry-component@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-masonry-component/-/react-masonry-component-6.2.1.tgz#dd23b3129d6b922852b160472e6c9a6256fcdb8a"
   dependencies:
     create-react-class "^15.6.2"
     element-resize-detector "^1.1.9"
