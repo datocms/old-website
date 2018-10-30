@@ -95,7 +95,7 @@ export default class LearnPage extends React.Component {
                         Use our API to import existing content from external sources, or implement a full-backup strategy in no time.
                       </p>
                     </Space>
-                    <ul>
+                    <ul className="fullwidth">
                       <li><Link to="/docs/import/">Importing data</Link></li>
                       <li><Link to="/docs/backups/">Making offline backups</Link></li>
                     </ul>

@@ -9,6 +9,7 @@ import parse from 'date-fns/parse';
 import distanceInWords from 'date-fns/distance_in_words';
 import Sticky from 'react-stickynode'
 import Img from 'gatsby-image'
+import gravatar from 'utils/gravatar'
 
 import bem from 'utils/bem'
 
@@ -24,6 +25,16 @@ const getHost = (url) => {
   } else {
     return require('url').parse(url).hostname;
   }
+}
+
+function intersperse(arr, sep) {
+  if (arr.length === 0) {
+    return [];
+  }
+
+  return arr.slice(1).reduce((xs, x) => (
+    xs.concat([sep, x])
+  ), [arr[0]]);
 }
 
 export default class PluginPage extends React.Component {
@@ -83,43 +94,78 @@ export default class PluginPage extends React.Component {
                   </a>
                 </div>
                 <div>
-                  <p className={b('info')}>
-                    <strong>NPM package name</strong>
-                    <a target="_blank" href={`https://www.npmjs.com/package/${plugin.packageName}`}>
-                      {plugin.packageName}
-                    </a>
-                  </p>
-                  {
-                    plugin.homepage &&
-                      <p className={b('info')}>
-                        <strong>Homepage</strong>
-                        <a target="_blank" href={plugin.homepage}>{getHost(plugin.homepage)}</a>
-                      </p>
-                  }
-                  <p className={b('info')}>
-                    <strong>Version</strong>
-                    {plugin.version}
-                  </p>
-                  <p className={b('info')}>
-                    <strong>Plugin type</strong>
-                    {plugin.pluginType.name}
-                  </p>
-                  <p className={b('info')}>
-                    <strong>Compatible with fields</strong>
-                    {plugin.fieldTypes.map(f => f.name).join(', ')}
-                  </p>
-                  <p className={b('info')}>
-                    <strong>Released at</strong>
-                    {format(parse(plugin.releasedAt), 'MMMM do, YYYY')}
-                  </p>
-                  <p className={b('info')}>
-                    <strong>Last update</strong>
-                    <AutoupdateTime value={parse(plugin.lastUpdate)} />
-                  </p>
-                  <p className={b('info')}>
-                    <strong>Published by</strong>
-                    {plugin.author.name}
-                  </p>
+                  <div className={b('info-group')}>
+                    <p className={b('info')}>
+                      <strong>NPM package name</strong>
+                      <a target="_blank" href={`https://www.npmjs.com/package/${plugin.packageName}`}>
+                        {plugin.packageName}
+                      </a>
+                    </p>
+                    <p className={b('info')}>
+                      <strong>Published by</strong>
+                      <img src={gravatar(plugin.author.email, { s: 40, d: 'retro' })} />
+                      {plugin.author.name}
+                    </p>
+                    {
+                      plugin.homepage &&
+                        <p className={b('info')}>
+                          <strong>Homepage</strong>
+                          <a target="_blank" href={plugin.homepage}>{getHost(plugin.homepage)}</a>
+                        </p>
+                    }
+                  </div>
+                  <div className={b('info-group')}>
+                    <p className={b('info')}>
+                      <strong>Plugin type</strong>
+                      <Link to={`/plugins/${plugin.pluginType.code}`}>{plugin.pluginType.name}</Link>
+                    </p>
+                    <p className={b('info')}>
+                      <strong>Compatible with fields</strong>
+                      {
+                        intersperse(
+                          plugin.fieldTypes.map(f => (
+                            <Link
+                              key={f.code}
+                              to={`/plugins/${f.code}`}
+                            >
+                              {f.name}
+                            </Link>
+                          )),
+                          ', '
+                        )
+                      }
+                    </p>
+                    <p className={b('info')}>
+                      <strong>Tags</strong>
+                      {
+                        intersperse(
+                          plugin.tags.map(f => (
+                            <Link
+                              key={f.tag}
+                              to={`/plugins/${f.tag}`}
+                            >
+                              #{f.tag}
+                            </Link>
+                          )),
+                          ', '
+                        )
+                      }
+                    </p>
+                  </div>
+                  <div className={b('info-group')}>
+                    <p className={b('info')}>
+                      <strong>First released</strong>
+                      {format(parse(plugin.releasedAt), 'MMMM do, YYYY')}
+                    </p>
+                    <p className={b('info')}>
+                      <strong>Current version</strong>
+                      {plugin.version}
+                    </p>
+                    <p className={b('info')}>
+                      <strong>Last update</strong>
+                      <AutoupdateTime value={parse(plugin.lastUpdate)} />
+                    </p>
+                  </div>
                 </div>
               </Sticky>
             </div>
@@ -148,8 +194,8 @@ export const query = graphql`
         width
         height
       }
-      fieldTypes { name }
-      pluginType { name }
+      fieldTypes { name code }
+      pluginType { name code }
       releasedAt
       lastUpdate
       installs

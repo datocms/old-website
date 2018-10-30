@@ -82,6 +82,9 @@
     right: 0
     width: 100%
 
+.PluginPage__info-group
+  margin-bottom: 40px
+
 .PluginPage__info
   margin-bottom: 15px
   font-size: 0.8em
@@ -89,7 +92,7 @@
   a
     color: $base-body-color
 
-    &:after
+    &[href*="//"]:after
       content: ""
       background: url('../../images/external-link.svg') no-repeat center center
       background-size: contain
@@ -108,6 +111,12 @@
     color: $light-body-color
     line-height: 1
     margin-bottom: 3px
+
+  img
+    height: 20px
+    display: inline-block
+    vertical-align: middle
+    margin-right: 5px
 
 .PluginPage__readme-block
   padding: 30px

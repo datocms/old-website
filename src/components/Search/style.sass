@@ -15,18 +15,19 @@
   padding: 10px 20px
   font-weight: 300
   font-size: 16px
-  border: 1px solid #aaa
-  border-radius: 4px
+  border: 1px solid $border-color
+  border-radius: 26px
   font-family: colfax-web, Open Sans, Helvetica, Arial, sans-serif
   box-sizing: border-box
   text-align: center
+  transition: border 0.2s ease-in-out
+
+  &:hover
+    border: 1px solid mix($azure-color, $border-color, 30%)
 
   &:focus
     outline: none
-
-.react-autosuggest__container--open .react-autosuggest__input
-  border-bottom-left-radius: 0
-  border-bottom-right-radius: 0
+    border: 1px solid $azure-color
 
 .react-autosuggest__suggestions-container
   display: none
@@ -34,9 +35,11 @@
 .react-autosuggest__container--open .react-autosuggest__suggestions-container
   display: block
   position: absolute
-  top: 51px
-  width: 100%
-  border: 1px solid #aaa
+  top: 63px
+  left: -50px
+  border-radius: 4px
+  right: -50px
+  border: 1px solid $border-color
   box-sizing: border-box
   background-color: #fff
   font-weight: 300
@@ -60,8 +63,7 @@
     border-top: 1px solid #ddd
 
 .react-autosuggest__suggestion--highlighted
-  background-color: #00A3B0
-  color: #fff
+  background-color: $light-bg-color
 
 .suggestion-content
   display: flex
@@ -80,9 +82,6 @@
   color: $light-body-color
   word-wrap: break-word
 
-  .react-autosuggest__suggestion--highlighted &
-    color: white
-
 .Search__suggestion-body
   +size(small)
   display: none
@@ -91,15 +90,12 @@
 .highlight
   background-color: #FFF0C0
 
-  .react-autosuggest__suggestion--highlighted &
-    background-color: mix(#00A3B0, white, 70%)
-
 @media screen and (min-width: 800px)
   .react-autosuggest__container
     display: inline-block
 
   .react-autosuggest__input
-    width: 750px
+    width: 450px
 
   .Search__suggestion-body
     display: block
