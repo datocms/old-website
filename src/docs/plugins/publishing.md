@@ -57,3 +57,13 @@ Make sure to follow these rules:
 * `datoCmsPlugin.fieldTypes` MUST contain one or more of the following values: `boolean`, `date`, `date_time`, `float`, `integer`, `string`, `text`, `lat_lon`, `json`, `seo`, `link`, `links`, `video`, `color`;
 * `datoCmsPlugin.pluginType` MUST be one of the following values: `field_editor`, `field_addon` or `sidebar`;
 * `datoCmsPlugin.parameters` MUST follow the syntax detailed in the [Configuration parameters](/docs/plugins/creating-a-new-plugin/#configuration-parameters) section of this guide.
+
+## Requiring external JS/CSS inside of your entrypoint
+
+We'll use [unpkg.com](https://unpkg.com/) to serve the entrypoint as an iframe, so ie. if your plugin is called `datocms-plugin-foobar` and the entry point specified in the `package.json` is `dist/index.html`, the URL that will be loaded will be something like this:
+
+```
+https://unpkg.com/datocms-plugin-foobar/dist/index.html
+```
+
+This means that if the page you requires a JS file with an absolute path like `/js/bundle.js` then it won't work, as the final URL will be `https://unpkg.com/js/bundle.js`, which will be non-existent. Make sure that any external resource you require is expressed as a relative path to the HTML page!
