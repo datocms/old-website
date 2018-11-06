@@ -194,6 +194,15 @@ module.exports = {
                         }
                       }
                       content {
+                        ... on DatoCmsPoll {
+                          id
+                          model { apiKey }
+                          text: textNode {
+                            markdown: childMarkdownRemark {
+                              html
+                            }
+                          }
+                        }
                         ... on DatoCmsText {
                           id
                           model { apiKey }
@@ -248,6 +257,10 @@ module.exports = {
 
                         if (block.model.apiKey === 'image') {
                           return `<img src="${block.image.url}?w=900" />`;
+                        }
+
+                        if (block.model.apiKey === 'poll') {
+                          return;
                         }
                       }).join("\n")
                     }
