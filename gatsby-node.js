@@ -284,7 +284,7 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
         edges: info.plugins,
         createPage: createPage,
         pageTemplate: `./src/templates/PluginsPage/index.js`,
-        pageLength: 10,
+        pageLength: 12,
         pathPrefix: pathPrefix.substring(1),
         context: {
           combosWithResults,
