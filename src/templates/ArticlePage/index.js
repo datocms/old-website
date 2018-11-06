@@ -47,6 +47,12 @@ export default class ArticlePage extends React.Component {
                 article.content.map((block) => (
                   <div key={ block.id }>
                     {
+                      block.model.apiKey === 'poll' &&
+                        <div className={b('content-poll')}>
+                          <div dangerouslySetInnerHTML={{ __html: block.poll.markdown.html }} />
+                        </div>
+                    }
+                    {
                       block.model.apiKey === 'text' &&
                         <div className={b('content-text')}>
                           <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
@@ -134,6 +140,15 @@ export const query = graphql`
           id
           model { apiKey }
           text: textNode {
+            markdown: childMarkdownRemark {
+              html
+            }
+          }
+        }
+        ... on DatoCmsPoll {
+          id
+          model { apiKey }
+          poll: textNode {
             markdown: childMarkdownRemark {
               html
             }
