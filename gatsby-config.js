@@ -170,6 +170,7 @@ module.exports = {
             },
             output: "/product-changelog.xml",
           },
+
           {
             query: `
               {

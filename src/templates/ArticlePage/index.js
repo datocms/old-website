@@ -23,7 +23,8 @@ export default class ArticlePage extends React.Component {
     try {
       const { ReactTypeformEmbed } = require('react-typeform-embed');
       this.ReactTypeformEmbed = ReactTypeformEmbed;
-    } catch () {
+    } catch (error) {
+      console.log(error);
     }
   }
 
