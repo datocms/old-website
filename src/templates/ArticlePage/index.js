@@ -50,17 +50,20 @@ export default class ArticlePage extends React.Component {
                     {
                       block.model.apiKey === 'typeform' &&
                         <div className={b('content-poll')}>
-                          <ReactTypeformEmbed
-                            url={block.typeform}
-                            style={{
-                              position: 'static',
-                              top: 'auto',
-                              left: 'auto',
-                              width: '100%',
-                              height: '600px',
-                              overflow: 'hidden'
-                            }}
-                          />
+                          {
+                            typeof document !== 'undefined' &&
+                              <ReactTypeformEmbed
+                                url={block.typeform}
+                                style={{
+                                  position: 'static',
+                                  top: 'auto',
+                                  left: 'auto',
+                                  width: '100%',
+                                  height: '600px',
+                                  overflow: 'hidden'
+                                }}
+                              />
+                          }
                         </div>
                     }
                     {

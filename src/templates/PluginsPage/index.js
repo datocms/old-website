@@ -4,6 +4,7 @@ import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
 import sortBy from 'sort-by'
+import slugify from 'slugify';
 
 import bem from 'utils/bem'
 import gravatar from 'utils/gravatar'
@@ -113,7 +114,7 @@ export default class PluginsPage extends React.Component {
                 <div className={b('plugins')}>
                   {
                     plugins.map((plugin) => (
-                      <Link to={`/plugins/i/${plugin.packageName}/`} key={plugin.name} className={b('plugin')}>
+                      <Link to={`/plugins/i/${slugify(plugin.packageName)}/`} key={plugin.name} className={b('plugin')}>
                         <div
                           className={b('plugin-image')}
                         >

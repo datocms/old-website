@@ -3,6 +3,7 @@ const groupBy = require('group-by');
 const cartesianProduct = require('cartesian-product');
 const createPaginatedPages = require('gatsby-paginate');
 const redirects = require('./redirects.json');
+const slugify = require('slugify');
 
 const createRedirects = ({ boundActionCreators: { createRedirect } }) => {
   Object.entries(redirects).forEach(([fromPath, toPath]) => {
@@ -296,7 +297,7 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
 
     result.data.plugins.edges.forEach(({ node: plugin }) => {
       createPage({
-        path: `/plugins/i/${plugin.packageName}/`,
+        path: `/plugins/i/${slugify(plugin.packageName)}/`,
         component: p.resolve(`./src/templates/PluginPage/index.js`),
         context: { packageName: plugin.packageName },
       });
