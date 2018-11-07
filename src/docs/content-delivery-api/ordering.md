@@ -20,7 +20,7 @@ query {
 
 #### Pagination
 
-When querying all records of a specific model you can supply arguments that allow you to paginate the query response. Pagination allows you to request a certain amount of records at the same time.
+When querying records of a specific model you can supply arguments that allow you to paginate the query response. Pagination allows you to request a certain amount of records at the same time. The default limit is 20 records, and the maximum is 100.
 
 Use `first` to limit the number of results:
 
