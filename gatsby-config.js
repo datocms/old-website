@@ -194,14 +194,10 @@ module.exports = {
                         }
                       }
                       content {
-                        ... on DatoCmsPoll {
+                        ... on DatoCmsTypeform {
                           id
                           model { apiKey }
-                          text: textNode {
-                            markdown: childMarkdownRemark {
-                              html
-                            }
-                          }
+                          typeform
                         }
                         ... on DatoCmsText {
                           id
@@ -259,8 +255,8 @@ module.exports = {
                           return `<img src="${block.image.url}?w=900" />`;
                         }
 
-                        if (block.model.apiKey === 'poll') {
-                          return;
+                        if (block.model.apiKey === 'typeform') {
+                          return '';
                         }
                       }).join("\n")
                     }

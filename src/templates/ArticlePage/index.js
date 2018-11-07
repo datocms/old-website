@@ -5,6 +5,7 @@ import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ResponsiveEmbed from 'react-responsive-embed'
 import Lightbox from 'react-images'
+import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 import bem from 'utils/bem'
 import './style.sass'
@@ -45,11 +46,21 @@ export default class ArticlePage extends React.Component {
             <div className={b('content')}>
               {
                 article.content.map((block) => (
-                  <div key={ block.id }>
+                  <div key={block.id}>
                     {
-                      block.model.apiKey === 'poll' &&
+                      block.model.apiKey === 'typeform' &&
                         <div className={b('content-poll')}>
-                          <div dangerouslySetInnerHTML={{ __html: block.poll.markdown.html }} />
+                          <ReactTypeformEmbed
+                            url={block.typeform}
+                            style={{
+                              position: 'static',
+                              top: 'auto',
+                              left: 'auto',
+                              width: '100%',
+                              height: '600px',
+                              overflow: 'hidden'
+                            }}
+                          />
                         </div>
                     }
                     {
@@ -145,14 +156,10 @@ export const query = graphql`
             }
           }
         }
-        ... on DatoCmsPoll {
+        ... on DatoCmsTypeform {
           id
           model { apiKey }
-          poll: textNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
+          typeform
         }
         ... on DatoCmsImage {
           id
