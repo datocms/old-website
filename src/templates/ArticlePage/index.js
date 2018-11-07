@@ -19,7 +19,7 @@ export default class ArticlePage extends React.Component {
     this.state = { image: null };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     try {
       const { ReactTypeformEmbed } = require('react-typeform-embed');
       this.ReactTypeformEmbed = ReactTypeformEmbed;
