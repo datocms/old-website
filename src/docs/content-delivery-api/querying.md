@@ -30,7 +30,7 @@ Please refer to the [next section](/docs/graphql/filters/) of this guide to unde
 
 ### Query multiple records
 
-The API contains automatically generated queries to fetch all records of a certain model. For example, for the `artist` model the top-level query `allArtists` will be generated.
+The API contains automatically generated queries to fetch records of a certain model. For example, for the `artist` model the top-level query `allArtists` will be generated. By default the query will return 20 records, you can change the limit by adding the `first` parameter. If the number of your records exceeds the maximum number of records we return, you will need to iterate. Read more in the [ordering section](/docs/graphql/ordering/)
 
 A few examples for query names:
 
