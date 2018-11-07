@@ -5,7 +5,6 @@ import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ResponsiveEmbed from 'react-responsive-embed'
 import Lightbox from 'react-images'
-import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 import bem from 'utils/bem'
 import './style.sass'
@@ -20,6 +19,14 @@ export default class ArticlePage extends React.Component {
     this.state = { image: null };
   }
 
+  componentDidMount() {
+    try {
+      const { ReactTypeformEmbed } = require('react-typeform-embed');
+      this.ReactTypeformEmbed = ReactTypeformEmbed;
+    } catch () {
+    }
+  }
+
   handleOpenImage(image, e) {
     e.stopPropagation();
     e.preventDefault();
@@ -32,6 +39,7 @@ export default class ArticlePage extends React.Component {
 
   render() {
     const { article } = this.props.data;
+    const { ReactTypeformEmbed } = this;
 
     return (
       <Space both={10}>
@@ -49,22 +57,23 @@ export default class ArticlePage extends React.Component {
                   <div key={block.id}>
                     {
                       block.model.apiKey === 'typeform' &&
-                        <div className={b('content-poll')}>
-                          {
-                            typeof document !== 'undefined' &&
-                              <ReactTypeformEmbed
-                                url={block.typeform}
-                                style={{
-                                  position: 'static',
-                                  top: 'auto',
-                                  left: 'auto',
-                                  width: '100%',
-                                  height: '600px',
-                                  overflow: 'hidden'
-                                }}
-                              />
-                          }
-                        </div>
+                        ReactTypeformEmbed &&
+                          <div className={b('content-poll')}>
+                            {
+                              typeof document !== 'undefined' &&
+                                <ReactTypeformEmbed
+                                  url={block.typeform}
+                                  style={{
+                                    position: 'static',
+                                    top: 'auto',
+                                    left: 'auto',
+                                    width: '100%',
+                                    height: '600px',
+                                    overflow: 'hidden'
+                                  }}
+                                />
+                            }
+                          </div>
                     }
                     {
                       block.model.apiKey === 'text' &&
