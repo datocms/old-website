@@ -9,6 +9,6 @@ Everytime a new model is created, a new navigation item is automatically added i
 
 While this is a great, big websites tend to require a significant number of models to properly manage every page, so for client/editors it might quickly become difficult to understand which model of the backend is linked to which part of the frontend website.
 
-In the *Admin area > Navigation bar* section you can easily organize the different models in a more understandable way renaming, reordering and grouping them, so that their purpose will be more clear to the final editor:
+You can easily organize the different models in a more understandable way renaming, reordering and grouping them, so that their purpose will be more clear to the final editor:
 
-![foo](../images/navigation-bar/1.png)
+![foo](../images/navigation-bar/example.gif)
