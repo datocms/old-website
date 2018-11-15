@@ -91,6 +91,15 @@ plugin.itemType.relationships.fields.data.forEach(function(link) {
 });
 ```
 
+#### `plugin.itemId`
+
+Returns the ID of the record the plugin is attached to.
+
+```js
+// returns the ID of the record
+console.log(plugin.itemId);
+```
+
 #### `plugin.field`
 
 Returns the fields the plugin is attached to. The object takes the same format as the [CMS API Field object](https://www.datocms.com/content-management-api/#field-1).
