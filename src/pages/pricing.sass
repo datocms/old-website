@@ -17,7 +17,8 @@
 
 .PricingPage__recap
   display: flex
-  margin: 0 -10px
+  align-items: center
+  margin: 100px -10px 0
 
 .PricingPage__recap-item
   border: 1px solid $border-color
@@ -132,6 +133,54 @@
 
   &:hover
     opacity: 0.8
+
+.PricingPage__recap-item--blackFriday
+  z-index: 2
+  background-color: white
+
+  @media screen and (min-width: 1371px)
+    display: none
+    transform: scale(1.15)
+
+  .PricingPage__recap-item-price
+    height: 80px
+
+  .PricingPage__recap-item-ribbon
+    background-color: $red-color
+    line-height: 1.2
+    padding: 20px
+    color: white
+    border-radius: 4px 4px 0 0
+    text-transform: uppercase
+    font-weight: 500
+
+    span
+      font-size: 0.7em
+      display: block
+      text-transform: none
+      font-weight: 400
+
+  .PricingPage__recap-item-price-amount
+    color: $red-color
+    font-weight: 500
+
+  .PricingPage__recap-item-discount
+    color: $light-body-color
+    margin-bottom: 8px
+    text-transform: uppercase
+    color: $red-color
+    font-size: 0.9em
+    font-weight: 500
+
+    span
+      text-decoration: line-through
+      font-weight: 400
+      color: $base-body-color
+
+.PricingPage__recap-item-price-amount__discount
+  color: #999
+  text-decoration: line-through
+  padding-right: 0.3em
 
 .PricingPage__recap-item--enterprise
   background-color: $violet-color
@@ -430,7 +479,7 @@
     border-radius: 0 10px 10px 0
 
 .PricingPage__billing-group-item--active
-  background-color: $red-color
-  border-color: $red-color
+  background-color: $azure-color
+  border-color: $azure-color
   color: white
 

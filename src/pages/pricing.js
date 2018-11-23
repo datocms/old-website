@@ -168,13 +168,33 @@ class PricingPage extends React.Component {
 
     const isEnterprise = !datoPlan;
     const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
+    const isBlackFriday = this.state.billing === 'yearly' && plan.apiId === '18';
 
     if (isFree) {
       return null;
     }
 
     return (
-      <div key={plan.apiId} className={b('recap-item', { active: activePlan === plan.apiId, enterprise: isEnterprise })}>
+      <div
+        key={plan.apiId}
+        className={
+          b(
+            'recap-item',
+            {
+              active: activePlan === plan.apiId,
+              enterprise: isEnterprise,
+              blackFriday: isBlackFriday,
+            }
+          )
+        }
+      >
+        {
+          isBlackFriday &&
+            <div className={b('recap-item-ribbon')}>
+              Black Friday offer!
+              <span>Valid until Sunday, 25th November 12 OM CET</span>
+            </div>
+        }
         <div className={b('recap-item-plan-name')}>
           {plan.name}
         </div>
@@ -200,11 +220,19 @@ class PricingPage extends React.Component {
             !isFree && !isEnterprise &&
               [
                 <div key="amount" className={b('recap-item-price-amount')}>
-                  { this.state.billing === 'monthly' ? `€${datoPlan.attributes.monthlyPrice}` : `€${parseInt(datoPlan.attributes.yearlyPrice / 12)}` }
+                  {
+                    this.state.billing === 'monthly' ?
+                      `€${datoPlan.attributes.monthlyPrice}` :
+                      `€${parseInt(datoPlan.attributes.yearlyPrice / 12)}`
+                  }
                 </div>,
+                isBlackFriday &&
+                  <div className={b('recap-item-discount')}>
+                    <span>€79</span> 50% off
+                  </div>,
                 <div key="period" className={b('recap-item-price-period')}>
                   per project/month
-                </div>
+                </div>,
               ]
           }
         </div>
