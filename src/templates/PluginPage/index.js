@@ -10,6 +10,7 @@ import distanceInWords from 'date-fns/distance_in_words';
 import Sticky from 'react-stickynode'
 import Img from 'gatsby-image'
 import gravatar from 'utils/gravatar'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 
@@ -45,6 +46,7 @@ export default class PluginPage extends React.Component {
     return (
       <Space both={10}>
         <Wrap>
+          <HelmetDatoCms seo={plugin.seoMetaTags} />
           <div className={b('header')}>
             {
               plugin.coverImage &&
@@ -179,6 +181,9 @@ export default class PluginPage extends React.Component {
 export const query = graphql`
   query PluginPageQuery($packageName: String!) {
     plugin: datoCmsPlugin(packageName: { eq: $packageName }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       packageName
       version
       author { name email }

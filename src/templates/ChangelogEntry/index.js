@@ -19,8 +19,7 @@ export default class ChangelogEntry extends React.Component {
     return (
       <Space both={10}>
         <Wrap>
-          <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
-          <Helmet title={`${article.title} - DatoCMS Product Changelog`} />
+          <HelmetDatoCms seo={article.seoMetaTags} />
           <div className={b()}>
             <div className={b('title')}>
               <Link to="/changelog/">
@@ -65,6 +64,9 @@ export default class ChangelogEntry extends React.Component {
 export const query = graphql`
   query ArticleEntryQuery($slug: String!) {
     article: datoCmsChangelogEntry(slug: { eq: $slug }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       id
       title
       slug
@@ -77,11 +79,6 @@ export const query = graphql`
       categories {
         name
         color { hex }
-      }
-    }
-    page: datoCmsChangelog {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }
