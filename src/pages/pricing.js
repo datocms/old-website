@@ -228,7 +228,7 @@ class PricingPage extends React.Component {
                 </div>,
                 isBlackFriday &&
                   <div className={b('recap-item-discount')}>
-                    <span>€79</span> 50% off
+                    <span>€99</span> 50% off
                   </div>,
                 <div key="period" className={b('recap-item-price-period')}>
                   per project/month
