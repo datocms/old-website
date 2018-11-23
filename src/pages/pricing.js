@@ -192,7 +192,7 @@ class PricingPage extends React.Component {
           isBlackFriday &&
             <div className={b('recap-item-ribbon')}>
               Black Friday offer!
-              <span>Valid until Sunday, 25th November 12 PM CET</span>
+              <span>Valid until Sunday, 26th November 12 PM CET</span>
             </div>
         }
         <div className={b('recap-item-plan-name')}>
