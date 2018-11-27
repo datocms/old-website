@@ -140,7 +140,7 @@ input.disabled = plugin.disabled;
 Returns the [configuration parameters](/docs/plugins/configuration-parameters/) values for the plugin.
 
 ```js
-console.log(input.parameters);
+console.log(plugin.parameters);
 
 // returns parameters in the following shape:
 // {
