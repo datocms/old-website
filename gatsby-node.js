@@ -221,6 +221,8 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
               pluginType { code }
               fieldTypes { code }
               coverImage {
+                url
+                format
                 sizes(maxWidth: 430) {
                   base64
                   aspectRatio
@@ -285,7 +287,7 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
         edges: info.plugins,
         createPage: createPage,
         pageTemplate: `./src/templates/PluginsPage/index.js`,
-        pageLength: 15,
+        pageLength: 25,
         pathPrefix: pathPrefix.substring(1),
         context: {
           combosWithResults,

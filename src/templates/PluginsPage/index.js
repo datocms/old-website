@@ -119,8 +119,14 @@ export default class PluginsPage extends React.Component {
                           className={b('plugin-image')}
                         >
                           {
-                            plugin.coverImage &&
+                            plugin.coverImage && plugin.coverImage.format !== 'svg' &&
                               <Img sizes={plugin.coverImage.sizes} />
+                          }
+                          {
+                            plugin.coverImage && plugin.coverImage.format === 'svg' &&
+                              <div className="gatsby-image-wrapper">
+                                <div className="svg" style={{ backgroundImage: `url(${plugin.coverImage.url})` }} />
+                              </div>
                           }
                           <img
                             className={b('plugin-author-image')}
