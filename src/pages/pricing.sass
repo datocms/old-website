@@ -18,14 +18,15 @@
 .PricingPage__recap
   display: flex
   align-items: center
-  margin: 100px -10px 0
+  margin: 120px -10px 0
 
 .PricingPage__recap-item
   border: 1px solid $border-color
   border-radius: 4px
   box-shadow: 0 1px 4px rgba(black, 0.1)
   text-align: center
-  margin: 0 10px
+  margin: 0 4px
+  background-color: white
   flex: 1
 
   &:nth-child(1) .PricingPage__recap-item-plan-name
@@ -134,47 +135,28 @@
   &:hover
     opacity: 0.8
 
-.PricingPage__recap-item--blackFriday
+.PricingPage__recap-item:nth-child(2)
   z-index: 2
   background-color: white
 
   @media screen and (min-width: 1371px)
-    transform: scale(1.15)
+    transform: scale(1.1)
 
-  .PricingPage__recap-item-price
-    height: 80px
-
-  .PricingPage__recap-item-ribbon
+  &:before
+    content: "Most popular"
+    display: block
+    position: absolute
+    bottom: 100%
+    left: 25px
+    right: 25px
     background-color: $red-color
     line-height: 1.2
-    padding: 20px
+    font-size: 13px
+    padding: 10px
     color: white
     border-radius: 4px 4px 0 0
     text-transform: uppercase
     font-weight: 500
-
-    span
-      font-size: 0.7em
-      display: block
-      text-transform: none
-      font-weight: 400
-
-  .PricingPage__recap-item-price-amount
-    color: $red-color
-    font-weight: 500
-
-  .PricingPage__recap-item-discount
-    color: $light-body-color
-    margin-bottom: 8px
-    text-transform: uppercase
-    color: $red-color
-    font-size: 0.9em
-    font-weight: 500
-
-    span
-      text-decoration: line-through
-      font-weight: 400
-      color: $base-body-color
 
 .PricingPage__recap-item-price-amount__discount
   color: #999
