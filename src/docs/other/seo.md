@@ -17,7 +17,7 @@ const htmlTag = require('html-tag');
 
 const toHtml = (tags) => (
   tags.map(({ tagName, attributes, content }) => (
-    htmlTag(tagName, attributes, content)
+    htmlTag(tagName, attributes || {}, content)
   )).join("")
 );
 
