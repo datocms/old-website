@@ -669,6 +669,44 @@ ${returnCode}`;
           </div>
         </Element>
 
+        <Element name="rate-limits">
+          <div className={b('resource')}>
+            <h2 className={b('resource-title')}>
+              API rate limits
+            </h2>
+            <div className={b('resource-description')}>
+              <p>
+                API Rate limits specify the number of requests a client can make to DatoCMS APIs in a specific time frame.
+                By default the Management API enforces rate limits of 30 requests per 3 seconds. Higher rate limits may apply depending on your current plan.
+              </p>
+              <p>
+                The following table lists all headers returned in every response by the Content Management API which give a client information on rate limiting:
+              </p>
+              <table>
+                <thead>
+                  <th>Header</th><td>Description</td>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>X-RateLimit-Limit</th><td>The maximum amount of requests which can be made in 3 seconds.</td>
+                    <th>X-RateLimit-Remaining</th><td>The remaining amount of requests which can be made until the next 3-seconds reset.</td>
+                    <th>X-RateLimit-Reset</th><td>If present, indicates the number of seconds until the next request can be made.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                When a client gets rate limited, the API responds with the <code>429 Too Many Requests</code> HTTP status code and sets the
+                value <code>X-RateLimit-Reset</code> header to an integer larger than 0 specifying the time before the limit
+                resets and another request will be accepted.
+              </p>
+              <p>
+                Our Ruby and JS API clients take care of rate limit errors and will automatically retry the request after the
+                right amount of time.
+              </p>
+            </div>
+          </div>
+        </Element>
+
         <Element name="schema">
           <div className={b('resource')}>
             <h2 className={b('resource-title')}>
