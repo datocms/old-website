@@ -495,6 +495,20 @@ ${returnCode}`;
           </li>
           <li className={b('menu-category')}>
             <ScrollLink
+              href={`#rate-limits`}
+              to="rate-limits"
+              activeClass="active"
+              spy
+              smooth
+              duration={500}
+              containerId="container"
+              offset={-50}
+            >
+              API rate limits
+            </ScrollLink>
+          </li>
+          <li className={b('menu-category')}>
+            <ScrollLink
               href={`#schema`}
               to="schema"
               activeClass="active"
@@ -684,12 +698,18 @@ ${returnCode}`;
               </p>
               <table>
                 <thead>
-                  <th>Header</th><td>Description</td>
+                  <tr>
+                    <th>Header</th><th>Description</th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th>X-RateLimit-Limit</th><td>The maximum amount of requests which can be made in 3 seconds.</td>
+                  </tr>
+                  <tr>
                     <th>X-RateLimit-Remaining</th><td>The remaining amount of requests which can be made until the next 3-seconds reset.</td>
+                  </tr>
+                  <tr>
                     <th>X-RateLimit-Reset</th><td>If present, indicates the number of seconds until the next request can be made.</td>
                   </tr>
                 </tbody>
