@@ -26,7 +26,7 @@ query {
 }
 ```
 
-Please refer to the [next section](/docs/graphql/filters/) of this guide to understand how to use the `filters` and `orderBy` arguments.
+Please refer to the [next section](/docs/graphql/filtering/) of this guide to understand how to use the `filters` and `orderBy` arguments.
 
 ### Query multiple records
 
