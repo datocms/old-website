@@ -112,7 +112,11 @@ export default class ArticlePage extends React.Component {
                             className={b('content-image__image')}
                             onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
                           >
-                            <Img fluid={block.image.fluid} />
+                            {
+                              block.image.format === 'gif' ?
+                                <img src={block.image.url} /> :
+                                <Img fluid={block.image.fluid} />
+                            }
                           </a>
                           {
                             block.image.title &&
@@ -215,6 +219,7 @@ export const query = graphql`
           image {
             format
             url
+            format
             width
             title
             fluid(maxWidth: 900) {
