@@ -217,6 +217,30 @@ module.exports = {
                             url
                           }
                         }
+                        ... on DatoCmsQuote {
+                          id
+                          model { apiKey }
+                          quote: quoteNode {
+                            markdown: childMarkdownRemark {
+                              html
+                            }
+                          }
+                          author
+                        }
+                        ... on DatoCmsQuestionAnswer {
+                          id
+                          model { apiKey }
+                          question: questionNode {
+                            markdown: childMarkdownRemark {
+                              html
+                            }
+                          }
+                          answer: answerNode {
+                            markdown: childMarkdownRemark {
+                              html
+                            }
+                          }
+                        }
                         ... on DatoCmsVideo {
                           id
                           model { apiKey }
@@ -251,6 +275,14 @@ module.exports = {
                       "content:encoded": article.content.map((block) => {
                         if (block.model.apiKey === 'text') {
                           return block.text.markdown.html;
+                        }
+
+                        if (block.model.apiKey === 'quote') {
+                          return block.quote.markdown.html;
+                        }
+
+                        if (block.model.apiKey === 'question_answer') {
+                          return block.question.markdown.html + block.answer.markdown.html;
                         }
 
                         if (block.model.apiKey === 'image') {
