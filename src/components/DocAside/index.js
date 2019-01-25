@@ -47,9 +47,9 @@ export default class DocAside extends React.Component {
     this.state = { image: null };
   }
 
-  handleOpenCrisp(e) {
+  handleOpenKayako(e) {
     e.preventDefault();
-    $crisp.push(["do", "chat:open"])
+    window.kayako.maximize();
   }
 
   componentDidMount() {
@@ -120,7 +120,7 @@ export default class DocAside extends React.Component {
                   <div className={b('contribute-title')}>
                     Something is missing in this page?
                   </div>
-                  <a href="#" onClick={this.handleOpenCrisp.bind(this)}>Chat with us</a>, submit an <a target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a target="_blank" href={pathContext.repoPath}>propose a change</a> on Github!
+                  <a href="#" onClick={this.handleOpenKayako.bind(this)}>Chat with us</a>, submit an <a target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a target="_blank" href={pathContext.repoPath}>propose a change</a> on Github!
                 </div>
               </Sticky>
             </div>
