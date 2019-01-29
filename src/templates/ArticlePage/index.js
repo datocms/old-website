@@ -90,7 +90,11 @@ export default class ArticlePage extends React.Component {
                             className={b('content-image__image')}
                             onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
                           >
-                            <Img sizes={block.image.sizes} />
+                            {
+                              block.image.format === 'gif' ?
+                                <img src={block.image.url} /> :
+                                <Img sizes={block.image.sizes} />
+                            }
                           </a>
                           {
                             block.image.title &&
@@ -178,6 +182,7 @@ export const query = graphql`
           id
           model { apiKey }
           image {
+            format
             url
             width
             title
