@@ -45,6 +45,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-plugin-sharp`,
+          `gatsby-remark-copy-linked-files`,
           `gatsby-remark-gemoji-to-emoji`,
           {
             resolve: `gatsby-remark-autolink-headers`,
@@ -77,7 +78,6 @@ module.exports = {
               sizeByPixelDensity: false,
             },
           },
-          `gatsby-remark-copy-linked-files`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
