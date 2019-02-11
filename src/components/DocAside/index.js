@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Wrap, button, Space, text } from 'blocks'
 import sortBy from 'sort-by'
 import Sticky from 'react-stickynode'
@@ -8,6 +8,7 @@ import Lightbox from 'react-images'
 
 import bem from 'utils/bem'
 
+import Layout from 'components/Layout';
 import 'prismjs/themes/prism-okaidia.css'
 import './style.sass'
 
@@ -92,7 +93,7 @@ export default class DocAside extends React.Component {
     const categoryTitle = findTitle(categoryPages[0], pages);
 
     return (
-      <div>
+      <Layout>
         <Helmet title={`${index === 0 ? 'Introduction' : findTitle(page, pages)} - ${categoryTitle} - DatoCMS`} />
         <Wrap>
           <div className={b()}>
@@ -177,7 +178,7 @@ export default class DocAside extends React.Component {
           }}
           onClose={() => this.setState({ image: null })}
         />
-      </div>
+      </Layout>
     )
   }
 }

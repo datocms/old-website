@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Masonry from 'react-masonry-component'
 import Sticky from 'react-stickynode'
@@ -9,6 +9,7 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
+import Layout from 'components/Layout';
 
 import Browser from 'components/Browser'
 import LazyImage from 'components/LazyImage'
@@ -86,7 +87,7 @@ class UseCasesPage extends React.Component {
     const allWebsites = data.websites.edges.map(e => e.node).filter(w => w.image);
 
     return (
-      <div>
+      <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
         <Space both="10">
           <div className={b()}>
@@ -144,7 +145,7 @@ class UseCasesPage extends React.Component {
           </div>
         </Space>
         <CallToAction />
-      </div>
+      </Layout>
     );
   }
 }

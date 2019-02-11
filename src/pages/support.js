@@ -1,11 +1,12 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { Link as ScrollLink, Element } from 'react-scroll'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
+import Layout from 'components/Layout';
 
 import './support.sass'
 
@@ -21,7 +22,7 @@ class Support extends React.Component {
     const { data } = this.props;
 
     return (
-      <div>
+      <Layout>
         <Space both="10">
           <Wrap>
             <div className={b()}>
@@ -49,7 +50,7 @@ class Support extends React.Component {
             </div>
           </Wrap>
         </Space>
-      </div>
+      </Layout>
     );
   }
 }

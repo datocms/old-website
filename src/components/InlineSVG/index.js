@@ -1,6 +1,5 @@
 import React from 'react'
 import md5 from 'blueimp-md5'
-import { withPrefix } from 'gatsby-link'
 
 export default class InlineSVG extends React.Component {
   constructor(props) {

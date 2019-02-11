@@ -22,7 +22,7 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
               title
               coverImage {
                 url
-                sizes(maxWidth: 850) {
+                fluid(maxWidth: 850) {
                   base64
                   aspectRatio
                   src
@@ -35,7 +35,7 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
                 name
                 avatar {
                   url
-                  sizes(maxWidth: 80) {
+                  fluid(maxWidth: 80) {
                     base64
                     aspectRatio
                     src
@@ -223,7 +223,7 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
               coverImage {
                 url
                 format
-                sizes(maxWidth: 430) {
+                fluid(maxWidth: 430) {
                   base64
                   aspectRatio
                   src
@@ -359,7 +359,7 @@ const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
                 }
               }
               image {
-                sizes(maxWidth: 55) {
+                fluid(maxWidth: 55) {
                   base64
                   aspectRatio
                   src
@@ -442,13 +442,12 @@ exports.createPages = (options) => {
   ]);
 }
 
-exports.modifyWebpackConfig = ({ config, stage }) => {
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
   if (stage === 'build-javascript') {
-    config.merge((current) => {
-      current.output.jsonpFunction = 'webpackJsonpDato';
-      return current;
+    actions.setWebpackConfig({
+      output: {
+        jsonpFunction: 'webpackJsonpDato',
+      },
     });
   }
-
-  return config;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import Img from 'gatsby-image'
 
@@ -92,7 +92,7 @@ const HomeQuotes = ({ data }) => (
                     <div className={b('card-avatar')}>
                       {
                         card.image &&
-                          <Img sizes={card.image.sizes} />
+                          <Img fluid={card.image.fluid} />
                       }
                     </div>
                     <div className={b('card-header-body')}>

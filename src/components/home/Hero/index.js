@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Link as ScrollLink, Element } from 'react-scroll'
 
 import './style.sass'
@@ -8,7 +8,6 @@ import { Wrap, button, Space, text } from 'blocks'
 import Browser from 'components/Browser'
 import bem from 'utils/bem'
 
-import screenshot from 'images/screen.png'
 import arrowDown from 'images/arrow-down-dropdown.svg'
 
 const b = bem.lock('HomeHero')
@@ -36,27 +35,17 @@ class HomeHero extends React.Component {
                   {description}
                 </div>
                 <Space bottom="2">
-                  <a href="https://dashboard.datocms.com/signup" className={button({ red: true })}>
-                    Try for free
-                  </a>
-                  <ScrollLink
-                    href="#"
-                    to="discover"
-                    className={b('or-discover')}
-                    smooth
-                    duration={500}
-                    offset={-50}
-                  >
-                    or discover more <img src={arrowDown} />
-                  </ScrollLink>
+                  <div className={b('subscribe')}>
+                    <input className={b('email')} type="email" placeholder="name@company.com" />
+                    <a href="https://dashboard.datocms.com/signup" className={button({ red: true })}>
+                      Try for free
+                    </a>
+                  </div>
                 </Space>
-                <p className={text({ size: 'small' })}>
-                  No credit card required, 30 seconds sign-up.
-                </p>
               </div>
             </div>
             <div className={b('browser')}>
-              <Browser small title="DatoCMS">
+              <Browser small>
                 <video autoPlay loop muted playsInline ref={(el) => this.video = el}>
                   <source src="/videos/hero.webm" type="video/webm" />
                   <source src="/videos/hero.mp4" type="video/mp4" />

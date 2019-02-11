@@ -1,5 +1,7 @@
 import React from 'react'
+import Layout from 'components/Layout'
 import DocAside from 'components/DocAside';
+import { graphql } from 'gatsby'
 
 export default DocAside;
 

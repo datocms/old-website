@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -9,6 +9,7 @@ import Lightbox from 'react-images'
 import bem from 'utils/bem'
 import './style.sass'
 
+import Layout from 'components/Layout'
 import BlogAside from 'components/BlogAside'
 
 const b = bem.lock('ArticlePage')
@@ -33,9 +34,6 @@ export default class ArticlePage extends React.Component {
     e.preventDefault();
 
     this.setState({ image });
-
-    event.preventDefault();
-    event.stopPropagation();
   }
 
   render() {
@@ -43,114 +41,116 @@ export default class ArticlePage extends React.Component {
     const { ReactTypeformEmbed } = this;
 
     return (
-      <Space both={10}>
-        <Wrap>
-          <div className={b()}>
-            <HelmetDatoCms seo={article.seoMetaTags} />
-            <h1 className={b('title')}>
-              <Link to={`/blog/${article.slug}/`}>
-                {article.title}
-              </Link>
-            </h1>
-            <div className={b('content')}>
-              {
-                article.content.map((block) => (
-                  <div key={block.id}>
-                    {
-                      block.model.apiKey === 'typeform' &&
-                        ReactTypeformEmbed &&
-                          <div className={b('content-poll')}>
+      <Layout>
+        <Space both={10}>
+          <Wrap>
+            <div className={b()}>
+              <HelmetDatoCms seo={article.seoMetaTags} />
+              <h1 className={b('title')}>
+                <Link to={`/blog/${article.slug}/`}>
+                  {article.title}
+                </Link>
+              </h1>
+              <div className={b('content')}>
+                {
+                  article.content.map((block) => (
+                    <div key={block.id}>
+                      {
+                        block.model.apiKey === 'typeform' &&
+                          ReactTypeformEmbed &&
+                            <div className={b('content-poll')}>
+                              {
+                                typeof document !== 'undefined' &&
+                                  <ReactTypeformEmbed
+                                    url={block.typeform}
+                                    style={{
+                                      position: 'static',
+                                      top: 'auto',
+                                      left: 'auto',
+                                      width: '100%',
+                                      height: '600px',
+                                      overflow: 'hidden'
+                                    }}
+                                  />
+                              }
+                            </div>
+                      }
+                      {
+                        block.model.apiKey === 'text' &&
+                          <div className={b('content-text')}>
+                            <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
+                          </div>
+                      }
+                      {
+                        block.model.apiKey === 'image' &&
+                          <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
+                            <a
+                              href={`${block.image.url}?w=1200&fit=max`}
+                              className={b('content-image__image')}
+                              onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
+                            >
+                              {
+                                block.image.format === 'gif' ?
+                                  <img src={block.image.url} /> :
+                                  <Img fluid={block.image.fluid} />
+                              }
+                            </a>
                             {
-                              typeof document !== 'undefined' &&
-                                <ReactTypeformEmbed
-                                  url={block.typeform}
-                                  style={{
-                                    position: 'static',
-                                    top: 'auto',
-                                    left: 'auto',
-                                    width: '100%',
-                                    height: '600px',
-                                    overflow: 'hidden'
-                                  }}
-                                />
+                              block.image.title &&
+                                <div className={b('content-image__label')}>
+                                  {block.image.title}
+                                </div>
                             }
                           </div>
-                    }
-                    {
-                      block.model.apiKey === 'text' &&
-                        <div className={b('content-text')}>
-                          <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
-                        </div>
-                    }
-                    {
-                      block.model.apiKey === 'image' &&
-                        <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
-                          <a
-                            href={`${block.image.url}?w=1200&fit=max`}
-                            className={b('content-image__image')}
-                            onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
-                          >
-                            {
-                              block.image.format === 'gif' ?
-                                <img src={block.image.url} /> :
-                                <Img sizes={block.image.sizes} />
-                            }
-                          </a>
-                          {
-                            block.image.title &&
-                              <div className={b('content-image__label')}>
-                                {block.image.title}
-                              </div>
-                          }
-                        </div>
-                    }
-                    {
-                      block.model.apiKey === 'video' &&
-                        <div className={b('content-video')}>
-                          <div className={b('content-video__wrapper')}>
-                            {
-                              block.video.provider === 'youtube' ?
-                                <ResponsiveEmbed
-                                  src={`//www.youtube.com/embed/${block.video.providerUid}`}
-                                  ratio={`${block.video.width}:${block.video.height}`}
-                                  allowFullScreen
-                                />
-                                :
-                                <ResponsiveEmbed
-                                  src={`//player.vimeo.com/video/${block.video.providerUid}?title=0&byline=0&portrait=0`}
-                                  ratio={`${block.video.width}:${block.video.height}`}
-                                  allowFullScreen
-                                />
-                            }
+                      }
+                      {
+                        block.model.apiKey === 'video' &&
+                          <div className={b('content-video')}>
+                            <div className={b('content-video__wrapper')}>
+                              {
+                                block.video.provider === 'youtube' ?
+                                  <ResponsiveEmbed
+                                    src={`//www.youtube.com/embed/${block.video.providerUid}`}
+                                    ratio={`${block.video.width}:${block.video.height}`}
+                                    allowFullScreen
+                                  />
+                                  :
+                                  <ResponsiveEmbed
+                                    src={`//player.vimeo.com/video/${block.video.providerUid}?title=0&byline=0&portrait=0`}
+                                    ratio={`${block.video.width}:${block.video.height}`}
+                                    allowFullScreen
+                                  />
+                              }
+                            </div>
                           </div>
-                        </div>
-                    }
-                  </div>
-                ))
-              }
-            </div>
-            <div className={b('meta')}>
-              <Img
-                className={b('image')}
-                sizes={article.author.avatar.sizes}
+                      }
+                    </div>
+                  ))
+                }
+              </div>
+              <div className={b('meta')}>
+                <Img
+                  className={b('image')}
+                  fluid={article.author.avatar.fluid}
+                />
+                {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
+              </div>
+              <Lightbox
+                backdropClosesModal
+                width={1400}
+                images={this.state.image ? [{ src: this.state.image }] : []}
+                isOpen={this.state.image}
+                theme={{
+                  footer: {
+                    display: 'none',
+                  },
+                }}
+                onClose={() => this.setState({ image: null })}
               />
-              {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
             </div>
-            <Lightbox
-              backdropClosesModal
-              width={1400}
-              images={this.state.image ? [{ src: this.state.image }] : []}
-              isOpen={this.state.image}
-              theme={{
-                footer: {
-                  display: 'none',
-                },
-              }}
-              onClose={() => this.setState({ image: null })}
-            />
-          </div>
-        </Wrap>
-      </Space>
+          </Wrap>
+        </Space>
+      </Layout>
     );
   }
 }
@@ -186,8 +186,8 @@ export const query = graphql`
             url
             width
             title
-            sizes(maxWidth: 900) {
-              ...GatsbyDatoCmsSizes
+            fluid(maxWidth: 900) {
+              ...GatsbyDatoCmsFluid
             }
           }
         }
@@ -209,7 +209,7 @@ export const query = graphql`
         name
         avatar {
           url
-          sizes(maxWidth: 80) {
+          fluid(maxWidth: 80) {
             base64
             aspectRatio
             src

@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import React from 'react'
 import Prism from 'prismjs'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import sortObject from 'sort-object'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-ruby'
@@ -13,13 +13,12 @@ import pluralize from 'pluralize'
 import { parse } from 'flatted/cjs';
 
 import bem from 'utils/bem'
-import { Wrap, button, Space, text } from 'blocks'
 import schemaExampleFor from 'utils/schemaExampleFor'
 import buildCmaResources from 'utils/buildCmaResources'
 
-import apiTokenImage from '../docs/images/api-token.png';
-
 import './content-management-api.sass'
+
+// import apiTokenImage from '../docs/images/api-token.png';
 
 const b = bem.lock('ApiPage')
 
@@ -195,7 +194,7 @@ ${
       return returnCode;
     }
 
-    return code;
+    return '';
   }
 
   jsCode(resource, link, allPages = false) {
@@ -673,7 +672,7 @@ ${returnCode}`;
                 <em>Settings > API Tokens</em> section:
               </p>
               <p>
-                <img src={apiTokenImage} />
+                {/* <img src={apiTokenImage} /> */}
               </p>
               <p>
                 Once you have the API Token, you need to pass it as a header

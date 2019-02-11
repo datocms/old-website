@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { Link as ScrollLink, Element } from 'react-scroll'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -8,6 +8,7 @@ import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 
 import slackLogo from 'images/slack.svg'
+import Layout from 'components/Layout';
 
 import './slack.sass'
 
@@ -82,8 +83,8 @@ class SlackPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ submitting: true, error: null });
-    grecaptcha.reset(this.widget);
-    grecaptcha.execute(this.widget);
+    window.grecaptcha.reset(this.widget);
+    window.grecaptcha.execute(this.widget);
   }
 
   render() {
@@ -91,7 +92,7 @@ class SlackPage extends React.Component {
     const { stats, error, success, submitting } = this.state;
 
     return (
-      <div>
+      <Layout>
         <Space both="8">
           <Wrap>
             <div className={b()}>
@@ -159,7 +160,7 @@ class SlackPage extends React.Component {
             </div>
           </Wrap>
         </Space>
-      </div>
+      </Layout>
     );
   }
 }

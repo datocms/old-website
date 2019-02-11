@@ -14,30 +14,37 @@ body.no-scroll
   overflow: hidden !important
   height: 100% !important
 
-.banner
-  background-color: $violet-color
-  padding: 10px
+.chat-support
+  position: fixed
+  bottom: 25px
+  right: 25px
+  background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
   color: white
-  text-align: center
-  +size(small)
+  padding: 12px 25px 8px 20px
+  border-radius: 60px
+  text-decoration: none
+  font-weight: 500
+  box-shadow: 0 0 8px 2px rgba(black, 0.15)
+  z-index: 2147483001
 
-  a
-    color: white
+  &:hover
+    background: #FF7059
 
-    &:hover
-      text-decoration: none
-
-  strong
-    background: rgba(white, 0.3)
-    +weight(bold)
-    font-size: 0.8em
-    padding: 3px 7px 2px
-    border-radius: 3px
+  &:before
+    content: ""
+    background: url('../../images/chat.svg')
+    background-size: contain
+    background-position: center center
+    display: inline-block
+    background-repeat: no-repeat
     vertical-align: middle
-    margin-right: 8px
+    height: 28px
+    width: 28px
+    margin-right: 14px
 
-  @media screen and (max-width: 999px)
-    display: none
+#kayako-messenger
+  right: -4px !important
+  bottom: 60px !important
 
 .cookieConsent
   position: fixed

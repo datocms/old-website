@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrap, button, Space, text } from 'blocks'
 import Sticky from 'react-stickynode'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 import bem from 'utils/bem'
 import './style.sass'

@@ -1,9 +1,10 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import { Wrap, button, Space, text } from 'blocks'
 import sortBy from 'sort-by'
 
 import bem from 'utils/bem'
+import Layout from 'components/Layout'
 
 import './style.sass'
 
@@ -25,7 +26,7 @@ export default class LegalPage extends React.Component {
     const page = data.page;
 
     return (
-      <div>
+      <Layout>
         <Wrap>
           <div className={b()}>
             <div className={b('menu')}>
@@ -59,7 +60,7 @@ export default class LegalPage extends React.Component {
             </div>
           </div>
         </Wrap>
-      </div>
+      </Layout>
     )
   }
 }

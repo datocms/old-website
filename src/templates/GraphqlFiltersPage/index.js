@@ -5,6 +5,8 @@ import Prism from 'prismjs'
 import 'prismjs/components/prism-graphql'
 import bem from 'utils/bem'
 import DocAside from 'components/DocAside';
+import Layout from 'components/Layout'
+import { graphql } from 'gatsby'
 
 import './style.sass'
 
@@ -137,9 +139,11 @@ class GraphqlFiltersBlock extends React.Component {
 class GraphqlFiltersPage extends React.Component {
   render() {
     return (
-      <DocAside {...this.props}>
-        <GraphqlFiltersBlock {...this.props} />
-      </DocAside>
+      <Layout>
+        <DocAside {...this.props}>
+          <GraphqlFiltersBlock {...this.props} />
+        </DocAside>
+      </Layout>
     );
   }
 }

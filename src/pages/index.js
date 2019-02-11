@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import bem from 'utils/bem'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
@@ -10,24 +10,28 @@ import Tools from 'components/home/Tools'
 import Features from 'components/home/Features'
 import Quotes from 'components/home/Quotes'
 import CallToAction from 'components/CallToAction'
+import Layout from 'components/Layout';
 
 import './index.sass'
 
 const b = bem.lock('IndexPage')
 
 const IndexPage = ({ data }) => (
-  <div>
+  <Layout hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
-    <Hero title={data.home.heroText} description={data.home.heroDescription} />
-    <WhoIsUsing data={data.home.whosUsingDatocms} />
+    <Hero
+      title="Headless CMS, done right"
+      description="The fastest GraphQL API, the easiest editing interface"
+    />
     <div className={b('second-wave')}>
       <HowItWorks />
       <Tools data={data} />
     </div>
     <Features data={data.features.edges.map(x => x.node)} />
+    <WhoIsUsing data={data.home.whosUsingDatocms} />
     <Quotes data={data.reviews.edges.map(x => x.node)} />
     <CallToAction />
-  </div>
+  </Layout>
 )
 
 export default IndexPage
@@ -84,8 +88,8 @@ query IndexPageQuery {
           }
         }
         image {
-          sizes(maxWidth: 55) {
-            ...GatsbyDatoCmsSizes
+          fluid(maxWidth: 55) {
+            ...GatsbyDatoCmsFluid
           }
         }
       }

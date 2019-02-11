@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
@@ -60,11 +60,6 @@ class HomeFeatures extends React.Component {
                       </div>
                     ))
                   }
-                  <div className={b('toc-feature')}>
-                    Need a feature?
-                    <br />
-                    <a href="http://support.datocms.com/support/discussions/forums/35000119870">Just ask!</a>
-                  </div>
                 </div>
               </div>
               <div className={b('right')}>

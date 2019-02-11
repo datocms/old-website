@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
@@ -7,6 +7,7 @@ import bem from 'utils/bem'
 import { Wrap, button, Space, text } from 'blocks'
 
 import Features from '../components/home/Features'
+import Layout from 'components/Layout';
 
 import './pricing.sass'
 import check from 'images/check.svg'
@@ -366,137 +367,138 @@ class PricingPage extends React.Component {
 
     const datoPlans = parse(this.props.data.datoPlans.body);
 
-
     return (
-      <Space both="10">
-        <HelmetDatoCms seo={data.page.seoMetaTags} />
-        <Wrap>
-          <div className={b()}>
-            <div className={b('title')}>
-              The right price for any digital product
-            </div>
-            <div className={b('subtitle')}>
-              Unlimited records and file storage. A pricing that scales on complexity, not quantity.
-            </div>
-            {this.renderBillingChanger()}
-            {this.renderPlanChanger()}
-            <div className={b('recap')}>
-              {plans.map(this.renderPlanRecap.bind(this, hints))}
-            </div>
-
-            <div className={b('free-plan')}>
-              <div className={b('free-plan-title')}>
-                Start with our forever free plan
+      <Layout>
+        <Space both="10">
+          <HelmetDatoCms seo={data.page.seoMetaTags} />
+          <Wrap>
+            <div className={b()}>
+              <div className={b('title')}>
+                The right price for any digital product
               </div>
-              <div>
-                <div className={b('free-plan-description')}>
-                  All the essential features included, 1,000 records, 15 models, 1GB file storage
+              <div className={b('subtitle')}>
+                Unlimited records and file storage. A pricing that scales on complexity, not quantity.
+              </div>
+              {this.renderBillingChanger()}
+              {this.renderPlanChanger()}
+              <div className={b('recap')}>
+                {plans.map(this.renderPlanRecap.bind(this, hints))}
+              </div>
+
+              <div className={b('free-plan')}>
+                <div className={b('free-plan-title')}>
+                  Start with our forever free plan
                 </div>
-                <a className={button({ red: true, 'normal-big': true })} href="https://dashboard.datocms.com/signup">
-                  Try it for free
-                </a>
-                <div className={b('free-plan-credit-card')}>
-                  No credit card required, 30 seconds sign-up
+                <div>
+                  <div className={b('free-plan-description')}>
+                    All the essential features included, 1,000 records, 15 models, 1GB file storage
+                  </div>
+                  <a className={button({ red: true, 'normal-big': true })} href="https://dashboard.datocms.com/signup">
+                    Try it for free
+                  </a>
+                  <div className={b('free-plan-credit-card')}>
+                    No credit card required, 30 seconds sign-up
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {this.renderPlanChanger()}
+              {this.renderPlanChanger()}
 
-            <table className={b('details')}>
-              <tbody>
-                <tr className={b('details-header-row')}>
-                  <td className={b('details-header-cell')} rowSpan="2">
-                    <div className={b('details-header')}>
-                      <div className={b('details-header-inner')}>
-                        <div className={b('details-header-title')}>
-                          Feature comparison
-                        </div>
-                        <div className={b('details-header-description')}>
-                          Choose the best for you and get in touch for any help
+              <table className={b('details')}>
+                <tbody>
+                  <tr className={b('details-header-row')}>
+                    <td className={b('details-header-cell')} rowSpan="2">
+                      <div className={b('details-header')}>
+                        <div className={b('details-header-inner')}>
+                          <div className={b('details-header-title')}>
+                            Feature comparison
+                          </div>
+                          <div className={b('details-header-description')}>
+                            Choose the best for you and get in touch for any help
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
+                    </td>
+                    {
+                      plans.map(plan => (
+                        <td key={plan.apiId} className={b('details-plan-name', { active: activePlan === plan.apiId })} >
+                          {plan.name}
+                        </td>
+                      ))
+                    }
+                  </tr>
+                  <tr className={b('details-header-row')}>
+                    {plans.map(this.renderTablePriceRow.bind(this))}
+                  </tr>
                   {
-                    plans.map(plan => (
-                      <td key={plan.apiId} className={b('details-plan-name', { active: activePlan === plan.apiId })} >
-                        {plan.name}
-                      </td>
+                    hintKeys.map(hintKey => (
+                      <tr key={hintKey}>
+                        <td className={b('details-feature-name')}>
+                          <Tooltip hints={hints} apiId={hintKey}>
+                            {hints[hintKey].name}
+                          </Tooltip>
+                        </td>
+                        {
+                          plans.map(plan => (
+                            <td key={plan.apiId} className={b('details-feature-value', { active: activePlan === plan.apiId })}>
+                              <ValueForLimit
+                                apiId={hintKey}
+                                hint={hints[hintKey]}
+                                plan={plan}
+                                datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                              />
+                            </td>
+                          ))
+                        }
+                      </tr>
                     ))
                   }
-                </tr>
-                <tr className={b('details-header-row')}>
-                  {plans.map(this.renderTablePriceRow.bind(this))}
-                </tr>
+                  <tr>
+                    <td className={b('details-feature-name')}>
+                    </td>
+                    {
+                      plans.map(plan => (
+                        plan.code === 'enterprise' ?
+                        <td className={b('details-cta', { active: activePlan === plan.apiId })}>
+                          <a href="mailto:support@datocms.com">
+                            Get in touch
+                          </a>
+                        </td>
+                        :
+                        <td className={b('details-cta', { active: activePlan === plan.apiId })}>
+                          <a href="https://dashboard.datocms.com/signup">
+                            Sign up
+                          </a>
+                        </td>
+                      ))
+                    }
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </Wrap>
+
+          <Wrap>
+            <div className={b('faq')}>
+              <div className={b('faq-title')}>
+                Frequently Asked Questions
+              </div>
+              <div className={b('faq-questions')}>
                 {
-                  hintKeys.map(hintKey => (
-                    <tr key={hintKey}>
-                      <td className={b('details-feature-name')}>
-                        <Tooltip hints={hints} apiId={hintKey}>
-                          {hints[hintKey].name}
-                        </Tooltip>
-                      </td>
-                      {
-                        plans.map(plan => (
-                          <td key={plan.apiId} className={b('details-feature-value', { active: activePlan === plan.apiId })}>
-                            <ValueForLimit
-                              apiId={hintKey}
-                              hint={hints[hintKey]}
-                              plan={plan}
-                              datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                            />
-                          </td>
-                        ))
-                      }
-                    </tr>
+                  data.faqs.edges.map(e => e.node).map((faq) => (
+                    <div className={b('faq-item')} key={faq.id}>
+                      <div className={b('faq-item-question')}>{faq.question}</div>
+                      <div className={b('faq-item-answer')}>{faq.answer}</div>
+                    </div>
                   ))
                 }
-                <tr>
-                  <td className={b('details-feature-name')}>
-                  </td>
-                  {
-                    plans.map(plan => (
-                      plan.code === 'enterprise' ?
-                      <td className={b('details-cta', { active: activePlan === plan.apiId })}>
-                        <a href="mailto:support@datocms.com">
-                          Get in touch
-                        </a>
-                      </td>
-                      :
-                      <td className={b('details-cta', { active: activePlan === plan.apiId })}>
-                        <a href="https://dashboard.datocms.com/signup">
-                          Sign up
-                        </a>
-                      </td>
-                    ))
-                  }
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </Wrap>
-
-        <Wrap>
-          <div className={b('faq')}>
-            <div className={b('faq-title')}>
-              Frequently Asked Questions
+              </div>
             </div>
-            <div className={b('faq-questions')}>
-              {
-                data.faqs.edges.map(e => e.node).map((faq) => (
-                  <div className={b('faq-item')} key={faq.id}>
-                    <div className={b('faq-item-question')}>{faq.question}</div>
-                    <div className={b('faq-item-answer')}>{faq.answer}</div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-          <Space both={6}>
-          </Space>
-        </Wrap>
-      </Space>
+            <Space both={6}>
+            </Space>
+          </Wrap>
+        </Space>
+      </Layout>
     );
   }
 }

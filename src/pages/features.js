@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Sticky from 'react-stickynode';
 import { Link as ScrollLink, Element } from 'react-scroll'
@@ -12,6 +12,7 @@ import { Wrap, button, Space, text } from 'blocks'
 import Features from 'components/home/Features'
 import CallToAction from 'components/CallToAction'
 import InlineSVG from 'components/InlineSVG'
+import Layout from 'components/Layout';
 import Waypoint from 'react-waypoint'
 
 import './features.sass'
@@ -38,7 +39,7 @@ class FeaturesPage extends React.Component {
     const { data } = this.props;
 
     return (
-      <div>
+      <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
         <Space both="10">
           <div className={b()}>
@@ -104,7 +105,7 @@ class FeaturesPage extends React.Component {
           </div>
         </Space>
         <CallToAction />
-      </div>
+      </Layout>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import { Wrap, button, Space, text } from 'blocks'
 import Zoom from 'react-reveal/Zoom'
 import Helmet from 'react-helmet'
@@ -10,6 +10,7 @@ import '../style.sass'
 
 import logo from 'images/logo.svg'
 
+import Layout from 'components/Layout'
 import Browser from 'components/Browser'
 import LazyImage from 'components/LazyImage'
 import Hero from 'components/home/Hero'
@@ -26,7 +27,7 @@ export default class SsgPage extends React.Component {
     const { home, features, reviews } = pathContext;
 
     return (
-      <div>
+      <Layout>
         <Helmet title={`CMS for ${ssg.name} - Admin interface for ${ssg.name} sites - DatoCMS`} />
         <Hero
           title={`Meet the perfect CMS for ${ssg.name}`}
@@ -73,7 +74,7 @@ export default class SsgPage extends React.Component {
         <Features data={features.edges.map(x => x.node)} />
         <Quotes data={reviews.edges.map(x => x.node)} />
         <CallToAction />
-      </div>
+      </Layout>
     );
   }
 }

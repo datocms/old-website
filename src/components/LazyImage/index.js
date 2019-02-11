@@ -2,10 +2,9 @@ import React from 'react'
 import Waypoint from 'react-waypoint'
 import bem from 'utils/bem'
 import loadImage from 'image-promise';
+import './style.sass'
 
 const b = bem.lock('LazyImage')
-
-import './style.sass'
 
 export default class LazyImage extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import bem from 'utils/bem'
 import Fade from 'react-reveal/Fade'
 
