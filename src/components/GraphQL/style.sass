@@ -1,0 +1,50 @@
+@import 'utils/colors.sass'
+
+.GraphQL
+  margin: 80px auto 0
+  padding: 0 30px
+  max-width: 1000px
+
+.GraphQL__inner
+  height: 500px
+
+.graphiql-container
+  .variable-editor
+    display: none
+
+  .topBar
+    height: 0
+    padding: 0
+
+    .title, .toolbar
+      display: none
+
+  .docExplorerShow
+    display: none
+
+  .execute-button-wrap
+    position: initial
+
+  .execute-button
+    position: absolute
+    background: $red-color
+    border-width: 0
+    fill: white
+    box-shadow: none
+    top: 50%
+    left: 50%
+    z-index: 100
+    height: 50px
+    width: 50px
+    border-radius: 100px
+
+  .CodeMirror-gutters
+    border: 0
+    background-color: transparent
+
+  .resultWrap
+    border: 0
+
+  .result-window .CodeMirror-gutters
+    background-color: transparent
+

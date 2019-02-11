@@ -12,9 +12,25 @@ import Quotes from 'components/home/Quotes'
 import CallToAction from 'components/CallToAction'
 import Layout from 'components/Layout';
 
+import GraphQL from 'components/GraphQL'
+
 import './index.sass'
 
 const b = bem.lock('IndexPage')
+
+function fetcher(graphQLParams) {
+  return fetch(
+    'https://graphql.datocms.com/', 
+    {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'faeb9172e232a75339242faafb9e56de8c8f13b735f7090964'
+      },
+      body: JSON.stringify(graphQLParams),
+    }
+  ).then(response => response.json());
+}
 
 const IndexPage = ({ data }) => (
   <Layout hideChat>
@@ -24,7 +40,7 @@ const IndexPage = ({ data }) => (
       description="The fastest GraphQL API, the easiest editing interface"
     />
     <div className={b('second-wave')}>
-      <HowItWorks />
+      <GraphQL fetcher={fetcher}/>
       <Tools data={data} />
     </div>
     <Features data={data.features.edges.map(x => x.node)} />
