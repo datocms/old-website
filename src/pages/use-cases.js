@@ -102,7 +102,7 @@ class UseCasesPage extends React.Component {
                     return (
                       <div className={b('use-case')} key={useCase.id}>
                         <div className={b('use-case-content')} id={`use-case-content-${useCase.id}`}>
-                          <Sticky top={50} bottomBoundary={`#use-case-content-${useCase.id}`}>
+                          <Sticky top={120} bottomBoundary={`#use-case-content-${useCase.id}`}>
                             <div className={b('use-case-content-inner')}>
                               <h3 className={b('use-case-title')}>
                                 {useCase.title}

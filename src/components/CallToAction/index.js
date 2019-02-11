@@ -16,7 +16,7 @@ const CallToAction = ({ data }) => (
           Ready to try it yourself?
         </div>
         <a className={button({ red: true })} href="https://dashboard.datocms.com/signup">
-          Try it free!
+          Try for free!
         </a>
         <div className={b('no-card')}>
           No credit card required, 30 seconds sign-up.

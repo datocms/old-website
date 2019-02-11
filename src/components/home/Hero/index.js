@@ -37,7 +37,7 @@ class HomeHero extends React.Component {
                 </div>
                 <Space bottom="2">
                   <a href="https://dashboard.datocms.com/signup" className={button({ red: true })}>
-                    Try it free
+                    Try for free
                   </a>
                   <ScrollLink
                     href="#"

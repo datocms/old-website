@@ -3,6 +3,14 @@
 
 .Navbar
   display: none
+  position: sticky
+  top: 0
+  padding: 30px 0
+  background-color: white
+
+  .sticky-outer-wrapper.active &
+    padding: 8px 0
+    box-shadow: 0 2px 5px rgba(black, 0.1)
 
   @media screen and (min-width: 1000px)
     display: block
@@ -89,9 +97,11 @@ a.Navbar__text-link:hover
 .Navbar__logo-container
   line-height: 0
 
-.Navbar__logo
-  img
-    width: 125px
+.Navbar__logo img
+  width: 125px
+
+  .sticky-outer-wrapper.active &
+    width: 110px
 
 @media screen and (min-width: 1250px)
   .Navbar__logo-container,

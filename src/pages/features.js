@@ -47,7 +47,7 @@ class FeaturesPage extends React.Component {
             </div>
             <div className={b('cols')}>
               <div className={b('cols-toc')}>
-                <Sticky top={50} bottomBoundary={`.${b()}`}>
+                <Sticky top={100} bottomBoundary={`.${b()}`}>
                   <div className={b('toc')}>
                     {
                       data.features.edges.map(({ node: { title, slug, description } }, i) => (

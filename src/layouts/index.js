@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Sticky from 'react-stickynode';
 
 import CookieConsent, {Cookies} from 'react-cookie-consent'
 import Navbar from '../components/Navbar'
@@ -75,7 +76,9 @@ class TemplateWrapper extends React.Component {
                   <strong>NEW</strong> DatoCMS now offers a CDN-powered GraphQL API that you can use to create any kind of digital product! <Link to="/blog/releasing-content-delivery-api/">Read more</Link>
                 </Wrap>
               </div>
-              <Navbar linkComponent={SmartLink} />
+              <Sticky innerZ={1000} top={0}>
+                <Navbar linkComponent={SmartLink} />
+              </Sticky>
               <MobileNavbarWithRouter linkComponent={SmartLink} />
             </div>
         }
