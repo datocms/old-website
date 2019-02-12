@@ -31,7 +31,7 @@ const toPath = function(pluginType, fieldType) {
 
 export default class PluginsPage extends React.Component {
   render() {
-    const plugins = this.props.pathContext.group.map(({ node }) => node);
+    const plugins = this.props.pageContext.group.map(({ node }) => node);
     const pluginTypes = [{ code: null, name: 'All plugin types' }].concat(this.props.data.pluginTypes.edges.map(({ node }) => node));
     const fieldTypes = [{ code: null, name: 'All field types' }].concat(this.props.data.fieldTypes.edges.map(({ node }) => node));
 
@@ -45,7 +45,7 @@ export default class PluginsPage extends React.Component {
         fieldType,
         combosWithResults,
       },
-    } = this.props.pathContext;
+    } = this.props.pageContext;
 
     const pluginTypeCats = pluginTypes
       .filter(({ code, name }) => {

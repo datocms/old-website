@@ -1,10 +1,10 @@
 const crypto = require('crypto');
 
 exports.sourceNodes = async (
-  { boundActionCreators },
+  { actions },
   { resolve }
 ) => {
-  const { createNode } = boundActionCreators;
+  const { createNode } = actions;
   const digest = (blob) => crypto.createHash('md5').update(JSON.stringify(blob)).digest('hex');
   return resolve(createNode, digest);
 }

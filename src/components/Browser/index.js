@@ -4,8 +4,8 @@ import './style.sass'
 
 const b = bem.lock('Browser')
 
-export default ({ children, shadow, small, padded, title, address, inverse, ...props }) => (
-  <div className={b({ padded, shadow, inverse, small })}>
+export default ({ children, shadow, small, padded, title, address, noOverflow, inverse, ...props }) => (
+  <div className={b({ padded, shadow, inverse, small, noOverflow })}>
     <div className={b('title-bar')}>
       <div className={b('button')} />
       <div className={b('button')} />

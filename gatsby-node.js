@@ -5,13 +5,13 @@ const createPaginatedPages = require('gatsby-paginate');
 const redirects = require('./redirects.json');
 const slugify = require('slugify');
 
-const createRedirects = ({ boundActionCreators: { createRedirect } }) => {
+const createRedirects = ({ actions: { createRedirect } }) => {
   Object.entries(redirects).forEach(([fromPath, toPath]) => {
     createRedirect({ fromPath, toPath, isPermanent: true });
   });
 }
 
-const articles = ({ graphql, boundActionCreators: { createPage } }) => {
+const articles = ({ graphql, actions: { createPage } }) => {
   return graphql(
     `
       {
@@ -74,7 +74,7 @@ const articles = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
-const changelog = ({ graphql, boundActionCreators: { createPage } }) => {
+const changelog = ({ graphql, actions: { createPage } }) => {
   return graphql(
     `
       {
@@ -130,7 +130,7 @@ const findHtml = (page, pages) => {
   return page.html;
 }
 
-const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
+const docPages = ({ graphql, actions: { createPage } }) => {
   return graphql(
     `
       {
@@ -173,7 +173,7 @@ const docPages = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
-const legalPages = ({ graphql, boundActionCreators: { createPage } }) => {
+const legalPages = ({ graphql, actions: { createPage } }) => {
   return graphql(
     `
       {
@@ -205,7 +205,7 @@ const legalPages = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
-const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
+const createPlugins = ({ graphql, actions: { createPage } }) => {
   return graphql(
     `
       {
@@ -307,7 +307,7 @@ const createPlugins = ({ graphql, boundActionCreators: { createPage } }) => {
   })
 }
 
-const landingPages = ({ graphql, boundActionCreators: { createPage } }) => {
+const landingPages = ({ graphql, actions: { createPage } }) => {
   return graphql(
     `
       {

@@ -2,7 +2,6 @@
 @import 'blocks/mixins.sass'
 
 .HomeFeatures
-  background: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 100%)
   padding-bottom: 140px
   display: none
 
@@ -10,7 +9,9 @@
     display: block
 
 .HomeFeatures__title
-  +size(hero)
+  +size(smallHero)
+  line-height: 1.1
+  font-weight: 500
   text-align: center
   margin-bottom: 60px
 

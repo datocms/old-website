@@ -15,8 +15,8 @@ const b = bem.lock('BlogPage')
 
 export default class BlogPage extends React.Component {
   render() {
-    const articles = this.props.pathContext.group.map(({ node }) => node);
-    const { pageCount, first, last, index } = this.props.pathContext;
+    const articles = this.props.pageContext.group.map(({ node }) => node);
+    const { pageCount, first, last, index } = this.props.pageContext;
 
     return (
       <Layout>

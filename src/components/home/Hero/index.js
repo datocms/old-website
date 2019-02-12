@@ -17,6 +17,9 @@ class HomeHero extends React.Component {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       this.video.controls = true;
     }
+    this.video.addEventListener('loadedmetadata', function() {
+      this.currentTime = 105;
+    }, false);
   }
 
   render() {
@@ -36,7 +39,7 @@ class HomeHero extends React.Component {
                 </div>
                 <Space bottom="2">
                   <div className={b('subscribe')}>
-                    <input className={b('email')} type="email" placeholder="name@company.com" />
+                    <input className={b('email')} type="email" placeholder="Your email here..." />
                     <a href="https://dashboard.datocms.com/signup" className={button({ red: true })}>
                       Try for free
                     </a>
@@ -47,7 +50,6 @@ class HomeHero extends React.Component {
             <div className={b('browser')}>
               <Browser small title="DatoCMS Editor Interface" address="https://myproject.admin.datocms.com/">
                 <video autoPlay loop muted playsInline ref={(el) => this.video = el}>
-                  <source src="/videos/hero.webm" type="video/webm" />
                   <source src="/videos/hero.mp4" type="video/mp4" />
                 </video>
               </Browser>

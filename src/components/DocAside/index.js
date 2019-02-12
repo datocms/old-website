@@ -70,9 +70,9 @@ export default class DocAside extends React.Component {
   }
 
   render() {
-    const { pathContext, data } = this.props;
+    const { pageContext, data } = this.props;
 
-    const dir = pathContext.sourcePath.replace(/[^\/]*$/, '');
+    const dir = pageContext.sourcePath.replace(/[^\/]*$/, '');
     const pages = data.pages.edges.map(edge => edge.node);
 
     const categoryPages = pages
@@ -81,7 +81,7 @@ export default class DocAside extends React.Component {
         findPosition(a, pages) - findPosition(b, pages)
       ));
 
-    const page = categoryPages.find(page => page.path === pathContext.sourcePath);
+    const page = categoryPages.find(page => page.path === pageContext.sourcePath);
     const index = categoryPages.indexOf(page)
 
     const prevPage = index > 0 &&
@@ -121,7 +121,7 @@ export default class DocAside extends React.Component {
                   <div className={b('contribute-title')}>
                     Something is missing in this page?
                   </div>
-                  <a href="#" onClick={this.handleOpenKayako.bind(this)}>Chat with us</a>, submit an <a target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a target="_blank" href={pathContext.repoPath}>propose a change</a> on Github!
+                  <a href="#" onClick={this.handleOpenKayako.bind(this)}>Chat with us</a>, submit an <a target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a target="_blank" href={pageContext.repoPath}>propose a change</a> on Github!
                 </div>
               </Sticky>
             </div>
@@ -140,7 +140,7 @@ export default class DocAside extends React.Component {
               </Space>
 
               <div className={b('content-body')} ref={x => this.contentBody = x}>
-                <div dangerouslySetInnerHTML={{ __html: pathContext.html }} />
+                <div dangerouslySetInnerHTML={{ __html: pageContext.html }} />
                 {this.props.children}
               </div>
 

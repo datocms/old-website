@@ -1,5 +1,26 @@
+@import 'blocks/mixins'
+
 .IndexPage__second-wave
   background: url('../images/second-wave.svg')
   background-position: bottom center
   background-repeat: no-repeat
   background-size: 100% 80%
+
+.IndexPage__gradient
+  background: linear-gradient(0deg, #f3f3f3 50%, #FFFFFF 100%)
+
+.IndexPage__b
+  margin-top: 120px
+  text-align: center
+
+.IndexPage__b-title
+  +size(smallHero)
+  line-height: 1.1
+  font-weight: 500
+  margin-bottom: 20px
+
+.IndexPage__b-description
+  +size(big)
+  font-family: freight-text-pro
+  max-width: 950px
+  margin: 0 auto

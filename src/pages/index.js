@@ -12,7 +12,7 @@ import Quotes from 'components/home/Quotes'
 import CallToAction from 'components/CallToAction'
 import Layout from 'components/Layout';
 
-import GraphQL from 'components/GraphQL'
+import { Wrap } from 'blocks'
 
 import './index.sass'
 
@@ -35,16 +35,27 @@ function fetcher(graphQLParams) {
 const IndexPage = ({ data }) => (
   <Layout hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
-    <Hero
+    <Hero 
       title="Headless CMS, done right"
-      description="The fastest GraphQL API, the easiest editing interface"
+      description="Creating blazing fast websites has never been easier: manage content from a central place, use our GraphQL API to feed content into any platform."
     />
+    <Wrap>
+      <div className={b('b')}>
+        <div className={b('b-title')}>
+          Finally focus 100% of your time on the end product
+        </div>
+        <div className={b('b-description')}>
+          Test new ideas in minutes: any change you visually make to the schema is immediately reflected on the editing interface and available on the GraphQL API to be integrable by your developers.
+        </div>
+      </div>
+    </Wrap>
     <div className={b('second-wave')}>
-      <GraphQL fetcher={fetcher}/>
-      <Tools data={data} />
+      <HowItWorks />
     </div>
-    <Features data={data.features.edges.map(x => x.node)} />
-    <WhoIsUsing data={data.home.whosUsingDatocms} />
+    <div className={b('gradient')}>
+      <Features data={data.features.edges.map(x => x.node)} />
+      <WhoIsUsing data={data.home.whosUsingDatocms} />
+    </div>
     <Quotes data={data.reviews.edges.map(x => x.node)} />
     <CallToAction />
   </Layout>

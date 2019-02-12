@@ -23,8 +23,8 @@ const b = bem.lock('LandingPage')
 
 export default class SsgCdnPage extends React.Component {
   render() {
-    const { data: { ssg, cdn }, pathContext } = this.props;
-    const { home, features, reviews } = pathContext;
+    const { data: { ssg, cdn }, pageContext } = this.props;
+    const { home, features, reviews } = pageContext;
 
     return (
       <Layout>

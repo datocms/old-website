@@ -40,7 +40,7 @@ class HomeFeatures extends React.Component {
         <Wrap>
           <div>
             <div className={b('title')}>
-              Features
+              Everything you need from a CMS
             </div>
             <div className={b('container')}>
               <div className={b('left')}>

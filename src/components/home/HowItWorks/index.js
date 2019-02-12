@@ -6,11 +6,30 @@ import bem from 'utils/bem'
 import { wrap, button, Space, text } from 'blocks'
 import './style.sass'
 
+import Prism from 'prismjs'
+import 'prismjs/components/prism-graphql'
+
 import Browser from 'components/Browser'
 
 const wait = (time) => new Promise(resolve => setTimeout(resolve, time))
 
 const b = bem.lock('HomeHowItWorks')
+
+const query = Prism.highlight(
+`{
+  allHeroes {
+    id
+    title
+    description
+    image {
+      url
+      width
+      height
+    }
+  }
+}`,
+  Prism.languages.graphql
+);
 
 class HomeHowItWorks extends React.Component {
   constructor(props) {
@@ -36,9 +55,9 @@ class HomeHowItWorks extends React.Component {
       image: false,
       json: {
         id: '123',
-        title: '',
-        description: '',
-        image: ''
+        title: null,
+        description: null,
+        image: null
       }
     })
 
@@ -53,7 +72,11 @@ class HomeHowItWorks extends React.Component {
       image: 'done',
       json: {
         ...this.state.json,
-        image: 'https://datocms-assets.com/harry.png'
+        image: {
+          url: 'https://datocms-assets.com/harry.png',
+          width: 2048,
+          height: 950,
+        }
       }
     }))
   }
@@ -74,7 +97,9 @@ class HomeHowItWorks extends React.Component {
         this.setState({
           json: {
             ...this.state.json,
-            [attr]: this.state.json[attr] + char,
+            [attr]: this.state.json[attr] ?
+              this.state.json[attr] + char :
+              char,
           }
         })
       }
@@ -91,7 +116,7 @@ class HomeHowItWorks extends React.Component {
                     What your editors see
                   </h6>
                 </Space>
-                <Browser padded>
+                <Browser padded noOverflow title="DatoCMS Editor Interface">
                   <Space bottom="2">
                     <div className={b('label')}>Image</div>
                     <div className={b('image-upload')}>
@@ -150,17 +175,26 @@ class HomeHowItWorks extends React.Component {
                     What developers get
                   </h6>
                 </Space>
-                <Browser padded inverse>
-                  <Space bottom="1">
-                    <div className={b('code')}>
-                      ► curl https://site-api.datocms.com/items
+                <Browser title="DatoCMS GraphQL API">
+                  <div className={b('graphiql')}>
+                    <div className={b('graphiql__query')}>
+                      <pre
+                        className={b('code')}
+                        dangerouslySetInnerHTML={{ __html: query }}
+                      />
                     </div>
-                  </Space>
-                  <pre className={b('code')}>
-                    {
-                      JSON.stringify([this.state.json], null, 2)
-                    }
-                  </pre>
+                    <div className={b('graphiql__result')}>
+                      <pre
+                        className={b('code')}
+                        dangerouslySetInnerHTML={{
+                          __html: Prism.highlight(
+                            JSON.stringify({ allHeroes: [this.state.json] }, null, 2),
+                            Prism.languages.json
+                          )
+                        }}
+                      />
+                    </div>
+                  </div>
                 </Browser>
               </div>
             </div>

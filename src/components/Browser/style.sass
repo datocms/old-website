@@ -36,10 +36,16 @@
   .LazyImage
     border-radius: 0 0 9px 9px
 
+  .Browser--noOverflow &
+    overflow: visible
+
 .Browser--inverse
   .Browser__title-bar
     background: $violet-color
     border-color: $dark-violet-color
+
+  .Browser__title
+    color: white
 
   .Browser__button
     background: $azure-color

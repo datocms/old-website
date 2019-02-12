@@ -23,8 +23,8 @@ const b = bem.lock('LandingPage')
 
 export default class SsgGitPage extends React.Component {
   render() {
-    const { data: { ssg, git }, pathContext } = this.props;
-    const { home, features, reviews } = pathContext;
+    const { data: { ssg, git }, pageContext } = this.props;
+    const { home, features, reviews } = pageContext;
 
     return (
       <Layout>
