@@ -8,6 +8,7 @@ import './style.sass'
 
 import Prism from 'prismjs'
 import 'prismjs/components/prism-graphql'
+import 'prismjs/components/prism-json'
 
 import Browser from 'components/Browser'
 
