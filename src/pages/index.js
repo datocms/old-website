@@ -20,7 +20,7 @@ const b = bem.lock('IndexPage')
 
 function fetcher(graphQLParams) {
   return fetch(
-    'https://graphql.datocms.com/', 
+    'https://graphql.datocms.com/',
     {
       method: 'post',
       headers: {
@@ -35,7 +35,7 @@ function fetcher(graphQLParams) {
 const IndexPage = ({ data }) => (
   <Layout hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
-    <Hero 
+    <Hero
       title="Headless CMS, done right"
       description="Creating blazing fast websites has never been easier: manage content from a central place, use our GraphQL API to feed content into any platform."
     />
@@ -66,6 +66,9 @@ export default IndexPage
 export const query = graphql`
 query IndexPageQuery {
   home: datoCmsHomePage {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
     heroText
     heroDescription
     whosUsingDatocms {
