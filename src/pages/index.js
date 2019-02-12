@@ -36,7 +36,7 @@ const IndexPage = ({ data }) => (
   <Layout hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
     <Hero
-      title={data.home.heroText}
+      title="Ciao"
       description={data.home.heroDescription}
     />
     <Wrap>
