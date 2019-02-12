@@ -142,7 +142,6 @@ const docPages = ({ graphql, actions: { createPage } }) => {
               html
               path: fileAbsolutePath
               frontmatter {
-                template
                 copyFrom
               }
             }
