@@ -125,19 +125,6 @@ export default class ArticlePage extends React.Component {
                           <div className={b('content-video')}>
                             <div className={b('content-video__wrapper')}>
                               {
-                                block.image.title &&
-                                  <div className={b('content-image__label')}>
-                                    {block.image.title}
-                                  </div>
-                              }
-                            </div>
-                          </div>
-                      }
-                      {
-                        block.model.apiKey === 'video' &&
-                          <div className={b('content-video')}>
-                            <div className={b('content-video__wrapper')}>
-                              {
                                 block.video.provider === 'youtube' ?
                                   <ResponsiveEmbed
                                     src={`//www.youtube.com/embed/${block.video.providerUid}`}

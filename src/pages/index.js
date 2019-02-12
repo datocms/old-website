@@ -36,16 +36,16 @@ const IndexPage = ({ data }) => (
   <Layout hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
     <Hero
-      title="Headless CMS, done right"
-      description="Creating blazing fast websites has never been easier: manage content from a central place, use our GraphQL API to feed content into any platform."
+      title={data.home.heroText}
+      description={data.home.heroDescription}
     />
     <Wrap>
       <div className={b('b')}>
         <div className={b('b-title')}>
-          Finally focus 100% of your time on the end product
+          {data.home.secondBlockTitle}
         </div>
         <div className={b('b-description')}>
-          Test new ideas in minutes: any change you visually make to the schema is immediately reflected on the editing interface and available on the GraphQL API to be integrable by your developers.
+          {data.home.secondBlockDescription}
         </div>
       </div>
     </Wrap>
@@ -71,6 +71,8 @@ query IndexPageQuery {
     }
     heroText
     heroDescription
+    secondBlockTitle
+    secondBlockDescription
     whosUsingDatocms {
       name
       logo {
