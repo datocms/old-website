@@ -80,62 +80,57 @@ export default class ArticlePage extends React.Component {
                           <div className={b('content-text')}>
                             <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
                           </div>
-                    }
-                    {
-                      block.model.apiKey === 'text' &&
-                        <div className={b('content-text')}>
-                          <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
-                        </div>
-                    }
-                    {
-                      block.model.apiKey === 'question_answer' &&
-                        <div className={b('question-answer')}>
-                          <div className={b('question-answer__question')}>
-                            <div dangerouslySetInnerHTML={{ __html: block.question.markdown.html }} />
+                      }
+                      {
+                        block.model.apiKey === 'question_answer' &&
+                          <div className={b('question-answer')}>
+                            <div className={b('question-answer__question')}>
+                              <div dangerouslySetInnerHTML={{ __html: block.question.markdown.html }} />
+                            </div>
+                            <div className={b('question-answer__answer')}>
+                              <div dangerouslySetInnerHTML={{ __html: block.answer.markdown.html }} />
+                            </div>
                           </div>
-                          <div className={b('question-answer__answer')}>
-                            <div dangerouslySetInnerHTML={{ __html: block.answer.markdown.html }} />
+                      }
+                      {
+                        block.model.apiKey === 'quote' &&
+                          <div className={b('quote')}>
+                            <div dangerouslySetInnerHTML={{ __html: block.quote.markdown.html }} />
                           </div>
-                        </div>
-                    }
-                    {
-                      block.model.apiKey === 'quote' &&
-                        <div className={b('quote')}>
-                          <div dangerouslySetInnerHTML={{ __html: block.quote.markdown.html }} />
-                        </div>
-                    }
-                    {
-                      block.model.apiKey === 'image' &&
-                        <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
-                          <a
-                            href={`${block.image.url}?w=1200&fit=max`}
-                            className={b('content-image__image')}
-                            onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
-                          >
-                            {
-                              block.image.format === 'gif' ?
-                                <img src={block.image.url} /> :
-                                <Img fluid={block.image.fluid} />
-                            }
-                          </a>
-                          {
-                            block.image.title &&
-                              <div className={b('content-image__label')}>
-                                {block.image.title}
-                              </div>
-                          }
-                        </div>
-                    }
-                    {
-                      block.model.apiKey === 'video' &&
-                        <div className={b('content-video')}>
-                          <div className={b('content-video__wrapper')}>
+                      }
+                      {
+                        block.model.apiKey === 'image' &&
+                          <div className={b('content-image')} style={{ maxWidth: `${block.image.width}px` }}>
+                            <a
+                              href={`${block.image.url}?w=1200&fit=max`}
+                              className={b('content-image__image')}
+                              onClick={this.handleOpenImage.bind(this, `${block.image.url}?w=1200&fit=max`)}
+                            >
+                              {
+                                block.image.format === 'gif' ?
+                                  <img src={block.image.url} /> :
+                                  <Img fluid={block.image.fluid} />
+                              }
+                            </a>
                             {
                               block.image.title &&
                                 <div className={b('content-image__label')}>
                                   {block.image.title}
                                 </div>
                             }
+                          </div>
+                      }
+                      {
+                        block.model.apiKey === 'video' &&
+                          <div className={b('content-video')}>
+                            <div className={b('content-video__wrapper')}>
+                              {
+                                block.image.title &&
+                                  <div className={b('content-image__label')}>
+                                    {block.image.title}
+                                  </div>
+                              }
+                            </div>
                           </div>
                       }
                       {
