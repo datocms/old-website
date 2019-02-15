@@ -1,8 +1,7 @@
 ---
 position: 4
 title: Filtering records
-# FIXME
-# template: GraphqlFiltersPage
+template: GraphqlFiltersPage
 ---
 
 You can supply different parameters to the `filter` argument to filter the query response accordingly. The available options depend on the fields defined on the model in question.

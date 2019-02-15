@@ -2,7 +2,6 @@ require('dotenv').config()
 const path = require('path')
 const fetch = require('node-fetch');
 const buildCmaResources = require('./src/utils/buildCmaResources');
-const buildGraphQlFilters = require('./src/utils/buildGraphQlFilters');
 const { parse, stringify } = require('flatted/cjs');
 const camelcaseKeys = require('camelcase-keys');
 
@@ -356,15 +355,15 @@ module.exports = {
       resolve: `gatsby-source-json`,
       options: {
         resolve: (createNode, digest) => (
-          buildGraphQlFilters(fetch)
-            .then(res => stringify(res.data))
+          fetch('https://internal.datocms.com/introspection/field-filters')
+            .then(res => res.text())
             .then(blob => (
               createNode({
-                id: 'Cda',
+                id: 'FieldFiltersIntrospection',
                 children: [],
                 parent: null,
                 internal: {
-                  type: 'Cda',
+                  type: 'FieldFiltersIntrospection',
                   contentDigest: digest(blob),
                 },
                 body: blob,
