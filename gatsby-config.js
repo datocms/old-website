@@ -40,6 +40,7 @@ module.exports = {
         name: 'legal',
       },
     },
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-transformer-remark`,
       options: {

@@ -43,14 +43,19 @@ $padding: 40px
   +size(big)
 
 .ApiPage
-  display: flex
-  height: 100vh
-  align-items: stretch
 
 .ApiPage__menu
-  flex-shrink: 0
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
   overflow: auto
   padding: 50px 30px 50px $padding
+  width: 220px
+
+.ApiPage__content
+  padding: 50px 80px
+  margin-left: 300px
 
 .ApiPage__menu-back a
   display: block
@@ -62,18 +67,8 @@ $padding: 40px
   &:hover
     text-decoration: underline
 
-.ApiPage__content
-  flex: 1
-  padding: 50px
-  max-width: 100%
-  overflow: auto
-
-.ApiPage__example
-  flex: 1
-  overflow: auto
-  padding: 50px $padding
-  background-color: darken($dark-violet-color, 5%)
-  color: white
+.ApiPage__content__text-block
+  max-width: 800px
 
 .ApiPage__resource
   margin-bottom: 120px
@@ -103,8 +98,7 @@ $padding: 40px
   margin: 30px 0
 
 .ApiPage__resource-title
-  +size(bigger)
-  +weight(bold)
+  +size(smallHero)
   margin-bottom: 20px
 
 .ApiPage__resource-description
@@ -132,35 +126,17 @@ $padding: 40px
     th
       font-weight: 500
 
-.ApiPage__link
-  display: block
-  cursor: pointer
-  padding: 15px 25px
-  background-color: $smoke-color
-  margin-bottom: 3px
-  border-left: 10px $smoke-color solid
-  border-radius: 4px
-  color: $base-body-color
-  text-decoration: none
-
-.ApiPage__link--active
-  border-left-color: $red-color
-
-.ApiPage__link-title
-  +size(normalBig)
+.ApiPage__method-title
+  +size(big)
+  font-weight: 500
+  margin-bottom: 20px
 
 .ApiPage__example-title
   +size(bigger)
   margin-bottom: 20px
 
-.ApiPage__example-link-title
-  +weight(bold)
-
 .ApiPage__example-call
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
-  padding: 20px $padding
-  margin: 0 (-$padding)
-  background: rgba(black, 0.2)
   margin-bottom: 30px
 
 .ApiPage__placeholder
@@ -174,6 +150,12 @@ $padding: 40px
   display: inline-block
   vertical-align: middle
   margin-right: 10px
+
+.ApiPage__https
+  padding: 30px
+  color: white
+  background-color: darken($dark-violet-color, 5%)
+  border-radius: 4px
 
 .ApiPage__http
   margin: 30px 0
@@ -189,8 +171,8 @@ $padding: 40px
   +size(small)
   +weight(bold)
   text-decoration: none
-  color: white
   display: block
+  color: white
 
   &:before
     content: "\25b6"
