@@ -57,6 +57,7 @@ const query = `
             title
             position
             copyFrom
+            template
           }
         }
       }
