@@ -3,7 +3,7 @@ import Waypoint from 'react-waypoint'
 import Typist from 'react-typist'
 import bem from 'utils/bem'
 
-import { wrap, button, Space, text } from 'blocks'
+import { wrap, Space } from 'blocks'
 import './style.sass'
 
 import Prism from 'prismjs'

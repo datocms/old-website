@@ -2,7 +2,7 @@ import React from 'react'
 import bem from 'utils/bem'
 import getCookie from 'utils/getCookie';
 
-import { Wrap, button, Space, Text } from 'blocks'
+import { button } from 'blocks'
 import './style.sass'
 
 import logo from 'images/dato_logo_full.svg'
@@ -81,9 +81,9 @@ class MobileNavbar extends React.Component {
             </Link>
           </div>
           <div className={b('hamburger-container')}>
-            <a href="#" onClick={this.handleToggle.bind(this)}>
+            <button href="#" onClick={this.handleToggle.bind(this)}>
               <img src={hamburger} alt="Menu" />
-            </a>
+            </button>
           </div>
         </div>
         <div className={b('menu', { active: this.state.active })}>

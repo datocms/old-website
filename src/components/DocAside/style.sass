@@ -42,12 +42,35 @@
     text-decoration: underline
 
 .DocPage__menu-page
-  margin-bottom: 14px
+  margin-bottom: 8px
 
   &:last-child
     margin-bottom: 20px
 
-  a
+  > a
+    text-decoration: none
+    color: $base-body-color
+
+    &:hover
+      color: $red-color
+
+    &.is-active
+      color: $red-color
+      +weight(bold)
+
+.DocPage__menu-page__sections
+  padding-left: 15px
+  margin-top: 6px
+  display: none
+
+.DocPage__menu-page a.is-active + .DocPage__menu-page__sections
+  display: block
+
+.DocPage__menu-page__section
+  +size(small)
+  margin-bottom: 5px
+
+  > a
     text-decoration: none
     color: $base-body-color
 
@@ -235,7 +258,7 @@
   table
     margin-top: 50px
     margin-bottom: 50px
-    font-size: 0.9em
+    width: 100%
 
     th, td
       text-align: left
@@ -244,7 +267,7 @@
       max-width: 30%
 
     th
-      font-weight: 500
+      font-weight: 600
 
   blockquote
     border-left: 2px solid $base-body-color
@@ -257,16 +280,13 @@
     pre
       overflow: auto
       padding: 25px
+      font-size: 13px
 
     code
       background-color: transparent
       border: 0
       padding: 0
       border-radius: 0
-      font-size: 13px
-
-      @media screen and (min-width: 900px)
-        font-size: 15px
 
   .gatsby-resp-image-link
     margin: 60px 0

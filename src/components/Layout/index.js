@@ -6,16 +6,16 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Sticky from 'react-stickynode';
 import { StaticQuery, graphql } from 'gatsby'
 
-import CookieConsent, {Cookies} from 'react-cookie-consent'
+import CookieConsent from 'react-cookie-consent'
 import Navbar from 'components/Navbar'
 import MobileNavbar from 'components/MobileNavbar'
 import Footer from 'components/Footer'
-import { Wrap } from 'blocks';
 
 import './style.sass'
 
 const SmartLink = ({ to, ...props }) => (
   to.includes('http') ?
+    // eslint-disable-next-line
     <a href={to} {...props} /> :
     <Link to={to} {...props} />
 )
@@ -99,6 +99,7 @@ class TemplateWrapper extends React.Component {
                 <a
                   href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   use of cookies
                 </a>.
@@ -113,9 +114,9 @@ class TemplateWrapper extends React.Component {
               <Footer linkComponent={SmartLink} />
               {
                 !hideChat &&
-                  <a href="#" className="chat-support" onClick={this.handleKayakoToggle.bind(this)}>
+                  <button className="chat-support" onClick={this.handleKayakoToggle.bind(this)}>
                     {this.state.chatOpen ? 'Close' : 'Need help?'}
-                  </a>
+                  </button>
               }
             </div>
           )

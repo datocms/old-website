@@ -44,6 +44,6 @@ export default function schemaExampleFor(schema, pagination = true) {
   } else if (type === 'null') {
     return null;
   } else {
-    throw `Don't know how to manage ${type} type!`;
+    throw new Error(`Don't know how to manage ${type} type!`);
   }
 }

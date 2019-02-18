@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Wrap, button, Space, text } from 'blocks'
-import sortBy from 'sort-by'
+import { Wrap, Space } from 'blocks'
 import Sticky from 'react-stickynode'
 import Helmet from 'react-helmet'
 import Lightbox from 'react-images'
@@ -13,34 +12,6 @@ import 'prismjs/themes/prism-okaidia.css'
 import './style.sass'
 
 const b = bem.lock('DocPage')
-
-const PageLink = ({ to, children }) => (
-  <Link
-    exact
-    to={to.path.replace(/.*\/src/, '').replace(/(\/index)?\.md$/, '/')}
-    activeClassName="is-active"
-  >
-    {children}
-  </Link>
-)
-
-const findFrontmatterValue = (value, page, pages) => {
-  if (page.frontmatter[value]) {
-    return page.frontmatter[value]
-  }
-
-  const contentPage = pages
-    .find(p => p.path.includes(page.frontmatter.copyFrom))
-
-  if (contentPage) {
-    return contentPage.frontmatter[value]
-  }
-
-  return ''
-}
-
-const findTitle = findFrontmatterValue.bind(this, 'title');
-const findPosition = findFrontmatterValue.bind(this, 'position');
 
 export default class DocAside extends React.Component {
   constructor(props) {
@@ -70,42 +41,45 @@ export default class DocAside extends React.Component {
   }
 
   render() {
-    const { pageContext, data } = this.props;
-
-    const dir = pageContext.sourcePath.replace(/[^\/]*$/, '');
-    const pages = data.pages.edges.map(edge => edge.node);
-
-    const categoryPages = pages
-      .filter(page => page.path.replace(/[^\/]*$/, '') === dir)
-      .sort((a, b) => (
-        findPosition(a, pages) - findPosition(b, pages)
-      ));
-
-    const page = categoryPages.find(page => page.path === pageContext.sourcePath);
-    const index = categoryPages.indexOf(page)
-
-    const prevPage = index > 0 &&
-      categoryPages[index - 1]
-
-    const nextPage = index < categoryPages.length - 1 &&
-      categoryPages[index + 1]
-
-    const categoryTitle = findTitle(categoryPages[0], pages);
+    const {
+      index,
+      pageTitle,
+      chapterTitle,
+      menuItems,
+      repoPath,
+      prevPage,
+      nextPage,
+      html,
+    } = this.props.pageContext;
 
     return (
       <Layout>
-        <Helmet title={`${index === 0 ? 'Introduction' : findTitle(page, pages)} - ${categoryTitle} - DatoCMS`} />
+        <Helmet title={`${pageTitle} - ${chapterTitle} - DatoCMS`} />
         <Wrap>
           <div className={b()}>
             <div className={b('menu')} data-datocms-noindex>
               <Sticky top={100} bottomBoundary={`.${b()}`}>
                 <ul className={b('menu-pages')}>
                   {
-                    categoryPages.map((page, i) => (
-                      <li key={page.path} className={b('menu-page')}>
-                        <PageLink to={page}>
-                          {i === 0 ? "Introduction" : findTitle(page, pages)}
-                        </PageLink>
+                    menuItems.map(menuItem => (
+                      <li key={menuItem.path} className={b('menu-page')}>
+                        <Link to={menuItem.path} activeClassName="is-active">
+                          {menuItem.title}
+                        </Link>
+                        {
+                          menuItem.headings.length > 0 &&
+                            <ul className={b('menu-page__sections')}>
+                              {
+                                menuItem.headings.map(heading => (
+                                  <li key={heading.id} className={b('menu-page__section')}>
+                                    <Link to={menuItem.path + heading.id} activeClassName="is-active">
+                                      {heading.title}
+                                    </Link>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                        }
                       </li>
                     ))
                   }
@@ -117,49 +91,47 @@ export default class DocAside extends React.Component {
                   </Link>
                 </div>
 
-                <div className={b('contribute')}>
-                  <div className={b('contribute-title')}>
-                    Something is missing in this page?
-                  </div>
-                  <a href="#" onClick={this.handleOpenKayako.bind(this)}>Chat with us</a>, submit an <a target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a target="_blank" href={pageContext.repoPath}>propose a change</a> on Github!
-                </div>
+                {
+                  repoPath &&
+                    <div className={b('contribute')}>
+                      <div className={b('contribute-title')}>
+                        Something is missing in this page?
+                      </div>
+                      <button onClick={this.handleOpenKayako.bind(this)}>Chat with us</button>, submit an <a rel="noopener noreferrer" target="_blank" href="https://github.com/datocms/website/issues/new">issue</a> or <a rel="noopener noreferrer" target="_blank" href={repoPath}>propose a change</a> on Github!
+                    </div>
+                }
               </Sticky>
             </div>
 
             <div className={b('content')}>
               <Space bottom={5}>
                 {
-                  categoryPages.length > 1 && findPosition(page, pages) !== 1 &&
+                  menuItems.length > 1 && index > 0 &&
                     <h6 className={b('content-category')}>
-                      {categoryTitle}
+                      {chapterTitle}
                     </h6>
                 }
                 <h1  className={b('content-title')}>
-                  {findTitle(page, pages)}
+                  {index === 0 ? chapterTitle : pageTitle}
                 </h1>
               </Space>
 
               <div className={b('content-body')} ref={x => this.contentBody = x}>
-                <div dangerouslySetInnerHTML={{ __html: pageContext.html }} />
+                <div dangerouslySetInnerHTML={{ __html: html }} />
                 {this.props.children}
               </div>
-
 
               <div className={b('nav')}>
                 <div className={b('nav-prev')}>
                   {
                     prevPage &&
-                      <PageLink to={prevPage}>
-                        ‹ {index === 1 ? "Introduction" : findTitle(prevPage, pages)}
-                      </PageLink>
+                      <Link to={prevPage.path}>‹ {prevPage.title}</Link>
                   }
                 </div>
                 <div className={b('nav-next')}>
                   {
                     nextPage &&
-                      <PageLink to={nextPage}>
-                        {findTitle(nextPage, pages)} ›
-                      </PageLink>
+                      <Link to={nextPage.path}>{nextPage.title} ›</Link>
                   }
                 </div>
               </div>
@@ -171,11 +143,7 @@ export default class DocAside extends React.Component {
           width={1400}
           images={this.state.image ? [{ src: this.state.image }] : []}
           isOpen={this.state.image}
-          theme={{
-            footer: {
-              display: 'none',
-            },
-          }}
+          theme={{ footer: { display: 'none' } }}
           onClose={() => this.setState({ image: null })}
         />
       </Layout>

@@ -1,12 +1,11 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
 import groupBy from 'group-by';
 import cartesianProduct from 'cartesian-product';
 
 import Layout from 'components/Layout';
 import bem from 'utils/bem'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 
 import './integrations.sass'
 

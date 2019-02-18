@@ -1,7 +1,6 @@
 import React from 'react'
 
 import './style.sass'
-import { Wrap, button, Space, text } from 'blocks'
 
 import bem from 'utils/bem'
 
@@ -89,8 +88,8 @@ const Footer = ({ data, linkComponent: Link }) => (
         <Link className={b('group-link')} to="/legal/terms/">
           Terms &amp; Conditions
         </Link>
-        <a href="https://www.iubenda.com/privacy-policy/64648824/full-legal" className={b('group-link')} target="_blank" title="Privacy Policy">Privacy Policy</a>
-        <a href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy" className={b('group-link')} target="_blank" title="Cookie Policy">Cookie Policy</a>
+        <a rel="noopener noreferrer" href="https://www.iubenda.com/privacy-policy/64648824/full-legal" className={b('group-link')} target="_blank" title="Privacy Policy">Privacy Policy</a>
+        <a rel="noopener noreferrer" href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy" className={b('group-link')} target="_blank" title="Cookie Policy">Cookie Policy</a>
       </Group>
     </div>
     <div className={b('us')}>

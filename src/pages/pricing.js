@@ -1,12 +1,10 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, button, Space } from 'blocks'
 
-import Features from '../components/home/Features'
 import Layout from 'components/Layout';
 
 import './pricing.sass'
@@ -38,7 +36,7 @@ const numberWithCommas = (x) => {
 const b = bem.lock('PricingPage')
 const Tooltip = ({ children, hints, apiId }) => (
   <span className={bem('Tooltip', { })}>
-    {children} <img src={tooltip} />
+    {children} <img alt="Info" src={tooltip} />
     <span className="Tooltip__hint">
       {hints[apiId].description}
     </span>
@@ -115,14 +113,11 @@ class PricingPage extends React.Component {
     const { data } = this.props;
 
     const plans = data.plans.edges.map(e => e.node);
-    const datoPlans = parse(data.datoPlans.body);
 
     return (
       <div className={b('plan-changer')}>
         {
           plans.filter(plan => plan.name !== 'Developer').map(plan => {
-            const datoPlan = datoPlans.find(p => p.id === plan.apiId);
-
             return (
               <button
                 key={plan.apiId}
@@ -142,20 +137,18 @@ class PricingPage extends React.Component {
     return (
       <div className={b('billing')}>
         <div className={b('billing-group')}>
-          <a
-            href="#"
+          <button
             onClick={this.handleBillingChange.bind(this, 'monthly')}
             className={b('billing-group-item', { active: this.state.billing === 'monthly' })}
           >
             Monthly
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
             onClick={this.handleBillingChange.bind(this, 'yearly')}
             className={b('billing-group-item', { active: this.state.billing === 'yearly' })}
           >
             Annual (20% off)
-          </a>
+          </button>
         </div>
       </div>
     );

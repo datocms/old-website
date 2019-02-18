@@ -1,9 +1,9 @@
 import React from 'react';
 import Prism from 'prismjs';
-import humps from 'humps'
 import sortObject from 'sort-object'
 import pluralize from 'pluralize'
-import bem from 'utils/bem'
+
+import 'prismjs/components/prism-ruby'
 
 import schemaExampleFor from 'utils/schemaExampleFor'
 
@@ -13,8 +13,6 @@ const methods = {
   instances: 'all',
   self: 'find'
 };
-
-const b = bem.lock('ApiPage')
 
 function example(resource, link, allPages = false) {
   let params = [];
@@ -80,30 +78,29 @@ function example(resource, link, allPages = false) {
   }
 
   let returnCode = '';
+  let output;
 
   if (link.targetSchema) {
     const example = schemaExampleFor(link.targetSchema);
     const variable = resource.id;
 
     if (Array.isArray(example.data)) {
-      const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    # ').replace(/": /g, '" => ').replace(/null/g, 'nil');
+      output = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/": /g, '" => ').replace(/null/g, 'nil');
 
       returnCode = `${call}.each do |${variable}|
-puts ${variable}.inspect${!allPages ? "\n" + result : ''}
+puts ${variable}.inspect
 end`;
     } else {
-      const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '# ').replace(/": /g, '" => ').replace(/null/g, 'nil');
+      output = JSON.stringify(deserialize(example.data, true), null, 2).replace(/": /g, '" => ').replace(/null/g, 'nil');
       returnCode = `${variable} = ${call}
 
 puts ${variable}.inspect
-${!allPages ? result : ''}
 `;
     }
   }
 
   if (!allPages) {
-    const code = `
-require "dato"
+    const code = `require "dato"
 client = Dato::Site::Client.new("YOUR-API-KEY")
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
 ${returnCode}
@@ -112,25 +109,39 @@ link.targetSchema && link.targetSchema.properties.meta ?
 '\n\n# if you want to fetch all the pages with just one call:\n\n' + example(resource, link, true) :
 ''
 }`
-return code;
+return { code, output };
   } else {
-    return returnCode;
+    return { code: returnCode, output };
   }
-
-  return '';
 }
 
 export default function RubyExample({ resource, link }) {
+  const { code, output } = example(resource, link);
+
   return (
-    <div className={b('example-code')}>
-      <pre
-        className="language-ruby"
-        dangerouslySetInnerHTML={
-          {
-            __html: Prism.highlight(example(resource, link), Prism.languages.ruby)
+    <>
+      <h6>Example request</h6>
+      <div className="gatsby-highlight">
+        <pre
+          className="language-ruby"
+          dangerouslySetInnerHTML={
+            {
+              __html: Prism.highlight(code, Prism.languages.ruby)
+            }
           }
-        }
-      />
-    </div>
+        />
+      </div>
+      <h6>Result</h6>
+      <div className="gatsby-highlight">
+        <pre
+          className="language-ruby"
+          dangerouslySetInnerHTML={
+            {
+              __html: Prism.highlight(output, Prism.languages.ruby)
+            }
+          }
+        />
+      </div>
+    </>
   );
 }

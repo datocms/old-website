@@ -1,11 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import { Link as ScrollLink, Element } from 'react-scroll'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, button, Space } from 'blocks'
 
 import slackLogo from 'images/slack.svg'
 import Layout from 'components/Layout';
@@ -88,7 +84,6 @@ class SlackPage extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
     const { stats, error, success, submitting } = this.state;
 
     return (
@@ -111,7 +106,7 @@ class SlackPage extends React.Component {
                   success &&
                     <div className={b('success')}>
                       <div className={b('success__title')}>
-                        Awesome, welcome on board! 🎉
+                        Awesome, welcome on board! <span role="img" aria-label="Party!">🎉</span>
                       </div>
                        Check your email for the invitation!
                     </div>

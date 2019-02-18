@@ -1,15 +1,13 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import Sticky from 'react-stickynode';
 import { Link as ScrollLink, Element } from 'react-scroll'
 import Pulse from 'react-reveal/Pulse'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 
-import Features from 'components/home/Features'
 import CallToAction from 'components/CallToAction'
 import InlineSVG from 'components/InlineSVG'
 import Layout from 'components/Layout';

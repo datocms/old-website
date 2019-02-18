@@ -149,26 +149,3 @@ class GraphqlFiltersPage extends React.Component {
 }
 
 export default GraphqlFiltersPage
-
-export const query = graphql`
-  query GraphqlFiltersPageQuery {
-    pages: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/.*docs.*/" } }
-    ) {
-      edges {
-        node {
-          path: fileAbsolutePath
-          frontmatter {
-            title
-            copyFrom
-            position
-          }
-        }
-      }
-    }
-    cda {
-      body
-    }
-  }
-`
-

@@ -1,6 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Sticky from 'react-stickynode'
 import Slider from 'react-slick'
@@ -8,7 +7,7 @@ import CallToAction from 'components/CallToAction'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import Layout from 'components/Layout';
 
 import Browser from 'components/Browser'
@@ -71,7 +70,7 @@ class UseCasesPage extends React.Component {
           {
             tech &&
               <div className={b('website-technology')}>
-                <img src={tech.logo.url} className={b('website-technology-logo')} />
+                <img alt={tech.name} src={tech.logo.url} className={b('website-technology-logo')} />
                 <div className={b('website-technology-name')}>
                   Made with {tech.name}
                 </div>

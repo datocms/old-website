@@ -3,7 +3,6 @@ import bem from 'utils/bem'
 import DatoCmsSearch from 'datocms-search/dist/datocms-search.base'
 import AutoSuggest from 'react-autosuggest'
 
-import { Wrap, button, Space, Text } from 'blocks'
 import './style.sass'
 
 const token = 'd46fe8134ea916b42af4eaa0d06109';

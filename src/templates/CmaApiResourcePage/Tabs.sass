@@ -1,0 +1,34 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.Tabs__handles
+  padding-bottom: 0
+  position: relative
+  border-bottom: 1px solid $border-color
+
+.Tabs__handle.Tabs__handle
+  text-decoration: none
+  display: inline-block
+  padding: 10px 12px
+  font-family: colfax-web
+  color: $light-body-color
+  margin-bottom: -1px
+  cursor: pointer
+  font-size: inherit
+
+  &:hover
+    text-decoration: none
+    color: $base-body-color
+    border-bottom: 1px solid $base-body-color
+
+  &.is-active
+    color: $red-color
+    border-bottom: 1px solid $red-color
+    font-weight: 700
+
+.Tabs__content
+  padding: 50px 0
+  position: relative
+  z-index: 2
+
+

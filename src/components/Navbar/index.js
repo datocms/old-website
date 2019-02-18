@@ -2,7 +2,7 @@ import React from 'react'
 import bem from 'utils/bem'
 import getCookie from 'utils/getCookie';
 
-import { Wrap, button, Space, Text } from 'blocks'
+import { Wrap, button } from 'blocks'
 import './style.sass'
 
 import logo from 'images/dato_logo_full.svg'

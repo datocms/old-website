@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import './style.sass'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, button } from 'blocks'
 
-import Browser from 'components/Browser'
 import InlineSVG from 'components/InlineSVG'
 import bem from 'utils/bem'
 

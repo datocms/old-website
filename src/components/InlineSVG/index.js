@@ -17,8 +17,6 @@ export default class InlineSVG extends React.Component {
   }
 
   render() {
-    const { image } = this.props;
-
     return this.state.imageBody ?
       <div dangerouslySetInnerHTML={{ __html: this.state.imageBody }} /> :
       <div />;

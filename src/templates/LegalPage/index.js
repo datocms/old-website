@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { Wrap, button, Space, text } from 'blocks'
-import sortBy from 'sort-by'
+import { Wrap, Space } from 'blocks'
 
 import bem from 'utils/bem'
 import Layout from 'components/Layout'

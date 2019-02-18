@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
 import './style.sass'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, button, Space } from 'blocks'
 
 import bem from 'utils/bem'
 

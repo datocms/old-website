@@ -1,14 +1,12 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import Img from 'gatsby-image'
 
 import './style.sass'
 import 'slick-carousel/slick/slick.css'
 
-import { Wrap, button, Space, text } from 'blocks'
+import { Space } from 'blocks'
 
-import Browser from 'components/Browser'
 import bem from 'utils/bem'
 
 const b = bem.lock('HomeQuotes')

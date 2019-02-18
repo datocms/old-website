@@ -1,14 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { Link as ScrollLink, Element } from 'react-scroll'
-
 import './style.sass'
-import { Wrap, button, Space, text } from 'blocks'
+import { button, Space } from 'blocks'
 
 import Browser from 'components/Browser'
 import bem from 'utils/bem'
-
-import arrowDown from 'images/arrow-down-dropdown.svg'
 
 const b = bem.lock('HomeHero')
 
@@ -56,7 +51,6 @@ class HomeHero extends React.Component {
             </div>
           </div>
         </div>
-        <Element name="discover" />
       </div>
     );
   }

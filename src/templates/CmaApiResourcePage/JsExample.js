@@ -3,7 +3,6 @@ import Prism from 'prismjs';
 import humps from 'humps'
 import sortObject from 'sort-object'
 import pluralize from 'pluralize'
-import bem from 'utils/bem'
 
 import schemaExampleFor from 'utils/schemaExampleFor'
 
@@ -13,8 +12,6 @@ const methods = {
   instances: 'all',
   self: 'find'
 };
-
-const b = bem.lock('ApiPage')
 
 function example(resource, link, allPages = false) {
   let params = [];
@@ -62,7 +59,7 @@ function example(resource, link, allPages = false) {
     }
   }
 
-  let returnCode;
+  let returnCode, output;
 
   if (link.targetSchema) {
     const example = schemaExampleFor(link.targetSchema);
@@ -71,24 +68,24 @@ function example(resource, link, allPages = false) {
       const singleVariable = humps.camelize(resource.id);
       const multipleVariable = humps.camelize(pluralize(resource.id));
 
-      const result = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/^/gm, '    // ');
+      output = JSON.stringify(deserialize(example.data[0], true), null, 2);
 
       returnCode = `.then((${multipleVariable}) => {
 ${multipleVariable}.forEach((${singleVariable}) => {
-  console.log(${singleVariable});${!allPages ? "\n" + result : ''}
+  console.log(${singleVariable});
 });
 })`;
     } else {
       const variable = humps.camelize(resource.id);
-      const result = JSON.stringify(deserialize(example.data, true), null, 2).replace(/^/gm, '  // ');;
+      output = JSON.stringify(deserialize(example.data, true), null, 2);
 
       returnCode = `.then((${variable}) => {
-console.log(${variable});${!allPages ? "\n" + result : ''}
+  console.log(${variable});
 })`;
     }
   } else {
     returnCode = `.then(() => {
-console.log('Done!');
+  console.log('Done!');
 })`;
 
   }
@@ -99,40 +96,57 @@ console.log('Done!');
       humps.camelize(resource.id);
 
   if (!allPages) {
-    const code = `
-const SiteClient = require('datocms-client').SiteClient;
+    const code = `const SiteClient = require('datocms-client').SiteClient;
 const client = new SiteClient("YOUR-API-KEY");
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
 client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
 ${returnCode}
 .catch((error) => {
-console.log(error);
+  console.log(error);
 });
 ${
 link.targetSchema && link.targetSchema.properties.meta ?
   '\n\n// if you want to fetch all the pages with just one call:\n' + example(resource, link, true) :
   ''
 }`;
-    return code;
+    return {code, output};
   } else {
     const code = `
 client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
 ${returnCode}`;
-    return code;
+    return { code, output };
   }
 }
 
 export default function JsExample({ resource, link }) {
+  const { code, output} = example(resource, link);
+
+  const outputWithRun = `> node example.js\n\n${output}`;
+
   return (
-    <div className={b('example-code')}>
-      <pre
-        className="language-javascript"
-        dangerouslySetInnerHTML={
-          {
-            __html: Prism.highlight(example(resource, link), Prism.languages.javascript)
+    <>
+      <h6>Example request</h6>
+      <div className="gatsby-highlight">
+        <pre
+          className="language-javascript"
+          dangerouslySetInnerHTML={
+            {
+              __html: Prism.highlight(code, Prism.languages.javascript)
+            }
           }
-        }
-      />
-    </div>
+        />
+      </div>
+      <h6>Result</h6>
+      <div className="gatsby-highlight">
+        <pre
+          className="language-javascript"
+          dangerouslySetInnerHTML={
+            {
+              __html: Prism.highlight(outputWithRun, Prism.languages.javascript)
+            }
+          }
+        />
+      </div>
+    </>
   );
 }

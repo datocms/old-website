@@ -3,20 +3,38 @@
 
 $padding: 40px
 
-.ApiPage__title
+.CmaPage
+
+.CmaPage__menu
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
+  overflow: auto
+  padding: 50px 30px 50px $padding
+  width: 190px
+  background-color: $light-bg-color
+  +size(small)
+  border-right: 1px solid $border-color
+
+.CmaPage__content
+  padding: 50px 80px
+  margin-left: 280px
+
+.CmaPage__title
   +size(hero)
   font-weight: 500
   margin-bottom: 50px
 
-.ApiPage__logo
+.CmaPage__logo
   display: block
   margin-bottom: 40px
 
   img
     width: 150px
 
-.ApiPage__menu-category
-  margin-bottom: 15px
+.CmaPage__menu-category
+  margin-bottom: 5px
   line-height: 1.3
 
   a
@@ -28,36 +46,22 @@ $padding: 40px
     &:hover
       color: $red-color
 
-.ApiPage__menu-category--spacer
-  margin-bottom: 30px
-  padding-bottom: 30px
+.CmaPage__menu-category--spacer
+  margin-bottom: 20px
+  padding-bottom: 20px
   border-bottom: 1px solid $border-color
 
-.ApiPage__content-title
+.CmaPage__content-title
   +size(hero)
   +weight(bold)
 
-.ApiPage__content-category
+.CmaPage__content-category
   color: $light-body-color
   margin-bottom: 10px
   +size(big)
 
-.ApiPage
 
-.ApiPage__menu
-  position: fixed
-  left: 0
-  top: 0
-  bottom: 0
-  overflow: auto
-  padding: 50px 30px 50px $padding
-  width: 220px
-
-.ApiPage__content
-  padding: 50px 80px
-  margin-left: 300px
-
-.ApiPage__menu-back a
+.CmaPage__menu-back a
   display: block
   margin-top: 30px
   text-decoration: none
@@ -67,10 +71,10 @@ $padding: 40px
   &:hover
     text-decoration: underline
 
-.ApiPage__content__text-block
+.CmaPage__content__text-block
   max-width: 800px
 
-.ApiPage__resource
+.CmaPage__resource
   margin-bottom: 120px
 
   p
@@ -88,7 +92,7 @@ $padding: 40px
       display: block
       margin: 30px 0
 
-.ApiPage__resource-url
+.CmaPage__resource-url
   background-color: darken($dark-violet-color, 5%)
   color: white
   padding: 20px
@@ -97,11 +101,11 @@ $padding: 40px
   border-radius: 4px
   margin: 30px 0
 
-.ApiPage__resource-title
+.CmaPage__resource-title
   +size(smallHero)
   margin-bottom: 20px
 
-.ApiPage__resource-description
+.CmaPage__resource-description
   margin-bottom: 30px
 
   code
@@ -126,23 +130,23 @@ $padding: 40px
     th
       font-weight: 500
 
-.ApiPage__method-title
+.CmaPage__method-title
   +size(big)
   font-weight: 500
   margin-bottom: 20px
 
-.ApiPage__example-title
+.CmaPage__example-title
   +size(bigger)
   margin-bottom: 20px
 
-.ApiPage__example-call
+.CmaPage__example-call
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
   margin-bottom: 30px
 
-.ApiPage__placeholder
+.CmaPage__placeholder
   color: $red-color
 
-.ApiPage__example-method
+.CmaPage__example-method
   background: rgba(black, 0.4)
   border: 1px solid rgba(white, 0.2)
   border-radius: 4px
@@ -151,19 +155,19 @@ $padding: 40px
   vertical-align: middle
   margin-right: 10px
 
-.ApiPage__https
+.CmaPage__https
   padding: 30px
   color: white
   background-color: darken($dark-violet-color, 5%)
   border-radius: 4px
 
-.ApiPage__http
+.CmaPage__http
   margin: 30px 0
 
   &:last-child
     margin-bottom: 0
 
-.ApiPage__http-title
+.CmaPage__http-title
   text-transform: uppercase
   border-bottom: 1px solid rgba(white, 0.2)
   padding: 0 $padding 5px
@@ -180,30 +184,30 @@ $padding: 40px
     margin-right: 6px
     font-size: 10px
 
-.ApiPage__http-title--open
+.CmaPage__http-title--open
   &:before
     content: "\25bc"
 
-.ApiPage__http-headers
+.CmaPage__http-headers
   margin: 20px 0
 
-.ApiPage__http-header
+.CmaPage__http-header
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
   +size(small)
 
-.ApiPage__http-header-name,
-.ApiPage__http-header-value
+.CmaPage__http-header-name,
+.CmaPage__http-header-value
   display: inline
   vertical-align: middle
 
-.ApiPage__http-header-name
+.CmaPage__http-header-name
   color: #f92672
 
-.ApiPage__http-header-value
+.CmaPage__http-header-value
   margin-left: 8px
   color: #ae81ff
 
-.ApiPage__example-code
+.CmaPage__example-code
   margin: 20px 0
 
   &:last-child
@@ -216,34 +220,34 @@ $padding: 40px
     padding: 0
     margin: 0
 
-.ApiPage__http-queries
+.CmaPage__http-queries
   margin: 20px 0
   width: 100%
 
-.ApiPage__http-query
+.CmaPage__http-query
   +size(small)
 
   th, td
     padding-bottom: 4px
 
-.ApiPage__http-query-name,
-.ApiPage__http-query-value
+.CmaPage__http-query-name,
+.CmaPage__http-query-value
   display: inline
   vertical-align: middle
 
-.ApiPage__http-query-name
+.CmaPage__http-query-name
   color: #f92672
 
-.ApiPage__http-query-name,
-.ApiPage__http-query-value,
-.ApiPage__http-query-example span
+.CmaPage__http-query-name,
+.CmaPage__http-query-value,
+.CmaPage__http-query-example span
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
 
-.ApiPage__http-query-value
+.CmaPage__http-query-value
   margin-left: 8px
   color: #ae81ff
 
-.ApiPage__http-query-example span
+.CmaPage__http-query-example span
   background: rgba(black, 0.4)
   border: 1px solid rgba(white, 0.2)
   border-radius: 4px
@@ -252,50 +256,52 @@ $padding: 40px
   vertical-align: middle
   margin-left: 5px
 
-.ApiPage__attributes
+.CmaPage__attributes
   +size(small)
   text-align: left
   border-top: 1px solid $border-color
   width: 100%
 
-.ApiPage__attribute
+.CmaPage__attribute
   display: flex
   border-bottom: 1px solid $border-color
   padding: 10px 0
 
-.ApiPage__attribute-left
+.CmaPage__attribute-left
   width: 35%
   flex-shrink: 0
   padding-right: 50px
   box-sizing: border-box
 
-.ApiPage__attribute-right
+.CmaPage__attribute-right
   width: 65%
   overflow: auto
 
-.ApiPage__attribute-name
+.CmaPage__attribute-name
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
 
-.ApiPage__attribute-type
+.CmaPage__attribute-type
   color: $ultra-light-body-color
   +size(smaller)
 
-.ApiPage__attribute-example
+.CmaPage__attribute-example
   +size(smaller)
 
   span
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
     color: #FE6252
 
-.ApiPage__attribute-description
+.CmaPage__attribute-description
   margin-bottom: 10px
 
-.ApiPage__resource-section
+.CmaPage__resource-section
   margin-bottom: 50px
 
-.ApiPage__resource-section-title
+.CmaPage__resource-section-title
   color: $light-body-color
   margin-bottom: 20px
   text-transform: uppercase
   +weight(bold)
   +size(small)
+
+

@@ -1,14 +1,47 @@
 import React from 'react';
+import './Tabs.sass';
+
+const store = {
+  listeners: [],
+  activeIndex: 0,
+  setActiveIndex(index) {
+    this.activeIndex = index;
+    this.listeners.forEach(cb => cb(index));
+  },
+  subscribe(cb) {
+    this.listeners.push(cb);
+    return () => this.listeners = this.listeners.filter(c => c !== cb);
+  }
+};
 
 export class Tabs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = { activeIndex: store.activeIndex };
+  }
+
+  componentDidMount() {
+    this.unsubscribe = store.subscribe((activeIndex) => {
+      this.setState({ activeIndex });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   handleClick(index, e) {
     e.preventDefault();
-    this.setState({ activeIndex: index });
+
+    const previousY = this.el.getBoundingClientRect().top;
+
+    store.setActiveIndex(index);
+
+    setTimeout(() => {
+      const currentY = this.el.getBoundingClientRect().top;
+      window.scrollBy(0, currentY - previousY);
+      window.dispatchEvent(new Event('resize'));
+    }, 20);
   }
 
   renderHandle(child, index) {
@@ -25,14 +58,14 @@ export class Tabs extends React.Component {
     }
 
     return (
-      <a
+      <button
+        ref={(el) => this.el = el}
         key={index}
-        href="#"
         onClick={this.handleClick.bind(this, index)}
         className={className.join(' ')}
       >
         {child.props.title}
-      </a>
+      </button>
     );
   }
 

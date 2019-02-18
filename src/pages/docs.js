@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { Wrap, button, Space, text } from 'blocks'
-import sortBy from 'sort-by'
+import { Wrap, Space } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
@@ -14,7 +13,6 @@ import Layout from 'components/Layout';
 
 const b = bem.lock('LearnPage')
 const g = bem.lock('Guide')
-const sg = bem.lock('SmallGuide')
 
 const Guide = ({ title, children, description, cta, link }) => (
   link ?
@@ -86,7 +84,7 @@ export default class LearnPage extends React.Component {
                       </Space>
                       <ul className="fullwidth">
                         <li><Link to="/docs/content-delivery-api/">Content Delivery API</Link></li>
-                        <li><Link to="/content-management-api/">Content Management API</Link></li>
+                        <li><Link to="/docs/content-management-api/">Content Management API</Link></li>
                       </ul>
                     </Guide>
                     <Guide
@@ -121,15 +119,15 @@ export default class LearnPage extends React.Component {
                         >
                           <Space bottom={2}>
                             <p>
-                              {cat.description} (<a href={cat.demoUrl} target="_blank">see it live</a>)
+                              {cat.description} (<a href={cat.demoUrl} rel="noopener noreferrer" target="_blank">see it live</a>)
                             </p>
                           </Space>
                           <ul>
                             {
                               cat.templates.map((template) => (
                                 <li key={template.code}>
-                                  <a target="_blank" href={`https://dashboard.datocms.com/projects/new-from-template/${cat.code}/${template.code}`}>
-                                    <img src={(template.technology.squareLogo || template.technology.logo).url} />
+                                  <a target="_blank" rel="noopener noreferrer" href={`https://dashboard.datocms.com/projects/new-from-template/${cat.code}/${template.code}`}>
+                                    <img alt={template.technology.name} src={(template.technology.squareLogo || template.technology.logo).url} />
                                     {template.technology.name}
                                   </a>
                                 </li>

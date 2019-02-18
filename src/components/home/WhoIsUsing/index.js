@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import bem from 'utils/bem'
 import Fade from 'react-reveal/Fade'
 
-import { wrap, button, space, text } from 'blocks'
+import { wrap, space } from 'blocks'
 import './style.sass'
 
 const b = bem.lock('HomeWhoIsUsing')
@@ -20,7 +19,7 @@ const HomeWhoIsUsing = ({ data }) => (
         {
           data.map(({ logo }, i) => (
             <Fade bottom duration={500} delay={100 * i} key={i}>
-              <img src={logo.url} />
+              <img alt="Client" src={logo.url} />
             </Fade>
           ))
         }
