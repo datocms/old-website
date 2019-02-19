@@ -1,16 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
-import Img from 'gatsby-image'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Helmet from 'react-helmet'
 
 import bem from 'utils/bem'
 import '../ChangelogPage/style.sass'
 
 import Layout from 'components/Layout'
-import BlogAside from 'components/BlogAside'
 
 const b = bem.lock('ChangelogPage')
 

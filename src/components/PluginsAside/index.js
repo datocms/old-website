@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import Sticky from 'react-stickynode'
 import Link from 'components/Link'
 
@@ -39,14 +39,14 @@ const PluginsAside = ({ latestEntries, children }) => (
               </div>
               <div className={b('section-content')}>
                 <div className={b('follow')}>
-                  <img src={twitter} />
-                  <a href="https://twitter.com/datocms" target="_blank">
+                  <img alt="Twitter" src={twitter} />
+                  <a rel="noopener noreferrer" href="https://twitter.com/datocms" target="_blank">
                     Follow us on Twitter
                   </a>
                 </div>
                 <div className={b('follow')}>
-                  <img src={medium} />
-                  <a href="https://medium.com/datocms" target="_blank">
+                  <img alt="Medium" src={medium} />
+                  <a rel="noopener noreferrer" href="https://medium.com/datocms" target="_blank">
                     Read us on Medium
                   </a>
                 </div>

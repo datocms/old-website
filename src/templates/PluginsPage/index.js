@@ -1,10 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
-import sortBy from 'sort-by'
 import slugify from 'slugify';
 
 import Layout from 'components/Layout'
@@ -12,7 +11,6 @@ import bem from 'utils/bem'
 import gravatar from 'utils/gravatar'
 import './style.sass'
 
-import PluginsAside from 'components/PluginsAside'
 
 const b = bem.lock('PluginsPage')
 
@@ -37,7 +35,6 @@ export default class PluginsPage extends React.Component {
     const fieldTypes = [{ code: null, name: 'All field types' }].concat(this.props.data.fieldTypes.edges.map(({ node }) => node));
 
     const {
-      pageCount,
       first,
       last,
       index,
@@ -132,6 +129,7 @@ export default class PluginsPage extends React.Component {
                                 </div>
                             }
                             <img
+                              alt="Author gravatar"
                               className={b('plugin-author-image')}
                               src={gravatar(plugin.author.email, { s: 80, d: 'retro' })}
                             />

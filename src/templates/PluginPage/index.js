@@ -1,15 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
-import { Wrap, button, Space, text } from 'blocks'
-import sortBy from 'sort-by'
-import PluginsAside from 'components/PluginsAside'
+import { Wrap, Space } from 'blocks'
 import AutoupdateTime from 'components/AutoupdateTime'
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
-import distanceInWords from 'date-fns/distance_in_words';
 import Sticky from 'react-stickynode'
-import Img from 'gatsby-image'
 import gravatar from 'utils/gravatar'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
@@ -74,7 +70,7 @@ export default class PluginPage extends React.Component {
                       </div>
                       <div className={b('preview-block-image')}>
                         <div style={{ paddingTop: `${(plugin.previewImage.height / plugin.previewImage.width * 100)}%` }} />
-                        <img src={plugin.previewImage.url} />
+                        <img alt="Preview" src={plugin.previewImage.url} />
                       </div>
                     </div>
                 }
@@ -102,20 +98,20 @@ export default class PluginPage extends React.Component {
                     <div className={b('info-group')}>
                       <p className={b('info')}>
                         <strong>NPM package name</strong>
-                        <a target="_blank" href={`https://www.npmjs.com/package/${plugin.packageName}`}>
+                        <a rel="noopener noreferrer" target="_blank" href={`https://www.npmjs.com/package/${plugin.packageName}`}>
                           {plugin.packageName}
                         </a>
                       </p>
                       <p className={b('info')}>
                         <strong>Published by</strong>
-                        <img src={gravatar(plugin.author.email, { s: 40, d: 'retro' })} />
+                        <img alt="Author gravatar" src={gravatar(plugin.author.email, { s: 40, d: 'retro' })} />
                         {plugin.author.name}
                       </p>
                       {
                         plugin.homepage &&
                           <p className={b('info')}>
                             <strong>Homepage</strong>
-                            <a target="_blank" href={plugin.homepage}>{getHost(plugin.homepage)}</a>
+                            <a rel="noopener noreferrer" target="_blank" href={plugin.homepage}>{getHost(plugin.homepage)}</a>
                           </p>
                       }
                     </div>

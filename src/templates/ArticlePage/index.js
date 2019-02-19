@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
 import Img from 'gatsby-image'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ResponsiveEmbed from 'react-responsive-embed'
 import Lightbox from 'react-images'
@@ -13,7 +13,6 @@ import './style.sass'
 import 'components/DocAside/content.sass'
 
 import Layout from 'components/Layout'
-import BlogAside from 'components/BlogAside'
 
 const b = bem.lock('ArticlePage')
 
@@ -109,8 +108,8 @@ export default class ArticlePage extends React.Component {
                             >
                               {
                                 block.image.format === 'gif' ?
-                                  <img src={block.image.url} /> :
-                                  <Img fluid={block.image.fluid} />
+                                  <img alt={block.image.alt} src={block.image.url} /> :
+                                  <Img alt={block.image.alt} fluid={block.image.fluid} />
                               }
                             </a>
                             {
@@ -201,6 +200,7 @@ export const query = graphql`
           model { apiKey }
           image {
             format
+            alt
             url
             format
             width

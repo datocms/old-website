@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
 import Img from 'gatsby-image'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Masonry from 'react-masonry-component'
 
@@ -10,14 +10,13 @@ import bem from 'utils/bem'
 import './style.sass'
 
 import Layout from 'components/Layout'
-import BlogAside from 'components/BlogAside'
 
 const b = bem.lock('BlogPage')
 
 export default class BlogPage extends React.Component {
   render() {
     const articles = this.props.pageContext.group.map(({ node }) => node);
-    const { pageCount, first, last, index } = this.props.pageContext;
+    const { first, last, index } = this.props.pageContext;
 
     return (
       <Layout>
@@ -78,7 +77,11 @@ export default class BlogPage extends React.Component {
                       <Link to={`/blog/${article.slug}/`} key={article.slug} className={b('article')}>
                         {
                           article.coverImage &&
-                            <img className={b('article-image')} src={article.coverImage.url + '?w=900'} />
+                            <img
+                              alt={article.coverImage.alt}
+                              className={b('article-image')}
+                              src={article.coverImage.url + '?w=900'}
+                            />
                         }
                         <h3 className={b('article-title')}>
                           {article.title}

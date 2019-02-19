@@ -1,5 +1,5 @@
 import React from 'react';
-import './Tabs.sass';
+import { ControlledTabs as InnerTabs, Tab as InnerTab } from 'components/Tabs';
 
 const store = {
   listeners: [],
@@ -17,6 +17,7 @@ const store = {
 export class Tabs extends React.Component {
   constructor(props) {
     super(props);
+    this.ref = React.createRef();
     this.state = { activeIndex: store.activeIndex };
   }
 
@@ -30,82 +31,28 @@ export class Tabs extends React.Component {
     this.unsubscribe();
   }
 
-  handleClick(index, e) {
-    e.preventDefault();
-
-    const previousY = this.el.getBoundingClientRect().top;
+  handleChange(index) {
+    const previousY = this.ref.current.getBoundingClientRect().top;
 
     store.setActiveIndex(index);
 
     setTimeout(() => {
-      const currentY = this.el.getBoundingClientRect().top;
+      const currentY = this.ref.current.getBoundingClientRect().top;
       window.scrollBy(0, currentY - previousY);
       window.dispatchEvent(new Event('resize'));
     }, 20);
   }
 
-  renderHandle(child, index) {
-    if (!child) {
-      return undefined;
-    }
-
-    const className = ['Tabs__handle'];
-
-    if (index === this.state.activeIndex) {
-      className.push('is-active');
-    } else if (child.props.invalid) {
-      className.push('is-invalid');
-    }
-
-    return (
-      <button
-        ref={(el) => this.el = el}
-        key={index}
-        onClick={this.handleClick.bind(this, index)}
-        className={className.join(' ')}
-      >
-        {child.props.title}
-      </button>
-    );
-  }
-
-  renderContent(child, index) {
-    if (!child) {
-      return undefined;
-    }
-
-    return (
-      <div
-        key="content"
-        className="Tabs__content"
-        style={{ display: (index === this.state.activeIndex ? 'block' : 'none') }}
-      >
-        {child.props.children}
-      </div>
-    );
-  }
-
   render() {
-    const { children, className, extraInfo } = this.props;
-
     return (
-      <div className={`Tabs ${className || ''}`}>
-        <div className="Tabs__handles">
-          {React.Children.map(children, this.renderHandle.bind(this))}
-          {
-            extraInfo &&
-              <div className="Tabs__extra-info">
-                {extraInfo}
-              </div>
-          }
-        </div>
-        {React.Children.map(children, this.renderContent.bind(this))}
-      </div>
+      <InnerTabs
+        {...this.props}
+        ref={this.ref}
+        onChange={this.handleChange.bind(this)}
+        activeIndex={this.state.activeIndex}
+      />
     );
   }
 }
 
-export function Tab() {
-  return null;
-}
-
+export const Tab = InnerTab;

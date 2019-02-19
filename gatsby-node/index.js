@@ -10,13 +10,13 @@ const cma = require('./cma');
 exports.createPages = async function (options) {
   const sections = [
     blog,
-    //changelog,
+    changelog,
     docs,
-    //landing,
-    //legal,
-    //plugins,
-    //redirects,
-    //cma,
+    landing,
+    legal,
+    plugins,
+    redirects,
+    cma,
   ];
 
   for (let i = 0; i < sections.length; i++) {

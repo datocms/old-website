@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, button } from 'blocks'
 import Zoom from 'react-reveal/Zoom'
 import Helmet from 'react-helmet'
 
@@ -12,8 +12,6 @@ import '../style.sass'
 import logo from 'images/logo.svg'
 
 import Layout from 'components/Layout'
-import Browser from 'components/Browser'
-import LazyImage from 'components/LazyImage'
 import Hero from 'components/home/Hero'
 import CallToAction from 'components/CallToAction'
 import WhoIsUsing from 'components/home/WhoIsUsing'

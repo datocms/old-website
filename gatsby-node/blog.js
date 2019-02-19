@@ -10,6 +10,7 @@ const query = `
         title
         coverImage {
           url
+          alt
           fluid(maxWidth: 850) {
             base64
             aspectRatio

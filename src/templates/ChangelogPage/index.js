@@ -1,22 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'components/Link'
-import Img from 'gatsby-image'
-import { Wrap, button, Space, text } from 'blocks'
+import { Wrap, Space } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 import './style.sass'
 
 import Layout from 'components/Layout'
-import BlogAside from 'components/BlogAside'
 
 const b = bem.lock('ChangelogPage')
 
 export default class ChangelogPage extends React.Component {
   render() {
     const articles = this.props.pageContext.group.map(({ node }) => node);
-    const { pageCount, first, last, index } = this.props.pageContext;
+    const { first, last, index } = this.props.pageContext;
 
     return (
       <Layout>

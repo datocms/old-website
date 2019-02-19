@@ -4,8 +4,8 @@ import 'prismjs/components/prism-graphql'
 import bem from 'utils/bem'
 import DocAside from 'components/DocAside';
 import { graphql } from 'gatsby'
-
-import './style.sass'
+import { Tabs, Tab } from 'components/Tabs';
+import fieldTypes from 'utils/fieldTypes.json';
 
 const b = bem.lock('GraphqlFilters')
 
@@ -13,7 +13,7 @@ const exampleForType = (field) => {
   let exampleData = ""
   const type = field.input_type;
 
-  if (type === 'item_id' || type == 'upload_id') {
+  if (type === 'item_id' || type === 'upload_id') {
     exampleData = '"123"';
   } else if (type === 'boolean') {
     return 'true';
@@ -37,24 +37,25 @@ const exampleForType = (field) => {
   if (field.array) {
     return `[${exampleData}]`
   }
+
   return exampleData
 }
 
 const exampleForField = (field_name, query_field_name, field) => {
   let filter = `${query_field_name}: ${exampleForType(field)}`;
 
-  if (filter.length > 20) {
+  if (filter.length > 35) {
     return `query {
-      allProducts(
-        filter: {
-          ${field_name}: {
-            ${filter}
-          }
-        }
-        ) {
-          title
-          }
-    }`;
+  allProducts(
+    filter: {
+      ${field_name}: {
+        ${filter}
+      }
+    }
+  ) {
+    title
+  }
+}`;
   }
 
   return `query {
@@ -65,41 +66,29 @@ const exampleForField = (field_name, query_field_name, field) => {
 }
 
 class GraphqlFiltersBlock extends React.Component {
-  renderField(filters, name) {
-    const attrs = filters[name]
+  renderFilters(name, attrs) {
     return (
-      <div className={b('field')} key={name}>
-        <h3 className={b('field__title')}>
-          {name}
-        </h3>
-        <table className={b('filters')}>
-          <tbody>
-            {
-               Object.keys(attrs).map(key => (
-                <tr key="{key}" className={b('filter')}>
-                  <td className={b('filter__content')}>
-                    <div className={b('filter__title')}><span>{key}</span></div>
-                    <div className={b('filter__description')}>
-                      {attrs[key].description}
-                    </div>
-                  </td>
-                  <td className={b('filter__example')}>
-                    <pre
-                      className="language-graphql"
-                      dangerouslySetInnerHTML={{
-                        __html: Prism.highlight(
-                          exampleForField(name, key, attrs[key].input),
-                          Prism.languages.graphql
-                        )
-                      }}
-                    />
-                  </td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
+      <Tabs handlesAsCode>
+        {
+           Object.keys(attrs).map(key => (
+            <Tab key="{key}" title={key}>
+              <div className={b('filter__description')}>
+                {attrs[key].description}
+              </div>
+              <pre className="language-graphql">
+                <code
+                  dangerouslySetInnerHTML={{
+                    __html: Prism.highlight(
+                      exampleForField(name, key, attrs[key].input),
+                      Prism.languages.graphql
+                    )
+                  }}
+                />
+              </pre>
+            </Tab>
+          ))
+        }
+      </Tabs>
     );
   }
 
@@ -107,8 +96,28 @@ class GraphqlFiltersBlock extends React.Component {
     const filters = JSON.parse(this.props.data.fieldFiltersIntrospection.body)
     return (
       <div>
-        {Object.keys(filters.meta).map(this.renderField.bind(this, filters.meta))}
-        {Object.keys(filters.field_types).map(this.renderField.bind(this, filters.field_types))}
+        <h3>Meta fields</h3>
+        {
+          Object.keys(filters.meta).map((name) => (
+            <React.Fragment key={name}>
+              <h4 id={name} className={b('field__title')}>
+                Filter by <code>{name}</code> meta field
+              </h4>
+              {this.renderFilters(name, filters.meta[name])}
+            </React.Fragment>
+          ))
+        }
+        <h3>Filters available per field type</h3>
+        {
+          Object.keys(filters.field_types).map((name) => (
+            <React.Fragment key={name}>
+              <h4 id={name} className={b('field__title')}>
+                {fieldTypes[name]} fields
+              </h4>
+              {this.renderFilters(name, filters.field_types[name])}
+            </React.Fragment>
+          ))
+        }
       </div>
     )
   }

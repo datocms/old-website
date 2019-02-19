@@ -14,7 +14,10 @@
   color: $light-body-color
   margin-bottom: -1px
   cursor: pointer
-  +size(normal)
+  font-size: 13px
+
+  @media screen and (min-width: 900px)
+    font-size: 16px
 
   &:hover
     text-decoration: none
@@ -25,6 +28,18 @@
     color: $red-color
     border-bottom: 1px solid $red-color
     font-weight: 700
+
+  &.is-code
+    > span
+      font-family: $monospaced-font
+      background-color: darken($code-bg-color, 5%)
+      padding: 0.15em 0
+      border-radius: 3px
+      font-variant: none
+
+      &:after, &:before
+        letter-spacing: -0.2em
+        content: "\00a0"
 
 .Tabs__content
   padding: 50px 0
