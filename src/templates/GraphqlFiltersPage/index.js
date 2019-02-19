@@ -91,25 +91,26 @@ class GraphqlFiltersBlock extends React.Component {
   }
 
   render() {
-    const filters = JSON.parse(this.props.data.fieldFiltersIntrospection.body);
+    const { fieldsMetaInfo, fieldTypesInfo } = this.props.pageContext;
+
     return (
       <div>
         <h3>Meta fields</h3>
-        {Object.keys(filters.meta).map(name => (
+        {Object.keys(fieldsMetaInfo).map(name => (
           <React.Fragment key={name}>
             <h4 id={name} className={b('field__title')}>
               Filter by <code>{name}</code> meta field
             </h4>
-            {this.renderFilters(name, filters.meta[name])}
+            {this.renderFilters(name, fieldsMetaInfo[name])}
           </React.Fragment>
         ))}
         <h3>Filters available per field type</h3>
-        {Object.keys(filters.field_types).map(name => (
+        {Object.keys(fieldTypesInfo).map(name => (
           <React.Fragment key={name}>
             <h4 id={name} className={b('field__title')}>
               {fieldTypes[name]} fields
             </h4>
-            {this.renderFilters(name, filters.field_types[name])}
+            {this.renderFilters(name, fieldTypesInfo[name])}
           </React.Fragment>
         ))}
       </div>
@@ -144,9 +145,6 @@ export const query = graphql`
           }
         }
       }
-    }
-    fieldFiltersIntrospection {
-      body
     }
   }
 `;

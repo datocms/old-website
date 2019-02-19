@@ -1,8 +1,7 @@
 require('dotenv').config()
 const path = require('path')
 const fetch = require('node-fetch');
-const buildCmaResources = require('./src/utils/buildCmaResources');
-const { parse, stringify } = require('flatted/cjs');
+const { stringify } = require('flatted/cjs');
 const camelcaseKeys = require('camelcase-keys');
 const feeds = require ('./feeds');
 
@@ -114,28 +113,6 @@ module.exports = {
       resolve: `gatsby-source-json`,
       options: {
         resolve: (createNode, digest) => (
-          buildCmaResources(fetch)
-            .then(resources => stringify(resources))
-            .then(blob => (
-              createNode({
-                id: 'CmaResources',
-                children: [],
-                parent: null,
-                internal: {
-                  type: 'CmaResources',
-                  contentDigest: digest(blob),
-                },
-                body: blob,
-              })
-            ))
-        ),
-      },
-    },
-
-    {
-      resolve: `gatsby-source-json`,
-      options: {
-        resolve: (createNode, digest) => (
           fetch(
             'https://account-api.datocms.com/plans',
             { headers: { 'Accept': 'application/json' } }
@@ -149,28 +126,6 @@ module.exports = {
                 parent: null,
                 internal: {
                   type: 'Plans',
-                  contentDigest: digest(blob),
-                },
-                body: blob,
-              })
-            ))
-        ),
-      },
-    },
-
-    {
-      resolve: `gatsby-source-json`,
-      options: {
-        resolve: (createNode, digest) => (
-          fetch('https://internal.datocms.com/introspection/field-filters')
-            .then(res => res.text())
-            .then(blob => (
-              createNode({
-                id: 'FieldFiltersIntrospection',
-                children: [],
-                parent: null,
-                internal: {
-                  type: 'FieldFiltersIntrospection',
                   contentDigest: digest(blob),
                 },
                 body: blob,

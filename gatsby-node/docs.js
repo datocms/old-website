@@ -1,9 +1,48 @@
 const p = require('path');
 const groupBy = require('group-by');
-const sortBy = require('sort-by');
-const { parse, stringify } = require('flatted/cjs');
+const { stringify } = require('flatted/cjs');
 const slugs = require("github-slugger")();
 const fieldTypes = require('../src/utils/fieldTypes.json');
+const parser = require('json-schema-ref-parser');
+const sortBy = require('sort-by');
+const fetch = require('node-fetch');
+
+const defaultLinksOrder = ['instances', 'self', 'create', 'update', 'destroy'];
+
+const normalizeSchema = schema => {
+  return Object.entries(schema.properties)
+    .map(([resource, resourceSchema]) => ({
+      id: resource,
+      ...resourceSchema,
+      attributes: resourceSchema.definitions.attributes
+        ? resourceSchema.definitions.attributes.properties
+        : {},
+      links: resourceSchema.links
+        .filter(l => !l.private)
+        .map(link => ({
+          ...link,
+          position: defaultLinksOrder.includes(link.rel)
+            ? defaultLinksOrder.indexOf(link.rel)
+            : 99,
+        }))
+        .sort(sortBy('position')),
+      position: resourceSchema.position || 99,
+    }))
+    .filter(resource => resource.links.length > 0)
+    .sort(sortBy('position'));
+};
+
+const buildCmaResources = async () => {
+  const response = await fetch('https://site-api.datocms.com/docs/site-api-hyperschema.json');
+  const schema = await response.json();
+  const deferencedSchema = await parser.dereference(schema);
+  return normalizeSchema(deferencedSchema);
+};
+
+const buildFieldsIntrospection = async () => {
+  const response = await fetch('https://internal.datocms.com/introspection/field-filters');
+  return await response.json();
+}
 
 const findHtml = (page, pages) => {
   if (page.frontmatter.copyFrom) {
@@ -63,17 +102,16 @@ const query = `
         }
       }
     }
-    rawResources: cmaResources {
-      body
-    }
-    fieldFiltersIntrospection {
-      body
-    }
   }
 `
 
 module.exports = async function docs({ graphql, actions: { createPage } }) {
   const result = await graphql(query);
+  const cmaResources = await buildCmaResources();
+  const {
+    meta: fieldsMetaInfo,
+    field_types: fieldTypesInfo
+  } = await buildFieldsIntrospection();
 
   const rawPages = result.data.files.edges.map(edge => edge.node);
 
@@ -95,18 +133,24 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       }));
 
     const pagePath = path.replace(/^.*\/src/, '').replace(/(\/index)?\.md$/, '');
+    let context = {};
 
     if (pagePath === '/docs/content-delivery-api/filtering') {
       headings = headings.concat(
-        Object.keys(JSON.parse(result.data.fieldFiltersIntrospection.body).meta).map(name => ({
+        Object.keys(fieldsMetaInfo).map(name => ({
           id: `#${slugs.slug(name)}`,
           title: `${name} meta field`,
         })),
-        Object.keys(JSON.parse(result.data.fieldFiltersIntrospection.body).field_types).map(name => ({
+        Object.keys(fieldTypesInfo).map(name => ({
           id: `#${slugs.slug(name)}`,
           title: `${fieldTypes[name]} fields`,
         })),
       );
+
+      context = {
+        fieldsMetaInfo,
+        fieldTypesInfo
+      };
     }
 
     const html = findHtml(rawPage, rawPages);
@@ -121,7 +165,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       position,
       html,
       template,
-      context: {}
+      context,
     };
   });
 
@@ -131,7 +175,8 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
     let pages = byChapter[chapter].sort(sortBy('position'));
 
     if (chapter === 'content-management-api') {
-      const resources = parse(result.data.rawResources.body)
+
+      const resources = cmaResources
         .map((resource, i) => {
 
           slugs.reset();

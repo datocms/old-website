@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-export default function NormalizedLink({ to, activeClassName, children, ...other }) {
+export default function NormalizedLink({
+  to,
+  activeClassName,
+  children,
+  ...other
+}) {
   let finalTo = to;
 
   if (!to.includes('://') && !to.startsWith('#')) {
