@@ -118,6 +118,8 @@ return { code, output };
 export default function RubyExample({ resource, link }) {
   const { code, output } = example(resource, link);
 
+  const outputWithRun = `> ruby example.rb\n\n${output}`;
+
   return (
     <>
       <h6>Example request</h6>
@@ -137,7 +139,7 @@ export default function RubyExample({ resource, link }) {
           className="language-ruby"
           dangerouslySetInnerHTML={
             {
-              __html: Prism.highlight(output, Prism.languages.ruby)
+              __html: Prism.highlight(outputWithRun, Prism.languages.ruby)
             }
           }
         />

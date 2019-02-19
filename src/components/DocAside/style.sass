@@ -26,11 +26,6 @@
   .DocPage__menu
     width: 350px
 
-.DocPage__menu-title
-  +size(big)
-  color: $light-body-color
-  margin-bottom: 10px
-
 .DocPage__menu-back a
   display: block
   margin-top: 30px
@@ -95,6 +90,9 @@
   line-height: 1.7
   font-family: freight-text-pro
 
+  @media screen and (min-width: 900px)
+    font-size: 19px
+
   .table-of-contents
     padding-left: 0
     max-width: none
@@ -126,7 +124,6 @@
   @media screen and (min-width: 900px)
     h1, h2, h3, h4, h5, h6, p, ul, ol
       max-width: 75%
-      font-size: 19px
 
   ul p, ol p
     max-width: none
