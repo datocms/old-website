@@ -1,5 +1,5 @@
 import React from 'react';
-import { withState } from 'recompose'
+import { withState } from 'recompose';
 import './style.sass';
 
 class RealTabs extends React.Component {
@@ -45,7 +45,7 @@ class RealTabs extends React.Component {
       <div
         key="content"
         className="Tabs__content"
-        style={{ display: (index === this.props.activeIndex ? 'block' : 'none') }}
+        style={{ display: index === this.props.activeIndex ? 'block' : 'none' }}
       >
         {child.props.children}
       </div>
@@ -75,4 +75,3 @@ export const Tabs = withState('activeIndex', 'onChange', 0)(RealTabs);
 export function Tab() {
   return null;
 }
-

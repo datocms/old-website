@@ -1,10 +1,10 @@
-import React from 'react'
-import Waypoint from 'react-waypoint'
-import bem from 'utils/bem'
+import React from 'react';
+import Waypoint from 'react-waypoint';
+import bem from 'utils/bem';
 import loadImage from 'image-promise';
-import './style.sass'
+import './style.sass';
 
-const b = bem.lock('LazyImage')
+const b = bem.lock('LazyImage');
 
 export default class LazyImage extends React.Component {
   constructor(props) {
@@ -13,30 +13,29 @@ export default class LazyImage extends React.Component {
   }
 
   handleAppear() {
-    loadImage(`${this.props.image.url}?fm=jpg&q=90`)
-    .then(() => this.setState({ visible: true }));
+    loadImage(`${this.props.image.url}?fm=jpg&q=90`).then(() =>
+      this.setState({ visible: true }),
+    );
   }
 
-  render () {
+  render() {
     const { image, slow, height } = this.props;
 
     return (
-      <Waypoint
-        topOffset="-100px"
-        onEnter={this.handleAppear.bind(this)}
-      >
+      <Waypoint topOffset="-100px" onEnter={this.handleAppear.bind(this)}>
         <div
           className={b()}
           style={{
             height: `${height}px`,
             opacity: this.state.visible ? 1 : 0,
-            backgroundImage: this.state.visible ? `url(${image.url}?fm=jpg&q=90)` : '',
-            transitionDuration: `${image.height / image.width * (slow ? 1.5 : 1)}s, 250ms`,
+            backgroundImage: this.state.visible
+              ? `url(${image.url}?fm=jpg&q=90)`
+              : '',
+            transitionDuration: `${(image.height / image.width) *
+              (slow ? 1.5 : 1)}s, 250ms`,
           }}
         />
       </Waypoint>
     );
   }
 }
-
-

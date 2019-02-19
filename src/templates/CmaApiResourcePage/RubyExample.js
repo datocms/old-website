@@ -1,17 +1,17 @@
 import React from 'react';
 import Prism from 'prismjs';
-import sortObject from 'sort-object'
-import pluralize from 'pluralize'
+import sortObject from 'sort-object';
+import pluralize from 'pluralize';
 
-import 'prismjs/components/prism-ruby'
+import 'prismjs/components/prism-ruby';
 
-import schemaExampleFor from 'utils/schemaExampleFor'
+import schemaExampleFor from 'utils/schemaExampleFor';
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 const methods = {
   instances: 'all',
-  self: 'find'
+  self: 'find',
 };
 
 function example(resource, link, allPages = false) {
@@ -31,7 +31,7 @@ function example(resource, link, allPages = false) {
     params.push(`${placeholder}_id`);
   });
 
-  const fix = string => string.replace(/": /g, '" => ').replace(/null/g, 'nil')
+  const fix = string => string.replace(/": /g, '" => ').replace(/null/g, 'nil');
 
   const deserialize = (data, withId = false) => {
     const id = withId ? { id: data.id } : {};
@@ -40,15 +40,18 @@ function example(resource, link, allPages = false) {
       ...id,
       ...(sortObject(data.attributes) || {}),
       ...sortObject(
-        Object.entries(data.relationships || {}).reduce((acc, [name, value]) => {
-          acc[name] = value.data ? value.data.id : null;
-          return acc;
-        }, {})
-      )
-    }
+        Object.entries(data.relationships || {}).reduce(
+          (acc, [name, value]) => {
+            acc[name] = value.data ? value.data.id : null;
+            return acc;
+          },
+          {},
+        ),
+      ),
+    };
 
     return attrs;
-  }
+  };
 
   if (link.schema) {
     const example = schemaExampleFor(link.schema, !allPages);
@@ -63,10 +66,9 @@ function example(resource, link, allPages = false) {
     }
   }
 
-  const namespace =
-    resource.links.find(l => l.rel === 'instances') ?
-    pluralize(resource.id) :
-    resource.id;
+  const namespace = resource.links.find(l => l.rel === 'instances')
+    ? pluralize(resource.id)
+    : resource.id;
 
   let call = `client.${namespace}.${methods[link.rel] || link.rel}`;
   if (params.length > 0) {
@@ -85,13 +87,17 @@ function example(resource, link, allPages = false) {
     const variable = resource.id;
 
     if (Array.isArray(example.data)) {
-      output = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/": /g, '" => ').replace(/null/g, 'nil');
+      output = JSON.stringify(deserialize(example.data[0], true), null, 2)
+        .replace(/": /g, '" => ')
+        .replace(/null/g, 'nil');
 
       returnCode = `${call}.each do |${variable}|
   puts ${variable}.inspect
 end`;
     } else {
-      output = JSON.stringify(deserialize(example.data, true), null, 2).replace(/": /g, '" => ').replace(/null/g, 'nil');
+      output = JSON.stringify(deserialize(example.data, true), null, 2)
+        .replace(/": /g, '" => ')
+        .replace(/null/g, 'nil');
       returnCode = `${variable} = ${call}
 
 puts ${variable}.inspect
@@ -102,14 +108,17 @@ puts ${variable}.inspect
   if (!allPages) {
     const code = `require "dato"
 client = Dato::Site::Client.new("YOUR-API-KEY")
-${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
+${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${
+      precode.length > 0 ? '\n' : ''
+    }
 ${returnCode}
 ${
-link.targetSchema && link.targetSchema.properties.meta ?
-'\n\n# if you want to fetch all the pages with just one call:\n\n' + example(resource, link, true).code :
-''
-}`
-return { code, output };
+      link.targetSchema && link.targetSchema.properties.meta
+        ? '\n\n# if you want to fetch all the pages with just one call:\n\n' +
+          example(resource, link, true).code
+        : ''
+    }`;
+    return { code, output };
   } else {
     return { code: returnCode, output };
   }
@@ -126,11 +135,9 @@ export default function RubyExample({ resource, link }) {
       <div className="gatsby-highlight">
         <pre className="language-ruby">
           <code
-            dangerouslySetInnerHTML={
-              {
-                __html: Prism.highlight(code, Prism.languages.ruby)
-              }
-            }
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(code, Prism.languages.ruby),
+            }}
           />
         </pre>
       </div>
@@ -138,11 +145,9 @@ export default function RubyExample({ resource, link }) {
       <div className="gatsby-highlight">
         <pre className="language-ruby">
           <code
-            dangerouslySetInnerHTML={
-              {
-                __html: Prism.highlight(outputWithRun, Prism.languages.ruby)
-              }
-            }
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(outputWithRun, Prism.languages.ruby),
+            }}
           />
         </pre>
       </div>

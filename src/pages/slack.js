@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import bem from 'utils/bem'
-import { Wrap, button, Space } from 'blocks'
+import bem from 'utils/bem';
+import { Wrap, button, Space } from 'blocks';
 
-import slackLogo from 'images/slack.svg'
+import slackLogo from 'images/slack.svg';
 import Layout from 'components/Layout';
 
-import './slack.sass'
+import './slack.sass';
 
-const b = bem.lock('SlackPage')
+const b = bem.lock('SlackPage');
 
 class SlackPage extends React.Component {
   constructor(props) {
@@ -34,37 +34,31 @@ class SlackPage extends React.Component {
     new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.id = 'recaptcha-script';
-      script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit';
+      script.src =
+        'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit';
       script.async = 1;
       window.onRecaptchaLoad = () => {
         resolve();
-      }
+      };
       script.onerror = reject;
 
       document.body.appendChild(script);
-    })
-    .then(this.initRecaptcha.bind(this));
+    }).then(this.initRecaptcha.bind(this));
   }
 
   initRecaptcha() {
-    this.widget = window.grecaptcha.render(
-      'g-recaptcha',
-      {
-        sitekey: "6LfYOFUUAAAAALO-ClvqdaiXmTfzxpcOkDzlYrHH",
-        size: "invisible",
-        callback: this.recaptchaCallback.bind(this),
-      }
-    );
+    this.widget = window.grecaptcha.render('g-recaptcha', {
+      sitekey: '6LfYOFUUAAAAALO-ClvqdaiXmTfzxpcOkDzlYrHH',
+      size: 'invisible',
+      callback: this.recaptchaCallback.bind(this),
+    });
   }
 
   recaptchaCallback(response) {
-    fetch(
-      'https://internal.datocms.com/slack/invite',
-      {
-        method: 'POST',
-        body: new FormData(this.form),
-      },
-    )
+    fetch('https://internal.datocms.com/slack/invite', {
+      method: 'POST',
+      body: new FormData(this.form),
+    })
       .then(res => res.json())
       .then(res => {
         if (res.success) {
@@ -94,63 +88,67 @@ class SlackPage extends React.Component {
               <div className={b('logo')}>
                 <img src={slackLogo} alt="Slack" />
               </div>
-              <div className={b('title')}>
-                Join DatoCMS on Slack
-              </div>
+              <div className={b('title')}>Join DatoCMS on Slack</div>
               <div className={b('content')}>
                 Become a part of DatoCMS community, try out new product updates
-                before they're widely released, help us test and improve the product!
+                before they're widely released, help us test and improve the
+                product!
               </div>
               <div className={b('form')}>
-                {
-                  success &&
-                    <div className={b('success')}>
-                      <div className={b('success__title')}>
-                        Awesome, welcome on board! <span role="img" aria-label="Party!">🎉</span>
+                {success && (
+                  <div className={b('success')}>
+                    <div className={b('success__title')}>
+                      Awesome, welcome on board!{' '}
+                      <span role="img" aria-label="Party!">
+                        🎉
+                      </span>
+                    </div>
+                    Check your email for the invitation!
+                  </div>
+                )}
+                {error && (
+                  <div className={b('error')}>
+                    {error === 'already_invited' ? (
+                      <span>
+                        You have already been invited to Slack! Check for an
+                        email from feedback@slack.com.
+                      </span>
+                    ) : (
+                      <span>{error}</span>
+                    )}
+                  </div>
+                )}
+                {success === null && (
+                  <div>
+                    <form
+                      ref={el => (this.form = el)}
+                      onSubmit={this.handleSubmit.bind(this)}
+                    >
+                      <div>
+                        <input
+                          name="email"
+                          type="email"
+                          placeholder="you@yourdomain.com"
+                        />
                       </div>
-                       Check your email for the invitation!
-                    </div>
-                }
-                {
-                  error &&
-                    <div className={b('error')}>
-                      {
-                        error === 'already_invited' ?
-                          <span>
-                            You have already been invited to Slack! Check for an email from feedback@slack.com.
-                          </span>
-                          :
-                          <span>
-                            {error}
-                          </span>
-                      }
-                    </div>
-                }
-                {
-                  success === null &&
-                    <div>
-                      <form ref={el => this.form = el} onSubmit={this.handleSubmit.bind(this)}>
-                        <div>
-                          <input name="email" type="email" placeholder="you@yourdomain.com" />
-                        </div>
-                        <div>
-                          <button
-                            className="button button--red button--normal-big button--expand"
-                            disabled={submitting}
-                          >
-                            Get my invite
-                          </button>
-                          <div id="g-recaptcha" />
-                        </div>
-                      </form>
-                      {
-                        stats &&
-                          <div className={b('stats')}>
-                            <strong>{stats.active}</strong> users online now of <strong>{stats.total}</strong> registered
-                          </div>
-                      }
-                    </div>
-                }
+                      <div>
+                        <button
+                          className="button button--red button--normal-big button--expand"
+                          disabled={submitting}
+                        >
+                          Get my invite
+                        </button>
+                        <div id="g-recaptcha" />
+                      </div>
+                    </form>
+                    {stats && (
+                      <div className={b('stats')}>
+                        <strong>{stats.active}</strong> users online now of{' '}
+                        <strong>{stats.total}</strong> registered
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </Wrap>
@@ -160,4 +158,4 @@ class SlackPage extends React.Component {
   }
 }
 
-export default SlackPage
+export default SlackPage;

@@ -1,20 +1,28 @@
-import React from 'react'
-import './style.sass'
-import { button, Space } from 'blocks'
+import React from 'react';
+import './style.sass';
+import { button, Space } from 'blocks';
 
-import Browser from 'components/Browser'
-import bem from 'utils/bem'
+import Browser from 'components/Browser';
+import bem from 'utils/bem';
 
-const b = bem.lock('HomeHero')
+const b = bem.lock('HomeHero');
 
 class HomeHero extends React.Component {
   componentDidMount() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      )
+    ) {
       this.video.controls = true;
     }
-    this.video.addEventListener('loadedmetadata', function() {
-      this.currentTime = 105;
-    }, false);
+    this.video.addEventListener(
+      'loadedmetadata',
+      function() {
+        this.currentTime = 105;
+      },
+      false,
+    );
   }
 
   render() {
@@ -26,16 +34,19 @@ class HomeHero extends React.Component {
           <div className={b('inner')}>
             <div className={b('text-container')}>
               <div>
-                <h1 className={b('title')}>
-                  {title}
-                </h1>
-                <div className={b('description')}>
-                  {description}
-                </div>
+                <h1 className={b('title')}>{title}</h1>
+                <div className={b('description')}>{description}</div>
                 <Space bottom="2">
                   <div className={b('subscribe')}>
-                    <input className={b('email')} type="email" placeholder="Your email here..." />
-                    <a href="https://dashboard.datocms.com/signup" className={button({ red: true })}>
+                    <input
+                      className={b('email')}
+                      type="email"
+                      placeholder="Your email here..."
+                    />
+                    <a
+                      href="https://dashboard.datocms.com/signup"
+                      className={button({ red: true })}
+                    >
                       Try for free
                     </a>
                   </div>
@@ -43,8 +54,18 @@ class HomeHero extends React.Component {
               </div>
             </div>
             <div className={b('browser')}>
-              <Browser small title="DatoCMS Editor Interface" address="https://myproject.admin.datocms.com/">
-                <video autoPlay loop muted playsInline ref={(el) => this.video = el}>
+              <Browser
+                small
+                title="DatoCMS Editor Interface"
+                address="https://myproject.admin.datocms.com/"
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  ref={el => (this.video = el)}
+                >
                   <source src="/videos/hero.mp4" type="video/mp4" />
                 </video>
               </Browser>
@@ -56,6 +77,4 @@ class HomeHero extends React.Component {
   }
 }
 
-export default HomeHero
-
-
+export default HomeHero;

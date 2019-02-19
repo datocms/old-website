@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 import GraphiQL from 'graphiql';
 import 'whatwg-fetch';
 
-import { Wrap } from 'blocks'
+import { Wrap } from 'blocks';
 
-import Browser from 'components/Browser'
-import 'graphiql/graphiql.css'
-import './style.sass'
+import Browser from 'components/Browser';
+import 'graphiql/graphiql.css';
+import './style.sass';
 
 export default class CustomGraphiQL extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class CustomGraphiQL extends React.Component {
       onEditQuery: null,
       onEditVariables: null,
       onEditOperationName: null,
-      getDefaultFieldNames: null
+      getDefaultFieldNames: null,
     };
   }
 
@@ -39,10 +39,16 @@ export default class CustomGraphiQL extends React.Component {
   render() {
     return (
       <div className="GraphQL">
-        <Browser small title="DatoCMS GraphiQL" address="https://graphql.datocms.com/">
+        <Browser
+          small
+          title="DatoCMS GraphiQL"
+          address="https://graphql.datocms.com/"
+        >
           <div className="GraphQL__inner">
             <GraphiQL
-              ref={c => { this.graphiql = c; }}
+              ref={c => {
+                this.graphiql = c;
+              }}
               {...this.state}
             />
           </div>

@@ -1,15 +1,15 @@
-import React from 'react'
-import bem from 'utils/bem'
+import React from 'react';
+import bem from 'utils/bem';
 import getCookie from 'utils/getCookie';
-import Link from 'components/Link'
+import Link from 'components/Link';
 
-import { button } from 'blocks'
-import './style.sass'
+import { button } from 'blocks';
+import './style.sass';
 
-import logo from 'images/dato_logo_full.svg'
-import hamburger from 'images/hamburger.svg'
+import logo from 'images/dato_logo_full.svg';
+import hamburger from 'images/hamburger.svg';
 
-const b = bem.lock('MobileNavbar')
+const b = bem.lock('MobileNavbar');
 
 class Group extends React.Component {
   constructor(props) {
@@ -26,15 +26,15 @@ class Group extends React.Component {
 
     return (
       <div className={b('group', { active: this.state.active })}>
-        <button className={b('group-handle')} onClick={this.handleToggle.bind(this)}>
+        <button
+          className={b('group-handle')}
+          onClick={this.handleToggle.bind(this)}
+        >
           {name}
         </button>
-        {
-          this.state.active &&
-            <div className={b('group-content')}>
-              {children}
-            </div>
-        }
+        {this.state.active && (
+          <div className={b('group-content')}>{children}</div>
+        )}
       </div>
     );
   }
@@ -47,12 +47,12 @@ class MobileNavbar extends React.Component {
   }
 
   handleToggle(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    document.body.classList.toggle('no-scroll', !this.state.active)
+    document.body.classList.toggle('no-scroll', !this.state.active);
 
     this.setState({
-      active: !this.state.active
+      active: !this.state.active,
     });
   }
 
@@ -96,30 +96,42 @@ class MobileNavbar extends React.Component {
             <a className={b('group-item')} href="/support/" rel="nofollow">
               Open a ticket
             </a>
-            <a className={b('group-item')} href="https://github.com/datocms/feature-requests/issues" rel="nofollow">
+            <a
+              className={b('group-item')}
+              href="https://github.com/datocms/feature-requests/issues"
+              rel="nofollow"
+            >
               Feature requests
             </a>
             <a className={b('group-item')} href="/slack/">
               Slack community
             </a>
           </Group>
-          {
-            loggedInEmail ?
-              <div className={b('actions')}>
-                <a className={button({ red: true, expand: true })} href="https://dashboard.datocms.com">
-                  Open the Dashboard
-                </a>
-              </div>
-              :
-              <div className={b('actions')}>
-                <a className={button({ border: true })} href="https://dashboard.datocms.com/sign_in">
-                  Login
-                </a>
-                <a className={button({ red: true })} href="https://dashboard.datocms.com/signup">
-                  Try it for free
-                </a>
-              </div>
-          }
+          {loggedInEmail ? (
+            <div className={b('actions')}>
+              <a
+                className={button({ red: true, expand: true })}
+                href="https://dashboard.datocms.com"
+              >
+                Open the Dashboard
+              </a>
+            </div>
+          ) : (
+            <div className={b('actions')}>
+              <a
+                className={button({ border: true })}
+                href="https://dashboard.datocms.com/sign_in"
+              >
+                Login
+              </a>
+              <a
+                className={button({ red: true })}
+                href="https://dashboard.datocms.com/signup"
+              >
+                Try it for free
+              </a>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -127,4 +139,3 @@ class MobileNavbar extends React.Component {
 }
 
 export default MobileNavbar;
-

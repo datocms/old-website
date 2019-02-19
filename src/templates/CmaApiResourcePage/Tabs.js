@@ -10,8 +10,8 @@ const store = {
   },
   subscribe(cb) {
     this.listeners.push(cb);
-    return () => this.listeners = this.listeners.filter(c => c !== cb);
-  }
+    return () => (this.listeners = this.listeners.filter(c => c !== cb));
+  },
 };
 
 export class Tabs extends React.Component {
@@ -22,7 +22,7 @@ export class Tabs extends React.Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = store.subscribe((activeIndex) => {
+    this.unsubscribe = store.subscribe(activeIndex => {
       this.setState({ activeIndex });
     });
   }

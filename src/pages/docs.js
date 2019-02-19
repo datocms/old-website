@@ -1,47 +1,37 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Link from 'components/Link'
-import { Wrap, Space } from 'blocks'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Link from 'components/Link';
+import { Wrap, Space } from 'blocks';
+import { HelmetDatoCms } from 'gatsby-source-datocms';
 
-import bem from 'utils/bem'
+import bem from 'utils/bem';
 
-import './docs.sass'
+import './docs.sass';
 
 import Search from 'components/Search';
 import Layout from 'components/Layout';
 
-const b = bem.lock('LearnPage')
-const g = bem.lock('Guide')
+const b = bem.lock('LearnPage');
+const g = bem.lock('Guide');
 
-const Guide = ({ title, children, description, cta, link }) => (
-  link ?
+const Guide = ({ title, children, description, cta, link }) =>
+  link ? (
     <Link className={g({ guide: !children })} to={link}>
-      <div className={g('title')}>
-        {title}
-      </div>
+      <div className={g('title')}>{title}</div>
       <div className={g('description')}>
         {children || description}
-        {
-          !children &&
-            <div className={g('read')}>
-              { cta || 'Read the guide' }
-            </div>
-        }
+        {!children && (
+          <div className={g('read')}>{cta || 'Read the guide'}</div>
+        )}
       </div>
     </Link>
-    :
+  ) : (
     <div className={g()}>
-      <div className={g('image')}>
-      </div>
-      <div className={g('title')}>
-        {title}
-      </div>
-      <div className={g('description')}>
-        {children || description}
-      </div>
+      <div className={g('image')} />
+      <div className={g('title')}>{title}</div>
+      <div className={g('description')}>{children || description}</div>
     </div>
-)
+  );
 
 export default class LearnPage extends React.Component {
   render() {
@@ -50,11 +40,10 @@ export default class LearnPage extends React.Component {
         <Space top="10">
           <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
           <div className={b()}>
-            <h1 className={b('title')}>
-              Documentation
-            </h1>
+            <h1 className={b('title')}>Documentation</h1>
             <p className={b('subtitle')}>
-              Get the most out of DatoCMS following our guides, tutorials and demos
+              Get the most out of DatoCMS following our guides, tutorials and
+              demos
             </p>
 
             <Wrap>
@@ -64,9 +53,7 @@ export default class LearnPage extends React.Component {
             <div>
               <div className={b('section')}>
                 <Wrap>
-                  <h3 className={b('section-title')}>
-                    The Basics
-                  </h3>
+                  <h3 className={b('section-title')}>The Basics</h3>
 
                   <div className={b('section-items')}>
                     <Guide
@@ -74,30 +61,43 @@ export default class LearnPage extends React.Component {
                       description="Learn how DatoCMS works and how you can build your next administrative area."
                       link="/docs/introduction/"
                     />
-                    <Guide
-                      title="API Reference"
-                    >
+                    <Guide title="API Reference">
                       <Space bottom={2}>
                         <p>
-                          We offer a complete, strong-consistent API that let's you to programmatically build any kind of product.
+                          We offer a complete, strong-consistent API that let's
+                          you to programmatically build any kind of product.
                         </p>
                       </Space>
                       <ul className="fullwidth">
-                        <li><Link to="/docs/content-delivery-api/">Content Delivery API</Link></li>
-                        <li><Link to="/docs/content-management-api/">Content Management API</Link></li>
+                        <li>
+                          <Link to="/docs/content-delivery-api/">
+                            Content Delivery API
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/content-management-api/">
+                            Content Management API
+                          </Link>
+                        </li>
                       </ul>
                     </Guide>
-                    <Guide
-                      title="Import & Export"
-                    >
+                    <Guide title="Import & Export">
                       <Space bottom={2}>
                         <p>
-                          Use our API to import existing content from external sources, or implement a full-backup strategy in no time.
+                          Use our API to import existing content from external
+                          sources, or implement a full-backup strategy in no
+                          time.
                         </p>
                       </Space>
                       <ul className="fullwidth">
-                        <li><Link to="/docs/import/">Importing data</Link></li>
-                        <li><Link to="/docs/backups/">Making offline backups</Link></li>
+                        <li>
+                          <Link to="/docs/import/">Importing data</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/backups/">
+                            Making offline backups
+                          </Link>
+                        </li>
                       </ul>
                     </Guide>
                   </div>
@@ -106,37 +106,52 @@ export default class LearnPage extends React.Component {
 
               <div className={b('section')}>
                 <Wrap>
-                  <h3 className={b('section-title')}>
-                    Examples
-                  </h3>
+                  <h3 className={b('section-title')}>Examples</h3>
 
                   <div className={b('section-items')}>
-                    {
-                      this.props.data.demoCategories.edges.map(({ node: cat }) => (
-                        <Guide
-                          key={cat.id}
-                          title={`${cat.name} examples`}
-                        >
+                    {this.props.data.demoCategories.edges.map(
+                      ({ node: cat }) => (
+                        <Guide key={cat.id} title={`${cat.name} examples`}>
                           <Space bottom={2}>
                             <p>
-                              {cat.description} (<a href={cat.demoUrl} rel="noopener noreferrer" target="_blank">see it live</a>)
+                              {cat.description} (
+                              <a
+                                href={cat.demoUrl}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                              >
+                                see it live
+                              </a>
+                              )
                             </p>
                           </Space>
                           <ul>
-                            {
-                              cat.templates.map((template) => (
-                                <li key={template.code}>
-                                  <a target="_blank" rel="noopener noreferrer" href={`https://dashboard.datocms.com/projects/new-from-template/${cat.code}/${template.code}`}>
-                                    <img alt={template.technology.name} src={(template.technology.squareLogo || template.technology.logo).url} />
-                                    {template.technology.name}
-                                  </a>
-                                </li>
-                              ))
-                            }
+                            {cat.templates.map(template => (
+                              <li key={template.code}>
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href={`https://dashboard.datocms.com/projects/new-from-template/${
+                                    cat.code
+                                  }/${template.code}`}
+                                >
+                                  <img
+                                    alt={template.technology.name}
+                                    src={
+                                      (
+                                        template.technology.squareLogo ||
+                                        template.technology.logo
+                                      ).url
+                                    }
+                                  />
+                                  {template.technology.name}
+                                </a>
+                              </li>
+                            ))}
                           </ul>
                         </Guide>
-                      ))
-                    }
+                      ),
+                    )}
                   </div>
                 </Wrap>
               </div>
@@ -148,39 +163,67 @@ export default class LearnPage extends React.Component {
                   </h3>
 
                   <div className={b('section-items')}>
-                    <Guide
-                      title="Static website generators"
-                    >
+                    <Guide title="Static website generators">
                       <Space bottom={2}>
                         <p>
-                          DatoCMS is the best companion if you're building a static website:
+                          DatoCMS is the best companion if you're building a
+                          static website:
                         </p>
                       </Space>
                       <ul>
-                        <li><Link to="/docs/static-websites/">Introduction</Link></li>
-                        <li><Link to="/docs/jekyll/">Jekyll</Link></li>
-                        <li><Link to="/docs/gatsby/">Gatsby</Link></li>
-                        <li><Link to="/docs/middleman/">Middleman</Link></li>
-                        <li><Link to="/docs/hugo/">Hugo</Link></li>
-                        <li><Link to="/docs/metalsmith/">Metalsmith</Link></li>
-                        <li><Link to="/docs/other/">Other generators</Link></li>
+                        <li>
+                          <Link to="/docs/static-websites/">Introduction</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/jekyll/">Jekyll</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/gatsby/">Gatsby</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/middleman/">Middleman</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/hugo/">Hugo</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/metalsmith/">Metalsmith</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/other/">Other generators</Link>
+                        </li>
                       </ul>
                     </Guide>
-                    <Guide
-                      title="Deploying"
-                    >
+                    <Guide title="Deploying">
                       <Space bottom={2}>
                         <p>
-                          You can also configure DatoCMS to trigger a rebuild of your website:
+                          You can also configure DatoCMS to trigger a rebuild of
+                          your website:
                         </p>
                       </Space>
                       <ul>
-                        <li><Link to="/docs/deployment/general-concepts/">General concepts</Link></li>
-                        <li><Link to="/docs/deployment/netlify/">Netlify</Link></li>
-                        <li><Link to="/docs/deployment/travis/">Travis</Link></li>
-                        <li><Link to="/docs/deployment/gitlab/">Gitlab</Link></li>
-                        <li><Link to="/docs/deployment/circleci/">CircleCI</Link></li>
-                        <li><Link to="/docs/deployment/custom/">Custom webhooks</Link></li>
+                        <li>
+                          <Link to="/docs/deployment/general-concepts/">
+                            General concepts
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/deployment/netlify/">Netlify</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/deployment/travis/">Travis</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/deployment/gitlab/">Gitlab</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/deployment/circleci/">CircleCI</Link>
+                        </li>
+                        <li>
+                          <Link to="/docs/deployment/custom/">
+                            Custom webhooks
+                          </Link>
+                        </li>
                       </ul>
                     </Guide>
                     <Guide
@@ -191,45 +234,44 @@ export default class LearnPage extends React.Component {
                   </div>
                 </Wrap>
               </div>
-
             </div>
           </div>
         </Space>
       </Layout>
-    )
+    );
   }
 }
 
 export const query = graphql`
-query DocsPageQuery {
-  page: datoCmsLearnPage {
-    seoMetaTags {
-      ...GatsbyDatoCmsSeoMetaTags
+  query DocsPageQuery {
+    page: datoCmsLearnPage {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
     }
-  }
-  demoCategories: allDatoCmsTemplateCategory(sort:{fields:[position]}) {
-    edges {
-      node {
-        id
-        name
-        code
-        description
-        demoUrl
-        templates {
+    demoCategories: allDatoCmsTemplateCategory(sort: { fields: [position] }) {
+      edges {
+        node {
+          id
           name
           code
-          technology {
+          description
+          demoUrl
+          templates {
             name
-            logo {
-              url
-            }
-            squareLogo {
-              url
+            code
+            technology {
+              name
+              logo {
+                url
+              }
+              squareLogo {
+                url
+              }
             }
           }
         }
       }
     }
   }
-}
-`
+`;

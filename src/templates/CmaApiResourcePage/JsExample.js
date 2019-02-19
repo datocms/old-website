@@ -1,16 +1,16 @@
 import React from 'react';
 import Prism from 'prismjs';
-import humps from 'humps'
-import sortObject from 'sort-object'
-import pluralize from 'pluralize'
+import humps from 'humps';
+import sortObject from 'sort-object';
+import pluralize from 'pluralize';
 
-import schemaExampleFor from 'utils/schemaExampleFor'
+import schemaExampleFor from 'utils/schemaExampleFor';
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 const methods = {
   instances: 'all',
-  self: 'find'
+  self: 'find',
 };
 
 function example(resource, link, allPages = false) {
@@ -37,14 +37,17 @@ function example(resource, link, allPages = false) {
       ...id,
       ...sortObject(humps.camelizeKeys(data.attributes) || {}),
       ...sortObject(
-        Object.entries(data.relationships || {}).reduce((acc, [name, value]) => {
-          acc[humps.camelize(name)] = value.data ? value.data.id : null;
-          return acc;
-        }, {})
-      )
-    }
+        Object.entries(data.relationships || {}).reduce(
+          (acc, [name, value]) => {
+            acc[humps.camelize(name)] = value.data ? value.data.id : null;
+            return acc;
+          },
+          {},
+        ),
+      ),
+    };
     return attrs;
-  }
+  };
 
   if (link.schema) {
     const example = schemaExampleFor(link.schema, !allPages);
@@ -87,29 +90,30 @@ ${multipleVariable}.forEach((${singleVariable}) => {
     returnCode = `.then(() => {
   console.log('Done!');
 })`;
-
   }
 
-  const namespace =
-    resource.links.find(l => l.rel === 'instances') ?
-      humps.camelize(pluralize(resource.id)) :
-      humps.camelize(resource.id);
+  const namespace = resource.links.find(l => l.rel === 'instances')
+    ? humps.camelize(pluralize(resource.id))
+    : humps.camelize(resource.id);
 
   if (!allPages) {
     const code = `const SiteClient = require('datocms-client').SiteClient;
 const client = new SiteClient("YOUR-API-KEY");
-${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n' : ''}
+${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${
+      precode.length > 0 ? '\n' : ''
+    }
 client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
 ${returnCode}
 .catch((error) => {
   console.log(error);
 });
 ${
-link.targetSchema && link.targetSchema.properties.meta ?
-  '\n\n// if you want to fetch all the pages with just one call:\n' + example(resource, link, true) :
-  ''
-}`;
-    return {code, output};
+      link.targetSchema && link.targetSchema.properties.meta
+        ? '\n\n// if you want to fetch all the pages with just one call:\n' +
+          example(resource, link, true)
+        : ''
+    }`;
+    return { code, output };
   } else {
     const code = `
 client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
@@ -119,7 +123,7 @@ ${returnCode}`;
 }
 
 export default function JsExample({ resource, link }) {
-  const { code, output} = example(resource, link);
+  const { code, output } = example(resource, link);
 
   const outputWithRun = `> node example.js\n\n${output}`;
 
@@ -129,11 +133,9 @@ export default function JsExample({ resource, link }) {
       <div className="gatsby-highlight">
         <pre className="language-javascript">
           <code
-            dangerouslySetInnerHTML={
-              {
-                __html: Prism.highlight(code, Prism.languages.javascript)
-              }
-            }
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(code, Prism.languages.javascript),
+            }}
           />
         </pre>
       </div>
@@ -141,11 +143,12 @@ export default function JsExample({ resource, link }) {
       <div className="gatsby-highlight">
         <pre className="language-javascript">
           <code
-            dangerouslySetInnerHTML={
-              {
-                __html: Prism.highlight(outputWithRun, Prism.languages.javascript)
-              }
-            }
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(
+                outputWithRun,
+                Prism.languages.javascript,
+              ),
+            }}
           />
         </pre>
       </div>

@@ -2,5 +2,7 @@ import md5 from 'min-md5';
 import queryString from 'qs';
 
 export default function gravatar(email, options) {
-  return `https://secure.gravatar.com/avatar/${md5(email)}?${queryString.stringify(options)}`;
+  return `https://secure.gravatar.com/avatar/${md5(
+    email,
+  )}?${queryString.stringify(options)}`;
 }

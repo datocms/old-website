@@ -1,13 +1,13 @@
-import React from 'react'
-import Link from 'components/Link'
-import bem from 'utils/bem'
-import Helmet from 'react-helmet'
-import logo from 'images/dato_logo_full.svg'
+import React from 'react';
+import Link from 'components/Link';
+import bem from 'utils/bem';
+import Helmet from 'react-helmet';
+import logo from 'images/dato_logo_full.svg';
 import { parse } from 'flatted/cjs';
 
-import './style.sass'
+import './style.sass';
 
-const b = bem.lock('CmaPage')
+const b = bem.lock('CmaPage');
 
 export default class CmaPage extends React.Component {
   renderMenu() {
@@ -16,25 +16,23 @@ export default class CmaPage extends React.Component {
     return (
       <div>
         <ul>
-          {
-            pageContext.menuItems.map((item) => (
-              <li key={item.path} className={b('menu__item')}>
-                <Link to={item.path}>{item.title}</Link>
-              </li>
-            ))
-          }
+          {pageContext.menuItems.map(item => (
+            <li key={item.path} className={b('menu__item')}>
+              <Link to={item.path}>{item.title}</Link>
+            </li>
+          ))}
         </ul>
         <div className={b('menu__back')}>
-          <Link to="/docs">
-            ‹ Go back to docs
-          </Link>
+          <Link to="/docs">‹ Go back to docs</Link>
         </div>
       </div>
     );
   }
 
   render() {
-    const { pageContext: { title, html, rawResource } } = this.props;
+    const {
+      pageContext: { title, html, rawResource },
+    } = this.props;
 
     const resource = rawResource && parse(rawResource);
 
@@ -50,14 +48,8 @@ export default class CmaPage extends React.Component {
           {this.renderMenu()}
         </div>
         <div className={b('content')}>
-          {
-            html &&
-              <div dangerouslySetInnerHTML={{ __html: html }} />
-          }
-          {
-            resource &&
-              resource.title
-          }
+          {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
+          {resource && resource.title}
         </div>
       </div>
     );

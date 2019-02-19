@@ -11,9 +11,7 @@ export default function schemaExampleFor(schema, pagination = true) {
     return schemaExampleFor(schema.anyOf[0]);
   }
 
-  const type = Array.isArray(schema.type) ?
-    schema.type[0] :
-    schema.type;
+  const type = Array.isArray(schema.type) ? schema.type[0] : schema.type;
 
   if (type === 'object') {
     if (schema.oneOf) {
@@ -28,15 +26,17 @@ export default function schemaExampleFor(schema, pagination = true) {
       if (!pagination && property.match(/^page/)) {
         return acc;
       }
-      return Object.assign({}, acc, { [property]: schemaExampleFor(schema.properties[property]) });
+      return Object.assign({}, acc, {
+        [property]: schemaExampleFor(schema.properties[property]),
+      });
     }, {});
   } else if (type === 'array') {
     if (schema.items.oneOf) {
-      return schema.items.oneOf.map((s) => schemaExampleFor(s));
+      return schema.items.oneOf.map(s => schemaExampleFor(s));
     }
-    return [ schemaExampleFor(schema.items) ];
+    return [schemaExampleFor(schema.items)];
   } else if (type === 'string') {
-    return "";
+    return '';
   } else if (type === 'boolean') {
     return true;
   } else if (type === 'integer') {

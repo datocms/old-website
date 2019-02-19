@@ -1,22 +1,22 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Link from 'components/Link'
-import { Wrap, Space } from 'blocks'
-import AutoupdateTime from 'components/AutoupdateTime'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Link from 'components/Link';
+import { Wrap, Space } from 'blocks';
+import AutoupdateTime from 'components/AutoupdateTime';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
-import Sticky from 'react-stickynode'
-import gravatar from 'utils/gravatar'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Sticky from 'react-stickynode';
+import gravatar from 'utils/gravatar';
+import { HelmetDatoCms } from 'gatsby-source-datocms';
 
-import Layout from 'components/Layout'
-import bem from 'utils/bem'
+import Layout from 'components/Layout';
+import bem from 'utils/bem';
 
-import './style.sass'
+import './style.sass';
 
-const b = bem.lock('PluginPage')
+const b = bem.lock('PluginPage');
 
-const getHost = (url) => {
+const getHost = url => {
   if (typeof document !== 'undefined') {
     const link = document.createElement('a');
     link.href = url;
@@ -24,16 +24,14 @@ const getHost = (url) => {
   } else {
     return require('url').parse(url).hostname;
   }
-}
+};
 
 function intersperse(arr, sep) {
   if (arr.length === 0) {
     return [];
   }
 
-  return arr.slice(1).reduce((xs, x) => (
-    xs.concat([sep, x])
-  ), [arr[0]]);
+  return arr.slice(1).reduce((xs, x) => xs.concat([sep, x]), [arr[0]]);
 }
 
 export default class PluginPage extends React.Component {
@@ -47,37 +45,41 @@ export default class PluginPage extends React.Component {
           <Wrap>
             <HelmetDatoCms seo={plugin.seoMetaTags} />
             <div className={b('header')}>
-              {
-                plugin.coverImage &&
-                  <div
-                    className={b('avatar')}
-                    style={{ backgroundImage: `url(${plugin.coverImage.url}?w=90&h=90&fit=crop)` }}
-                  />
-              }
-              <h1 className={b('title')}>
-                {plugin.title}
-              </h1>
-              <h1  className={b('description')}>
-                {plugin.description}
-              </h1>
+              {plugin.coverImage && (
+                <div
+                  className={b('avatar')}
+                  style={{
+                    backgroundImage: `url(${
+                      plugin.coverImage.url
+                    }?w=90&h=90&fit=crop)`,
+                  }}
+                />
+              )}
+              <h1 className={b('title')}>{plugin.title}</h1>
+              <h1 className={b('description')}>{plugin.description}</h1>
             </div>
             <div className={b()}>
-              <div className={b('body')}> {
-                  plugin.previewImage &&
-                    <div className={b('preview-block')}>
-                      <div className={b('preview-block-title')}>
-                        Plugin preview
-                      </div>
-                      <div className={b('preview-block-image')}>
-                        <div style={{ paddingTop: `${(plugin.previewImage.height / plugin.previewImage.width * 100)}%` }} />
-                        <img alt="Preview" src={plugin.previewImage.url} />
-                      </div>
+              <div className={b('body')}>
+                {' '}
+                {plugin.previewImage && (
+                  <div className={b('preview-block')}>
+                    <div className={b('preview-block-title')}>
+                      Plugin preview
                     </div>
-                }
-                <div className={b('readme-block')}>
-                  <div className={b('readme-block-title')}>
-                    Readme
+                    <div className={b('preview-block-image')}>
+                      <div
+                        style={{
+                          paddingTop: `${(plugin.previewImage.height /
+                            plugin.previewImage.width) *
+                            100}%`,
+                        }}
+                      />
+                      <img alt="Preview" src={plugin.previewImage.url} />
+                    </div>
                   </div>
+                )}
+                <div className={b('readme-block')}>
+                  <div className={b('readme-block-title')}>Readme</div>
                   <div
                     className={b('readme-block-readme')}
                     dangerouslySetInnerHTML={{ __html: plugin.readme.md.html }}
@@ -88,7 +90,9 @@ export default class PluginPage extends React.Component {
                 <Sticky top={50} bottomBoundary={`.PluginPage`}>
                   <div href="" className={b('install')}>
                     <a
-                      href={`https://dashboard.datocms.com/projects/redirect-to-project?path=/admin/plugins/install/${plugin.packageName}`}
+                      href={`https://dashboard.datocms.com/projects/redirect-to-project?path=/admin/plugins/install/${
+                        plugin.packageName
+                      }`}
                       className="button button--expand button--normal-big button--red"
                     >
                       Install
@@ -98,59 +102,68 @@ export default class PluginPage extends React.Component {
                     <div className={b('info-group')}>
                       <p className={b('info')}>
                         <strong>NPM package name</strong>
-                        <a rel="noopener noreferrer" target="_blank" href={`https://www.npmjs.com/package/${plugin.packageName}`}>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href={`https://www.npmjs.com/package/${
+                            plugin.packageName
+                          }`}
+                        >
                           {plugin.packageName}
                         </a>
                       </p>
                       <p className={b('info')}>
                         <strong>Published by</strong>
-                        <img alt="Author gravatar" src={gravatar(plugin.author.email, { s: 40, d: 'retro' })} />
+                        <img
+                          alt="Author gravatar"
+                          src={gravatar(plugin.author.email, {
+                            s: 40,
+                            d: 'retro',
+                          })}
+                        />
                         {plugin.author.name}
                       </p>
-                      {
-                        plugin.homepage &&
-                          <p className={b('info')}>
-                            <strong>Homepage</strong>
-                            <a rel="noopener noreferrer" target="_blank" href={plugin.homepage}>{getHost(plugin.homepage)}</a>
-                          </p>
-                      }
+                      {plugin.homepage && (
+                        <p className={b('info')}>
+                          <strong>Homepage</strong>
+                          <a
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            href={plugin.homepage}
+                          >
+                            {getHost(plugin.homepage)}
+                          </a>
+                        </p>
+                      )}
                     </div>
                     <div className={b('info-group')}>
                       <p className={b('info')}>
                         <strong>Plugin type</strong>
-                        <Link to={`/plugins/${plugin.pluginType.code}`}>{plugin.pluginType.name}</Link>
+                        <Link to={`/plugins/${plugin.pluginType.code}`}>
+                          {plugin.pluginType.name}
+                        </Link>
                       </p>
                       <p className={b('info')}>
                         <strong>Compatible with fields</strong>
-                        {
-                          intersperse(
-                            plugin.fieldTypes.map(f => (
-                              <Link
-                                key={f.code}
-                                to={`/plugins/${f.code}`}
-                              >
-                                {f.name}
-                              </Link>
-                            )),
-                            ', '
-                          )
-                        }
+                        {intersperse(
+                          plugin.fieldTypes.map(f => (
+                            <Link key={f.code} to={`/plugins/${f.code}`}>
+                              {f.name}
+                            </Link>
+                          )),
+                          ', ',
+                        )}
                       </p>
                       <p className={b('info')}>
                         <strong>Tags</strong>
-                        {
-                          intersperse(
-                            plugin.tags.map(f => (
-                              <Link
-                                key={f.tag}
-                                to={`/plugins/${f.tag}`}
-                              >
-                                #{f.tag}
-                              </Link>
-                            )),
-                            ', '
-                          )
-                        }
+                        {intersperse(
+                          plugin.tags.map(f => (
+                            <Link key={f.tag} to={`/plugins/${f.tag}`}>
+                              #{f.tag}
+                            </Link>
+                          )),
+                          ', ',
+                        )}
                       </p>
                     </div>
                     <div className={b('info-group')}>
@@ -186,10 +199,15 @@ export const query = graphql`
       }
       packageName
       version
-      author { name email }
+      author {
+        name
+        email
+      }
       homepage
       description
-      tags { tag }
+      tags {
+        tag
+      }
       title
       coverImage {
         url
@@ -199,8 +217,14 @@ export const query = graphql`
         width
         height
       }
-      fieldTypes { name code }
-      pluginType { name code }
+      fieldTypes {
+        name
+        code
+      }
+      pluginType {
+        name
+        code
+      }
       releasedAt
       lastUpdate
       installs
@@ -211,5 +235,4 @@ export const query = graphql`
       }
     }
   }
-`
-
+`;

@@ -1,16 +1,16 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Link from 'components/Link'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Link from 'components/Link';
 import groupBy from 'group-by';
 import cartesianProduct from 'cartesian-product';
 
 import Layout from 'components/Layout';
-import bem from 'utils/bem'
-import { Wrap, Space } from 'blocks'
+import bem from 'utils/bem';
+import { Wrap, Space } from 'blocks';
 
-import './integrations.sass'
+import './integrations.sass';
 
-const b = bem.lock('IntegrationsPage')
+const b = bem.lock('IntegrationsPage');
 
 class IntegrationsPage extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class IntegrationsPage extends React.Component {
       .map(integration => ({
         slug: integration.slug,
         type: integration.type.slug,
-        name: integration.name
+        name: integration.name,
       }));
 
     const byType = groupBy(integrations, 'type');
@@ -31,44 +31,46 @@ class IntegrationsPage extends React.Component {
         <Space both="10">
           <Wrap>
             <div className={b()}>
-              <div className={b('title')}>
-                Integrations
-              </div>
+              <div className={b('title')}>Integrations</div>
               <div className={b('content')}>
-                {
-                  byType['static-generator'].map(({ slug, name }, i) => (
-                    <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
-                      {name}
-                    </Link>
-                  ))
-                }
+                {byType['static-generator'].map(({ slug, name }, i) => (
+                  <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
+                    {name}
+                  </Link>
+                ))}
 
-                {
-                  byType['language'].map(({ slug, name }, i) => (
-                    <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
-                      {name}
-                    </Link>
-                  ))
-                }
+                {byType['language'].map(({ slug, name }, i) => (
+                  <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
+                    {name}
+                  </Link>
+                ))}
 
-                {
-                  byType['framework'].map(({ slug, name }, i) => (
-                    <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
-                      {name}
-                    </Link>
-                  ))
-                }
+                {byType['framework'].map(({ slug, name }, i) => (
+                  <Link className={b('link')} key={i} to={`/cms/${slug}/`}>
+                    {name}
+                  </Link>
+                ))}
 
-                {
-                  cartesianProduct([
-                    byType['static-generator'],
-                    byType['cdn'].concat(byType['git']).concat(byType['ci'])
-                  ]).map(([{ slug: ssgSlug, name: ssgName }, { slug: cdnSlug, name: cdnName }], i) => (
-                    <Link className={b('link')} key={i} to={`/cms/${ssgSlug}/${cdnSlug}/`}>
+                {cartesianProduct([
+                  byType['static-generator'],
+                  byType['cdn'].concat(byType['git']).concat(byType['ci']),
+                ]).map(
+                  (
+                    [
+                      { slug: ssgSlug, name: ssgName },
+                      { slug: cdnSlug, name: cdnName },
+                    ],
+                    i,
+                  ) => (
+                    <Link
+                      className={b('link')}
+                      key={i}
+                      to={`/cms/${ssgSlug}/${cdnSlug}/`}
+                    >
                       {ssgName} + {cdnName}
                     </Link>
-                  ))
-                }
+                  ),
+                )}
               </div>
             </div>
           </Wrap>
@@ -78,21 +80,20 @@ class IntegrationsPage extends React.Component {
   }
 }
 
-export default IntegrationsPage
+export default IntegrationsPage;
 
 export const query = graphql`
-query IntegrationsQuery {
-  integrations: allDatoCmsIntegration {
-    edges {
-      node {
-        slug
-        name
-        type: integrationType {
+  query IntegrationsQuery {
+    integrations: allDatoCmsIntegration {
+      edges {
+        node {
           slug
+          name
+          type: integrationType {
+            slug
+          }
         }
       }
     }
   }
-}
-`
-
+`;

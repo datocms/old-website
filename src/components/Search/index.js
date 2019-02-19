@@ -1,13 +1,13 @@
-import React from 'react'
-import bem from 'utils/bem'
-import DatoCmsSearch from 'datocms-search/dist/datocms-search.base'
-import AutoSuggest from 'react-autosuggest'
+import React from 'react';
+import bem from 'utils/bem';
+import DatoCmsSearch from 'datocms-search/dist/datocms-search.base';
+import AutoSuggest from 'react-autosuggest';
 
-import './style.sass'
+import './style.sass';
 
 const token = 'd46fe8134ea916b42af4eaa0d06109';
 
-const b = bem.lock('Search')
+const b = bem.lock('Search');
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -15,27 +15,25 @@ export default class Search extends React.Component {
     this.state = { value: '', suggestions: [], isLoading: false };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   handleChange(event, { newValue, method }) {
     this.setState({
-      value: newValue
+      value: newValue,
     });
   }
 
   handleSuggestionsFetchRequested({ value }) {
-    const client = new DatoCmsSearch(token, "production");
+    const client = new DatoCmsSearch(token, 'production');
 
-    client.search(value)
-    .then((response) => {
+    client.search(value).then(response => {
       this.setState({ suggestions: response.results });
-    })
+    });
   }
 
   handleSuggestionsClearRequested() {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   }
 
@@ -52,7 +50,9 @@ export default class Search extends React.Component {
       <div className={b('suggestion')}>
         <div
           className={b('suggestion-title')}
-          dangerouslySetInnerHTML={{ __html: suggestion.title.replace(/ - DatoCMS$/, '') }}
+          dangerouslySetInnerHTML={{
+            __html: suggestion.title.replace(/ - DatoCMS$/, ''),
+          }}
         />
         <div
           className={b('suggestion-url')}
@@ -70,7 +70,7 @@ export default class Search extends React.Component {
     const { value, suggestions } = this.state;
 
     const inputProps = {
-      placeholder: "Search something in our docs",
+      placeholder: 'Search something in our docs',
       value,
       onChange: this.handleChange.bind(this),
     };
@@ -79,15 +79,18 @@ export default class Search extends React.Component {
       <div className={b()}>
         <AutoSuggest
           suggestions={suggestions}
-          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(this)}
-          onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(this)}
+          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(
+            this,
+          )}
+          onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(
+            this,
+          )}
           onSuggestionSelected={this.handleSelectSuggestion.bind(this)}
           getSuggestionValue={this.handleGetSuggestionValue.bind(this)}
           renderSuggestion={this.renderSuggestion.bind(this)}
-          inputProps={inputProps} 
+          inputProps={inputProps}
         />
       </div>
     );
   }
 }
-

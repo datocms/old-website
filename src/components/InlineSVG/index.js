@@ -1,5 +1,5 @@
-import React from 'react'
-import md5 from 'blueimp-md5'
+import React from 'react';
+import md5 from 'blueimp-md5';
 
 export default class InlineSVG extends React.Component {
   constructor(props) {
@@ -12,13 +12,15 @@ export default class InlineSVG extends React.Component {
     const url = `/features/${md5(image.url)}.svg`;
 
     fetch(url)
-    .then(response => response.text())
-    .then(body => this.setState({ imageBody: body }));
+      .then(response => response.text())
+      .then(body => this.setState({ imageBody: body }));
   }
 
   render() {
-    return this.state.imageBody ?
-      <div dangerouslySetInnerHTML={{ __html: this.state.imageBody }} /> :
-      <div />;
+    return this.state.imageBody ? (
+      <div dangerouslySetInnerHTML={{ __html: this.state.imageBody }} />
+    ) : (
+      <div />
+    );
   }
 }
