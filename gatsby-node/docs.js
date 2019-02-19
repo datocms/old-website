@@ -163,8 +163,8 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
     const menuItems = pages.map(({ path, title, headings }) => ({ path, title, headings }));
 
     pages.forEach((page, index) => {
-      const prevPage = index > 0 && menuItems[index - 1];
-      const nextPage = index < menuItems.length - 1 && menuItems[index + 1];
+      const prevPage = index > 0 ? menuItems[index - 1] : null;
+      const nextPage = index < menuItems.length - 1 ? menuItems[index + 1] : null;
 
       createPage({
         path: page.path,
