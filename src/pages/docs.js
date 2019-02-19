@@ -5,7 +5,6 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import bem from 'utils/bem'
 
-import 'prismjs/themes/prism-okaidia.css'
 import './docs.sass'
 
 import Search from 'components/Search';

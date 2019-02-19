@@ -127,25 +127,27 @@ export default function JsExample({ resource, link }) {
     <>
       <h6>Example request</h6>
       <div className="gatsby-highlight">
-        <pre
-          className="language-javascript"
-          dangerouslySetInnerHTML={
-            {
-              __html: Prism.highlight(code, Prism.languages.javascript)
+        <pre className="language-javascript">
+          <code
+            dangerouslySetInnerHTML={
+              {
+                __html: Prism.highlight(code, Prism.languages.javascript)
+              }
             }
-          }
-        />
+          />
+        </pre>
       </div>
       <h6>Result</h6>
       <div className="gatsby-highlight">
-        <pre
-          className="language-javascript"
-          dangerouslySetInnerHTML={
-            {
-              __html: Prism.highlight(outputWithRun, Prism.languages.javascript)
+        <pre className="language-javascript">
+          <code
+            dangerouslySetInnerHTML={
+              {
+                __html: Prism.highlight(outputWithRun, Prism.languages.javascript)
+              }
             }
-          }
-        />
+          />
+        </pre>
       </div>
     </>
   );

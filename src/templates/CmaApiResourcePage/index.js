@@ -17,6 +17,7 @@ export default class CmaApiResourcePage extends React.Component {
         {
           resource.links.map(link => (
             <ResourceMethod
+              key={link.title}
               resource={resource}
               link={link}
             />

@@ -17,13 +17,13 @@ The following table lists all headers returned in every response by the Content 
   </thead>
   <tbody>
     <tr>
-      <th><code>X-RateLimit-Limit</code></th><td>The maximum amount of requests which can be made in 3 seconds.</td>
+      <td><code>X-RateLimit-Limit</code></td><td>The maximum amount of requests which can be made in 3 seconds.</td>
     </tr>
     <tr>
-      <th><code>X-RateLimit-Remaining</code></th><td>The remaining amount of requests which can be made until the next 3-seconds reset.</td>
+      <td><code>X-RateLimit-Remaining</code></td><td>The remaining amount of requests which can be made until the next 3-seconds reset.</td>
     </tr>
     <tr>
-      <th><code>X-RateLimit-Reset</code></th><td>If present, indicates the number of seconds until the next request can be made.</td>
+      <td><code>X-RateLimit-Reset</code></td><td>If present, indicates the number of seconds until the next request can be made.</td>
     </tr>
   </tbody>
 </table>

@@ -8,7 +8,6 @@ import Lightbox from 'react-images'
 import bem from 'utils/bem'
 
 import Layout from 'components/Layout';
-import 'prismjs/themes/prism-okaidia.css'
 import './style.sass'
 
 const b = bem.lock('DocPage')

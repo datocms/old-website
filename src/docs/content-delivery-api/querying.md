@@ -1,6 +1,6 @@
 ---
-position: 3
-title: Querying the API
+position: 5
+title: How to fetch records
 ---
 
 ### Query a single record

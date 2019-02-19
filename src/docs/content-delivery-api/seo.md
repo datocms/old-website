@@ -1,5 +1,5 @@
 ---
-position: 8
+position: 12
 title: SEO and site favicon
 ---
 

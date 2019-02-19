@@ -1,9 +1,21 @@
 ---
-position: 100
-title: JS integration examples
+position: 4
+title: Your first request
 ---
 
-#### Vanilla JS example
+In REST, HTTP verbs determine the operation performed. In GraphQL, you'll provide a JSON-encoded body even if you're performing a query operation, so the HTTP verb is always `POST`.
+
+##### Curl example
+
+```bash
+$ curl 'https://graphql.datocms.com/' \
+    -H 'Authorization: YOUR-API-TOKEN' \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: application/json' \
+    --data-binary '{ "query": "query { allPosts { title } }" }'
+```
+
+##### Vanilla JS example
 
 ```js
 const token = 'YOUR-API-TOKEN';
@@ -31,7 +43,7 @@ fetch(
 });
 ```
 
-#### Apollo example
+##### Apollo example
 
 ```js
 import { ApolloClient } from 'apollo-client';

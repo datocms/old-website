@@ -65,7 +65,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
+              maxWidth: 800,
               linkImagesToOriginal: true,
               sizeByPixelDensity: false,
             },
@@ -77,7 +77,7 @@ module.exports = {
             }
           },
           {
-            resolve: 'gatsby-toc',
+            resolve: 'gatsby-remark-toc',
             options: {
               include: [
                 'src/docs/plugins/sdk-reference.md'

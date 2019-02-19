@@ -1,43 +1,26 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
 
-.ResourceAttributes__attributes
-  margin-top: 30px
-  text-align: left
-  border-top: 1px solid $border-color
-  width: 100%
+.ResourceAttributes
+  td
+    vertical-align: middle
 
-.ResourceAttributes__attribute
-  display: flex
-  align-items: center
-  border-bottom: 1px solid $border-color
-  padding: 10px 0
+  .ResourceAttributes__attribute-left
+    padding-right: 40px
 
-.ResourceAttributes__attribute-left
-  width: 35%
-  flex-shrink: 0
-  padding-right: 50px
-  box-sizing: border-box
+  .ResourceAttributes__attribute-name
+    margin-bottom: 2px
+    display: inline-block
 
-.ResourceAttributes__attribute-right
-  width: 65%
-  overflow: auto
+  code.ResourceAttributes__attribute-type
+    display: block
+    color: $ultra-light-body-color
+    font-family: $monospaced-font
+    +size(small)
+    background: transparent
 
-.ResourceAttributes__attribute-name
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
-  margin-bottom: 5px
-  +size(small)
-
-.ResourceAttributes__attribute-type
-  color: $ultra-light-body-color
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
-  +size(smaller)
-
-.ResourceAttributes__attribute-required
-  +size(small)
-  color: $light-body-color
-
-.ResourceAttributes__attribute-description
-  margin-bottom: 5px
-
+  .ResourceAttributes__attribute-required
+    +size(small)
+    color: $light-body-color
+    font-family: $sans-serif-font
 

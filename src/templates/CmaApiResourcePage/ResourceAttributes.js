@@ -27,22 +27,22 @@ export default class ResourceAttributes extends React.Component {
     schemaType = schemaType.filter(type => type && type !== 'null');
 
     return (
-      <div key={name} className={b('attribute')}>
-        <div className={b('attribute-left')}>
-          <div className={b('attribute-name')}>
+      <tr key={name}>
+        <td className={b('attribute-left')}>
+          <code className={b('attribute-name')}>
             {name}
-          </div>
-          <div className={b('attribute-type')}>
+          </code>
+          <code className={b('attribute-type')}>
             {schemaType.sort().join(', ')}
-          </div>
-        </div>
-        <div className={b('attribute-right')}>
+          </code>
+        </td>
+        <td>
           {
             schema.description &&
               <>
-                <div classname={b('attribute-description')}>
+                <p>
                   {schema.description}
-                </div>
+                </p>
                 {
                   !isOptional &&
                     <div className={b('attribute-required')}>
@@ -51,8 +51,8 @@ export default class ResourceAttributes extends React.Component {
                 }
               </>
           }
-        </div>
-      </div>
+        </td>
+      </tr>
     );
   }
 
@@ -65,25 +65,27 @@ export default class ResourceAttributes extends React.Component {
     }
 
     return (
-      <div className={b()}>
-        <h4 id="object">
+      <>
+        <h3 id="object">
           The {resource.title} object
-        </h4>
+        </h3>
         <p>
           A {resource.title} object is returned as part of the response body of each successful {joinAnd(links, 'or')} API call. The following table contains the list of all its fields along with their type, description and example values.
         </p>
         <h6>
           Object fields:
         </h6>
-        <div className={b('attributes')}>
-          {
-            Object.entries(sortObject(resource.attributes)).map(([name, schema]) => (
-              this.renderAttribute(name, schema)
-            ))
-          }
-        </div>
+        <table className="ResourceAttributes">
+          <tbody>
+            {
+              Object.entries(sortObject(resource.attributes)).map(([name, schema]) => (
+                this.renderAttribute(name, schema)
+              ))
+            }
+          </tbody>
+        </table>
         <hr />
-      </div>
+      </>
     );
   }
 }

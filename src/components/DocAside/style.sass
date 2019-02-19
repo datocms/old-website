@@ -87,39 +87,11 @@
 
 .DocPage__content-body
   font-size: 16px
-  line-height: 1.7
-  font-family: freight-text-pro
+  line-height: 1.4
+  font-family: $serif-font
 
   @media screen and (min-width: 900px)
-    font-size: 19px
-
-  .table-of-contents
-    padding-left: 0
-    max-width: none
-
-    a
-      text-decoration: none
-      color: $base-body-color
-
-      &:hover
-        text-decoration: underline
-
-    & > li
-      list-style-type: none
-
-      & > p > a
-        font-weight: 500
-
-    & > li li
-      margin-bottom: 0
-
-      a
-        font-family: "Source Code Pro", Menlo, monospace
-        background-color: $smoke-color
-        padding: 0.2em 0.3em 0.1em 0.3em
-        border: 1px $border-color
-        border-radius: 3px
-        font-size: 0.8em
+    font-size: 21px
 
   @media screen and (min-width: 900px)
     h1, h2, h3, h4, h5, h6, p, ul, ol
@@ -131,7 +103,10 @@
   h1, h2, h3, h4, h5, h6
     position: relative
     font-family: colfax-web
-    +weight(bold)
+    font-weight: 500
+
+    &:first-child
+      margin-top: 0 !important
 
     &:hover .heading-anchor span:before
       content: "¶"
@@ -140,24 +115,6 @@
       top: 0px
       bottom: 0px
 
-  .note
-    background-color: $smoke-color
-    padding: 5%
-    margin-bottom: 35px
-    border-radius: 3px
-    margin-left: -5%
-    margin-right: -5%
-    max-width: 110%
-    width: 110%
-    font-size: 0.9em
-    box-sizing: border-box
-
-    strong
-      display: block
-      text-transform: uppercase
-      font-size: 15px
-      margin-bottom: 8px
-
   i, em
     font-style: italic
 
@@ -165,14 +122,20 @@
     font-weight: 700
 
   a
-    color: $red-color
+    color: inherit
     text-decoration: none
+    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1)
+    box-shadow: inset 0 -3px 0px 0px rgba($azure-color, 0.2)
+    font-family: $sans-serif-font
+    font-weight: 500
+    font-size: 0.9em
 
     &:hover
-      text-decoration: underline
+      text-decoration: none
+      background: rgba($azure-color, 0.2)
 
     code
-      background-color: rgba($red-color, 0.1)
+      background-color: transparent
 
   a[href*="//"]:after
     content: ""
@@ -180,14 +143,14 @@
     background-size: contain
     vertical-align: middle
     display: inline-block
-    width: 20px
-    height: 20px
+    width: 16px
+    height: 16px
     margin-left: 4px
     white-space: nowrap
 
   hr
     border: 0
-    height: 1px
+    height: 2px
     background-color: $border-color
     margin: 80px 0
 
@@ -204,7 +167,12 @@
   h5
     font-size: 23px
     line-height: 1.3
-    margin: 15px 0
+    margin: 40px 0 15px
+
+  h6
+    font-size: 23px
+    line-height: 1.3
+    margin: 40px 0 15px
 
   p
     margin-bottom: 20px
@@ -224,14 +192,6 @@
     ul, ol
       li
         margin-bottom: 5px
-
-  code
-    font-family: "Source Code Pro", Menlo, monospace
-    background-color: $smoke-color
-    padding: 0.2em 0.3em 0.1em 0.3em
-    border: 1px $border-color
-    border-radius: 3px
-    font-size: 0.8em
 
   iframe
     border: 0
@@ -256,14 +216,22 @@
     margin-top: 50px
     margin-bottom: 50px
     width: 100%
+    font-size: 0.9em
+    line-height: 1.2
 
     th, td
       text-align: left
-      padding: 8px
+      padding: 15px 0
+      padding-right: 15px
       border-bottom: 1px solid $border-color
       max-width: 30%
 
+      p
+        margin-bottom: 10px
+
     th
+      font-family: $sans-serif-font
+      font-size: 0.8em
       font-weight: 600
 
   blockquote
@@ -271,13 +239,37 @@
     padding-left: 20px
     font-style: italic
 
-  .gatsby-highlight
-    margin: 40px 0
+  code
+    font-family: $monospaced-font
+    background-color: darken($code-bg-color, 5%)
+    padding: 0.15em 0
+    border-radius: 3px
+    font-size: 80%
+    font-variant: none
 
-    pre
-      overflow: auto
-      padding: 25px
-      font-size: 13px
+    &:after, &:before
+      letter-spacing: -0.2em
+      content: "\00a0"
+
+  pre[class*="language-"]
+    overflow: auto
+    margin: 40px 0
+    padding: 25px
+    text-align: left
+    white-space: pre
+    word-spacing: normal
+    word-break: normal
+    word-wrap: normal
+    -moz-tab-size: 4
+    -o-tab-size: 4
+    tab-size: 4
+    -webkit-hyphens: none
+    -moz-hyphens: none
+    -ms-hyphens: none
+    hyphens: none
+    background-color: $code-bg-color
+    border-radius: 4px
+    line-height: 1.2
 
     code
       background-color: transparent
@@ -285,23 +277,35 @@
       padding: 0
       border-radius: 0
 
+      &:after, &:before
+        display: none
+
+    @import "./github"
+
   .gatsby-resp-image-link
     margin: 60px 0
+    border-width: 0
+    box-shadow: none
+
+    &:hover
+      background: transparent
 
   .gatsby-resp-image-wrapper
     cursor: zoom-in
-    box-shadow: 0 2px 4px rgba(black, 0.2)
-    transition: box-shadow 0.1s ease-in-out
     border-radius: 4px
-
-    &:hover
-      box-shadow: 0 4px 10px rgba(black, 0.2)
 
   .gatsby-resp-image-background-image
     border-radius: 4px
 
   a.anchor
     margin-left: -35px
+    box-shadow: none
+    border-width: 0
+    fill: $azure-color
+
+    &:hover
+      background-color: transparent
+
     svg
       width: 25px
       height: 25px
@@ -311,7 +315,7 @@
   margin-top: 80px
 
   @media screen and (min-width: 900px)
-    font-size: 18px
+    display: none
 
 .DocPage__nav-prev,
 .DocPage__nav-next
@@ -347,3 +351,32 @@
   +weight(bold)
   margin-bottom: 3px
   line-height: 1.2
+
+.table-of-contents
+  padding-left: 0
+  max-width: none
+
+  a
+    text-decoration: none
+    color: $base-body-color
+
+    &:hover
+      text-decoration: underline
+
+  & > li
+    list-style-type: none
+
+    & > p > a
+      font-weight: 500
+
+  & > li li
+    margin-bottom: 0
+
+    a
+      font-family: $monospaced-font
+      background-color: $smoke-color
+      padding: 0.2em 0.3em 0.1em 0.3em
+      border: 1px $border-color
+      border-radius: 3px
+      font-size: 0.8em
+

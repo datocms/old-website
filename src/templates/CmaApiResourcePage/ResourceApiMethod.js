@@ -17,9 +17,9 @@ export default class ResourceApiMethod extends React.Component {
 
     return (
       <div className={b()}>
-        <h4 id={link.title.toLowerCase()}>
+        <h3 id={link.title.toLowerCase()}>
           {link.description}
-        </h4>
+        </h3>
         <p>
           To {link.description.toLowerCase()}, send a <code>{link.method}</code> request to the <code>{path}</code> endpoint{ ['POST', 'PUT'].includes(link.method) && ', passing the resource arguments in the request body'}. The following table contains the list of all the possible arguments, along with their type, description and examples values. All the arguments marked as required must be present in the request.
         </p>

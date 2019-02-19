@@ -117,7 +117,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
           const headings = [
             {
               id: '#object',
-              title: 'Object',
+              title: 'Object fields',
             }
           ].concat(
             resource.links.map(link => ({ 

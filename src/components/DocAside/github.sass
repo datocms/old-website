@@ -1,0 +1,49 @@
+.token
+  &.comment, &.block-comment, &.prolog, &.doctype, &.cdata
+    color: #6f8f39
+
+  &.punctuation
+    color: #53450e
+
+  &.property, &.tag, &.boolean, &.number, &.function-name, &.constant, &.symbol
+    color: #4084a1
+
+  &.selector, &.attr-name, &.string, &.char, &.function, &.builtin
+    color: #b3568b
+
+  &.operator, &.entity, &.url, &.variable
+
+  &.atrule, &.attr-value, &.keyword, &.class-name
+    color: #538eb6
+
+  &.inserted
+    color: #4a9c59
+
+  &.deleted
+    color: #e45c5c
+
+  &.regex, &.important
+    color: #d88489
+
+.language-css .token.string, .style .token.string
+  color: #a2466c
+
+.token
+  &.important
+    font-weight: normal
+
+  &.bold
+    font-weight: bold
+
+  &.italic
+    font-style: italic
+
+  &.entity
+    cursor: help
+
+.namespace
+  opacity: 0.7
+
+.token
+  &.tab:not(:empty):before, &.cr:before, &.lf:before
+    color: #e0d7d1

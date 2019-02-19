@@ -88,7 +88,7 @@ function example(resource, link, allPages = false) {
       output = JSON.stringify(deserialize(example.data[0], true), null, 2).replace(/": /g, '" => ').replace(/null/g, 'nil');
 
       returnCode = `${call}.each do |${variable}|
-puts ${variable}.inspect
+  puts ${variable}.inspect
 end`;
     } else {
       output = JSON.stringify(deserialize(example.data, true), null, 2).replace(/": /g, '" => ').replace(/null/g, 'nil');
@@ -106,7 +106,7 @@ ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${precode.length > 0 ? '\n
 ${returnCode}
 ${
 link.targetSchema && link.targetSchema.properties.meta ?
-'\n\n# if you want to fetch all the pages with just one call:\n\n' + example(resource, link, true) :
+'\n\n# if you want to fetch all the pages with just one call:\n\n' + example(resource, link, true).code :
 ''
 }`
 return { code, output };
@@ -124,25 +124,27 @@ export default function RubyExample({ resource, link }) {
     <>
       <h6>Example request</h6>
       <div className="gatsby-highlight">
-        <pre
-          className="language-ruby"
-          dangerouslySetInnerHTML={
-            {
-              __html: Prism.highlight(code, Prism.languages.ruby)
+        <pre className="language-ruby">
+          <code
+            dangerouslySetInnerHTML={
+              {
+                __html: Prism.highlight(code, Prism.languages.ruby)
+              }
             }
-          }
-        />
+          />
+        </pre>
       </div>
       <h6>Result</h6>
       <div className="gatsby-highlight">
-        <pre
-          className="language-ruby"
-          dangerouslySetInnerHTML={
-            {
-              __html: Prism.highlight(outputWithRun, Prism.languages.ruby)
+        <pre className="language-ruby">
+          <code
+            dangerouslySetInnerHTML={
+              {
+                __html: Prism.highlight(outputWithRun, Prism.languages.ruby)
+              }
             }
-          }
-        />
+          />
+        </pre>
       </div>
     </>
   );
