@@ -51,7 +51,7 @@ export default class PluginPage extends React.Component {
                   style={{
                     backgroundImage: `url(${
                       plugin.coverImage.url
-                    }?w=90&h=90&fit=crop)`,
+                    }?auto=format&w=180&h=180&fit=crop)`,
                   }}
                 />
               )}

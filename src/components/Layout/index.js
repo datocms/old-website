@@ -28,6 +28,10 @@ class TemplateWrapper extends React.Component {
   }
 
   componentDidMount() {
+    if (window.kayako) {
+      return;
+    }
+
     window.kayako = {};
     window.kayako.readyQueue = [
       () => {

@@ -13,7 +13,7 @@ export default class LazyImage extends React.Component {
   }
 
   handleAppear() {
-    loadImage(`${this.props.image.url}?fm=jpg&q=90`).then(() =>
+    loadImage(`${this.props.image.url}?w=800&auto=format`).then(() =>
       this.setState({ visible: true }),
     );
   }
@@ -29,7 +29,7 @@ export default class LazyImage extends React.Component {
             height: `${height}px`,
             opacity: this.state.visible ? 1 : 0,
             backgroundImage: this.state.visible
-              ? `url(${image.url}?fm=jpg&q=90)`
+              ? `url(${image.url}?w=800&auto=format)`
               : '',
             transitionDuration: `${(image.height / image.width) *
               (slow ? 1.5 : 1)}s, 250ms`,

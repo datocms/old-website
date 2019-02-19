@@ -39,7 +39,9 @@ export default class BlogPage extends React.Component {
                 <div className={b('gutter-sizer')} />
                 <div className={b('article')} to="/changelog/">
                   <h3 className={b('article-title')}>
-                    Latest product changes
+                    <Link to="/changelog">
+                      Latest product changes
+                    </Link>
                   </h3>
                   <div className={b('article-excerpt')}>
                     <p>Here's the latest changes made to DatoCMS:</p>

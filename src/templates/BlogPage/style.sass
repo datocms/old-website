@@ -1,23 +1,7 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
-.BlogPage
-
-.BlogPage__title
-  +size(bigger)
-  text-align: center
-  margin-bottom: 10px
-
-  @media screen and (min-width: 600px)
-    +size(hero)
-
-.BlogPage__subtitle
-  +size(normalBig)
-  text-align: center
-  margin-bottom: 60px
-  font-weight: 300
-
-$gutter: 4%
+$gutter: 3%
 
 .BlogPage__masonry
   .BlogPage__gutter-sizer
@@ -58,17 +42,12 @@ $gutter: 4%
     color: $base-body-color
 
     &:hover
-      text-decoration: underline
+      text-decoration: none
 
 .BlogPage__article-image
   width: 100%
   border-radius: 3px
   margin-bottom: 30px
-  filter: grayscale(50%)
-  transition: filter 0.2s ease-in-out
-
-  .BlogPage__article:hover &
-    filter: grayscale(0%)
 
 .BlogPage__article-author-image
   width: 40px
@@ -79,6 +58,10 @@ $gutter: 4%
 
   a
     color: $base-body-color
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
 
   p
     margin-bottom: 10px

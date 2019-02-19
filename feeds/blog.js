@@ -113,7 +113,7 @@ module.exports = {
               }
 
               if (block.model.apiKey === 'image') {
-                return `<img src="${block.image.url}?w=900" />`;
+                return `<img src="${block.image.url}?auto=format&w=900" />`;
               }
 
               if (block.model.apiKey === 'typeform') {

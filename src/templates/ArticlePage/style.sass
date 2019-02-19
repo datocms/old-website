@@ -2,12 +2,28 @@
 @import 'blocks/mixins'
 
 .ArticlePage
+  padding-bottom: 120px
+  background-size: cover
+  background: url('../../images/article-bottom-bg.svg'), url('../../images/article-top-bg.svg')
+  background-repeat: no-repeat
+  background-position: bottom, top
+  background-size: 100%
+
+.ArticlePage__content
   max-width: 710px
   margin: 0 auto
+  padding: 0 30px
+
+.ArticlePage__header
+  padding: 80px 0
+
+.ArticlePage__header__inner
+  max-width: 710px
+  margin: 0 auto
+  padding: 0 30px
 
 .ArticlePage__title
   +size(bigger)
-  margin-bottom: 60px
 
   @media screen and (min-width: 1100px)
     +size(hero)
@@ -104,15 +120,17 @@ a.ArticlePage__content-image__image.ArticlePage__content-image__image
 .ArticlePage__quote
   font-size: 20px
   font-family: $serif-font
-  line-height: 1.5
   margin: 40px 0
-  font-style: italic
   color: $light-body-color
-  padding-left: 40px
-  border-left: 10px solid $border-color
+  padding-left: 20px
+  border-left: 10px solid rgba($azure-color, 0.7)
+  line-height: 1.3
+  color: $azure-color
 
   @media screen and (min-width: 900px)
+    padding-left: 40px
     font-size: 25px
+    line-height: 1.5
 
 .ArticlePage__meta
   margin-bottom: 60px

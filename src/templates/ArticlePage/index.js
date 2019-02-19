@@ -44,10 +44,10 @@ export default class ArticlePage extends React.Component {
 
     return (
       <Layout>
-        <Space both={8}>
-          <Wrap>
-            <div className={b()}>
-              <HelmetDatoCms seo={article.seoMetaTags} />
+        <div className={b()}>
+          <HelmetDatoCms seo={article.seoMetaTags} />
+          <div className={b('header')}>
+            <div className={b('header__inner')}>
               <div className={b('meta')}>
                 <div className={b('meta__avatar')}>
                   <Img fluid={article.author.avatar.fluid} />
@@ -66,129 +66,131 @@ export default class ArticlePage extends React.Component {
               <h1 className={b('title')}>
                 <Link to={`/blog/${article.slug}/`}>{article.title}</Link>
               </h1>
-              <div className="content-body">
-                {article.content.map(block => (
-                  <React.Fragment key={block.id}>
-                    {block.model.apiKey === 'typeform' && ReactTypeformEmbed && (
-                      <div className={b('content-poll')}>
-                        {typeof document !== 'undefined' && (
-                          <ReactTypeformEmbed
-                            url={block.typeform}
-                            style={{
-                              position: 'static',
-                              top: 'auto',
-                              left: 'auto',
-                              width: '100%',
-                              height: '600px',
-                              overflow: 'hidden',
-                            }}
-                          />
-                        )}
-                      </div>
-                    )}
-                    {block.model.apiKey === 'text' &&
-                      parse(block.text.markdown.html)}
-                    {block.model.apiKey === 'question_answer' && (
-                      <div className={b('question-answer')}>
-                        <div className={b('question-answer__question')}>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: block.question.markdown.html,
-                            }}
-                          />
-                        </div>
-                        <div className={b('question-answer__answer')}>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: block.answer.markdown.html,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    )}
-                    {block.model.apiKey === 'quote' && (
-                      <div className={b('quote')}>
+            </div>
+          </div>
+          <div className={b('content')}>
+            <div className="content-body">
+              {article.content.map(block => (
+                <React.Fragment key={block.id}>
+                  {block.model.apiKey === 'typeform' && ReactTypeformEmbed && (
+                    <div className={b('content-poll')}>
+                      {typeof document !== 'undefined' && (
+                        <ReactTypeformEmbed
+                          url={block.typeform}
+                          style={{
+                            position: 'static',
+                            top: 'auto',
+                            left: 'auto',
+                            width: '100%',
+                            height: '600px',
+                            overflow: 'hidden',
+                          }}
+                        />
+                      )}
+                    </div>
+                  )}
+                  {block.model.apiKey === 'text' &&
+                    parse(block.text.markdown.html)}
+                  {block.model.apiKey === 'question_answer' && (
+                    <div className={b('question-answer')}>
+                      <div className={b('question-answer__question')}>
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: block.quote.markdown.html,
+                            __html: block.question.markdown.html,
                           }}
                         />
                       </div>
-                    )}
-                    {block.model.apiKey === 'image' && (
+                      <div className={b('question-answer__answer')}>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: block.answer.markdown.html,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {block.model.apiKey === 'quote' && (
+                    <div className={b('quote')}>
                       <div
-                        className={b('content-image')}
-                        style={{ maxWidth: `${block.image.width}px` }}
+                        dangerouslySetInnerHTML={{
+                          __html: block.quote.markdown.html,
+                        }}
+                      />
+                    </div>
+                  )}
+                  {block.model.apiKey === 'image' && (
+                    <div
+                      className={b('content-image')}
+                      style={{ maxWidth: `${block.image.width}px` }}
+                    >
+                      <a
+                        href={`${block.image.url}?auto=format&w=1200&fit=max`}
+                        className={b('content-image__image')}
+                        onClick={this.handleOpenImage.bind(
+                          this,
+                          `${block.image.url}?auto=format&w=1200&fit=max`,
+                        )}
                       >
-                        <a
-                          href={`${block.image.url}?w=1200&fit=max`}
-                          className={b('content-image__image')}
-                          onClick={this.handleOpenImage.bind(
-                            this,
-                            `${block.image.url}?w=1200&fit=max`,
-                          )}
-                        >
-                          {block.image.format === 'gif' ? (
-                            <img alt={block.image.alt} src={block.image.url} />
-                          ) : (
-                            <Img
-                              alt={block.image.alt}
-                              fluid={block.image.fluid}
-                            />
-                          )}
-                        </a>
-                        {block.image.title && (
-                          <div className={b('content-image__label')}>
-                            {block.image.title}
-                          </div>
+                        {block.image.format === 'gif' ? (
+                          <img alt={block.image.alt} src={block.image.url} />
+                        ) : (
+                          <Img
+                            alt={block.image.alt}
+                            fluid={block.image.fluid}
+                          />
+                        )}
+                      </a>
+                      {block.image.title && (
+                        <div className={b('content-image__label')}>
+                          {block.image.title}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {block.model.apiKey === 'video' && (
+                    <div className={b('content-video')}>
+                      <div className={b('content-video__wrapper')}>
+                        {block.video.provider === 'youtube' ? (
+                          <ResponsiveEmbed
+                            src={`//www.youtube.com/embed/${
+                              block.video.providerUid
+                            }`}
+                            ratio={`${block.video.width}:${
+                              block.video.height
+                            }`}
+                            allowFullScreen
+                          />
+                        ) : (
+                          <ResponsiveEmbed
+                            src={`//player.vimeo.com/video/${
+                              block.video.providerUid
+                            }?title=0&byline=0&portrait=0`}
+                            ratio={`${block.video.width}:${
+                              block.video.height
+                            }`}
+                            allowFullScreen
+                          />
                         )}
                       </div>
-                    )}
-                    {block.model.apiKey === 'video' && (
-                      <div className={b('content-video')}>
-                        <div className={b('content-video__wrapper')}>
-                          {block.video.provider === 'youtube' ? (
-                            <ResponsiveEmbed
-                              src={`//www.youtube.com/embed/${
-                                block.video.providerUid
-                              }`}
-                              ratio={`${block.video.width}:${
-                                block.video.height
-                              }`}
-                              allowFullScreen
-                            />
-                          ) : (
-                            <ResponsiveEmbed
-                              src={`//player.vimeo.com/video/${
-                                block.video.providerUid
-                              }?title=0&byline=0&portrait=0`}
-                              ratio={`${block.video.width}:${
-                                block.video.height
-                              }`}
-                              allowFullScreen
-                            />
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
-              <Lightbox
-                backdropClosesModal
-                width={1400}
-                images={this.state.image ? [{ src: this.state.image }] : []}
-                isOpen={this.state.image}
-                theme={{
-                  footer: {
-                    display: 'none',
-                  },
-                }}
-                onClose={() => this.setState({ image: null })}
-              />
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
-          </Wrap>
-        </Space>
+          </div>
+          <Lightbox
+            backdropClosesModal
+            width={1400}
+            images={this.state.image ? [{ src: this.state.image }] : []}
+            isOpen={this.state.image}
+            theme={{
+              footer: {
+                display: 'none',
+              },
+            }}
+            onClose={() => this.setState({ image: null })}
+          />
+        </div>
       </Layout>
     );
   }
@@ -202,6 +204,9 @@ export const query = graphql`
       }
       slug
       title
+      coverImage {
+        url
+      }
       content {
         ... on DatoCmsText {
           id
