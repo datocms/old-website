@@ -175,7 +175,6 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
     let pages = byChapter[chapter].sort(sortBy('position'));
 
     if (chapter === 'content-management-api') {
-
       const resources = cmaResources
         .map((resource, i) => {
 
