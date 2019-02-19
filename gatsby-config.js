@@ -53,7 +53,6 @@ module.exports = {
         plugins: [
           `gatsby-plugin-sharp`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-gemoji-to-emoji`,
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {

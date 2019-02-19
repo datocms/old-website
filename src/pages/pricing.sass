@@ -1,20 +1,6 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
 
-.PricingPage__title
-  +size(bigger)
-  text-align: center
-  margin-bottom: 10px
-
-  @media screen and (min-width: 600px)
-    +size(hero)
-
-.PricingPage__subtitle
-  +size(normalBig)
-  text-align: center
-  margin-bottom: 60px
-  font-weight: 300
-
 .PricingPage__recap
   display: flex
   align-items: center
@@ -192,16 +178,15 @@
 
 .PricingPage__free-plan-title
   +size(bigger)
+  font-weight: 500
   margin-bottom: 10px
-  color: $azure-color
 
   @media screen and (min-width: 600px)
     +size(smallHero)
 
 .PricingPage__free-plan-description
-  color: $light-body-color
-  font-weight: 300
   margin-bottom: 30px
+  font-family: $serif-font
   +size(normalBig)
 
 .PricingPage__free-plan-features
@@ -371,6 +356,7 @@
   border: 0
   border-radius: 4px
   +size(small)
+  text-decoration: none
 
 .PricingPage__plan-changer__plan--active
   background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);

@@ -6,8 +6,9 @@ import Pulse from 'react-reveal/Pulse';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 
 import bem from 'utils/bem';
-import { Wrap, Space } from 'blocks';
+import { Wrap } from 'blocks';
 
+import PageLayout from 'components/PageLayout';
 import CallToAction from 'components/CallToAction';
 import InlineSVG from 'components/InlineSVG';
 import Layout from 'components/Layout';
@@ -39,9 +40,12 @@ class FeaturesPage extends React.Component {
     return (
       <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
-        <Space both="10">
+        <PageLayout
+          title="Features"
+          subtitle="Build projects faster with the most flexible headless CMS out there"
+          noWrap
+        >
           <div className={b()}>
-            <div className={b('title')}>Features</div>
             <div className={b('cols')}>
               <div className={b('cols-toc')}>
                 <Sticky top={100} bottomBoundary={`.${b()}`}>
@@ -94,7 +98,7 @@ class FeaturesPage extends React.Component {
               </div>
             </div>
           </div>
-        </Space>
+        </PageLayout>
         <CallToAction />
       </Layout>
     );

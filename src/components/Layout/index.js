@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
-import Sticky from 'react-stickynode';
 import { StaticQuery, graphql } from 'gatsby';
 
 import CookieConsent from 'react-cookie-consent';
@@ -105,9 +104,7 @@ class TemplateWrapper extends React.Component {
               </a>
               .
             </CookieConsent>
-            <Sticky innerZ={1000} top={0}>
-              <Navbar />
-            </Sticky>
+            <Navbar />
             <MobileNavbar />
             {children}
             <Footer />

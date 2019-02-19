@@ -1,11 +1,6 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
 
-.UseCasesPage__title
-  +size(hero)
-  text-align: center
-  margin-bottom: 60px
-
 .UseCasesPage__website
   text-decoration: none
   display: block
@@ -25,11 +20,6 @@ $gutter: 6%
     .UseCasesPage__grid-sizer,
     .UseCasesPage__website
       width: (100% - 1 * $gutter) / 2
-
-  @media screen and (min-width: 1300px)
-    .UseCasesPage__grid-sizer,
-    .UseCasesPage__website
-      width: (100% - 2 * $gutter) / 3
 
 .UseCasesPage__gallery
   margin: 0 -30px
@@ -90,8 +80,12 @@ $gutter: 6%
     margin-left: 6px
 
 .UseCasesPage__use-case-title
-  +size(bigger)
   margin-bottom: 20px
+  font-weight: 500
+  +size(big)
+
+  @media screen and (min-width: 600px)
+    +size(bigger)
 
 .UseCasesPage__use-case-description
   +size(small)
@@ -106,7 +100,7 @@ $gutter: 6%
     padding-bottom: 90px
 
 .UseCasesPage__use-case
-  padding: 80px 0
+  margin-bottom: 80px
 
 .UseCasesPage__masonry
   display: none

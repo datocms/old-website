@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'components/Link';
+import { graphql } from 'gatsby';
 
 import bem from 'utils/bem';
 import { Wrap, Space } from 'blocks';
@@ -12,10 +13,12 @@ const b = bem.lock('SupportPage');
 class Support extends React.Component {
   handleOpenChat(e) {
     e.preventDefault();
-    window.FrontChat('show');
+    window.kayako.maximize();
   }
 
   render() {
+    const { authors } = this.props.data;
+
     return (
       <Layout>
         <Space both="10">
@@ -23,26 +26,16 @@ class Support extends React.Component {
             <div className={b()}>
               <div className={b('left')}>
                 <div className={b('logo')}>
-                  <img
-                    alt="Stefano Verna"
-                    src="https://www.cantierecreativo.net/images/members/stefano-verna-802ffcbd.jpg"
-                    className={b('person')}
-                  />
-                  <img
-                    alt="Irene Oppo"
-                    src="https://www.cantierecreativo.net/images/members/irene-oppo-e048f9a8.jpg"
-                    className={b('person')}
-                  />
-                  <img
-                    alt="David Librera"
-                    src="https://www.cantierecreativo.net/images/members/david-librera-22a232ef.jpg"
-                    className={b('person')}
-                  />
-                  <img
-                    alt="Yoe Jates"
-                    src="https://www.cantierecreativo.net/images/members/joe-yates-146f33f4.jpg"
-                    className={b('person')}
-                  />
+                  {
+                    authors.edges.map(({ node: author }) => (
+                      <img
+                        alt={author.name}
+                        src={author.avatar.url}
+                        className={b('person')}
+                        key={author.name}
+                      />
+                    ))
+                  }
                 </div>
                 <div className={b('title')}>We're here to help!</div>
                 <div className={b('content')}>
@@ -72,3 +65,21 @@ class Support extends React.Component {
 }
 
 export default Support;
+
+export const query = graphql`
+query SupportQuery {
+  authors: allDatoCmsAuthor {
+    edges {
+      node {
+        name
+        avatar {
+          url
+          fluid(maxWidth: 60) {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+      }
+    }
+  }
+}
+`;

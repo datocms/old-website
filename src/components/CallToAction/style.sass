@@ -5,8 +5,12 @@
   text-align: center
 
 .CallToAction__title
-  +size(hero)
+  +size(bigger)
+  font-weight: 500
   margin-bottom: 30px
+
+  @media screen and (min-width: 1000px)
+    +size(hero)
 
 .CallToAction__no-card
   margin-top: 20px

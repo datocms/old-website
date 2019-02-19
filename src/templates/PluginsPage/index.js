@@ -1,12 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Link from 'components/Link';
-import { Wrap, Space } from 'blocks';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import Img from 'gatsby-image';
 import slugify from 'slugify';
 
 import Layout from 'components/Layout';
+import PageLayout from 'components/PageLayout';
 import bem from 'utils/bem';
 import gravatar from 'utils/gravatar';
 import './style.sass';
@@ -80,93 +80,90 @@ export default class PluginsPage extends React.Component {
 
     return (
       <Layout>
-        <Space both={10}>
+        <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
+        <PageLayout
+          title="Plugins"
+          subtitle="Extend the functionality of DatoCMS"
+        >
           <div className={b()}>
-            <Wrap>
-              <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
-              <div className={b('title')}>Plugins</div>
-              <div className={b('subtitle')}>
-                Extend the functionality of DatoCMS
-              </div>
-              <div className={b('content')}>
-                <div className={b('sidebar')}>
-                  <div className={b('cats')}>
-                    <div className={b('cats__title')}>By plugin type</div>
-                    <ul>{pluginTypeCats}</ul>
-                  </div>
-                  <div className={b('cats')}>
-                    <div className={b('cats__title')}>By field type</div>
-                    <ul>{fieldTypeCats}</ul>
-                  </div>
+            <div className={b('content')}>
+              <div className={b('sidebar')}>
+                <div className={b('cats')}>
+                  <div className={b('cats__title')}>By plugin type</div>
+                  <ul>{pluginTypeCats}</ul>
                 </div>
-                <div className={b('body')}>
-                  <div className={b('plugins')}>
-                    {plugins.map(plugin => (
-                      <Link
-                        to={`/plugins/i/${slugify(plugin.packageName)}/`}
-                        key={plugin.name}
-                        className={b('plugin')}
-                      >
-                        <div className={b('plugin-image')}>
-                          {plugin.coverImage &&
-                            plugin.coverImage.format !== 'svg' && (
-                              <Img fluid={plugin.coverImage.fluid} />
-                            )}
-                          {plugin.coverImage &&
-                            plugin.coverImage.format === 'svg' && (
-                              <div className="gatsby-image-wrapper">
-                                <div
-                                  className="svg"
-                                  style={{
-                                    backgroundImage: `url(${
-                                      plugin.coverImage.url
-                                    })`,
-                                  }}
-                                />
-                              </div>
-                            )}
-                          <img
-                            alt="Author gravatar"
-                            className={b('plugin-author-image')}
-                            src={gravatar(plugin.author.email, {
-                              s: 80,
-                              d: 'retro',
-                            })}
-                          />
-                        </div>
-                        <div className={b('plugin-body')}>
-                          <h3 className={b('plugin-title')}>{plugin.title}</h3>
-                          <div className={b('plugin-author')}>
-                            v{plugin.version} by {plugin.author.name}
-                          </div>
-                          <div className={b('plugin-excerpt')}>
-                            {plugin.description}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                  {!first && (
-                    <Link
-                      to={index === 2 ? '/plugins/' : `/plugins/${index - 1}/`}
-                      className={b('previous')}
-                    >
-                      See next plugins &raquo;
-                    </Link>
-                  )}
-                  {!last && (
-                    <Link
-                      to={`/plugins/${index + 1}/`}
-                      className={b('previous')}
-                    >
-                      &laquo; See previous plugins
-                    </Link>
-                  )}
+                <div className={b('cats')}>
+                  <div className={b('cats__title')}>By field type</div>
+                  <ul>{fieldTypeCats}</ul>
                 </div>
               </div>
-            </Wrap>
+              <div className={b('body')}>
+                <div className={b('plugins')}>
+                  {plugins.map(plugin => (
+                    <Link
+                      to={`/plugins/i/${slugify(plugin.packageName)}/`}
+                      key={plugin.name}
+                      className={b('plugin')}
+                    >
+                      <div className={b('plugin-image')}>
+                        {plugin.coverImage &&
+                          plugin.coverImage.format !== 'svg' && (
+                            <Img fluid={plugin.coverImage.fluid} />
+                          )}
+                        {plugin.coverImage &&
+                          plugin.coverImage.format === 'svg' && (
+                            <div className="gatsby-image-wrapper">
+                              <div
+                                className="svg"
+                                style={{
+                                  backgroundImage: `url(${
+                                    plugin.coverImage.url
+                                  })`,
+                                }}
+                              />
+                            </div>
+                          )}
+                        <img
+                          alt="Author gravatar"
+                          className={b('plugin-author-image')}
+                          src={gravatar(plugin.author.email, {
+                            s: 80,
+                            d: 'retro',
+                          })}
+                        />
+                      </div>
+                      <div className={b('plugin-body')}>
+                        <h3 className={b('plugin-title')}>{plugin.title}</h3>
+                        <div className={b('plugin-author')}>
+                          v{plugin.version} by {plugin.author.name}
+                        </div>
+                        <div className={b('plugin-excerpt')}>
+                          {plugin.description}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                {!first && (
+                  <Link
+                    to={index === 2 ? '/plugins/' : `/plugins/${index - 1}/`}
+                    className={b('previous')}
+                  >
+                    See next plugins &raquo;
+                  </Link>
+                )}
+                {!last && (
+                  <Link
+                    to={`/plugins/${index + 1}/`}
+                    className={b('previous')}
+                  >
+                    &laquo; See previous plugins
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
-        </Space>
+        </PageLayout>
       </Layout>
     );
   }

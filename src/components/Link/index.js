@@ -16,7 +16,7 @@ export default function NormalizedLink({
 
     finalTo = '';
 
-    if (path.endsWith('/')) {
+    if (path !== '/' && path.endsWith('/')) {
       finalTo += path.slice(0, -1);
     } else {
       finalTo += path;

@@ -1,0 +1,28 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.PageLayout
+  margin: 80px 0 120px 0
+
+.PageLayout__header
+  text-align: center
+  margin-bottom: 80px
+
+.PageLayout__title
+  +size(bigger)
+  font-weight: 500
+
+  @media screen and (min-width: 600px)
+    +size(hero)
+
+.PageLayout__subtitle
+  font-family: $serif-font
+  text-align: center
+  font-weight: 300
+  margin-top: 20px
+  max-width: 700px
+  margin: 20px auto 60px
+  +size(normalBig)
+
+  @media screen and (min-width: 600px)
+    +size(big)

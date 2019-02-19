@@ -33,33 +33,36 @@
   background-color: white
   border-radius: 10px
   width: 300px
+  max-width: 100%
+  box-sizing: border-box
   margin-right: 15px
 
   &:focus
     border-color: darken($border-color, 10%)
     outline: none
 
-.HomeHero__subscribe
-  display: flex
-  align-items: center
-  justify-content: center
-
 @media screen and (max-width: 999px)
+  .HomeHero__subscribe
+    .button
+      margin-top: 4px
+      width: 100%
+      display: block
+
   .HomeHero
     background: url('../../../images/first-wave.svg')
     background-position: center center
     background-size: 100% 60%
     background-repeat: no-repeat
-    margin: 90px 0 0
     padding: 50px 30px
     text-align: center
 
   .HomeHero__title
-    +size(bigger)
+    +size(smallHero)
     +weight(bold)
     margin-bottom: 30px
 
   .HomeHero__description
+    font-family: $serif-font
     +size(normalBig)
 
   .HomeHero__browser
@@ -69,6 +72,11 @@
       width: 100%
 
 @media screen and (min-width: 700px)
+  .HomeHero__subscribe
+    display: flex
+    align-items: center
+    justify-content: center
+
   .HomeHero__browser
     perspective: 600px
 

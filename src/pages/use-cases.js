@@ -7,11 +7,11 @@ import CallToAction from 'components/CallToAction';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 
 import bem from 'utils/bem';
-import { Wrap, Space } from 'blocks';
 import Layout from 'components/Layout';
 
 import Browser from 'components/Browser';
 import LazyImage from 'components/LazyImage';
+import PageLayout from 'components/PageLayout';
 
 import './use-cases.sass';
 import 'slick-carousel/slick/slick.css';
@@ -91,67 +91,65 @@ class UseCasesPage extends React.Component {
     return (
       <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
-        <Space both="10">
+        <PageLayout 
+          title="Use Cases"
+          subtitle="Companies and agencies of any size trust DatoCMS to power content in their websites and apps"
+        >
           <div className={b()}>
-            <div className={b('title')}>Use Cases</div>
-            <div className={b('content')}>
-              <Wrap>
-                {data.useCases.edges.map(({ node: useCase }) => {
-                  const websites = allWebsites.filter(
-                    website => website.useCase.id === useCase.id,
-                  );
+            {data.useCases.edges.map(({ node: useCase }) => {
+              const websites = allWebsites.filter(
+                website => website.useCase.id === useCase.id,
+              );
 
-                  return (
-                    <div className={b('use-case')} key={useCase.id}>
-                      <div
-                        className={b('use-case-content')}
-                        id={`use-case-content-${useCase.id}`}
+              return (
+                <div className={b('use-case')} key={useCase.id}>
+                  <div
+                    className={b('use-case-content')}
+                    id={`use-case-content-${useCase.id}`}
+                  >
+                    <Sticky
+                      top={120}
+                      bottomBoundary={`#use-case-content-${useCase.id}`}
+                    >
+                      <div className={b('use-case-content-inner')}>
+                        <h3 className={b('use-case-title')}>
+                          {useCase.title}
+                        </h3>
+                        <div
+                          className={b('use-case-description')}
+                          dangerouslySetInnerHTML={{
+                            __html: useCase.description.markdown.html,
+                          }}
+                        />
+                      </div>
+                    </Sticky>
+                  </div>
+                  <div className={b('use-case-gallery')}>
+                    <div className={b('masonry')}>
+                      <Masonry
+                        options={{
+                          columnWidth: '.UseCasesPage__grid-sizer',
+                          gutter: '.UseCasesPage__gutter-sizer',
+                          itemSelector: '.UseCasesPage__website',
+                          percentPosition: true,
+                        }}
                       >
-                        <Sticky
-                          top={120}
-                          bottomBoundary={`#use-case-content-${useCase.id}`}
-                        >
-                          <div className={b('use-case-content-inner')}>
-                            <h3 className={b('use-case-title')}>
-                              {useCase.title}
-                            </h3>
-                            <div
-                              className={b('use-case-description')}
-                              dangerouslySetInnerHTML={{
-                                __html: useCase.description.markdown.html,
-                              }}
-                            />
-                          </div>
-                        </Sticky>
-                      </div>
-                      <div className={b('use-case-gallery')}>
-                        <div className={b('masonry')}>
-                          <Masonry
-                            options={{
-                              columnWidth: '.UseCasesPage__grid-sizer',
-                              gutter: '.UseCasesPage__gutter-sizer',
-                              itemSelector: '.UseCasesPage__website',
-                              percentPosition: true,
-                            }}
-                          >
-                            <div className={b('grid-sizer')} />
-                            <div className={b('gutter-sizer')} />
-                            {websites.map(this.renderWebsite.bind(this, true))}
-                          </Masonry>
-                        </div>
-                        <div className={b('gallery')}>
-                          <Slider {...settings}>
-                            {websites.map(this.renderWebsite.bind(this, false))}
-                          </Slider>
-                        </div>
-                      </div>
+                        <div className={b('grid-sizer')} />
+                        <div className={b('gutter-sizer')} />
+                        {websites.map(this.renderWebsite.bind(this, true))}
+                      </Masonry>
                     </div>
-                  );
-                })}
-              </Wrap>
-            </div>
+                    <div className={b('gallery')}>
+                      <Slider {...settings}>
+                        {websites.map(this.renderWebsite.bind(this, false))}
+                      </Slider>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </Space>
+        </PageLayout>
         <CallToAction />
       </Layout>
     );

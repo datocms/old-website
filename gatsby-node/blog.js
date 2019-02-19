@@ -9,7 +9,6 @@ const query = `
         slug
         title
         coverImage {
-          url
           alt
           fluid(maxWidth: 850) {
             base64
