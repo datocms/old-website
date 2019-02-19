@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby';
 
-export default function NormalizedLink({ to, ...props }) {
+export default function NormalizedLink({ to, ...other }) {
   let finalTo = to;
 
   if (!to.includes('://') && !to.startsWith('#')) {
@@ -22,5 +22,19 @@ export default function NormalizedLink({ to, ...props }) {
     }
   }
 
-  return <Link to={finalTo} {...props} />;
+  const internal = /^\/(?!\/)/.test(to);
+
+  if (internal) {
+    return (
+      <Link to={to} activeClassName={activeClassName} {...other}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={to} {...other}>
+      {children}
+    </a>
+  );
 }
