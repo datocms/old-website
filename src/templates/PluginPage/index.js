@@ -41,7 +41,7 @@ export default class PluginPage extends React.Component {
 
     return (
       <Layout>
-        <Space both={10}>
+        <Space both={8}>
           <Wrap>
             <HelmetDatoCms seo={plugin.seoMetaTags} />
             <div className={b('header')}>
