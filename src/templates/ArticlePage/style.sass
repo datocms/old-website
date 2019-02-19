@@ -40,11 +40,11 @@
 
 a.ArticlePage__content-image__image.ArticlePage__content-image__image
   cursor: zoom-in
-  box-shadow: 0 2px 4px rgba(black, 0.2)
-  transition: box-shadow 0.1s ease-in-out
   border-radius: 4px
   display: block
   overflow: hidden
+  border-width: 0
+  box-shadow: none
 
   &:after
     display: none !important
@@ -54,9 +54,6 @@ a.ArticlePage__content-image__image.ArticlePage__content-image__image
 
   img
     margin: 0
-
-  &:hover
-    box-shadow: 0 4px 10px rgba(black, 0.2)
 
 .ArticlePage__content-image__label
   font-style: italic
@@ -73,9 +70,7 @@ a.ArticlePage__content-image__image.ArticlePage__content-image__image
   padding-bottom: 56.25%
   position: relative
 
-  embed,
-  object,
-  iframe
+  embed, object, iframe
     position: absolute
     top: 0
     left: 0
@@ -99,11 +94,12 @@ a.ArticlePage__content-image__image.ArticlePage__content-image__image
   margin: 60px 0
 
 .ArticlePage__question-answer__question
-  font-weight: 700
+  font-family: $sans-serif-font
   color: #555
+  font-weight: 500
 
   a
-    color: #555
+    font-size: inherit !important
 
 .ArticlePage__quote
   font-size: 20px
