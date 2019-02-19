@@ -1,10 +1,8 @@
 import React from 'react'
-import { Wrap, button, Space, text } from 'blocks'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-graphql'
 import bem from 'utils/bem'
 import DocAside from 'components/DocAside';
-import Layout from 'components/Layout'
 import { graphql } from 'gatsby'
 
 import './style.sass'
@@ -12,32 +10,34 @@ import './style.sass'
 const b = bem.lock('GraphqlFilters')
 
 const exampleForType = (field) => {
-  if (field.array) {
-    return `[${exampleForType(field.input_type)}]`;
-  }
-
+  let exampleData = ""
   const type = field.input_type;
-  if (type === 'item_id') {
-    return '"123"';
+
+  if (type === 'item_id' || type == 'upload_id') {
+    exampleData = '"123"';
   } else if (type === 'boolean') {
     return 'true';
   } else if (type === 'string') {
-    return '"bike"';
+    exampleData = '"bike"';
   } else if (type === 'float') {
-    return '19.99';
+    exampleData = '19.99';
   } else if (type === 'integer') {
-    return '3';
+    exampleData = '3';
   } else if (type === 'date_time') {
-    return '"2018-02-13T14:30:00+00:00"';
+    exampleData = '"2018-02-13T14:30:00+00:00"';
   } else if (type === 'date') {
-    return '"2018-02-13"';
+    exampleData = '"2018-02-13"';
   } else if (type === 'StringMatchesFilter') {
-    return '{ pattern: "bi(cycl|k)e", caseSensitive: false }';
-  } else if (type === 'LatLonNearFilter') {
-    return '{ latitude: 40.73, longitude: -73.93, radius: 10 }';
+    exampleData = '{ pattern: "bi(cycl|k)e", caseSensitive: false }';
+  } else if (type === 'near') {
+    exampleData = '{ latitude: 40.73, longitude: -73.93, radius: 10 }';
   } else {
-    return type;
+    exampleData = type;
   }
+  if (field.array) {
+    return `[${exampleData}]`
+  }
+  return exampleData
 }
 
 const exampleForField = (field_name, query_field_name, field) => {
