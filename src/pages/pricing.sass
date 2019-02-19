@@ -398,11 +398,9 @@
 
 .PricingPage__faq-title
   +size(bigger)
+  font-weight: 500
   margin-bottom: 90px
   text-align: center
-
-  @media screen and (min-width: 900px)
-    +size(hero)
 
 @media screen and (min-width: 900px)
   .PricingPage__faq-questions
@@ -418,12 +416,7 @@
   margin-bottom: 14px
   color: $light-body-color
   +size(normalBig)
-
-  @media screen and (min-width: 900px)
-    +size(big)
-
-.PricingPage__faq-item-answer
-  +size(small)
+  font-weight: 500
 
 .PricingPage__billing
   text-align: center
@@ -436,6 +429,7 @@
   display: inline-block
   text-decoration: none
   color: $light-body-color
+  background: white
   +weight(bold)
   +size(small)
 

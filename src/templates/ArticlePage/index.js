@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Link from 'components/Link';
 import Img from 'gatsby-image';
-import { Wrap, Space } from 'blocks';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import ResponsiveEmbed from 'react-responsive-embed';
 import Lightbox from 'react-images';

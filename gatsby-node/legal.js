@@ -20,7 +20,7 @@ module.exports = async function legal({ graphql, actions: { createPage } }) {
 
   pages.forEach((page) => {
     const { path } = page
-    const url = path.replace(`${__dirname}/src`, '').replace(/(\/index)?\.md$/, '')
+    const url = path.replace(/^.*\/src/, '').replace(/(\/index)?\.md$/, '');
 
     createPage({
       path: url,

@@ -5,9 +5,9 @@ import { Wrap } from 'blocks';
 
 const b = bem.lock('PageLayout');
 
-export default function PageLayout({ title, subtitle, noWrap, children }) {
+export default function PageLayout({ title, subtitle, bg, noWrap, children }) {
   return (
-    <div className={b()}>
+    <div className={b({ bg })}>
       <Wrap>
         <div className={b('header')}>
           <div className={b('title')}>

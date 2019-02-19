@@ -23,14 +23,20 @@ $gutter: 3%
 
 .BlogPage__article
   margin-bottom: 50px
-  border: 1px solid $border-color
   border-radius: 4px
+  background-color: white
   box-shadow: 0 1px 4px rgba(black, 0.1)
   padding: 22px
   text-decoration: none
   color: $base-body-color
   display: block
   box-sizing: border-box
+  transform: translateY(0)
+  transition: .12s ease-out
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 4px 6px rgba(black, 0.1)
 
 .BlogPage__article-title
   +weight(bold)

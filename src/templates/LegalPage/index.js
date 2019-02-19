@@ -7,6 +7,7 @@ import bem from 'utils/bem';
 import Layout from 'components/Layout';
 
 import './style.sass';
+import 'components/DocAside/content.sass';
 
 const b = bem.lock('LegalPage');
 
@@ -42,7 +43,7 @@ export default class LegalPage extends React.Component {
                 <h1 className={b('content-title')}>{page.frontmatter.title}</h1>
               </Space>
               <div
-                className={b('content-body')}
+                className="content-body"
                 dangerouslySetInnerHTML={{ __html: page.html }}
               />
             </div>

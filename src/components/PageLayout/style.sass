@@ -2,11 +2,18 @@
 @import 'blocks/mixins.sass'
 
 .PageLayout
-  margin: 80px 0 120px 0
+  padding: 90px 0 120px 0
+
+.PageLayout--bg
+  background-size: cover
+  background: url('../../images/article-bottom-bg.svg'), url('../../images/article-top-bg.svg')
+  background-repeat: no-repeat
+  background-position: center 100%, center 0
+  background-size: 100%
 
 .PageLayout__header
   text-align: center
-  margin-bottom: 80px
+  margin-bottom: 90px
 
 .PageLayout__title
   +size(bigger)

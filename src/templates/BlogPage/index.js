@@ -22,6 +22,7 @@ export default class BlogPage extends React.Component {
       <Layout>
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
+          bg
           title="Blog"
           subtitle="News, tips, highlights, and other updates from the team at DatoCMS."
         >
