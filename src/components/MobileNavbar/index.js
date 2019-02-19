@@ -1,6 +1,7 @@
 import React from 'react'
 import bem from 'utils/bem'
 import getCookie from 'utils/getCookie';
+import { Link } from 'gatsby'
 
 import { button } from 'blocks'
 import './style.sass'
@@ -55,21 +56,7 @@ class MobileNavbar extends React.Component {
     });
   }
 
-  componentDidMount() {
-    if (this.props.history) {
-      this.unlisten = this.props.history.listen((location, action) => {
-        document.body.classList.toggle('no-scroll', false)
-        this.setState({ active: false });
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    this.unlisten && this.unlisten();
-  }
-
   render() {
-    const { linkComponent: Link } = this.props;
     const loggedInEmail = getCookie('datoAccountEmail');
 
     return (
@@ -81,7 +68,7 @@ class MobileNavbar extends React.Component {
             </Link>
           </div>
           <div className={b('hamburger-container')}>
-            <button href="#" onClick={this.handleToggle.bind(this)}>
+            <button onClick={this.handleToggle.bind(this)}>
               <img src={hamburger} alt="Menu" />
             </button>
           </div>

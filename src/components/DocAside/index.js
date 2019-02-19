@@ -115,7 +115,7 @@ export default class DocAside extends React.Component {
                 </h1>
               </Space>
 
-              <div className={b('content-body')} ref={x => this.contentBody = x}>
+              <div className="content-body" ref={x => this.contentBody = x}>
                 <div dangerouslySetInnerHTML={{ __html: html }} />
                 {this.props.children}
               </div>

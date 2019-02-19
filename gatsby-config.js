@@ -71,6 +71,9 @@ module.exports = {
             },
           },
           {
+            resolve: `gatsby-remark-normalize-relative-urls`,
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: "language-",

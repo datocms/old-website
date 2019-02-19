@@ -5,7 +5,7 @@ title: Content Management API
 
 This document is a detailed reference to DatoCMS's Content Management API.
 
-The Content Management API is used to manage the content of your DatoCMS projects. This includes creating, updating, deleting, and fetching content of your projects. To use the Content Management API, you will need to authenticate yourself with an API token. Read more about it in <Link to="/content-management-api/#authentication">Authentication</Link>.
+The Content Management API is used to manage the content of your DatoCMS projects. This includes creating, updating, deleting, and fetching content of your projects. To use the Content Management API, you will need to authenticate yourself with an API token. Read more about it in <Link to="/docs/content-management-api/#authentication">Authentication</Link>.
 
 The Content Management APIs also include many GET requests. However, it is highly recommended that you always use the [Content Delivery API](/docs/content-delivery-api/) deliver content to your public-facing web or mobile projects.
 
@@ -14,7 +14,7 @@ The Content Management APIs also include many GET requests. However, it is highl
 DatoCMS ships with an official API client for <a href="https://github.com/datocms/js-datocms-client">Javascript</a> and <a href="https://github.com/datocms/ruby-datocms-client">Ruby</a>.
 In this document you will find examples of usage with both clients for each endpoint the API exposes.
 
-Both clients are built upon the API <Link to="/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
+Both clients are built upon the API <Link to="/docs/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
 
 ### JSON Schema
 

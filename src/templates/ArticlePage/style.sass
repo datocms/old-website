@@ -38,12 +38,22 @@
     overflow: hidden
     border-radius: 4px
 
-.ArticlePage__content-image__image
+a.ArticlePage__content-image__image.ArticlePage__content-image__image
   cursor: zoom-in
   box-shadow: 0 2px 4px rgba(black, 0.2)
   transition: box-shadow 0.1s ease-in-out
   border-radius: 4px
   display: block
+  overflow: hidden
+
+  &:after
+    display: none !important
+
+  &:hover
+    background-color: transparent
+
+  img
+    margin: 0
 
   &:hover
     box-shadow: 0 4px 10px rgba(black, 0.2)
@@ -88,135 +98,7 @@
 .ArticlePage__question-answer
   margin: 60px 0
 
-.ArticlePage__content-text,
-.ArticlePage__question-answer__question,
-.ArticlePage__question-answer__answer
-  font-size: 18px
-  line-height: 1.6
-  font-family: $serif-font
-
-  @media screen and (min-width: 900px)
-    font-size: 20px
-
-  h1, h2, h3, h4, h5, h6
-    position: relative
-    font-family: colfax-web
-    +weight(bold)
-
-  i, em
-    font-style: italic
-
-  strong
-    font-weight: 700
-
-  a
-    color: inherit
-    border-bottom: 3px solid $azure-color
-    text-decoration: none
-
-    &:hover
-      color: $azure-color
-      border-bottom-width: 0
-
-    code
-      background-color: transparent
-      padding: 0
-
-  hr
-    border: 0
-    height: 1px
-    background-color: $border-color
-    margin: 80px 0
-
-  h2
-    font-size: 35px
-    line-height: 1.3
-    margin: 90px 0 35px
-
-  h3
-    font-size: 25px
-    line-height: 1.3
-    margin: 50px 0 15px
-
-  h4
-    font-size: 23px
-    line-height: 1.3
-    margin: 15px 0
-
-  p
-    margin-bottom: 20px
-
-  ul, ol, blockquote
-    padding-left: 30px
-
-  ul li
-    list-style-type: disc
-    margin-bottom: 10px
-
-  ol li
-    list-style-type: decimal
-    margin-bottom: 10px
-
-  code
-    font-family: $monospaced-font
-    background-color: $smoke-color
-    padding: 0.2em 0.3em 0.1em 0.3em
-    border: 1px $border-color
-    border-radius: 3px
-    font-size: 0.8em
-
-  img
-    display: block
-    margin: 50px
-    margin-left: -5%
-    margin-right: -5%
-    max-width: 110%
-    width: 110%
-    border-radius: 4px
-    // box-shadow: 0 2px 3px rgba(black, 0.2)
-
-  table
-    margin-top: 50px
-    margin-bottom: 50px
-
-    th, td
-      text-align: left
-      padding: 10px
-      border-bottom: 1px solid $border-color
-
-  blockquote
-    border-left: 2px solid $base-body-color
-    padding-left: 20px
-    font-style: italic
-
-  .gatsby-highlight
-    margin: 50px 0
-
-    pre
-      overflow: auto
-      padding: 25px
-      line-height: 1.1
-
-    code
-      background-color: transparent
-      border: 0
-      padding: 0
-      border-radius: 0
-      font-size: 13px
-
-      @media screen and (min-width: 900px)
-        font-size: 15px
-
-  a.anchor
-    margin-left: -35px
-    border-bottom-width: 0
-
-    svg
-      width: 25px
-      height: 25px
-
 .ArticlePage__question-answer__question
-  font-style: italic
   font-weight: 700
   color: #555
 
@@ -226,7 +108,7 @@
 .ArticlePage__quote
   font-size: 20px
   font-family: $serif-font
-  line-height: 1.7
+  line-height: 1.5
   margin: 40px 0
   font-style: italic
   color: $light-body-color

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 import './style.sass'
 
@@ -37,7 +38,7 @@ class Group extends React.Component {
   }
 }
 
-const Footer = ({ data, linkComponent: Link }) => (
+const Footer = ({ data }) => (
   <div className={b()} data-datocms-noindex>
     <div className={b('body')}>
       <Link className={b('logo')} to="/">

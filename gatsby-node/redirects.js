@@ -4,7 +4,8 @@ const redirects = {
   "/legal/privacy-policy/": "https://www.iubenda.com/privacy-policy/64648824/full-legal",
   "/why-static/": "/",
   "/gallery/": "/use-cases/",
-  "/api/*": "/content-management-api/:splat",
+  "/api/*": "/docs/content-management-api/:splat",
+  "/content-management-api/*": "/docs/content-management-api/:splat",
   "/docs/graphql/*": "/docs/content-delivery-api/:splat",
   "https://v2.datocms.com/*": "https://www.datocms.com/:splat"
 }

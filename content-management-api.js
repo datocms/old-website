@@ -142,7 +142,7 @@ class ApiPage extends React.Component {
               DatoCMS projects. This includes creating, updating, deleting, and
               fetching content of your projects. To use the Content Management
               API, you will need to authenticate yourself with an API token.
-              Read more about it in <Link to="/content-management-api/#authentication">Authentication</Link>.
+              Read more about it in <Link to="/docs/content-management-api/#authentication">Authentication</Link>.
             </p>
             <p>
               The Content Management APIs also include many GET requests.
@@ -257,7 +257,7 @@ class ApiPage extends React.Component {
               In this document you will find examples of usage with both clients for each endpoint the API exposes.
             </p>
             <p>
-              Both clients are built upon the API <Link to="/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
+              Both clients are built upon the API <Link to="/docs/content-management-api/#schema">JSON Schema</Link>, so they're guaranteed to be up-to-date with the API itself.
             </p>
           </div>
         </div>

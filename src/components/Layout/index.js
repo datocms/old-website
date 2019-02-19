@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -12,15 +11,6 @@ import MobileNavbar from 'components/MobileNavbar'
 import Footer from 'components/Footer'
 
 import './style.sass'
-
-const SmartLink = ({ to, ...props }) => (
-  to.includes('http') ?
-    // eslint-disable-next-line
-    <a href={to} {...props} /> :
-    <Link to={to} {...props} />
-)
-
-const MobileNavbarWithRouter = MobileNavbar;
 
 const query = graphql`
 query LayoutQuery {
@@ -78,7 +68,7 @@ class TemplateWrapper extends React.Component {
     const { hideChat, children } = this.props;
 
     return (
-      <StaticQuery 
+      <StaticQuery
         query={query}
         render={
           (data) => (
@@ -105,13 +95,13 @@ class TemplateWrapper extends React.Component {
                 </a>.
               </CookieConsent>
               <Sticky innerZ={1000} top={0}>
-                <Navbar linkComponent={SmartLink} />
+                <Navbar />
               </Sticky>
-              <MobileNavbarWithRouter linkComponent={SmartLink} />
+              <MobileNavbar />
               {
                 children
               }
-              <Footer linkComponent={SmartLink} />
+              <Footer />
               {
                 !hideChat &&
                   <button className="chat-support" onClick={this.handleKayakoToggle.bind(this)}>

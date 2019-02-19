@@ -174,7 +174,7 @@ export default class LearnPage extends React.Component {
                         </p>
                       </Space>
                       <ul>
-                        <li><Link to="/docs/deployment/introduction/">General concepts</Link></li>
+                        <li><Link to="/docs/deployment/general-concepts/">General concepts</Link></li>
                         <li><Link to="/docs/deployment/netlify/">Netlify</Link></li>
                         <li><Link to="/docs/deployment/travis/">Travis</Link></li>
                         <li><Link to="/docs/deployment/gitlab/">Gitlab</Link></li>

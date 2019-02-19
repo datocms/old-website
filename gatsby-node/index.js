@@ -9,7 +9,7 @@ const cma = require('./cma');
 
 exports.createPages = async function (options) {
   const sections = [
-    //blog,
+    blog,
     //changelog,
     docs,
     //landing,

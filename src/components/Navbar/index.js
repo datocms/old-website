@@ -1,6 +1,7 @@
 import React from 'react'
 import bem from 'utils/bem'
 import getCookie from 'utils/getCookie';
+import { Link } from 'gatsby'
 
 import { Wrap, button } from 'blocks'
 import './style.sass'
@@ -9,7 +10,7 @@ import logo from 'images/dato_logo_full.svg'
 
 const b = bem.lock('Navbar')
 
-const Navbar = ({ linkComponent: Link }) => {
+const Navbar = () => {
   const loggedInEmail = getCookie('datoAccountEmail');
 
   return (

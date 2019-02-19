@@ -5,9 +5,11 @@ import { Wrap, button, Space, text } from 'blocks'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ResponsiveEmbed from 'react-responsive-embed'
 import Lightbox from 'react-images'
+import parse from 'html-react-parser'
 
 import bem from 'utils/bem'
 import './style.sass'
+import 'components/DocAside/content.sass'
 
 import Layout from 'components/Layout'
 import BlogAside from 'components/BlogAside'
@@ -51,10 +53,10 @@ export default class ArticlePage extends React.Component {
                   {article.title}
                 </Link>
               </h1>
-              <div className={b('content')}>
+              <div className="content-body">
                 {
                   article.content.map((block) => (
-                    <div key={block.id}>
+                    <React.Fragment key={block.id}>
                       {
                         block.model.apiKey === 'typeform' &&
                           ReactTypeformEmbed &&
@@ -77,9 +79,7 @@ export default class ArticlePage extends React.Component {
                       }
                       {
                         block.model.apiKey === 'text' &&
-                          <div className={b('content-text')}>
-                            <div dangerouslySetInnerHTML={{ __html: block.text.markdown.html }} />
-                          </div>
+                          parse(block.text.markdown.html)
                       }
                       {
                         block.model.apiKey === 'question_answer' &&
@@ -141,7 +141,7 @@ export default class ArticlePage extends React.Component {
                             </div>
                           </div>
                       }
-                    </div>
+                    </React.Fragment>
                   ))
                 }
               </div>
