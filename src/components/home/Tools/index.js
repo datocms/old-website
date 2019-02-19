@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'components/Link'
 
 import './style.sass'
 import { Wrap, button, Space, text } from 'blocks'

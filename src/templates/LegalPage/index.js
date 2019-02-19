@@ -1,5 +1,6 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import Link from 'components/Link'
 import { Wrap, Space } from 'blocks'
 
 import bem from 'utils/bem'

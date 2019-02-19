@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'components/Link'
 import bem from 'utils/bem'
 import Helmet from 'react-helmet'
 import logo from 'images/dato_logo_full.svg'

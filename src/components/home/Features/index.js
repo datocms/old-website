@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'components/Link'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import './style.sass'

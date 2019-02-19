@@ -1,5 +1,6 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import Link from 'components/Link'
 import { Wrap, button, Space, text } from 'blocks'
 import Zoom from 'react-reveal/Zoom'
 import Helmet from 'react-helmet'

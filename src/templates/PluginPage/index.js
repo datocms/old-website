@@ -1,5 +1,6 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import Link from 'components/Link'
 import { Wrap, button, Space, text } from 'blocks'
 import sortBy from 'sort-by'
 import PluginsAside from 'components/PluginsAside'

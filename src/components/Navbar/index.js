@@ -1,7 +1,7 @@
 import React from 'react'
 import bem from 'utils/bem'
 import getCookie from 'utils/getCookie';
-import { Link } from 'gatsby'
+import Link from 'components/Link'
 
 import { Wrap, button } from 'blocks'
 import './style.sass'
