@@ -5,7 +5,6 @@ const landing = require('./landing');
 const legal = require('./legal');
 const plugins = require('./plugins');
 const redirects = require('./redirects');
-const cma = require('./cma');
 
 exports.createPages = async function (options) {
   const sections = [
@@ -16,7 +15,6 @@ exports.createPages = async function (options) {
     legal,
     plugins,
     redirects,
-    cma,
   ];
 
   for (let i = 0; i < sections.length; i++) {

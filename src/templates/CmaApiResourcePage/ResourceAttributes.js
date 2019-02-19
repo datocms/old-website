@@ -84,7 +84,6 @@ export default class ResourceAttributes extends React.Component {
             }
           </tbody>
         </table>
-        <hr />
       </>
     );
   }

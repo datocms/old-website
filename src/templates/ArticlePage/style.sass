@@ -115,21 +115,29 @@ a.ArticlePage__content-image__image.ArticlePage__content-image__image
     font-size: 25px
 
 .ArticlePage__meta
-  margin-top: 50px
+  margin-bottom: 60px
+  display: flex
+  align-items: center
+
+.ArticlePage__meta__avatar
+  width: 50px
+
+  .gatsby-image-wrapper
+    border-radius: 60px
+    overflow: hidden
+
+.ArticlePage__meta__description
+  margin-left: 0.7rem
+  flex: 1 1 auto
   color: $light-body-color
 
   a
-    color: $base-body-color
     text-decoration: none
-    +weight(bold)
+    color: inherit
 
-    &:hover
-      text-decoration: underline
-
-  .gatsby-image-outer-wrapper
-    display: inline-block
-    vertical-align: middle
-    margin-right: 15px
+  strong
+    font-weight: 500
+    color: $base-body-color
 
 .ArticlePage__image
   width: 50px

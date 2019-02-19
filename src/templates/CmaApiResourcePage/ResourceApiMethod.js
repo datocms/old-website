@@ -1,13 +1,9 @@
 import React from 'react'
-import bem from 'utils/bem'
 import { Tabs, Tab } from './Tabs'
 import HttpExample from './HttpExample'
 import JsExample from './JsExample'
 import RubyExample from './RubyExample'
 
-import './ResourceApiMethod.sass';
-
-const b = bem.lock('ResourceApiMethod');
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 export default class ResourceApiMethod extends React.Component {
@@ -16,7 +12,7 @@ export default class ResourceApiMethod extends React.Component {
     const path = link.href.replace(regexp, ':$1_id');
 
     return (
-      <div className={b()}>
+      <>
         <h3 id={link.title.toLowerCase()}>
           {link.description}
         </h3>
@@ -43,8 +39,7 @@ export default class ResourceApiMethod extends React.Component {
             />
           </Tab>
         </Tabs>
-        <hr />
-      </div>
+      </>
     );
   }
 }

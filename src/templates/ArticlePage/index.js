@@ -44,10 +44,19 @@ export default class ArticlePage extends React.Component {
 
     return (
       <Layout>
-        <Space both={10}>
+        <Space both={8}>
           <Wrap>
             <div className={b()}>
               <HelmetDatoCms seo={article.seoMetaTags} />
+              <div className={b('meta')}>
+                <div className={b('meta__avatar')}>
+                  <Img fluid={article.author.avatar.fluid} />
+                </div>
+                <div className={b('meta__description')}>
+                  <p><strong>{article.author.name}</strong></p>
+                  <p><Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link></p>
+                </div>
+              </div>
               <h1 className={b('title')}>
                 <Link to={`/blog/${article.slug}/`}>
                   {article.title}
@@ -145,13 +154,6 @@ export default class ArticlePage extends React.Component {
                   ))
                 }
               </div>
-              <div className={b('meta')}>
-                <Img
-                  className={b('image')}
-                  fluid={article.author.avatar.fluid}
-                />
-                {article.author.name}, on <Link to={`/blog/${article.slug}/`}>{article.publicationDate}</Link>
-              </div>
               <Lightbox
                 backdropClosesModal
                 width={1400}
@@ -247,7 +249,7 @@ export const query = graphql`
           }
         }
       }
-      publicationDate(formatString: "MMM D, YYYY")
+      publicationDate(formatString: "MMMM Do YYYY")
       author {
         name
         avatar {
