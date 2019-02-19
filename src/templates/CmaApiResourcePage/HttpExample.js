@@ -22,14 +22,14 @@ const Header = ({ name, children, value }) => (
 );
 
 const HttpStatus = ({ status }) => (
-  <>
+  <div>
     <span className="token punctuation">HTTP/1.1</span>&nbsp;
     <span className="token keyword">{status}</span>
-  </>
+  </div>
 );
 
 const HttpRequest = ({ method, url }) => (
-  <>
+  <div>
     <span className="token keyword">{method}</span>
     &nbsp;
     <span
@@ -43,7 +43,7 @@ const HttpRequest = ({ method, url }) => (
       }}
     />{' '}
     <span className="token punctuation">HTTP/1.1</span>
-  </>
+  </div>
 );
 
 const JsonBody = ({ payload }) => (
