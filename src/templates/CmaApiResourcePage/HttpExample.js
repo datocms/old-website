@@ -2,6 +2,7 @@ import React from 'react'
 import bem from 'utils/bem'
 import schemaExampleFor from 'utils/schemaExampleFor'
 import Prism from 'prismjs'
+import 'prismjs/components/prism-json'
 
 import './HttpExample.sass';
 
