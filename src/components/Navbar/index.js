@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div style={{ height: '66px' }} />
+      <div style={{ height: '55px' }} />
       <div className={b()} data-datocms-noindex>
         <Wrap>
           <div className={b('inner')}>
