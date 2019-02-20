@@ -91,7 +91,7 @@ class UseCasesPage extends React.Component {
     return (
       <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
-        <PageLayout 
+        <PageLayout
           title="Use Cases"
           subtitle="Companies and agencies of any size trust DatoCMS to power content in their websites and apps"
         >
@@ -112,9 +112,7 @@ class UseCasesPage extends React.Component {
                       bottomBoundary={`#use-case-content-${useCase.id}`}
                     >
                       <div className={b('use-case-content-inner')}>
-                        <h3 className={b('use-case-title')}>
-                          {useCase.title}
-                        </h3>
+                        <h3 className={b('use-case-title')}>{useCase.title}</h3>
                         <div
                           className={b('use-case-description')}
                           dangerouslySetInnerHTML={{

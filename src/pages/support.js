@@ -26,16 +26,14 @@ class Support extends React.Component {
             <div className={b()}>
               <div className={b('left')}>
                 <div className={b('logo')}>
-                  {
-                    authors.edges.map(({ node: author }) => (
-                      <img
-                        alt={author.name}
-                        src={author.avatar.url}
-                        className={b('person')}
-                        key={author.name}
-                      />
-                    ))
-                  }
+                  {authors.edges.map(({ node: author }) => (
+                    <img
+                      alt={author.name}
+                      src={author.avatar.url}
+                      className={b('person')}
+                      key={author.name}
+                    />
+                  ))}
                 </div>
                 <div className={b('title')}>We're here to help!</div>
                 <div className={b('content')}>
@@ -67,19 +65,19 @@ class Support extends React.Component {
 export default Support;
 
 export const query = graphql`
-query SupportQuery {
-  authors: allDatoCmsAuthor {
-    edges {
-      node {
-        name
-        avatar {
-          url
-          fluid(maxWidth: 60) {
-            ...GatsbyDatoCmsFluid
+  query SupportQuery {
+    authors: allDatoCmsAuthor {
+      edges {
+        node {
+          name
+          avatar {
+            url
+            fluid(maxWidth: 60) {
+              ...GatsbyDatoCmsFluid
+            }
           }
         }
       }
     }
   }
-}
 `;

@@ -51,15 +51,15 @@ export default class LearnPage extends React.Component {
 
               <div className={b('section-items')}>
                 <Guide
-                  title="Introduction"
+                  title="General concepts"
                   description="Learn how DatoCMS works and how you can build your next administrative area."
                   link="/docs/introduction/"
                 />
                 <Guide title="API Reference">
                   <Space bottom={2}>
                     <p>
-                      We offer a complete, strong-consistent API that let's
-                      you to programmatically build any kind of product.
+                      We offer a complete, strong-consistent API that let's you
+                      to programmatically build any kind of product.
                     </p>
                   </Space>
                   <ul className="fullwidth">
@@ -79,8 +79,7 @@ export default class LearnPage extends React.Component {
                   <Space bottom={2}>
                     <p>
                       Use our API to import existing content from external
-                      sources, or implement a full-backup strategy in no
-                      time.
+                      sources, or implement a full-backup strategy in no time.
                     </p>
                   </Space>
                   <ul className="fullwidth">
@@ -88,9 +87,7 @@ export default class LearnPage extends React.Component {
                       <Link to="/docs/import/">Importing data</Link>
                     </li>
                     <li>
-                      <Link to="/docs/backups/">
-                        Making offline backups
-                      </Link>
+                      <Link to="/docs/backups/">Making offline backups</Link>
                     </li>
                   </ul>
                 </Guide>
@@ -101,49 +98,47 @@ export default class LearnPage extends React.Component {
               <h3 className={b('section-title')}>Examples</h3>
 
               <div className={b('section-items')}>
-                {this.props.data.demoCategories.edges.map(
-                  ({ node: cat }) => (
-                    <Guide key={cat.id} title={`${cat.name} examples`}>
-                      <Space bottom={2}>
-                        <p>
-                          {cat.description} (
+                {this.props.data.demoCategories.edges.map(({ node: cat }) => (
+                  <Guide key={cat.id} title={`${cat.name} examples`}>
+                    <Space bottom={2}>
+                      <p>
+                        {cat.description} (
+                        <a
+                          href={cat.demoUrl}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          see it live
+                        </a>
+                        )
+                      </p>
+                    </Space>
+                    <ul>
+                      {cat.templates.map(template => (
+                        <li key={template.code}>
                           <a
-                            href={cat.demoUrl}
-                            rel="noopener noreferrer"
                             target="_blank"
+                            rel="noopener noreferrer"
+                            href={`https://dashboard.datocms.com/projects/new-from-template/${
+                              cat.code
+                            }/${template.code}`}
                           >
-                            see it live
+                            <img
+                              alt={template.technology.name}
+                              src={
+                                (
+                                  template.technology.squareLogo ||
+                                  template.technology.logo
+                                ).url
+                              }
+                            />
+                            {template.technology.name}
                           </a>
-                          )
-                        </p>
-                      </Space>
-                      <ul>
-                        {cat.templates.map(template => (
-                          <li key={template.code}>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href={`https://dashboard.datocms.com/projects/new-from-template/${
-                                cat.code
-                              }/${template.code}`}
-                            >
-                              <img
-                                alt={template.technology.name}
-                                src={
-                                  (
-                                    template.technology.squareLogo ||
-                                    template.technology.logo
-                                  ).url
-                                }
-                              />
-                              {template.technology.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </Guide>
-                  ),
-                )}
+                        </li>
+                      ))}
+                    </ul>
+                  </Guide>
+                ))}
               </div>
             </div>
 
@@ -156,8 +151,8 @@ export default class LearnPage extends React.Component {
                 <Guide title="Static website generators">
                   <Space bottom={2}>
                     <p>
-                      DatoCMS is the best companion if you're building a
-                      static website:
+                      DatoCMS is the best companion if you're building a static
+                      website:
                     </p>
                   </Space>
                   <ul>
@@ -210,9 +205,7 @@ export default class LearnPage extends React.Component {
                       <Link to="/docs/deployment/circleci/">CircleCI</Link>
                     </li>
                     <li>
-                      <Link to="/docs/deployment/custom/">
-                        Custom webhooks
-                      </Link>
+                      <Link to="/docs/deployment/custom/">Custom webhooks</Link>
                     </li>
                   </ul>
                 </Guide>

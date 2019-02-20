@@ -61,7 +61,11 @@ export default class DocAside extends React.Component {
                 <ul className={b('menu-pages')}>
                   {menuItems.map(menuItem => (
                     <li key={menuItem.path} className={b('menu-page')}>
-                      <Link exact to={menuItem.path} activeClassName="is-active">
+                      <Link
+                        exact
+                        to={menuItem.path}
+                        activeClassName="is-active"
+                      >
                         {menuItem.title}
                       </Link>
                       {menuItem.headings.length > 0 && (
@@ -94,11 +98,9 @@ export default class DocAside extends React.Component {
             <div className={b('content')}>
               <Space bottom={5}>
                 <h6 className={b('content-category')}>
-                  {
-                    menuItems.length > 1 && index > 0 ?
-                      chapterTitle :
-                      'Documentation'
-                  }
+                  {menuItems.length > 1 && index > 0
+                    ? chapterTitle
+                    : 'Documentation'}
                 </h6>
                 <h1 className={b('content-title')}>
                   {index === 0 ? chapterTitle : pageTitle}
@@ -127,11 +129,7 @@ export default class DocAside extends React.Component {
                     issue
                   </a>{' '}
                   or{' '}
-                  <a
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    href={repoPath}
-                  >
+                  <a rel="noopener noreferrer" target="_blank" href={repoPath}>
                     propose a change
                   </a>{' '}
                   on Github!

@@ -1,6 +1,6 @@
 ---
 position: 1
-title: How DatoCMS works
+title: General concepts
 ---
 
 DatoCMS is a cloud-based content management system designed to work with static websites, mobile apps and server-side applications of any kind. Freelancers, agencies and startups use DatoCMS to allow non-technical clients and team members to manage the content of their digital products within a web-based CMS.

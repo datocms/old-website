@@ -114,11 +114,11 @@ class TemplateWrapper extends React.Component {
             <Footer />
             {!hideChat && (
               <button
-                className="chat-support"
+                className={`chat-support is-${
+                  this.state.chatOpen ? 'open' : 'closed'
+                }`}
                 onClick={this.handleKayakoToggle.bind(this)}
-              >
-                {this.state.chatOpen ? 'Close' : 'Need help?'}
-              </button>
+              />
             )}
           </div>
         )}

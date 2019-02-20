@@ -21,7 +21,6 @@ body.no-scroll
   right: 25px
   background: linear-gradient(221.82deg, #FF7059 0%, #FF664E 63.02%, #F2543A 100%);
   color: white
-  padding: 12px 25px 8px 20px
   border-radius: 60px
   text-decoration: none
   font-weight: 500
@@ -31,17 +30,25 @@ body.no-scroll
   &:hover
     background: #FF7059
 
-  &:before
-    content: ""
-    background: url('../../images/chat.svg')
-    background-size: contain
-    background-position: center center
-    display: inline-block
-    background-repeat: no-repeat
-    vertical-align: middle
-    height: 28px
-    width: 28px
-    margin-right: 14px
+.chat-support.is-closed:before,
+.chat-support.is-open:before
+  content: ""
+  background: url('../../images/chat.svg')
+  background-size: 25px
+  background-position: center center
+  display: inline-block
+  background-repeat: no-repeat
+  vertical-align: middle
+  display: block
+  height: 50px
+  width: 50px
+  line-height: 50px
+
+  @media screen and (min-width: 800px)
+    background-size: 30px
+    height: 60px
+    width: 60px
+    line-height: 70px
 
 #kayako-messenger
   right: -4px !important

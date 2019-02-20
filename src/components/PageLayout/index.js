@@ -10,22 +10,11 @@ export default function PageLayout({ title, subtitle, bg, noWrap, children }) {
     <div className={b({ bg })}>
       <Wrap>
         <div className={b('header')}>
-          <div className={b('title')}>
-            {title}
-          </div>
-          {
-            subtitle &&
-              <div className={b('subtitle')}>
-                {subtitle}
-              </div>
-          }
+          <div className={b('title')}>{title}</div>
+          {subtitle && <div className={b('subtitle')}>{subtitle}</div>}
         </div>
       </Wrap>
-      {
-        noWrap ?
-          children :
-          <Wrap>{children}</Wrap>
-      }
+      {noWrap ? children : <Wrap>{children}</Wrap>}
     </div>
-  )
+  );
 }

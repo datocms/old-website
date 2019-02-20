@@ -153,10 +153,7 @@ export default class PluginsPage extends React.Component {
                   </Link>
                 )}
                 {!last && (
-                  <Link
-                    to={`/plugins/${index + 1}/`}
-                    className={b('previous')}
-                  >
+                  <Link to={`/plugins/${index + 1}/`} className={b('previous')}>
                     &laquo; See previous plugins
                   </Link>
                 )}

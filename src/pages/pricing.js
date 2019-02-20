@@ -358,8 +358,8 @@ class PricingPage extends React.Component {
               </div>
               <div>
                 <div className={b('free-plan-description')}>
-                  All the essential features included, 1,000 records, 15
-                  models, 1GB file storage
+                  All the essential features included, 1,000 records, 15 models,
+                  1GB file storage
                 </div>
                 <a
                   className={button({ red: true, 'normal-big': true })}
@@ -385,8 +385,7 @@ class PricingPage extends React.Component {
                           Feature comparison
                         </div>
                         <div className={b('details-header-description')}>
-                          Choose the best for you and get in touch for any
-                          help
+                          Choose the best for you and get in touch for any help
                         </div>
                       </div>
                     </div>
@@ -463,9 +462,7 @@ class PricingPage extends React.Component {
                 .map(e => e.node)
                 .map(faq => (
                   <div className={b('faq-item')} key={faq.id}>
-                    <div className={b('faq-item-question')}>
-                      {faq.question}
-                    </div>
+                    <div className={b('faq-item-question')}>{faq.question}</div>
                     <div className={b('faq-item-answer')}>{faq.answer}</div>
                   </div>
                 ))}

@@ -155,9 +155,7 @@ export default class ArticlePage extends React.Component {
                             src={`//www.youtube.com/embed/${
                               block.video.providerUid
                             }`}
-                            ratio={`${block.video.width}:${
-                              block.video.height
-                            }`}
+                            ratio={`${block.video.width}:${block.video.height}`}
                             allowFullScreen
                           />
                         ) : (
@@ -165,9 +163,7 @@ export default class ArticlePage extends React.Component {
                             src={`//player.vimeo.com/video/${
                               block.video.providerUid
                             }?title=0&byline=0&portrait=0`}
-                            ratio={`${block.video.width}:${
-                              block.video.height
-                            }`}
+                            ratio={`${block.video.width}:${block.video.height}`}
                             allowFullScreen
                           />
                         )}
