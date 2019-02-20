@@ -4,6 +4,8 @@ import HttpExample from './HttpExample';
 import JsExample from './JsExample';
 import RubyExample from './RubyExample';
 
+import Anchor from 'components/Anchor';
+
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 export default class ResourceApiMethod extends React.Component {
@@ -13,7 +15,10 @@ export default class ResourceApiMethod extends React.Component {
 
     return (
       <>
-        <h3 id={link.title.toLowerCase()}>{link.description}</h3>
+        <h3 id={link.title.toLowerCase()}>
+          <Anchor id={link.title.toLowerCase()} />
+          {link.description}
+        </h3>
         <p>
           To {link.description.toLowerCase()}, send a <code>{link.method}</code>{' '}
           request to the <code>{path}</code> endpoint

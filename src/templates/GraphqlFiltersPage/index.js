@@ -6,6 +6,7 @@ import DocAside from 'components/DocAside';
 import { graphql } from 'gatsby';
 import { Tabs, Tab } from 'components/Tabs';
 import fieldTypes from 'utils/fieldTypes.json';
+import Anchor from 'components/Anchor';
 
 const b = bem.lock('GraphqlFilters');
 
@@ -95,19 +96,27 @@ class GraphqlFiltersBlock extends React.Component {
 
     return (
       <div>
-        <h3>Meta fields</h3>
+        <h3 id="meta-fields">
+          <Anchor id="meta-fields" />
+          Meta fields
+        </h3>
         {Object.keys(fieldsMetaInfo).map(name => (
           <React.Fragment key={name}>
             <h4 id={name} className={b('field__title')}>
+              <Anchor id={name} />
               Filter by <code>{name}</code> meta field
             </h4>
             {this.renderFilters(name, fieldsMetaInfo[name])}
           </React.Fragment>
         ))}
-        <h3>Filters available per field type</h3>
+        <h3>
+          <Anchor id="field-types" />
+          Filters available per field type
+        </h3>
         {Object.keys(fieldTypesInfo).map(name => (
           <React.Fragment key={name}>
             <h4 id={name} className={b('field__title')}>
+              <Anchor id={name} />
               {fieldTypes[name]} fields
             </h4>
             {this.renderFilters(name, fieldTypesInfo[name])}

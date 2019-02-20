@@ -3,6 +3,7 @@ import sortObject from 'sort-object';
 import bem from 'utils/bem';
 
 import './ResourceAttributes.sass';
+import Anchor from 'components/Anchor';
 
 const b = bem.lock('ResourceAttributes');
 
@@ -60,7 +61,10 @@ export default class ResourceAttributes extends React.Component {
 
     return (
       <>
-        <h3 id="object">The {resource.title} object</h3>
+        <h3 id="object">
+          <Anchor id="object" />
+          The {resource.title} object
+        </h3>
         <p>
           A {resource.title} object is returned as part of the response body of
           each successful {joinAnd(links, 'or')} API call. The following table
