@@ -78,26 +78,15 @@
     video
       width: 100%
 
-@media screen and (min-width: 700px)
-  .HomeHero__subscribe
-    display: flex
-    align-items: center
-    justify-content: center
-
-  .HomeHero__browser
-    perspective: 600px
-
-    .Browser__content video
-      width: 100%
-
 @media screen and (min-width: 1000px)
   .HomeHero
     background: url('../../../images/first-wave.svg')
-    background-position: bottom center
-    background-size: 100% 100%
     position: relative
     overflow: hidden
     text-align: center
+    background-repeat: repeat-x
+    background-size: 100% 70%
+    background-position: center 0
 
   .HomeHero__inner
     max-width: 1440px
@@ -109,9 +98,14 @@
     width: 50vw
 
   .HomeHero__title
-    +size(bigger)
+    font-size: 60px
     +weight(bold)
     margin-bottom: 20px
+
+  .HomeHero__description
+    font-size: 30px
+    line-height: 1.1
+    font-family: $serif-font
 
   .HomeHero__text-container
     box-sizing: border-box
@@ -127,21 +121,21 @@
     max-width: 1154px
     margin: 0 auto
 
-@media screen and (min-width: 1000px) and (max-width: 1249px)
-  .HomeHero
-    margin-top: 60px
-
 @media screen and (min-width: 1200px)
   .HomeHero
-    background-repeat: repeat-x
-    background-size: 100% 70%
-    background-position: center 0
 
   .HomeHero__title
     font-size: 75px
-    line-height: 1.1
 
-  .HomeHero__description
-    font-size: 30px
-    line-height: 1.1
-    font-family: $serif-font
+@media screen and (min-width: 700px)
+  .HomeHero__subscribe
+    display: flex
+    align-items: center
+    justify-content: center
+
+  .HomeHero__browser
+    perspective: 600px
+
+    .Browser__content video
+      width: 100%
+
