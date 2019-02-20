@@ -46,13 +46,26 @@ const Navbar = () => {
               >
                 Pricing
               </Link>
-              <Link
-                className={b('text-link')}
-                activeClassName={b('text-link', { active: true })}
-                to="/docs/"
-              >
-                Docs
-              </Link>
+              <div className={b('text-link', { handle: true })}>
+                <Link to="/docs2/">Docs</Link>
+                <div className={b('menu')}>
+                  <Link to="/" className={b('menu-item')}>
+                    Concepts
+                  </Link>
+                  <Link to="/" className={b('menu-item')}>
+                    Content modelling
+                  </Link>
+                  <Link to="/" className={b('menu-item')}>
+                    API Reference
+                  </Link>
+                  <Link to="/" className={b('menu-item')}>
+                    Tutorials
+                  </Link>
+                  <Link to="/" className={b('menu-item')}>
+                    Integrations
+                  </Link>
+                </div>
+              </div>
               <Link
                 className={b('text-link')}
                 activeClassName={b('text-link', { active: true })}

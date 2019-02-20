@@ -2,7 +2,7 @@
 @import 'blocks/mixins.sass'
 
 .PageLayout
-  padding: 90px 0 120px 0
+  padding: 0 0 120px 0
 
 .PageLayout--bg
   background-size: cover
@@ -11,9 +11,16 @@
   background-position: center 100%, center 0
   background-size: 100%
 
+.PageLayout--bg2
+  background: url('../../images/second-wave.svg')
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: 100% 50%
+
 .PageLayout__header
   text-align: center
-  margin-bottom: 90px
+  padding-top: 90px
+  padding-bottom: 90px
 
 .PageLayout__title
   +size(bigger)
@@ -28,7 +35,7 @@
   font-weight: 300
   margin-top: 20px
   max-width: 700px
-  margin: 20px auto 60px
+  margin: 20px auto 0
   +size(normalBig)
 
   @media screen and (min-width: 600px)

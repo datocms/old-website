@@ -50,9 +50,19 @@ a.Navbar__text-link:hover
 .Navbar__text-link--handle
   position: relative
   cursor: pointer
+  padding: 0
 
   &:hover .Navbar__menu
     display: block
+
+  > span, > a
+    padding: 0.8em 1.2em
+    display: block
+    text-decoration: none
+    color: inherit
+
+  > a:hover
+    text-decoration: underline
 
 .Navbar__menu
   position: absolute

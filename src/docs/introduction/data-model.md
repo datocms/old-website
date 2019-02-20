@@ -9,7 +9,7 @@ The way you define the kind of content you can edit inside each different admini
 
 You can create new models in the *Admin area > Models* section of your administrative area:
 
-![foo](..../images/data-model/1.png)
+![foo](../images/data-model/1.png)
 
 Each model consists of a set of <strong>fields</strong> that you define. Fields can can be one of the following:
 
