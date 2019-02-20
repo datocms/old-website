@@ -137,7 +137,7 @@ export default class LearnPage extends React.Component {
                         </div>
                         <div to="/" className={b('api__item__description')}>
                           Programmatically update your schema and content with
-                          our REST API endpoints
+                          our REST API
                         </div>
                         <div className={b('api__item__read-more')}>
                           Read more
@@ -159,7 +159,9 @@ export default class LearnPage extends React.Component {
                 </div>
               </div>
               <div className={b('section')}>
-                <div className={b('section__title')}>Integrations</div>
+                <div className={b('section__title')}>
+                  Available integrations
+                </div>
                 <div className={b('integrations')}>
                   {[
                     'gatsbyjs',

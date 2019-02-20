@@ -89,19 +89,20 @@
 
 .Docs__api__cols
   display: flex
+  align-items: stretch
   margin-left: -60px
 
 .Docs__api__col
   margin-left: 60px
   flex: 1
-
-.Docs__api__col:first-child
+  display: flex
 
 .Docs__api__item
   border-radius: 6px
   background-color: white
   display: block
   display: flex
+  flex: 1
   align-items: stretch
   box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 10px rgba(black, 0.1)
   transition: .12s ease-out
@@ -168,8 +169,6 @@
 
 .Docs__integrations__item
   margin-left: 30px
-  padding: 25px
-  border-radius: 10px
   text-decoration: none
   color: inherit
   text-align: center
