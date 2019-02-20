@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.sass';
-import { button, Space } from 'blocks';
+import { button } from 'blocks';
 
 import Browser from 'components/Browser';
 import bem from 'utils/bem';
@@ -36,21 +36,19 @@ class HomeHero extends React.Component {
               <div>
                 <h1 className={b('title')}>{title}</h1>
                 <div className={b('description')}>{description}</div>
-                <Space bottom="2">
-                  <div className={b('subscribe')}>
-                    <input
-                      className={b('email')}
-                      type="email"
-                      placeholder="Your email here..."
-                    />
-                    <a
-                      href="https://dashboard.datocms.com/signup"
-                      className={button({ red: true })}
-                    >
-                      Try for free
-                    </a>
-                  </div>
-                </Space>
+                <div className={b('subscribe')}>
+                  <input
+                    className={b('email')}
+                    type="email"
+                    placeholder="Your email here..."
+                  />
+                  <a
+                    href="https://dashboard.datocms.com/signup"
+                    className={button({ red: true })}
+                  >
+                    Try for free
+                  </a>
+                </div>
               </div>
             </div>
             <div className={b('browser')}>

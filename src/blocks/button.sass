@@ -38,7 +38,11 @@
   box-sizing: border-box
 
 .button--big
-  +size(big)
+  padding: 1em 1.2em 0.9em
+  +size(normalBig)
+
+  @media screen and (min-width: 1000px)
+    +size(big)
 
 .button--border
   background: transparent

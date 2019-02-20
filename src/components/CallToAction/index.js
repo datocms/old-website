@@ -11,16 +11,16 @@ const CallToAction = ({ data }) => (
   <Space both="10">
     <Wrap>
       <div className={b()}>
-        <div className={b('title')}>Ready to try it yourself?</div>
+        <div className={b('title')}>Get started with DatoCMS now</div>
+        <div className={b('no-card')}>
+          No credit card required, 30 seconds sign-up
+        </div>
         <a
-          className={button({ red: true })}
+          className={button({ red: true, big: true })}
           href="https://dashboard.datocms.com/signup"
         >
           Try for free!
         </a>
-        <div className={b('no-card')}>
-          No credit card required, 30 seconds sign-up.
-        </div>
       </div>
     </Wrap>
   </Space>

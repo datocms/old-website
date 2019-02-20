@@ -5,9 +5,11 @@ import { HelmetDatoCms } from 'gatsby-source-datocms';
 
 import bem from 'utils/bem';
 import './style.sass';
+import 'components/DocAside/content.sass';
 
 import Layout from 'components/Layout';
 import PageLayout from 'components/PageLayout';
+import Entry from 'components/Entry';
 
 const b = bem.lock('ChangelogPage');
 
@@ -21,39 +23,11 @@ export default class ChangelogPage extends React.Component {
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
           title="Product Changelog"
+          subtitle="DatoCMS new features, improvements and significant news"
         >
           <div className={b()}>
             {articles.map(article => (
-              <div key={article.slug} className={b('article')}>
-                <div className={b('article-meta')}>
-                  {article.publicationDate}
-                </div>
-                <div className={b('article-body')}>
-                  <Link
-                    to={`/changelog/${article.slug}/`}
-                    className={b('article-title')}
-                  >
-                    {article.title}
-                  </Link>
-                  <div className={b('article-categories')}>
-                    {article.categories.map(cat => (
-                      <div
-                        key={cat.name}
-                        className={b('article-category')}
-                        style={{ backgroundColor: cat.color.hex }}
-                      >
-                        {cat.name}
-                      </div>
-                    ))}
-                  </div>
-                  <div
-                    className={b('article-content')}
-                    dangerouslySetInnerHTML={{
-                      __html: article.content.markdown.html,
-                    }}
-                  />
-                </div>
-              </div>
+              <Entry key={article.slug} article={article} />
             ))}
             <div className={b('pagination')}>
               {!first && (

@@ -129,7 +129,7 @@ class MobileNavbar extends React.Component {
                 Login
               </a>
               <a
-                className={button({ red: true })}
+                className={button({ red: true, expand: true })}
                 href="https://dashboard.datocms.com/signup"
               >
                 Try it for free

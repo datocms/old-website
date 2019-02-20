@@ -1,9 +1,25 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+function isActive(exact, className, activeClassName, { isPartiallyCurrent, isCurrent }) {
+  const normalAndActive = [className, activeClassName].filter(x => x).join(' ');
+
+  if (exact && isCurrent) {
+    return { className: normalAndActive };
+  }
+
+  if (!exact && isPartiallyCurrent) {
+    return { className: normalAndActive };
+  }
+
+  return { className };
+}
+
 export default function NormalizedLink({
   to,
   activeClassName,
+  exact,
+  className,
   children,
   ...other
 }) {
@@ -31,14 +47,14 @@ export default function NormalizedLink({
 
   if (internal) {
     return (
-      <Link to={finalTo} activeClassName={activeClassName} {...other}>
+      <Link to={finalTo} getProps={isActive.bind(this, exact, className, activeClassName)} {...other}>
         {children}
       </Link>
     );
   }
 
   return (
-    <a href={finalTo} {...other}>
+    <a href={finalTo} className={className} {...other}>
       {children}
     </a>
   );

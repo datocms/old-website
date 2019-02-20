@@ -82,7 +82,6 @@ export default class PluginsPage extends React.Component {
       <Layout>
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
-          bg
           title="Plugins"
           subtitle="Extend the functionality of DatoCMS"
         >

@@ -12,6 +12,7 @@ import './style.sass';
 import 'components/DocAside/content.sass';
 
 import Layout from 'components/Layout';
+import CallToAction from 'components/CallToAction';
 
 const b = bem.lock('ArticlePage');
 
@@ -190,6 +191,7 @@ export default class ArticlePage extends React.Component {
             onClose={() => this.setState({ image: null })}
           />
         </div>
+        <CallToAction />
       </Layout>
     );
   }

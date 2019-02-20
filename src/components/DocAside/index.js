@@ -61,7 +61,7 @@ export default class DocAside extends React.Component {
                 <ul className={b('menu-pages')}>
                   {menuItems.map(menuItem => (
                     <li key={menuItem.path} className={b('menu-page')}>
-                      <Link to={menuItem.path} activeClassName="is-active">
+                      <Link exact to={menuItem.path} activeClassName="is-active">
                         {menuItem.title}
                       </Link>
                       {menuItem.headings.length > 0 && (
@@ -88,42 +88,18 @@ export default class DocAside extends React.Component {
                 <div className={b('menu-back')}>
                   <Link to="/docs">‹ Go back to docs</Link>
                 </div>
-
-                {repoPath && (
-                  <div className={b('contribute')}>
-                    <div className={b('contribute-title')}>
-                      Something is missing in this page?
-                    </div>
-                    <button onClick={this.handleOpenKayako.bind(this)}>
-                      Chat with us
-                    </button>
-                    , submit an{' '}
-                    <a
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      href="https://github.com/datocms/website/issues/new"
-                    >
-                      issue
-                    </a>{' '}
-                    or{' '}
-                    <a
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      href={repoPath}
-                    >
-                      propose a change
-                    </a>{' '}
-                    on Github!
-                  </div>
-                )}
               </Sticky>
             </div>
 
             <div className={b('content')}>
               <Space bottom={5}>
-                {menuItems.length > 1 && index > 0 && (
-                  <h6 className={b('content-category')}>{chapterTitle}</h6>
-                )}
+                <h6 className={b('content-category')}>
+                  {
+                    menuItems.length > 1 && index > 0 ?
+                      chapterTitle :
+                      'Documentation'
+                  }
+                </h6>
                 <h1 className={b('content-title')}>
                   {index === 0 ? chapterTitle : pageTitle}
                 </h1>
@@ -133,6 +109,34 @@ export default class DocAside extends React.Component {
                 <div dangerouslySetInnerHTML={{ __html: html }} />
                 {this.props.children}
               </div>
+
+              {repoPath && (
+                <div className={b('contribute')}>
+                  <div className={b('contribute-title')}>
+                    Feel like something is missing in this page?
+                  </div>
+                  <button onClick={this.handleOpenKayako.bind(this)}>
+                    Chat with us
+                  </button>
+                  , submit an{' '}
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/datocms/website/issues/new"
+                  >
+                    issue
+                  </a>{' '}
+                  or{' '}
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={repoPath}
+                  >
+                    propose a change
+                  </a>{' '}
+                  on Github!
+                </div>
+              )}
 
               <div className={b('nav')}>
                 <div className={b('nav-prev')}>

@@ -14,9 +14,9 @@ const Navbar = () => {
   const loggedInEmail = getCookie('datoAccountEmail');
 
   return (
-    <>
-      <div style={{ height: '55px' }} />
-      <div className={b()} data-datocms-noindex>
+    <div className={b()}>
+      <div className={b('shadow')} />
+      <div className={b('bar')} data-datocms-noindex>
         <Wrap>
           <div className={b('inner')}>
             <div className={b('logo-container')}>
@@ -60,13 +60,17 @@ const Navbar = () => {
               >
                 Plugins
               </Link>
-              <Link
-                className={b('text-link')}
-                activeClassName={b('text-link', { active: true })}
-                to="/blog/"
-              >
-                Blog
-              </Link>
+              <div className={b('text-link', { handle: true })}>
+                <span>News</span>
+                <div className={b('menu')}>
+                  <Link className={b('menu-item')} to="/blog/">
+                    Blog
+                  </Link>
+                  <Link className={b('menu-item')} to="/changelog/">
+                    Changelog
+                  </Link>
+                </div>
+              </div>
               <div className={b('text-link', { handle: true })}>
                 <span>Support</span>
                 <div className={b('menu')}>
@@ -114,7 +118,7 @@ const Navbar = () => {
           </div>
         </Wrap>
       </div>
-    </>
+    </div>
   );
 };
 

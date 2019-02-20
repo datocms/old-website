@@ -22,7 +22,6 @@ export default class BlogPage extends React.Component {
       <Layout>
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
-          bg
           title="Blog"
           subtitle="News, tips, highlights, and other updates from the team at DatoCMS."
         >
@@ -38,45 +37,6 @@ export default class BlogPage extends React.Component {
               >
                 <div className={b('grid-sizer')} />
                 <div className={b('gutter-sizer')} />
-                <div className={b('article')} to="/changelog/">
-                  <h3 className={b('article-title')}>
-                    <Link to="/changelog">
-                      Latest product changes
-                    </Link>
-                  </h3>
-                  <div className={b('article-excerpt')}>
-                    <p>Here's the latest changes made to DatoCMS:</p>
-                    <ul className={b('changelog-entries')}>
-                      {this.props.data.latestEntries.edges.map(({ node }) => (
-                        <li>
-                          <Link
-                            key={node.slug}
-                            to={`/changelog/${node.slug}/`}
-                          >
-                            {node.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={b('article-meta')}>
-                    <div className={b('article-meta-left')}>
-                      <Img
-                        className={b('article-author-image')}
-                        fluid={this.props.data.author.avatar.fluid}
-                      />
-                    </div>
-                    <div className={b('article-meta-right')}>
-                      <p>{this.props.data.author.name}</p>
-                      <p>
-                        {
-                          this.props.data.latestEntries.edges[0].node
-                            .publicationDate
-                        }
-                      </p>
-                    </div>
-                  </div>
-                </div>
                 {articles.map(article => (
                   <Link
                     to={`/blog/${article.slug}/`}
@@ -143,18 +103,6 @@ export const query = graphql`
         url
         fluid(maxWidth: 80) {
           ...GatsbyDatoCmsFluid
-        }
-      }
-    }
-    latestEntries: allDatoCmsChangelogEntry(
-      limit: 5
-      sort: { fields: [publicationDate], order: DESC }
-    ) {
-      edges {
-        node {
-          title
-          slug
-          publicationDate(formatString: "MMM D, YYYY")
         }
       }
     }

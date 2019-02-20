@@ -59,7 +59,7 @@ class UseCasesPage extends React.Component {
         <div className={b('website', { highlighted: website.highlighted })}>
           <Browser small title={website.title} address={website.url}>
             <LazyImage
-              height={differentHeight && i % 2 === 0 ? 300 : 200}
+              height={differentHeight && i % 2 === 0 ? 400 : 250}
               image={website.image}
               slow={website.highlighted}
             />

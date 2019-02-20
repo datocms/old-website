@@ -20,7 +20,7 @@
 
 .PluginsPage__cats__title
   margin-bottom: 10px
-  font-weight: 400
+  font-weight: 500
   +size(normalBig)
 
 .PluginsPage__cats
@@ -39,8 +39,9 @@
     border-left: 3px solid transparent
     padding-left: 15px
     transition: border-color 0.2s ease-in-out
-    margin-bottom: 3px
+    margin-bottom: 1px
     color: $light-body-color
+    +size(small)
 
     &.active, &:hover
       border-left-color: $azure-color
@@ -77,12 +78,12 @@
   padding: 4px
   box-sizing: border-box
   border-radius: 4px
-  box-shadow: 0 1px 4px rgba(black, 0.1)
+  box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 15px rgba(black, 0.1)
   background-color: white
 
   &:hover
     transform: translateY(-2px)
-    box-shadow: 0 4px 6px rgba(black, 0.1)
+    box-shadow: 0 4px 6px rgba(black, 0.1), 0 4px 15px rgba(black, 0.1)
 
   @media screen and (min-width: 500px)
     width: calc((100% / 2) - 20px)

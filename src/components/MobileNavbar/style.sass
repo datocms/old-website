@@ -4,6 +4,7 @@
 .MobileNavbar
   display: block
   background-color: white
+  padding-top: 60px
 
   @media screen and (min-width: 999px)
     display: none
@@ -16,7 +17,7 @@
   height: 61px
   background-color: white
   box-sizing: border-box
-  z-index: 110
+  z-index: 2147483003
   position: fixed
   top: 0
   left: 0
@@ -57,7 +58,7 @@
   transition: all 200ms ease-in-out
   opacity: 0
   overflow: hidden
-  z-index: 109
+  z-index: 2147483002
 
 .MobileNavbar__menu--active
   height: 100%
@@ -112,8 +113,11 @@
   display: flex
   justify-content: space-between
 
-  .button
-    width: 47%
+  a:first-child
+    margin-right: 20px
+
+    &:last-child
+      margin-bottom: 0
 
   .button--expand
     width: 100%

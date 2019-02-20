@@ -1,31 +1,35 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
-$gutter: 3%
-
 .BlogPage__masonry
   .BlogPage__gutter-sizer
-    width: $gutter
+    width: 3%
 
   .BlogPage__grid-sizer,
   .BlogPage__article
     width: 100%
 
   @media screen and (min-width: 1000px)
-    .BlogPage__grid-sizer,
-    .BlogPage__article
-      width: (100% - 1 * $gutter) / 2
+    .BlogPage__gutter-sizer
+      width: 5%
 
-  @media screen and (min-width: 1300px)
     .BlogPage__grid-sizer,
     .BlogPage__article
-      width: (100% - 2 * $gutter) / 3
+      width: (100% - 1 * 5%) / 2
+
+  @media screen and (min-width: 1500px)
+    .BlogPage__gutter-sizer
+      width: 3%
+
+    .BlogPage__grid-sizer,
+    .BlogPage__article
+      width: (100% - 2 * 3%) / 3
 
 .BlogPage__article
-  margin-bottom: 50px
+  margin-bottom: 60px
   border-radius: 4px
   background-color: white
-  box-shadow: 0 1px 4px rgba(black, 0.1)
+  box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 15px rgba(black, 0.1)
   padding: 22px
   text-decoration: none
   color: $base-body-color
@@ -34,14 +38,27 @@ $gutter: 3%
   transform: translateY(0)
   transition: .12s ease-out
 
+  @media screen and (min-width: 1000px)
+    padding: 35px
+
+  @media screen and (min-width: 1500px)
+    padding: 22px
+
   &:hover
     transform: translateY(-2px)
-    box-shadow: 0 4px 6px rgba(black, 0.1)
+    box-shadow: 0 4px 6px rgba(black, 0.1), 0 4px 15px rgba(black, 0.1)
 
 .BlogPage__article-title
   +weight(bold)
   margin-bottom: 10px
   +size(big)
+  line-height: 1.2
+
+  @media screen and (min-width: 800px)
+    +size(bigger)
+
+  @media screen and (min-width: 1500px)
+    +size(big)
 
   a
     text-decoration: none
@@ -60,7 +77,15 @@ $gutter: 3%
   border-radius: 50%
 
 .BlogPage__article-excerpt
+  line-height: 1.4
   font-size: 14px
+
+  @media screen and (min-width: 800px)
+    font-family: $serif-font
+    font-size: 18px
+
+  @media screen and (min-width: 1500px)
+    font-size: 16px
 
   a
     color: $base-body-color
