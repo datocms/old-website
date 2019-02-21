@@ -7,7 +7,15 @@ const redirects = {
   "/api/*": "/docs/content-management-api/:splat",
   "/content-management-api/*": "/docs/content-management-api/:splat",
   "/docs/graphql/*": "/docs/content-delivery-api/:splat",
-  "https://v2.datocms.com/*": "https://www.datocms.com/:splat"
+  "/docs/deployment/*": "/docs/depoyments/:splat",
+  "/docs/import": "/docs/guides",
+  "/docs/jekyll/*": "/docs/static-generators/jekyll/:splat",
+  "/docs/gatsby/*": "/docs/static-generators/gatsbyjs/:splat"
+  "/docs/hugo/*": "/docs/static-generators/hugo/:splat"
+  "/docs/middleman/*": "/docs/static-generators/middleman/:splat"
+  "/docs/metalsmith/*": "/docs/static-generators/metalsmith/:splat",
+  "/docs/plugins/*": "/docs/guides/building-plugins/:splat"
+  "/docs/search/*": "/docs/guides/installing-site-search/:splat"
 }
 
 module.exports = function redirects({ actions: { createRedirect } }) {

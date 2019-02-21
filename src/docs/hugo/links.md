@@ -1,4 +1,0 @@
----
-copyFrom: metalsmith/links.md
----
-

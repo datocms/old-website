@@ -73,23 +73,23 @@ function example(resource, link, allPages = false) {
 
       output = JSON.stringify(deserialize(example.data[0], true), null, 2);
 
-      returnCode = `.then((${multipleVariable}) => {
-${multipleVariable}.forEach((${singleVariable}) => {
-  console.log(${singleVariable});
-});
-})`;
+      returnCode = `  .then((${multipleVariable}) => {
+  ${multipleVariable}.forEach((${singleVariable}) => {
+    console.log(${singleVariable});
+  });
+  })`;
     } else {
       const variable = humps.camelize(resource.id);
       output = JSON.stringify(deserialize(example.data, true), null, 2);
 
-      returnCode = `.then((${variable}) => {
-  console.log(${variable});
-})`;
+      returnCode = `  .then((${variable}) => {
+    console.log(${variable});
+  })`;
     }
   } else {
-    returnCode = `.then(() => {
-  console.log('Done!');
-})`;
+    returnCode = `  .then(() => {
+    console.log('Done!');
+  })`;
   }
 
   const namespace = resource.links.find(l => l.rel === 'instances')
@@ -104,9 +104,9 @@ ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${
     }
 client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
 ${returnCode}
-.catch((error) => {
-  console.log(error);
-});
+  .catch((error) => {
+    console.log(error);
+  });
 ${
       link.targetSchema && link.targetSchema.properties.meta
         ? '\n\n// if you want to fetch all the pages with just one call:\n' +

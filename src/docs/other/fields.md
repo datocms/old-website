@@ -1,3 +1,0 @@
----
-copyFrom: metalsmith/fields.md
----

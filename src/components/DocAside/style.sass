@@ -13,17 +13,13 @@
       img
         max-width: 100%
         border-radius: 4px
+        margin: 40px auto
 
-      a[href*="//"]:after
-        content: ""
-        background: url('../../images/external-link.svg') no-repeat center center
-        background-size: contain
-        vertical-align: middle
-        display: inline-block
-        width: 16px
-        height: 16px
-        margin-left: 4px
-        white-space: nowrap
+      a[href*="//"]
+        padding-right: 18px
+        background: url('../../images/external-link.svg') no-repeat
+        background-size: 14px
+        background-position: 100% 40%
 
 .DocPage__menu
   display: none

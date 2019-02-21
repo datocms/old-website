@@ -3,7 +3,6 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-graphql';
 import bem from 'utils/bem';
 import DocAside from 'components/DocAside';
-import { graphql } from 'gatsby';
 import { Tabs, Tab } from 'components/Tabs';
 import fieldTypes from 'utils/fieldTypes.json';
 import Anchor from 'components/Anchor';
@@ -138,22 +137,3 @@ class GraphqlFiltersPage extends React.Component {
 }
 
 export default GraphqlFiltersPage;
-
-export const query = graphql`
-  query GraphqlFiltersPageQuery {
-    pages: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/.*docs.*/" } }
-    ) {
-      edges {
-        node {
-          path: fileAbsolutePath
-          frontmatter {
-            title
-            copyFrom
-            position
-          }
-        }
-      }
-    }
-  }
-`;
