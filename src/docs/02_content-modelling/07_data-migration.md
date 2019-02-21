@@ -10,15 +10,9 @@ Suppose you have an *Article* model, and you already have a number of articles s
 * You transform a non-localized field into a localized one (or viceversa);
 * You add a new locale to your admin area.
 
-Well, the existing articles are now suddenly invalid: that is, the data they contain does not respect the new schema. 
+Well, the existing articles are now suddenly invalid: that is, the data they contain does not respect the new schema. The way DatoCMS handles any of this situation follows these common-sense rules:
 
----
-
-### Migration rules
-
-The way DatoCMS handles any of this situation follows these common-sense rules:
-
-* If you add a new validation rule to a field, all the existing records be re-checked against the new validation rules, and potentially marked as invalid;
+* If you add a new validation rule to a field, all the existing records will be re-checked against the new validation rules, and potentially marked as invalid;
 * If a non-localized field becomes localized, the existing non-localized content becomes the content associated with the first site locale, and the other locales will be empty;
 * If a localized field becomes non-localized, only the content specified for the first site locale is preserved, the others will be destroyed;
 * If you remove a locale from the settings, the content of any localized field for that locale will be permanently destroyed;
