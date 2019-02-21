@@ -74,9 +74,9 @@ function example(resource, link, allPages = false) {
       output = JSON.stringify(deserialize(example.data[0], true), null, 2);
 
       returnCode = `  .then((${multipleVariable}) => {
-  ${multipleVariable}.forEach((${singleVariable}) => {
-    console.log(${singleVariable});
-  });
+    ${multipleVariable}.forEach((${singleVariable}) => {
+      console.log(${singleVariable});
+    });
   })`;
     } else {
       const variable = humps.camelize(resource.id);
