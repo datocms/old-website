@@ -1,4 +1,4 @@
 ---
-copyFrom: metalsmith/06_image-manipulation.md
+copyFrom: 06_static-generators/metalsmith/06_image-manipulation.md
 ---
 

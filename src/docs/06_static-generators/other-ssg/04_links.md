@@ -1,3 +1,3 @@
 ---
-copyFrom: metalsmith/04_links.md
+copyFrom: 06_static-generators/metalsmith/04_links.md
 ---

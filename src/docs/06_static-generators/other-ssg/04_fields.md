@@ -1,3 +1,3 @@
 ---
-copyFrom: metalsmith/04_fields.md
+copyFrom: 06_static-generators/metalsmith/04_fields.md
 ---

@@ -51,8 +51,6 @@ export default class DocAside extends React.Component {
       chapterTitle,
       menuItems,
       repoPath,
-      prevPage,
-      nextPage,
       html,
     } = this.props.pageContext;
 
