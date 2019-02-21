@@ -46,7 +46,11 @@ const Navbar = () => {
               >
                 Pricing
               </Link>
-              <Link to="/docs" className={b('text-link', { handle: true })}>
+              <Link
+                className={b('text-link')}
+                activeClassName={b('text-link', { active: true })}
+                to="/docs/"
+              >
                 <span>Docs</span>
               </Link>
               <Link
