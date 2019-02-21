@@ -1,6 +1,6 @@
 ---
 position: 3
-title: Navigation bar
+title: Organizing content
 ---
 
 Everytime a new model is created, a new navigation item is automatically added in the sidebar present in the **Content** tab of your administrative area, so that editors can start creating new content right away:

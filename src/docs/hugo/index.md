@@ -1,5 +1,6 @@
 ---
 title: Integrating with Hugo
+position: 1
 ---
 
 Unlike other static site generators written in other languages, Hugo doesn't offer any way to extend its features with plugins. To overcome this limitation DatoCMS offers a Javascript-based CLI tool that makes it extremely convenient to transform the content stored in your administrative area into local:
