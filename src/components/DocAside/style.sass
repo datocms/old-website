@@ -21,10 +21,43 @@
         background-size: 14px
         background-position: 100% 40%
 
-.DocPage__menu
-  display: none
+@media screen and (max-width: 899px)
+  .DocPage__menu
+    display: none
+    +size(small)
+
+  .DocPage__menu--open
+    display: block
+
+  .DocPage__mobile-toc
+    padding: 15px 25px
+    background-color: $code-bg-color
+    border-left: 5px solid darken($code-bg-color, 10%)
+    +size(small)
+
+    p
+      margin-bottom: 3px
+
+    em
+      font-style: italic
+
+    button
+      font-weight: 500
+
+  .DocPage__menu
+    padding: 25px
+    padding-top: 10px
+    background-color: $code-bg-color
+    border-left: 5px solid darken($code-bg-color, 10%)
+    margin-bottom: 30px
+
+  .DocPage__content
+    margin-top: 60px
 
 @media screen and (min-width: 900px)
+  .DocPage__mobile-toc
+    display: none
+
   .DocPage
     display: flex
 

@@ -15,12 +15,17 @@ const b = bem.lock('DocPage');
 export default class DocAside extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { image: null };
+    this.state = { image: null, isMenuOpen: false };
   }
 
   handleOpenKayako(e) {
     e.preventDefault();
     window.kayako.maximize();
+  }
+  
+  handleMenuToggle(e) {
+    e.preventDefault();
+    this.setState({ isMenuOpen: !this.state.isMenuOpen });
   }
 
   componentDidMount() {
@@ -56,7 +61,14 @@ export default class DocAside extends React.Component {
         <Helmet title={`${pageTitle} - ${chapterTitle} - DatoCMS`} />
         <Wrap>
           <div className={b()}>
-            <div className={b('menu')} data-datocms-noindex>
+            <div className={b('mobile-toc')}>
+              <p>You're reading <em>"{chapterTitle}"</em></p>
+              <button onClick={this.handleMenuToggle.bind(this)}>
+                { this.state.isMenuOpen ? 'Close' : 'Open'} this guide's chapters
+              </button>
+            </div>
+
+            <div className={b('menu', { open: this.state.isMenuOpen })} data-datocms-noindex>
               <Sticky top={100} bottomBoundary={`.${b()}`}>
                 <ul className={b('menu-pages')}>
                   {menuItems.map(menuItem => (
@@ -90,7 +102,7 @@ export default class DocAside extends React.Component {
                 </ul>
 
                 <div className={b('menu-back')}>
-                  <Link to="/docs">‹ Go back to docs</Link>
+                  <Link to="/docs">‹ Go back to Docs page</Link>
                 </div>
               </Sticky>
             </div>
@@ -135,19 +147,6 @@ export default class DocAside extends React.Component {
                   on Github!
                 </div>
               )}
-
-              <div className={b('nav')}>
-                <div className={b('nav-prev')}>
-                  {prevPage && (
-                    <Link to={prevPage.path}>‹ {prevPage.title}</Link>
-                  )}
-                </div>
-                <div className={b('nav-next')}>
-                  {nextPage && (
-                    <Link to={nextPage.path}>{nextPage.title} ›</Link>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         </Wrap>
