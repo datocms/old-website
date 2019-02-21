@@ -33,7 +33,10 @@ export default class LearnPage extends React.Component {
               <Wrap>
                 <div className={b('blocks__inner')}>
                   <div className={b('block')}>
-                    <Link to="/docs/general-concepts" className={b('block__body')}>
+                    <Link
+                      to="/docs/general-concepts"
+                      className={b('block__body')}
+                    >
                       <div className={b('block__title')}>General concepts</div>
                       <div className={b('block__description')}>
                         Explore the building blocks of DatoCMS, from
@@ -42,41 +45,64 @@ export default class LearnPage extends React.Component {
                       <div className={b('block__read-more')}>Read more</div>
                     </Link>
                     <div className={b('block__links')}>
-                      <Link to="/docs/general-concepts" className={b('block__link')}>
+                      <Link
+                        to="/docs/general-concepts"
+                        className={b('block__link')}
+                      >
                         <span>What is DatoCMS?</span>
                       </Link>
-                      <Link to="/docs/general-concepts/roles-and-permission-system" className={b('block__link')}>
+                      <Link
+                        to="/docs/general-concepts/roles-and-permission-system"
+                        className={b('block__link')}
+                      >
                         <span>Roles and permissions</span>
                       </Link>
-                      <Link to="/docs/general-concepts/managing-uploads" className={b('block__link')}>
+                      <Link
+                        to="/docs/general-concepts/managing-uploads"
+                        className={b('block__link')}
+                      >
                         <span>Managing assets</span>
                       </Link>
                     </div>
                   </div>
                   <div className={b('block')}>
-                    <Link to="/docs/content-modelling" className={b('block__body')}>
+                    <Link
+                      to="/docs/content-modelling"
+                      className={b('block__body')}
+                    >
                       <div className={b('block__title')}>Content modelling</div>
                       <div className={b('block__description')}>
-                        Give structure and organization to your project's
-                        models and fields.
+                        Give structure and organization to your project's models
+                        and fields.
                       </div>
                       <div className={b('block__read-more')}>Read more</div>
                     </Link>
                     <div className={b('block__links')}>
-                      <Link to="/docs/content-modelling" className={b('block__link')}>
+                      <Link
+                        to="/docs/content-modelling"
+                        className={b('block__link')}
+                      >
                         <span>Models and fields</span>
                       </Link>
-                      <Link to="/docs/content-modelling/single-instance" className={b('block__link')}>
+                      <Link
+                        to="/docs/content-modelling/single-instance"
+                        className={b('block__link')}
+                      >
                         <span>Single instance models</span>
                       </Link>
-                      <Link to="/docs/content-modelling/modular-content" className={b('block__link')}>
+                      <Link
+                        to="/docs/content-modelling/modular-content"
+                        className={b('block__link')}
+                      >
                         <span>The modular content field</span>
                       </Link>
                     </div>
                   </div>
                   <div className={b('block')}>
                     <Link to="/" className={b('block__body')}>
-                      <div className={b('block__title')}>Guides & Tutorials</div>
+                      <div className={b('block__title')}>
+                        Guides & Tutorials
+                      </div>
                       <div className={b('block__description')}>
                         In-depth guides for to help you use DatoCMS more
                         effectively.
@@ -84,13 +110,22 @@ export default class LearnPage extends React.Component {
                       <div className={b('block__read-more')}>Read more</div>
                     </Link>
                     <div className={b('block__links')}>
-                      <Link to="/docs/guides/building-plugins" className={b('block__link')}>
+                      <Link
+                        to="/docs/guides/building-plugins"
+                        className={b('block__link')}
+                      >
                         <span>Develop a DatoCMS plugin</span>
                       </Link>
-                      <Link to="/docs/guides/installing-site-search" className={b('block__link')}>
+                      <Link
+                        to="/docs/guides/installing-site-search"
+                        className={b('block__link')}
+                      >
                         <span>Setup DatoCMS Site Search</span>
                       </Link>
-                      <Link to="/blog/wordpress-importer/" className={b('block__link')}>
+                      <Link
+                        to="/blog/wordpress-importer/"
+                        className={b('block__link')}
+                      >
                         <span>Import an existing Wordpress site</span>
                       </Link>
                     </div>
@@ -104,7 +139,10 @@ export default class LearnPage extends React.Component {
                 <div className={b('api__cols')}>
                   <div className={b('api__col')}>
                     <div className={b('api__item')}>
-                      <Link to="/docs/content-delivery-api" className={b('api__item__body')}>
+                      <Link
+                        to="/docs/content-delivery-api"
+                        className={b('api__item__body')}
+                      >
                         <div className={b('api__item__title')}>
                           Content Delivery API
                         </div>
@@ -117,13 +155,22 @@ export default class LearnPage extends React.Component {
                         </div>
                       </Link>
                       <div className={b('api__item__links')}>
-                        <Link to="/docs/content-delivery-api#why-graphql" className={b('api__item__link')}>
+                        <Link
+                          to="/docs/content-delivery-api#why-graphql"
+                          className={b('api__item__link')}
+                        >
                           <span>Why GraphQL?</span>
                         </Link>
-                        <Link to="/docs/content-delivery-api/authentication" className={b('api__item__link')}>
+                        <Link
+                          to="/docs/content-delivery-api/authentication"
+                          className={b('api__item__link')}
+                        >
                           <span>Authentication</span>
                         </Link>
-                        <Link to="/docs/content-delivery-api/first-request" className={b('api__item__link')}>
+                        <Link
+                          to="/docs/content-delivery-api/first-request"
+                          className={b('api__item__link')}
+                        >
                           <span>Your first request</span>
                         </Link>
                       </div>
@@ -131,7 +178,10 @@ export default class LearnPage extends React.Component {
                   </div>
                   <div className={b('api__col')}>
                     <div className={b('api__item')}>
-                      <Link to="/docs/content-management-api" className={b('api__item__body')}>
+                      <Link
+                        to="/docs/content-management-api"
+                        className={b('api__item__body')}
+                      >
                         <div className={b('api__item__title')}>
                           Content Management API
                         </div>
@@ -144,13 +194,22 @@ export default class LearnPage extends React.Component {
                         </div>
                       </Link>
                       <div className={b('api__item__links')}>
-                        <Link to="/docs/content-management-api/authentication" className={b('api__item__link')}>
+                        <Link
+                          to="/docs/content-management-api/authentication"
+                          className={b('api__item__link')}
+                        >
                           <span>Authentication</span>
                         </Link>
-                        <Link to="/docs/content-management-api/js-client" className={b('api__item__link')}>
+                        <Link
+                          to="/docs/content-management-api/js-client"
+                          className={b('api__item__link')}
+                        >
                           <span>Using the JS client</span>
                         </Link>
-                        <Link to="/docs/content-management-api/ruby-client" className={b('api__item__link')}>
+                        <Link
+                          to="/docs/content-management-api/ruby-client"
+                          className={b('api__item__link')}
+                        >
                           <span>Using the Ruby client</span>
                         </Link>
                       </div>
@@ -211,9 +270,7 @@ export const query = graphql`
       }
     }
     integrations: allDatoCmsIntegration(
-      filter: {
-        integrationType: { slug: { in: ["ci", "static-generator"] } }
-      }
+      filter: { integrationType: { slug: { in: ["ci", "static-generator"] } } }
     ) {
       edges {
         node {

@@ -6,20 +6,12 @@ const legal = require('./legal');
 const plugins = require('./plugins');
 const redirects = require('./redirects');
 
-exports.createPages = async function (options) {
-  const sections = [
-    blog,
-    changelog,
-    docs,
-    landing,
-    legal,
-    plugins,
-    redirects,
-  ];
+exports.createPages = async function(options) {
+  const sections = [blog, changelog, docs, landing, legal, plugins, redirects];
 
   for (let i = 0; i < sections.length; i++) {
     const section = sections[i];
     console.log(`## Building ${section.name}...`);
     await section(options);
   }
-}
+};

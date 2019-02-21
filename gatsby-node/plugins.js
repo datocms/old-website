@@ -68,11 +68,11 @@ module.exports = async function plugins({ graphql, actions: { createPage } }) {
       path += fieldType + '/';
     }
 
-    const plugins = result.data.plugins.edges
-      .filter(({ node: plugin }) => (
+    const plugins = result.data.plugins.edges.filter(
+      ({ node: plugin }) =>
         (!pluginType || plugin.pluginType.code === pluginType) &&
-        (!fieldType || plugin.fieldTypes.some(f => f.code === fieldType))
-      ));
+        (!fieldType || plugin.fieldTypes.some(f => f.code === fieldType)),
+    );
 
     if (plugins.length > 0) {
       combosWithResults[path] = { plugins, pluginType, fieldType };
@@ -100,6 +100,5 @@ module.exports = async function plugins({ graphql, actions: { createPage } }) {
       component: p.resolve(`./src/templates/PluginPage/index.js`),
       context: { packageName: plugin.packageName },
     });
-  })
-}
-
+  });
+};

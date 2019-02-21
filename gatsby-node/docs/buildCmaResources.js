@@ -28,9 +28,10 @@ const normalizeSchema = schema => {
 };
 
 module.exports = async function buildCmaResources() {
-  const response = await fetch('https://site-api.datocms.com/docs/site-api-hyperschema.json');
+  const response = await fetch(
+    'https://site-api.datocms.com/docs/site-api-hyperschema.json',
+  );
   const schema = await response.json();
   const deferencedSchema = await parser.dereference(schema);
   return normalizeSchema(deferencedSchema);
 };
-

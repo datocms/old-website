@@ -1,10 +1,10 @@
 const p = require('path');
 const groupBy = require('group-by');
 const { stringify } = require('flatted/cjs');
-const slugs = require("github-slugger")();
+const slugs = require('github-slugger')();
 const fieldTypes = require('../../src/utils/fieldTypes.json');
 const sortBy = require('sort-by');
-const { findTitle, findHtml, findHeadings } = require ('./pageAnalysis');
+const { findTitle, findHtml, findHeadings } = require('./pageAnalysis');
 const buildCmaResources = require('./buildCmaResources');
 const buildFieldsIntrospection = require('./buildFieldsIntrospection');
 
@@ -30,25 +30,31 @@ const query = `
       }
     }
   }
-`
+`;
 
 module.exports = async function docs({ graphql, actions: { createPage } }) {
   const result = await graphql(query);
   const cmaResources = await buildCmaResources();
   const {
     meta: fieldsMetaInfo,
-    field_types: fieldTypesInfo
+    field_types: fieldTypesInfo,
   } = await buildFieldsIntrospection();
 
   const rawPages = result.data.files.edges.map(edge => edge.node);
 
   const pages = rawPages.map(rawPage => {
-    const { path, frontmatter: { template } } = rawPage;
-    const position = parseInt(p.basename(path).split("_")[0]);
+    const {
+      path,
+      frontmatter: { template },
+    } = rawPage;
+    const position = parseInt(p.basename(path).split('_')[0]);
     const originalTitle = findTitle(rawPage, rawPages);
 
     const rawHeadings = findHeadings(rawPage, rawPages);
-    const minHeadingLevel = rawHeadings.reduce((min, h) => h.depth < min ? h.depth : min, 100);
+    const minHeadingLevel = rawHeadings.reduce(
+      (min, h) => (h.depth < min ? h.depth : min),
+      100,
+    );
 
     slugs.reset();
 
@@ -59,7 +65,10 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
         title: heading.value,
       }));
 
-    const pagePath = path.replace(/^.*\/src/, '').replace(/(\/[0-9]+_index)?\.md$/, '').replace(/\/[0-9]+_/g, '/');
+    const pagePath = path
+      .replace(/^.*\/src/, '')
+      .replace(/(\/[0-9]+_index)?\.md$/, '')
+      .replace(/\/[0-9]+_/g, '/');
     let context = {};
 
     if (pagePath === '/docs/content-delivery-api/filtering') {
@@ -76,18 +85,24 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
 
       context = {
         fieldsMetaInfo,
-        fieldTypesInfo
+        fieldTypesInfo,
       };
     }
 
     const html = findHtml(rawPage, rawPages);
 
     return {
-      chapter: p.dirname(path).split(p.sep).pop(),
+      chapter: p
+        .dirname(path)
+        .split(p.sep)
+        .pop(),
       path: pagePath,
       title: position === 1 ? 'Introduction' : originalTitle,
       originalTitle,
-      repoPath: path.replace(/^.*\/src/, 'https://github.com/datocms/website/blob/master/src'),
+      repoPath: path.replace(
+        /^.*\/src/,
+        'https://github.com/datocms/website/blob/master/src',
+      ),
       headings,
       position,
       html,
@@ -98,52 +113,56 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
 
   const byChapter = groupBy(pages, 'chapter');
 
-  Object.keys(byChapter).forEach((chapter) => {
+  Object.keys(byChapter).forEach(chapter => {
     let pages = byChapter[chapter].sort(sortBy('position'));
 
     if (chapter === '04_content-management-api') {
-      const resources = cmaResources
-        .map((resource, i) => {
+      const resources = cmaResources.map((resource, i) => {
+        slugs.reset();
+        const headings = [
+          {
+            id: '#object',
+            title: 'Object fields',
+          },
+        ].concat(
+          resource.links.map(link => ({
+            id: `#${link.title.toLowerCase()}`,
+            title: link.description,
+          })),
+        );
 
-          slugs.reset();
-          const headings = [
-            {
-              id: '#object',
-              title: 'Object fields',
-            }
-          ].concat(
-            resource.links.map(link => ({ 
-              id: `#${link.title.toLowerCase()}`,
-              title: link.description
-            }))
-          );
-
-          return {
-            chapter,
-            path: `/docs/content-management-api/resources/${resource.id.replace(/_/g, '-')}`,
-            title: resource.title,
-            headings,
-            template: 'CmaApiResourcePage',
-            context: { resource: stringify(resource) },
-          };
-        });
+        return {
+          chapter,
+          path: `/docs/content-management-api/resources/${resource.id.replace(
+            /_/g,
+            '-',
+          )}`,
+          title: resource.title,
+          headings,
+          template: 'CmaApiResourcePage',
+          context: { resource: stringify(resource) },
+        };
+      });
 
       pages = pages.concat(resources);
     }
 
-    const menuItems = pages.map(({ path, title, headings }) => ({ path, title, headings }));
+    const menuItems = pages.map(({ path, title, headings }) => ({
+      path,
+      title,
+      headings,
+    }));
 
     pages.forEach((page, index) => {
       const prevPage = index > 0 ? menuItems[index - 1] : null;
-      const nextPage = index < menuItems.length - 1 ? menuItems[index + 1] : null;
+      const nextPage =
+        index < menuItems.length - 1 ? menuItems[index + 1] : null;
 
       createPage({
         path: page.path,
-        component: (
-          page.template ?
-            p.resolve(`./src/templates/${page.template}/index.js`) :
-            p.resolve(`./src/templates/DocPage/index.js`)
-        ),
+        component: page.template
+          ? p.resolve(`./src/templates/${page.template}/index.js`)
+          : p.resolve(`./src/templates/DocPage/index.js`),
         context: {
           ...page.context,
           index,
@@ -158,4 +177,4 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       });
     });
   });
-}
+};

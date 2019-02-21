@@ -1,9 +1,9 @@
-require('dotenv').config()
-const path = require('path')
+require('dotenv').config();
+const path = require('path');
 const fetch = require('node-fetch');
 const { stringify } = require('flatted/cjs');
 const camelcaseKeys = require('camelcase-keys');
-const feeds = require ('./feeds');
+const feeds = require('./feeds');
 
 module.exports = {
   siteMetadata: {
@@ -15,8 +15,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        includePaths: [path.resolve(__dirname, "./src")]
-      }
+        includePaths: [path.resolve(__dirname, './src')],
+      },
     },
 
     'gatsby-plugin-resolve-src',
@@ -57,7 +57,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: 60,
-            }
+            },
           },
           {
             resolve: `gatsby-remark-images`,
@@ -73,20 +73,18 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
-            }
+              classPrefix: 'language-',
+            },
           },
           {
             resolve: 'gatsby-remark-toc',
             options: {
-              include: [
-                'src/docs/plugins/sdk-reference.md'
-              ],
+              include: ['src/docs/plugins/sdk-reference.md'],
               mdastUtilTocOptions: {
-                heading: 'Table of Contents'
-              }
-            }
-          }
+                heading: 'Table of Contents',
+              },
+            },
+          },
         ],
       },
     },
@@ -111,14 +109,13 @@ module.exports = {
     {
       resolve: `gatsby-source-json`,
       options: {
-        resolve: (createNode, digest) => (
-          fetch(
-            'https://account-api.datocms.com/plans',
-            { headers: { 'Accept': 'application/json' } }
-          )
+        resolve: (createNode, digest) =>
+          fetch('https://account-api.datocms.com/plans', {
+            headers: { Accept: 'application/json' },
+          })
             .then(res => res.json())
             .then(res => stringify(camelcaseKeys(res.data, { deep: true })))
-            .then(blob => (
+            .then(blob =>
               createNode({
                 id: 'Plans',
                 children: [],
@@ -128,12 +125,11 @@ module.exports = {
                   contentDigest: digest(blob),
                 },
                 body: blob,
-              })
-            ))
-        ),
+              }),
+            ),
       },
     },
 
-    `gatsby-plugin-netlify-cache`
+    `gatsby-plugin-netlify-cache`,
   ],
 };

@@ -23,9 +23,12 @@ const query = `
       }
     }
   }
-`
+`;
 
-module.exports = async function changelog({ graphql, actions: { createPage } }) {
+module.exports = async function changelog({
+  graphql,
+  actions: { createPage },
+}) {
   const result = await graphql(query);
 
   createPaginatedPages({
@@ -33,7 +36,7 @@ module.exports = async function changelog({ graphql, actions: { createPage } }) 
     createPage: createPage,
     pageTemplate: `./src/templates/ChangelogPage/index.js`,
     pageLength: 10,
-    pathPrefix: 'changelog'
+    pathPrefix: 'changelog',
   });
 
   result.data.articles.edges.forEach(({ node: entry }) => {
@@ -41,8 +44,6 @@ module.exports = async function changelog({ graphql, actions: { createPage } }) 
       path: `/changelog/${entry.slug}/`,
       component: p.resolve(`./src/templates/ChangelogEntry/index.js`),
       context: { slug: entry.slug },
-    })
-  })
-}
-
-
+    });
+  });
+};

@@ -51,7 +51,7 @@ module.exports = async function blog({ graphql, actions: { createPage } }) {
     createPage: createPage,
     pageTemplate: `./src/templates/BlogPage/index.js`,
     pageLength: 30,
-    pathPrefix: 'blog'
+    pathPrefix: 'blog',
   });
 
   result.data.articles.edges.forEach(({ node: article }) => {
@@ -59,6 +59,6 @@ module.exports = async function blog({ graphql, actions: { createPage } }) {
       path: `/blog/${article.slug}/`,
       component: p.resolve(`./src/templates/ArticlePage/index.js`),
       context: { slug: article.slug },
-    })
+    });
   });
-}
+};

@@ -72,54 +72,54 @@ module.exports = async function landing({ graphql, actions: { createPage } }) {
 
   const integrations = result.data.integrations.edges
     .map(edge => edge.node)
-    .map(integration => ({ slug: integration.slug, type: integration.type.slug }));
+    .map(integration => ({
+      slug: integration.slug,
+      type: integration.type.slug,
+    }));
 
   const byType = groupBy(integrations, 'type');
 
-  byType['static-generator'].forEach(({ slug }) => (
+  byType['static-generator'].forEach(({ slug }) =>
     createPage({
       path: `/cms/${slug}/`,
       component: p.resolve(`./src/templates/landing/SsgPage/index.js`),
       context: { slug, home, features, reviews },
-    })
-  ))
+    }),
+  );
 
-  byType['language'].forEach(({ slug }) => (
+  byType['language'].forEach(({ slug }) =>
     createPage({
       path: `/cms/${slug}/`,
       component: p.resolve(`./src/templates/landing/LanguagePage/index.js`),
       context: { slug, home, features, reviews },
-    })
-  ))
+    }),
+  );
 
-  byType['framework'].forEach(({ slug }) => (
+  byType['framework'].forEach(({ slug }) =>
     createPage({
       path: `/cms/${slug}/`,
       component: p.resolve(`./src/templates/landing/FrameworkPage/index.js`),
       context: { slug, home, features, reviews },
-    })
-  ))
+    }),
+  );
 
   cartesianProduct([
     byType['static-generator'],
-    byType['cdn'].concat(byType['ci'])
-  ]).forEach(([{ slug: ssgSlug }, { slug: cdnSlug }, ]) => (
+    byType['cdn'].concat(byType['ci']),
+  ]).forEach(([{ slug: ssgSlug }, { slug: cdnSlug }]) =>
     createPage({
       path: `/cms/${ssgSlug}/${cdnSlug}/`,
       component: p.resolve(`./src/templates/landing/SsgCdnPage/index.js`),
       context: { ssgSlug, cdnSlug, home, features, reviews },
-    })
-  ))
+    }),
+  );
 
-  cartesianProduct([
-    byType['static-generator'],
-    byType['git']
-  ]).forEach(([{ slug: ssgSlug }, { slug: gitSlug }]) => (
-    createPage({
-      path: `/cms/${ssgSlug}/${gitSlug}/`,
-      component: p.resolve(`./src/templates/landing/SsgGitPage/index.js`),
-      context: { ssgSlug, gitSlug, home, features, reviews },
-    })
-  ))
-}
-
+  cartesianProduct([byType['static-generator'], byType['git']]).forEach(
+    ([{ slug: ssgSlug }, { slug: gitSlug }]) =>
+      createPage({
+        path: `/cms/${ssgSlug}/${gitSlug}/`,
+        component: p.resolve(`./src/templates/landing/SsgGitPage/index.js`),
+        context: { ssgSlug, gitSlug, home, features, reviews },
+      }),
+  );
+};
