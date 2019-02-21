@@ -38,8 +38,12 @@
   text-align: center
   display: block
   color: $base-body-color
-  padding: 0.8em 1.2em
+  padding: 0.8em
   position: relative
+  white-space: nowrap
+
+  @media screen and (min-width: 1440px)
+    padding: 0.8em 1.2em
 
 a.Navbar__text-link:hover
   text-decoration: underline
