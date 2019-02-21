@@ -36,19 +36,20 @@ class HomeHero extends React.Component {
               <div>
                 <h1 className={b('title')}>{title}</h1>
                 <div className={b('description')}>{description}</div>
-                <div className={b('subscribe')}>
+                <form method="GET" action="https://dashboard.datocms.com/signup" className={b('subscribe')}>
                   <input
                     className={b('email')}
                     type="email"
+                    name="email"
                     placeholder="Your email here..."
                   />
-                  <a
-                    href="https://dashboard.datocms.com/signup"
+                  <button
+                    type="submit"
                     className={button({ red: true })}
                   >
                     Try for free
-                  </a>
-                </div>
+                  </button>
+                </form>
               </div>
             </div>
             <div className={b('browser')}>

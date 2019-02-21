@@ -9,6 +9,7 @@ import './docs.sass';
 
 import PageLayout from 'components/PageLayout';
 import Layout from 'components/Layout';
+import Search from 'components/Search';
 
 const b = bem.lock('Docs');
 
@@ -31,6 +32,7 @@ export default class LearnPage extends React.Component {
           <div className={b()}>
             <div className={b('blocks')}>
               <Wrap>
+                <Search big />
                 <div className={b('blocks__inner')}>
                   <div className={b('block')}>
                     <Link

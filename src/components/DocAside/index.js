@@ -8,6 +8,8 @@ import Lightbox from 'react-images';
 import bem from 'utils/bem';
 
 import Layout from 'components/Layout';
+import Search from 'components/Search';
+
 import './style.sass';
 
 const b = bem.lock('DocPage');
@@ -22,7 +24,7 @@ export default class DocAside extends React.Component {
     e.preventDefault();
     window.kayako.maximize();
   }
-  
+
   handleMenuToggle(e) {
     e.preventDefault();
     this.setState({ isMenuOpen: !this.state.isMenuOpen });
@@ -98,6 +100,8 @@ export default class DocAside extends React.Component {
                     </li>
                   ))}
                 </ul>
+
+                <Search small />
 
                 <div className={b('menu-back')}>
                   <Link to="/docs">‹ Go back to Docs page</Link>

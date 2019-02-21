@@ -68,15 +68,16 @@ export default class Search extends React.Component {
 
   render() {
     const { value, suggestions } = this.state;
+    const { small, big } = this.props;
 
     const inputProps = {
-      placeholder: 'Search something in our docs',
+      placeholder: 'Search...',
       value,
       onChange: this.handleChange.bind(this),
     };
 
     return (
-      <div className={b()}>
+      <div className={b({ small, big })}>
         <AutoSuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(

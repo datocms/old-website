@@ -11,18 +11,23 @@
     height: 100px
 
 .SlackPage__title
-  +size(hero)
+  +size(bigger)
   font-weight: 500
   margin-bottom: 30px
+
+  @media screen and (min-width: 600px)
+    +size(hero)
 
 .SlackPage__content
   max-width: 550px
   margin: 0 auto
   font-family: $serif-font
-  +size(normalBig)
+
+  @media screen and (min-width: 600px)
+    +size(normalBig)
 
 .SlackPage__form
-  width: 450px
+  max-width: 450px
   margin: 40px auto 0
 
   input[type="email"]
