@@ -1,6 +1,6 @@
 ---
-title: Building DatoCMS plugins
-excerpt: Plugins allow developers to extend the basic functionality of the DatoCMS administrative area. You, the developer, are in charge of writing and hosting the plugin.
+title: How to build DatoCMS plugins
+excerpt: Plugins allow developers to extend the basic functionality of the DatoCMS administrative area.
 ---
 
 Plugins allow developers to extend the basic functionality of the DatoCMS administrative area. You, the developer, are in charge of writing and hosting the plugin.

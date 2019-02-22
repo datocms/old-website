@@ -1,6 +1,6 @@
 ---
 title: Making offline backups
-excerpt: Learn how to use your own S3 bucket and Imgix account to serve your assets
+excerpt: Learn how you can export content from DatoCMS to make full daily offline backups.
 ---
 
 Higher tiers of DatoCMS offer the ability to generate nightly copies of your

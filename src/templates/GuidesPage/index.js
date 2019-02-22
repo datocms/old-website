@@ -37,6 +37,7 @@ export default class GuidesPage extends React.Component {
                   <div className={b('guide__type')}>Tutorial</div>
                   <h6 className={b('guide__title')}>{guide.title}</h6>
                   <div className={b('guide__excerpt')}>{guide.excerpt}</div>
+                  <div className={b('guide__url')}>{guide.url}</div>
                 </Link>
               </div>
             ))}
