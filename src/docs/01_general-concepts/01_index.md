@@ -17,7 +17,7 @@ As the content in a headless CMS is considered *pure* (because it has no present
 DatoCMS provides a content infrastructure that comprises two different APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:
 
 * If you're retrieving content to display to users in an app or website, use the [Content Delivery API](/docs/content-delivery-api/).
-* If you want to programmatically create or update content items, use the [Content Management API](/content-management-api/).
+* If you want to programmatically create or update content items, use the [Content Management API](/docs/content-management-api/).
 
 #### One account, multiple projects
 

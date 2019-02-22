@@ -32,7 +32,7 @@ dato.blog_posts.each do |record|
 end
 ```
 
-If you need to access the record associated to a [single-instance model](/docs/introduction/single-instance/), you don't need to pluralize the Model ID:
+If you need to access the record associated to a [single-instance model](/docs/content-modelling/single-instance), you don't need to pluralize the Model ID:
 
 ```ruby
 # returns the record for the `about_page` single-instance model

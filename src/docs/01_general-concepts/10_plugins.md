@@ -31,4 +31,4 @@ You can also use plugins to communicate with external APIs and integrate third-p
 
 ### Learn more
 
-Learn how to build new plugins or install existing ones [in our detailed guide](/docs/plugins/introduction/).
+Learn how to build new plugins or install existing ones [in our detailed guide](/docs/guides/building-plugins).

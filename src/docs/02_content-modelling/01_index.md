@@ -16,7 +16,7 @@ Each model consists of a set of <strong>fields</strong> that you define. Fields 
 
 * **Single-line string**: Ideal for titles, headings, etc.
 * **Multiple-paragraph text**: For Markdown, HTML or plain text.
-* [**Modular content**](/docs/introduction/modular-content/): To compose your content with text, images, videos, etc. in a Medium-like manner.
+* [**Modular content**](/docs/content-modelling/modular-content): To compose your content with text, images, videos, etc. in a Medium-like manner.
 * **Integer** and **Floating-point number**: For storing integer SKUs, quantities, prices, etc.
 * **Boolean**: For storing values that have two states, e.g. yes or no, true or false etc.
 * **Date** and **DateTime**: A timestamp value for storing dates and times (ie. an event start, office opening hours).
@@ -26,8 +26,8 @@ Each model consists of a set of <strong>fields</strong> that you define. Fields 
 * **Color**: For storing colors (with or without alpha channel).
 * **Geolocation**: Coordinate values for storing the latitude and longitude of a physical location.
 * **SEO meta tags**: To manage a page meta title, meta description, OpenGraph cards, etc.
-* [**Slug**](/docs/introduction/slug-permalinks/): To generate a page permalink based on another textual field of the model.
-* [**Single and multiple links**](/docs/introduction/links/): To model relationships between content, including other models. For example, linking a blog to a category.
+* [**Slug**](/docs/content-modelling/slug-permalinks): To generate a page permalink based on another textual field of the model.
+* [**Single and multiple links**](/docs/content-modelling/links): To model relationships between content, including other models. For example, linking a blog to a category.
 
 ![foo](../images/data-model/2.png)
 

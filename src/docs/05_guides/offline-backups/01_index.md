@@ -2,12 +2,12 @@
 title: Making offline backups
 ---
 
-Higher tiers of DatoCMS offer the ability to generate nightly copies of your 
+Higher tiers of DatoCMS offer the ability to generate nightly copies of your
 content to your own Amazon S3 buckets, but even if you're on lower plans
-making offline backups is extremely easy. 
+making offline backups is extremely easy.
 
-Here's a quick example script that uses our [Content Management API](/content-management-api/) to dump every record 
-into a `records.json` file, and locally downloads every asset. 
+Here's a quick example script that uses our [Content Management API](/docs/content-management-api/) to dump every record
+into a `records.json` file, and locally downloads every asset.
 
 You can then add this script into a cron-job and store the result in a S3 bucket:
 

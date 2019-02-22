@@ -60,10 +60,10 @@ export default class LearnPage extends React.Component {
                         <span>Roles and permissions</span>
                       </Link>
                       <Link
-                        to="/docs/general-concepts/managing-uploads"
+                        to="/docs/general-concepts/draft-published"
                         className={b('block__link')}
                       >
-                        <span>Managing assets</span>
+                        <span>Draft/published system</span>
                       </Link>
                     </div>
                   </div>

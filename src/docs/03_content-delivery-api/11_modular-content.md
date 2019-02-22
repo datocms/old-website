@@ -2,10 +2,10 @@
 title: Modular-content
 ---
 
-If you have [modular-content fields](/docs/introduction/modular-content/) 
+If you have [modular-content fields](/docs/content-modelling/modular-content) 
 you can use GraphQL fragments to fetch the different blocks.
 
-Suppose a `blog_post` model has a modular content field called `content`, which in turn accepts the following [building-blocks](/docs/introduction/modular-content/):
+Suppose a `blog_post` model has a modular content field called `content`, which in turn accepts the following [building-blocks](/docs/content-modelling/modular-content):
 
 * Model `blog_post_text_block`: made of a `text` field (*multi-paragraph text*);
 * Model `blog_post_quote_block`: made of a `quote` field (*multi-paragraph text*) and `author` field (*single-line string*);

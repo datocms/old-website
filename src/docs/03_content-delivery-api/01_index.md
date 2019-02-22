@@ -4,7 +4,7 @@ title: Content Delivery API
 
 This document is a detailed reference to DatoCMS's Content Delivery API.
 
-The Content Delivery API is used to retrieve content from one of your DatoCMS projects and deliver it to your web or mobile projects. If you are looking for APIs to manage content, you should use the [Content Management API](/content-management-api/).
+The Content Delivery API is used to retrieve content from one of your DatoCMS projects and deliver it to your web or mobile projects. If you are looking for APIs to manage content, you should use the [Content Management API](/docs/content-management-api/).
 
 Our APIs serve content via a powerful and robust content delivery network (CDN). Multiple datacenters around the world store a cached copy of your content. When a page request is made, the content is delivered to the user from the nearest server. This greatly accelerates content delivery and reduces latency.
 
