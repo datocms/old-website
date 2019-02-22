@@ -36,6 +36,7 @@ export default class SsgPage extends React.Component {
           } sites - DatoCMS`}
         />
         <Hero
+          smallTitle
           title={`Meet the perfect CMS for ${ssg.name}`}
           description={`DatoCMS is an API-based administrative area for your ${
             ssg.name

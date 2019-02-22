@@ -23,9 +23,19 @@ const query = `
           }
           frontmatter {
             title
+            excerpt
             copyFrom
             template
           }
+        }
+      }
+    }
+    tutorials: allDatoCmsTutorial(sort:{fields:[position]}) {
+      edges {
+        node {
+          title
+          excerpt
+          url
         }
       }
     }
@@ -45,9 +55,10 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
   const pages = rawPages.map(rawPage => {
     const {
       path,
-      frontmatter: { template },
+      frontmatter: { template, excerpt },
     } = rawPage;
     const position = parseInt(p.basename(path).split('_')[0]);
+    const isGuide = p.dirname(path).includes('05_guides');
     const originalTitle = findTitle(rawPage, rawPages);
 
     const rawHeadings = findHeadings(rawPage, rawPages);
@@ -105,6 +116,8 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       ),
       headings,
       position,
+      isGuide,
+      excerpt,
       html,
       template,
       context,
@@ -176,5 +189,22 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
         },
       });
     });
+  });
+
+  const chaptersWhichAreGuides = [...new Set(pages.filter(p => p.isGuide).map(p => p.chapter))];
+  const guides = chaptersWhichAreGuides
+    .sort((a, b) => parseInt(a.split(/_/)[0]) - parseInt(b.split(/_/)[0]))
+    .map((chapterName) => {
+       const { path, originalTitle, excerpt } = byChapter[chapterName][0];
+      return { path, title: originalTitle, excerpt };
+    });
+
+  createPage({
+    path: '/docs/guides',
+    component: p.resolve(`./src/templates/GuidesPage/index.js`),
+    context: {
+      guides,
+      tutorials: result.data.tutorials.edges.map(edge => edge.node),
+    },
   });
 };

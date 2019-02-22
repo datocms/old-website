@@ -3,10 +3,20 @@
 
 .Docs__block
   background-color: white
-  border-radius: 6px
   box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 10px rgba(black, 0.1)
   transition: .12s ease-out
   margin-bottom: 40px
+  border-radius: 6px
+  border-top: 20px solid white
+
+  &:nth-child(1)
+    border-top-color: $azure-color
+
+  &:nth-child(2)
+    border-top-color: $red-color
+
+  &:nth-child(3)
+    border-top-color: $light-violet-color
 
 .Docs__block__body
   padding: 30px 20px
@@ -18,25 +28,18 @@
 .Docs__block__title
   font-weight: 500
   +size(big)
-  margin-bottom: 10px
+  line-height: 1.1
+  margin-bottom: 15px
+
+  @media screen and (min-width: 600px)
+    font-size: 25px
 
 .Docs__block__read-more
   margin-top: 10px
   font-weight: 500
   color: $light-body-color
+  text-transform: uppercase
   +size(small)
-
-.Docs__block:nth-child(1)
-  .Docs__block__title
-    color: $azure-color
-
-.Docs__block:nth-child(2)
-  .Docs__block__title
-    color: $red-color
-
-.Docs__block:nth-child(3)
-  .Docs__block__title
-    color: $light-violet-color
 
 .Docs__block__link
   display: block
@@ -73,11 +76,12 @@
   text-align: center
 
 .Docs__api__item
-  border-radius: 6px
   background-color: white
   box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 10px rgba(black, 0.1)
   transition: .12s ease-out
   margin-bottom: 40px
+  border-radius: 6px
+  border-top: 20px solid $yellow-color
 
   &:hover
     transform: translateY(-2px)
@@ -90,10 +94,6 @@
   display: block
   border-bottom: 1px solid $border-color
 
-  &:hover
-    .Docs__api__item__title
-      color: $azure-color
-
 .Docs__api__item__title
   font-weight: 500
   +size(big)
@@ -103,6 +103,7 @@
   margin-top: 10px
   font-weight: 500
   color: $light-body-color
+  text-transform: uppercase
   +size(small)
 
 .Docs__api__item__link
@@ -226,6 +227,9 @@
     flex: 1
     padding: 40px
     border-bottom: 1px solid $border-color
+
+  .Docs__block__links
+    border-left: 0
 
   .Docs__block__link
     flex: 1

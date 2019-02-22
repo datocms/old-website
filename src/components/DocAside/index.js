@@ -71,34 +71,62 @@ export default class DocAside extends React.Component {
             <div className={b('menu', { open: this.state.isMenuOpen })} data-datocms-noindex>
               <Sticky top={100} bottomBoundary={`.${b()}`}>
                 <ul className={b('menu-pages')}>
-                  {menuItems.map(menuItem => (
-                    <li key={menuItem.path} className={b('menu-page')}>
-                      <Link
-                        exact
-                        to={menuItem.path}
-                        activeClassName="is-active"
-                      >
-                        {menuItem.title}
-                      </Link>
-                      {menuItem.headings.length > 0 && (
-                        <ul className={b('menu-page__sections')}>
-                          {menuItem.headings.map(heading => (
-                            <li
-                              key={heading.id}
-                              className={b('menu-page__section')}
-                            >
-                              <Link
-                                to={menuItem.path + heading.id}
-                                activeClassName="is-active"
+                  {
+                    menuItems.length > 1 ?
+                    menuItems.map(menuItem => (
+                      <li key={menuItem.path} className={b('menu-page')}>
+                        <Link
+                          exact
+                          to={menuItem.path}
+                          activeClassName="is-active"
+                        >
+                          {menuItem.title}
+                        </Link>
+                        {menuItem.headings.length > 0 && (
+                          <ul className={b('menu-page__sections')}>
+                            {menuItem.headings.map(heading => (
+                              <li
+                                key={heading.id}
+                                className={b('menu-page__section')}
                               >
-                                {heading.title}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
+                                <Link
+                                  to={menuItem.path + heading.id}
+                                  activeClassName="is-active"
+                                >
+                                  {heading.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))
+                    :
+                    <>
+                      <li className={b('menu-page')}>
+                        <Link
+                          exact
+                          to={menuItems[0].path}
+                          activeClassName="is-active"
+                        >
+                          Introduction
+                        </Link>
+                      </li>
+                      {
+                        menuItems[0].headings.map(heading => (
+                          <li key={heading.id} className={b('menu-page')}>
+                            <Link
+                              exact
+                              to={menuItems[0].path + heading.id}
+                              activeClassName="is-active"
+                            >
+                              {heading.title}
+                            </Link>
+                          </li>
+                        ))
+                      }
+                    </>
+                  }
                 </ul>
 
                 <Search small />

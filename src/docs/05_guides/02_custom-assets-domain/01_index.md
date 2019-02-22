@@ -1,5 +1,6 @@
 ---
 title: Custom assets domain
+excerpt: Learn how to use your own S3 bucket and Imgix account to serve your assets
 ---
 
 DatoCMS uses the domain `www.datocms-assets.com` to serve your project's asset files. On [higher plans](/pricing/), you can choose to use your own S3 account and domain. Here's how it works:
@@ -51,13 +52,13 @@ Create an IAM key with the following permissions:
 
 Go to [Imgix](https://www.imgix.com/) and create a new account. Create a new source, and link it to the S3 bucket you just created.
 
-![foo](../images/custom-uploads/1.png)
+![foo](../../images/custom-uploads/1.png)
 
 ### Adding a custom domain
 
 If you're not satisfied with the default Imgix subdomain (ie. https://your-source.imgix.net) you can add a custom domain to the Imgix source, then configure your domain DNS settings so that its CNAME record points to `your-source.imgix.net`:
 
-![foo](../images/custom-uploads/2.png)
+![foo](../../images/custom-uploads/2.png)
 
 #### Enable HTTPS for the Imgix source
 

@@ -26,15 +26,15 @@ class HomeHero extends React.Component {
   }
 
   render() {
-    const { title, description } = this.props;
+    const { title, description, smallTitle } = this.props;
 
     return (
       <div>
-        <div className={b()}>
+        <div className={b({ smallTitle })}>
           <div className={b('inner')}>
             <div className={b('text-container')}>
               <div>
-                <h1 className={b('title')}>{title}</h1>
+                <h1 className={b('title')} dangerouslySetInnerHTML={{ __html: title }} />
                 <div className={b('description')}>{description}</div>
                 <form method="GET" action="https://dashboard.datocms.com/signup" className={b('subscribe')}>
                   <input

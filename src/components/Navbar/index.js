@@ -46,13 +46,17 @@ const Navbar = () => {
               >
                 Pricing
               </Link>
-              <Link
-                className={b('text-link')}
-                activeClassName={b('text-link', { active: true })}
-                to="/docs/"
-              >
-                <span>Docs</span>
-              </Link>
+              <div className={b('text-link', { handle: true })}>
+                <Link to="/docs" activeClassName="is-active">Learn</Link>
+                <div className={b('menu')}>
+                  <Link className={b('menu-item')} to="/docs">
+                    Documentation
+                  </Link>
+                  <Link className={b('menu-item')} to="/docs/guides">
+                    Guides & Tutorials
+                  </Link>
+                </div>
+              </div>
               <Link
                 className={b('text-link')}
                 activeClassName={b('text-link', { active: true })}
@@ -67,7 +71,7 @@ const Navbar = () => {
                     Blog
                   </Link>
                   <Link className={b('menu-item')} to="/changelog/">
-                    Changelog
+                    Product Changelog
                   </Link>
                 </div>
               </div>

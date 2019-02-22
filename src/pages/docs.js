@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'components/Link';
 import { graphql } from 'gatsby';
 import { Wrap } from 'blocks';
+import { HelmetDatoCms } from 'gatsby-source-datocms';
 
 import bem from 'utils/bem';
 
@@ -22,6 +23,7 @@ export default class LearnPage extends React.Component {
 
     return (
       <Layout>
+        <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
           noWrap
           bg2
@@ -101,7 +103,7 @@ export default class LearnPage extends React.Component {
                     </div>
                   </div>
                   <div className={b('block')}>
-                    <Link to="/" className={b('block__body')}>
+                    <Link to="/docs/guides" className={b('block__body')}>
                       <div className={b('block__title')}>
                         Guides & Tutorials
                       </div>
@@ -150,7 +152,7 @@ export default class LearnPage extends React.Component {
                         </div>
                         <div className={b('api__item__description')}>
                           Retrieve content using using our CDN-powered GraphQL
-                          API
+                          API.
                         </div>
                         <div className={b('api__item__read-more')}>
                           Read more
@@ -189,7 +191,7 @@ export default class LearnPage extends React.Component {
                         </div>
                         <div className={b('api__item__description')}>
                           Programmatically update your schema and content with
-                          our REST API
+                          our REST API.
                         </div>
                         <div className={b('api__item__read-more')}>
                           Read more

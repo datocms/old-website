@@ -1,0 +1,110 @@
+@import 'utils/colors'
+@import 'blocks/mixins'
+
+.GuidesPage
+  display: flex
+  flex-wrap: wrap
+  margin-left: -40px
+
+.GuidesPage__guide
+  margin-left: 40px
+  margin-bottom: 40px
+  display: block
+  text-decoration: none
+  transition: .12s ease-out
+  color: $base-body-color
+  padding: 25px 25px 50px 25px
+  box-sizing: border-box
+  box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 15px rgba(black, 0.1)
+  background-color: white
+  border-top: 20px solid $border-color
+  border-radius: 6px
+  min-height: 200px
+  display: block
+  text-decoration: none
+  color: inherit
+  box-sizing: border-box
+
+  @media screen and (min-width: 800px)
+    padding-right: 60px
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 4px 6px rgba(black, 0.1), 0 4px 15px rgba(black, 0.1)
+
+  .GuidesPage__cell:nth-child(4n) &
+    border-top-color: $azure-color
+
+  .GuidesPage__cell:nth-child(4n+1) &
+    border-top-color: $red-color
+
+  .GuidesPage__cell:nth-child(4n+2) &
+    border-top-color: $light-violet-color
+
+  .GuidesPage__cell:nth-child(4n+3) &
+    border-top-color: $yellow-color
+
+.GuidesPage__cell--placeholder
+  position: relative
+
+  > div
+    position: absolute
+    left: 40px
+    top: 0
+    bottom: 40px
+    right: 0
+    background-color: rgba(black, 0.08)
+    border-radius: 6px
+
+.GuidesPage__cell
+  display: flex
+
+  > *
+    flex: 1
+
+  @media screen and (min-width: 500px) and (max-width: 899px)
+    min-width: 300px
+    flex: 1
+
+  @media screen and (min-width: 900px) and (max-width: 1299px)
+    &:nth-child(4n+1),
+    &:nth-child(4n)
+      min-width: 400px
+      flex: 2
+
+    &:nth-child(4n+2),
+    &:nth-child(4n+3)
+      min-width: 300px
+      flex: 1
+
+  @media screen and (min-width: 1300px)
+    &:nth-child(6n+1),
+    &:nth-child(6n)
+      min-width: 500px
+      flex: 2
+
+    &:nth-child(6n+2),
+    &:nth-child(6n+3),
+    &:nth-child(6n+4),
+    &:nth-child(6n+5)
+      min-width: 350px
+      flex: 1
+
+.GuidesPage__guide__title
+  font-weight: 500
+  +size(big)
+  margin-bottom: 12px
+
+.GuidesPage__guide__excerpt
+  color: $light-body-color
+  line-height: 1.2
+  +size(small)
+
+.GuidesPage__guide__type
+  text-transform: uppercase
+  font-weight: 500
+  display: inline-block
+  margin-bottom: 8px
+  +size(smaller)
+  color: $light-body-color
+

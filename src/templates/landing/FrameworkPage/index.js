@@ -36,6 +36,7 @@ export default class FrameworkPage extends React.Component {
           } sites - DatoCMS`}
         />
         <Hero
+          smallTitle
           title={`Build your next ${ssg.name} app with DatoCMS`}
           description={`Stop reinventing the wheel: use our intuitive REST API to deliver content to your ${
             ssg.name
