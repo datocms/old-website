@@ -56,6 +56,7 @@
     "react-helmet": "^5.2.0",
     "react-images": "^0.5.19",
     "react-masonry-component": "6.2.1",
+    "react-responsive": "^6.1.1",
     "react-responsive-embed": "2.1.0",
     "react-reveal": "0.7.3",
     "react-scroll": "^1.7.6",

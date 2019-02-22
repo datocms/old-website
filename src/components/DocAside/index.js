@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'components/Link';
 import { Wrap, Space } from 'blocks';
-import Sticky from 'react-stickynode';
 import Helmet from 'react-helmet';
 import Lightbox from 'react-images';
 
@@ -9,6 +8,7 @@ import bem from 'utils/bem';
 
 import Layout from 'components/Layout';
 import Search from 'components/Search';
+import ResponsiveSticky from 'components/ResponsiveSticky';
 
 import './style.sass';
 
@@ -69,7 +69,7 @@ export default class DocAside extends React.Component {
             </div>
 
             <div className={b('menu', { open: this.state.isMenuOpen })} data-datocms-noindex>
-              <Sticky top={100} bottomBoundary={`.${b()}`}>
+              <ResponsiveSticky minWidth={900} top={100} bottomBoundary={`.${b()}`}>
                 <ul className={b('menu-pages')}>
                   {
                     menuItems.length > 1 ?
@@ -134,7 +134,7 @@ export default class DocAside extends React.Component {
                 <div className={b('menu-back')}>
                   <Link to="/docs">‹ Go back to Docs page</Link>
                 </div>
-              </Sticky>
+              </ResponsiveSticky>
             </div>
 
             <div className={b('content')}>

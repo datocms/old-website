@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Masonry from 'react-masonry-component';
-import Sticky from 'react-stickynode';
 import Slider from 'react-slick';
 import CallToAction from 'components/CallToAction';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
@@ -12,6 +11,7 @@ import Layout from 'components/Layout';
 import Browser from 'components/Browser';
 import LazyImage from 'components/LazyImage';
 import PageLayout from 'components/PageLayout';
+import ResponsiveSticky from 'components/ResponsiveSticky';
 
 import './use-cases.sass';
 import 'slick-carousel/slick/slick.css';
@@ -107,7 +107,8 @@ class UseCasesPage extends React.Component {
                     className={b('use-case-content')}
                     id={`use-case-content-${useCase.id}`}
                   >
-                    <Sticky
+                    <ResponsiveSticky
+                      minWidth={850}
                       top={120}
                       bottomBoundary={`#use-case-content-${useCase.id}`}
                     >
@@ -120,7 +121,7 @@ class UseCasesPage extends React.Component {
                           }}
                         />
                       </div>
-                    </Sticky>
+                    </ResponsiveSticky>
                   </div>
                   <div className={b('use-case-gallery')}>
                     <div className={b('masonry')}>
