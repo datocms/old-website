@@ -18,7 +18,7 @@ export default class GuidesPage extends React.Component {
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
           bg2
-          title="Guides & tutorials"
+          title="Guides & Tutorials"
           subtitle="Walk through specific problems and use cases"
         >
           <div className={b()}>

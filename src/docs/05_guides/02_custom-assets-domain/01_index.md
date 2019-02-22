@@ -1,6 +1,6 @@
 ---
 title: Custom assets domain
-excerpt: Learn how to use your own S3 bucket and Imgix account to serve your assets
+excerpt: Learn how to use your own S3 bucket and Imgix account to serve your assets.
 ---
 
 DatoCMS uses the domain `www.datocms-assets.com` to serve your project's asset files. On [higher plans](/pricing/), you can choose to use your own S3 account and domain. Here's how it works:
