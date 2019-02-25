@@ -6,10 +6,11 @@ import DocAside from 'components/DocAside';
 import { Tabs, Tab } from 'components/Tabs';
 import fieldTypes from 'utils/fieldTypes.json';
 import Anchor from 'components/Anchor';
+import humps from 'humps';
 
 const b = bem.lock('GraphqlFilters');
 
-const exampleForType = field => {
+const exampleForType = (queryFieldName, field) => {
   let exampleData = '';
   const type = field.input_type;
 
@@ -19,6 +20,8 @@ const exampleForType = field => {
     return 'true';
   } else if (type === 'string') {
     exampleData = '"bike"';
+  } else if (type === 'enum') {
+    exampleData = field.values[0];
   } else if (type === 'float') {
     exampleData = '19.99';
   } else if (type === 'integer') {
@@ -27,9 +30,9 @@ const exampleForType = field => {
     exampleData = '"2018-02-13T14:30:00+00:00"';
   } else if (type === 'date') {
     exampleData = '"2018-02-13"';
-  } else if (type === 'StringMatchesFilter') {
+  } else if (queryFieldName === 'matches' || queryFieldName === 'not_matches') {
     exampleData = '{ pattern: "bi(cycl|k)e", caseSensitive: false }';
-  } else if (type === 'near') {
+  } else if (queryFieldName === 'near') {
     exampleData = '{ latitude: 40.73, longitude: -73.93, radius: 10 }';
   } else {
     exampleData = type;
@@ -41,8 +44,8 @@ const exampleForType = field => {
   return exampleData;
 };
 
-const exampleForField = (field_name, query_field_name, field) => {
-  let filter = `${query_field_name}: ${exampleForType(field)}`;
+const exampleForField = (field_name, queryFieldName, field) => {
+  let filter = `${humps.camelize(queryFieldName)}: ${exampleForType(queryFieldName, field)}`;
 
   if (filter.length > 35) {
     return `query {
@@ -70,7 +73,7 @@ class GraphqlFiltersBlock extends React.Component {
     return (
       <Tabs handlesAsCode>
         {Object.keys(attrs).map(key => (
-          <Tab key="{key}" title={key}>
+          <Tab key={key} title={humps.camelize(key)}>
             <div className={b('filter__description')}>
               {attrs[key].description}
             </div>

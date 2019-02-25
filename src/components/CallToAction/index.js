@@ -13,7 +13,7 @@ const CallToAction = ({ data }) => (
       <div className={b()}>
         <div className={b('title')}>Get started with DatoCMS now</div>
         <div className={b('no-card')}>
-          No credit card required, 30 seconds sign-up
+          No&nbsp;credit&nbsp;card&nbsp;required, 30&nbsp;seconds&nbsp;sign-up
         </div>
         <a
           className={button({ red: true, big: true })}

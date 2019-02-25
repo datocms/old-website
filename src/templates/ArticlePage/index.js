@@ -240,34 +240,6 @@ export const query = graphql`
             }
           }
         }
-        ... on DatoCmsQuote {
-          id
-          model {
-            apiKey
-          }
-          quote: quoteNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
-          author
-        }
-        ... on DatoCmsQuestionAnswer {
-          id
-          model {
-            apiKey
-          }
-          question: questionNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
-          answer: answerNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
-        }
         ... on DatoCmsVideo {
           id
           model {
