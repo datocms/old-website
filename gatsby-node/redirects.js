@@ -22,7 +22,6 @@ const redirectMappings = {
 
 module.exports = function redirects({ actions: { createRedirect } }) {
   Object.entries(redirectMappings).forEach(([fromPath, toPath]) => {
-    console.log(fromPath, toPath);
     createRedirect({ fromPath, toPath, isPermanent: true });
   });
 };
