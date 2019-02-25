@@ -1,4 +1,4 @@
-const redirects = {
+const redirectMappings = {
   '/how-it-works/': '/docs/',
   '/legal/privacy/':
     'https://www.iubenda.com/privacy-policy/64648824/full-legal',
@@ -21,7 +21,8 @@ const redirects = {
 };
 
 module.exports = function redirects({ actions: { createRedirect } }) {
-  Object.entries(redirects).forEach(([fromPath, toPath]) => {
+  Object.entries(redirectMappings).forEach(([fromPath, toPath]) => {
+    console.log(fromPath, toPath);
     createRedirect({ fromPath, toPath, isPermanent: true });
   });
 };
