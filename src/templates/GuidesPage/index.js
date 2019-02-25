@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'components/Link';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
+import { graphql } from 'gatsby';
 
 import bem from 'utils/bem';
 import './style.sass';
