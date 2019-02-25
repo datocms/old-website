@@ -254,6 +254,30 @@ export const query = graphql`
             providerUid
           }
         }
+        ... on DatoCmsQuote {
+          id
+          model { apiKey }
+          quote: quoteNode {
+            markdown: childMarkdownRemark {
+              html
+            }
+          }
+          author
+        }
+        ... on DatoCmsQuestionAnswer {
+          id
+          model { apiKey }
+          question: questionNode {
+            markdown: childMarkdownRemark {
+              html
+            }
+          }
+          answer: answerNode {
+            markdown: childMarkdownRemark {
+              html
+            }
+          }
+        }
       }
       publicationDate(formatString: "MMMM Do YYYY")
       author {
