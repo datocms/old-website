@@ -65,7 +65,7 @@ const Navbar = () => {
                 Plugins
               </Link>
               <div className={b('text-link', { handle: true })}>
-                <span>News</span>
+                <Link to="/blog" activeClassName="is-active">News</Link>
                 <div className={b('menu')}>
                   <Link className={b('menu-item')} to="/blog/">
                     Blog
