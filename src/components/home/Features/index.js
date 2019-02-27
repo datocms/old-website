@@ -68,7 +68,7 @@ class HomeFeatures extends React.Component {
                             __html: selectedFeature.description.markdown.html,
                           }}
                         />
-                        <Link to="/features/" className={button()}>
+                        <Link to="/features/" className={button({ red: true })}>
                           See all features
                         </Link>
                       </div>

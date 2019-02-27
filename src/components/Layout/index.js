@@ -72,13 +72,13 @@ class TemplateWrapper extends React.Component {
   }
 
   render() {
-    const { hideChat, children } = this.props;
+    const { hideChat, children, home } = this.props;
 
     return (
       <StaticQuery
         query={query}
         render={data => (
-          <div>
+          <div className={home ? 'Layout--homepage' : 'Layout'}>
             <Helmet title="DatoCMS">
               <meta
                 name="viewport"
@@ -108,7 +108,7 @@ class TemplateWrapper extends React.Component {
               </a>
               .
             </CookieConsent>
-            <Navbar />
+            <Navbar transparent={this.props.home} />
             <MobileNavbar />
             {children}
             <Footer />

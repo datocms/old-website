@@ -45,7 +45,7 @@ class HomeHero extends React.Component {
                   />
                   <button
                     type="submit"
-                    className={button({ red: true })}
+                    className={button({ red: true, shadow: true })}
                   >
                     Try for free
                   </button>

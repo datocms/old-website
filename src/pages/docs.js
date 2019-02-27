@@ -26,7 +26,7 @@ export default class LearnPage extends React.Component {
         <HelmetDatoCms seo={this.props.data.page.seoMetaTags} />
         <PageLayout
           noWrap
-          bg2
+          docsBg
           title="Documentation"
           subtitle="Get the most out of DatoCMS following our guides, tutorials and demos"
           headerClass="Docs__header"
@@ -138,7 +138,7 @@ export default class LearnPage extends React.Component {
               </Wrap>
             </div>
             <Wrap>
-              <div className={b('section')}>
+              <div className={b('section', { inverse: true })}>
                 <div className={b('section__title')}>API Reference</div>
                 <div className={b('api__cols')}>
                   <div className={b('api__col')}>

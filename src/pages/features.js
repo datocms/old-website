@@ -9,7 +9,6 @@ import bem from 'utils/bem';
 import { Wrap } from 'blocks';
 
 import PageLayout from 'components/PageLayout';
-import CallToAction from 'components/CallToAction';
 import InlineSVG from 'components/InlineSVG';
 import Layout from 'components/Layout';
 import Waypoint from 'react-waypoint';
@@ -43,6 +42,7 @@ class FeaturesPage extends React.Component {
         <PageLayout
           title="Features"
           subtitle="Build projects faster with the most flexible headless CMS out there"
+          cta
           noWrap
         >
           <div className={b()}>
@@ -99,7 +99,6 @@ class FeaturesPage extends React.Component {
             </div>
           </div>
         </PageLayout>
-        <CallToAction />
       </Layout>
     );
   }

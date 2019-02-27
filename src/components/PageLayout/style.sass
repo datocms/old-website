@@ -4,6 +4,9 @@
 .PageLayout
   padding: 0 0 120px 0
 
+.PageLayout--cta
+  padding-bottom: 0
+
 .PageLayout--bg
   background-size: cover
   background: url('../../images/article-bottom-bg.svg'), url('../../images/article-top-bg.svg')
@@ -11,11 +14,17 @@
   background-position: center 100%, center 0
   background-size: 100%
 
-.PageLayout--bg2
-  background: url('../../images/second-wave.svg')
-  background-position: center 330px
+.PageLayout--docsBg
+  background: url('../../images/docs-bg.svg')
+  background-position: center 300px
   background-repeat: no-repeat
-  background-size: 100% 50%
+  background-size: auto 80%
+
+  @media screen and (min-width: 800px)
+    background-size: auto 900px
+
+  @media screen and (min-width: 1500px)
+    background-size: 110vw auto
 
 .PageLayout__header
   text-align: center
@@ -30,7 +39,6 @@
     +size(hero)
 
 .PageLayout__subtitle
-  font-family: $serif-font
   text-align: center
   font-weight: 300
   margin-top: 20px

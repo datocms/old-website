@@ -10,11 +10,11 @@ import logo from 'images/dato_logo_full.svg';
 
 const b = bem.lock('Navbar');
 
-const Navbar = () => {
+const Navbar = ({ transparent }) => {
   const loggedInEmail = getCookie('datoAccountEmail');
 
   return (
-    <div className={b()}>
+    <div className={b({ transparent })}>
       <div className={b('shadow')} />
       <div className={b('bar')} data-datocms-noindex>
         <Wrap>

@@ -3,11 +3,16 @@
 
 .ArticlePage
   padding-bottom: 120px
-  background-size: cover
-  background: url('../../images/article-bottom-bg.svg'), url('../../images/article-top-bg.svg')
+  background: url('../../images/article-bg.svg')
   background-repeat: no-repeat
-  background-position: center 100%, center 0
-  background-size: 100%
+  padding-bottom: 1px
+  padding: 150px 0 100px
+  background-position: center 0
+  background-size: 300vw auto
+
+  @media screen and (min-width: 600px)
+    background-position: center -10vw
+    background-size: 140vw auto
 
 .ArticlePage__content
   max-width: 710px
