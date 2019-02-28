@@ -18,6 +18,7 @@ const redirectMappings = {
   '/docs/metalsmith/*': '/docs/static-generators/metalsmith/:splat',
   '/docs/plugins/*': '/docs/guides/building-plugins/:splat',
   '/docs/search/*': '/docs/guides/installing-site-search/:splat',
+  '/docs/introduction/*': '/docs/general-concepts/:splat',
 };
 
 module.exports = function redirects({ actions: { createRedirect } }) {
