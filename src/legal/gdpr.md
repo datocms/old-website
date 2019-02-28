@@ -11,7 +11,7 @@ and our [Privacy Policy][datocms-privacy-policy].
 [datocms-terms-of-service]: https://www.datocms.com/legal/terms/
 [datocms-privacy-policy]: https://www.iubenda.com/privacy-policy/64648824/full-legal
 
-# Personal Data We Collect
+## Personal Data We Collect
 
 The system stores personal information for the main account and invited editors.
 
@@ -27,7 +27,7 @@ Editors:
 * first name,
 * last name
 
-# Data Storage
+## Data Storage
 
 Personal data is stored exclusively in the DatoCMS database.
 
@@ -39,9 +39,9 @@ Heroku's DPA (Data Processing Addendum) is [here][heroku-dpa].
 [heroku-gdpr-compliance]: https://devcenter.heroku.com/articles/gdpr
 [heroku-dpa]: https://www.salesforce.com/content/dam/web/en_us/www/documents/legal/Agreements/data-processing-addendum.pdf
 
-# Data Shared with Third Parties
+## Data Shared with Third Parties
 
-## Chargebee
+### Chargebee
 
 When you sign up for a paid plan, we ask for the information that is legally
 required for invoicing and supply it directly to Chargebee. We do not store
@@ -56,9 +56,9 @@ The information is:
 * VAT number,
 * billing address.
 
-[Chargebee GDPR Compliance][https://www.chargebee.com/security/gdpr/]
+[Chargebee GDPR Compliance](https://www.chargebee.com/security/gdpr/)
 
-## Chartmogul
+### Chartmogul
 
 We analyze system statistics with Chartmogul, to do so we integrate with
 Chargebee which passes on the information it receives.
@@ -72,13 +72,15 @@ The information passed on to Chartmogul is:
 * VAT number,
 * billing address.
 
-[Chartmogul GDPR Compliance][https://blog.chartmogul.com/gdpr/]
+[Chartmogul GDPR Compliance](https://blog.chartmogul.com/gdpr/)
 
-## Front - Help System
+### Kayako
 
-When you open a ticket, we do not share any info with Front.
+When you open a support ticket, via email or chat, we supply them the email address.
 
-## Mailchimp
+[Kayako privacy policy](https://www.kayako.com/about/privacy)
+
+### Mailchimp
 
 If you opt to sign up for our newsletter, we register you on our Mailchimp
 account, supplying them with:
@@ -87,21 +89,15 @@ account, supplying them with:
 * first name,
 * last name.
 
-[Mailchimp GDPR Compliance announcement][https://mailchimp.com/help/about-the-general-data-protection-regulation/]
+[Mailchimp GDPR Compliance announcement](https://mailchimp.com/help/about-the-general-data-protection-regulation/)
 
-## Mixpanel
+### Rollbar
 
-We pass some information to Mixpanel to analyse user behavior.
+We use Rollbar to track software errors. In certain situations, to help the tracking of the information, we supply them the email address.
 
-The information is:
+[Rollbar GDPR Compliance](https://rollbar.com/compliance/gdpr/)
 
-* email,
-* first name,
-* last name.
-
-[Mixpanel GDPR Compliance][https://help.mixpanel.com/hc/en-us/articles/360000345423-GDPR-Compliance]
-
-# Legal Basis
+## Legal Basis
 
 We collect and store your data for the following reasons:
 
@@ -113,19 +109,19 @@ We collect and store your data for the following reasons:
 
 [wikipedia-gdpr-lawful-basis]: https://en.wikipedia.org/wiki/General_Data_Protection_Regulation#Lawful_basis_for_processing
 
-# Use of the Data
+## Use of the Data
 
 We use your data to do the following:
 
 * to allow you to log in to the site.
 
-# Duration of Data Retention
+## Duration of Data Retention
 
 We store your data for the duration of your use of the system.
 
 As soon as you cancel your account, your personal information is erased.
 
-# Your Rights over Your Personal Data
+## Your Rights over Your Personal Data
 
 We respect your right to do the following:
 
@@ -135,7 +131,7 @@ We respect your right to do the following:
 
 Please contact us (at the address below) if you want to do any of the above.
 
-# How to contact us
+## How to contact us
 
 If you have any doubts, or wish to exercise your rights (as listed above),
 please send us an email here: [support@datocms.com][support-email]
