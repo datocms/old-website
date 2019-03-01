@@ -54,6 +54,7 @@ export default class DocAside extends React.Component {
       menuItems,
       repoPath,
       html,
+      nextPage,
     } = this.props.pageContext;
 
     return (
@@ -152,6 +153,12 @@ export default class DocAside extends React.Component {
               <div className="content-body" ref={x => (this.contentBody = x)}>
                 <div dangerouslySetInnerHTML={{ __html: html }} />
                 {this.props.children}
+
+                {nextPage && (
+                  <div className={b('nav-next')}>
+                    Go ahead to: <Link to={nextPage.path}>{nextPage.title}</Link>
+                  </div>
+                )}
               </div>
 
               {repoPath && (
