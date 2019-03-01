@@ -21,5 +21,5 @@ DatoCMS provides a content infrastructure that comprises two different APIs for 
 
 #### One account, multiple projects
 
-Once you signup to DatoCMS and create your account, you'll be able to create an arbitrary number of different projects. For each one of those you'll be given an administrative area at a specific domain (ie. https://my-project.admin.datocms.com) from which you'll be able to invite a number collaborators to manage its specific content. All the projects you create will be completely isolated from each other.
+Once you signup to DatoCMS and create your account, you'll be able to create an arbitrary number of different projects. For each one of those you'll be given an administrative area at a specific domain (ie. https://my-project.admin.datocms.com) from which you'll be able to invite a number of collaborators to manage its specific content. All the projects you create will be completely isolated from each other.
 
