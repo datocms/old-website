@@ -1,6 +1,8 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins'
 
+$space-unit: 12px
+
 .LandingPage__works
   padding: 60px 0
   background: linear-gradient(to top, white, #f1eff5, #d9f2f5 50%, white 50%)
@@ -9,7 +11,8 @@
 .LandingPage__works-inner
   display: flex
   align-items: center
-  min-height: 70vh
+  min-height: 50vh
+  margin-bottom: $space-unit * 8
 
 .LandingPage__works-logos
   flex: 1
