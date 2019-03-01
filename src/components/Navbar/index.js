@@ -76,14 +76,14 @@ const Navbar = ({ transparent }) => {
                 </div>
               </div>
               <div className={b('text-link', { handle: true })}>
-                <span>Support</span>
+                <Link to="/support/" activeClassName="is-active">Support</Link>
                 <div className={b('menu')}>
                   <Link className={b('menu-item')} to="/support/">
                     Open a ticket
                   </Link>
                   <a
                     className={b('menu-item')}
-                    href="https://github.com/datocms/feature-requests/issues"
+                    href="https://github.com/datocms/product-roadmap"
                     rel="nofollow"
                   >
                     Feature requests
