@@ -109,7 +109,7 @@ const Footer = ({ data }) => (
       </Group>
     </div>
     <div className={b('us')}>
-      Copyright ©2018 — DatoCMS is a{' '}
+      Copyright ©2016-{new Date().getFullYear()} — DatoCMS is a{' '}
       <a href="https://www.leanpanda.com/">LeanPanda</a> product
     </div>
   </div>
