@@ -3,9 +3,11 @@
 @import './content'
 
 .DocPage
-  padding: 90px 0 120px
+  padding: 30px 0
 
   @media screen and (min-width: 900px)
+    padding: 90px 0 120px
+
     .content-body
       h1, h2, h3, h4, h5, h6, p, ul, ol
         max-width: 75%
@@ -53,6 +55,9 @@
 
   .DocPage__content
     margin-top: 60px
+
+  .DocPage__content-category
+    display: none
 
 @media screen and (min-width: 900px)
   .DocPage__mobile-toc
