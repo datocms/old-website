@@ -3,11 +3,13 @@
 
 =heading($size, $top, $bottom)
   font-size: ($size * 0.7)
-  margin: ($top * 0.7) 0 ($bottom * 0.7)
+  margin: (($top - 20px) * 0.7) 0 ($bottom * 0.7)
+  padding-top: 20px * 0.7
 
   @media screen and (min-width: 900px)
     font-size: $size
-    margin: $top 0 $bottom
+    margin: ($top - 20px) 0 $bottom
+    padding-top: 20px
 
 .content-body
   font-size: 17px
