@@ -18,7 +18,7 @@ import './index.sass';
 const b = bem.lock('IndexPage');
 
 const IndexPage = ({ data }) => (
-  <Layout hideChat>
+  <Layout home hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
     <Hero title={data.home.heroText} description={data.home.heroDescription} />
     <Wrap>
@@ -32,12 +32,12 @@ const IndexPage = ({ data }) => (
     <div className={b('second-wave')}>
       <HowItWorks />
     </div>
+    <Features data={data.features.edges.map(x => x.node)} />
     <div className={b('gradient')}>
-      <Features data={data.features.edges.map(x => x.node)} />
       <WhoIsUsing data={data.home.whosUsingDatocms} />
+      <Quotes data={data.reviews.edges.map(x => x.node)} />
+      <CallToAction transparent />
     </div>
-    <Quotes data={data.reviews.edges.map(x => x.node)} />
-    <CallToAction />
   </Layout>
 );
 

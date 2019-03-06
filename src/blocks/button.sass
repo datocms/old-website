@@ -48,3 +48,17 @@
   background: transparent
   border: 1px solid $border-color
   color: $base-body-color
+
+.button--shadow
+  box-shadow: 0 5px 15px rgba(black, 0.2)
+  border: 1px solid $red-color
+  position: relative
+  transition: all 100ms ease-in-out
+  transform: translateY(0px)
+
+  &:hover
+    transform: translateY(-2px)
+    opacity: 1
+
+  &:active
+    transform: translateY(0px)

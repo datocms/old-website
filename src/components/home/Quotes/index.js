@@ -5,8 +5,6 @@ import Img from 'gatsby-image';
 import './style.sass';
 import 'slick-carousel/slick/slick.css';
 
-import { Space } from 'blocks';
-
 import bem from 'utils/bem';
 
 const b = bem.lock('HomeQuotes');
@@ -75,36 +73,34 @@ const settings = {
 };
 
 const HomeQuotes = ({ data }) => (
-  <Space bottom="6">
-    <div className={b()}>
-      <h6 className={b('title')}>People are saying</h6>
-      <div className={b('slider')}>
-        <Slider {...settings}>
-          {data.map(card => (
-            <div key={card.id} className={b('card')}>
-              <div className={b('card-inner')}>
-                <div className={b('card-header')}>
-                  <div className={b('card-avatar')}>
-                    {card.image && <Img fluid={card.image.fluid} />}
-                  </div>
-                  <div className={b('card-header-body')}>
-                    <div className={b('card-header-name')}>{card.name}</div>
-                    <a href={card.website} className={b('card-header-role')}>
-                      {card.role}
-                    </a>
-                  </div>
+  <div className={b()}>
+    <h6 className={b('title')}>People are saying</h6>
+    <div className={b('slider')}>
+      <Slider {...settings}>
+        {data.map(card => (
+          <div key={card.id} className={b('card')}>
+            <div className={b('card-inner')}>
+              <div className={b('card-header')}>
+                <div className={b('card-avatar')}>
+                  {card.image && <Img fluid={card.image.fluid} />}
                 </div>
-                <div
-                  className={b('card-body')}
-                  dangerouslySetInnerHTML={{ __html: card.quote.markdown.html }}
-                />
+                <div className={b('card-header-body')}>
+                  <div className={b('card-header-name')}>{card.name}</div>
+                  <a href={card.website} className={b('card-header-role')}>
+                    {card.role}
+                  </a>
+                </div>
               </div>
+              <div
+                className={b('card-body')}
+                dangerouslySetInnerHTML={{ __html: card.quote.markdown.html }}
+              />
             </div>
-          ))}
-        </Slider>
-      </div>
+          </div>
+        ))}
+      </Slider>
     </div>
-  </Space>
+  </div>
 );
 
 export default HomeQuotes;

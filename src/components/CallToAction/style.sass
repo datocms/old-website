@@ -3,6 +3,22 @@
 
 .CallToAction
   text-align: center
+  background: url('../../images/footer-bg.svg')
+  background-repeat: no-repeat
+  padding-bottom: 1px
+  background-position: top center
+
+  @media screen and (max-width: 800px)
+    background-size: 800px 500px
+    padding: 100px 0
+
+  @media screen and (min-width: 801px)
+    background-size: cover
+    padding: 150px 0 100px
+
+.CallToAction--transparent
+  background: transparent
+  padding: 100px 0
 
 .CallToAction__title
   +size(bigger)

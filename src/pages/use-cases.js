@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Masonry from 'react-masonry-component';
 import Slider from 'react-slick';
-import CallToAction from 'components/CallToAction';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 
 import bem from 'utils/bem';
@@ -94,6 +93,7 @@ class UseCasesPage extends React.Component {
         <PageLayout
           title="Use Cases"
           subtitle="Companies and agencies of any size trust DatoCMS to power content in their websites and apps"
+          cta
         >
           <div className={b()}>
             {data.useCases.edges.map(({ node: useCase }) => {
@@ -149,7 +149,6 @@ class UseCasesPage extends React.Component {
             })}
           </div>
         </PageLayout>
-        <CallToAction />
       </Layout>
     );
   }

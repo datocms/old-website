@@ -1,13 +1,16 @@
 @import 'blocks/mixins'
 
-.IndexPage__second-wave
-  background: url('../images/second-wave.svg')
-  background-position: bottom center
-  background-repeat: no-repeat
-  background-size: 100% 80%
-
 .IndexPage__gradient
-  background: linear-gradient(0deg, #f3f3f3 50%, #FFFFFF 100%)
+  background: url('../images/footer-bg.svg')
+  background-repeat: no-repeat
+  background-position: bottom center
+  padding-bottom: 1px
+
+  @media screen and (max-width: 800px)
+    background-size: 800px 400px
+
+  @media screen and (min-width: 801px)
+    background-size: contain
 
 .IndexPage__b
   margin-top: 30px
