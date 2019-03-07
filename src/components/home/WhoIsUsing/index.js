@@ -15,7 +15,7 @@ const HomeWhoIsUsing = ({ data }) => (
       </div>
       <div className={b('items')}>
         {data.map(({ logo }, i) => (
-          <Fade bottom duration={500} delay={100 * i} key={i}>
+          <Fade bottom duration={400} delay={50 * i} key={i}>
             <img alt="Client" src={logo.url} />
           </Fade>
         ))}

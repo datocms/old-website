@@ -12,25 +12,19 @@
   +size(small)
   text-align: center
 
-@media screen and (max-width: 999px)
-  .HomeWhoIsUsing__items
+.HomeWhoIsUsing__items
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-wrap: wrap
+  margin-left: -20px
+
+  .react-reveal
+    width: calc((100% - 5 * 20px) / 5)
+    flex: 1 1 220px
+    margin-bottom: 50px
     text-align: center
-    max-width: 400px
-    margin: 0 auto
+    margin-left: 20px
 
-    .react-reveal
-      display: inline-block
-      vertical-align: middle
-      margin: 0 15px 15px
-
-    img
-      height: 32px
-
-@media screen and (min-width: 1000px)
-  .HomeWhoIsUsing__items
-    display: flex
-    align-items: center
-    justify-content: space-between
-
-    img
-      height: 32px
+  img
+    height: 40px
