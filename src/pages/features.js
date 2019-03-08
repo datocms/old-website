@@ -47,19 +47,17 @@ class FeaturesPage extends React.Component {
         >
           <div className={b()}>
             <div className={b('cols')}>
-              <div className={b('cols-toc')}>
-                <Sticky top={100} bottomBoundary={`.${b()}`}>
-                  <div className={b('toc')}>
-                    {data.features.edges.map(
-                      ({ node: { title, slug, description } }, i) => (
-                        <div key={i} className={b('toc-item')}>
-                          <ScrollableAnchor id={slug}>{title}</ScrollableAnchor>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </Sticky>
-              </div>
+              <Sticky className={b('cols-toc')} top={100} bottomBoundary={`.${b('cols')}`}>
+                <div className={b('toc')}>
+                  {data.features.edges.map(
+                    ({ node: { title, slug, description } }, i) => (
+                      <div key={i} className={b('toc-item')}>
+                        <ScrollableAnchor id={slug}>{title}</ScrollableAnchor>
+                      </div>
+                    ),
+                  )}
+                </div>
+              </Sticky>
               <div className={b('cols-content')}>
                 <div className={b('content')}>
                   {data.features.edges.map(({ node: feature }, i) => {
