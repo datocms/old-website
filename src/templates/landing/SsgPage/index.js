@@ -42,7 +42,6 @@ export default class SsgPage extends React.Component {
             ssg.name
           } websites. Let your clients publish new content independently, host the site anywhere you like.`}
         />
-        <WhoIsUsing data={home.whosUsingDatocms} />
         <div className={b('works')}>
           <Wrap>
             <div className={b('works-inner')}>
@@ -93,6 +92,7 @@ export default class SsgPage extends React.Component {
           </Wrap>
         </div>
         <Features data={features.edges.map(x => x.node)} />
+        <WhoIsUsing data={home.whosUsingDatocms} />
         <Quotes data={reviews.edges.map(x => x.node)} />
         <CallToAction />
       </Layout>

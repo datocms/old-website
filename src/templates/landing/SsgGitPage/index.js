@@ -44,7 +44,6 @@ export default class SsgGitPage extends React.Component {
             git.name
           }.`}
         />
-        <WhoIsUsing data={home.whosUsingDatocms} />
         <div className={b('works')}>
           <Wrap>
             <div className={b('works-inner')}>
@@ -95,6 +94,7 @@ export default class SsgGitPage extends React.Component {
           </Wrap>
         </div>
         <Features data={features.edges.map(x => x.node)} />
+        <WhoIsUsing data={home.whosUsingDatocms} />
         <Quotes data={reviews.edges.map(x => x.node)} />
         <CallToAction />
       </Layout>

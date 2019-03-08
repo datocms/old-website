@@ -30,19 +30,13 @@
   border-radius: 4px
   background-color: white
   box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 15px rgba(black, 0.1)
-  padding: 22px
   text-decoration: none
   color: $base-body-color
   display: block
   box-sizing: border-box
   transform: translateY(0)
   transition: .12s ease-out
-
-  @media screen and (min-width: 1000px)
-    padding: 30px
-
-  @media screen and (min-width: 1500px)
-    padding: 22px
+  overflow: hidden
 
   &:hover
     transform: translateY(-2px)
@@ -67,10 +61,18 @@
     &:hover
       text-decoration: none
 
+.BlogPage__article-body
+  padding: 22px
+
+  @media screen and (min-width: 1000px)
+    padding: 30px
+
+  @media screen and (min-width: 1500px)
+    padding: 22px
+
 .BlogPage__article-image
   width: 100%
-  border-radius: 3px
-  margin-bottom: 30px
+  margin-bottom: 10px
 
 .BlogPage__article-author-image
   width: 40px

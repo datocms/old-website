@@ -50,20 +50,22 @@ export default class BlogPage extends React.Component {
                         fluid={article.coverImage.fluid}
                       />
                     )}
-                    <h3 className={b('article-title')}>{article.title}</h3>
-                    <div className={b('article-excerpt')}>
-                      <p>{article.excerpt.markdown.excerpt}</p>
-                    </div>
-                    <div className={b('article-meta')}>
-                      <div className={b('article-meta-left')}>
-                        <Img
-                          className={b('article-author-image')}
-                          fluid={article.author.avatar.fluid}
-                        />
+                    <div className={b('article-body')}>
+                      <h3 className={b('article-title')}>{article.title}</h3>
+                      <div className={b('article-excerpt')}>
+                        <p>{article.excerpt.markdown.excerpt}</p>
                       </div>
-                      <div className={b('article-meta-right')}>
-                        <p>{article.author.name}</p>
-                        <p>{article.publicationDate}</p>
+                      <div className={b('article-meta')}>
+                        <div className={b('article-meta-left')}>
+                          <Img
+                            className={b('article-author-image')}
+                            fluid={article.author.avatar.fluid}
+                          />
+                        </div>
+                        <div className={b('article-meta-right')}>
+                          <p>{article.author.name}</p>
+                          <p>{article.publicationDate}</p>
+                        </div>
                       </div>
                     </div>
                   </Link>
