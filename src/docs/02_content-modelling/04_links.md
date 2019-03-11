@@ -17,22 +17,12 @@ To let the editors select one (or more) records to link, DatoCMS will present a 
 
 ![foo](../images/links/3.png)
 
----
+### Expanded view
 
-### Links as "embedded forms"
+If you prefer, you can switch any field to **Expanded view** mode, to allow your editors to have a nicer, more meaningful preview of the linked records:
 
-While this is by far the most common usage for a link field, you can also use them to achieve a totally different editing experience changing the presentation mode of the field to **Embedded form**:
+![foo](../images/links/6.png)
 
-![foo](../images/links/4.png)
+As with any other fields, this setting is under the *Presentation* tab of your field:
 
-Instead of referencing existing records, the *embedded form* mode allows the editors to create new records of the specified models **within the context of a parent record**. This is useful in at least two scenarios:
-
-##### To model parent > child collections
-
-Take as an example two models: each recipe has its own distinct collection of steps. Creating/editing steps inside a global collection might be cumbersome: in this case, you can just create a Links field in the *Recipe* model, and only edit the steps within the context of its recipe:
-
-![foo](../images/links/5.png)
-
-#### Hiding "embedded" models from the navigation bar
-
-If you create a model only to be used inside Link fields of other models, it is perfectly safe and suggested to remove it from the navigation bar, so that they can only be accessed within a parent record.
+![foo](../images/links/7.png)
