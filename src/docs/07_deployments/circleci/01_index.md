@@ -51,7 +51,7 @@ You can find the API token in the *Admin area > API tokens* section:
 
 ![foo](../../images/api-token.png)
 
-### Configure `circle.yml`
+### Configure circle.yml
 
 The next step is to add a `circle.yml` file to your repository. CircleCI uses this file in the root of your repository to learn about your project and how you want your builds to be executed. How this file needs to be structured differs a lot depending on the static website generator you are using. Here we'll show you some examples to get started. 
 
