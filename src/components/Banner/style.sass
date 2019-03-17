@@ -2,12 +2,14 @@
 @import 'blocks/mixins.sass'
 
 .Banner
-  background: url('../../images/jamstack-conf.svg')
-  background-position: center center
-  background-size: auto 50px
   border-bottom: 1px solid $border-color
   text-align: center
   +size(small)
+
+  @media screen and (min-width: 800px)
+    background: url('../../images/jamstack-conf.svg')
+    background-position: center center
+    background-size: auto 50px
 
   .wrap
     display: flex
@@ -21,6 +23,11 @@
     background-color: white
     display: inline-block
     padding: 12px 20px
+
+    @media screen and (max-width: 1019px)
+      display: block
+      max-width: 600px
+      margin: 0 auto
 
   strong
     font-weight: 500
@@ -43,6 +50,12 @@ a.Banner__button
   text-decoration: none
   display: inline-block
   margin-left: 15px
+
+  @media screen and (max-width: 1019px)
+    display: block
+    width: 230px
+    margin: 0 auto
+    margin-top: 5px
 
   &:hover
     background-position: 99%

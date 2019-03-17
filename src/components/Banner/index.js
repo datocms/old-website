@@ -8,11 +8,11 @@ const b = bem.lock('Banner');
 export default function Banner() {
   return (
     <div className={b()}>
-      <Wrap>
-        <div className={b('inner')}>
+      <div className={b('inner')}>
+        <Wrap>
           <p>
             <span role="img" aria-label="Hi!">👋</span>
-            Hey! DatoCMS is proudly sponsoring this year's <a href="https://jamstackconf.com/nyc/" target="_blank" rel="noopener noreferrer">JAMstack Conf</a> in New York, April 9th–10th!
+            Hey! We're proudly sponsoring this year's <a href="https://jamstackconf.com/nyc/" target="_blank" rel="noopener noreferrer">JAMstack Conf</a> in New York, April 9th–10th!
             <a
               className={b('button')}
               href="https://calendly.com/datocms/30min"
@@ -23,8 +23,8 @@ export default function Banner() {
               Let's take a coffee together!
             </a>
           </p>
-        </div>
-      </Wrap>
+        </Wrap>
+      </div>
     </div>
   );
 };
