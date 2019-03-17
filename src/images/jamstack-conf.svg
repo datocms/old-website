@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="603px" height="72px" viewBox="0 0 603 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>JAMstack_conf_nyc-7</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="JAMstack_conf_nyc-7" transform="translate(1.000000, 0.000000)">
+            <path d="M132.005958,60.7674106 L154.485954,60.7674106" id="Shape" stroke="#FFD600" stroke-width="2.99999926" transform="translate(143.245956, 62.267410) scale(-1, 1) rotate(14.971562) translate(-143.245956, -62.267410) "></path>
+            <path d="M133.112909,58.6605417 L155.592916,58.6605417" id="Shape" stroke="#FFD600" stroke-width="3.00000071" transform="translate(144.352912, 60.160542) scale(-1, 1) rotate(104.972071) translate(-144.352912, -60.160542) "></path>
+            <path d="M527.005958,12.2674169 L549.485954,12.2674169" id="Shape" stroke="#3EB8FF" stroke-width="2.99999926" transform="translate(538.245956, 13.767417) scale(-1, 1) rotate(14.971562) translate(-538.245956, -13.767417) "></path>
+            <path d="M528.112938,10.1605421 L550.592941,10.1605421" id="Shape" stroke="#3EB8FF" stroke-width="3.00000071" transform="translate(539.352940, 11.660542) scale(-1, 1) rotate(104.972222) translate(-539.352940, -11.660542) "></path>
+            <path d="M364.005958,28.0534378 L386.485954,28.0534378" id="Shape" stroke="#20F5D9" stroke-width="2.99999926" transform="translate(375.245956, 29.553437) scale(-1, 1) rotate(14.971562) translate(-375.245956, -29.553437) "></path>
+            <path d="M364.112938,26.946563 L386.592941,26.946563" id="Shape" stroke="#20F5D9" stroke-width="3.00000071" transform="translate(375.352940, 28.446563) scale(-1, 1) rotate(104.972222) translate(-375.352940, -28.446563) "></path>
+            <circle id="Oval" stroke="#FF52D9" stroke-width="3" cx="8.4397" cy="35.299" r="7.95529"></circle>
+            <circle id="Oval" stroke="#3EB8FF" stroke-width="3" cx="223.25931" cy="34.25931" r="5.25931"></circle>
+            <circle id="Oval" stroke="#5328FF" stroke-width="3" cx="594.26793" cy="29.26793" r="5.26793"></circle>
+            <polyline id="Shape" stroke="#CC00FF" stroke-width="3" points="87.152 17.5977 90.087 26.9876 80.419 28.809"></polyline>
+            <polyline id="Shape" stroke="#CC00FF" stroke-width="3" points="77.3945 11.7363 67.727 13.5583 70.6614 22.9482"></polyline>
+            <polyline id="Shape" stroke="#FFD600" stroke-width="3" points="474.733 45 477.667 54.3898 468 56.2118"></polyline>
+            <polyline id="Shape" stroke="#FFD600" stroke-width="3" points="465.668 39 456 40.8219 458.935 50.2118"></polyline>
+        </g>
+    </g>
+</svg>

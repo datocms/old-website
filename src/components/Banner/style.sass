@@ -1,0 +1,48 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.Banner
+  background: url('../../images/jamstack-conf.svg')
+  background-position: center center
+  background-size: auto 50px
+  border-bottom: 1px solid $border-color
+  text-align: center
+  +size(small)
+
+  .wrap
+    display: flex
+    align-items: center
+    justify-content: center
+
+.Banner__inner
+
+  p
+    color: black
+    background-color: white
+    display: inline-block
+    padding: 12px 20px
+
+  strong
+    font-weight: 500
+
+  a
+    color: #fb53dc
+
+    &:hover
+      text-decoration: none
+
+a.Banner__button
+  background: linear-gradient(90deg, #fb53dc 0, #ff2882 50%, #20f5d9 0, #5328ff)
+  background-size: 205% 100%
+  background-position: 0 99%
+  transition: 0.225s cubic-bezier(0.55, 0.03, 0.585, 0.22)
+  color: white
+  padding: 4px 16px 4px 12px
+  border-radius: 60px
+  color: white
+  text-decoration: none
+  display: inline-block
+  margin-left: 15px
+
+  &:hover
+    background-position: 99%
