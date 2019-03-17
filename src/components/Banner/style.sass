@@ -15,6 +15,7 @@
     display: flex
     align-items: center
     justify-content: center
+    padding: 0 20px
 
 .Banner__inner
 
@@ -22,7 +23,7 @@
     color: black
     background-color: white
     display: inline-block
-    padding: 12px 20px
+    padding: 12px 0
 
     @media screen and (max-width: 1019px)
       display: block
@@ -34,28 +35,28 @@
 
   a
     color: #fb53dc
+    text-decoration: none
 
     &:hover
-      text-decoration: none
+      text-decoration: underline
 
 a.Banner__button
-  background: linear-gradient(90deg, #fb53dc 0, #ff2882 50%, #20f5d9 0, #5328ff)
-  background-size: 205% 100%
-  background-position: 0 99%
-  transition: 0.225s cubic-bezier(0.55, 0.03, 0.585, 0.22)
-  color: white
-  padding: 4px 16px 4px 12px
-  border-radius: 60px
-  color: white
-  text-decoration: none
-  display: inline-block
-  margin-left: 15px
-
-  @media screen and (max-width: 1019px)
-    display: block
-    width: 230px
-    margin: 0 auto
-    margin-top: 5px
-
-  &:hover
+  @media screen and (min-width: 1020px)
+    background: linear-gradient(90deg, #fb53dc 0, #ff2882 50%, #37dcf1 0, #5328ff)
+    background-size: 205% 100%
+    transition: 0.225s cubic-bezier(0.55, 0.03, 0.585, 0.22)
     background-position: 99%
+    color: white
+    padding: 4px 15px
+    border-radius: 60px
+    color: white
+    text-decoration: none
+    display: inline-block
+    margin-left: 15px
+
+    span
+      display: none
+
+    &:hover
+      background-position: 0 99%
+      text-decoration: none

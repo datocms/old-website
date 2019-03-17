@@ -88,6 +88,10 @@ class TemplateWrapper extends React.Component {
                 name="google-site-verification"
                 content="wfOsq57h3qCQUTbHcX-4qEEY07vgi4KgH9rdT1ywwwc"
               />
+              <meta
+                name="theme-color"
+                content="#5a3252"
+              />
             </Helmet>
             <HelmetDatoCms favicon={data.site.faviconMetaTags} />
             <CookieConsent

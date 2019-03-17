@@ -10,7 +10,6 @@ import Features from 'components/home/Features';
 import Quotes from 'components/home/Quotes';
 import CallToAction from 'components/CallToAction';
 import Layout from 'components/Layout';
-import Banner from 'components/Banner';
 
 import { Wrap } from 'blocks';
 
@@ -21,7 +20,6 @@ const b = bem.lock('IndexPage');
 const IndexPage = ({ data }) => (
   <Layout home hideChat>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
-    <Banner />
     <Hero title={data.home.heroText} description={data.home.heroDescription} />
     <Wrap>
       <div className={b('b')}>
