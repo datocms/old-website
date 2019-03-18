@@ -102,6 +102,13 @@ module.exports = {
     },
 
     {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'GTM-KDSG44T',
+      },
+    },
+
+    {
       resolve: `gatsby-plugin-feed`,
       options: feeds,
     },
