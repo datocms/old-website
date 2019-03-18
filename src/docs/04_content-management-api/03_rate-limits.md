@@ -30,3 +30,7 @@ The following table lists all headers returned in every response by the Content 
 When a client gets rate limited, the API responds with the <code>429 Too Many Requests</code> HTTP status code and sets the value <code>X-RateLimit-Reset</code> header to an integer larger than 0 specifying the time before the limit resets and another request will be accepted.
 
 Our Ruby and JS API clients take care of rate limit errors and will automatically retry the request after the right amount of time.
+
+#### Reaching your plan monthly API calls limit
+
+For projects under a paid plan, even exceeding the API call or bandwidth limits does not lead to the interruption of the service, but the payment of an additional fee commensurate with the use. For pojects under a free plan, service will be temporarily disabled until the beginning of the following calendar month, unless you provide a credit card. For more details, check our [Plans, billing and pricing page](/docs/general-concepts/pricing).
