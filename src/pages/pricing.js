@@ -454,6 +454,9 @@ class PricingPage extends React.Component {
                 </tr>
               </tbody>
             </table>
+            <div className={b('overcharges')}>
+              On every plan: €9 per additional 250k API operations, €29 per additional 150 GB bandwidth
+            </div>
           </div>
           <div className={b('faq')}>
             <div className={b('faq-title')}>Frequently Asked Questions</div>
