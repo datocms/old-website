@@ -54,6 +54,22 @@ module.exports = {
           `gatsby-plugin-sharp`,
           `gatsby-remark-copy-linked-files`,
           {
+            resolve: 'gatsby-remark-emojis',
+            options: {
+              active : true,
+              // Select the size (available size: 16, 24, 32, 64)
+              size   : 24,
+              styles : {
+                display      : 'inline',
+                margin       : '0',
+                'margin-top' : '1px',
+                position     : 'relative',
+                top          : '5px',
+                width        : '24px'
+              }
+            }
+          },
+          {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: 60,
