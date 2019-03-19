@@ -9,6 +9,7 @@ const redirectMappings = {
   '/api/*': '/docs/content-management-api/:splat',
   '/content-management-api/*': '/docs/content-management-api/:splat',
   '/docs/graphql/*': '/docs/content-delivery-api/:splat',
+  '/docs/deployment/introduction': '/docs/general-concepts/deployment',
   '/docs/deployment/custom': '/docs/deployments/custom-webhook',
   '/docs/deployment/*': '/docs/deployments/:splat',
   '/docs/import': '/docs/guides',
