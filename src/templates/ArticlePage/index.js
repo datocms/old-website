@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Link from 'components/Link';
 import Img from 'gatsby-image';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
+import Helmet from 'react-helmet';
 import ResponsiveEmbed from 'react-responsive-embed';
 import Lightbox from 'react-images';
 import parse from 'html-react-parser';
@@ -48,6 +49,12 @@ export default class ArticlePage extends React.Component {
         <Banner />
         <div className={b()}>
           <HelmetDatoCms seo={article.seoMetaTags} />
+          <Helmet>
+            <meta
+              property="article:published_time"
+              content={new Date(article.rawPublicationDate).toISOString()}
+            />
+          </Helmet>
           <div className={b('header')}>
             <div className={b('header__inner')}>
               <div className={b('meta')}>
@@ -282,6 +289,7 @@ export const query = graphql`
         }
       }
       publicationDate(formatString: "MMMM Do YYYY")
+      rawPublicationDate: publicationDate
       author {
         name
         avatar {
