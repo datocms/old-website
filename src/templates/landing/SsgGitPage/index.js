@@ -7,7 +7,6 @@ import Helmet from 'react-helmet';
 
 import bem from 'utils/bem';
 
-import { space } from 'blocks';
 import '../style.sass';
 
 import logo from 'images/logo.svg';
