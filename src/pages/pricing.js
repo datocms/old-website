@@ -85,7 +85,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
 class PricingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activePlan: '15', billing: 'yearly' };
+    this.state = { activePlan: '28', billing: 'yearly' };
   }
 
   handleChangePlan(activePlan) {
