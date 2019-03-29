@@ -1,6 +1,6 @@
 ---
 title: How to localize your images alt and title
-excerpt: Learn how to use your own S3 bucket and Imgix account to serve your assets
+excerpt: Learn how to use your own S3 bucket and Imgix account to serve your assets.
 ---
 
 DatoCMS media handling by default gives you the title and alt field for every image:
