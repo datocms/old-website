@@ -13,6 +13,7 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '', suggestions: [], isLoading: false };
+    this.debounceInterval = null;
   }
 
   componentDidMount() {}
@@ -24,11 +25,15 @@ export default class Search extends React.Component {
   }
 
   handleSuggestionsFetchRequested({ value }) {
-    const client = new DatoCmsSearch(token, 'production');
+    const context = this;
+    clearTimeout(this.debounceInterval);
+    this.debounceInterval = setTimeout(() => {
+      const client = new DatoCmsSearch(token, 'production');
 
-    client.search(value).then(response => {
-      this.setState({ suggestions: response.results });
-    });
+      client.search(value).then(response => {
+        context.setState({ suggestions: response.results });
+      });
+    }, 500);
   }
 
   handleSuggestionsClearRequested() {
