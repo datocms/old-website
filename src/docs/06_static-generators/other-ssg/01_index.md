@@ -66,7 +66,7 @@ The CLI tool also loads environment variables from a `.env` file, so you can pla
 ```bash
 $ echo '.env' >> .gitignore
 $ echo 'DATO_API_TOKEN=abc123' >> .env
-$ bundle exec dato dump
+$ ./node_modules/.bin/dato dump
 ```
 
 ---
