@@ -66,6 +66,7 @@ Depending on your static generator the **Build command** and **Publish directory
 | Middleman  | `bundle exec middleman build`                       | `build/`          |
 | Metalsmith | `dato dump && node index.js`                        | `build/`          |
 | Hexo       | `dato dump && hexo generate`                        | `public/`         |
+| Gatsby     | `gatsby build`                                      | `public/`         |
 
 In the *Advanced Settings* tab, make sure you add your DatoCMS read-only token as a `DATO_API_TOKEN` environment variable:
 

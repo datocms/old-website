@@ -13,7 +13,7 @@ One of the benefits of the JAMStack is the **decoupling of the CMS from the fron
 
 This means that if you change your models in DatoCMS you need to reflect that change in the GatsbyJS code. If you are used to the traditional CMS approach, this might sound counterintuitive, but since the components that we [described before](/docs/static-generators/gatsbyjs#moving-parts) are completely independent one from the other you are in charge of this mapping.
 
-To give you a quick example, say that you want to add a subtitle field to an existing blogpost model in DatoCMS. If you simply do that your GatsbyJS site will not know about it, unless you change the GraphQL queries that pull blgoposts data and you add that field in your views where you want that information to appear.
+To give you a quick example, say that you want to add a subtitle field to an existing blogpost model in DatoCMS. If you simply do that your GatsbyJS site will not know about it, unless you change the GraphQL queries that pull blogposts data and you add that field in your views where you want that information to appear.
 
 So the CMS drives the structure of the content, that then needs to be mapped in the frontend.
 
