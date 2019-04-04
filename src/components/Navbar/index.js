@@ -47,7 +47,9 @@ const Navbar = ({ transparent }) => {
                 Pricing
               </Link>
               <div className={b('text-link', { handle: true })}>
-                <Link to="/docs" activeClassName="is-active">Learn</Link>
+                <Link to="/docs" activeClassName="is-active">
+                  Learn
+                </Link>
                 <div className={b('menu')}>
                   <Link className={b('menu-item')} to="/docs">
                     Documentation
@@ -65,7 +67,9 @@ const Navbar = ({ transparent }) => {
                 Plugins
               </Link>
               <div className={b('text-link', { handle: true })}>
-                <Link to="/blog" activeClassName="is-active">News</Link>
+                <Link to="/blog" activeClassName="is-active">
+                  News
+                </Link>
                 <div className={b('menu')}>
                   <Link className={b('menu-item')} to="/blog/">
                     Blog
@@ -76,7 +80,9 @@ const Navbar = ({ transparent }) => {
                 </div>
               </div>
               <div className={b('text-link', { handle: true })}>
-                <Link to="/support/" activeClassName="is-active">Support</Link>
+                <Link to="/support/" activeClassName="is-active">
+                  Support
+                </Link>
                 <div className={b('menu')}>
                   <Link className={b('menu-item')} to="/support/">
                     Open a ticket

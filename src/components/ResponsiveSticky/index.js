@@ -5,7 +5,7 @@ import Sticky from 'react-stickynode';
 export default function ResponsiveSticky({ minWidth, children, ...other }) {
   return (
     <MediaQuery minWidth={minWidth}>
-      {(matches) => {
+      {matches => {
         if (matches) {
           return <Sticky {...other}>{children}</Sticky>;
         } else {

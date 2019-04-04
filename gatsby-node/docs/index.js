@@ -191,11 +191,13 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
     });
   });
 
-  const chaptersWhichAreGuides = [...new Set(pages.filter(p => p.isGuide).map(p => p.chapter))];
+  const chaptersWhichAreGuides = [
+    ...new Set(pages.filter(p => p.isGuide).map(p => p.chapter)),
+  ];
   const guides = chaptersWhichAreGuides
     .sort((a, b) => parseInt(a.split(/_/)[0]) - parseInt(b.split(/_/)[0]))
-    .map((chapterName) => {
-       const { path, originalTitle, excerpt } = byChapter[chapterName][0];
+    .map(chapterName => {
+      const { path, originalTitle, excerpt } = byChapter[chapterName][0];
       return { path, title: originalTitle, excerpt };
     });
 

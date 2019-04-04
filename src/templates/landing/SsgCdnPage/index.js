@@ -69,8 +69,8 @@ export default class SsgCdnPage extends React.Component {
                         administrative area
                       </li>
                       <li>
-                        Invite your editors in and let them make changes to
-                        the site content
+                        Invite your editors in and let them make changes to the
+                        site content
                       </li>
                       <li>
                         Integrate your {ssg.name} project with our{' '}

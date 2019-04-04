@@ -108,11 +108,11 @@ ${returnCode}
     console.log(error);
   });
 ${
-      link.targetSchema && link.targetSchema.properties.meta
-        ? '\n\n// if you want to fetch all the pages with just one call:\n' +
-          example(resource, link, true)
-        : ''
-    }`;
+  link.targetSchema && link.targetSchema.properties.meta
+    ? '\n\n// if you want to fetch all the pages with just one call:\n' +
+      example(resource, link, true)
+    : ''
+}`;
     return { code, output };
   } else {
     const code = `

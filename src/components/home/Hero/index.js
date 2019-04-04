@@ -34,9 +34,16 @@ class HomeHero extends React.Component {
           <div className={b('inner')}>
             <div className={b('text-container')}>
               <div>
-                <h1 className={b('title')} dangerouslySetInnerHTML={{ __html: title }} />
+                <h1
+                  className={b('title')}
+                  dangerouslySetInnerHTML={{ __html: title }}
+                />
                 <div className={b('description')}>{description}</div>
-                <form method="GET" action="https://dashboard.datocms.com/signup" className={b('subscribe')}>
+                <form
+                  method="GET"
+                  action="https://dashboard.datocms.com/signup"
+                  className={b('subscribe')}
+                >
                   <input
                     className={b('email')}
                     type="email"

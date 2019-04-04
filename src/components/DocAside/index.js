@@ -63,17 +63,25 @@ export default class DocAside extends React.Component {
         <Wrap>
           <div className={b()}>
             <div className={b('mobile-toc')}>
-              <p>You're reading <em>"{chapterTitle}"</em></p>
+              <p>
+                You're reading <em>"{chapterTitle}"</em>
+              </p>
               <button onClick={this.handleMenuToggle.bind(this)}>
-                { this.state.isMenuOpen ? 'Close' : 'Open'} this guide's chapters
+                {this.state.isMenuOpen ? 'Close' : 'Open'} this guide's chapters
               </button>
             </div>
 
-            <div className={b('menu', { open: this.state.isMenuOpen })} data-datocms-noindex>
-              <ResponsiveSticky minWidth={900} top={100} bottomBoundary={`.${b()}`}>
+            <div
+              className={b('menu', { open: this.state.isMenuOpen })}
+              data-datocms-noindex
+            >
+              <ResponsiveSticky
+                minWidth={900}
+                top={100}
+                bottomBoundary={`.${b()}`}
+              >
                 <ul className={b('menu-pages')}>
-                  {
-                    menuItems.length > 1 ?
+                  {menuItems.length > 1 ? (
                     menuItems.map(menuItem => (
                       <li key={menuItem.path} className={b('menu-page')}>
                         <Link
@@ -102,7 +110,7 @@ export default class DocAside extends React.Component {
                         )}
                       </li>
                     ))
-                    :
+                  ) : (
                     <>
                       <li className={b('menu-page')}>
                         <Link
@@ -113,21 +121,19 @@ export default class DocAside extends React.Component {
                           Introduction
                         </Link>
                       </li>
-                      {
-                        menuItems[0].headings.map(heading => (
-                          <li key={heading.id} className={b('menu-page')}>
-                            <Link
-                              exact
-                              to={menuItems[0].path + heading.id}
-                              activeClassName="is-active"
-                            >
-                              {heading.title}
-                            </Link>
-                          </li>
-                        ))
-                      }
+                      {menuItems[0].headings.map(heading => (
+                        <li key={heading.id} className={b('menu-page')}>
+                          <Link
+                            exact
+                            to={menuItems[0].path + heading.id}
+                            activeClassName="is-active"
+                          >
+                            {heading.title}
+                          </Link>
+                        </li>
+                      ))}
                     </>
-                  }
+                  )}
                 </ul>
 
                 <Search small />
@@ -156,7 +162,8 @@ export default class DocAside extends React.Component {
 
                 {nextPage && (
                   <div className={b('nav-next')}>
-                    Go ahead to: <Link to={nextPage.path}>{nextPage.title}</Link>
+                    Go ahead to:{' '}
+                    <Link to={nextPage.path}>{nextPage.title}</Link>
                   </div>
                 )}
               </div>

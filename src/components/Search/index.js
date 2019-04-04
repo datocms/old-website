@@ -2,6 +2,7 @@ import React from 'react';
 import bem from 'utils/bem';
 import DatoCmsSearch from 'datocms-search/dist/datocms-search.base';
 import AutoSuggest from 'react-autosuggest';
+import { debounce } from 'debounce';
 
 import './style.sass';
 
@@ -13,6 +14,11 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '', suggestions: [], isLoading: false };
+
+    this.handleSuggestionsFetchRequested = debounce(
+      this.handleSuggestionsFetchRequested.bind(this),
+      300,
+    );
   }
 
   componentDidMount() {}

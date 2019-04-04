@@ -27,10 +27,7 @@ export default function PageLayout({
         </Wrap>
       </div>
       {noWrap ? children : <Wrap>{children}</Wrap>}
-      {
-        cta &&
-          <CallToAction />
-      }
+      {cta && <CallToAction />}
     </div>
   );
 }

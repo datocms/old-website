@@ -42,11 +42,21 @@ export default class GuidesPage extends React.Component {
                 </Link>
               </div>
             ))}
-            <div className={b('cell', { placeholder: true })}><div /></div>
-            <div className={b('cell', { placeholder: true })}><div /></div>
-            <div className={b('cell', { placeholder: true })}><div /></div>
-            <div className={b('cell', { placeholder: true })}><div /></div>
-            <div className={b('cell', { placeholder: true })}><div /></div>
+            <div className={b('cell', { placeholder: true })}>
+              <div />
+            </div>
+            <div className={b('cell', { placeholder: true })}>
+              <div />
+            </div>
+            <div className={b('cell', { placeholder: true })}>
+              <div />
+            </div>
+            <div className={b('cell', { placeholder: true })}>
+              <div />
+            </div>
+            <div className={b('cell', { placeholder: true })}>
+              <div />
+            </div>
           </div>
         </PageLayout>
       </Layout>

@@ -113,11 +113,11 @@ ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${
     }
 ${returnCode}
 ${
-      link.targetSchema && link.targetSchema.properties.meta
-        ? '\n\n# if you want to fetch all the pages with just one call:\n\n' +
-          example(resource, link, true).code
-        : ''
-    }`;
+  link.targetSchema && link.targetSchema.properties.meta
+    ? '\n\n# if you want to fetch all the pages with just one call:\n\n' +
+      example(resource, link, true).code
+    : ''
+}`;
     return { code, output };
   } else {
     return { code: returnCode, output };

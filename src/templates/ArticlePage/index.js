@@ -265,7 +265,9 @@ export const query = graphql`
         }
         ... on DatoCmsQuote {
           id
-          model { apiKey }
+          model {
+            apiKey
+          }
           quote: quoteNode {
             markdown: childMarkdownRemark {
               html
@@ -275,7 +277,9 @@ export const query = graphql`
         }
         ... on DatoCmsQuestionAnswer {
           id
-          model { apiKey }
+          model {
+            apiKey
+          }
           question: questionNode {
             markdown: childMarkdownRemark {
               html

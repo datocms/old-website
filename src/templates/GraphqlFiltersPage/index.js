@@ -45,7 +45,10 @@ const exampleForType = (queryFieldName, field) => {
 };
 
 const exampleForField = (field_name, queryFieldName, field) => {
-  let filter = `${humps.camelize(queryFieldName)}: ${exampleForType(queryFieldName, field)}`;
+  let filter = `${humps.camelize(queryFieldName)}: ${exampleForType(
+    queryFieldName,
+    field,
+  )}`;
 
   if (filter.length > 35) {
     return `query {
