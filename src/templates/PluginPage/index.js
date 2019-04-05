@@ -179,6 +179,10 @@ export default class PluginPage extends React.Component {
                         <strong>Last update</strong>
                         <AutoupdateTime value={parse(plugin.lastUpdate)} />
                       </p>
+                      <p className={b('info')}>
+                        <strong>Installed on</strong>
+                        {plugin.installs} projects
+                      </p>
                     </div>
                   </div>
                 </Sticky>
