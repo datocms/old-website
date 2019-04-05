@@ -6944,10 +6944,10 @@ gatsby-source-apiserver@^2.1.1:
     json-stringify-safe "^5.0.1"
     nanoid "^1.0.2"
 
-gatsby-source-datocms@2.1.0-beta.0:
-  version "2.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-2.1.0-beta.0.tgz#5301096b1dd62163500b8cecb6043b00b8fe2980"
-  integrity sha512-5rqj4aoWiCRMJAGIoF6hCMe5xioo84rNCLfKbXvYgO4YVXlJQNQXnOJHwOFtOUZYqop54URlvtG0aOEcHpTjWQ==
+gatsby-source-datocms@2.1.0-beta.1:
+  version "2.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-2.1.0-beta.1.tgz#946fc5f7e98d7018ece2d86c7ccaa6779f51c651"
+  integrity sha512-jnZ5+dJiJRe1SyH+z0DLn/X6mWa2bSFyazN6f9ElLZzRJFVP2nz9ZFnYbFuicwS3K72/LdSgYAxgGbmuWP249Q==
   dependencies:
     babel-polyfill "^6.26.0"
     babel-runtime "^6.26.0"

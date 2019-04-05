@@ -141,7 +141,10 @@ export default class ArticlePage extends React.Component {
                         )}
                       >
                         {block.image.format === 'gif' ? (
-                          <img alt={block.image.alt} src={block.image.url} />
+                          <video poster={`${block.image.url}?fm=jpg&fit=max&w=900`} controls loop autoPlay>
+                            <source src={`${block.image.url}?fm=webm&w=900`} type="video/webm" />
+                            <source src={`${block.image.url}?fm=mp4&w=900`} type="video/mp4" />
+                          </video>
                         ) : (
                           <Img
                             alt={block.image.alt}
