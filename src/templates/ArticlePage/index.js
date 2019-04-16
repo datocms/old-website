@@ -245,7 +245,7 @@ export const query = graphql`
             format
             width
             title
-            fluid(maxWidth: 710) {
+            fluid(maxWidth: 810) {
               ...GatsbyDatoCmsFluid
             }
           }

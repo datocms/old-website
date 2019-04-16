@@ -49,7 +49,7 @@
     display: none
 
 .ArticlePage__content-image
-  margin: 70px auto
+  margin: 70px 0
 
   img, video
     display: block
@@ -58,6 +58,9 @@
   .gatsby-image-wrapper
     overflow: hidden
     border-radius: 4px
+
+  @media screen and (min-width: 1000px)
+    margin: 70px -50px
 
 a.ArticlePage__content-image__image.ArticlePage__content-image__image
   cursor: zoom-in
