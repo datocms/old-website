@@ -36,8 +36,6 @@ module.exports = function generateTOCNodes({
     node.type = 'html';
   })
 
-  console.log(JSON.stringify(toc, null, 2));
-
   markdownAST.children = [].concat(
     markdownAST.children.slice(0, index),
     toc,
