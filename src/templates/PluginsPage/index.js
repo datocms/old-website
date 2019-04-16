@@ -138,7 +138,11 @@ export default class PluginsPage extends React.Component {
                           v{plugin.version} by {plugin.author.name}
                         </div>
                         <div className={b('plugin-excerpt')}>
-                          {plugin.description}
+                          {
+                            plugin.description.length > 80 ?
+                              plugin.description.substring(0, 80) + '...' :
+                              plugin.description
+                          }
                         </div>
                       </div>
                     </Link>
