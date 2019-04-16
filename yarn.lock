@@ -5650,15 +5650,14 @@ gatsby-remark-emojis@^0.3.2:
   resolved "https://registry.yarnpkg.com/gatsby-remark-emojis/-/gatsby-remark-emojis-0.3.2.tgz#5d8edb4e303dc9e05ee554d080dc486be6d3c810"
   integrity sha512-IrRHau6xJeDAj766WuHv8LCBcKKaHMyhbYFlbIu2O1veOmTZ5mb/GnGz2raUr6MiAwRXXbUE0XQqWFMSZ1xr8w==
 
-gatsby-remark-images-datocms@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images-datocms/-/gatsby-remark-images-datocms-0.0.4.tgz#3e075dcbb5fc13889466fb6e713783ead7ab126d"
-  integrity sha512-WRO2/8aZji7rKb7w9SOKjTP10PWRMOfVkEbVzukszTcwsdI5D3QaRDTsN14UvYmCf6McqdRaTfBZnT7aaWdhkw==
+gatsby-remark-images-datocms@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-datocms/-/gatsby-remark-images-datocms-0.0.6.tgz#aa5d095746bcd9b2be47a3503d098ca91779c2e9"
+  integrity sha512-S8BzpsAJwtt6Rld2tkIn/gZo6Um9JPtehEiwlb6klR76MYWbJMFobO3WCTyyq2Ag7U/ZR5s0yP0xJK6WHPfr3g==
   dependencies:
     cheerio "^1.0.0-rc.3"
     datocms-client "^0.8.15"
     fs-extra "^7.0.1"
-    gatsby-source-datocms "~2.1.0"
     md5 "^2.2.1"
     node-fetch "^2.3.0"
     query-string "^6.4.2"
@@ -5703,29 +5702,10 @@ gatsby-source-apiserver@^2.1.1:
     json-stringify-safe "^5.0.1"
     nanoid "^1.0.2"
 
-gatsby-source-datocms@~2.1.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-2.1.1.tgz#beedf901a8ac0b1e64b62a956ccbbf87a630aa02"
-  integrity sha512-Tt+1n3d/5LDrTTaaIu22NLcCOG/WoLD9chR3c4SVttguuNufkvCBjcw9rLRhOfe6/ia8+nRUDr4uLbE6apEawg==
-  dependencies:
-    babel-polyfill "^6.26.0"
-    babel-runtime "^6.26.0"
-    datocms-client "~1.0.0"
-    fs-extra ">=4.0.2"
-    humps ">=2.0.1"
-    imgix-url-params "7.4.0"
-    json-stringify-safe ">=5.0.1"
-    md5 "2.2.1"
-    object-assign "^4.1.1"
-    object.entries "^1.0.4"
-    promise-queue "2.2.3"
-    query-string "5.0.1"
-    request-promise-native "1.0.5"
-
-gatsby-source-datocms@~2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-2.1.2.tgz#c0b148c9fd53b321a36180d81ad9d1c0a5689776"
-  integrity sha512-6Qhay/qWglrWDJbWHPeXT0dzvNIaeDV0eVqgbYXULOWMPn8D1XioOCsS1fGZ6xxLls7G2zTyg6LWC5aJXx58CA==
+gatsby-source-datocms@~2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-2.1.3.tgz#6f2bf3c5d84b7d6ec7da05df6ef54803b12c2646"
+  integrity sha512-VDAWAmgxEb7RnYgp2QNY3UNWcRtpUgN8kVZMYDNW7ml8k/T6oQgNQukfZFoZfvWbkZSn34Xp5Ix0GTzncAgHqw==
   dependencies:
     babel-polyfill "^6.26.0"
     babel-runtime "^6.26.0"
