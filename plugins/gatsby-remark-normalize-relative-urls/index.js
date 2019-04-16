@@ -25,4 +25,8 @@ module.exports = ({ getNode, markdownAST, markdownNode }) => {
       node.url = finalUrl;
     }
   })
+
+  visit(markdownAST, 'code', node => {
+    node.value = node.value.replace(/\t/g, '  ');
+  });
 }
