@@ -14,7 +14,6 @@ import 'components/DocAside/content.sass';
 
 import Layout from 'components/Layout';
 import CallToAction from 'components/CallToAction';
-import Banner from 'components/Banner';
 
 const b = bem.lock('ArticlePage');
 
@@ -46,7 +45,6 @@ export default class ArticlePage extends React.Component {
 
     return (
       <Layout>
-        <Banner />
         <div className={b()}>
           <HelmetDatoCms seo={article.seoMetaTags} />
           <Helmet>
