@@ -14,9 +14,6 @@ const findHeadings = (page, pages) => {
     const contentPage = pages.find(p =>
       p.path.includes(page.frontmatter.copyFrom),
     );
-    if (!contentPage) {
-      console.log(page.frontmatter.copyFrom);
-    }
     return contentPage.headings;
   }
 

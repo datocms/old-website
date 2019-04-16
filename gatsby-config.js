@@ -95,10 +95,16 @@ module.exports = {
           {
             resolve: 'gatsby-remark-toc',
             options: {
-              include: ['src/docs/plugins/sdk-reference.md'],
+              include: ['src/docs/05_guides/01_building-plugins/06_sdk-reference.md'],
               mdastUtilTocOptions: {
                 heading: 'Table of Contents',
               },
+            },
+          },
+          {
+            resolve: `gatsby-remark-images-datocms`,
+            options: {
+              apiToken: process.env.DATO_API_TOKEN,
             },
           },
         ],

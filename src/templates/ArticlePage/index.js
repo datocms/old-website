@@ -59,7 +59,7 @@ export default class ArticlePage extends React.Component {
             <div className={b('header__inner')}>
               <div className={b('meta')}>
                 <div className={b('meta__avatar')}>
-                  <Img fluid={article.author.avatar.fluid} />
+                  <Img fluid={article.author.avatar.fixed} />
                 </div>
                 <div className={b('meta__description')}>
                   <p>
@@ -247,7 +247,7 @@ export const query = graphql`
             format
             width
             title
-            fluid(maxWidth: 900) {
+            fluid(maxWidth: 710) {
               ...GatsbyDatoCmsFluid
             }
           }
@@ -300,13 +300,8 @@ export const query = graphql`
       author {
         name
         avatar {
-          url
-          fluid(maxWidth: 80) {
-            base64
-            aspectRatio
-            src
-            srcSet
-            sizes
+          fixed(width: 50) {
+            ...GatsbyDatoCmsFixed
           }
         }
       }

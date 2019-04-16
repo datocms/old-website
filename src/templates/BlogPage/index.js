@@ -99,14 +99,5 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    author: datoCmsAuthor {
-      name
-      avatar {
-        url
-        fluid(maxWidth: 80) {
-          ...GatsbyDatoCmsFluid
-        }
-      }
-    }
   }
 `;

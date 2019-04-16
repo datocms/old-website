@@ -1,4 +1,5 @@
 const generateTOC = require('mdast-util-toc');
+const visit = require(`unist-util-visit`)
 
 const mm = require('micromatch');
 
@@ -30,6 +31,12 @@ module.exports = function generateTOCNodes({
   }
 
   toc.data = { hProperties: { className: 'table-of-contents' } };
+
+  visit(toc, 'text', node => {
+    node.type = 'html';
+  })
+
+  console.log(JSON.stringify(toc, null, 2));
 
   markdownAST.children = [].concat(
     markdownAST.children.slice(0, index),

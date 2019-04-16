@@ -95,6 +95,8 @@ class TemplateWrapper extends React.Component {
               cookieName="cookies-accepted"
               location="bottom"
               onAccept={() => {}}
+              acceptOnScroll
+              acceptOnScrollPercentage={10}
               disableStyles
             >
               We use cookies to help our site work and to understand how it is
