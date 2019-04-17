@@ -110,7 +110,7 @@ ${returnCode}
 ${
   link.targetSchema && link.targetSchema.properties.meta
     ? '\n\n// if you want to fetch all the pages with just one call:\n' +
-      example(resource, link, true)
+      example(resource, link, true).code
     : ''
 }`;
     return { code, output };
