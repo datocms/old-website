@@ -33,6 +33,7 @@ const redirectMappings = {
   '/docs/general-concepts/data-migration':
     '/docs/content-modelling/data-migration',
   '/docs/general-concepts/data-model': '/docs/general-concepts/data-modelling',
+  '/docs/general-concepts/custom-assets-domain': '/docs/guides/custom-assets-domain',
   '/docs/import/nodejs': '/docs/content-management-api/js-client',
   '/docs/guides/building-plugins/introduction': '/docs/guides/building-plugins',
   '/docs/static-websites': '/docs/general-concepts',
