@@ -58,6 +58,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
   if (datoPlan && datoPlan.attributes.hasOwnProperty(apiId)) {
     const value = datoPlan.attributes[apiId];
 
+
     if (value === null) {
       return <span>Unlimited</span>;
     }
@@ -76,7 +77,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
   }
 
   if (value === undefined) {
-    return <span>Unlimited</span>;
+    return <span>Custom</span>;
   }
 
   return <span>{value}</span>;
@@ -110,7 +111,7 @@ class PricingPage extends React.Component {
           .map(plan => {
             return (
               <button
-                key={plan.apiId}
+                key={`button-${plan.apiId}`}
                 className={b('plan-changer__plan', {
                   active: activePlan === plan.apiId,
                 })}
@@ -166,7 +167,7 @@ class PricingPage extends React.Component {
 
     return (
       <div
-        key={plan.apiId}
+        key={`recap-item-${plan.apiId}`}
         className={b('recap-item', {
           active: activePlan === plan.apiId,
           enterprise: isEnterprise,
@@ -282,7 +283,7 @@ class PricingPage extends React.Component {
 
     return (
       <td
-        key={plan.apiId}
+        key={`price-row-${plan.apiId}`}
         className={b('details-price-cell', {
           active: activePlan === plan.apiId,
         })}
@@ -392,7 +393,7 @@ class PricingPage extends React.Component {
                   </td>
                   {plans.map(plan => (
                     <td
-                      key={plan.apiId}
+                      key={`plan-${plan.apiId}`}
                       className={b('details-plan-name', {
                         active: activePlan === plan.apiId,
                       })}
@@ -404,8 +405,8 @@ class PricingPage extends React.Component {
                 <tr className={b('details-header-row')}>
                   {plans.map(this.renderTablePriceRow.bind(this))}
                 </tr>
-                {hintKeys.map(hintKey => (
-                  <tr key={hintKey}>
+                {hintKeys.map((hintKey, index) => (
+                  <tr key={`${hintKey}-${index}`}>
                     <td className={b('details-feature-name')}>
                       <Tooltip hints={hints} apiId={hintKey}>
                         {hints[hintKey].name}
@@ -413,7 +414,7 @@ class PricingPage extends React.Component {
                     </td>
                     {plans.map(plan => (
                       <td
-                        key={plan.apiId}
+                        key={`hint-plan-${plan.apiId}`}
                         className={b('details-feature-value', {
                           active: activePlan === plan.apiId,
                         })}
@@ -433,6 +434,7 @@ class PricingPage extends React.Component {
                   {plans.map(plan =>
                     plan.code === 'enterprise' ? (
                       <td
+                        key={`fixed-${plan.apiId}`}
                         className={b('details-cta', {
                           active: activePlan === plan.apiId,
                         })}
@@ -441,6 +443,7 @@ class PricingPage extends React.Component {
                       </td>
                     ) : (
                       <td
+                        key={`customizable-${plan.apiId}`}
                         className={b('details-cta', {
                           active: activePlan === plan.apiId,
                         })}
@@ -464,8 +467,8 @@ class PricingPage extends React.Component {
             <div className={b('faq-questions')}>
               {data.faqs.edges
                 .map(e => e.node)
-                .map(faq => (
-                  <div className={b('faq-item')} key={faq.id}>
+                .map((faq, index) => (
+                  <div className={b('faq-item')} key={index}>
                     <div className={b('faq-item-question')}>{faq.question}</div>
                     <div className={b('faq-item-answer')}>{faq.answer}</div>
                   </div>

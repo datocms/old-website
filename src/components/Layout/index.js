@@ -131,7 +131,7 @@ class TemplateWrapper extends React.Component {
 }
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.array,
 };
 
 export default TemplateWrapper;
