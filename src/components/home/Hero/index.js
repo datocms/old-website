@@ -72,7 +72,7 @@ class HomeHero extends React.Component {
                   playsInline
                   ref={el => (this.video = el)}
                 >
-                  <source src="http://www.datocms-assets.com/website/hero.mp4" type="video/mp4" />
+                  <source src="https://www.datocms-assets.com/website/hero.mp4" type="video/mp4" />
                 </video>
               </Browser>
             </div>
