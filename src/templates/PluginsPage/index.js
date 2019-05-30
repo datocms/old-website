@@ -14,17 +14,17 @@ import './style.sass';
 const b = bem.lock('PluginsPage');
 
 const toPath = function(pluginType, fieldType) {
-  let path = '/plugins/';
+  let parts = ['plugins'];
 
   if (pluginType) {
-    path += pluginType + '/';
+    parts.push(pluginType);
   }
 
   if (fieldType) {
-    path += fieldType + '/';
+    parts.push(fieldType);
   }
 
-  return path;
+  return `/${parts.join('/')}`;
 };
 
 export default class PluginsPage extends React.Component {

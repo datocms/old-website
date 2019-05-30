@@ -58,15 +58,17 @@ module.exports = async function plugins({ graphql, actions: { createPage } }) {
   const combosWithResults = {};
 
   combos.forEach(([pluginType, fieldType]) => {
-    let path = '/plugins/';
+    const parts = ['plugins'];
 
     if (pluginType) {
-      path += pluginType + '/';
+      parts.push(pluginType);
     }
 
     if (fieldType) {
-      path += fieldType + '/';
+      parts.push(fieldType);
     }
+
+    const path = `/${parts.join('/')}`;
 
     const plugins = result.data.plugins.edges.filter(
       ({ node: plugin }) =>
@@ -84,7 +86,7 @@ module.exports = async function plugins({ graphql, actions: { createPage } }) {
       edges: info.plugins,
       createPage: createPage,
       pageTemplate: `./src/templates/PluginsPage/index.js`,
-      pageLength: 25,
+      pageLength: 24,
       pathPrefix: pathPrefix.substring(1),
       context: {
         combosWithResults,
