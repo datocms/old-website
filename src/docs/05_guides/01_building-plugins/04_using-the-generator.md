@@ -25,4 +25,4 @@ The generator will prompt the following configuration questions:
 
 [Watch the example video](https://vimeo.com/301886498#at=0) to see the generator running.
 
-[Read the tutorial](https://vimeo.com/301886498#at=0) on how to build a custom plugin using the generator.
+[Read the tutorial](https://www.datocms.com/blog/how-to-create-an-inverse-relations-plugin) on how to build a custom plugin using the generator.
