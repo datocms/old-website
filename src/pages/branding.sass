@@ -1,0 +1,124 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.BrandingPage
+  padding-bottom: 120px
+  background-repeat: no-repeat
+  padding-bottom: 1px
+  padding: 150px 0 100px
+
+.BrandingPage__content
+  max-width: 710px
+  margin: 0 auto
+  padding: 0 30px
+
+.BrandingPage__header
+  padding: 80px 0
+
+.BrandingPage__header__inner
+  max-width: 710px
+  margin: 0 auto
+  padding: 0 30px
+
+.BrandingPage__title
+  +size(bigger)
+
+  @media screen and (min-width: 1100px)
+    +size(hero)
+
+  a
+    color: $base-body-color
+    text-decoration: none
+    +weight(bold)
+
+.BrandingPage__heading
+  color: $light-body-color
+  margin-bottom: 20px
+  +size(normalBig)
+  text-decoration: none
+  display: block
+
+  @media screen and (min-width: 1100px)
+    display: none
+
+
+a.BrandingPage__content-image__image.BrandingPage__content-image__image
+  cursor: zoom-in
+  border-radius: 4px
+  display: block
+  overflow: hidden
+  border-width: 0
+  box-shadow: none
+
+  &:after
+    display: none !important
+
+  &:hover
+    background-color: transparent
+
+  img
+    margin: 0
+
+.BrandingPage__content-image__label
+  font-style: italic
+  +size(small)
+  text-align: center
+  padding: 20px 20px 0 20px
+
+.BrandingPage__meta
+  margin-bottom: 60px
+  display: flex
+  align-items: center
+  font-size: 0.9em
+
+  @media screen and (min-width: 900px)
+    font-size: 1em
+
+.BrandingPage__content-image
+  margin: 70px 0
+  position: relative
+
+  img
+    display: block
+    width: 100%
+
+  .gatsby-image-wrapper
+    overflow: hidden
+    border-radius: 4px
+    height: 200px
+    & > .svg
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      top: 0
+      background-size: cover
+      background-position: center center
+
+  @media screen and (min-width: 1000px)
+    margin: 70px -50px
+
+
+.BrandingPage__content-text
+  p
+    margin-bottom: 10px
+
+  a
+    color: $azure-color
+
+  strong
+    +weight(bold)
+
+.BrandingPage__content-title
+  text-align: center
+  font-weight: 300
+  margin-top: 20px
+  max-width: 700px
+  margin: 20px auto 0
+  +size(normalBig)
+
+  @media screen and (min-width: 600px)
+    +size(big)
+
+.BrandingPage__content-two-columns
+  display: flex
