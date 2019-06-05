@@ -1,0 +1,45 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.content-body.content-body
+  .BrandingPage__image-block
+    margin: 40px 0
+
+    @media screen and (min-width: 900px)
+      max-width: 75%
+
+    img
+      margin: 0
+      width: 100%
+
+  .BrandingPage__gallery-block
+    display: flex
+    margin: 40px 0
+    margin-left: -40px
+
+    & > div
+      flex: 1
+      margin-left: 40px
+
+    img
+      margin: 0
+      display: block
+
+  @media screen and (min-width: 1424px)
+    .BrandingPage__two-cols-block
+      display: flex
+      max-width: 75%
+      align-items: center
+
+    .BrandingPage__two-cols-block__text
+      flex: 1
+      margin-right: 60px
+
+      p
+        max-width: none
+
+    .BrandingPage__two-cols-block__gallery
+      flex: 1
+
+      img
+        margin: 0

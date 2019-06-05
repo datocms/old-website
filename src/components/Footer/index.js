@@ -83,6 +83,9 @@ const Footer = ({ data }) => (
         <Link className={b('group-link')} to="/integrations/">
           Integrations
         </Link>
+        <Link className={b('group-link')} to="/brand-assets/">
+          Brand Assets
+        </Link>
       </Group>
       <Group title="Legal">
         <Link className={b('group-link')} to="/legal/terms/">
