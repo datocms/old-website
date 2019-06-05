@@ -5,7 +5,7 @@
   padding-bottom: 1px
   padding: 50px 0
   margin-bottom: 80px
-  @media screen and (min-width: 850px)
+  @media screen and (min-width: 900px)
     display: flex
     padding: 150px 0 100px
 
@@ -15,12 +15,18 @@
 
 .BrandingPage__content
   max-width: 710px
-  margin: 0 auto
+  margin: 24px auto
+  @media screen and (min-width: 900px)
+    margin: 0 auto
 
 .BrandingPage__header
-  font-size: 48px
+  +size(big)
+  @media screen and (min-width: 900px)
+    font-size: 48px
+
 
 .BrandingPage__link
+  +size(small)
   color: $red-color
   margin-bottom: 50px
   display: block
@@ -39,7 +45,7 @@
   height: 150px
   &:hover
     background-color: transparent
-  @media screen and (min-width: 1100px)
+  @media screen and (min-width: 900px)
     height: 200px
 
   .gatsby-image-wrapper
@@ -51,7 +57,7 @@
   justify-content: space-between
   margin: 40px 0
 
-  @media screen and (min-width: 1100px)
+  @media screen and (min-width: 900px)
     margin-bottom: 24px
 
   .gatsby-image-wrapper
@@ -69,7 +75,7 @@
       background-color: transparent
     &:last-child
       margin-right: 0
-    @media screen and (min-width: 1100px)
+    @media screen and (min-width: 900px)
       height: 200px
 
 .svg
@@ -81,7 +87,7 @@
   background-size: contain
   background-position: center center
   background-repeat: no-repeat
-  @media screen and (min-width: 1100px)
+  @media screen and (min-width: 900px)
     background-size: 100%
 
 .BrandingPage__content-text
@@ -106,7 +112,7 @@
   margin-bottom: 24px
 
 .BrandingPage__content-two-columns
-  @media screen and (min-width: 1100px)
+  @media screen and (min-width: 900px)
     display: flex
     align-items: center
     .BrandingPage__content-gallery
@@ -117,6 +123,28 @@
         margin: 0 40px
     .BrandingPage__content-text
       width: 60%
+
+.BrandingPage__mobile-toc
+  padding: 15px 25px
+  background-color: $code-bg-color
+  border-left: 5px solid darken($code-bg-color, 10%)
+  +size(small)
+
+  p
+    margin-bottom: 3px
+
+  em
+    font-style: italic
+
+  button
+    font-weight: 500
+
+.BrandingPage__menu
+  a
+    text-decoration: none
+    color: $base-body-color
+    &:hover
+      text-decoration: underline
 
 @media screen and (min-width: 900px)
   .BrandingPage__menu
@@ -129,6 +157,11 @@
   .BrandingPage__menu
     display: none
     +size(small)
+    padding: 25px
+    padding-top: 10px
+    background-color: $code-bg-color
+    border-left: 5px solid darken($code-bg-color, 10%)
+    margin-bottom: 30px
 
   .BrandingPage__menu--open
     display: block
