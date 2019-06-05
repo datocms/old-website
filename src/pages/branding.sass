@@ -2,62 +2,28 @@
 @import 'blocks/mixins.sass'
 
 .BrandingPage
-  padding-bottom: 120px
-  background-repeat: no-repeat
   padding-bottom: 1px
-  padding: 150px 0 100px
+  padding: 50px 0
+  margin-bottom: 80px
+  @media screen and (min-width: 850px)
+    display: flex
+    padding: 150px 0 100px
+
+    .BrandingPage__menu
+      width: 230px
+      margin-right: 80px
 
 .BrandingPage__content
   max-width: 710px
   margin: 0 auto
-  padding: 0 30px
 
 .BrandingPage__header
-  padding: 80px 0
+  font-size: 48px
 
-.BrandingPage__header__inner
-  max-width: 710px
-  margin: 0 auto
-  padding: 0 30px
-
-.BrandingPage__title
-  +size(bigger)
-
-  @media screen and (min-width: 1100px)
-    +size(hero)
-
-  a
-    color: $base-body-color
-    text-decoration: none
-    +weight(bold)
-
-.BrandingPage__heading
-  color: $light-body-color
-  margin-bottom: 20px
-  +size(normalBig)
-  text-decoration: none
+.BrandingPage__link
+  color: $red-color
+  margin-bottom: 50px
   display: block
-
-  @media screen and (min-width: 1100px)
-    display: none
-
-
-a.BrandingPage__content-image__image.BrandingPage__content-image__image
-  cursor: zoom-in
-  border-radius: 4px
-  display: block
-  overflow: hidden
-  border-width: 0
-  box-shadow: none
-
-  &:after
-    display: none !important
-
-  &:hover
-    background-color: transparent
-
-  img
-    margin: 0
 
 .BrandingPage__content-image__label
   font-style: italic
@@ -65,43 +31,65 @@ a.BrandingPage__content-image__image.BrandingPage__content-image__image
   text-align: center
   padding: 20px 20px 0 20px
 
-.BrandingPage__meta
-  margin-bottom: 60px
+.BrandingPage__content-image
+  position: relative
+  display: block
+  margin-bottom: 24px
+  box-shadow: none !important
+  height: 150px
+  &:hover
+    background-color: transparent
+  @media screen and (min-width: 1100px)
+    height: 200px
+
+  .gatsby-image-wrapper
+    width: 100%
+
+.BrandingPage__content-gallery
   display: flex
   align-items: center
-  font-size: 0.9em
+  justify-content: space-between
+  margin: 40px 0
 
-  @media screen and (min-width: 900px)
-    font-size: 1em
-
-.BrandingPage__content-image
-  margin: 70px 0
-  position: relative
-
-  img
-    display: block
-    width: 100%
+  @media screen and (min-width: 1100px)
+    margin-bottom: 24px
 
   .gatsby-image-wrapper
     overflow: hidden
     border-radius: 4px
-    height: 200px
-    & > .svg
-      position: absolute
-      left: 0
-      right: 0
-      bottom: 0
-      top: 0
-      background-size: cover
-      background-position: center center
 
-  @media screen and (min-width: 1000px)
-    margin: 70px -50px
+  .BrandingPage__content-gallery__image
+    height: 150px
+    margin-right: 10px
+    position: relative
+    display: block
+    text-decoration: none
+    box-shadow: none !important
+    &:hover
+      background-color: transparent
+    &:last-child
+      margin-right: 0
+    @media screen and (min-width: 1100px)
+      height: 200px
 
+.svg
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+  background-size: contain
+  background-position: center center
+  background-repeat: no-repeat
+  @media screen and (min-width: 1100px)
+    background-size: 100%
 
 .BrandingPage__content-text
+  margin-bottom: 24px
   p
-    margin-bottom: 10px
+    font-family: "colfax-web"
+    color: $base-body-color
+    font-size: 18px
 
   a
     color: $azure-color
@@ -110,15 +98,37 @@ a.BrandingPage__content-image__image.BrandingPage__content-image__image
     +weight(bold)
 
 .BrandingPage__content-title
-  text-align: center
-  font-weight: 300
-  margin-top: 20px
-  max-width: 700px
-  margin: 20px auto 0
-  +size(normalBig)
-
-  @media screen and (min-width: 600px)
-    +size(big)
+  font-family: "colfax-web"
+  color: $base-body-color
+  font-weight: normal !important
+  font-size: 25px
+  font-weight: 500
+  margin-bottom: 24px
 
 .BrandingPage__content-two-columns
-  display: flex
+  @media screen and (min-width: 1100px)
+    display: flex
+    align-items: center
+    .BrandingPage__content-gallery
+      width: 40%
+      height: 100%
+      margin: 0
+      .BrandingPage__content-gallery__image
+        margin: 0 40px
+    .BrandingPage__content-text
+      width: 60%
+
+@media screen and (min-width: 900px)
+  .BrandingPage__menu
+    display: block
+
+  .BrandingPage__mobile-toc
+    display: none
+
+@media screen and (max-width: 899px)
+  .BrandingPage__menu
+    display: none
+    +size(small)
+
+  .BrandingPage__menu--open
+    display: block

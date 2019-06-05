@@ -6,6 +6,9 @@ import { HelmetDatoCms } from 'gatsby-source-datocms';
 import Helmet from 'react-helmet';
 import ResponsiveEmbed from 'react-responsive-embed';
 import parse from 'html-react-parser';
+import Lightbox from 'react-images';
+import { Wrap } from 'blocks';
+import ResponsiveSticky from 'components/ResponsiveSticky';
 
 import bem from 'utils/bem';
 import './branding.sass';
@@ -36,11 +39,16 @@ export default class BrandingPage extends React.Component {
     this.setState({ image });
   }
 
+  handleMenuToggle(e) {
+    e.preventDefault();
+    this.setState({ isMenuOpen: !this.state.isMenuOpen });
+  }
+
   renderTitleBlock(block) {
     return (
-      <h1 className="BrandingPage__content-title" key={block.id}>
+      <h3 className="BrandingPage__content-title" key={block.id}>
         {block.title}
-      </h1>
+      </h3>
     );
   }
 
@@ -65,100 +73,115 @@ export default class BrandingPage extends React.Component {
   renderGalleryBlock(block) {
     const images = block.images;
     return (
-      <>
-        {images.map(image => {
-          return (
-            <div
-              className={b('content-image')}
-              style={{ maxWidth: `${image.width}px` }}
-            >
-              <a
-                href={`${image.url}?auto=format&w=1200&fit=max`}
-                className={b('content-image__image')}
-                onClick={this.handleOpenImage.bind(
-                  this,
-                  `${image.url}?auto=format&w=1200&fit=max`,
-                )}
-              >
-                {image.format === 'svg' ? (
-                  <div className="gatsby-image-wrapper">
-                    <div
-                      className="svg"
-                      style={{
-                        backgroundImage: `url(${image.url})`,
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <Img alt={image.alt} fluid={image.fluid} />
-                )}
-              </a>
-              {image.title && (
-                <div className={b('content-image__label')}>{image.title}</div>
-              )}
-            </div>
-          );
-        })}
-      </>
+      <div className="BrandingPage__content-gallery">
+        {images.map(image => (
+          <a
+            href={`${image.url}?auto=format&w=1200&fit=max`}
+            style={{ width: `${100 / images.length - 2}%` }}
+            className={b('content-gallery__image')}
+            onClick={this.handleOpenImage.bind(
+              this,
+              `${image.url}?auto=format&w=1200&fit=max`,
+            )}
+          >
+            {image.format === 'svg' ? (
+              <div className="gatsby-gallery-wrapper">
+                <div
+                  className="svg"
+                  style={{
+                    backgroundImage: `url(${image.url})`,
+                  }}
+                />
+              </div>
+            ) : (
+              <Img alt={image.alt} fluid={image.fluid} />
+            )}
+          </a>
+        ))}
+      </div>
     );
   }
 
-  renderImageBlock(block) {
-    const { image } = block;
+  renderImageBlock(image) {
     return (
-      <div
+      <a
+        href={`${image.url}?auto=format&w=1200&fit=max`}
         className={b('content-image')}
-        style={{ maxWidth: `${image.width}px` }}
-      >
-        <a
-          href={`${image.url}?auto=format&w=1200&fit=max`}
-          className={b('content-image__image')}
-          onClick={this.handleOpenImage.bind(
-            this,
-            `${image.url}?auto=format&w=1200&fit=max`,
-          )}
-        >
-          {image.format === 'svg' ? (
-            <div className="gatsby-image-wrapper">
-              <div
-                className="svg"
-                style={{
-                  backgroundImage: `url(${image.url})`,
-                }}
-              />
-            </div>
-          ) : (
-            <Img alt={image.alt} fluid={image.fluid} />
-          )}
-        </a>
-        {image.title && (
-          <div className={b('content-image__label')}>{image.title}</div>
+        onClick={this.handleOpenImage.bind(
+          this,
+          `${image.url}?auto=format&w=1200&fit=max`,
         )}
-      </div>
+      >
+        {image.format === 'svg' ? (
+          <div className="gatsby-image-wrapper">
+            <div
+              className="svg"
+              style={{
+                backgroundImage: `url(${image.url})`,
+              }}
+            />
+          </div>
+        ) : (
+          <Img alt={image.alt} fluid={image.fluid} />
+        )}
+      </a>
     );
   }
 
   render() {
     const { brandingPage } = this.props.data;
+    const menuItems = brandingPage.content.filter(
+      block => block.model.apiKey === 'title',
+    );
     return (
       <Layout>
-        <div className={b()}>
-          <HelmetDatoCms seo={brandingPage.seoMetaTags} />
-          <Helmet>
-            <meta property="brandingPage:published_time" />
-          </Helmet>
-          <div className={b('header')}>
-            <div className={b('header__inner')}>
-              <h1 className={b('title')}>DatoCMS - Branding guidelines</h1>
+        <HelmetDatoCms seo={brandingPage.seoMetaTags} />
+        <Wrap>
+          <div className={b()}>
+            <div className={b('mobile-toc')}>
+              <p>
+                You're reading <em>"chapterTitle"</em>
+              </p>
+              <button onClick={this.handleMenuToggle.bind(this)}>
+                {this.state.isMenuOpen ? 'Close' : 'Open'} this guide's chapters
+              </button>
             </div>
-          </div>
-          <div className={b('content')}>
-            <div className="content-body">
+
+            <div
+              className={b('menu', { open: this.state.isMenuOpen })}
+              data-datocms-noindex
+            >
+              <ResponsiveSticky
+                minWidth={900}
+                top={100}
+                bottomBoundary={`.${b()}`}
+              >
+                <ul className={b('menu-pages')}>
+                  {menuItems.map(menuItem => (
+                    <li key={menuItem.title} className={b('menu-page')}>
+                      <Link
+                        exact
+                        to={menuItem.title}
+                        activeClassName="is-active"
+                      >
+                        {menuItem.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </ResponsiveSticky>
+            </div>
+
+            <div className={b('content')}>
+              <h1 className={b('header')}>DatoCMS - Branding guidelines</h1>
+              <a href="#" className={b('link')}>
+                Jump straight to the assets
+              </a>
               {brandingPage.content.map(block => (
                 <React.Fragment key={block.id}>
                   {block.model.apiKey === 'text' && this.renderTextBlock(block)}
                   {block.model.apiKey === 'image' &&
-                    this.renderImageBlock(block)}
+                    this.renderImageBlock(block.image)}
                   {block.model.apiKey === 'gallery' &&
                     this.renderGalleryBlock(block)}
                   {block.model.apiKey === 'title' &&
@@ -169,7 +192,15 @@ export default class BrandingPage extends React.Component {
               ))}
             </div>
           </div>
-        </div>
+        </Wrap>
+        <Lightbox
+          backdropClosesModal
+          width={1400}
+          images={this.state.image ? [{ src: this.state.image }] : []}
+          isOpen={this.state.image}
+          theme={{ footer: { display: 'none' } }}
+          onClose={() => this.setState({ image: null })}
+        />
       </Layout>
     );
   }
