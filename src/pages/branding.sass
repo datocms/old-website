@@ -165,3 +165,34 @@
 
   .BrandingPage__menu--open
     display: block
+
+.BrandingPage__footer
+  text-align: center
+  background: url('../images/footer-bg.svg')
+  background-repeat: no-repeat
+  padding-bottom: 1px
+  background-position: top center
+
+  @media screen and (max-width: 800px)
+    background-size: 800px 500px
+    padding: 100px 0
+
+  @media screen and (min-width: 801px)
+    background-size: cover
+    padding: 150px 0 100px
+
+.BrandingPage__footer__title
+  +size(bigger)
+  font-weight: 500
+  margin-bottom: 20px
+
+  @media screen and (min-width: 1000px)
+    +size(hero)
+
+.BrandingPage__footer__no-card
+  font-family: $serif-font
+  margin-bottom: 30px
+  +size(normalBig)
+
+  @media screen and (min-width: 1000px)
+    +size(big)

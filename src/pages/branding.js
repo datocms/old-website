@@ -1,13 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Link from 'components/Link';
 import Img from 'gatsby-image';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
-import Helmet from 'react-helmet';
-import ResponsiveEmbed from 'react-responsive-embed';
 import parse from 'html-react-parser';
 import Lightbox from 'react-images';
-import { Wrap } from 'blocks';
+import { Wrap, button } from 'blocks';
 import ResponsiveSticky from 'components/ResponsiveSticky';
 
 import bem from 'utils/bem';
@@ -65,7 +62,7 @@ export default class BrandingPage extends React.Component {
   }
 
   renderTextImageBlock(block) {
-    const { id, text } = block;
+    const { id } = block;
     return (
       <div className="BrandingPage__content-two-columns" key={id}>
         {this.renderTextBlock(block)}
@@ -172,7 +169,7 @@ export default class BrandingPage extends React.Component {
 
             <div className={b('content')}>
               <h1 className={b('header')}>Branding guidelines</h1>
-              <a href="#" className={b('link')}>
+              <a href="#download-assets" className={b('link')}>
                 Jump straight to the assets
               </a>
               {brandingPage.content.map(block => (
@@ -191,6 +188,26 @@ export default class BrandingPage extends React.Component {
             </div>
           </div>
         </Wrap>
+        <div className={b('footer')} id={'download-assets'}>
+          <Wrap>
+            <div className={b('footer__title')}>
+              Download DatoCMS brand assets
+            </div>
+            <div className={b('footer__no-card')}>
+              One zipped file, inside you will find every lockup in three
+              different colorways, both in png and svg format.
+            </div>
+            <a
+              className={button({ red: true, big: true, shadow: true })}
+              href={
+                brandingPage.assetsZipfile && brandingPage.assetsZipfile.url
+              }
+              download
+            >
+              Download assets
+            </a>
+          </Wrap>
+        </div>
         <Lightbox
           backdropClosesModal
           width={1400}
@@ -209,6 +226,9 @@ export const query = graphql`
     brandingPage: datoCmsBrandingPage {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+      assetsZipfile {
+        url
       }
       content {
         ... on DatoCmsText {
