@@ -46,7 +46,11 @@ export default class BrandingPage extends React.Component {
 
   renderTitleBlock(block) {
     return (
-      <h3 className="BrandingPage__content-title" key={block.id}>
+      <h3
+        className="BrandingPage__content-title"
+        key={block.id}
+        id={block.title}
+      >
         {block.title}
       </h3>
     );
@@ -159,13 +163,7 @@ export default class BrandingPage extends React.Component {
                 <ul className={b('menu-pages')}>
                   {menuItems.map(menuItem => (
                     <li key={menuItem.title} className={b('menu-page')}>
-                      <Link
-                        exact
-                        to={menuItem.title}
-                        activeClassName="is-active"
-                      >
-                        {menuItem.title}
-                      </Link>
+                      <a href={`#${menuItem.title}`}>{menuItem.title}</a>
                     </li>
                   ))}
                 </ul>
