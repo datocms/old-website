@@ -173,7 +173,7 @@ export default class BrandingPage extends React.Component {
             </div>
 
             <div className={b('content')}>
-              <h1 className={b('header')}>DatoCMS - Branding guidelines</h1>
+              <h1 className={b('header')}>Branding guidelines</h1>
               <a href="#" className={b('link')}>
                 Jump straight to the assets
               </a>
