@@ -80,6 +80,9 @@ const Footer = ({ data }) => (
         </Link>
       </Group>
       <Group title="About">
+        <Link className={b('group-link')} to="/about/">
+          About us
+        </Link>
         <Link className={b('group-link')} to="/integrations/">
           Integrations
         </Link>
