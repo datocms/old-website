@@ -298,7 +298,7 @@ export const query = graphql`
       author {
         name
         avatar {
-          fixed(width: 50) {
+          fixed(width: 50, imgixParams: {w:"50", h:"50", fit:"crop", crop:"faces" }) {
             ...GatsbyDatoCmsFixed
           }
         }

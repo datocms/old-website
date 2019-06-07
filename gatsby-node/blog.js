@@ -23,7 +23,7 @@ const query = `
           name
           avatar {
             url
-            fluid(maxWidth: 80) {
+            fluid(maxWidth: 80, imgixParams: {w:"80", h:"80", fit:"crop", crop:"faces" }) {
               base64
               aspectRatio
               src

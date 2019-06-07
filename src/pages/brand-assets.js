@@ -58,7 +58,7 @@ export default class BrandingPage extends React.Component {
           {parse(block.text.markdown.html)}
         </div>
         <div className={x('two-cols-block__gallery')}>
-          {block.images.map(image => <Image image={image} />)}
+          <Image image={block.image} />
         </div>
       </div>
     );
@@ -222,7 +222,7 @@ export const query = graphql`
               html
             }
           }
-          images {
+          image {
             format
             alt
             url

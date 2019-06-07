@@ -29,7 +29,7 @@ class Support extends React.Component {
                   {authors.edges.map(({ node: author }) => (
                     <img
                       alt={author.name}
-                      src={author.avatar.url}
+                      src={`${author.avatar.url}?w=300&h=300&fit=crop&crop=faces`}
                       className={b('person')}
                       key={author.name}
                     />
@@ -66,15 +66,12 @@ export default Support;
 
 export const query = graphql`
   query SupportQuery {
-    authors: allDatoCmsAuthor {
+    authors: allDatoCmsTeamMember {
       edges {
         node {
           name
           avatar {
             url
-            fluid(maxWidth: 60) {
-              ...GatsbyDatoCmsFluid
-            }
           }
         }
       }
