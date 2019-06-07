@@ -59,16 +59,7 @@ Please refer to the official Gitlab documentation to learn everything regarding 
 
 #### Jekyll
 
-language: ruby
-script:
-deploy:
-  provider: s3
-  access_key_id: XXX
-  secret_access_key: YYY
-  bucket: your-bucket
-  local_dir: public
-  skip_cleanup: true
-  acl: public_read
+Here is an example `.gitlab-ci.yml` that you can use to run your build using Jekyll:
 
 ```yaml
 # requiring the environment of Ruby 2.3.x
@@ -98,79 +89,3 @@ deploy:
   only:
     - master # the 'deploy' job will affect only the 'master' branch
 ```
-
-#### Hugo
-
-```yaml
-language: node_js
-sudo: required
-before_script:
-  # download latest version of hugo
-  - wget https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19-64bit.deb
-  # install it
-  - sudo dpkg -i hugo*.deb
-script:
-  # first dump all the remote content as local files
-  - ./node_modules/.bin/dato dump
-  # then generate the website
-  - hugo
-deploy:
-  provider: s3
-  access_key_id: XXX
-  secret_access_key: YYY
-  bucket: your-bucket
-  local_dir: public
-  skip_cleanup: true
-  acl: public_read
-```
-
-#### Middleman
-
-```yaml
-language: ruby
-script:
-  - bundle exec middleman build
-deploy:
-  provider: s3
-  access_key_id: XXX
-  secret_access_key: YYY
-  bucket: your-bucket
-  local_dir: build
-  skip_cleanup: true
-  acl: public_read
-```
-
-#### Metalsmith
-
-```yaml
-language: node_js
-script:
-  # first dump all the remote content as local files
-  - ./node_modules/.bin/dato dump
-  # then generate the website
-  - node index.js
-deploy:
-  provider: s3
-  access_key_id: XXX
-  secret_access_key: YYY
-  bucket: your-bucket
-  local_dir: build
-  skip_cleanup: true
-  acl: public_read
-```
-
-### Connect TravisCI to DatoCMS
-
-There's only one last step needed: connecting DatoCMS to TravisCI, so that everytime one of your editors press the *Publish changes* button in your administrative area, a new build process (thus a new publication of the final website) gets triggered.
-
-To do so, go to the *Admin area > Deployment settings* and select *TravisCI*:
-
-![foo](../../images/netlify/9.png)
-
-In the window that will appear, follow the instructions to conclude the integration:
-
-![foo](../../images/travis/dato.png)
-
-When everything is done, confirm the integration pressing the *Save Settings* button.
-
-
