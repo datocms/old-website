@@ -2,15 +2,15 @@
 title: Modular content fields
 ---
 
-Everyone hates WYSIWYG editors: developers know they produce dirty code, designers fear the introduction of unwanted styling, editors struggle to use them. Sure, DatoCMS features a WYSIWYG editor since day one, but we want to keep it simple and lightweight: you cannot add inline images or other media you could regret in the future to have added in an unstructured way.
+Everyone hates WYSIWYG editors: developers know they produce dirty code, designers fear the introduction of unwanted styling, editors struggle to use them. Sure, DatoCMS features a WYSIWYG editor since day one, but we want to keep it simple and lightweight.
 
 In DatoCMS you can achieve structured, rich-content editing using a specific type of field called **Modular content**:
 
-![foo](../images/modular-content/1.png)
+![Choose modular content field type](../images/modular-content/1.png)
 
 The idea is to give your authors the choice to compose their content by alternating certain blocks (ie. text, images, videos, etc.), which are nothing more but "low-level" models. Authors, to compose a structured content, will be able to add and reorder these blocks as they prefer:
 
-![foo](../images/modular-content/0.png)
+![Modular content example](../images/modular-content/0.png)
 
 This gives authors a lot of freedom to organise their content, much like Medium editor does, while keeping the content clean and structured.
 
