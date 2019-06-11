@@ -9,8 +9,8 @@ import PageLayout from 'components/PageLayout';
 import Img from 'gatsby-image';
 
 import './about.sass';
-import x from 'images/x.png';
-import y from 'images/y.png';
+import x from 'images/x.svg';
+import y from 'images/y.svg';
 
 const b = bem.lock('AboutPage');
 
