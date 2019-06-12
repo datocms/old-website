@@ -60,7 +60,7 @@ Meta tags are generated merging the values present in the record's *SEO meta tag
 
 ![foo](../../images/seo/global-seo.png)
 
-If the record doesn't have a *SEO meta tags* field, the method tries to guess reasonable values by inspecting the other fields of the record (single-line strings and images).
+If the record doesn't have data in the *SEO meta tags* fields, the method tries to guess reasonable values by inspecting the other fields of the record (single-line strings and images).
 
 Your page title will be composed concatenating the title of the record together with the *Title suffix* setting. If the total length of the title exceeds 60 characters, the suffix will be omitted.
 
