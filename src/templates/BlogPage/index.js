@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Link from 'components/Link';
 import Img from 'gatsby-image';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
-import ResponsiveMasonry from 'components/ResponsiveMasonry';
+import Masonry from 'react-masonry-component';
 
 import bem from 'utils/bem';
 import './style.sass';
@@ -27,7 +27,7 @@ export default class BlogPage extends React.Component {
         >
           <div className={b()}>
             <div className={b('masonry')}>
-              <ResponsiveMasonry
+              <Masonry
                 minWidth={700}
                 options={{
                   columnWidth: '.BlogPage__grid-sizer',
@@ -71,7 +71,7 @@ export default class BlogPage extends React.Component {
                     </div>
                   </Link>
                 ))}
-              </ResponsiveMasonry>
+              </Masonry>
             </div>
             {!first && (
               <Link
