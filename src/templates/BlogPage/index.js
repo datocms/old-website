@@ -86,6 +86,7 @@ export default class BlogPage extends React.Component {
                 &laquo; See previous posts
               </Link>
             )}
+            ...
           </div>
         </PageLayout>
       </Layout>
