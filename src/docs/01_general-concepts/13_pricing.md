@@ -28,7 +28,7 @@ Plan changes can be performed at any time, and take effect immediately.
 
 We prorate the price when you change plans so you are only billed for the cost of the new plan less the remaining unused amount from your current plan. 
 
-In case of a downgrade, prorated refundable credits will be created, with a part used to pay the new invoice and the remaining credit balance will be available for future use.
+In case of a downgrade, prorated credits will be created, with a part used to pay the new invoice and the remaining credit balance will be available for future use.
 
 ### Overcharges on API and bandwidth usage
 
