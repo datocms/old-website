@@ -201,21 +201,14 @@
   width: 100%
   border-top: 1px solid $border-color
   border-left: 1px solid $border-color
-  table-layout: fixed
 
   td
     border-bottom: 1px solid $border-color
     border-right: 1px solid $border-color
     vertical-align: middle
 
-.PricingPage__details-header-cell
-  width: 27%
-
 .PricingPage__details-header
   padding: 33px
-  display: flex
-  align-items: center
-  justify-content: center
 
 .PricingPage__details-price
   text-align: center
@@ -243,11 +236,25 @@
   +size(small)
   +weight(bold)
   color: $light-body-color
-  width: 18%
+  width: 13%
 
 .PricingPage__details-feature-name
-  padding: 10px 33px
+  padding: 20px 33px
+
+.PricingPage__details-feature-name__name
+  font-weight: 500
+
+.PricingPage__details-feature-name__description
   color: $light-body-color
+  font-size: 0.9em
+  line-height: 1.2
+  margin-top: 4px
+
+  p
+    margin-bottom: 10px
+
+    &:last-child
+      margin-bottom: 0
 
 .PricingPage__details-feature-value
   text-align: center
@@ -301,14 +308,11 @@
   opacity: 0
   display: none
   transition: all 200ms 300ms ease-in-out
-  background-color: $dark-violet-color
-  border-radius: 7px
   z-index: 1
   position: absolute
   bottom: 100%
   transform: translateX(-50%)
-  padding: 14px
-  color: white
+  padding: 22px
   +size(small)
   min-width: 250px
   line-height: 1.2
@@ -316,17 +320,22 @@
   text-align: left
   pointer-events: none
   left: 50%
+  background-color: white
+  border-radius: 7px
+  box-shadow: 0px 4px 10px rgba(black, 0.1)
+  z-index: 2
 
   &:after
     content: ""
-    width: 0px
     position: absolute
-    bottom: -10px
+    bottom: -7px
     left: 50%
-    transform: translateX(-50%)
-    border-top: 10px solid $dark-violet-color
-    border-right: 10px solid transparent
-    border-left: 10px solid transparent
+    transform: translateX(-50%) rotateZ(-45deg)
+    box-shadow: -4px 4px 5px rgba(black, 0.1)
+    height: 0px
+    width: 0px
+    border: 8px solid black
+    border-color: transparent transparent white white
 
   .Tooltip:hover &
     opacity: 1
@@ -376,6 +385,9 @@
   .PricingPage__details-feature-name,
   .PricingPage__details-feature-value
     padding: 10px
+
+  .PricingPage__details-feature-value
+    width: 35%
 
   .PricingPage__recap-item,
   .PricingPage__details-feature-value,
@@ -452,3 +464,7 @@
 
 .PricingPage img
   width: auto
+
+.PricingPage__extra-packet
+  font-size: 0.8em
+  color: $light-body-color

@@ -35,11 +35,21 @@ const numberWithCommas = x => {
 };
 
 const b = bem.lock('PricingPage');
-const Tooltip = ({ children, hints, apiId }) => (
+
+const Tooltip = ({ children, showIcon = true, hint }) => (
   <span className={bem('Tooltip', {})}>
-    {children} <img alt="Info" src={tooltip} />
-    <span className="Tooltip__hint">{hints[apiId].description}</span>
+    {children} { showIcon && <img alt="Info" src={tooltip} /> }
+    {
+      hint &&
+        <span className="Tooltip__hint">{hint}</span>
+    }
   </span>
+);
+
+const HintTooltip = ({ children, hints, apiId }) => (
+  <Tooltip hint={hints[apiId].description}>
+    {children}
+  </Tooltip>
 );
 
 const formatValue = (name, value) => {
@@ -67,7 +77,11 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
       return <img src={check} alt="Available feature" />;
     }
 
-    return <span>{formatValue(apiId, value)}</span>;
+    return (
+      <span>
+        {formatValue(apiId, value)}
+      </span>
+    );
   }
 
   const value = hint.plans[plan.apiId];
@@ -223,7 +237,7 @@ class PricingPage extends React.Component {
         ) : (
           <div className={b('recap-item-specs')}>
             <div className={b('recap-item-spec')}>
-              <Tooltip hints={hints} apiId="itemTypes">
+              <HintTooltip hints={hints} apiId="itemTypes">
                 <ValueForLimit
                   apiId="itemTypes"
                   hint={hints.itemTypes}
@@ -231,10 +245,10 @@ class PricingPage extends React.Component {
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
                 models
-              </Tooltip>
+              </HintTooltip>
             </div>
             <div className={b('recap-item-spec')}>
-              <Tooltip hints={hints} apiId="locales">
+              <HintTooltip hints={hints} apiId="locales">
                 <ValueForLimit
                   apiId="locales"
                   hint={hints.locales}
@@ -242,10 +256,10 @@ class PricingPage extends React.Component {
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
                 locales
-              </Tooltip>
+              </HintTooltip>
             </div>
             <div className={b('recap-item-spec')}>
-              <Tooltip hints={hints} apiId="users">
+              <HintTooltip hints={hints} apiId="users">
                 <ValueForLimit
                   apiId="users"
                   hint={hints.users}
@@ -253,10 +267,10 @@ class PricingPage extends React.Component {
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
                 users
-              </Tooltip>
+              </HintTooltip>
             </div>
             <div className={b('recap-item-spec')}>
-              <Tooltip hints={hints} apiId="roles">
+              <HintTooltip hints={hints} apiId="roles">
                 <ValueForLimit
                   apiId="roles"
                   hint={hints.roles}
@@ -264,7 +278,7 @@ class PricingPage extends React.Component {
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
                 roles
-              </Tooltip>
+              </HintTooltip>
             </div>
           </div>
         )}
@@ -405,30 +419,73 @@ class PricingPage extends React.Component {
                 <tr className={b('details-header-row')}>
                   {plans.map(this.renderTablePriceRow.bind(this))}
                 </tr>
-                {hintKeys.map((hintKey, index) => (
-                  <tr key={`${hintKey}-${index}`}>
-                    <td className={b('details-feature-name')}>
-                      <Tooltip hints={hints} apiId={hintKey}>
-                        {hints[hintKey].name}
-                      </Tooltip>
-                    </td>
-                    {plans.map(plan => (
-                      <td
-                        key={`hint-plan-${plan.apiId}`}
-                        className={b('details-feature-value', {
-                          active: activePlan === plan.apiId,
-                        })}
-                      >
-                        <ValueForLimit
-                          apiId={hintKey}
-                          hint={hints[hintKey]}
-                          plan={plan}
-                          datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                        />
+                {hintKeys.map((hintKey, index) => {
+
+                  const extraPacket = plans
+                    .map(plan => {
+                      const datoPlan = datoPlans.find(p => p.id === plan.apiId);
+                      return datoPlan && ((datoPlan.attributes.extraPackets && datoPlan.attributes.extraPackets[hintKey]) || (
+                        datoPlan.attributes.autoPackets && datoPlan.attributes.autoPackets[hintKey]
+                      ));
+                    })
+                    .filter(x => !!x)[0];
+
+                  let limit = hintKey;
+
+                  if (limit === 'itemTypes') {
+                    limit = 'models';
+                  }
+
+                  if (limit === 'deploymentEnvironments') {
+                    limit = 'environments';
+                  }
+
+                  if (limit === 'trafficBytes') {
+                    limit = 'bandwidth';
+                  }
+
+                  if (limit === 'apiCalls') {
+                    limit = 'calls';
+                  }
+
+                  return (
+                    <tr key={`${hintKey}-${index}`}>
+                      <td className={b('details-feature-name')}>
+                        <div>
+                          <HintTooltip hints={hints} apiId={hintKey}>
+                            <span className={b('details-feature-name__name')}>{hints[hintKey].name}</span>
+                          </HintTooltip>
+                        </div>
+                        {
+                          extraPacket && (
+                              <div className={b('details-feature-name__description')}>
+                                {
+                                  extraPacket.amountPerPacket === 1 ?
+                                    `Extra ${limit} for €${extraPacket.price} each` :
+                                    `€${extraPacket.price} every ${formatValue(hintKey, extraPacket.amountPerPacket)} extra ${limit}`
+                                }
+                              </div>
+                            )
+                        }
                       </td>
-                    ))}
-                  </tr>
-                ))}
+                      {plans.map(plan => (
+                        <td
+                          key={`hint-plan-${plan.apiId}`}
+                          className={b('details-feature-value', {
+                            active: activePlan === plan.apiId,
+                          })}
+                        >
+                            <ValueForLimit
+                              apiId={hintKey}
+                              hint={hints[hintKey]}
+                              plan={plan}
+                              datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                            />
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
                 <tr>
                   <td className={b('details-feature-name')} />
                   {plans.map(plan =>
@@ -457,10 +514,6 @@ class PricingPage extends React.Component {
                 </tr>
               </tbody>
             </table>
-            <div className={b('overcharges')}>
-              On every plan: €9 per additional 250k API operations, €29 per
-              additional 150 GB bandwidth
-            </div>
           </div>
           <div className={b('faq')}>
             <div className={b('faq-title')}>Frequently Asked Questions</div>
