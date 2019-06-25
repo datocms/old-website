@@ -419,7 +419,9 @@ class PricingPage extends React.Component {
                 <tr className={b('details-header-row')}>
                   {plans.map(this.renderTablePriceRow.bind(this))}
                 </tr>
-                {hintKeys.map((hintKey, index) => {
+                {hintKeys
+                .filter(k => !['items', 'uploadableBytes'].includes(k))
+                .map((hintKey, index) => {
 
                   const extraPacket = plans
                     .map(plan => {
