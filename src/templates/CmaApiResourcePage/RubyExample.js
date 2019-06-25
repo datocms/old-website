@@ -56,7 +56,7 @@ function example(resource, link, allPages = false) {
   if (link.schema) {
     const example = schemaExampleFor(link.schema, !allPages);
 
-    if (link.method === 'GET') {
+    if (link.method === 'GET' || link.method === 'DELETE') {
       params.push(fix(JSON.stringify(example, null, 2)));
       if (allPages && link.targetSchema && link.targetSchema.properties.meta) {
         params.push(fix(JSON.stringify({ all_pages: true }, null, 2)));

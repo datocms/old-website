@@ -52,7 +52,7 @@ function example(resource, link, allPages = false) {
   if (link.schema) {
     const example = schemaExampleFor(link.schema, !allPages);
 
-    if (link.method === 'GET') {
+    if (link.method === 'GET' || link.method === 'DELETE') {
       params.push(JSON.stringify(example, null, 2));
       if (allPages && link.targetSchema && link.targetSchema.properties.meta) {
         params.push(JSON.stringify({ allPages: true }, null, 2));
@@ -96,13 +96,15 @@ function example(resource, link, allPages = false) {
     ? humps.camelize(pluralize(resource.id))
     : humps.camelize(resource.id);
 
+  const action = humps.camelize(methods[link.rel] || link.rel);
+
   if (!allPages) {
     const code = `const SiteClient = require('datocms-client').SiteClient;
 const client = new SiteClient("YOUR-API-KEY");
 ${precode.length > 0 ? '\n' : ''}${precode.join('\n')}${
       precode.length > 0 ? '\n' : ''
     }
-client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
+client.${namespace}.${action}(${params.join(', ')})
 ${returnCode}
   .catch((error) => {
     console.log(error);
@@ -116,7 +118,7 @@ ${
     return { code, output };
   } else {
     const code = `
-client.${namespace}.${methods[link.rel] || link.rel}(${params.join(', ')})
+client.${namespace}.${action}(${params.join(', ')})
 ${returnCode}`;
     return { code, output };
   }

@@ -3,12 +3,21 @@ import bem from 'utils/bem';
 import schemaExampleFor from 'utils/schemaExampleFor';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-json';
+import queryString from 'qs';
 
 import './HttpExample.sass';
 
 const b = bem.lock('HttpExample');
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
+
+const toParam = container => {
+  const params = Object.keys(container).reduce((acc, k) => {
+    acc[k] = container[k]['example'];
+    return acc;
+  }, {});
+  return `?${queryString.stringify(params)}`;
+};
 
 const Headers = ({ children }) => (
   <div className={b('headers')}>{children}</div>
@@ -28,23 +37,31 @@ const HttpStatus = ({ status }) => (
   </div>
 );
 
-const HttpRequest = ({ method, url }) => (
-  <div>
-    <span className="token keyword">{method}</span>
-    &nbsp;
-    <span
-      dangerouslySetInnerHTML={{
-        __html:
-          'https://site-api.datocms.com' +
-          url.replace(
-            regexp,
-            '<span class="HttpExample__placeholder">:$1_id</span>',
-          ),
-      }}
-    />{' '}
-    <span className="token punctuation">HTTP/1.1</span>
-  </div>
-);
+const HttpRequest = ({ method, url, linkSchema }) => {
+  const params =
+    (method === 'DELETE' || method === 'GET') && linkSchema
+      ? toParam(linkSchema.properties)
+      : '';
+
+  return (
+    <div>
+      <span className="token keyword">{method}</span>
+      &nbsp;
+      <span
+        dangerouslySetInnerHTML={{
+          __html:
+            'https://site-api.datocms.com' +
+            url.replace(
+              regexp,
+              '<span class="HttpExample__placeholder">:$1_id</span>',
+            ) +
+            params,
+        }}
+      />{' '}
+      <span className="token punctuation">HTTP/1.1</span>
+    </div>
+  );
+};
 
 const JsonBody = ({ payload }) => (
   <div
@@ -61,27 +78,34 @@ const JsonBody = ({ payload }) => (
 export default class HttpExample extends React.Component {
   render() {
     const { link } = this.props;
-
     return (
       <div className={b()}>
         <h6>Example request</h6>
         <div className="gatsby-highlight">
           <pre className="language-text">
             <code>
-              <HttpRequest method={link.method} url={link.href} />
+              <HttpRequest
+                method={link.method}
+                url={link.href}
+                linkSchema={link.schema}
+              />
               <Headers>
                 <Header name="X-Api-Version" value={2} />
                 <Header name="Authorization">
                   Bearer <span className={b('placeholder')}>YOUR-API-KEY</span>
                 </Header>
                 <Header name="Accept" value="application/json" />
-                {link.schema && link.method !== 'GET' && (
-                  <Header name="Content-Type" value="application/json" />
-                )}
+                {link.schema &&
+                  link.method !== 'GET' &&
+                  link.method !== 'DELETE' && (
+                    <Header name="Content-Type" value="application/json" />
+                  )}
               </Headers>
-              {link.schema && link.method !== 'GET' && (
-                <JsonBody payload={schemaExampleFor(link.schema)} />
-              )}
+              {link.schema &&
+                link.method !== 'GET' &&
+                link.method !== 'DELETE' && (
+                  <JsonBody payload={schemaExampleFor(link.schema)} />
+                )}
             </code>
           </pre>
         </div>
