@@ -23,4 +23,4 @@ There are many third-party services out there that fill this need ([SwiftType](h
 
 #### Learn more
 
-Learn how to install DatoCMS site search to your website, please visit [our detailed guide](/docs/guides/installing-site-search/).
+Learn how to install the site search to your website, please start by [configuring](/docs/guides/installing-site-search/configuration) DatoCMS.
