@@ -37,6 +37,7 @@ const redirectMappings = {
   '/docs/import/nodejs': '/docs/content-management-api/js-client',
   '/docs/guides/building-plugins/introduction': '/docs/guides/building-plugins',
   '/docs/static-websites': '/docs/general-concepts',
+  '/blog/more-control-on-your-pricing-plan': '/blog/more-control-over-your-pricing-plan',
 };
 
 module.exports = function redirects({ actions: { createRedirect } }) {
