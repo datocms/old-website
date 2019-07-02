@@ -87,6 +87,14 @@ const Navbar = ({ transparent }) => {
                   <Link className={b('menu-item')} to="/support/">
                     Open a ticket
                   </Link>
+                  <Link
+                    className={b('menu-item')}
+                    to="https://community.datocms.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Community forum
+                  </Link>
                   <a
                     className={b('menu-item')}
                     href="https://github.com/datocms/product-roadmap"

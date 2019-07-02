@@ -36,15 +36,30 @@ class Support extends React.Component {
                   ))}
                 </div>
                 <div className={b('title')}>We're here to help!</div>
+
                 <div className={b('content')}>
-                  Just write us using{' '}
-                  <button onClick={this.handleOpenChat.bind(this)}>
-                    the chat widget
-                  </button>{' '}
-                  or send us a mail at{' '}
-                  <a href="mailto:support@datocms.com">support@datocms.com</a>,
-                  we'll get back to you as soon as possible.
-                  <br />
+                  <Space bottom={2}>
+                    Start in our{' '}
+                    <Link
+                      to="https://community.datocms.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      community forum
+                    </Link>{' '}
+                    searching for existing information or asking your question.
+                  </Space>
+
+                  <Space bottom={2}>
+                    For account specific questions or commercial inquiries you can use{' '}
+                    <button onClick={this.handleOpenChat.bind(this)}>
+                      the chat widget
+                    </button>{' '}
+                    or send us a mail at{' '}
+                    <a href="mailto:support@datocms.com">support@datocms.com</a>,
+                    we'll get back to you as soon as possible.
+                  </Space>
+
                   You can also find help in our awesome{' '}
                   <Link to="/slack/">Slack channel</Link>.
                 </div>
