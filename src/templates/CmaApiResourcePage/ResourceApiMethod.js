@@ -71,12 +71,12 @@ export default class ResourceApiMethod extends React.Component {
           arguments marked as required must be present in the request.
         </p>
 
-        {link.schema && (
+        {link.hrefSchema && (
           <>
-          <h6>Arguments:</h6>
+          <h6>Arguments</h6>
           <table className="ResourceAttributes">
             <tbody>
-              {Object.entries(sortObject(link.schema.properties)).map(
+              {Object.entries(sortObject(link.hrefSchema.properties)).map(
                 ([name, schema]) => this.renderAttribute(name, schema),
               )}
             </tbody>

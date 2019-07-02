@@ -11,12 +11,17 @@ const b = bem.lock('HttpExample');
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
-const toParam = container => {
-  const params = Object.keys(container).reduce((acc, k) => {
-    acc[k] = container[k]['example'];
+const toParam = schema => {
+  const params = (
+    schema.required ||
+    Object.keys(schema.properties).slice(0, 2)
+  ).reduce((acc, k) => {
+    acc[k] = schema.properties[k]['example'];
     return acc;
   }, {});
-  return `?${queryString.stringify(params)}`;
+
+  return Object.entries(params).length > 0 ?
+    `?${queryString.stringify(params)}` : '';
 };
 
 const Headers = ({ children }) => (
@@ -37,10 +42,10 @@ const HttpStatus = ({ status }) => (
   </div>
 );
 
-const HttpRequest = ({ method, url, linkSchema }) => {
+const HttpRequest = ({ method, url, hrefSchema }) => {
   const params =
-    (method === 'DELETE' || method === 'GET') && linkSchema
-      ? toParam(linkSchema.properties)
+    hrefSchema
+      ? toParam(hrefSchema)
       : '';
 
   return (
@@ -87,7 +92,7 @@ export default class HttpExample extends React.Component {
               <HttpRequest
                 method={link.method}
                 url={link.href}
-                linkSchema={link.schema}
+                hrefSchema={link.hrefSchema}
               />
               <Headers>
                 <Header name="X-Api-Version" value={2} />

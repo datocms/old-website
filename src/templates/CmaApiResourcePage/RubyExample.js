@@ -53,15 +53,19 @@ function example(resource, link, allPages = false) {
     return attrs;
   };
 
+  if (link.hrefSchema) {
+    const example = schemaExampleFor(link.hrefSchema, !allPages);
+    params.push(fix(JSON.stringify(example, null, 2)));
+
+    if (allPages && link.targetSchema && link.targetSchema.properties.meta) {
+      params.push(fix(JSON.stringify({ all_pages: true }, null, 2)));
+    }
+  }
+
   if (link.schema) {
     const example = schemaExampleFor(link.schema, !allPages);
 
-    if (link.method === 'GET' || link.method === 'DELETE') {
-      params.push(fix(JSON.stringify(example, null, 2)));
-      if (allPages && link.targetSchema && link.targetSchema.properties.meta) {
-        params.push(fix(JSON.stringify({ all_pages: true }, null, 2)));
-      }
-    } else if (example.data) {
+    if (example.data) {
       params.push(fix(JSON.stringify(deserialize(example.data), null, 2)));
     }
   }
