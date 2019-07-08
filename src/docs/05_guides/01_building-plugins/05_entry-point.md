@@ -2,7 +2,7 @@
 title: The entry point
 ---
 
-A plugin is just an HTML page that will be showed inside an `<iframe>` by the DatoCMS webapp. When you [create a new plugin](/docs/plugins/creating-a-new-plugin/), you will be asked for the URL of this web page. We call this page the plugin's *entry point*.
+A plugin is just an HTML page that will be showed inside an `<iframe>` by the DatoCMS webapp. When you [create a new plugin](/docs/guides/building-plugins/creating-a-new-plugin), you will be asked for the URL of this web page. We call this page the plugin's *entry point*.
 
 ### Skeleton code
 
@@ -73,7 +73,7 @@ DatoCmsPlugin.init(function(plugin) {
 });
 ```
 
-We'll take a detailed look the methods our SDK offers and how to use them in the [next section of the guide](/docs/plugins/sdk-reference/).
+We'll take a detailed look the methods our SDK offers and how to use them in the [next section of the guide](/docs/guides/building-plugins/sdk-reference).
 
 ### Theme colors
 
@@ -85,7 +85,7 @@ To make it easier for you to style plugins based on the project current theme co
 * `--light-color`, ie. `rgb(227, 249, 252)`
 * `--dark-color`, ie. `rgb(47, 59, 59)`
 
-You will also be able to access to theme colors programmatically from the Plugins SDK [plugin.theme](/docs/plugins/sdk-reference/#plugintheme) getter.
+You will also be able to access to theme colors programmatically from the Plugins SDK [plugin.theme](/docs/guides/building-plugins/sdk-reference/#plugintheme) getter.
 
 ### Need some examples?
 

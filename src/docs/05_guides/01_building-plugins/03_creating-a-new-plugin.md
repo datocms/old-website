@@ -18,7 +18,7 @@ This will open up a modal where you will be able to setup your new plugin:
 * Enter the [Entry point URL](/docs/plugins/entry-point/), which is the URL of the HTML page that will be embedded into the DatoCMS entry editor as an `<iframe>`;
 * Select the types of field where it will be possible to use the plugin;
 * Select the type of plugin (field editor, field add-on or sidebar widget);
-* If needed, enter some [parameter definitions](#configuration-parameters);
+* If needed, enter some [parameter definitions](/docs/guides/building-plugins/creating-a-new-plugin#configuration-parameters);
 
 Click Save to create the plugin.
 

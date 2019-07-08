@@ -20,6 +20,7 @@ const redirectMappings = {
   '/docs/metalsmith/*': '/docs/static-generators/metalsmith/:splat',
   '/docs/other/*': '/docs/static-generators/other-ssg/:splat',
   '/cms/spike/*': '/docs/static-generators/other-ssg',
+  '/docs/plugins/configuration-parameters': '/docs/guides/building-plugins/creating-a-new-plugin#configuration-parameters',
   '/docs/plugins/*': '/docs/guides/building-plugins/:splat',
   '/docs/search/*': '/docs/guides/installing-site-search/:splat',
   '/docs/introduction/*': '/docs/general-concepts/:splat',

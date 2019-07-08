@@ -50,7 +50,7 @@ If you have doubts regarding how to structure the logic of your plugin, please t
 
 #### `plugin.site`
 
-Returns information about the current DatoCMS project. The object takes the same format as the [CMA Site object](https://www.datocms.com/content-management-api/#site-0).
+Returns information about the current DatoCMS project. The object takes the same format as the [CMA Site object](/docs/content-management-api/resources/site).
 
 ```js
 // returns the API identifier of the current model
@@ -59,7 +59,7 @@ console.log(plugin.site.attributes.name);
 
 #### `plugin.itemType`
 
-Returns information about of the current DatoCMS model. The object takes the same format as the [CMS API ItemType object](https://www.datocms.com/content-management-api/#item_type-1).
+Returns information about of the current DatoCMS model. The object takes the same format as the [CMA Model object](/docs/content-management-api/resources/item-type).
 
 ```js
 // returns the API identifier of the current model
@@ -68,7 +68,7 @@ console.log(plugin.itemType.attributes.api_key);
 
 #### `plugin.itemTypes`
 
-Returns all the models of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMS API ItemType object](https://www.datocms.com/content-management-api/#item_type-1).
+Returns all the models of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMA Model object](/docs/content-management-api/resources/item-type).
 
 ```js
 // returns info about all the models of the current DatoCMS project
@@ -80,7 +80,7 @@ plugin.site.relationships.item_types.data.forEach(function(link) {
 
 #### `plugin.fields`
 
-Returns all the fields of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMS API Field object](https://www.datocms.com/content-management-api/#field-1).
+Returns all the fields of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMA Field object](/docs/content-management-api/resources/field).
 
 ```js
 // returns info about all the fields of the current model
@@ -101,7 +101,7 @@ console.log(plugin.itemId);
 
 #### `plugin.field`
 
-Returns the fields the plugin is attached to. The object takes the same format as the [CMS API Field object](https://www.datocms.com/content-management-api/#field-1).
+Returns the fields the plugin is attached to. The object takes the same format as the [CMA Field object](/docs/content-management-api/resources/field).
 
 ```js
 // returns info about the field
@@ -110,7 +110,7 @@ console.log(plugin.field.attributes.api_key);
 
 #### `plugin.currentUser`
 
-Returns information about of the current DatoCMS user. It can either be an [Account](https://www.datocms.com/content-management-api/#user-1) or an [Editor](https://www.datocms.com/content-management-api/#user-1) object.
+Returns information about of the current DatoCMS user. It can either be an [Account](/docs/content-management-api/resources/user) or an [Editor](/docs/content-management-api/resources/user) object.
 
 ```js
 // returns the email of the current user
@@ -119,11 +119,7 @@ console.log(plugin.currentUser.attributes.email);
 
 #### `plugin.users`
 
-Returns all the users of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMS API Editor object](https://www.datocms.com/content-management-api/#user-1).
-
-#### `plugin.account`
-
-Returns the account user of the current DatoCMS project. The objects take the same format as the [CMS API Account object](https://www.datocms.com/content-management-api/#user-1).
+Returns all the users of the current DatoCMS project, indexed by ID. The objects take the same format as the [CMA Editor object](/docs/content-management-api/resources/user).
 
 #### `plugin.disabled`
 
@@ -136,7 +132,7 @@ input.disabled = plugin.disabled;
 
 #### `plugin.parameters`
 
-Returns the [configuration parameters](/docs/plugins/configuration-parameters/) values for the plugin.
+Returns the [configuration parameters](/docs/guides/building-plugins/creating-a-new-plugin#configuration-parameters) values for the plugin.
 
 ```js
 console.log(plugin.parameters);
@@ -203,7 +199,7 @@ console.log(plugin.theme);
 
 #### `plugin.getFieldValue(...pathChunks)`
 
-Returns the value of a specific field. To get the value of the current field the plugin is attached to, use the [`plugin.fieldPath`](/docs/plugins/sdk-reference/#pluginfieldpath) option.
+Returns the value of a specific field. To get the value of the current field the plugin is attached to, use the [`plugin.fieldPath`](#pluginfieldpath) option.
 
 ```js
 // get the value of the 'title' field
@@ -225,7 +221,7 @@ The type of the value must match the expected field type. For example, if the pl
 
 The method returns a Promise that resolves once the change has been acknowledged by the DatoCMS webapp.
 
-You can get the path of the field the plugin is attached to using the method [`plugin.fieldPath`](/docs/plugins/sdk-reference/#pluginfieldpath).
+You can get the path of the field the plugin is attached to using the method [`plugin.fieldPath`](#pluginfieldpath).
 
 ```js
 // set the value of the 'title' field
@@ -251,7 +247,7 @@ Calls the `callbackFn` every time the value of the field specified is changed by
 
 The method returns a function you can call to stop listening to changes.
 
-You can get the path of the field the plugin is attached to using the method [`plugin.fieldPath`](/docs/plugins/sdk-reference/#pluginfieldpath).
+You can get the path of the field the plugin is attached to using the method [`plugin.fieldPath`](#pluginfieldpath).
 
 ```js
 const input = document.querySelector("input");
@@ -283,7 +279,7 @@ unsubscribe();
 
 Hides/shows a specific field. The method returns a Promise that resolves once the change has been acknowledged by the DatoCMS webapp.
 
-You can get the path of the field the plugin is attached to using the method [`plugin.fieldPath`](/docs/plugins/sdk-reference/#pluginfieldpath).
+You can get the path of the field the plugin is attached to using the method [`plugin.fieldPath`](#pluginfieldpath).
 
 ```js
 // hide the title field
