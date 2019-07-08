@@ -51,7 +51,7 @@ query {
 }
 ```
 
-Note: The query name approximates the plural rules of the English language. If you are unsure about the actual query name, explore available queries in your [API Explorer](https://graphql.datocms.com/graphiql).
+Note: The query name approximates the plural rules of the English language. If you are unsure about the actual query name, explore available queries in your [API Explorer](https://cda-explorer.datocms.com/).
 
 The query response of a query fetching multiple records can be further controlled by supplying different query arguments to order, filter and paginate results. In the [next section](/docs/graphql/filters/) of this guide we'll see how to achieve that.
 
