@@ -51,6 +51,18 @@ class Support extends React.Component {
                   </Space>
 
                   <Space bottom={2}>
+                    Check our{' '}
+                    <Link
+                      to="https://status.datocms.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      status page
+                    </Link>{' '}
+                    to get a full picture on how our systems are going and on their performance on the past month.
+                  </Space>
+
+                  <Space bottom={2}>
                     For account specific questions or commercial inquiries you can use{' '}
                     <button onClick={this.handleOpenChat.bind(this)}>
                       the chat widget
@@ -68,7 +80,6 @@ class Support extends React.Component {
                   guarantees of faster response times.
                 </div>
               </div>
-              <div className={b('right')} />
             </div>
           </Wrap>
         </Space>
