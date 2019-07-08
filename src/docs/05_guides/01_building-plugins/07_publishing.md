@@ -2,7 +2,7 @@
 title: Publishing plugins
 ---
 
-If you've [created a new plugin](/docs/plugins/creating-a-new-plugin/), we strongly encourage you to share it with the community as an [npm](https://www.npmjs.com/) package, so that it will become available in our Plugins Explorer:
+If you've [created a new plugin](/docs/guides/building-plugins/creating-a-new-plugin), we strongly encourage you to share it with the community as an [npm](https://www.npmjs.com/) package, so that it will become available in our Plugins Explorer:
 
 ![foo](../../images/plugins/explorer.png)
 
@@ -55,7 +55,7 @@ Make sure to follow these rules:
 * `keywords` MUST contain the `datocms-plugin` keyword, otherwise the plugin won't be visible in the Plugin explorer;
 * `datoCmsPlugin.fieldTypes` MUST contain one or more of the following values: `boolean`, `date`, `date_time`, `float`, `integer`, `string`, `text`, `lat_lon`, `json`, `seo`, `link`, `links`, `video`, `color`;
 * `datoCmsPlugin.pluginType` MUST be one of the following values: `field_editor`, `field_addon` or `sidebar`;
-* `datoCmsPlugin.parameters` MUST follow the syntax detailed in the [Configuration parameters](/docs/plugins/creating-a-new-plugin/#configuration-parameters) section of this guide.
+* `datoCmsPlugin.parameters` MUST follow the syntax detailed in the [Configuration parameters](/docs/guides/building-plugins/creating-a-new-plugin#configuration-parameters) section of this guide.
 
 ### Requiring external JS/CSS inside of your entrypoint
 
