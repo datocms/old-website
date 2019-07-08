@@ -105,6 +105,14 @@ const Navbar = ({ transparent }) => {
                   <a className={b('menu-item')} href="/slack/">
                     Slack community
                   </a>
+                  <Link
+                    className={b('menu-item')}
+                    to="https://status.datocms.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    System status
+                  </Link>
                 </div>
               </div>
             </div>
