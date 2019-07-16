@@ -48,7 +48,8 @@
   @media screen and (min-width: 1100px)
     display: none
 
-.ArticlePage__content-image
+.ArticlePage__content-image,
+.ArticlePage__content-video
   margin: 70px 0
 
   img, video
@@ -85,21 +86,8 @@ a.ArticlePage__content-image__image.ArticlePage__content-image__image
   text-align: center
   padding: 20px 20px 0 20px
 
-.ArticlePage__content-video
-  margin: 70px 0
-
-.ArticlePage__content-video__wrapper
-  height: 0
-  overflow: hidden
-  padding-bottom: 56.25%
-  position: relative
-
-  embed, object, iframe
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
+.ArticlePage__content-video__wrapper.ArticlePage__content-video__wrapper iframe
+  margin: 0
 
 .ArticlePage__content-poll
   background-color: yellow
