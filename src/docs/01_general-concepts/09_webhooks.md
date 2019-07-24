@@ -6,10 +6,10 @@ If you need to know when data has changed in one your projects, you can create c
 
 For example, you might use webhooks as the basis to:
 
-* Integrate/sync DatoCMS data with third-party systems (Snipcart, Shopify, Algolia, etc.);
-* Get Slack/email notifications;
-* Automatically post an update on Facebook/Twitter;
-* Produce an automatic deploy on your staging environment;
+- Integrate/sync DatoCMS data with third-party systems (Snipcart, Shopify, Algolia, etc.);
+- Get Slack/email notifications;
+- Automatically post an update on Facebook/Twitter;
+- Produce an automatic deploy on your staging environment;
 
 You can connect DatoCMS webhooks to any endpoint you like — for example some custom AWS lambda function.
 
@@ -17,7 +17,7 @@ If you don't want to write any code, you can use [Zapier Webhooks](https://zapie
 
 ### Configure a webhook
 
-You can setup a new webhook under the *Settings > Webhooks* section of your administrative area.
+You can setup a new webhook under the _Settings > Webhooks_ section of your administrative area.
 
 You can enter any URL as the destination for calls, add HTTP basic authentication and add custom HTTP headers:
 
@@ -31,10 +31,10 @@ Webhook triggers let you specify under which circumstances an HTTP call will be 
 
 You can add as many triggers as you want to a single webhook. DatoCMS supports events for these kind of objects:
 
-* **Record**: triggers whenever a record is created, updated, deleted, published, unpublished or all of the above. Additionally, you can trigger the webhook only for specific records or records belonging to specific models
-* **Model**: triggers whenever a model is created, updated, deleted or all of the above. Changes made to a model's field will trigger a call as well. Additionally, you can trigger the webhook only for specific models
-* **Upload**: triggers whenever any upload is created, updated, deleted or all of the above
-* **Deployment environment**: triggers whenever an environment gets deployed
+- **Record**: triggers whenever a record is created, updated, deleted, published, unpublished or all of the above. Additionally, you can trigger the webhook only for specific records or records belonging to specific models
+- **Model**: triggers whenever a model is created, updated, deleted or all of the above. Changes made to a model's field will trigger a call as well. Additionally, you can trigger the webhook only for specific models
+- **Upload**: triggers whenever any upload is created, updated, deleted or all of the above
+- **Deployment environment**: triggers whenever an environment gets deployed
 
 ### HTTP request details
 
@@ -89,9 +89,37 @@ As an example, in the case of an event of record update, this will be the payloa
 }
 ```
 
+### Customize the HTTP payload
+
+If you want, you can also customize the HTTP body of the outgoing requests. To do that hit the *Send a custom payload?* switch and provide the new payload.
+
+You can use the [Mustache language](https://mustache.github.io/) to make the payload dynamic. The original payload we would send is used as source for the template.
+You can experiment with the Mustache language in their [sandbox](https://mustache.github.io/#demo), or read their [docs](https://mustache.github.io/mustache.5.html).
+
+As an example, this custom payload template:
+
+```json
+{
+  "message": "{{event_type}} event triggered on {{entity_type}}!",
+  "entity_id": "{{#entity}}{{id}}{{/entity}}"
+}
+```
+
+Will be converted into the following HTTP body:
+
+```json
+{
+  "message": "{{event_type}} event triggered on {{entity_type}}!",
+  "entity_id": "{{#entity}}{{id}}{{/entity}}"
+}
+```
+
+You are not limited to send JSON payloads: just make sure that if the payload is not in JSON format you configure the proper `Content-Type` header.
+
+
 ### Debug and keep track of webhooks activity
 
-Each time a webhook gets triggered, DatoCMS creates a `WebhookCall` object that contains all the relevant information about what just happened. You can browse webhook calls under the *Webhooks activity log* section of your administrative area, or [using our API](https://www.datocms.com/content-management-api/#webhook_call-0).
+Each time a webhook gets triggered, DatoCMS creates a `WebhookCall` object that contains all the relevant information about what just happened. You can browse webhook calls under the _Webhooks activity log_ section of your administrative area, or [using our API](https://www.datocms.com/content-management-api/#webhook_call-0).
 
 ![foo](../images/webhooks/activity.png)
 
