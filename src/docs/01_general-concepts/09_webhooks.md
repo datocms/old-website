@@ -36,6 +36,33 @@ You can add as many triggers as you want to a single webhook. DatoCMS supports e
 - **Upload**: triggers whenever any upload is created, updated, deleted or all of the above
 - **Deployment environment**: triggers whenever an environment gets deployed
 
+#### Customize the HTTP payload
+
+If you want, you can also customize the HTTP body of the outgoing requests. To do that hit the *Send a custom payload?* switch and provide the new payload.
+
+You can use the [Mustache language](https://mustache.github.io/) to make the payload dynamic. The original payload we would send is used as source for the template.
+You can experiment with the Mustache language in their [sandbox](https://mustache.github.io/#demo), or read their [docs](https://mustache.github.io/mustache.5.html).
+
+As an example, this custom payload template:
+
+```json
+{
+  "message": "{{event_type}} event triggered on {{entity_type}}!",
+  "entity_id": "{{#entity}}{{id}}{{/entity}}"
+}
+```
+
+Will be converted into the following HTTP body:
+
+```json
+{
+  "message": "update event triggered on item!",
+  "entity_id": "123213"
+}
+```
+
+You are not limited to send JSON payloads: just make sure that if the payload is not in JSON format you configure the proper `Content-Type` header.
+
 ### HTTP request details
 
 DatoCMS will perform an HTTP POST request towards the specified endpoint. The HTTP body will be in JSON format, and will contain all the information relevant to the event just happened.
@@ -88,33 +115,6 @@ As an example, in the case of an event of record update, this will be the payloa
   }
 }
 ```
-
-### Customize the HTTP payload
-
-If you want, you can also customize the HTTP body of the outgoing requests. To do that hit the *Send a custom payload?* switch and provide the new payload.
-
-You can use the [Mustache language](https://mustache.github.io/) to make the payload dynamic. The original payload we would send is used as source for the template.
-You can experiment with the Mustache language in their [sandbox](https://mustache.github.io/#demo), or read their [docs](https://mustache.github.io/mustache.5.html).
-
-As an example, this custom payload template:
-
-```json
-{
-  "message": "{{event_type}} event triggered on {{entity_type}}!",
-  "entity_id": "{{#entity}}{{id}}{{/entity}}"
-}
-```
-
-Will be converted into the following HTTP body:
-
-```json
-{
-  "message": "{{event_type}} event triggered on {{entity_type}}!",
-  "entity_id": "{{#entity}}{{id}}{{/entity}}"
-}
-```
-
-You are not limited to send JSON payloads: just make sure that if the payload is not in JSON format you configure the proper `Content-Type` header.
 
 
 ### Debug and keep track of webhooks activity
