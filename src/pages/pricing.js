@@ -525,7 +525,12 @@ class PricingPage extends React.Component {
                 .map((faq, index) => (
                   <div className={b('faq-item')} key={index}>
                     <div className={b('faq-item-question')}>{faq.question}</div>
-                    <div className={b('faq-item-answer')}>{faq.answer}</div>
+                    <div
+                      className={b('faq-item-answer')}
+                      dangerouslySetInnerHTML={{
+                        __html: faq.answer.markdown.html,
+                      }}
+                    />
                   </div>
                 ))}
             </div>
@@ -550,7 +555,11 @@ export const query = graphql`
       edges {
         node {
           question
-          answer
+          answer: answerNode {
+            markdown: childMarkdownRemark {
+              html
+            }
+          }
         }
       }
     }
