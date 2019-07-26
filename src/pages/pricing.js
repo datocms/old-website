@@ -173,7 +173,7 @@ class PricingPage extends React.Component {
     const isEnterprise = !datoPlan;
     const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
     const isBlackFriday =
-      this.state.billing === 'yearly' && plan.apiId === '18';
+      this.state.billing === 'yearly' && plan.apiId === '104';
 
     if (isFree) {
       return null;
@@ -190,8 +190,8 @@ class PricingPage extends React.Component {
       >
         {isBlackFriday && (
           <div className={b('recap-item-ribbon')}>
-            Cyber Monday offer!
-            <span>Valid until Monday, 26th November 12 PM CET</span>
+            Summer Black Friday!
+            <span>Valid until Monday, 29th July 12 PM CET</span>
           </div>
         )}
         <div className={b('recap-item-plan-name')}>{plan.name}</div>
