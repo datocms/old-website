@@ -172,8 +172,7 @@ class PricingPage extends React.Component {
 
     const isEnterprise = !datoPlan;
     const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
-    const isBlackFriday =
-      this.state.billing === 'yearly' && plan.apiId === '104';
+    const isBlackFriday = this.state.billing === 'yearly' && !!plan.promoTitle;
 
     if (isFree) {
       return null;
@@ -186,12 +185,13 @@ class PricingPage extends React.Component {
           active: activePlan === plan.apiId,
           enterprise: isEnterprise,
           blackFriday: isBlackFriday,
+          mostPopular: plan.mostPopular,
         })}
       >
         {isBlackFriday && (
           <div className={b('recap-item-ribbon')}>
-            Summer Black Friday!
-            <span>Valid until Monday, 29th July 12 PM CET</span>
+            {plan.promoTitle}
+            <span>{plan.promoDescription}</span>
           </div>
         )}
         <div className={b('recap-item-plan-name')}>{plan.name}</div>
@@ -570,6 +570,9 @@ export const query = graphql`
           apiId
           name
           description
+          mostPopular
+          promoTitle
+          promoDescription
         }
       }
     }
