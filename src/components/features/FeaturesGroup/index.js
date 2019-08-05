@@ -54,7 +54,7 @@ class FeaturesGroup extends React.Component {
                   <div className={b('feature') + ' ' + b('feature--' + evenOdd)}>
                     <div className={b('feature-image')}>
                       {selectedFeature.image && (
-                        <img src={selectedFeature.image.url} alt="" />
+                        <img src={selectedFeature.image.url} alt=" " />
                       )}
                     </div>
                     <div className={b('feature-content')}>
