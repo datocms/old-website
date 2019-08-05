@@ -56,7 +56,9 @@ class HomeFeatures extends React.Component {
                   <Fade key={selectedFeature.id}>
                     <div className={b('feature')}>
                       <div className={b('feature-image')}>
-                        <InlineSVG image={selectedFeature.image} />
+                        {selectedFeature.image && (
+                          <InlineSVG image={selectedFeature.image} />
+                        )}
                       </div>
                       <div className={b('feature-content')}>
                         <h5 className={b('feature-title')}>
