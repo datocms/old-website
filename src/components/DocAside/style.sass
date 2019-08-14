@@ -14,10 +14,12 @@
 
       img
         max-width: 100%
+
+      img, .gatsby-resp-video-wrapper
         border-radius: 4px
         margin: 40px auto
 
-      a[href*="//"]
+      a[href*="//"]:not(a[href*="datocms"])
         padding-right: 18px
         background: url('../../images/external-link.svg') no-repeat
         background-size: 14px
@@ -33,6 +35,9 @@
         display: block
         margin: 40px 0
         width: auto
+
+      .gatsby-resp-video-wrapper
+        margin: 40px 0
 
 @media screen and (max-width: 899px)
   .DocPage__menu

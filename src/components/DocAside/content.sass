@@ -106,7 +106,6 @@
         margin-bottom: 5px
 
   iframe
-    border: 0
     margin: 50px 0
     width: 100%
     display: block
@@ -114,6 +113,25 @@
     min-height: 370px
     height: 50vh
     border: 1px solid $border-color
+
+  .iframe-video
+    position: relative
+    padding-bottom: 56.25%
+    height: 0
+    overflow: hidden
+    max-width: 100%
+    height: auto
+    margin: 50px 0
+
+    iframe
+      border: 0
+      position: absolute
+      margin: 0
+      top: 0
+      left: 0
+      min-height: 0
+      height: 100%
+      width: 100%
 
   table
     margin-top: 50px
