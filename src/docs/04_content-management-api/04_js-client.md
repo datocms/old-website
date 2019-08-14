@@ -102,7 +102,7 @@ Great, here there are our three fields. Let's create our article:
 
 ```js
 // create a new Article record
-client.uploadImage('http://i.giphy.com/NXOF5rlaSXdAc.gif')
+client.uploadFile('http://i.giphy.com/NXOF5rlaSXdAc.gif')
   .then((image) => {
     return client.items.create({
       itemType: '7149',
@@ -123,7 +123,7 @@ client.uploadImage('http://i.giphy.com/NXOF5rlaSXdAc.gif')
 //   itemType: '7149' }
 ```
 
-As you can see, we use the helper method `client.uploadImage` to pass DatoCMS the metadata of the image to associate to the record.
+As you can see, we use the helper method `client.uploadFile` to pass DatoCMS the metadata of the image to associate to the record.
 
 ## Retrieving records
 

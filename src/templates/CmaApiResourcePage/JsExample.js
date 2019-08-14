@@ -3,8 +3,13 @@ import Prism from 'prismjs';
 import humps from 'humps';
 import sortObject from 'sort-object';
 import pluralize from 'pluralize';
+import bem from 'utils/bem';
 
 import schemaExampleFor from 'utils/schemaExampleFor';
+
+import './HttpExample.sass';
+
+const b = bem.lock('HttpExample');
 
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
@@ -128,36 +133,53 @@ ${returnCode}`;
   }
 }
 
-export default function JsExample({ resource, link }) {
-  const { code, output } = example(resource, link);
-
-  const outputWithRun = `> node example.js\n\n${output}`;
-
+function renderExample(example, requestCode, responseCode) {
   return (
-    <>
-      <h6>Example request</h6>
-      <div className="gatsby-highlight">
-        <pre className="language-javascript">
-          <code
-            dangerouslySetInnerHTML={{
-              __html: Prism.highlight(code, Prism.languages.javascript),
-            }}
-          />
-        </pre>
-      </div>
-      <h6>Result</h6>
-      <div className="gatsby-highlight">
+    <div className={b()}>
+      {example.title &&
+        <h6 className={b('title')}>{example.title}</h6>
+      }
+      <div className={b('snippet')}>
         <pre className="language-javascript">
           <code
             dangerouslySetInnerHTML={{
               __html: Prism.highlight(
-                outputWithRun,
+                example.request || requestCode,
                 Prism.languages.javascript,
               ),
             }}
           />
         </pre>
       </div>
-    </>
+      <div className={b('snippet')}>
+        <div className={b('snippet__title')}>
+          Result
+        </div>
+        <pre className="language-javascript">
+          <code
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(
+                example.response || responseCode,
+                Prism.languages.javascript,
+              ),
+            }}
+          />
+        </pre>
+      </div>
+    </div>
   );
+}
+
+export default function JsExample({ resource, link }) {
+  const { code, output } = example(resource, link);
+
+  const outputWithRun = `> node example.js\n\n${output}`;
+
+  if (link.examples && link.examples.js) {
+    return link.examples.js.map(example =>
+      renderExample(example, code, outputWithRun),
+    );
+  }
+
+  return renderExample({}, code, outputWithRun);
 }

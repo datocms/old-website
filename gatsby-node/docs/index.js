@@ -139,8 +139,8 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
           },
         ].concat(
           resource.links.map(link => ({
-            id: `#${link.title.toLowerCase()}`,
-            title: link.description,
+            id: `#${link.rel}`,
+            title: link.title,
           })),
         );
 

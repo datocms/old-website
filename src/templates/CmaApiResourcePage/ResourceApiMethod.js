@@ -5,6 +5,7 @@ import HttpExample from './HttpExample';
 import JsExample from './JsExample';
 import RubyExample from './RubyExample';
 import bem from 'utils/bem';
+import ReactMarkdown from 'react-markdown';
 
 import Anchor from 'components/Anchor';
 
@@ -31,15 +32,14 @@ export default class ResourceApiMethod extends React.Component {
           </code>
         </td>
         <td>
-          {schema.description && (
-            <p>{schema.description}</p>
-          )}
+          {schema.description && <p>{schema.description}</p>}
           {schema.required && (
             <>
               <p>
-              {schema.required.sort().map(el => (
-                <code>{el}</code>
-              )).reduce((acc, curr) => [acc, ', ', curr])}
+                {schema.required
+                  .sort()
+                  .map(el => <code>{el}</code>)
+                  .reduce((acc, curr) => [acc, ', ', curr])}
               </p>
               <div className={b('attribute-required')}>
                 These attributes are required
@@ -57,30 +57,34 @@ export default class ResourceApiMethod extends React.Component {
 
     return (
       <>
-        <h3 id={link.title.toLowerCase()}>
-          <Anchor id={link.title.toLowerCase()} />
-          {link.description}
+        <h3 id={link.rel}>
+          <Anchor id={link.rel} />
+          {link.title}
         </h3>
-        <p>
-          To {link.description.toLowerCase()}, send a <code>{link.method}</code>{' '}
-          request to the <code>{path}</code> endpoint
-          {['POST', 'PUT'].includes(link.method) &&
-            ', passing the resource arguments in the request body'}
-          . The following table contains the list of all the possible arguments,
-          along with their type, description and examples values. All the
-          arguments marked as required must be present in the request.
-        </p>
+        {link.description ? (
+          <ReactMarkdown source={link.description} />
+        ) : (
+          <p>
+            To {link.title.toLowerCase()}, send a <code>{link.method}</code>{' '}
+            request to the <code>{path}</code> endpoint
+            {['POST', 'PUT'].includes(link.method) &&
+              ', passing the resource arguments in the request body'}
+            . The following table contains the list of all the possible
+            arguments, along with their type, description and examples values.
+            All the arguments marked as required must be present in the request.
+          </p>
+        )}
 
         {link.hrefSchema && (
           <>
-          <h6>Arguments</h6>
-          <table className="ResourceAttributes">
-            <tbody>
-              {Object.entries(sortObject(link.hrefSchema.properties)).map(
-                ([name, schema]) => this.renderAttribute(name, schema),
-              )}
-            </tbody>
-          </table>
+            <h6>Arguments</h6>
+            <table className="ResourceAttributes">
+              <tbody>
+                {Object.entries(sortObject(link.hrefSchema.properties)).map(
+                  ([name, schema]) => this.renderAttribute(name, schema),
+                )}
+              </tbody>
+            </table>
           </>
         )}
 
