@@ -105,6 +105,7 @@ module.exports = {
             resolve: `gatsby-remark-images-datocms`,
             options: {
               apiToken: process.env.DATO_API_TOKEN,
+              maxWidth: 900,
             },
           },
         ],
