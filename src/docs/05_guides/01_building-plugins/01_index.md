@@ -5,7 +5,7 @@ excerpt: Plugins allow developers to extend the basic functionality of the DatoC
 
 Plugins allow developers to extend the basic functionality of the DatoCMS administrative area. You, the developer, are in charge of writing and hosting the plugin.
 
-Technically speaking Plugins are small HTML5 applications that exist in a sandboxed `<iframe>` and interact with the main DatoCMS webapp through a JS library you need to include — the [Plugins SDK](/docs/plugins/sdk-reference/).
+Technically speaking Plugins are small HTML5 applications that exist in a sandboxed `<iframe>` and interact with the main DatoCMS webapp through a JS library you need to include — the [Plugins SDK](/docs/guides/building-plugins/sdk-reference).
 
 They can be implemented with basic HTML and JavaScript, or using more advanced client-side frameworks such as React, Angular or Vue.
 

@@ -37,7 +37,7 @@ query {
 }
 ```
 
-If you specify multiple conditions, they will be combined in a logical AND expression:
+If you specify multiple conditions, they will be combined as if it was a logical _AND_ expression:
 
 ```graphql
 query {
@@ -55,7 +55,7 @@ query {
 }
 ```
 
-You can also combine AND and OR logical expressions. For example, the following
+You can also combine _AND-like_ and `OR` logical expressions. For example, the following
 query will return all the point of interest located in New York that either have
 a rating greater than 4 or are a restaurant:
 
