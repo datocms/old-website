@@ -7,6 +7,10 @@ import 'prismjs/components/prism-ruby';
 
 import schemaExampleFor from 'utils/schemaExampleFor';
 
+import './HttpExample.sass';
+
+const b = bem.lock('HttpExample');
+
 const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 const methods = {
@@ -130,9 +134,11 @@ ${
 
 function renderExample(example, requestCode, responseCode) {
   return (
-    <>
-      <h6>{example.title || 'Example request'}</h6>
-      <div className="gatsby-highlight">
+    <div className={b()}>
+      {example.title &&
+        <h6 className={b('title')}>{example.title}</h6>
+      }
+      <div className={b('snippet')}>
         <pre className="language-ruby">
           <code
             dangerouslySetInnerHTML={{
@@ -144,8 +150,10 @@ function renderExample(example, requestCode, responseCode) {
           />
         </pre>
       </div>
-      <h6>Result</h6>
-      <div className="gatsby-highlight">
+      <div className={b('snippet')}>
+        <div className={b('snippet__title')}>
+          Result
+        </div>
         <pre className="language-ruby">
           <code
             dangerouslySetInnerHTML={{
