@@ -2,6 +2,7 @@ import React from 'react';
 import Prism from 'prismjs';
 import sortObject from 'sort-object';
 import pluralize from 'pluralize';
+import bem from 'utils/bem';
 
 import 'prismjs/components/prism-ruby';
 
@@ -165,7 +166,7 @@ function renderExample(example, requestCode, responseCode) {
           />
         </pre>
       </div>
-    </>
+    </div>
   );
 }
 
