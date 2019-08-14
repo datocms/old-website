@@ -13,15 +13,15 @@ const regexp = /{\(%2Fschemata%2F([^%]+)[^}]*}/g;
 
 const toParam = schema => {
   const params = (
-    schema.required ||
-    Object.keys(schema.properties).slice(0, 2)
+    schema.required || Object.keys(schema.properties).slice(0, 2)
   ).reduce((acc, k) => {
     acc[k] = schema.properties[k]['example'];
     return acc;
   }, {});
 
-  return Object.entries(params).length > 0 ?
-    `?${queryString.stringify(params)}` : '';
+  return Object.entries(params).length > 0
+    ? `?${queryString.stringify(params)}`
+    : '';
 };
 
 const Headers = ({ children }) => (
@@ -43,10 +43,7 @@ const HttpStatus = ({ status }) => (
 );
 
 const HttpRequest = ({ method, url, hrefSchema }) => {
-  const params =
-    hrefSchema
-      ? toParam(hrefSchema)
-      : '';
+  const params = hrefSchema ? toParam(hrefSchema) : '';
 
   return (
     <div>
@@ -72,74 +69,127 @@ const JsonBody = ({ payload }) => (
   <div
     className="HttpExample__http-body language-json"
     dangerouslySetInnerHTML={{
-      __html: Prism.highlight(
-        JSON.stringify(payload, null, 2),
-        Prism.languages.json,
-      ),
+      __html: Prism.highlight(payload, Prism.languages.json),
     }}
   />
 );
 
+function defaultRequestHeaders(link) {
+  return (
+    <>
+      <Header name="X-Api-Version" value={2} />
+      <Header name="Authorization">
+        Bearer <span className={b('placeholder')}>YOUR-API-KEY</span>
+      </Header>
+      <Header name="Accept" value="application/json" />
+      {link.schema && link.method !== 'GET' && link.method !== 'DELETE' && (
+        <Header name="Content-Type" value="application/json" />
+      )}
+    </>
+  );
+}
+
+function defaultResponseHeaders() {
+  return (
+    <>
+      <Header name="Content-Type" value="application/json; charset=utf-8" />
+      <Header
+        name="Cache-Control"
+        value="cache-control: max-age=0, private, must-revalidate"
+      />
+      <Header name="X-RateLimit-Limit" value="30" />
+      <Header name="X-RateLimit-Remaining" value="28" />
+    </>
+  );
+}
+
+function renderExample(example, resource) {
+  const { request, response, title } = example;
+  return (
+    <div className={b()}>
+      <h6>{title || 'Example request'}</h6>
+      <div className="gatsby-highlight">
+        <pre className="language-text">
+          <code>
+            {request && request.requestLine ? (
+              <div>{request.requestLine}</div>
+            ) : (
+              <HttpRequest
+                method={resource.method}
+                url={resource.href}
+                hrefSchema={resource.hrefSchema}
+              />
+            )}
+            <Headers>
+              {request && request.headers
+                ? Object.entries(request.headers).map(([name, value]) => (
+                    <Header name={name} value={value} />
+                  ))
+                : defaultRequestHeaders(resource)}
+            </Headers>
+            {resource.schema &&
+              resource.method !== 'GET' &&
+              resource.method !== 'DELETE' && (
+                <JsonBody
+                  payload={
+                    request && request.body
+                      ? request.body
+                      : JSON.stringify(
+                          schemaExampleFor(resource.schema),
+                          null,
+                          2,
+                        )
+                  }
+                />
+              )}
+          </code>
+        </pre>
+      </div>
+      {resource.targetSchema && (
+        <>
+          <h6>Example response</h6>
+          <div className="gatsby-highlight">
+            <pre className="language-text">
+              <code>
+                <HttpStatus
+                  status={`${(response && response.statusCode) ||
+                    '200'} ${(response && response.statusText) || 'OK'}`}
+                />
+                <Headers>
+                  {response && response.headers
+                    ? Object.entries(response.headers).map(([name, value]) => (
+                        <Header name={name} value={value} />
+                      ))
+                    : defaultResponseHeaders()}
+                </Headers>
+                <JsonBody
+                  payload={
+                    response && response.body
+                      ? response.body
+                      : JSON.stringify(
+                          schemaExampleFor(resource.targetSchema),
+                          null,
+                          2,
+                        )
+                  }
+                />
+              </code>
+            </pre>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default class HttpExample extends React.Component {
   render() {
     const { link } = this.props;
-    return (
-      <div className={b()}>
-        <h6>Example request</h6>
-        <div className="gatsby-highlight">
-          <pre className="language-text">
-            <code>
-              <HttpRequest
-                method={link.method}
-                url={link.href}
-                hrefSchema={link.hrefSchema}
-              />
-              <Headers>
-                <Header name="X-Api-Version" value={2} />
-                <Header name="Authorization">
-                  Bearer <span className={b('placeholder')}>YOUR-API-KEY</span>
-                </Header>
-                <Header name="Accept" value="application/json" />
-                {link.schema &&
-                  link.method !== 'GET' &&
-                  link.method !== 'DELETE' && (
-                    <Header name="Content-Type" value="application/json" />
-                  )}
-              </Headers>
-              {link.schema &&
-                link.method !== 'GET' &&
-                link.method !== 'DELETE' && (
-                  <JsonBody payload={schemaExampleFor(link.schema)} />
-                )}
-            </code>
-          </pre>
-        </div>
-        {link.targetSchema && (
-          <>
-            <h6>Example response</h6>
-            <div className="gatsby-highlight">
-              <pre className="language-text">
-                <code>
-                  <HttpStatus status="200 OK" />
-                  <Headers>
-                    <Header
-                      name="Content-Type"
-                      value="application/json; charset=utf-8"
-                    />
-                    <Header
-                      name="Cache-Control"
-                      value="cache-control: max-age=0, private, must-revalidate"
-                    />
-                    <Header name="X-RateLimit-Limit" value="30" />
-                    <Header name="X-RateLimit-Remaining" value="28" />
-                  </Headers>
-                  <JsonBody payload={schemaExampleFor(link.targetSchema)} />
-                </code>
-              </pre>
-            </div>
-          </>
-        )}
-      </div>
-    );
+
+    if (link.examples && link.examples.http) {
+      return link.examples.http.map(example => renderExample(example, link));
+    }
+
+    return renderExample({}, link);
   }
 }

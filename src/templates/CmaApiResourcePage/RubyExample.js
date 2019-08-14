@@ -128,19 +128,18 @@ ${
   }
 }
 
-export default function RubyExample({ resource, link }) {
-  const { code, output } = example(resource, link);
-
-  const outputWithRun = `> ruby example.rb\n\n${output}`;
-
+function renderExample(example, requestCode, responseCode) {
   return (
     <>
-      <h6>Example request</h6>
+      <h6>{example.title || 'Example request'}</h6>
       <div className="gatsby-highlight">
         <pre className="language-ruby">
           <code
             dangerouslySetInnerHTML={{
-              __html: Prism.highlight(code, Prism.languages.ruby),
+              __html: Prism.highlight(
+                example.request || requestCode,
+                Prism.languages.ruby,
+              ),
             }}
           />
         </pre>
@@ -150,11 +149,28 @@ export default function RubyExample({ resource, link }) {
         <pre className="language-ruby">
           <code
             dangerouslySetInnerHTML={{
-              __html: Prism.highlight(outputWithRun, Prism.languages.ruby),
+              __html: Prism.highlight(
+                example.response || responseCode,
+                Prism.languages.ruby,
+              ),
             }}
           />
         </pre>
       </div>
     </>
   );
+}
+
+export default function RubyExample({ resource, link }) {
+  const { code, output } = example(resource, link);
+
+  const outputWithRun = `> ruby example.rb\n\n${output}`;
+
+  if (link.examples && link.examples.ruby) {
+    return link.examples.ruby.map(example =>
+      renderExample(example, code, outputWithRun),
+    );
+  }
+
+  return renderExample({}, code, outputWithRun);
 }

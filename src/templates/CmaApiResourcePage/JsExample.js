@@ -128,19 +128,18 @@ ${returnCode}`;
   }
 }
 
-export default function JsExample({ resource, link }) {
-  const { code, output } = example(resource, link);
-
-  const outputWithRun = `> node example.js\n\n${output}`;
-
+function renderExample(example, requestCode, responseCode) {
   return (
     <>
-      <h6>Example request</h6>
+      <h6>{example.title || 'Example request'}</h6>
       <div className="gatsby-highlight">
         <pre className="language-javascript">
           <code
             dangerouslySetInnerHTML={{
-              __html: Prism.highlight(code, Prism.languages.javascript),
+              __html: Prism.highlight(
+                example.request || requestCode,
+                Prism.languages.javascript,
+              ),
             }}
           />
         </pre>
@@ -151,7 +150,7 @@ export default function JsExample({ resource, link }) {
           <code
             dangerouslySetInnerHTML={{
               __html: Prism.highlight(
-                outputWithRun,
+                example.response || responseCode,
                 Prism.languages.javascript,
               ),
             }}
@@ -160,4 +159,18 @@ export default function JsExample({ resource, link }) {
       </div>
     </>
   );
+}
+
+export default function JsExample({ resource, link }) {
+  const { code, output } = example(resource, link);
+
+  const outputWithRun = `> node example.js\n\n${output}`;
+
+  if (link.examples && link.examples.js) {
+    return link.examples.js.map(example =>
+      renderExample(example, code, outputWithRun),
+    );
+  }
+
+  return renderExample({}, code, outputWithRun);
 }
