@@ -1,15 +1,18 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
+@import 'blocks/form.sass'
 
 .SupportPage
+  max-width: 600px
+  margin: 0 auto
 
-.SupportPage__logo
-  margin-top: 100px
+.SupportPage__people
   margin-bottom: 80px
+  text-align: center
 
   img
-    height: 60px
-    width: 60px
+    height: 25%
+    width: 25%
     border-radius: 50%
     transform: scale(1.4)
 
@@ -21,6 +24,7 @@
   +size(hero)
   font-weight: 500
   margin-bottom: 20px
+  text-align: center
 
 .SupportPage__content
   +size(normalBig)
@@ -34,8 +38,5 @@
   +size(small)
   color: $light-body-color
 
-.SupportPage__left
-  max-width: 600px
-  margin: 0 auto
-  text-align: center
-
+.SupportPage__form__send
+  width: 50%
