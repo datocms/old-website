@@ -7,17 +7,13 @@ import bem from 'utils/bem';
 import { Space } from 'blocks';
 import Layout from 'components/Layout';
 import PageLayout from 'components/PageLayout';
+import Search from 'components/Search';
 
 import './support.sass';
 
 const b = bem.lock('SupportPage');
 
 class Support extends React.Component {
-  handleOpenChat(e) {
-    e.preventDefault();
-    window.kayako.maximize();
-  }
-
   render() {
     const page = this.props.data.datoCmsSupportPage;
 
@@ -38,11 +34,30 @@ class Support extends React.Component {
             </div>
 
             <div className="content-body">
-              <div
+              <h4>{page.documentationTitle}</h4>
+              <span
                 dangerouslySetInnerHTML={{
-                  __html: page.content.markdown.html,
+                  __html: page.documentationText.markdown.html,
                 }}
               />
+              <div className={b('search-line')}>
+                <span>{page.searchIntro}</span>
+                <Search small placeholder={page.searchPlaceholder} />
+              </div>
+
+              <h4>{page.communityTitle}</h4>
+              <div className={b('community-text')}
+                dangerouslySetInnerHTML={{
+                  __html: page.communityText.markdown.html,
+                }}
+              />
+              <img
+                  className={b('community-image')}
+                  alt={page.communityTitle}
+                  src={`${page.communityImage.url}?w=300&h=300&fit=crop&crop=faces`}
+                />
+
+              <p className={b('before-form')}>{page.beforeForm}</p>
               
               <h2>{page.formTitle}</h2>
 
@@ -130,11 +145,24 @@ export const query = graphql`
           url
         }
       }
-      content: contentNode {
+      documentationTitle
+      documentationText: documentationTextNode {
         markdown: childMarkdownRemark {
           html
         }
       }
+      searchIntro
+      searchPlaceholder
+      communityTitle
+      communityText: communityTextNode {
+        markdown: childMarkdownRemark {
+          html
+        }
+      }
+      communityImage {
+        url
+      }
+      beforeForm
       formTitle
       formAction
       form {

@@ -26,12 +26,27 @@
   margin-bottom: 20px
   text-align: center
 
-.SupportPage__content
-  +size(normalBig)
-  line-height: 1.6
+.SupportPage__search-line
+  display: flex
 
-  a, button
-    color: $azure-color
+.SupportPage
+  .Search
+    display: inline-block
+    margin-top: 0
+    flex-grow: 1
+    margin-left: 8px
+
+  .react-autosuggest__container--open .react-autosuggest__suggestions-container
+    max-height: 300px
+
+.SupportPage__community-text,
+.SupportPage__community-image
+  width: 48%
+  display: inline-block
+  vertical-align: middle
+
+.SupportPage__before-form
+  margin-top: 40px
 
 .SupportPage__info
   margin-top: 20px
