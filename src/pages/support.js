@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
+import getCookie from 'utils/getCookie';
 
 import bem from 'utils/bem';
 
@@ -281,6 +282,7 @@ class Support extends React.Component {
             size="30"
             type={field.inputType}
             required={field.required}
+            defaultValue={getCookie('datoAccountEmail')}
           />
         );
       case 'textarea':
