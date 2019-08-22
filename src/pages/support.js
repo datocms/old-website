@@ -9,6 +9,7 @@ import Layout from 'components/Layout';
 import PageLayout from 'components/PageLayout';
 import Search from 'components/Search';
 import Link from 'components/Link';
+import Textarea from 'react-autosize-textarea';
 
 import './support.sass';
 
@@ -284,13 +285,14 @@ class Support extends React.Component {
         );
       case 'textarea':
         return (
-          <textarea
-            cols="40"
+          <Textarea
+            async
             id={`${field.inputName}`}
             name={`${field.inputName}`}
-            rows="15"
             required={field.required}
-          ></textarea>
+            placeholder={field.placeholder}
+            rows={5}
+          />
         );
       case 'file':
         return (
