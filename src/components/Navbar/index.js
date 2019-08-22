@@ -79,42 +79,13 @@ const Navbar = ({ transparent }) => {
                   </Link>
                 </div>
               </div>
-              <div className={b('text-link', { handle: true })}>
-                <Link to="/support/" activeClassName="is-active">
-                  Support
-                </Link>
-                <div className={b('menu')}>
-                  <Link className={b('menu-item')} to="/support/">
-                    Open a ticket
-                  </Link>
-                  <Link
-                    className={b('menu-item')}
-                    to="https://community.datocms.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Community forum
-                  </Link>
-                  <a
-                    className={b('menu-item')}
-                    href="https://github.com/datocms/product-roadmap"
-                    rel="nofollow"
-                  >
-                    Feature requests
-                  </a>
-                  <a className={b('menu-item')} href="/slack/">
-                    Slack community
-                  </a>
-                  <Link
-                    className={b('menu-item')}
-                    to="https://status.datocms.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    System status
-                  </Link>
-                </div>
-              </div>
+              <Link
+                to="/support/"
+                className={b('text-link')}
+                activeClassName={b('text-link', { active: true })}
+              >
+                Support
+              </Link>
             </div>
             {loggedInEmail ? (
               <div className={b('actions')}>

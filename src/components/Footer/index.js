@@ -64,7 +64,7 @@ const Footer = ({ data }) => (
       </Group>
       <Group title="Support">
         <Link className={b('group-link')} to="/support/">
-          Open a ticket
+          Support
         </Link>
         <Link
           className={b('group-link')}

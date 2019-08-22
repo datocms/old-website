@@ -1,57 +1,85 @@
 @import 'utils/colors.sass'
 @import 'blocks/mixins.sass'
-@import 'blocks/form.sass'
 
 .SupportPage
-  max-width: 600px
+  margin: 100px 0
+  padding-top: 200px
+  background: url('../images/article-bg.svg')
+  background-repeat: no-repeat
+  padding-bottom: 1px
+  background-position: center 0
+  background-size: 300vw auto
+
+  @media screen and (min-width: 600px)
+    background-position: center -10vw
+    background-size: 140vw auto
+
+.SupportPage__inner
+  max-width: 800px
   margin: 0 auto
 
-.SupportPage__people
-  margin-bottom: 80px
-  text-align: center
-
-  img
-    height: 25%
-    width: 25%
-    border-radius: 50%
-    transform: scale(1.4)
-
-    @media screen and (min-width: 1000px)
-      height: 150px
-      width: 150px
-
 .SupportPage__title
-  +size(hero)
   font-weight: 500
   margin-bottom: 20px
   text-align: center
+  +size(bigger)
 
-.SupportPage__search-line
-  display: flex
+  @media screen and (min-width: 600px)
+    +size(hero)
 
-.SupportPage
-  .Search
-    display: inline-block
-    margin-top: 0
-    flex-grow: 1
-    margin-left: 8px
+.SupportPage__description
+  text-align: center
+  margin-bottom: 80px
 
-  .react-autosuggest__container--open .react-autosuggest__suggestions-container
-    max-height: 300px
+  strong
+    font-weight: 500
 
-.SupportPage__community-text,
-.SupportPage__community-image
-  width: 48%
+.SupportPage__form
+
+.SupportPage__field
+  margin-bottom: 50px
+
+  select
+    width: 100%
+    font-size: inherit
+    font-family: inherit
+
+  textarea, input[type=text], input[type=email]
+    width: 100%
+    box-sizing: border-box
+    padding: 20px
+    font-size: inherit
+    border: 2px solid $border-color
+    border-radius: 3px
+    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1)
+
+    &:focus
+      outline: none
+      border-color: $azure-color
+
+.SupportPage__label
+  font-size: 24px
+  font-weight: 500
+  margin-bottom: 4px
+  line-height: 1.1
+  display: block
+
+.SupportPage__required
+  text-transform: uppercase
+  background-color: $azure-color
+  color: white
+  font-size: 13px
+  padding: 4px 10px 2px
+  line-height: 1
   display: inline-block
+  border-radius: 50px
   vertical-align: middle
 
-.SupportPage__before-form
-  margin-top: 40px
+.SupportPage__hint
+  margin-bottom: 15px
 
-.SupportPage__info
-  margin-top: 20px
-  +size(small)
-  color: $light-body-color
-
-.SupportPage__form__send
-  width: 50%
+.SupportPage__footnote
+  margin-top: 15px
+  text-align: center
+  font-weight: 500
+  font-size: 0.9em

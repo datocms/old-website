@@ -11,34 +11,34 @@ import hamburger from 'images/hamburger.svg';
 
 const b = bem.lock('MobileNavbar');
 
-class Group extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { active: false };
-  }
+// class Group extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { active: false };
+//   }
 
-  handleToggle() {
-    this.setState({ active: !this.state.active });
-  }
+//   handleToggle() {
+//     this.setState({ active: !this.state.active });
+//   }
 
-  render() {
-    const { children, name } = this.props;
+//   render() {
+//     const { children, name } = this.props;
 
-    return (
-      <div className={b('group', { active: this.state.active })}>
-        <button
-          className={b('group-handle')}
-          onClick={this.handleToggle.bind(this)}
-        >
-          {name}
-        </button>
-        {this.state.active && (
-          <div className={b('group-content')}>{children}</div>
-        )}
-      </div>
-    );
-  }
-}
+//     return (
+//       <div className={b('group', { active: this.state.active })}>
+//         <button
+//           className={b('group-handle')}
+//           onClick={this.handleToggle.bind(this)}
+//         >
+//           {name}
+//         </button>
+//         {this.state.active && (
+//           <div className={b('group-content')}>{children}</div>
+//         )}
+//       </div>
+//     );
+//   }
+// }
 
 class MobileNavbar extends React.Component {
   constructor(props) {
@@ -96,21 +96,9 @@ class MobileNavbar extends React.Component {
           <Link className={b('menu-item')} to="/blog/">
             Blog
           </Link>
-          <Group name="Support">
-            <a className={b('group-item')} href="/support/" rel="nofollow">
-              Open a ticket
-            </a>
-            <a
-              className={b('group-item')}
-              href="https://github.com/datocms/feature-requests/issues"
-              rel="nofollow"
-            >
-              Feature requests
-            </a>
-            <a className={b('group-item')} href="/slack/">
-              Slack community
-            </a>
-          </Group>
+          <Link className={b('menu-item')} to="/support/">
+            Support
+          </Link>
           {loggedInEmail ? (
             <div className={b('actions')}>
               <a

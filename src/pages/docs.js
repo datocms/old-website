@@ -48,24 +48,27 @@ export default class LearnPage extends React.Component {
                       </div>
                       <div className={b('block__read-more')}>Read more</div>
                     </Link>
-                    <div className={b('block__links')}>
+                    <div className={b('block__items')}>
+                      <div className={b('block__items__title')}>
+                          Suggested reads...
+                      </div>
                       <Link
                         to="/docs/general-concepts"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>What is DatoCMS?</span>
+                        <span className={b('block__item__main')}>What is DatoCMS?</span>
                       </Link>
                       <Link
                         to="/docs/general-concepts/roles-and-permission-system"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Roles and permissions</span>
+                        <span className={b('block__item__main')}>Roles and permissions</span>
                       </Link>
                       <Link
                         to="/docs/general-concepts/draft-published"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Draft/published system</span>
+                        <span className={b('block__item__main')}>Draft/published system</span>
                       </Link>
                     </div>
                   </div>
@@ -81,24 +84,27 @@ export default class LearnPage extends React.Component {
                       </div>
                       <div className={b('block__read-more')}>Read more</div>
                     </Link>
-                    <div className={b('block__links')}>
+                    <div className={b('block__items')}>
+                      <div className={b('block__items__title')}>
+                          Suggested reads...
+                      </div>
                       <Link
                         to="/docs/content-modelling"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Models and fields</span>
+                        <span className={b('block__item__main')}>Models and fields</span>
                       </Link>
                       <Link
                         to="/docs/content-modelling/single-instance"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Single instance models</span>
+                        <span className={b('block__item__main')}>Single instance models</span>
                       </Link>
                       <Link
                         to="/docs/content-modelling/modular-content"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>The modular content field</span>
+                        <span className={b('block__item__main')}>The modular content field</span>
                       </Link>
                     </div>
                   </div>
@@ -113,24 +119,27 @@ export default class LearnPage extends React.Component {
                       </div>
                       <div className={b('block__read-more')}>Read more</div>
                     </Link>
-                    <div className={b('block__links')}>
+                    <div className={b('block__items')}>
+                      <div className={b('block__items__title')}>
+                          Popular guides
+                      </div>
                       <Link
                         to="/docs/guides/building-plugins"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Develop a DatoCMS plugin</span>
+                        <span className={b('block__item__main')}>Develop a DatoCMS plugin</span>
                       </Link>
                       <Link
                         to="/docs/guides/installing-site-search"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Setup DatoCMS Site Search</span>
+                        <span className={b('block__item__main')}>Setup DatoCMS Site Search</span>
                       </Link>
                       <Link
                         to="/blog/wordpress-importer/"
-                        className={b('block__link')}
+                        className={b('block__item')}
                       >
-                        <span>Import an existing Wordpress site</span>
+                        <span className={b('block__item__main')}>Import an existing Wordpress site</span>
                       </Link>
                     </div>
                   </div>
@@ -163,19 +172,19 @@ export default class LearnPage extends React.Component {
                           to="/docs/content-delivery-api#why-graphql"
                           className={b('api__item__link')}
                         >
-                          <span>Why GraphQL?</span>
+                          <span className={b('block__item__main')}>Why GraphQL?</span>
                         </Link>
                         <Link
                           to="/docs/content-delivery-api/authentication"
                           className={b('api__item__link')}
                         >
-                          <span>Authentication</span>
+                          <span className={b('block__item__main')}>Authentication</span>
                         </Link>
                         <Link
                           to="/docs/content-delivery-api/first-request"
                           className={b('api__item__link')}
                         >
-                          <span>Your first request</span>
+                          <span className={b('block__item__main')}>Your first request</span>
                         </Link>
                       </div>
                     </div>
@@ -190,7 +199,7 @@ export default class LearnPage extends React.Component {
                           Content Management API
                         </div>
                         <div className={b('api__item__description')}>
-                          Programmatically update your schema and content with
+                          Programmatically update schema and content with
                           our REST API.
                         </div>
                         <div className={b('api__item__read-more')}>
@@ -202,19 +211,19 @@ export default class LearnPage extends React.Component {
                           to="/docs/content-management-api/authentication"
                           className={b('api__item__link')}
                         >
-                          <span>Authentication</span>
+                          <span className={b('block__item__main')}>Authentication</span>
                         </Link>
                         <Link
                           to="/docs/content-management-api/js-client"
                           className={b('api__item__link')}
                         >
-                          <span>Using the JS client</span>
+                          <span className={b('block__item__main')}>Using the JS client</span>
                         </Link>
                         <Link
                           to="/docs/content-management-api/ruby-client"
                           className={b('api__item__link')}
                         >
-                          <span>Using the Ruby client</span>
+                          <span className={b('block__item__main')}>Using the Ruby client</span>
                         </Link>
                       </div>
                     </div>
