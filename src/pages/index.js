@@ -18,7 +18,7 @@ import './index.sass';
 const b = bem.lock('IndexPage');
 
 const IndexPage = ({ data }) => (
-  <Layout home hideChat>
+  <Layout home>
     <HelmetDatoCms seo={data.home.seoMetaTags} />
     <Hero title={data.home.heroText} description={data.home.heroDescription} />
     <Wrap>

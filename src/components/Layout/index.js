@@ -22,57 +22,8 @@ const query = graphql`
 `;
 
 class TemplateWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { chatOpen: false };
-  }
-
-  componentDidMount() {
-    if (window.kayako) {
-      return;
-    }
-
-    window.kayako = {};
-    window.kayako.readyQueue = [
-      () => {
-        window.kayako.on('chat_window_maximized', () =>
-          this.setState({ chatOpen: true }),
-        );
-        window.kayako.on('chat_window_minimized', () =>
-          this.setState({ chatOpen: false }),
-        );
-      },
-    ];
-    window.kayako.newEmbedCode = true;
-
-    window.kayako._settings = {
-      apiUrl: 'https://datocms.kayako.com/api/v1',
-      messengerUrl: 'https://datocms.kayakocdn.com/messenger',
-      realtimeUrl: 'wss://kre.kayako.net/socket',
-      hideLauncher: true,
-    };
-
-    const script = document.createElement('script');
-    script.async = false;
-    script.type = 'text/javascript';
-    script.src = window.kayako._settings.messengerUrl;
-    script.crossOrigin = 'anonymous';
-
-    document.body.appendChild(script);
-  }
-
-  handleKayakoToggle(e) {
-    e.preventDefault();
-
-    if (window.kayako.visibility() === 'minimized') {
-      window.kayako.maximize();
-    } else {
-      window.kayako.minimize();
-    }
-  }
-
   render() {
-    const { hideChat, children, home } = this.props;
+    const { children, home } = this.props;
 
     return (
       <StaticQuery
@@ -115,14 +66,6 @@ class TemplateWrapper extends React.Component {
             <MobileNavbar />
             {children}
             <Footer />
-            {!hideChat && (
-              <button
-                className={`chat-support is-${
-                  this.state.chatOpen ? 'open' : 'closed'
-                }`}
-                onClick={this.handleKayakoToggle.bind(this)}
-              />
-            )}
           </div>
         )}
       />

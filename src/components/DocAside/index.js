@@ -20,11 +20,6 @@ export default class DocAside extends React.Component {
     this.state = { image: null, isMenuOpen: false };
   }
 
-  handleOpenKayako(e) {
-    e.preventDefault();
-    window.kayako.maximize();
-  }
-
   handleMenuToggle(e) {
     e.preventDefault();
     this.setState({ isMenuOpen: !this.state.isMenuOpen });
@@ -173,10 +168,7 @@ export default class DocAside extends React.Component {
                   <div className={b('contribute-title')}>
                     Feel like something is missing in this page?
                   </div>
-                  <button onClick={this.handleOpenKayako.bind(this)}>
-                    Chat with us
-                  </button>
-                  , submit an{' '}
+                  Submit an{' '}
                   <a
                     rel="noopener noreferrer"
                     target="_blank"
@@ -186,7 +178,7 @@ export default class DocAside extends React.Component {
                   </a>{' '}
                   or{' '}
                   <a rel="noopener noreferrer" target="_blank" href={repoPath}>
-                    propose a change
+                    Propose a change
                   </a>{' '}
                   on Github!
                 </div>
