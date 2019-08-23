@@ -115,7 +115,7 @@ class Support extends React.Component {
                   </div>
                   <div className={d('block')}>
                     <Link
-                      to="/docs/content-modelling"
+                      to="https://community.datocms.com/"
                       className={d('block__body')}
                     >
                       <div className={d('block__title')}>{page.communityTitle}</div>
