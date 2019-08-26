@@ -113,7 +113,16 @@ module.exports = {
     },
 
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-netlify`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/support": [
+            "Referer: https://www.datocms.com/support/",
+          ],
+        },
+      },
+    },
     `gatsby-plugin-sitemap`,
 
     {
