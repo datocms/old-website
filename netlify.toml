@@ -1,2 +1,7 @@
 [context.branch-deploy.environment]
   PREVIEW_MODE = "true"
+
+[[headers]]
+  for = "/support"
+  [headers.values]
+    Referrer-Policy = "unsafe-url"
