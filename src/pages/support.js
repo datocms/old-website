@@ -273,6 +273,16 @@ class Support extends React.Component {
   renderField(field) {
     switch (field.inputType) {
       case 'text':
+        return (
+          <input
+            id={`${field.inputName}`}
+            name={`${field.inputName}`}
+            placeholder={field.placeholder}
+            size="30"
+            type={field.inputType}
+            required={field.required}
+          />
+        );
       case 'email':
         return (
           <input
