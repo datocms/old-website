@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import getCookie from 'utils/getCookie';
+import { scroller, Element } from 'react-scroll';
+import queryString from 'qs';
 
 import bem from 'utils/bem';
 
@@ -12,7 +14,7 @@ import Search from 'components/Search';
 import Link from 'components/Link';
 import Textarea from 'react-autosize-textarea';
 
-import './support.sass';
+import './style.sass';
 
 const b = bem.lock('SupportPage');
 const d = bem.lock('Docs');
@@ -23,8 +25,18 @@ class Support extends React.Component {
     categories: [],
   };
 
+  constructor(props) {
+    super(props);
+    this.clearLocalStorageOnSuccess();
+  }
+
   async componentDidMount() {
     await Promise.all([this.fetchTopics(), this.fetchStatus()]);
+    this.fillFormFromLocalStorage();
+
+    if(!!this.formStatus()){
+      scroller.scrollTo('scrollOnFormSubmit', {offset: 120});
+    }
   }
 
   async fetchTopics() {
@@ -218,10 +230,14 @@ class Support extends React.Component {
               </div>
             </div>
           </Wrap>
+          <Element name="scrollOnFormSubmit"></Element>
           <div className={b()}>
             <Wrap>
               <div className={b('inner')}>
                 <h4 className={b('title')}>{page.formTitle}</h4>
+
+                {this.formFeedback()}
+
                 <div className={b('description')}>
                   <div dangerouslySetInnerHTML={{ __html: page.formText.markdown.html }} />
                 </div>
@@ -234,6 +250,8 @@ class Support extends React.Component {
                     enctype="multipart/form-data"
                     accept-charset="utf-8"
                     className={b('form')}
+                    onSubmit={this.saveFormToLocalStorage}
+                    id="support-form"
                   >
                     <fieldset className={b('fieldset')}>
                       {page.form.map(field => (
@@ -268,6 +286,62 @@ class Support extends React.Component {
         </PageLayout>
       </Layout>
     );
+  }
+
+  saveFormToLocalStorage(event) {
+    if(typeof window !== 'undefined') {
+      const formValues = Array.from(event.target.querySelectorAll('[name]')).map(e => e.value);
+      window.localStorage.setItem('supportFormValues', JSON.stringify(formValues));
+    }
+  }
+
+  fillFormFromLocalStorage() {
+    if(typeof window !== 'undefined') {
+      const formValues = JSON.parse(window.localStorage.getItem('supportFormValues'));
+      if(formValues) {
+        Array.from(document.getElementById('support-form').querySelectorAll('[name]')).forEach((e, i) => {
+          e.value = formValues[i];
+        })
+      }
+    }
+  }
+
+  clearLocalStorageOnSuccess() {
+    if(typeof window !== 'undefined' && this.formStatus() === 'success') {
+      window.localStorage.removeItem('supportFormValues');
+    }
+  }
+
+  formFeedback() {
+    if(this.formStatus() === 'success') {
+      return (
+        <div className={b('form-feedback')}>Thank you for your message, we'll be in touch soon.</div>
+      )
+    }
+    if(this.formStatus() === 'error') {
+      const params = queryString.parse(this.props.location.search, { ignoreQueryPrefix: true });
+
+      return (
+        <div className={b('form-feedback')}>
+          <p>Sorry, there was an error in the form, try again.</p>
+          {params.message && (
+            <p>The error is: {params.message}</p>
+          )}
+          <p>If the error persists contact us at <a href="mailto:support@datocms.com">support@datocms.com</a>.</p>
+        </div>
+      )
+    }
+  }
+
+  formStatus() {
+    const pathname = this.props.location.pathname;
+
+    if(pathname.includes('success')) {
+      return 'success';
+    }
+    if(pathname.includes('error')) {
+      return 'error';
+    }
   }
 
   renderField(field) {
