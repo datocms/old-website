@@ -386,7 +386,7 @@ class Support extends React.Component {
             id={`${field.inputName}`}
             name={`${field.inputName}`}
             type="file"
-            multiple=""
+            multiple
             required={field.required}
           />
         );
