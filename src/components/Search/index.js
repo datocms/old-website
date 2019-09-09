@@ -29,12 +29,31 @@ export default class Search extends React.Component {
     });
   }
 
-  handleSuggestionsFetchRequested({ value }) {
-    const client = new DatoCmsSearch(token, 'production');
+  async handleSuggestionsFetchRequested({ value }) {
+    const client = new DatoCmsSearch(token);
 
-    client.search(value).then(response => {
-      this.setState({ suggestions: response.results });
-    });
+    const searchResponse = await client.search(value);
+    const communityResponse = await fetch(
+      'https://community.datocms.com/search/query.json?include_blurbs=true&term=' + value
+    );
+    const body = await communityResponse.json();
+
+    const suggestions = searchResponse.results.concat(this.parseCommunitySearch(body.topics));
+
+    this.setState({ suggestions: suggestions });
+  }
+
+  parseCommunitySearch(topics) {
+    if(!topics) {
+      return [];
+    }
+    return topics.map((t) => {
+      return {
+        title: t.title,
+        url: 'https://community.datocms.com/t/'+t.id,
+        community: true,
+      };
+    })
   }
 
   handleSuggestionsClearRequested() {
@@ -44,11 +63,17 @@ export default class Search extends React.Component {
   }
 
   handleGetSuggestionValue(suggestion) {
-    return suggestion.raw.title.replace(/ - DatoCMS$/, '');
+    return suggestion.raw ?
+      suggestion.raw.title.replace(/ - DatoCMS$/, '') :
+      suggestion.title;
   }
 
   handleSelectSuggestion(event, { suggestion }) {
-    document.location = suggestion.url;
+    if (suggestion.community) {
+      window.open(suggestion.url, '_blank');
+    } else {
+      document.location = suggestion.url;
+    }
   }
 
   renderSuggestion(suggestion, { query }) {
@@ -64,10 +89,17 @@ export default class Search extends React.Component {
           className={b('suggestion-url')}
           dangerouslySetInnerHTML={{ __html: suggestion.url }}
         />
-        <div
-          className={b('suggestion-body')}
-          dangerouslySetInnerHTML={{ __html: suggestion.body }}
-        />
+        {suggestion.body && (
+          <div
+            className={b('suggestion-body')}
+            dangerouslySetInnerHTML={{ __html: suggestion.body }}
+          />
+        )}
+        {suggestion.community && (
+          <div className={b('suggestion-community')}>
+            Read more on the Community forum
+          </div>
+        )}
       </div>
     );
   }
