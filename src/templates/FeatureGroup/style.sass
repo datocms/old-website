@@ -1,0 +1,122 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.FeatureSingle__header
+  background-color: $red-color
+  margin-bottom: 100px
+  min-height: 200px;
+  padding: 50px 0
+
+.FeatureSingle__header-content
+  color: white
+  margin: 0 auto
+  max-width: 900px
+  display: flex
+  flex-direction: row
+
+  h1
+    +size(bigger)
+    margin: 10px 0 20px
+
+.FeatureSingle__header-content-text,
+.FeatureSingle__header-content-image
+  position: relative
+  width: 50%
+
+.FeatureSingle__header-icon
+  width: 40px
+
+.FeatureSingle__header-cover
+  position: absolute
+  width: 250px
+
+.FeatureSingle__info
+  margin: 0 auto
+  max-width: 400px
+  text-align: center
+
+.FeatureSingle__info-title
+  +size(big)
+  margin-bottom: 10px
+
+.FeatureSingle__feature
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-bottom: 50px
+
+.FeatureSingle__feature--even
+  .FeatureSingle__feature-image
+    order: 1
+  .FeatureSingle__feature-content
+    order: 2
+    margin-left: 40px
+
+    @media screen and (min-width: 900px)
+      margin-left: 80px
+
+.FeatureSingle__feature--odd
+  .FeatureSingle__feature-image
+    order: 2
+    margin-left: 40px
+
+    @media screen and (min-width: 900px)
+      margin-left: 80px
+  .FeatureSingle__feature-content
+    order: 1
+
+.FeatureSingle__feature-image
+  width: 420px
+
+.FeatureSingle__feature-image-placeholder
+  padding-top: 130%
+  background-color: red
+
+.FeatureSingle__feature-content
+  width: 320px
+
+.FeatureSingle__feature-title
+  text-transform: uppercase
+  color: $light-body-color
+  +weight(bold)
+  margin-bottom: 20px
+
+.FeatureSingle__feature-description
+  margin-bottom: 30px
+  p
+    margin-bottom: 10px
+  a
+    color: $azure-color
+  strong
+    +weight(bold)
+
+.FeatureSingle__other-feature-groups
+  display: flex
+  flex-direction: row
+  margin: 0 auto 50px
+  max-width: 900px
+
+.FeatureSingle__other-feature-group
+  box-shadow: 0 1px 4px rgba(black, 0.1), 0 1px 10px rgba(black, 0.1)
+  border-radius: 6px
+  color: $base-body-color
+  flex: 1
+  margin-bottom: 40px
+  padding: 20px
+  padding-left: 70px
+  position: relative
+  text-decoration: none
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 4px 6px rgba(black, 0.1), 0 4px 10px rgba(black, 0.1)
+
+.FeatureSingle__other-feature-group:not(:last-child)
+  margin-right: 20px
+
+.FeatureSingle__other-feature-group-icon
+  position: absolute
+  left: 20px
+  width: 30px
+
+.FeatureSingle__other-feature-group-title
+  font-weight: bold

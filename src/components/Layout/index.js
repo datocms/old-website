@@ -18,6 +18,14 @@ const query = graphql`
         ...GatsbyDatoCmsFaviconMetaTags
       }
     }
+    featureGroups: allDatoCmsGroupFeature (limit: 4, sort: { fields: [position], order: ASC }) {
+      nodes {
+        navbarTitle
+        navbarSubtitle
+        navbarIcon { url }
+        slug
+      }
+    }
   }
 `;
 
@@ -62,7 +70,7 @@ class TemplateWrapper extends React.Component {
               </a>
               .
             </CookieConsent>
-            <Navbar transparent={this.props.home} />
+            <Navbar transparent={this.props.home} featureGroups={data.featureGroups.nodes} />
             <MobileNavbar />
             {children}
             <Footer />

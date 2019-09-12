@@ -10,7 +10,7 @@ import logo from 'images/dato_logo_full.svg';
 
 const b = bem.lock('Navbar');
 
-const Navbar = ({ transparent }) => {
+const Navbar = ({ transparent, featureGroups }) => {
   const loggedInEmail = getCookie('datoAccountEmail');
 
   return (
@@ -25,13 +25,26 @@ const Navbar = ({ transparent }) => {
               </Link>
             </div>
             <div className={b('nav')}>
-              <Link
-                className={b('text-link')}
-                activeClassName={b('text-link', { active: true })}
-                to="/features/"
-              >
-                Features
-              </Link>
+            <div className={b('text-link', { handle: true })}>
+                <span>
+                  Features
+                </span>
+                <div className={b('menu', {features: true})}>
+                  {featureGroups.map((featureGroup) => {
+                    return (
+                      <Link className={b('menu-item', {features: true})} to={"/features/"+featureGroup.slug}>
+                        <img className={b('menu-item-icon')} src={featureGroup.navbarIcon.url} alt="" />
+                        <div className={b('menu-item-title')}>
+                          {featureGroup.navbarTitle}
+                        </div>
+                        <div className={b('menu-item-subtitle')}>
+                          {featureGroup.navbarSubtitle}
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
               <Link
                 className={b('text-link')}
                 activeClassName={b('text-link', { active: true })}

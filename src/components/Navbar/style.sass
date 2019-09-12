@@ -101,6 +101,12 @@ a.Navbar__text-link:hover
     transition-property: transform
     transition-duration: .25s
 
+.Navbar__menu--features
+  right: -150px
+  max-width: 300px
+  &:after
+    right: 200px
+
 .Navbar__menu-item
   display: block
   text-decoration: none
@@ -112,6 +118,20 @@ a.Navbar__text-link:hover
   &:hover
     text-decoration: none
     background-color: $light-bg-color
+
+.Navbar__menu-item--features
+  padding-left: 55px
+  position: relative
+  
+.Navbar__menu-item-icon
+  left: 17px
+  position: absolute
+  width: 25px
+
+.Navbar__menu-item-subtitle
+  +size(small)
+  display: inline
+  white-space: initial
 
 .Navbar__actions
   display: flex
