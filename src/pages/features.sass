@@ -1,0 +1,141 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.FeaturesPage__cols-toc
+  display: none
+
+@media screen and (min-width: 1400px)
+  .FeaturesPage__cols
+    display: flex
+
+  .FeaturesPage__cols-toc
+    width: 260px
+    display: block
+
+  .FeaturesPage__cols-content
+    flex: 1
+
+.FeaturesPage__toc
+  padding-left: 25px
+
+.FeaturesPage__toc-item
+  +size(small)
+
+.FeaturesPage__content
+  position: relative
+
+.FeaturesPage__toc-item-button
+  border: 0
+  font-family: "colfax-web"
+  color: $base-body-color
+  text-align: left
+  padding: 5px 15px
+  border-radius: 9px
+  cursor: pointer
+  transition: color 500ms ease-in-out
+  text-decoration: none
+  display: inline-block
+
+  &:focus
+    outline: 0
+
+  &:hover
+    color: $red-color
+
+  &--selected
+    color: $red-color
+    +weight(bold)
+
+.FeaturesPage__feature-inner
+  display: block
+
+@media screen and (max-width: 800px)
+  .FeaturesPage__feature
+    padding-bottom: 30px
+    margin-bottom: 60px
+
+    &:last-child
+      margin-bottom: 0
+
+  .FeaturesPage__feature-image
+    max-width: 340px
+
+  .FeaturesPage__feature-content
+    margin-bottom: 50px
+
+  .FeaturesPage__feature-title
+    +size(bigger)
+    margin-bottom: 20px
+
+@media screen and (min-width: 801px)
+  .FeaturesPage__feature
+    margin-bottom: 100px
+
+  .FeaturesPage__feature-title
+    text-transform: uppercase
+    color: $light-body-color
+    +weight(bold)
+    margin-bottom: 20px
+
+  .FeaturesPage__feature-inner
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: row-reverse
+
+  .FeaturesPage__feature-image
+    width: 420px
+
+  .FeaturesPage__feature-content
+    width: 420px
+    margin-left: 80px
+
+  .FeaturesPage__feature--odd
+    .FeaturesPage__feature-inner
+      flex-direction: row
+
+    .FeaturesPage__feature-content
+      margin-left: 0px
+      margin-right: 80px
+
+.FeaturesPage__feature-image-placeholder
+  padding-top: 130%
+  background-color: red
+
+.FeaturesPage__feature-description
+  p
+    margin-bottom: 10px
+
+  a
+    color: $azure-color
+
+  strong
+    +weight(bold)
+
+.FeaturesPage__feature-container
+  position: relative
+
+.FeaturesPage__fade-enter
+  opacity: 0
+  transform: translateY(-50px)
+  transition: all 250ms ease-in-out
+  transition-delay: 250ms
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+.FeaturesPage__fade-enter-active
+  opacity: 1
+  transform: translateY(0px)
+
+.FeaturesPage__fade-exit
+  opacity: 1
+  transition: all 250ms ease-in-out
+  transform: translateY(0px)
+
+.FeaturesPage__fade-exit-active
+  opacity: 0
+  transform: translateY(50px)
+

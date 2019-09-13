@@ -25,7 +25,7 @@ const Navbar = ({ transparent, featureGroups }) => {
               </Link>
             </div>
             <div className={b('nav')}>
-            <div className={b('text-link', { handle: true })}>
+              <div className={b('text-link', { handle: true })}>
                 <span>
                   Features
                 </span>
