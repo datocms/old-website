@@ -26,3 +26,16 @@ The generator will prompt the following configuration questions:
 [Watch the example video](https://vimeo.com/301886498#at=0) to see the generator running.
 
 [Read the tutorial](https://www.datocms.com/blog/how-to-create-an-inverse-relations-plugin) on how to build a custom plugin using the generator.
+
+
+#### Add plugins with the generator
+
+To add a plugin to a project, once inside the plugin's folder, run:
+
+```
+npx -p yo -p generator-datocms-plugin -c 'yo datocms-plugin:add-to-project'
+```
+
+The generator will prompt you to pick the project on which you want to install the plugin and it will set everything up for you.
+
+If you are re-installing a plugin, remember to manually uninstall first.
