@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => (
     </div>
     <Features data={data.features.edges.map(x => x.node)} />
     <div className={b('gradient')}>
-      <WhoIsUsing data={data.home.whosUsingDatocms} />
+      <WhoIsUsing data={data.home.customers} />
       <Quotes data={data.reviews.edges.map(x => x.node)} />
       <CallToAction transparent />
     </div>
@@ -53,7 +53,7 @@ export const query = graphql`
       heroDescription
       secondBlockTitle
       secondBlockDescription
-      whosUsingDatocms {
+      customers {
         name
         logo {
           url

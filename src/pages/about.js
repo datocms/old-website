@@ -19,7 +19,7 @@ class AboutPage extends React.Component {
 
     return (
       <Layout>
-        <HelmetDatoCms seo={data.page.seoMetaTags} />
+        <HelmetDatoCms seo={data.about.seoMetaTags} />
         <PageLayout
           title={data.about.title}
           subtitle={data.about.subtitle}
@@ -95,7 +95,7 @@ class AboutPage extends React.Component {
                 </div>
                 <div className={b('brag__clients')}>
                   {
-                    data.home.whosUsingDatocms.slice(0, 5).map(x => (
+                    data.about.customers.map(x => (
                       <img className={b('brag__client')} key={x.name} alt={x.name} src={x.logo.url} />
                     ))
                   }
@@ -132,19 +132,6 @@ export default AboutPage;
 
 export const query = graphql`
   query AboutPage {
-    page: datoCmsAboutPage {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-    }
-    home: datoCmsHomePage {
-      whosUsingDatocms {
-        name
-        logo {
-          url
-        }
-      }
-    }
     team: allDatoCmsTeamMember(sort: { fields: [position], order: ASC }) {
       nodes {
         id
@@ -158,6 +145,15 @@ export const query = graphql`
       }
     }
     about: datoCmsAboutPage {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      customers {
+        name
+        logo {
+          url
+        }
+      }
       title
       subtitle
       content {

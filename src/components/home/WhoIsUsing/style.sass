@@ -3,7 +3,36 @@
 @import 'blocks/space'
 
 .HomeWhoIsUsing
-  padding-bottom: 4 * $space-unit
+  background-repeat: no-repeat
+  background-position: top center
+  background-size: 120%
+  padding-bottom: 120px
+  padding-top: 100px
+  position: relative
+  overflow: hidden
+
+  &:before, &:after
+    content: ""
+    opacity: .13
+    background-image: linear-gradient(to left,transparent 0,$red-color 40%)
+    transform: skewY(-8deg)
+    filter: blur(6px)
+    width: 50vh
+    height: 294px
+    position: absolute
+    left: -30px
+    top: 95px
+
+  &:after
+    opacity: .18
+    background-image: linear-gradient(to right,transparent 0,$light-violet-color 40%)
+    width: 50vh
+    height: 308px
+    position: absolute
+    right: -30px
+    left: auto
+    bottom: 50px
+    top: auto
 
 .HomeWhoIsUsing__title
   text-transform: uppercase
@@ -11,15 +40,17 @@
   +weight(bold)
   +size(small)
   text-align: center
+  margin-bottom: 80px
 
 .HomeWhoIsUsing__items
   display: flex
   align-items: center
   justify-content: center
   flex-wrap: wrap
+  margin-bottom: -80px
 
   .react-reveal
-    margin-bottom: 50px
+    margin-bottom: 80px
     text-align: center
     margin-left: 20px
     margin-left: 40px

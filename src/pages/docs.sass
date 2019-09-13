@@ -221,7 +221,7 @@ a.Docs__block__item
   font-weight: 500
   white-space: nowrap
 
-@media screen and (min-width: 600px)
+@media screen and (min-width: 800px)
   .Docs__block
     display: block
     display: flex
@@ -242,6 +242,7 @@ a.Docs__block__item
 
   .Docs__block__item
     padding: 20px 30px
+    flex: 1
 
   .Docs__api__item
     display: block
@@ -266,6 +267,15 @@ a.Docs__block__item
 
   .Docs__block__items__title
     display: none
+
+  .Docs__api__item
+    display: flex
+
+  .Docs__api__item__body
+    border-bottom-width: 0
+
+  .Docs__api__item__links
+    border-left: 1px solid $border-color
 
 @media screen and (min-width: 900px)
   .Docs__block__item
@@ -311,8 +321,6 @@ a.Docs__block__item
     flex: 1
     display: flex
 
-  .Docs__api__item
-    margin-bottom: 0
 
   .Docs__integrations__item img
     height: 60px
