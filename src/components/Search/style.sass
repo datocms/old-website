@@ -1,93 +1,12 @@
 @import 'utils/colors'
 @import 'blocks/mixins'
 
-.react-autosuggest__container
-  position: relative
-
-.react-autosuggest__suggestions-container
-  display: none
-
-.react-autosuggest__container--open .react-autosuggest__suggestions-container
-  display: block
-  position: absolute
-  top: 63px
-  left: 0
-  border-radius: 4px
-  right: 0
-  box-shadow: 0 2px 10px 0 rgba(black, 0.1), 0 2px 35px 0 rgba(black, 0.1)
-  box-sizing: border-box
-  background-color: #fff
-  font-size: 16px
-  border-bottom-left-radius: 4px
-  border-bottom-right-radius: 4px
-  z-index: 2
-  max-height: 300px
-  overflow-y: auto
-
-.react-autosuggest__suggestions-list
-  margin: 0
-  padding: 0
-  list-style-type: none
-
-.react-autosuggest__suggestion
-  cursor: pointer
-  padding: 10px 20px
-
-  &:not(:first-child)
-    border-top: 1px solid #ddd
-
-.react-autosuggest__suggestion--highlighted
-  background-color: $light-bg-color
-
-.suggestion-content
-  display: flex
-  align-items: center
-  background-repeat: no-repeat
-
-.Search__suggestion
-  text-align: left
-
-.Search__suggestion-title
-  +weight(bold)
-  +size(small)
-  line-height: 1.2
-
-.Search__suggestion-url
-  +size(smaller)
-  color: $light-body-color
-  word-wrap: break-word
-  display: none
-
-.Search__suggestion-body
-  +size(smaller)
-  line-height: 1.2
-  max-height: 40px
-  overflow: hidden
-  margin-top: 3px
-  color: $light-body-color
-
-.Search__suggestion-community
-  +size(smaller)
-
-.highlight
-  background-color: #FFF0C0
-  padding: 1px 3px 0
-
 .Search--big
-  margin-top: -50px
-  margin-bottom: 90px
+  margin: -50px auto 90px auto
   text-align: center
+  max-width: 500px
 
-  .Search__suggestion-url
-    margin-bottom: 5px
-
-  .react-autosuggest__suggestion
-    padding: 20px
-
-  .Search__suggestion-title
-    +size(normal)
-
-  .react-autosuggest__input
+  input[type=text]
     height: 52px
     width: 100%
     padding: 10px 20px
@@ -106,23 +25,23 @@
       outline: none
       border: 1px solid $azure-color
 
-  @media screen and (min-width: 800px)
-    .react-autosuggest__container
-      display: inline-block
-
-    .react-autosuggest__input
-      width: 450px
-
 .Search--small
   margin: 0
   text-align: left
   margin-top: 30px
+  margin-bottom: 30px
   display: none
+
+  &:first-child
+    margin-top: 0
+
+  &:last-child
+    margin-bottom: 0
 
   @media screen and (min-width: 900px)
     display: block
 
-  .react-autosuggest__input
+  input[type=text]
     height: auto
     width: auto
     padding: 6px 0
@@ -140,12 +59,3 @@
     &:focus
       outline: none
       border-bottom: 1px solid $azure-color
-
-  .react-autosuggest__container--open .react-autosuggest__suggestions-container
-    position: absolute
-    top: 100%
-    left: 0
-    border-radius: 4px
-    margin-top: 4px
-    right: -50px
-    max-height: 200px
