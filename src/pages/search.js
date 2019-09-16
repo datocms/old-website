@@ -19,9 +19,10 @@ export default class BrandingPage extends React.Component {
   state = {
     docsResults: null,
     communityResults: null,
+    isMenuOpen: true,
   };
 
-  async fetchcommunity(query) {
+  async fetchCommunity(query) {
     const endpoint = 'https://community.datocms.com/search/query.json';
 
     const response = await fetch(
@@ -45,15 +46,30 @@ export default class BrandingPage extends React.Component {
     });
   }
 
-  async componentDidMount() {
-    const query = new URLSearchParams(this.props.location.search).get('q');
+  async fetchResults(query) {
+    this.setState({ docsResults: null, communityResults: null });
 
     const [{ results: docsResults }, communityResults] = await Promise.all([
       client.search(query),
-      this.fetchcommunity(query),
+      this.fetchCommunity(query),
     ]);
 
     this.setState({ docsResults, communityResults });
+  }
+
+  async componentDidMount() {
+    const query = new URLSearchParams(this.props.location.search).get('q');
+
+    this.fetchResults(query);
+  }
+
+  async componentDidUpdate(oldProps) {
+    const query = new URLSearchParams(this.props.location.search).get('q');
+    const oldQuery = new URLSearchParams(oldProps.location.search).get('q');
+
+    if (query !== oldQuery) {
+      this.fetchResults(query);
+    }
   }
 
   handleMenuToggle(e) {
@@ -131,23 +147,25 @@ export default class BrandingPage extends React.Component {
                     </Link>
                   </li>
                 </ul>
-
-                <Search small initialQuery={query} />
               </ResponsiveSticky>
             </div>
 
             <div className={b('content')}>
-              <Space bottom={5}>
+              <Space bottom={3}>
                 <h1 className={b('content-title')}>
-                  Search results for "{query}"
+                  Search
                 </h1>
+              </Space>
+
+              <Space bottom={5}>
+                <Search big initialQuery={query} />
               </Space>
 
               {results &&
                 results.length > 0 &&
                 results.map(this.renderResult.bind(this))}
               {results && results.length === 0 && <div>No results found!</div>}
-              {!results && <>Loading...</>}
+              {!results && <>Loading results for "{query}"...</>}
             </div>
           </div>
         </Wrap>
