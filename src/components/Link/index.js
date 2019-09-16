@@ -5,8 +5,12 @@ function isActive(
   exact,
   className,
   activeClassName,
-  { isPartiallyCurrent, isCurrent },
+  { href, location },
 ) {
+ var hrefWithoutQuery = href.split('?')[0];
+ var isCurrent = location.pathname === hrefWithoutQuery;
+ var isPartiallyCurrent = location.pathname.startsWith(hrefWithoutQuery);
+
   const normalAndActive = [className, activeClassName].filter(x => x).join(' ');
 
   if (exact && isCurrent) {

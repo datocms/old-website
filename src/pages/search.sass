@@ -1,0 +1,34 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.Search__result
+  display: block
+  margin-bottom: 35px
+  text-decoration: none
+  color: $base-body-color
+
+  &:hover .Search__title
+    text-decoration: underline
+
+.Search__title
+  font-weight: 500
+  font-size: 1.2em
+
+  .highlight
+    background-color: #FFF0C0
+    padding: 1px 3px 0
+
+.Search__body
+  font-size: 0.9em
+  margin-top: 5px
+
+  .highlight
+    font-weight: 500
+
+.Search__url
+  margin-top: 5px
+  color: $azure-color
+  font-size: 0.9em
+
+  .highlight
+    font-weight: 500

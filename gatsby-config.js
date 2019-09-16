@@ -160,6 +160,11 @@ module.exports = {
       },
     },
 
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/search/*`] },
+    },
+
     `gatsby-plugin-netlify-cache`,
   ],
 };
