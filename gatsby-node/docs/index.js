@@ -4,7 +4,7 @@ const { stringify } = require('flatted/cjs');
 const slugs = require('github-slugger')();
 const fieldTypes = require('../../src/utils/fieldTypes.json');
 const sortBy = require('sort-by');
-const { findTitle, findHtml, findHeadings } = require('./pageAnalysis');
+const { findTitle, findHtmlFileAbsolutePath, findHeadings } = require('./pageAnalysis');
 const buildCmaResources = require('./buildCmaResources');
 const buildFieldsIntrospection = require('./buildFieldsIntrospection');
 
@@ -15,7 +15,6 @@ const query = `
     ) {
       edges {
         node {
-          html
           path: fileAbsolutePath
           headings {
             value
@@ -45,6 +44,7 @@ const query = `
 module.exports = async function docs({ graphql, actions: { createPage } }) {
   const result = await graphql(query);
   const cmaResources = await buildCmaResources();
+
   const {
     meta: fieldsMetaInfo,
     field_types: fieldTypesInfo,
@@ -61,7 +61,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
     const isGuide = p.dirname(path).includes('05_guides');
     const originalTitle = findTitle(rawPage, rawPages);
 
-    const rawHeadings = findHeadings(rawPage, rawPages);
+    const rawHeadings = findHeadings(rawPage, rawPages) || [];
     const minHeadingLevel = rawHeadings.reduce(
       (min, h) => (h.depth < min ? h.depth : min),
       100,
@@ -100,7 +100,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       };
     }
 
-    const html = findHtml(rawPage, rawPages);
+    const htmlFileAbsolutePath = findHtmlFileAbsolutePath(rawPage, rawPages);
 
     return {
       chapter: p
@@ -118,7 +118,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       position,
       isGuide,
       excerpt,
-      html,
+      htmlFileAbsolutePath,
       template,
       context,
     };
@@ -182,7 +182,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
           pageTitle: page.title,
           chapterTitle: pages[0].originalTitle,
           menuItems,
-          html: page.html,
+          htmlFileAbsolutePath: page.htmlFileAbsolutePath,
           repoPath: page.repoPath,
           prevPage,
           nextPage,

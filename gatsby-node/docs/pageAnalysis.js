@@ -1,12 +1,12 @@
-const findHtml = (page, pages) => {
+const findHtmlFileAbsolutePath = (page, pages) => {
   if (page.frontmatter.copyFrom) {
     const contentPage = pages.find(p =>
       p.path.includes(page.frontmatter.copyFrom),
     );
-    return contentPage.html;
+    return contentPage.path;
   }
 
-  return page.html;
+  return page.path;
 };
 
 const findHeadings = (page, pages) => {
@@ -40,6 +40,6 @@ const findTitle = findFrontmatterValue.bind(this, 'title');
 
 module.exports = {
   findTitle,
-  findHtml,
+  findHtmlFileAbsolutePath,
   findHeadings,
 };
