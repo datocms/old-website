@@ -76,7 +76,7 @@ const Footer = ({ data }) => (
         </Link>
         <Link
           className={b('group-link')}
-          to="https://github.com/datocms/feature-requests/issues"
+          to="https://community.datocms.com/c/product-development/feature-requests/"
         >
           Feature requests
         </Link>
