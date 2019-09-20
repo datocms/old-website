@@ -2,8 +2,6 @@
 title: Integrating DatoCMS with Okta
 ---
 
-### Features
-
 Automatic user provisioning is supported for the DatoCMS application.
 
 This enables Okta to:
