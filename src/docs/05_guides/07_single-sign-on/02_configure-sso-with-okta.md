@@ -1,5 +1,5 @@
 ---
-title: Integrating DatoCMS with Okta
+title: Configuring provisioning with Okta
 ---
 
 Automatic user provisioning is supported for the DatoCMS application.
@@ -11,17 +11,30 @@ This enables Okta to:
 * Deactivate users in DatoCMS
 * Push groups and membership to DatoCMS
 
+*Disclaimer: This integration with Okta is currently under development and is not available to customers yet. [Contact us](/support) to learn more.*
+
+### Table of Contents
+
+### Features
+
 The following provisioning features are supported:
 
-* **Push New Users** - Creating a new user in Okta and assigning them to the DatoCMS application will create a new user in DatoCMS.
-* **Push Profile Updates** - Updates to a user in Okta will be pushed to DatoCMS.
-* **Push User Deactivation** - Deactivating the user or disabling the user's access to DatoCMS within OKTA will deactivate the user in DatoCMS.
-* **Import New Users** - Users created in DatoCMS can be pulled into Okta and turned into new AppUser objects for matching against existing Okta users.
+* **Create User** - Creating a new user in Okta and assigning them to the DatoCMS application will create a new user in DatoCMS.
+* **Update User Attributes** - Updates to a user in Okta will be pushed to DatoCMS.
+* **Deactivate Users** - Deactivating the user or disabling the user's access to DatoCMS within OKTA will deactivate the user in DatoCMS.
+* **Reactivate Users** - User accounts can be reactivated from Okta.
+* **Import Users** - Users created in DatoCMS can be pulled into Okta and turned into new AppUser objects for matching against existing Okta users.
+* **Import Groups** - Groups created in DatoCMS can be pulled into Okta for reference within Okta.
 * **Push Groups** - Groups created in Okta can be pushed to DatoCMS. Attributes pushed include name and group members.
-* **Pull Groups** - Groups created in DatoCMS can be pulled into Okta for reference within Okta.
 * **Delete Groups** - Groups deleted or removed from the DatoCMS application within Okta will be deleted within DatoCMS.
 
-### SAML Configuration Steps
+### Prerequisites
+
+* Single Sign-On is only available for Ultimate and Enterprise plans.
+
+### Configuration Steps
+
+#### SAML App
 
 Switch your Okta dashboard to *Admin mode* by clicking the button in the upper right corner:
 
@@ -50,7 +63,7 @@ Fill in the following fields:
 * **Name ID format**: `EmailAddress`;
 * **Application username**: `Email`;
 
-Leave the other fields unchanged and press *Next*:
+TODO Leave the other fields unchanged and press *Next*:
 
 ![SAML](../../images/okta/7-1-configure-saml.png)
 
@@ -62,7 +75,11 @@ In the *Sign On* tab, copy the URL of the **Identity Provider metadata**, and pa
 
 ![SAML](../../images/okta/7-3-configure-saml.png)
 
-### SCIM Configuration Steps
+Make sure to also specify the default role editors will be assigned:
+
+TODO
+
+#### SCIM App
 
 Switch your Okta dashboard to *Admin mode* by clicking the button in the upper right corner:
 
@@ -109,7 +126,7 @@ Press the *Save* to confirm:
 
 ![Third step](../../images/okta/5-3-provisioning.png)
 
-### Import DatoCMS users in Okta
+### Importing existing DatoCMS users in Okta
 
 If you want to import existing users into Okta, enter the Provisioned users section in DatoCMS settings, and from there press the **Sync with regular users** button.
 
@@ -145,12 +162,14 @@ From there, you will be able to assign users with the **Assign** button:
 
 As soon as you add new users to the DatoCMS application, they will be visible in the **Provisioned users** section in DatoCMS.
 
-### Managing DatoCMS roles
+### Managing provisioned user roles
+
+#### Pushing groups
 
 That these are the only Group attributes that are updatable via the Okta integration:
 
-* Group Name
-* Group Members
+* Group name
+* Group members
 
 Groups created in DatoCMS and imported into Okta cannot be deleted or changed in Okta. They must be managed in DatoCMS.
 
@@ -173,3 +192,18 @@ Open the DatoCMS Application in Okta, open the **Push Groups** tab and click on 
 Enter the first characters of the group name inside the text input, select the group from the dropdown and press **Save**:
 
 ![Third step](../../images/okta/13-2-push-group.png)
+
+#### Mapping Okta groups to DatoCMS roles
+
+TODO
+
+### Gotchas and Troubleshooting Tips
+
+TODO
+
+* DatoCMS application supports Just-in-Time (JIT) provisioning. The SAML assertion will create an SSO user on the fly the first time they try to log in from the identity provider.
+* SAML Single Logout is currently not supported.
+* Users without **First Name** or/and **Last Name** in their DatoCMS profiles will be imported to Okta as "Unknown Unknown".
+* Since groups imported from DatoCMS into Okta are not editable within Okta, it is suggested to create groups in Okta first and then push those groups to DatoCMS via the **Push Groups** button in Okta.
+
+For any other issues, please [contact our support](/support) to get customized help.

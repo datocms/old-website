@@ -3,9 +3,9 @@ title: Introduction to Single Sign-On
 excerpt: Learn how to simplify your organization sign-in experience with automatic provisioning of users
 ---
 
-Single Sign On (SSO) allows users to use a single login for multiple applications, simplifying the lives of both IT and your team on DatoCMS. Our SAML + SCIM implementation will allow team members to sign in securely through any identity provider.
+Single Sign-On (SSO) allows users to use a single login for multiple applications, simplifying the lives of both IT and your team on DatoCMS. Our SAML + SCIM implementation will allow team members to sign in securely through any identity provider.
 
-Single Sign On is only available for Ultimate and Enterprise plans.
+Single Sign-On is only available for Ultimate and Enterprise plans.
 
 ### Supported Identity Providers
 

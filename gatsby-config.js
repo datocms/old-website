@@ -95,7 +95,10 @@ module.exports = {
           {
             resolve: 'gatsby-remark-toc',
             options: {
-              include: ['src/docs/05_guides/01_building-plugins/06_sdk-reference.md'],
+              include: [
+                'src/docs/05_guides/01_building-plugins/06_sdk-reference.md',
+                'src/docs/05_guides/07_single-sign-on/02_configure-sso-with-okta.md'
+              ],
               mdastUtilTocOptions: {
                 heading: 'Table of Contents',
               },
