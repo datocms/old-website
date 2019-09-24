@@ -222,10 +222,9 @@ In case a user does not belong to any group, the default role specified in the *
 
 ### Gotchas and Troubleshooting Tips
 
-* While it's technically possible to import DatoCMS Groups into Okta, it's not advisable to do so, as groups created in DatoCMS and imported into Okta cannot be deleted or changed in Okta. They must be managed in DatoCMS. It is suggested to create groups in Okta first and then push those groups to DatoCMS via the **Push Groups** button in Okta as described in the [Pushing groups](/docs/guides/single-sign-on/configure-sso-with-okta#pushing-groups) chapter.
-* DatoCMS application supports Just-in-Time (JIT) provisioning. The SAML assertion will create an SSO user on the fly the first time they try to log in from the identity provider.
 * SAML Single Logout is currently not supported.
 * Users without **First Name** or/and **Last Name** in their DatoCMS profiles will be imported to Okta as "Unknown Unknown".
-* Since groups imported from DatoCMS into Okta are not editable within Okta, it is suggested to create groups in Okta first and then push those groups to DatoCMS via the **Push Groups** button in Okta.
+* While it's technically possible to import DatoCMS Groups into Okta, it's not advisable to do so, as groups created in DatoCMS and imported into Okta cannot be deleted or changed in Okta. They must be managed in DatoCMS. It is suggested to create groups in Okta first and then push those groups to DatoCMS via the **Push Groups** button in Okta as described in the [Pushing groups](/docs/guides/single-sign-on/configure-sso-with-okta#pushing-groups) chapter.
+* DatoCMS application supports Just-in-Time (JIT) provisioning. The SAML assertion will create an SSO user on the fly the first time they try to log in from the identity provider.
 
 For any other issues, please [contact our support](/support) to get customized help.
