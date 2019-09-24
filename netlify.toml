@@ -2,6 +2,6 @@
   PREVIEW_MODE = "true"
 
 [[headers]]
-  for = "/support"
+  for = "/*"
   [headers.values]
-    Referrer-Policy = "unsafe-url"
+    Referrer-Policy = "strict-origin"
