@@ -5,7 +5,7 @@ import DocAside from 'components/DocAside';
 class DocPage extends React.Component {
   render() {
     return (
-      <DocAside 
+      <DocAside
         {...this.props}
         pageContext={{
           ...this.props.pageContext,
