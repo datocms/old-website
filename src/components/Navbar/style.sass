@@ -103,7 +103,8 @@ a.Navbar__text-link:hover
 
 .Navbar__menu--features
   right: -150px
-  max-width: 300px
+  width: 300px
+
   &:after
     right: 200px
 
@@ -120,18 +121,22 @@ a.Navbar__text-link:hover
     background-color: $light-bg-color
 
 .Navbar__menu-item--features
-  padding-left: 55px
-  position: relative
-  
+  display: flex
+  align-items: center
+  padding: 16px 20px 16px 20px
+
 .Navbar__menu-item-icon
-  left: 17px
-  position: absolute
-  width: 25px
+  width: 50px
+  margin-right: 20px
+
+.Navbar__menu-item-title
+  +weight(bold)
 
 .Navbar__menu-item-subtitle
   +size(small)
-  display: inline
   white-space: initial
+  line-height: 1.1
+  color: $light-body-color
 
 .Navbar__actions
   display: flex

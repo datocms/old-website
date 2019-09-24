@@ -34,11 +34,13 @@ const Navbar = ({ transparent, featureGroups }) => {
                     return (
                       <Link className={b('menu-item', {features: true})} to={"/features/"+featureGroup.slug}>
                         <img className={b('menu-item-icon')} src={featureGroup.navbarIcon.url} alt="" />
-                        <div className={b('menu-item-title')}>
-                          {featureGroup.navbarTitle}
-                        </div>
-                        <div className={b('menu-item-subtitle')}>
-                          {featureGroup.navbarSubtitle}
+                        <div className={b('menu-item-text')}>
+                          <div className={b('menu-item-title')}>
+                            {featureGroup.navbarTitle}
+                          </div>
+                          <div className={b('menu-item-subtitle')}>
+                            {featureGroup.navbarSubtitle}
+                          </div>
                         </div>
                       </Link>
                     )

@@ -23,7 +23,6 @@ const getImage = (image, cacheDir) => {
       body,
       { classPrefix: prefix, idPrefix: prefix }
     )
-    .replace(/url\(#/g, `url(#${prefix}`)
     .replace(/Colfax\-Regular/g, 'colfax-web')
     .replace(/font\-size:12px/g, 'letter-spacing:.2pt; font-size:12px')
     .replace(/font\-size:10px/g, 'letter-spacing:.2pt; font-size:10px')

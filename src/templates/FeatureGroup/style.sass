@@ -7,8 +7,8 @@
   background-size: 300vw auto
 
   @media screen and (min-width: 600px)
-    background-position: center -40vh
-    background-size: 140vw auto
+    background-position: center bottom
+    background-size: 170vw auto
     padding: 15vh 0 120px
 
 .FeatureSingle__header-content
@@ -67,7 +67,7 @@ $image-width: 400px
   top: 0
   right: 0
   left: 0
-  background-color: #F6FBFC
+  background-color: $light-bg-color
 
 .FeatureSingle__feature-text-inner
   max-width: 940px
@@ -79,6 +79,9 @@ $image-width: 400px
   margin-right: $image-width + 80px
 
 .FeatureSingle__feature--odd
+  .FeatureSingle__feature-text
+    background-color: transparent
+
   .FeatureSingle__feature-text-inner-inner
     margin-right: 0
     margin-left: $image-width + 80px
