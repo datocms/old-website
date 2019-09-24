@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { HelmetDatoCms } from 'gatsby-source-datocms';
+import InlineSVG from 'components/InlineSVG';
 
 import bem from 'utils/bem';
 
@@ -26,9 +27,6 @@ class FeatureGroupPage extends React.Component {
                 <h1>{data.page.pageTitle}</h1>
                 <p>{data.page.pageSubtitle}</p>
               </div>
-              <div className={b('header-content-image')}>
-                <img className={b('header-cover')} src={data.page.cover.url} alt="" />
-              </div>
             </div>
           </div>
           <Space bottom={4}>
@@ -47,7 +45,7 @@ class FeatureGroupPage extends React.Component {
             return (
               <div className={b('feature') + ' ' + b('feature--' + evenOdd)}>
                 <div className={b('feature-image')}>
-                  <img src={feature.image.url} alt="" />
+                  <InlineSVG image={feature.image} />
                 </div>
                 <div className={b('feature-content')}>
                   <img className={b('header-icon')} src={data.page.navbarIcon.url} alt="" />
@@ -105,7 +103,6 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      cover{url}
       navbarIcon{url}
       infoBlockTitle
       infoBlockDescription

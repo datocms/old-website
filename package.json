@@ -88,7 +88,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "dato dump && gatsby build",
+    "build": "node transformImages.js && gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"src/**/*.js\" \"gatsby-node/**/*.js\" gatsby-config.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -15,7 +15,6 @@ import Layout from 'components/Layout';
 import Hero from 'components/home/Hero';
 import CallToAction from 'components/CallToAction';
 import WhoIsUsing from 'components/home/WhoIsUsing';
-import Features from 'components/home/Features';
 import Quotes from 'components/home/Quotes';
 
 const b = bem.lock('LandingPage');
@@ -26,7 +25,7 @@ export default class LanguagePage extends React.Component {
       data: { ssg },
       pageContext,
     } = this.props;
-    const { home, features, reviews } = pageContext;
+    const { home, reviews } = pageContext;
 
     return (
       <Layout>
@@ -92,7 +91,6 @@ export default class LanguagePage extends React.Component {
             </div>
           </Wrap>
         </div>
-        <Features data={features.edges.map(x => x.node)} />
         <WhoIsUsing data={home.whosUsingDatocms} />
         <Quotes data={reviews.edges.map(x => x.node)} />
         <CallToAction />

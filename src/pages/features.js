@@ -54,7 +54,6 @@ class FeaturesPage extends React.Component {
                             </div>
                             <div className={b('feature-image')}>
                               <div>
-                                <img src={featureGroup.cover.url} alt="" />
                               </div>
                             </div>
                           </div>
@@ -90,9 +89,6 @@ export const query = graphql`
           markdown: childMarkdownRemark {
             html
           }
-        }
-        cover {
-          url
         }
       }
     }

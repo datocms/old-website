@@ -22,23 +22,6 @@ const query = `
         }
       }
     }
-    features: allDatoCmsFeature(sort: { fields: [position], order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          description: descriptionNode {
-            markdown: childMarkdownRemark {
-              html
-            }
-          }
-          image {
-            url
-            format
-          }
-        }
-      }
-    }
     reviews: allDatoCmsReview(sort: { fields: [position], order: ASC }) {
       edges {
         node {
