@@ -20,44 +20,41 @@ class FeatureGroupPage extends React.Component {
       <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
         <div className={b()}>
-          <div className={b('header')}>
+          <div className={b('header')} style={{ backgroundImage: data.page.backgroundImage && `url(${data.page.backgroundImage.url})` }}>
             <div className={b('header-content')}>
-              <div className={b('header-content-text')}>
-                <img className={b('header-icon')} src={data.page.navbarIcon.url} alt="" />
-                <h1>{data.page.pageTitle}</h1>
-                <p>{data.page.pageSubtitle}</p>
-              </div>
+              <img className={b('header-content-icon')} src={data.page.navbarIcon.url} />
+              <h1 className={b('header-content-title')}>{data.page.pageTitle}</h1>
+              <p className={b('header-content-subtitle')}>{data.page.pageSubtitle}</p>
+            </div>
+            <div className={b('header-info')}>
+              {data.page.infoBlockDescription}
             </div>
           </div>
-          <Space bottom={4}>
-            <div className={b('info')}>
-              <div className={b('info-title')}>
-                {data.page.infoBlockTitle}
-              </div>
-              <div className={b('info-description')}>
-                {data.page.infoBlockDescription}
-              </div>
-            </div>
-          </Space>
 
           { data.page.features.map((feature, i) => {
-            const evenOdd = i % 2 === 0 ? "even" : "odd";
             return (
-              <div className={b('feature') + ' ' + b('feature--' + evenOdd)}>
-                <div className={b('feature-image')}>
-                  <InlineSVG image={feature.image} />
-                </div>
-                <div className={b('feature-content')}>
-                  <img className={b('header-icon')} src={data.page.navbarIcon.url} alt="" />
-                  <div className={b('feature-title')}>
-                    {feature.title}
+              <div className={b('feature', { odd: i % 2 === 1 })}>
+                <div className={b('feature-inner')}>
+                  <div className={b('feature-text')}>
+                    <div className={b('feature-text-inner')}>
+                      <div className={b('feature-text-inner-inner')}>
+                        <div className={b('feature-title')}>
+                          {feature.title}
+                        </div>
+                        <div
+                          className={b('feature-description')}
+                          dangerouslySetInnerHTML={{
+                            __html: feature.description.markdown.html,
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    className={b('feature-description')}
-                    dangerouslySetInnerHTML={{
-                      __html: feature.description.markdown.html,
-                    }}
-                  />
+                  <div className={b('feature-image')}>
+                    <div className={b('feature-image-inner')}>
+                      <InlineSVG image={feature.image} />
+                    </div>
+                  </div>
                 </div>
               </div>
             )
@@ -98,6 +95,7 @@ export const query = graphql`
   query FeatureGroupPageQuery($slug: String!) {
     page: datoCmsGroupFeature(slug: { eq: $slug }) {
       slug
+      backgroundImage { url }
       pageTitle
       pageSubtitle
       seoMetaTags {

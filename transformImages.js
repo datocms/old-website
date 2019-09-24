@@ -25,14 +25,10 @@ const getImage = (image, cacheDir) => {
     )
     .replace(/url\(#/g, `url(#${prefix}`)
     .replace(/Colfax\-Regular/g, 'colfax-web')
-    .replace(/font\-size:12px/g, 'letter-spacing:.72pt; font-size:12px')
-    .replace(/font\-size:10px/g, 'letter-spacing:.6pt; font-size:12px')
-    .replace(/font\-size:8px/g, 'letter-spacing:.48pt; font-size:8px')
+    .replace(/font\-size:12px/g, 'letter-spacing:.2pt; font-size:12px')
+    .replace(/font\-size:10px/g, 'letter-spacing:.2pt; font-size:10px')
+    .replace(/font\-size:8px/g, 'letter-spacing:.2pt; font-size:8px')
     .replace(/font-family:&#x27;PTMono\-Regular&#x27;; letter\-spacing:\.[^p]+pt;/g, `font-family:&#x27;SF-Mono-Regular&#x27;, &#x27;Source Code Pro&#x27;, Menlo, monospace; letter-spacing:.1pt;`);
-
-    if (requestUrl === 'https://www.datocms-assets.com/205/1569312984-datofeaturesgraphql.svg') {
-      console.log(fixedBody);
-    }
 
     fs.writeFileSync(cacheFile, fixedBody, 'utf8');
     return body;
