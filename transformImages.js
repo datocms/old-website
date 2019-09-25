@@ -24,10 +24,7 @@ const getImage = (image, cacheDir) => {
       { classPrefix: prefix, idPrefix: prefix }
     )
     .replace(/Colfax\-Regular/g, 'colfax-web')
-    .replace(/font\-size:12px/g, 'letter-spacing:.2pt; font-size:12px')
-    .replace(/font\-size:10px/g, 'letter-spacing:.2pt; font-size:10px')
-    .replace(/font\-size:8px/g, 'letter-spacing:.2pt; font-size:8px')
-    .replace(/font-family:&#x27;PTMono\-Regular&#x27;; letter\-spacing:\.[^p]+pt;/g, `font-family:&#x27;SF-Mono-Regular&#x27;, &#x27;Source Code Pro&#x27;, Menlo, monospace; letter-spacing:.1pt;`);
+    .replace(/url\(#(?!prefix)/g, `url(#${prefix}`);
 
     fs.writeFileSync(cacheFile, fixedBody, 'utf8');
     return body;

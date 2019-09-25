@@ -27,7 +27,7 @@ const Navbar = ({ transparent, featureGroups }) => {
             <div className={b('nav')}>
               <div className={b('text-link', { handle: true })}>
                 <span>
-                  Features
+                  Product
                 </span>
                 <div className={b('menu', {features: true})}>
                   {featureGroups.map((featureGroup) => {

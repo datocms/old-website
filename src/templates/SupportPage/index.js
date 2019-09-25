@@ -142,7 +142,7 @@ class Support extends React.Component {
                       </div>
                       {[
                         ['18', 'General channel'],
-                        ['19', 'Suggest a new feature'],
+                        ['22', 'Suggest a new feature'],
                         ['13', 'REST and GraphQL APIs'],
                         ['5', 'Integrate with other tools'],
                         ['16', 'Propose & request plugins'],
