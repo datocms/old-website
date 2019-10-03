@@ -22,7 +22,7 @@ export default ({
       <div className={b('button')} />
       {title && <div className={b('title')}>{title}</div>}
     </div>
-    {address && <div className={b('address')}>{address}</div>}
+    {address && <div className={b('address')}><a href={address} target='_blank'>{address}</a></div>}
     <div className={b('content')}>{children}</div>
   </div>
 );
