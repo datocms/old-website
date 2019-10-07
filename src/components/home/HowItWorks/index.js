@@ -33,8 +33,8 @@ const query = Prism.highlight(
 );
 
 class HomeHowItWorks extends React.Component {
-  constructor(props) {
-    super(...props);
+  constructor(...args) {
+    super(...args);
 
     this.state = {
       title: false,
