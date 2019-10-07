@@ -76,7 +76,7 @@ const JsonBody = ({ payload }) => (
 function defaultRequestHeaders(link) {
   return (
     <>
-      <Header name="X-Api-Version" value={2} />
+      <Header name="X-Api-Version" value={3} />
       <Header name="Authorization">
         Bearer <span className={b('placeholder')}>YOUR-API-KEY</span>
       </Header>
