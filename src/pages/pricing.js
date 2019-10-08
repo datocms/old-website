@@ -53,6 +53,10 @@ const HintTooltip = ({ children, hints, apiId }) => (
 );
 
 const formatValue = (name, value) => {
+  if (name.endsWith('Months')) {
+    return `${value} ${value === 1 ? ' month' : ' months'}`;
+  }
+
   if (name.endsWith('Bytes')) {
     return prettyBytes(value);
   }
@@ -68,6 +72,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
   if (datoPlan && datoPlan.attributes.hasOwnProperty(apiId)) {
     const value = datoPlan.attributes[apiId];
 
+    console.log(datoPlan.attributes.name, apiId, value);
 
     if (value === null) {
       return <span>Unlimited</span>;
