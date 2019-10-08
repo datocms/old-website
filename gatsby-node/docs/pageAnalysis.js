@@ -3,7 +3,9 @@ const findHtmlFileAbsolutePath = (page, pages) => {
     const contentPage = pages.find(p =>
       p.path.includes(page.frontmatter.copyFrom),
     );
-    return contentPage.path;
+    if (contentPage) {
+      return contentPage.path;
+    }
   }
 
   return page.path;
@@ -14,7 +16,9 @@ const findHeadings = (page, pages) => {
     const contentPage = pages.find(p =>
       p.path.includes(page.frontmatter.copyFrom),
     );
-    return contentPage.headings;
+    if (contentPage) {
+      return contentPage.headings;
+    }
   }
 
   return page.headings;
