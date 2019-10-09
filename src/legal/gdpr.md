@@ -58,12 +58,12 @@ The information is:
 
 [Chargebee GDPR Compliance](https://www.chargebee.com/security/gdpr/)
 
-### Chartmogul
+### Fatture in Cloud
 
-We analyze system statistics with Chartmogul, to do so we integrate with
-Chargebee which passes on the information it receives.
+Our company needs to send certified digital invoices to our Italian customers and to
+the government. To do that we use _Fatture in Cloud_.
 
-The information passed on to Chartmogul is:
+The information passed on to _Fatture in Cloud_ are:
 
 * email,
 * first name,
@@ -72,7 +72,7 @@ The information passed on to Chartmogul is:
 * VAT number,
 * billing address.
 
-[Chartmogul GDPR Compliance](https://blog.chartmogul.com/gdpr/)
+[Fatture in Cloud GDPR Compliance](https://www.fattureincloud.it/gdpr/)
 
 ### Kayako
 
