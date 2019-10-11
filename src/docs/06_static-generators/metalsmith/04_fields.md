@@ -78,33 +78,42 @@ blogPost.coverImage.url({    // returns the image URL, cropped at 150x150px:
   fit: "crop",
 })    
 
-blogPost.coverImage.size     // returns the filesize in bytes:
-                             // => 168131
+blogPost.coverImage.size        // returns the filesize in bytes:
+                                // => 168131
 
-blogPost.coverImage.format   // returns the extension:
-                             // => "png"
+blogPost.coverImage.format      // returns the extension:
+                                // => "png"
 
-blogPost.coverImage.width    // returns the image width:
-                             // => 800
+blogPost.coverImage.width       // returns the image width:
+                                // => 800
 
-blogPost.coverImage.height   // returns the image height:
-                             // => 600
+blogPost.coverImage.height      // returns the image height:
+                                // => 600
 
-blogPost.coverImage.alt      // returns the image alternative text:
-                             // => "Heart icon"
+blogPost.coverImage.alt         // returns the asset alternative text:
+                                // => "Heart icon"
 
-blogPost.coverImage.title    // returns the image title:
-                             // => "We love our clients"
+blogPost.coverImage.customData  // returns any asset custom data:
+                                // => { "watermark": true }
 
-blogPost.coverImage.toMap()  // returns an hash containing all the above:
-                             //
-                             // => {
-                             //   size: 168131,
-                             //   format: "png",
-                             //   width: 800,
-                             //   height: 600,
-                             //   url: "https://www.datocms-assets.com/123/12345-heart.png"
-                             // }
+blogPost.coverImage.author      // returns the asset author:
+                                // => "Mark Smith"
+
+blogPost.coverImage.copyright   // returns the asset copyright:
+                                // => "PressNews Inc."
+
+blogPost.coverImage.notes       // returns the asset's notes:
+                                // => "Just a beautiful heart image"
+
+blogPost.coverImage.toMap()     // returns an hash containing all the above:
+                                //
+                                // => {
+                                //   size: 168131,
+                                //   format: "png",
+                                //   width: 800,
+                                //   height: 600,
+                                //   url: "https://www.datocms-assets.com/123/12345-heart.png"
+                                // }
 ```
 
 ---

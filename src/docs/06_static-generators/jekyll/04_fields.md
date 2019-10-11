@@ -72,33 +72,45 @@ blog_post.cover_image.url(        # returns the image URL, cropped at 150x150px:
   fit: "crop",
 )
 
-blog_post.cover_image.size       # returns the filesize in bytes:
-                                 # => 168131
+blog_post.cover_image.size         # returns the filesize in bytes:
+                                   # => 168131
 
-blog_post.cover_image.format     # returns the extension:
-                                 # => "png"
+blog_post.cover_image.format       # returns the extension:
+                                   # => "png"
 
-blog_post.cover_image.width      # returns the image width:
-                                 # => 800
+blog_post.cover_image.width        # returns the image width:
+                                   # => 800
 
-blog_post.cover_image.height     # returns the image height:
-                                 # => 600
+blog_post.cover_image.height       # returns the image height:
+                                   # => 600
 
-blog_post.cover_image.alt        # returns the image alternative text:
-                                 # => "Heart icon"
+blog_post.cover_image.alt          # returns the asset alternative text:
+                                   # => "Heart icon"
 
-blog_post.cover_image.title      # returns the image title:
-                                 # => "We love our clients"
+blog_post.cover_image.title        # returns the asset title:
+                                   # => "We love our clients"
 
-blog_post.cover_image.to_hash    # returns an hash containing all the above:
-                                 #
-                                 # => {
-                                 #   size: 168131,
-                                 #   format: "png",
-                                 #   width: 800,
-                                 #   height: 600,
-                                 #   url: "https://www.datocms-assets.com/123/12345-heart.png"
-                                 # }
+blog_post.cover_image.custom_data  # returns any asset custom data:
+                                   # => { "watermark": true }
+
+blog_post.cover_image.author       # returns the asset author:
+                                   # => "Mark Smith"
+
+blog_post.cover_image.copyright    # returns the asset copyright:
+                                   # => "PressNews Inc."
+
+blog_post.cover_image.notes        # returns the asset's notes:
+                                   # => "Just a beautiful heart image"
+
+blog_post.cover_image.to_hash      # returns an hash containing all the above:
+                                   #
+                                   # => {
+                                   #   size: 168131,
+                                   #   format: "png",
+                                   #   width: 800,
+                                   #   height: 600,
+                                   #   url: "https://www.datocms-assets.com/123/12345-heart.png"
+                                   # }
 ```
 
 ---
