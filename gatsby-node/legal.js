@@ -4,10 +4,14 @@ const query = `
     files: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/.*legal.*/" } }
     ) {
-      edges {
-        node {
-          path: fileAbsolutePath
-        }
+      nodes {
+        path: fileAbsolutePath
+      }
+    }
+    iubendaDocs: allIubendaDoc {
+      nodes {
+        id
+        slug
       }
     }
   }
@@ -15,19 +19,27 @@ const query = `
 
 module.exports = async function legal({ graphql, actions: { createPage } }) {
   const {
-    data: { files },
+    data: { files, iubendaDocs },
   } = await graphql(query);
 
-  const pages = files.edges.map(edge => edge.node);
-
-  pages.forEach(page => {
+  files.nodes.forEach(page => {
     const { path } = page;
     const url = path.replace(/^.*\/src/, '').replace(/(\/index)?\.md$/, '');
 
     createPage({
       path: url,
-      component: p.resolve(`./src/templates/LegalPage/index.js`),
+      component: p.resolve(`./src/templates/LegalPage/fromMarkdown.js`),
       context: { sourcePath: path },
+    });
+  });
+
+  iubendaDocs.nodes.forEach(page => {
+    const { id, slug } = page;
+
+    createPage({
+      path: `/legal/${slug}/`,
+      component: p.resolve(`./src/templates/LegalPage/fromIubenda.js`),
+      context: { id: id },
     });
   });
 };

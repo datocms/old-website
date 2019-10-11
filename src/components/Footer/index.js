@@ -110,24 +110,15 @@ const Footer = ({ data }) => (
         <Link className={b('group-link')} to="/legal/terms/">
           Terms &amp; Conditions
         </Link>
-        <a
-          rel="noopener noreferrer"
-          href="https://www.iubenda.com/privacy-policy/64648824/full-legal"
-          className={b('group-link')}
-          target="_blank"
-          title="Privacy Policy"
-        >
-          Privacy Policy
-        </a>
-        <a
-          rel="noopener noreferrer"
-          href="https://www.iubenda.com/privacy-policy/64648824/cookie-policy"
-          className={b('group-link')}
-          target="_blank"
-          title="Cookie Policy"
-        >
-          Cookie Policy
-        </a>
+        <Link className={b('group-link')} to="/legal/privacy-policy/">
+          Privacy policy
+        </Link>
+        <Link className={b('group-link')} to="/legal/cookie-policy/">
+          Cookie policy
+        </Link>
+        <Link className={b('group-link')} to="/legal/gdpr/">
+          GDPR Compliance
+        </Link>
       </Group>
     </div>
     <div className={b('us')}>

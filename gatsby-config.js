@@ -164,6 +164,62 @@ module.exports = {
     },
 
     {
+      resolve: `gatsby-source-json`,
+      options: {
+        resolve: (createNode, digest) =>
+          fetch('https://www.iubenda.com/api/privacy-policy/64648824/only-legal', {
+            headers: { Accept: 'application/json' },
+          })
+            .then(res => res.json())
+            .then(blob =>
+              createNode({
+                id: 'IubendaPrivacyPolicy',
+                children: [],
+                parent: null,
+                internal: {
+                  type: 'IubendaDoc',
+                  contentDigest: digest(blob.content),
+                },
+                slug: 'privacy-policy',
+                frontmatter: {
+                  title: 'Privacy Policy',
+                },
+                html: blob.content,
+              }),
+            ),
+      },
+    },
+
+    {
+      resolve: `gatsby-source-json`,
+      options: {
+        resolve: (createNode, digest) =>
+          fetch('https://www.iubenda.com/api/privacy-policy/64648824/cookie-policy', {
+            headers: { Accept: 'application/json' },
+          })
+            .then(res => res.json())
+            .then(blob =>
+              createNode({
+                id: 'IubendaCookiePolicy',
+                children: [],
+                parent: null,
+                internal: {
+                  type: 'IubendaDoc',
+                  contentDigest: digest(blob.content),
+                },
+                slug: 'cookie-policy',
+                frontmatter: {
+                  title: 'Cookie Policy',
+                },
+                html: blob.content,
+              }),
+            ),
+      },
+    },
+
+
+
+    {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/search/*`] },
     },

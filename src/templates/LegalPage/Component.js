@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import Link from 'components/Link';
 import { Wrap, Space } from 'blocks';
 
@@ -32,6 +31,12 @@ export default class LegalPage extends React.Component {
                   <PageLink to="/legal/terms/">Terms & Conditions</PageLink>
                 </li>
                 <li className={b('menu-page')}>
+                  <PageLink to="/legal/privacy-policy/">Privacy policy</PageLink>
+                </li>
+                <li className={b('menu-page')}>
+                  <PageLink to="/legal/cookie-policy/">Cookie policy</PageLink>
+                </li>
+                <li className={b('menu-page')}>
                   <PageLink to="/legal/gdpr/">GDPR Compliance</PageLink>
                 </li>
               </ul>
@@ -43,7 +48,7 @@ export default class LegalPage extends React.Component {
                 <h1 className={b('content-title')}>{page.frontmatter.title}</h1>
               </Space>
               <div
-                className="content-body"
+                className={b('content-body')}
                 dangerouslySetInnerHTML={{ __html: page.html }}
               />
             </div>
@@ -53,15 +58,3 @@ export default class LegalPage extends React.Component {
     );
   }
 }
-
-export const query = graphql`
-  query LegalPageQuery($sourcePath: String!) {
-    page: markdownRemark(fileAbsolutePath: { eq: $sourcePath }) {
-      html
-      path: fileAbsolutePath
-      frontmatter {
-        title
-      }
-    }
-  }
-`;

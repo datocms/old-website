@@ -1,9 +1,5 @@
 const redirectMappings = {
   '/how-it-works': '/docs',
-  '/legal/privacy':
-    'https://www.iubenda.com/privacy-policy/64648824/full-legal',
-  '/legal/privacy-policy':
-    'https://www.iubenda.com/privacy-policy/64648824/full-legal',
   '/why-static': '/',
   '/gallery': '/use-cases',
   '/api/*': '/docs/content-management-api/:splat',
