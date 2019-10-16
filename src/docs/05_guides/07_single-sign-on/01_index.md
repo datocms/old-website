@@ -12,7 +12,7 @@ Single Sign-On is only available for Ultimate and Enterprise plans.
 You can integrate DatoCMS with any provider that uses SAML 2.0 + Scim 2.0. The following articles provide instructions for specific providers.
 
 * [Okta](/docs/guides/single-sign-on/configure-sso-with-okta)
-* One Login
+* [One Login](/docs/guides/single-sign-on/configure-sso-with-onelogin)
 * Microsoft Azure Active Directory
 
 ### SSO Authentication process
