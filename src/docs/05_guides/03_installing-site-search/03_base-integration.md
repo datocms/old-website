@@ -56,7 +56,7 @@ client.search("florence")
     // [
     //   {
     //     title: "The Crucifix by Brunelleschi",
-    //     body: "...Chapel of Santa Maria Novella in <strong class=\"highlight\">Florence</strong>, dated to about 1410-1415. The Crucifix by Brunelleschi B..."
+    //     body: "...Santa Maria Novella in <strong class=\"highlight\">Florence</strong>..."
     //     url: "http://www.smn.it/en/opere/5104-the-crucifix-by-brunelleschi/",
     //   },
     //   ...
@@ -75,7 +75,7 @@ As you can see, possible matching text is already highlighted for you. You can c
 client.search("florence", { highlightWith: '<span class="h"></span>' })
   .then(function(response) {
     console.info(response.results[0].body);
-    // "...Chapel of Santa Maria Novella in <span class="h">Florence</span>, dated to about 1410-1415. The Crucifix by Brunelleschi B..."
+    // "...Santa Maria Novella in <span class="h">Florence</span>..."
   });
 ```
 
