@@ -34,8 +34,6 @@ The following provisioning features are supported:
 
 ### Configuration Steps
 
-#### SAML App
-
 Switch your Okta dashboard to **Admin mode** by clicking the button in the upper right corner:
 
 ![Switch to admin](../../images/okta/1-admin-mode.png)
