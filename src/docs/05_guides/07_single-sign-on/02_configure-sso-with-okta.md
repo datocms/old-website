@@ -2,7 +2,7 @@
 title: Configuring provisioning with Okta
 ---
 
-*Disclaimer: This integration with Okta is currently under development and is not available to customers yet. [Contact us](/support) to learn more.*
+*Disclaimer: This integration with Okta is currently available only to a limited number of customers. [Contact us](/support) to learn more.*
 
 Automatic user provisioning is supported for the DatoCMS application.
 
@@ -44,39 +44,23 @@ Then select **Applications** and click **Add Application**:
 
 ![Add application](../../images/okta/2-add-application.png)
 
-On the new page press the **Create New App** button:
+On the new page search for **DatoCMS** and press **Add**:
 
-![Create new app](../../images/okta/6-new-app.png)
-
-On the modal, select **SAML 2.0** and press **Create**:
-
-![SAML](../../images/okta/6-1-new-app.png)
+![Add application](../../images/okta/3-select-datocms.png)
 
 A new screen will appear. Give the new app a name and press **Next**:
 
-![SAML](../../images/okta/6-2-new-app.png)
+![First step](../../images/okta/4-1b-create-step.png)
 
-Fill in the following fields:
+Now log in to your DatoCMS project as an administrator, and navigate to **Settings > Single Sign-On > Settings**, and copy the value of the **SAML Token** field:
 
-* **Single sign on URL**: Copy the **Assertion Consumer Service URL** field from DatoCMS and paste it here;
-* **Audience URL (SP Entity ID)**: Copy the **DatoCMS Metadata URL** field from DatoCMS and paste it here;
-* **Name ID format**: `EmailAddress`;
-* **Application username**: `Email`;
+![First step](../../images/okta/4-4-copy-saml-token.png)
 
-![SAML](../../images/okta/7-1-configure-saml.png)
+In Okta, scroll down to **Advanced Sign-On settings**, and paste the value taken from DatoCMS in the previous step inside the **Token** field:
 
-In the **Attributes Statements** section add the following:
+![First step](../../images/okta/4-5-paste-saml-token.png)
 
-* `FirstName`: `user.firstName`
-* `LastName`: `user.lastName`
-
-![SAML](../../images/okta/7-4-configure-saml.png)
-
-Leave the other fields unchanged and press **Next**. Finish the creation of the application compiling the last wizard step and press **Finish**:
-
-![SAML](../../images/okta/7-2-configure-saml.png)
-
-In the **Sign On** tab, copy the URL of the **Identity Provider metadata**...
+Now copy the URL in the **Identity Provider metadata** field...
 
 ![SAML](../../images/okta/7-3-configure-saml.png)
 
@@ -88,44 +72,27 @@ Make sure to also specify the default role editors will be assigned (learn more 
 
 ![SAML](../../images/okta/7-5-configure-saml.png)
 
-Press the **Save settings** button.
+Press the **Save settings** button in DatoCMS. Back in Okta, select **Email** as the **Application username format** and press **Done**:
 
-#### SCIM App
+![SAML](../../images/okta/7-8-username-format.png)
 
-Switch your Okta dashboard to **Admin mode** by clicking the button in the upper right corner:
+Now enter the **Provisioning** tab of your newly created DatoCMS application and click the **Configure API Integration** button:
 
-![Switch to admin](../../images/okta/1-admin-mode.png)
+![First step](../../images/okta/provisioning.png)
 
-Then select **Applications** and click **Add Application**:
+Now in DatoCMS press the **Generate API Token** button under the **SCIM Settings** section:
 
-![Add application](../../images/okta/2-add-application.png)
+![First step](../../images/okta/generate.png)
 
-On the new page search for **Scim 2.0 Test App (OAuth Bearer Token)**:
+Copy the newly generated token:
 
-![Add application](../../images/okta/3-select-scim-2.png)
+![First step](../../images/okta/copy-scim-token.png)
 
-A new screen will appear. Give the new app a name and press **Next**:
+And paste the token inside the **API Token** field in Okta:
 
-![First step](../../images/okta/4-1-create-step.png)
+![First step](../../images/okta/scim-api-token.png)
 
-In the next **Sign-On Options** screen select **SAML 2.0** as the Sign-On method (no Relay state is required), set **Application username format** to **Email** and press **Done**:
-
-![Second step](../../images/okta/4-2-create-step.png)
-
-Now enter the **Provisioning** tab and click the **Configure API Integration** button:
-
-![First step](../../images/okta/5-1-provisioning.png)
-
-Fill in the following fields:
-
-* **SCIM 2.0 Base URL**: Copy the **SCIM Base URL** field from DatoCMS and paste it here;
-* **OAuth Bearer Token**: Copy the **SCIM API Token** field from DatoCMS and paste it here;
-
-![First step](../../images/okta/8-1-datocms-scim-params.png)
-
-Click the **Test API Credentials** button and check that your credentials were verified successfully.
-
-![Second step](../../images/okta/5-2-provisioning.png)
+Click the **Test API Credentials** button and check that your credentials were verified successfully, then press **Save** to confirm.
 
 Now in the **Provisioning > To App** section, press the **Edit** button and:
 
@@ -226,5 +193,6 @@ In case a user does not belong to any group, the default role specified in the *
 * Users without **First Name** or/and **Last Name** in their DatoCMS profiles will be imported to Okta as "Unknown Unknown".
 * While it's technically possible to import DatoCMS Groups into Okta, it's not advisable to do so, as groups created in DatoCMS and imported into Okta cannot be deleted or changed in Okta. They must be managed in DatoCMS. It is suggested to create groups in Okta first and then push those groups to DatoCMS via the **Push Groups** button in Okta as described in the [Pushing groups](/docs/guides/single-sign-on/configure-sso-with-okta#pushing-groups) chapter.
 * DatoCMS application supports Just-in-Time (JIT) provisioning. The SAML assertion will create an SSO user on the fly the first time they try to log in from the identity provider.
+* At the time of writing there's a known issue in Okta (Jira #OKTA-207372) that in some scenarios prevents Okta's administrators to completely remove users from groups. If a user belongs to just a single group, and you remove this user from the group, the user will be successfully deactivated, but it will still remain in the group. As soon as Okta solves this issues we'll update this documentation page.
 
 For any other issues, please [contact our support](/support) to get customized help.
