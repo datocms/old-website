@@ -1,5 +1,5 @@
 ---
-title: GDPR Compliance
+title: GDPR compliance
 ---
 
 DatoCMS takes great care when handling users' personally identifiable data.
@@ -11,7 +11,7 @@ and our [Privacy Policy][datocms-privacy-policy].
 [datocms-terms-of-service]: https://www.datocms.com/legal/terms/
 [datocms-privacy-policy]: https://www.iubenda.com/privacy-policy/64648824/full-legal
 
-## Personal Data We Collect
+## Personal data we collect
 
 The system stores personal information for the main account and invited editors.
 
@@ -27,7 +27,7 @@ Editors:
 * first name,
 * last name
 
-## Data Storage
+## Data storage
 
 Personal data is stored exclusively in the DatoCMS database.
 
@@ -39,7 +39,7 @@ Heroku's DPA (Data Processing Addendum) is [here][heroku-dpa].
 [heroku-gdpr-compliance]: https://devcenter.heroku.com/articles/gdpr
 [heroku-dpa]: https://www.salesforce.com/content/dam/web/en_us/www/documents/legal/Agreements/data-processing-addendum.pdf
 
-## Data Shared with Third Parties
+## Data shared with third parties
 
 ### Chargebee
 
@@ -58,6 +58,17 @@ The information is:
 
 [Chargebee GDPR Compliance](https://www.chargebee.com/security/gdpr/)
 
+### Stripe
+
+When adding a credit card to your billing profile we send the card information to Stripe directly, without reading that information ourselves.
+
+We then forward the result of the card registration to Chargebee that triggers the card charges.
+
+So to Stripe we send:
+
+* credit card details, which we cannot read ourselves apart the last 4 digits,
+* email
+
 ### Fatture in Cloud
 
 Our company needs to send certified digital invoices to our Italian customers and to
@@ -74,11 +85,11 @@ The information passed on to _Fatture in Cloud_ are:
 
 [Fatture in Cloud GDPR Compliance](https://www.fattureincloud.it/gdpr/)
 
-### Kayako
+### Front
 
-When you open a support ticket, via email or chat, we supply them the email address.
+When you open a support ticket, via email or support form, we supply them the email address.
 
-[Kayako privacy policy](https://www.kayako.com/about/privacy)
+[Front privacy policy](https://frontapp.com/privacy-policy)
 
 ### Mailchimp
 
@@ -97,7 +108,7 @@ We use Rollbar to track software errors. In certain situations, to help the trac
 
 [Rollbar GDPR Compliance](https://rollbar.com/compliance/gdpr/)
 
-## Legal Basis
+## Legal basis
 
 We collect and store your data for the following reasons:
 
@@ -109,19 +120,24 @@ We collect and store your data for the following reasons:
 
 [wikipedia-gdpr-lawful-basis]: https://en.wikipedia.org/wiki/General_Data_Protection_Regulation#Lawful_basis_for_processing
 
-## Use of the Data
+## Use and flow of the data
 
 We use your data to do the following:
 
-* to allow you to log in to the site.
+* to allow you to log in to the site. In this case your data stays in our main servers only.
+* to send you an invoice, we never save your invoicing data, we delegate Stripe and Chargebee the storage and management of your data.
+* as an Italian company we need to send electronic copy of all our invoices to the state. To do that we have an automated service that pulls the data from Chargebee and generates the invoices also on Fatture in Cloud. So your invoicing data will be both on Chargebee and Fatture in Cloud.
+* to send you transactional emails about the service, promotional and marketing emails we use Mailchimp. On account registration we send your email address only to them.
+* on support request we ask your email address to contact you back and we share that information with Front, the service we use for customer care.
+* when an error occurs on the platform we automatically send some telemetry data to Rollbar to be notified about the errors and help us to resolve them. If the error happens on the CMS interface we also send the email address of the user to be able to easily get in touch to gain additional information.
 
-## Duration of Data Retention
+## Duration of data retention
 
 We store your data for the duration of your use of the system.
 
 As soon as you cancel your account, your personal information is erased.
 
-## Your Rights over Your Personal Data
+## Your rights over your personal data
 
 We respect your right to do the following:
 
@@ -134,6 +150,4 @@ Please contact us (at the address below) if you want to do any of the above.
 ## How to contact us
 
 If you have any doubts, or wish to exercise your rights (as listed above),
-please send us an email here: [support@datocms.com][support-email]
-
-[support-email]: support@datocms.com
+please send us an email here: [support@datocms.com](support@datocms.com)

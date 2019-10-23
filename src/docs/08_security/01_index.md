@@ -73,12 +73,17 @@ We interact with many third parties that are useful for various parts of the app
 
 We make sure that every third party that we use is as careful as we are on security.
 
+Here's the list of the third parties that we are using with links to their security or compliance page and why we use them:
+
+ - [Redis Labs](https://redislabs.com/company/compliance-and-privacy/) as a caching layer and as a volatile database
+ - [Scout APM](https://docs.scoutapm.com/#security) to find performance bottlenecks on our server
+
 
 ### Data
 
 All the **data is encrypted in transit with TLS**, both internally between services and externally when reaching the users.
 
-All our **database data are encrypted at rest**. We retain database backups for up to a year.
+All our **database data are encrypted at rest**. We retain database backups for up to a week.
 
 If you delete your project we delete all data from the live database immediately but we'll retain copies in our backups that are not accessible from the live system.
 
