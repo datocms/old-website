@@ -183,7 +183,7 @@ article = client.items.create(
 )
 ```
 
-### Multi-language fields
+## Multi-language fields
 
 If localization is enabled on some field, the format of the payload changes a little bit, as you need to pass an hash representing the value of the field for each of the locales you setup in your administrative area:
 
@@ -200,3 +200,10 @@ pp client.items.create(
 )
 ```
 
+## Further documentation
+
+Every API call that you can do with the Ruby client is documented in the following sections of the guide.
+
+You'll find an example for every section, like this:
+
+![Ruby example of API call](../images/clients/ruby-docs-example.png)

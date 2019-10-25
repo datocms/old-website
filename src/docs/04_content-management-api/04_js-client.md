@@ -181,7 +181,7 @@ client.items.create({
   .then((record) => console.log(record));
 ```
 
-### Multi-language fields
+## Multi-language fields
 
 If localization is enabled on some field, the format of the payload changes a little bit, as you need to pass an hash representing the value of the field for each of the locales you setup in your administrative area:
 
@@ -201,3 +201,11 @@ client.uploadImage('http://i.giphy.com/NXOF5rlaSXdAc.gif')
   })
   .then(record => console.log(record));
 ```
+
+## Further documentation
+
+Every API call that you can do with the JavaScript client is documented in the following sections of the guide.
+
+You'll find an example for every section, like this:
+
+![JavaScript example of API call](../images/clients/js-docs-example.png)
