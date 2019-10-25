@@ -24,7 +24,7 @@ Make sure to add the following CORS configuration to the bucket:
 </CORSConfiguration>
 ```
 
-Create an IAM key with the following permissions:
+Create a IAM key for DatoCMS with the following permissions:
 
 ```json
 {
@@ -32,13 +32,13 @@ Create an IAM key with the following permissions:
   "Statement": [
     {
       "Action": [
-        "s3:ListAllMyBuckets"
+        "s3:DeleteObject",
+        "s3:ListBucket",
+        "s3:GetObject",
+        "s3:GetBucketLocation",
+        "s3:PutObject",
+        "s3:PutObjectAcl"
       ],
-      "Effect": "Allow",
-      "Resource": "arn:aws:s3:::*"
-    },
-    {
-      "Action": "s3:*",
       "Effect": "Allow",
       "Resource": [
         "arn:aws:s3:::your-bucket-name",
@@ -49,17 +49,44 @@ Create an IAM key with the following permissions:
 }
 ```
 
+We recommend you to create a stricter IAM key for Imgix as they won't need to upload objects:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name",
+        "arn:aws:s3:::your-bucket-name/*"
+      ]
+    }
+  ]
+}
+```
+
+Also make sure your bucket has these _block public access_ policies in place:
+
+![S3 block public access policies](../../images/custom-uploads/s3-policy.png)
+
+
 ### Create an Imgix source
 
 Go to [Imgix](https://www.imgix.com/) and create a new account. Create a new source, and link it to the S3 bucket you just created.
 
-![foo](../../images/custom-uploads/1.png)
+![Add a source type on Imgix](../../images/custom-uploads/1.png)
 
 ### Adding a custom domain
 
 If you're not satisfied with the default Imgix subdomain (ie. https://your-source.imgix.net) you can add a custom domain to the Imgix source, then configure your domain DNS settings so that its CNAME record points to `your-source.imgix.net`:
 
-![foo](../../images/custom-uploads/2.png)
+![Add a custom domain on Imgix](../../images/custom-uploads/2.png)
 
 #### Enable HTTPS for the Imgix source
 
