@@ -67,3 +67,22 @@ To switch from a paid plan to a free plan you can either delete the site you're 
 
 You can request a refund of an annual plan within 15 days of purchase. Refunds are issued to the card that was originally charged, and may take up to 10 business days to complete.
 
+### Multiple billing profiles
+
+For each account you can have multiple billing accounts registered. Each billing profile will have its own billing cycle working as we explained [above](#billing-and-payments).
+
+You can add a new billing profile just before finalising the payment:
+
+![Add a new billing profile](../images/billing/new-billing.png)
+
+### Change credit card
+
+If your card expires, or for whatever other reason you need to change the credit card attached to your billing profile, go to your billing profile page:
+
+![Billing profile page](../images/billing/change-card.png)
+
+and there click on the "Change credit card" button.
+
+![Change credit card screen](../images/billing/change-card-2.png)
+
+By doing this you don't need to transfer your project to a separate billing account, nor you will need to start a new billing cycle. This will simply start charging a different card and keep everything else unchanged.
