@@ -82,7 +82,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       .replace(/\/[0-9]+_/g, '/');
     let context = {};
 
-    if (pagePath === '/docs/content-delivery-api/filtering') {
+    if (pagePath === '/docs/content-delivery-api/filtering' || pagePath === '/docs/content-management-api/filtering') {
       headings = headings.concat(
         Object.keys(fieldsMetaInfo).map(name => ({
           id: `#${slugs.slug(name)}`,
@@ -97,6 +97,7 @@ module.exports = async function docs({ graphql, actions: { createPage } }) {
       context = {
         fieldsMetaInfo,
         fieldTypesInfo,
+        itemResource: stringify(cmaResources[1]),
       };
     }
 

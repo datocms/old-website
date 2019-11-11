@@ -1,0 +1,44 @@
+@import 'utils/colors.sass'
+@import 'blocks/mixins.sass'
+
+.HttpExample
+  margin-bottom: 40px
+
+  &:last-child
+    margin-bottom: 0
+
+.HttpExample__title.HttpExample__title
+  margin-bottom: 30px
+
+.HttpExample__snippet.HttpExample__snippet
+  > pre[class*="language-"]
+    padding: 0
+    margin: 0
+
+    > code
+      display: block
+      padding: 25px
+
+.HttpExample__snippet__title
+  background-color: #efe6db
+  padding: 6px 25px 4px
+  font-family: $sans-serif-font
+  font-size: 15px
+  font-weight: 500
+
+.HttpExample__headers
+  margin-top: 20px
+
+.HttpExample__header-name,
+.HttpExample__header-value
+  display: inline
+  vertical-align: middle
+
+.HttpExample__header-value
+  margin-left: 8px
+
+.HttpExample__placeholder
+  font-weight: 700
+
+.HttpExample__http-body
+  margin-top: 20px
