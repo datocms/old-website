@@ -80,7 +80,7 @@
     "sort-object": "3.0.2",
     "svg-inline-loader": "^0.8.0",
     "unist-util-visit": "^1.4.1",
-    "whatwg-fetch": "3.0.0"
+    "whatwg-fetch": "^2.0.4"
   },
   "keywords": [
     "gatsby"
