@@ -92,13 +92,13 @@ export default class LearnPage extends React.Component {
                         to="/docs/content-modelling"
                         className={b('block__item')}
                       >
-                        <span className={b('block__item__main')}>Models and fields</span>
+                        <span className={b('block__item__main')}>Introduction</span>
                       </Link>
                       <Link
-                        to="/docs/content-modelling/single-instance"
+                        to="/docs/content-modelling/field-types"
                         className={b('block__item')}
                       >
-                        <span className={b('block__item__main')}>Single instance models</span>
+                        <span className={b('block__item__main')}>Field types</span>
                       </Link>
                       <Link
                         to="/docs/content-modelling/modular-content"
