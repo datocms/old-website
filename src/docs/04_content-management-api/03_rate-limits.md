@@ -33,4 +33,4 @@ Our Ruby and JS API clients take care of rate limit errors and will automaticall
 
 #### Reaching your plan monthly API calls limit
 
-For projects under a paid plan, even exceeding the API call or bandwidth limits does not lead to the interruption of the service, but the payment of an additional fee commensurate with the use. For pojects under a free plan, service will be temporarily disabled until the beginning of the following calendar month, unless you provide a credit card. For more details, check our [Plans, billing and pricing page](/docs/general-concepts/pricing).
+For projects under a paid plan, even exceeding the API call or bandwidth limits does not lead to the interruption of the service, but the payment of an additional fee commensurate with the use. For projects under a free plan, service will be temporarily disabled until the beginning of the following calendar month, unless you provide a credit card. For more details, check our [Plans, billing and pricing page](/docs/general-concepts/pricing).
