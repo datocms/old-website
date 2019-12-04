@@ -1,5 +1,5 @@
 ---
-title: Video support
+title: Video encoding/streaming
 ---
 
 DatoCMS natively supports video encoding and streaming, thanks to the integration with [Mux](https://mux.com/), the fastest and most advanced cloud encoding platform for on-demand streaming video.
@@ -8,8 +8,7 @@ Every video you upload in your DatoCMS project will be instantly available for s
 
 DatoCMS can ingest almost every available codec including those for broadcast and professional applications (like H.264, H.265, VP9, and Apple ProRes) and thanks to HLS Adaptive Bitrate (ABR) streaming, every viewer will always download the right video size for its device and connection speed.
 
-
-### Media area
+### Uploading videos
 
 You can upload videos just like you do with normal assets. From the interface you'll have access to some metadata and of course you'll be able to play the video straight away.
 
@@ -18,7 +17,6 @@ You can upload videos just like you do with normal assets. From the interface yo
 Then you can add a video to your models using the _asset_ or _asset gallery_ fields.
 
 We also support integrations with embedded videos from YouTube/Vimeo/Facebook, but that's a separate field type.
-
 
 ### What gets exposed via the APIs
 
@@ -29,11 +27,9 @@ Our Content Delivery API, Content Management API and all of our API clients and 
 - Duration and frame rate of the video;
 - Thumbnail URL: resizable, croppable and available in JPEG, PNG and GIF format;
 
-
 ### Pricing and availability
 
 Integration with Mux is available starting from DatoCMS Advanced plan. Each existing plan already includes several minutes of encoding and streaming in the price, and if you ever go over-quota your website will not suffer any service interruption. At the end of the month, we’ll charge you for the difference.
-
 
 ### What happens if you downgrade or cancel subscription?
 

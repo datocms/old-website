@@ -57,6 +57,12 @@ const formatValue = (name, value) => {
     return `${value} ${value === 1 ? ' month' : ' months'}`;
   }
 
+  if (name.endsWith('Seconds')) {
+    return value > 60 * 60 ?
+      `${parseInt(value / 60 / 60)} hours` :
+      `${parseInt(value / 60)} minutes`;
+  }
+
   if (name.endsWith('Bytes')) {
     return prettyBytes(value);
   }
@@ -72,10 +78,12 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
   if (datoPlan && datoPlan.attributes.hasOwnProperty(apiId)) {
     const value = datoPlan.attributes[apiId];
 
-    console.log(datoPlan.attributes.name, apiId, value);
-
     if (value === null) {
       return <span>Unlimited</span>;
+    }
+
+    if (value === 0) {
+      return <span />;
     }
 
     if (value === true) {
@@ -453,6 +461,14 @@ class PricingPage extends React.Component {
 
                   if (limit === 'apiCalls') {
                     limit = 'calls';
+                  }
+
+                  if (limit === 'muxEncodingSeconds') {
+                    limit = 'of video input'
+                  }
+
+                  if (limit === 'muxStreamingSeconds') {
+                    limit = 'of delivered video'
                   }
 
                   return (
