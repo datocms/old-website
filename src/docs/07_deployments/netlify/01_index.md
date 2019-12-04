@@ -72,7 +72,7 @@ In the *Site Settings*, make sure you add your DatoCMS read-only token as a `DAT
 
 ![Add API token as environment variable](../../images/netlify/6-env-settings.png)
 
-You can find your API token in the *Admin area > API tokens* section:
+You can find your API token in the *Settings > API tokens* section:
 
 ![Retrieve API token in DatoCMS settings](../../images/7-api-token.png)
 
@@ -88,7 +88,7 @@ Once the build process if finished, Netlify will publish under a temporary domai
 
 There's only one last step needed: connecting DatoCMS to Netlify, so that everytime one of your editors press the *Publish changes* button in your administrative area, a new build process (thus a new publication of the final website) gets triggered.
 
-To do so, go to the *Admin area > Deployment settings* and select *Netlify*:
+To do so, go to the *Settings > Environments*, add a new one and select *Netlify* as build method:
 
 ![Authorize DatoCMS in Netlify](../../images/netlify/10-authorize.png)
 
