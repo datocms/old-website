@@ -302,6 +302,7 @@ export const query = graphql`
           loop
           thumbTimeSeconds
           video {
+            title
             width
             height
             video {
