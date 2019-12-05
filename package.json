@@ -80,6 +80,7 @@
     "sort-object": "3.0.2",
     "svg-inline-loader": "^0.8.0",
     "unist-util-visit": "^1.4.1",
+    "video.js": "^7.6.6",
     "whatwg-fetch": "^2.0.4"
   },
   "keywords": [

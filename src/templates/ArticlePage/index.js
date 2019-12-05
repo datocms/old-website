@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 import ResponsiveEmbed from 'react-responsive-embed';
 import Lightbox from 'react-images';
 import parse from 'html-react-parser';
-
+import VideoJsPlayer from 'components/VideoPlayer';
 import bem from 'utils/bem';
 import './style.sass';
 import 'components/DocAside/content.sass';
@@ -98,6 +98,28 @@ export default class ArticlePage extends React.Component {
                   )}
                   {block.model.apiKey === 'text' &&
                     parse(block.text.markdown.html)}
+                  {block.model.apiKey === 'internal_video' && (
+                    <div
+                      className={b('content-image')}
+                      style={{ maxWidth: `${block.video.width}px` }}
+                    >
+                      <VideoJsPlayer
+                        controls
+                        autoplay={block.autoplay}
+                        autoload
+                        aspectRatio={`${block.video.width}:${block.video.height}`}
+                        loop={block.loop}
+                        hidePlaybackRates
+                        src={block.video.video.streamingUrl}
+                        poster={block.video.thumbnailUrl}
+                      />
+                      {block.video.title && (
+                        <div className={b('content-image__label')}>
+                          {block.video.title}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   {block.model.apiKey === 'question_answer' && (
                     <div className={b('question-answer')}>
                       <div className={b('question-answer__question')}>
@@ -139,9 +161,20 @@ export default class ArticlePage extends React.Component {
                         )}
                       >
                         {block.image.format === 'gif' ? (
-                          <video poster={`${block.image.url}?fm=jpg&fit=max&w=900`} controls loop autoPlay>
-                            <source src={`${block.image.url}?fm=webm&w=900`} type="video/webm" />
-                            <source src={`${block.image.url}?fm=mp4&w=900`} type="video/mp4" />
+                          <video
+                            poster={`${block.image.url}?fm=jpg&fit=max&w=900`}
+                            controls
+                            loop
+                            autoPlay
+                          >
+                            <source
+                              src={`${block.image.url}?fm=webm&w=900`}
+                              type="video/webm"
+                            />
+                            <source
+                              src={`${block.image.url}?fm=mp4&w=900`}
+                              type="video/mp4"
+                            />
                           </video>
                         ) : (
                           <Img
@@ -162,17 +195,13 @@ export default class ArticlePage extends React.Component {
                       <div className={b('content-video__wrapper')}>
                         {block.video.provider === 'youtube' ? (
                           <ResponsiveEmbed
-                            src={`//www.youtube.com/embed/${
-                              block.video.providerUid
-                            }`}
+                            src={`//www.youtube.com/embed/${block.video.providerUid}`}
                             ratio={`${block.video.width}:${block.video.height}`}
                             allowFullScreen
                           />
                         ) : (
                           <ResponsiveEmbed
-                            src={`//player.vimeo.com/video/${
-                              block.video.providerUid
-                            }?title=0&byline=0&portrait=0`}
+                            src={`//player.vimeo.com/video/${block.video.providerUid}?title=0&byline=0&portrait=0`}
                             ratio={`${block.video.width}:${block.video.height}`}
                             allowFullScreen
                           />
@@ -264,6 +293,21 @@ export const query = graphql`
             providerUid
           }
         }
+        ... on DatoCmsInternalVideo {
+          id
+          model {
+            apiKey
+          }
+          autoplay
+          video {
+            width
+            height
+            video {
+              streamingUrl
+              thumbnailUrl
+            }
+          }
+        }
         ... on DatoCmsQuote {
           id
           model {
@@ -298,7 +342,10 @@ export const query = graphql`
       author {
         name
         avatar {
-          fixed(width: 50, imgixParams: {w:"50", h:"50", fit:"crop", crop:"faces" }) {
+          fixed(
+            width: 50
+            imgixParams: { w: "50", h: "50", fit: "crop", crop: "faces" }
+          ) {
             ...GatsbyDatoCmsFixed
           }
         }
