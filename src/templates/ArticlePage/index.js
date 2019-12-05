@@ -111,7 +111,7 @@ export default class ArticlePage extends React.Component {
                         loop={block.loop}
                         hidePlaybackRates
                         src={block.video.video.streamingUrl}
-                        poster={block.video.thumbnailUrl}
+                        poster={`${block.video.video.thumbnailUrl}?time=${block.thumbTimeSeconds || (block.video.video.duration / 2)}`}
                       />
                       {block.video.title && (
                         <div className={b('content-image__label')}>
@@ -299,10 +299,13 @@ export const query = graphql`
             apiKey
           }
           autoplay
+          loop
+          thumbTimeSeconds
           video {
             width
             height
             video {
+              duration
               streamingUrl
               thumbnailUrl
             }
