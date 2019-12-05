@@ -13,7 +13,7 @@ const Controls = {
 };
 
 class VideoPlayer extends Component {
-    playerId = `video-player-${(new Date()) * 1}`
+    playerId = `video-player-${(new Date()) * 1}-${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}`
     player = {};
     componentDidMount() {
         this.init_player(this.props);
@@ -111,7 +111,7 @@ VideoPlayer.propTypes = {
     poster: PropTypes.string,
     fluid: PropTypes.bool,
     loop: PropTypes.bool,
-    aspectRatio: PropTypes.number,
+    aspectRatio: PropTypes.string,
     controls: PropTypes.bool,
     autoplay: PropTypes.bool,
     preload: PropTypes.oneOf(['auto', 'none', 'metadata']),
