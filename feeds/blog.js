@@ -50,6 +50,7 @@ const query = `
             thumbTimeSeconds
             video {
               video {
+                duration
                 thumbnailUrl
               }
             }
