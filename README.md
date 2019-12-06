@@ -15,3 +15,4 @@ On Ubuntu the sharp library needs an updated version of libvips. In that case yo
 Get the latest release here: https://github.com/libvips/libvips and build it.
 
 Then I had to follow these steps to make it work: https://github.com/lovell/sharp/issues/327#issuecomment-167094002
+
