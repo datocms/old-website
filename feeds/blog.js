@@ -42,6 +42,18 @@ const query = `
               url
             }
           }
+          ... on DatoCmsInternalVideo {
+            id
+            model {
+              apiKey
+            }
+            thumbTimeSeconds
+            video {
+              video {
+                thumbnailUrl
+              }
+            }
+          }
           ... on DatoCmsVideo {
             id
             model { apiKey }
@@ -106,6 +118,10 @@ module.exports = {
 
               if (block.model.apiKey === 'quote') {
                 return block.quote.markdown.html;
+              }
+
+              if (block.model.apiKey === 'internal_video') {
+                return `<img src="${block.video.video.thumbnailUrl}?time=${block.thumbTimeSeconds || (block.video.video.duration / 2)}&width=900" />`;
               }
 
               if (block.model.apiKey === 'question_answer') {
