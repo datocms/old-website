@@ -13,7 +13,6 @@ const Controls = {
 };
 
 class VideoPlayer extends Component {
-    playerId = `video-player-${(new Date()) * 1}-${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}`
     player = {};
     componentDidMount() {
         this.init_player(this.props);
@@ -33,7 +32,7 @@ class VideoPlayer extends Component {
 
     init_player(props) {
         const playerOptions = this.generate_player_options(props);
-        this.player = videojs(document.querySelector(`#${this.playerId}`), playerOptions);
+        this.player = videojs(document.querySelector(`#${props.playerId}`), playerOptions);
         this.player.src(props.src)
         this.player.poster(props.poster)
         this.set_controls_visibility(this.player, props.hideControls);
@@ -101,7 +100,7 @@ class VideoPlayer extends Component {
 
     render() {
         return (
-            <video id={this.playerId} className={`video-js ${this.props.bigPlayButtonCentered? 'vjs-big-play-centered' : ''} ${this.props.className}`}></video>
+            <video id={this.props.playerId} className={`video-js ${this.props.bigPlayButtonCentered? 'vjs-big-play-centered' : ''} ${this.props.className}`}></video>
         )
     }
 }

@@ -104,6 +104,7 @@ export default class ArticlePage extends React.Component {
                       style={{ maxWidth: `${block.video.width}px` }}
                     >
                       <VideoJsPlayer
+                        playerId={`video-js-${block.id}`}
                         controls
                         autoplay={block.autoplay}
                         autoload
