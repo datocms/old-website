@@ -2,7 +2,7 @@
 title: Media Area
 ---
 
-In the Media Area of your project you can upload, see, edit and organise all your assets.
+In the Media Area of your project you can upload, see, edit and organize all your assets.
 
 ![Media area overview](../images/media/media-area-overview.png)
 
@@ -12,7 +12,7 @@ Each single asset can be seen with its information and edited.
 
 ### Asset organisation
 
-With a growing set of assets you might need to organise them. To do that we offer a few different options.
+With a growing set of assets you might need to organize them. To do that we offer a few different options.
 
 You can filter on any number of fields with a set of options for each field:
 
@@ -22,7 +22,7 @@ If you have a useful filter that you want to save or share with the rest of the 
 
 ![Save and share a filter](../images/media/save-filter.png)
 
-One way to organise assets that we recommend is to **combine filters with tags**, both manually added and machine learning-based smart tags, automatically added on asset upload.
+One way to organize assets that we recommend is to **combine filters with tags**, both manually added and machine learning-based smart tags, automatically added on asset upload.
 
 You can efficiently tag leveraging the bulk tagging:
 

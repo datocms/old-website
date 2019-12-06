@@ -12,7 +12,7 @@ The idea is to give your authors the choice to compose their content by alternat
 
 ![Modular content example](../images/modular-content/0.png)
 
-This gives authors a lot of freedom to organise their content, much like Medium editor does, while keeping the content clean and structured.
+This gives authors a lot of freedom to organize their content, much like Medium editor does, while keeping the content clean and structured.
 
 ---
 
