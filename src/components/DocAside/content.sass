@@ -52,13 +52,15 @@
     font-family: $sans-serif-font
     font-weight: 500
     font-size: 0.9em
+    display: inline-block
 
     &:hover
       text-decoration: none
       background: rgba($azure-color, 0.2)
 
     code
-      background-color: transparent
+      background-color: rgba($azure-color, 0.2)
+      font-size: 84%
 
   hr
     border: 0
@@ -164,14 +166,9 @@
   code
     font-family: $monospaced-font
     background-color: darken($code-bg-color, 5%)
-    padding: 0.15em 0
-    border-radius: 3px
+    padding: 0.15em 0.25em
     font-size: 75%
     font-variant: none
-
-    &:after, &:before
-      letter-spacing: -0.2em
-      content: "\00a0"
 
   pre[class*="language-"]
     overflow: auto
@@ -198,6 +195,7 @@
       border: 0
       padding: 0
       border-radius: 0
+      font-size: 70%
 
       &:after, &:before
         display: none
