@@ -57,7 +57,7 @@ export default class ArticlePage extends React.Component {
             <div className={b('header__inner')}>
               <div className={b('meta')}>
                 <div className={b('meta__avatar')}>
-                  <Img fluid={article.author.avatar.fixed} />
+                  <Img fixed={article.author.avatar.fixed} />
                 </div>
                 <div className={b('meta__description')}>
                   <p>
@@ -112,7 +112,10 @@ export default class ArticlePage extends React.Component {
                         loop={block.loop}
                         hidePlaybackRates
                         src={block.video.video.streamingUrl}
-                        poster={`${block.video.video.thumbnailUrl}?time=${block.thumbTimeSeconds || (block.video.video.duration / 2)}`}
+                        poster={`${
+                          block.video.video.thumbnailUrl
+                        }?time=${block.thumbTimeSeconds ||
+                          block.video.video.duration / 2}`}
                       />
                       {block.video.title && (
                         <div className={b('content-image__label')}>
@@ -151,17 +154,17 @@ export default class ArticlePage extends React.Component {
                   {block.model.apiKey === 'image' && (
                     <div
                       className={b('content-image')}
-                      style={{ maxWidth: `${block.image.width}px` }}
                     >
                       <a
                         href={`${block.image.url}?auto=format&w=1200&fit=max`}
+                        style={{ maxWidth: `${block.image.width}px` }}
                         className={b('content-image__image')}
                         onClick={this.handleOpenImage.bind(
                           this,
                           `${block.image.url}?auto=format&w=1200&fit=max`,
                         )}
                       >
-                        {block.image.format === 'gif' ? (
+                        {block.image.format === 'gif' && (
                           <video
                             poster={`${block.image.url}?fm=jpg&fit=max&w=900`}
                             controls
@@ -177,10 +180,17 @@ export default class ArticlePage extends React.Component {
                               type="video/mp4"
                             />
                           </video>
-                        ) : (
+                        )}
+                        {block.image.format !== 'gif' && block.image.fluid && (
                           <Img
                             alt={block.image.alt}
                             fluid={block.image.fluid}
+                          />
+                        )}
+                        {block.image.format !== 'gif' && !block.image.fluid && (
+                          <img
+                            alt={block.image.alt}
+                            src={`${block.image.url}?fit=max&w=900`}
                           />
                         )}
                       </a>
