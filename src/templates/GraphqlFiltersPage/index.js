@@ -101,6 +101,7 @@ class GraphqlFiltersBlock extends React.Component {
 
     return (
       <div>
+        <div dangerouslySetInnerHTML={{ __html: this.props.data.pageHtml.html}} />
         <h3 id="meta-fields">
           <Anchor id="meta-fields" />
           Meta fields
@@ -143,3 +144,11 @@ class GraphqlFiltersPage extends React.Component {
 }
 
 export default GraphqlFiltersPage;
+
+export const query = graphql`
+  query GraphqlFiltersPageQuery($htmlFileAbsolutePath: String!) {
+    pageHtml: markdownRemark(fileAbsolutePath: {eq: $htmlFileAbsolutePath}) {
+      html
+    }
+  }
+`;
