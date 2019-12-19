@@ -56,7 +56,7 @@ Now return to your bucket in the **Permissions** tab and add **Storage Object Vi
 
 ![Create service account](../../images/custom-uploads/7.png)
 
-As the last step, enable the [Cloud Vision API](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) for your project:
+As the last step, enable the [Cloud Vision API](https://console.cloud.google.com/apis/library/vision.googleapis.com) on your project:
 
 ![Create service account](../../images/custom-uploads/10.png)
 
