@@ -4,7 +4,9 @@ title: Configure Google Cloud Storage
 
 ### Create a new bucket
 
-Login to the [Google Cloud Console](https://console.cloud.google.com/storage/browser) and create a new Storage bucket inside one of your projects.
+Login to the [Google Cloud Console](https://console.cloud.google.com/storage/browser) and create a new Storage bucket inside one of your projects. Make sure you select **Uniform** access control:
+
+![Uniform access control](../../images/custom-uploads/6.png)
 
 #### Create an interoperable key
 
@@ -28,15 +30,35 @@ The first step is to obtain a temporary access token:
 1. Click the **Authorize APIs** button and follow the authentication process
 1. When the OAuth flow completes, copy the **Access token**
 
-Perform the following API request to set up proper CORS settings to the bucket, replacing `<ACCESS-TOKEN>` with the actual access token we just obtained:
+Perform the following API request to set up proper CORS settings to the bucket, replacing `<ACCESS-TOKEN>` with the actual access token we just obtained and `<BUCKET-NAME>` with your bucket name:
 
 ```
-curl 'https://storage.googleapis.com/storage/v1/b/datocms-images?fields=cors' \
+curl 'https://storage.googleapis.com/storage/v1/b/<BUCKET-NAME>?fields=cors' \
       -X PATCH \
       -H 'Authorization: Bearer <ACCESS-TOKEN>' \
       -H 'Content-Type: application/json' \
       --data-binary '{ "cors": [{ "maxAgeSeconds": "3600", "method": ["GET", "POST", "PUT"], "origin": ["*"], "responseHeader":["Content-Type"] }] }'
 ```
+
+#### Create a Service Account key and associate it to the bucket
+
+Enter the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts) and create a new service account:
+
+![Create service account](../../images/custom-uploads/5.png)
+
+Skip the *Grant this service account access to project* step. In the last step, press the **Create key** button, and select the JSON type:
+
+![Create service account](../../images/custom-uploads/8.png)
+
+Download the JSON key file and store it for later use.
+
+Now return to your bucket in the **Permissions** tab and add **Storage Object Viewer** role to the service account just created.
+
+![Create service account](../../images/custom-uploads/7.png)
+
+As the last step, enable the **Cloud Vision API** for your project:
+
+![Create service account](../../images/custom-uploads/10.png)
 
 ### Create an Imgix source
 
@@ -63,7 +85,8 @@ Alternatively, to get HTTPS for free, you can use Cloudflare on top of Imgix. Th
 Once everything is ready, send an email to [support@datocms.com](mailto:support@datocms.com) and request the change. These are the information we'll ask you for:
 
 * Your Cloud Storage bucket name (`my-bucket-name`)
-* Your Interoperable **Access key** and **Secret**
+* Your interoperable **Access key** and **Secret**
+* Your Service account JSON key file
 * The Imgix domain (ie. `your-source.imgix.net` or `assets.superduper.com`)
 
 Together we'll schedule a maintenance window where we'll transfer every assets already uploaded to your Project to the new bucket, and enable the custom domain.
