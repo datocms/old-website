@@ -38,7 +38,7 @@ This is the minimal code you need to write to make a field-editor plugin that re
 
       input.value = plugin.getFieldValue(plugin.fieldPath);
 
-      plugin.addFieldChangeListener(plugins.fieldPath, function(newValue) {
+      plugin.addFieldChangeListener(plugin.fieldPath, function(newValue) {
         input.value = newValue;
       });
 
