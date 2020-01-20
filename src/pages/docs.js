@@ -236,6 +236,7 @@ export default class LearnPage extends React.Component {
                 </div>
                 <div className={b('integrations')}>
                   {[
+                    'react',
                     'gatsbyjs',
                     'hugo',
                     'jekyll',
@@ -283,7 +284,7 @@ export const query = graphql`
       }
     }
     integrations: allDatoCmsIntegration(
-      filter: { integrationType: { slug: { in: ["ci", "static-generator"] } } }
+      filter: { integrationType: { slug: { in: ["ci", "static-generator", "framework"] } } }
     ) {
       edges {
         node {
