@@ -14,7 +14,7 @@ If you do so:
 
   On the Content Management API the calls by default fetch published record, you can get also the records in draft by specifying the version argument. More details on this [documentation page](https://www.datocms.com/docs/content-management-api/resources/item#instances).
 
-  The Content Delivery API instead has two different endpoints, one for published records and one for the latest version. Again more details on this [documentation page](https://www.datocms.com/docs/content-delivery-api/endpoint.)
+  The Content Delivery API instead has two different endpoints, one for published records and one for the latest version. Again more details on this [documentation page](https://www.datocms.com/docs/content-delivery-api/endpoint).
 
 * If you make a change to a published record, its status will be become **Updated**. Again, those changes won't be visible to end users and published until you explicitly click on the *Publish* button again.
 
