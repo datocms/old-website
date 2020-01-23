@@ -15,7 +15,7 @@ actual image at a later time, to offer a smooth experience when loading images (
 Alternatively a more minimal option is to use the dominant colors to prepare the space
 where the image will be shown:
 
-<iframe src="https://cda-explorer.datocms.com/?embed=&apitoken=faeb9172e232a75339242faafb9e56de8c8f13b735f7090964&query=%7B%0A%20%20allUploads%20%7B%0A%20%20%20%20colors%20%7B%20hex%20%7D%0A%20%20%20%20blurhash%0A%20%20%20%20blurUpThumb%0A%20%20%7D%0A%7D%0A"></iframe>
+<iframe src="https://cda-explorer.datocms.com/?embed=&apitoken=faeb9172e232a75339242faafb9e56de8c8f13b735f7090964&query=%7B%0A%20%20allUploads%20%7B%0A%20%20%20%20blurhash%0A%20%20%20%20blurUpThumb%0A%20%20%20%20colors%20%7B%20hex%20%7D%0A%20%20%7D%0A%7D%0A"></iframe>
 
 ### Responsive images
 
@@ -50,7 +50,7 @@ we can augment the video objects with:
 
 Like so:
 
-<iframe src="https://cda-explorer.datocms.com/?embed=&apitoken=faeb9172e232a75339242faafb9e56de8c8f13b735f7090964&query=%7B%0A%20%20allUploads%28%0A%20%20%20%20filter%3A%20%7B%0A%20%20%20%20%20%20type%3A%20%7Beq%3A%20image%7D%2C%20%0A%20%20%20%20%09resolution%3A%20%7Beq%3A%20large%7D%2C%0A%20%20%20%20%20%20smartTags%3A%7Bcontains%3A%22face%22%7D%0A%20%20%20%20%7D%0A%20%20%29%20%7B%0A%20%20%20%20url%0A%20%20%7D%0A%7D%0A"></iframe>
+<iframe src="https://cda-explorer.datocms.com/?embed=&apitoken=faeb9172e232a75339242faafb9e56de8c8f13b735f7090964&query=%7B%0A%20%20allUploads%28filter%3A%20%7Btype%3A%20%7Beq%3A%20video%7D%2C%20resolution%3A%20%7B%7D%2C%20smartTags%3A%20%7B%7D%7D%29%20%7B%0A%20%20%20%20video%20%7B%0A%20%20%20%20%20%20streamingUrl%0A%20%20%20%20%20%20mp4High%3A%20mp4Url%28res%3A%20high%29%0A%20%20%20%20%20%20mp4Med%3A%20mp4Url%28res%3A%20medium%29%0A%20%20%20%20%20%20mp4Low%3A%20mp4Url%28res%3A%20low%29%0A%20%20%20%20%20%20duration%0A%20%20%20%20%20%20framerate%0A%20%20%20%20%20%20thumbJpg%3A%20thumbnailUrl%28format%3A%20jpg%29%0A%20%20%20%20%20%20thumbPng%3A%20thumbnailUrl%28format%3A%20png%29%0A%20%20%20%20%20%20thumbGif%3A%20thumbnailUrl%28format%3A%20gif%29%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A"></iframe>
 
 ### Filtering
 
@@ -59,3 +59,11 @@ You can filter on all the meaningful fields that we offer in the uploads.
 Here's an example of what you'll see in your CDA explorer:
 
 ![Filter uploads](../images/graphql/uploads-filtering.png)
+
+### Fetch uploads straight from the context
+
+For the GraphQL veterans this will be obvious, but still we are impressed how cool it is to be able to fetch all the augmented assets directly from the context where they are used.
+
+We hope you appreciate, as we do, something like this:
+
+<iframe src="https://cda-explorer.datocms.com/?embed=&apitoken=faeb9172e232a75339242faafb9e56de8c8f13b735f7090964&query=%7B%0A%20%20allBlogPosts%20%7B%0A%20%20%20%20title%0A%20%20%20%20author%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20avatar%20%7B%0A%20%20%20%20%20%20%20%20responsiveImage%20%7B%0A%20%20%20%20%20%20%20%20%20%20base64%0A%20%20%20%20%20%20%20%20%20%20sizes%0A%20%20%20%20%20%20%20%20%20%20srcSet%0A%20%20%20%20%20%20%20%20%20%20alt%0A%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20content%20%7B%0A%20%20%20%20%20%20...%20on%20TextRecord%20%7B%0A%20%20%20%20%20%20%20%20text%28markdown%3A%20true%29%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20...%20on%20ImageRecord%20%7B%0A%20%20%20%20%20%20%20%20image%20%7B%0A%20%20%20%20%20%20%20%20%20%20responsiveImage%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20base64%0A%20%20%20%20%20%20%20%20%20%20%20%20sizes%0A%20%20%20%20%20%20%20%20%20%20%20%20srcSet%0A%20%20%20%20%20%20%20%20%20%20%20%20alt%0A%20%20%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20...%20on%20InternalVideoRecord%20%7B%0A%20%20%20%20%20%20%20%20video%20%7B%0A%20%20%20%20%20%20%20%20%20%20video%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20streamingUrl%0A%20%20%20%20%20%20%20%20%20%20%20%20thumbnailUrl%28format%3A%20jpg%29%0A%20%20%20%20%20%20%20%20%20%20%20%20mp4Url%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A"></iframe>
