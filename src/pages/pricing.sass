@@ -3,16 +3,17 @@
 
 .PricingPage__recap
   display: flex
-  align-items: center
-  margin: 120px -10px 0
+  justify-content: space-around
+  margin: 120px auto 0
+  max-width: 1200px
 
 .PricingPage__recap-item
   border: 1px solid $border-color
   border-radius: 4px
   box-shadow: 0 1px 4px rgba(black, 0.1)
   text-align: center
-  margin: 0 4px
   background-color: white
+  margin: 0 30px
   flex: 1
 
   &:nth-child(1) .PricingPage__recap-item-plan-name
@@ -20,9 +21,6 @@
 
   &:nth-child(2) .PricingPage__recap-item-plan-name
     color: #ef6424
-
-  &:nth-child(3) .PricingPage__recap-item-plan-name
-    color: #834abd
 
 .PricingPage__recap-item-plan-name
   text-transform: uppercase
@@ -39,7 +37,7 @@
 
 .PricingPage__recap-item-price
   height: 60px
-  margin-bottom: 40px
+  margin-bottom: 50px
   position: relative
 
 .PricingPage__recap-item-price-free
@@ -50,12 +48,6 @@
   top: 20%
   left: 20px
   right: 20px
-
-.PricingPage__recap-item-unlimited
-  text-align: center
-  margin: 20px
-  color: $light-body-color
-  +size(small)
 
 .PricingPage__recap-item-price-amount
   +size(hero)
@@ -177,13 +169,12 @@
   border-radius: 10px
   text-align: center
 
-.PricingPage__free-plan-title
-  +size(bigger)
-  font-weight: 500
-  margin-bottom: 10px
-
-  @media screen and (min-width: 600px)
-    +size(smallHero)
+.PricingPage__logos-title
+  text-transform: uppercase
+  color: $light-body-color
+  +weight(bold)
+  +size(small)
+  text-align: center
 
 .PricingPage__free-plan-description
   margin-bottom: 30px
@@ -198,10 +189,14 @@
   margin-top: 10px
   color: $light-body-color
 
+.PricingPage__details-header-cell
+  width: 30%
+
 .PricingPage__details
   width: 100%
   border-top: 1px solid $border-color
   border-left: 1px solid $border-color
+  table-layout: fixed
 
   td
     border-bottom: 1px solid $border-color
@@ -517,3 +512,19 @@
   text-decoration: line-through
   padding-right: 0.3em
 
+.PricingPage__logos
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-wrap: wrap
+  margin: 50px 0
+
+  .react-reveal
+    text-align: center
+    margin-left: 20px
+    margin-left: 40px
+    margin-right: 40px
+
+  img
+    height: 34px
+    width: auto

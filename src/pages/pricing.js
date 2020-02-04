@@ -7,6 +7,7 @@ import { button } from 'blocks';
 
 import Layout from 'components/Layout';
 import PageLayout from 'components/PageLayout';
+import Fade from 'react-reveal/Fade';
 
 import './pricing.sass';
 import check from 'images/check.svg';
@@ -38,18 +39,13 @@ const b = bem.lock('PricingPage');
 
 const Tooltip = ({ children, showIcon = true, hint }) => (
   <span className={bem('Tooltip', {})}>
-    {children} { showIcon && <img alt="Info" src={tooltip} /> }
-    {
-      hint &&
-        <span className="Tooltip__hint">{hint}</span>
-    }
+    {children} {showIcon && <img alt="Info" src={tooltip} />}
+    {hint && <span className="Tooltip__hint">{hint}</span>}
   </span>
 );
 
 const HintTooltip = ({ children, hints, apiId }) => (
-  <Tooltip hint={hints[apiId].description}>
-    {children}
-  </Tooltip>
+  <Tooltip hint={hints[apiId].description}>{children}</Tooltip>
 );
 
 const formatValue = (name, value) => {
@@ -58,9 +54,9 @@ const formatValue = (name, value) => {
   }
 
   if (name.endsWith('Seconds')) {
-    return value > 60 * 60 ?
-      `${parseInt(value / 60 / 60)} hours` :
-      `${parseInt(value / 60)} minutes`;
+    return value > 60 * 60
+      ? `${parseInt(value / 60 / 60)} hours`
+      : `${parseInt(value / 60)} minutes`;
   }
 
   if (name.endsWith('Bytes')) {
@@ -68,7 +64,7 @@ const formatValue = (name, value) => {
   }
 
   if (Number.isInteger(value)) {
-    return numberWithCommas(value);
+    return numberWithCommas(name === 'roles' ? value - 2 : value);
   }
 
   return value;
@@ -90,11 +86,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
       return <img src={check} alt="Available feature" />;
     }
 
-    return (
-      <span>
-        {formatValue(apiId, value)}
-      </span>
-    );
+    return <span>{formatValue(apiId, value)}</span>;
   }
 
   const value = hint.plans[plan.apiId];
@@ -113,7 +105,7 @@ const ValueForLimit = ({ apiId, plan, datoPlan, hint }) => {
 class PricingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activePlan: '28', billing: 'yearly' };
+    this.state = { activePlan: '201', billing: 'yearly' };
   }
 
   handleChangePlan(activePlan) {
@@ -133,21 +125,19 @@ class PricingPage extends React.Component {
 
     return (
       <div className={b('plan-changer')}>
-        {plans
-          .filter(plan => plan.name !== 'Developer')
-          .map(plan => {
-            return (
-              <button
-                key={`button-${plan.apiId}`}
-                className={b('plan-changer__plan', {
-                  active: activePlan === plan.apiId,
-                })}
-                onClick={this.handleChangePlan.bind(this, plan.apiId)}
-              >
-                {plan.name}
-              </button>
-            );
-          })}
+        {plans.map(plan => {
+          return (
+            <button
+              key={`button-${plan.apiId}`}
+              className={b('plan-changer__plan', {
+                active: activePlan === plan.apiId,
+              })}
+              onClick={this.handleChangePlan.bind(this, plan.apiId)}
+            >
+              {plan.name}
+            </button>
+          );
+        })}
       </div>
     );
   }
@@ -170,7 +160,7 @@ class PricingPage extends React.Component {
               active: this.state.billing === 'yearly',
             })}
           >
-            Annual (20% off)
+            Annual (50% off!)
           </button>
         </div>
       </div>
@@ -186,10 +176,6 @@ class PricingPage extends React.Component {
     const isEnterprise = !datoPlan;
     const isFree = datoPlan && datoPlan.attributes.monthlyPrice === 0;
     const isBlackFriday = this.state.billing === 'yearly' && !!plan.promoTitle;
-
-    if (isFree) {
-      return null;
-    }
 
     return (
       <div
@@ -232,11 +218,6 @@ class PricingPage extends React.Component {
                 per project/month
               </div>,
             ]}
-        </div>
-        <div className={b('recap-item-unlimited')}>
-          {isEnterprise
-            ? 'Custom SLA contracts, plus'
-            : 'Unlimited records and file storage, plus'}
         </div>
         {isEnterprise ? (
           <div className={b('recap-item-specs')}>
@@ -290,7 +271,7 @@ class PricingPage extends React.Component {
                   plan={plan}
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
-                roles
+                custom roles
               </HintTooltip>
             </div>
           </div>
@@ -370,8 +351,8 @@ class PricingPage extends React.Component {
       <Layout>
         <HelmetDatoCms seo={data.page.seoMetaTags} />
         <PageLayout
-          title="The right price for any digital product"
-          subtitle="Unlimited records and file storage. Scale on complexity, not quantity."
+          title="Reliable, flexible pricing"
+          subtitle="Change plans as you want. Scale on complexity, not quantity."
         >
           <div className={b()}>
             {this.renderBillingChanger()}
@@ -381,22 +362,16 @@ class PricingPage extends React.Component {
             </div>
 
             <div className={b('free-plan')}>
-              <div className={b('free-plan-title')}>
-                Start with our forever free plan
+              <div className={b('logos-title')}>
+                Industry leaders trust DatoCMS
               </div>
               <div>
-                <div className={b('free-plan-description')}>
-                  All the essential features included, 1,000 records, 15 models,
-                  1GB file storage
-                </div>
-                <a
-                  className={button({ red: true, 'normal-big': true })}
-                  href="https://dashboard.datocms.com/signup"
-                >
-                  Try it for free
-                </a>
-                <div className={b('free-plan-credit-card')}>
-                  No credit card required, 30 seconds sign-up
+                <div className={b('logos')}>
+                  {data.home.customers.slice(0, 5).map(({ logo }, i) => (
+                    <Fade bottom duration={400} delay={50 * i} key={i}>
+                      <img alt="Client" src={logo.url} />
+                    </Fade>
+                  ))}
                 </div>
               </div>
             </div>
@@ -432,16 +407,17 @@ class PricingPage extends React.Component {
                 <tr className={b('details-header-row')}>
                   {plans.map(this.renderTablePriceRow.bind(this))}
                 </tr>
-                {hintKeys
-                .filter(k => !['items', 'uploadableBytes'].includes(k))
-                .map((hintKey, index) => {
-
+                {hintKeys.map((hintKey, index) => {
                   const extraPacket = plans
                     .map(plan => {
                       const datoPlan = datoPlans.find(p => p.id === plan.apiId);
-                      return datoPlan && ((datoPlan.attributes.extraPackets && datoPlan.attributes.extraPackets[hintKey]) || (
-                        datoPlan.attributes.autoPackets && datoPlan.attributes.autoPackets[hintKey]
-                      ));
+                      return (
+                        datoPlan &&
+                        ((datoPlan.attributes.extraPackets &&
+                          datoPlan.attributes.extraPackets[hintKey]) ||
+                          (datoPlan.attributes.autoPackets &&
+                            datoPlan.attributes.autoPackets[hintKey]))
+                      );
                     })
                     .filter(x => !!x)[0];
 
@@ -464,11 +440,11 @@ class PricingPage extends React.Component {
                   }
 
                   if (limit === 'muxEncodingSeconds') {
-                    limit = 'of video input'
+                    limit = 'of video input';
                   }
 
                   if (limit === 'muxStreamingSeconds') {
-                    limit = 'of delivered video'
+                    limit = 'of delivered video';
                   }
 
                   return (
@@ -476,20 +452,23 @@ class PricingPage extends React.Component {
                       <td className={b('details-feature-name')}>
                         <div>
                           <HintTooltip hints={hints} apiId={hintKey}>
-                            <span className={b('details-feature-name__name')}>{hints[hintKey].name}</span>
+                            <span className={b('details-feature-name__name')}>
+                              {hints[hintKey].name}
+                            </span>
                           </HintTooltip>
                         </div>
-                        {
-                          extraPacket && (
-                              <div className={b('details-feature-name__description')}>
-                                {
-                                  extraPacket.amountPerPacket === 1 ?
-                                    `Extra ${limit} for €${extraPacket.price} each` :
-                                    `€${extraPacket.price} every ${formatValue(hintKey, extraPacket.amountPerPacket)} extra ${limit}`
-                                }
-                              </div>
-                            )
-                        }
+                        {extraPacket && (
+                          <div
+                            className={b('details-feature-name__description')}
+                          >
+                            {extraPacket.amountPerPacket === 1
+                              ? `Extra ${limit} for €${extraPacket.price} each`
+                              : `€${extraPacket.price} every ${formatValue(
+                                  hintKey,
+                                  extraPacket.amountPerPacket,
+                                )} extra ${limit}`}
+                          </div>
+                        )}
                       </td>
                       {plans.map(plan => (
                         <td
@@ -498,12 +477,12 @@ class PricingPage extends React.Component {
                             active: activePlan === plan.apiId,
                           })}
                         >
-                            <ValueForLimit
-                              apiId={hintKey}
-                              hint={hints[hintKey]}
-                              plan={plan}
-                              datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                            />
+                          <ValueForLimit
+                            apiId={hintKey}
+                            hint={hints[hintKey]}
+                            plan={plan}
+                            datoPlan={datoPlans.find(p => p.id === plan.apiId)}
+                          />
                         </td>
                       ))}
                     </tr>
@@ -585,7 +564,7 @@ export const query = graphql`
       }
     }
 
-    plans: allDatoCmsNewPlan(sort: { fields: [position] }) {
+    plans: allDatoCmsPlan(sort: { fields: [position] }) {
       edges {
         node {
           apiId
@@ -598,7 +577,7 @@ export const query = graphql`
       }
     }
 
-    hints: allDatoCmsNewPricingHint(sort: { fields: [position] }) {
+    hints: allDatoCmsPricingHint(sort: { fields: [position] }) {
       edges {
         node {
           apiId
@@ -616,6 +595,15 @@ export const query = graphql`
 
     datoPlans: plans {
       body
+    }
+
+    home: datoCmsHomePage {
+      customers {
+        name
+        logo {
+          url
+        }
+      }
     }
   }
 `;
