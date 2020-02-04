@@ -13,7 +13,7 @@ import './pricing.sass';
 import check from 'images/check.svg';
 import tooltip from 'images/info-tooltip-dark.svg';
 import { parse } from 'flatted/cjs';
-import { camelize } from 'humps';
+import { camelize, decamelize } from 'humps';
 
 const units = ['bytes', 'kB', 'MB', 'GB', 'TB', 'PB'];
 
@@ -64,7 +64,7 @@ const formatValue = (name, value) => {
   }
 
   if (Number.isInteger(value)) {
-    return numberWithCommas(name === 'roles' ? value - 2 : value);
+    return numberWithCommas(value);
   }
 
   return value;
@@ -199,7 +199,7 @@ class PricingPage extends React.Component {
           {isFree && <div className={b('recap-item-price-free')}>Free</div>}
           {isEnterprise && (
             <div className={b('recap-item-price-free')}>
-              <a href="mailto:support@datocms.com">Let's talk</a>
+              <a href="/support">Let's talk</a>
             </div>
           )}
           {!isFree &&
@@ -260,7 +260,7 @@ class PricingPage extends React.Component {
                   plan={plan}
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
-                users
+                {datoPlans.find(p => p.id === plan.apiId).attributes.users === 1 ? 'user' : 'users'}
               </HintTooltip>
             </div>
             <div className={b('recap-item-spec')}>
@@ -271,7 +271,7 @@ class PricingPage extends React.Component {
                   plan={plan}
                   datoPlan={datoPlans.find(p => p.id === plan.apiId)}
                 />{' '}
-                custom roles
+                roles
               </HintTooltip>
             </div>
           </div>
@@ -359,6 +359,14 @@ class PricingPage extends React.Component {
             {this.renderPlanChanger()}
             <div className={b('recap')}>
               {plans.map(this.renderPlanRecap.bind(this, hints))}
+              <div className={b('recap-agency')}>
+                <div className={b('recap-agency-title')}>
+                  Agency plan <span>New!</span>
+                </div>
+                <div className={b('recap-agency-description')}>
+                  Interested in partering up with DatoCMS to build all your clients' projects in no time? <a href="/support">Contact us</a>, we offer quantity discounts (up to 80%)!
+                </div>
+              </div>
             </div>
 
             <div className={b('free-plan')}>
@@ -408,19 +416,6 @@ class PricingPage extends React.Component {
                   {plans.map(this.renderTablePriceRow.bind(this))}
                 </tr>
                 {hintKeys.map((hintKey, index) => {
-                  const extraPacket = plans
-                    .map(plan => {
-                      const datoPlan = datoPlans.find(p => p.id === plan.apiId);
-                      return (
-                        datoPlan &&
-                        ((datoPlan.attributes.extraPackets &&
-                          datoPlan.attributes.extraPackets[hintKey]) ||
-                          (datoPlan.attributes.autoPackets &&
-                            datoPlan.attributes.autoPackets[hintKey]))
-                      );
-                    })
-                    .filter(x => !!x)[0];
-
                   let limit = hintKey;
 
                   if (limit === 'itemTypes') {
@@ -457,34 +452,50 @@ class PricingPage extends React.Component {
                             </span>
                           </HintTooltip>
                         </div>
-                        {extraPacket && (
-                          <div
-                            className={b('details-feature-name__description')}
-                          >
-                            {extraPacket.amountPerPacket === 1
-                              ? `Extra ${limit} for €${extraPacket.price} each`
-                              : `€${extraPacket.price} every ${formatValue(
-                                  hintKey,
-                                  extraPacket.amountPerPacket,
-                                )} extra ${limit}`}
-                          </div>
-                        )}
                       </td>
-                      {plans.map(plan => (
-                        <td
-                          key={`hint-plan-${plan.apiId}`}
-                          className={b('details-feature-value', {
-                            active: activePlan === plan.apiId,
-                          })}
-                        >
-                          <ValueForLimit
-                            apiId={hintKey}
-                            hint={hints[hintKey]}
-                            plan={plan}
-                            datoPlan={datoPlans.find(p => p.id === plan.apiId)}
-                          />
-                        </td>
-                      ))}
+                      {plans.map(plan => {
+                        const datoPlan = datoPlans.find(
+                          p => p.id === plan.apiId,
+                        );
+                        const extraPacket =
+                          datoPlan &&
+                          ((datoPlan.attributes.extraPackets &&
+                            datoPlan.attributes.extraPackets[hintKey]) ||
+                            (datoPlan.attributes.autoPackets &&
+                              datoPlan.attributes.autoPackets[hintKey]));
+
+                        return (
+                          <td
+                            key={`hint-plan-${plan.apiId}`}
+                            className={b('details-feature-value', {
+                              active: activePlan === plan.apiId,
+                            })}
+                          >
+                            <ValueForLimit
+                              apiId={hintKey}
+                              hint={hints[hintKey]}
+                              plan={plan}
+                              datoPlan={datoPlans.find(
+                                p => p.id === plan.apiId,
+                              )}
+                            />
+                            {extraPacket && (
+                              <div
+                                className={b(
+                                  'details-feature-name__description',
+                                )}
+                              >
+                                {extraPacket.amountPerPacket === 1
+                                  ? `Extra ${limit} for €${extraPacket.price} each`
+                                  : `€${extraPacket.price} every ${formatValue(
+                                      hintKey,
+                                      extraPacket.amountPerPacket,
+                                    )} extra ${decamelize(limit).replace(/_/g, ' ')}`}
+                              </div>
+                            )}
+                          </td>
+                        );
+                      })}
                     </tr>
                   );
                 })}
