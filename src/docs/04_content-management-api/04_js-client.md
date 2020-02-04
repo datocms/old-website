@@ -19,7 +19,6 @@ $ yarn add datocms-client
 The first step is to require the DatoCMS package, and initialize the client with the read-write API token you can find under the *Admin area > API tokens* section. Let's create an `import.js` file with the following content:
 
 ```js
-require('babel-polyfill');
 const SiteClient = require('datocms-client').SiteClient;
 
 const client = new SiteClient('YOUR_API_READWRITE_TOKEN');
@@ -32,7 +31,6 @@ Now, suppose we have an administrative area with an *Article* model, and we want
 The first thing to know is the ID of the model itself. Let's add the following line to pretty print the existing models:
 
 ```js
-require('babel-polyfill');
 const SiteClient = require('datocms-client').SiteClient;
 
 const client = new SiteClient('YOUR_API_READWRITE_TOKEN');
