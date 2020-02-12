@@ -143,7 +143,7 @@ module.exports = {
       resolve: `gatsby-source-json`,
       options: {
         resolve: (createNode, digest) =>
-          fetch('https://account-api-staging.datocms.com/plans', {
+          fetch('https://account-api.datocms.com/plans', {
             headers: { Accept: 'application/json' },
           })
             .then(res => res.json())
