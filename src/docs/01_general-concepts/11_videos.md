@@ -22,8 +22,8 @@ We also support integrations with embedded videos from YouTube/Vimeo/Facebook, b
 
 Our Content Delivery API, Content Management API and all of our API clients and integrations include:
 
-- HSL video streaming URL;
-- High, medium and low quality MP4 versions of the video to support legacy browsers that do not support HSL;
+- HLS video streaming URL;
+- High, medium and low quality MP4 versions of the video to support legacy browsers that do not support HLS;
 - Duration and frame rate of the video;
 - Thumbnail URL: resizable, croppable and available in JPEG, PNG and GIF format;
 
