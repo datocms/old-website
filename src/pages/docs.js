@@ -243,6 +243,7 @@ export default class LearnPage extends React.Component {
                     'middleman',
                     'metalsmith',
                     'netlify',
+                    'zeit',
                     'travis',
                     'gitlab',
                     'circleci',
