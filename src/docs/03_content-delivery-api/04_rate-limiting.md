@@ -14,6 +14,9 @@ of 50 requests per second per API token.
 
 Higher rate limits may apply depending on your current plan.
 
+Bear in mind that all the requests, cached and uncached are counted against your
+API calls limit.
+
 #### Reaching your plan monthly API calls limit
 
 For projects under a paid plan, even exceeding the API calls or bandwidth limit
