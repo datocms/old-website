@@ -34,10 +34,10 @@ In case of a downgrade, prorated credits will be created, with a part used to pa
 
 All Plans include the following monthly usage limits:
 
-| Metric          | Free    | Basic   | Plus    | Max       |
-| --------------- | ------- | ------- | ------- | --------- |
-| Total API calls | 50,000  | 100,000 | 300,000 | 1,000,000 |
-| Bandwidth       | 10GB    | 200GB   | 1TB     | 2TB       |
+| Metric          | Developer | Professional |
+| --------------- | --------- | ------------ |
+| Total API calls | 50,000    | 1,000,000    |
+| Bandwidth       | 10GB      | 1TB          |
 
 These are our definitions of the two metrics examined:
 
